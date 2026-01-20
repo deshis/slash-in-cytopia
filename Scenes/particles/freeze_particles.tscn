@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfy23hspv2c13"]
+
+[ext_resource type="Texture2D" uid="uid://dqwvs2k3l08va" path="res://Assets/particles/freeze_01.png" id="1_wagxa"]
+[ext_resource type="Script" uid="uid://ceixtqqc0hvxq" path="res://Scripts/particles/particle_cleaner.gd" id="2_w1pr1"]
+
+[sub_resource type="Curve" id="Curve_qx2c8"]
+_data = [Vector2(0, 0), 0.0, 55056.184, 0, 0, Vector2(1e-05, 0.55056185), 0.0, 0.0, 0, 0, Vector2(0.058139548, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_tmcvn"]
+offsets = PackedFloat32Array(0, 0.47260273, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.88235295, 0.88235295, 0.88235295, 0.5882353)
+
+[node name="FreezeParticles" type="CPUParticles2D"]
+z_index = 2
+amount = 1
+texture = ExtResource("1_wagxa")
+lifetime = 6.0
+one_shot = true
+gravity = Vector2(0, 0)
+scale_amount_min = 0.18
+scale_amount_max = 0.18
+scale_amount_curve = SubResource("Curve_qx2c8")
+color = Color(1.365921, 1.365921, 1.365921, 0.43137255)
+color_ramp = SubResource("Gradient_tmcvn")
+script = ExtResource("2_w1pr1")

@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://bikxi37eqi0c3"]
+
+[ext_resource type="PackedScene" uid="uid://b67sros6cpwk2" path="res://Assets/enemy/saw/saw.glb" id="1_cwq5b"]
+[ext_resource type="ArrayMesh" uid="uid://bc7r3wnsf15fu" path="res://Assets/enemy/saw/saw_mesh.res" id="2_41p2u"]
+
+[node name="saw" instance=ExtResource("1_cwq5b")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="rig" index="0"]
+bones/1/rotation = Quaternion(-0.49999982, 0.5000001, 0.50000006, 0.50000006)
+bones/3/rotation = Quaternion(-0.49999994, 0.5, 0.5, 0.5000001)
+bones/6/rotation = Quaternion(-0.49999994, 0.5, 0.5, 0.5000001)
+bones/7/rotation = Quaternion(-0.49999982, -0.5000001, -0.50000006, 0.50000006)
+bones/8/rotation = Quaternion(-0.49999994, -0.5, -0.5, 0.5000001)
+bones/11/rotation = Quaternion(-0.49999994, -0.5, -0.5, 0.5000001)
+bones/12/rotation = Quaternion(0.6126247, -0.6126247, -0.35311615, -0.35311615)
+bones/13/rotation = Quaternion(-0.4248411, -0.56525224, -0.42484114, 0.56525224)
+bones/14/rotation = Quaternion(3.5888993e-07, 3.2136989e-09, -0.7071069, 0.70710665)
+bones/15/rotation = Quaternion(0.6126247, 0.6126247, 0.35311615, -0.35311615)
+bones/16/rotation = Quaternion(-0.42484143, 0.565252, 0.4248405, 0.56525254)
+bones/17/rotation = Quaternion(3.5744475e-07, -2.0247093e-09, 0.7071069, 0.70710665)
+
+[node name="RightHand" type="BoneAttachment3D" parent="rig/Skeleton3D" index="2"]
+transform = Transform3D(0.27804065, -3.8373346e-07, -0.9605694, 0.48147154, 0.86531085, 0.13936357, 0.831191, -0.50123537, 0.24059188, -6.0990562, 5.160003, -4.687602)
+bone_name = "DiscSpot.R"
+bone_idx = 14
+
+[node name="Saw" type="MeshInstance3D" parent="rig/Skeleton3D/RightHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("2_41p2u")
+
+[node name="LeftHand" type="BoneAttachment3D" parent="rig/Skeleton3D" index="3"]
+transform = Transform3D(0.27804103, 1.0092339e-06, 0.96056914, -0.4814728, 0.8653101, 0.13936363, -0.83119005, -0.50123674, 0.24059223, 6.0990577, 5.1599994, -4.6875997)
+bone_name = "DiscSpot.L"
+bone_idx = 17
+
+[node name="Saw" type="MeshInstance3D" parent="rig/Skeleton3D/LeftHand" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("2_41p2u")
+skeleton = NodePath("../../RightHand")
+
+[node name="RightSaw" parent="." index="5"]
+visible = false
+
+[node name="LeftSaw" parent="." index="6"]
+visible = false

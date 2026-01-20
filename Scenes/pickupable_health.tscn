@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://co6hqeammfqxj"]
+
+[ext_resource type="Script" uid="uid://c2mlvh78l8lyc" path="res://Scripts/items/pickupable_health.gd" id="1_hra3j"]
+[ext_resource type="Shader" uid="uid://c3vnwshetya1x" path="res://Assets/effects/health/health_pickup.gdshader" id="2_34xcm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ffcbt"]
+render_priority = 0
+shader = ExtResource("2_34xcm")
+shader_parameter/level = 1.0
+shader_parameter/emission_intensity = 0.0
+shader_parameter/fresnel_color = Color(0.19829297, 0.51785374, 0.20656762, 1)
+shader_parameter/fresnel_intensity = 1.5250000724375
+shader_parameter/fresnel_power = 1.0
+shader_parameter/rim_color = Color(0.30996388, 0.64572066, 0.29886872, 1)
+shader_parameter/rim_size = 0.4150000197125
+shader_parameter/rim_intensity = 0.05200000247
+shader_parameter/rim_start = 1.0
+shader_parameter/rim_end = -1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_34xcm"]
+material = SubResource("ShaderMaterial_ffcbt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1r6y2"]
+
+[node name="PickupableHealth" type="Area3D"]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+collision_layer = 131072
+collision_mask = 0
+script = ExtResource("1_hra3j")
+magnet_distance = 1.8
+magnet_speed = 7.0
+strength = 5.0
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("SphereMesh_34xcm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_1r6y2")

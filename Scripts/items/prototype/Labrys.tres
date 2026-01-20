@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=13 format=3 uid="uid://dh42yr6ulaeld"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_1gwri"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_8iv6c"]
+[ext_resource type="Resource" uid="uid://ggdtprqadem7" path="res://Scripts/items/resources/BleedDot.tres" id="2_v5l1r"]
+[ext_resource type="Texture2D" uid="uid://3opymq4ilree" path="res://Assets/items/icons/Prototype/Labrys.png" id="3_v5l1r"]
+[ext_resource type="ArrayMesh" uid="uid://dtnaovd8bxw3a" path="res://Assets/player/weapons/labrys.res" id="5_v5l1r"]
+
+[sub_resource type="Resource" id="Resource_ydcna"]
+script = ExtResource("1_1gwri")
+stat_type = 11
+value = 125.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_g7wij"]
+script = ExtResource("1_1gwri")
+stat_type = 12
+value = 110.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_3wbpb"]
+script = ExtResource("1_1gwri")
+stat_type = 8
+value = -15.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_ef4cu"]
+script = ExtResource("1_1gwri")
+stat_type = 13
+value = 20.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_wdjlv"]
+script = ExtResource("1_1gwri")
+stat_type = 15
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_hae0h"]
+script = ExtResource("1_1gwri")
+stat_type = 14
+dot_resource = ExtResource("2_v5l1r")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_eaclc"]
+script = ExtResource("1_1gwri")
+stat_type = 27
+value = 100.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_8iv6c")
+item_name = "The Labrys"
+item_description = "Damn son, where'd you find this?"
+type = 7
+grade = 2
+attack_type = 2
+weapon_type = 4
+weapon_mesh = ExtResource("5_v5l1r")
+icon = ExtResource("3_v5l1r")
+effects = Array[ExtResource("1_1gwri")]([SubResource("Resource_ydcna"), SubResource("Resource_g7wij"), SubResource("Resource_3wbpb"), SubResource("Resource_ef4cu"), SubResource("Resource_wdjlv"), SubResource("Resource_hae0h"), SubResource("Resource_eaclc")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

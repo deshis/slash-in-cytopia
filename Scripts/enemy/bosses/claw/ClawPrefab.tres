@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyPrefab" load_steps=6 format=3 uid="uid://baujclodehp88"]
+
+[ext_resource type="PackedScene" uid="uid://bqa3r3ykws3vg" path="res://Scenes/enemy/bosses/claw/claw.tscn" id="1_avtxs"]
+[ext_resource type="Script" uid="uid://cqw5n3pgcmai6" path="res://Scripts/enemy/EnemyPrefab.gd" id="2_wudw0"]
+[ext_resource type="Resource" uid="uid://bfq0j6yy6dkh2" path="res://Scripts/enemy/bosses/claw/claw_Stats.tres" id="3_anm1y"]
+[ext_resource type="Script" uid="uid://c3xt5r4pnu2pd" path="res://Scripts/enemy/targets/TargetPlayer.gd" id="4_iwren"]
+
+[sub_resource type="Resource" id="Resource_iwren"]
+script = ExtResource("4_iwren")
+metadata/_custom_type_script = "uid://c3xt5r4pnu2pd"
+
+[resource]
+script = ExtResource("2_wudw0")
+stats = ExtResource("3_anm1y")
+scene = ExtResource("1_avtxs")
+target_provider = SubResource("Resource_iwren")
+metadata/_custom_type_script = "uid://cqw5n3pgcmai6"

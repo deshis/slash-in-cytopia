@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://j75asak835yt"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_6dvoj"]
+[ext_resource type="Texture2D" uid="uid://c4hrxnksocafr" path="res://Assets/items/icons/Military/LaserFlail.png" id="2_6dvoj"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_cyloe"]
+[ext_resource type="ArrayMesh" uid="uid://ck02ch885weas" path="res://Assets/player/weapons/flail.res" id="4_6dvoj"]
+
+[sub_resource type="Resource" id="Resource_lnmks"]
+script = ExtResource("1_6dvoj")
+stat_type = 11
+value = 120.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_ebwx6"]
+script = ExtResource("1_6dvoj")
+stat_type = 12
+value = 90.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_f0hdo"]
+script = ExtResource("1_6dvoj")
+stat_type = 8
+value = 60.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_cyloe")
+item_name = "Laser Flail"
+type = 7
+grade = 1
+attack_type = 2
+weapon_type = 4
+weapon_mesh = ExtResource("4_6dvoj")
+icon = ExtResource("2_6dvoj")
+effects = Array[ExtResource("1_6dvoj")]([SubResource("Resource_lnmks"), SubResource("Resource_ebwx6"), SubResource("Resource_f0hdo")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://byavlywsvg0fx"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_b82wp"]
+[ext_resource type="Texture2D" uid="uid://sq6fmvgxig7h" path="res://Assets/items/icons/Prototype/SpectriteNeedle.png" id="2_hqw5f"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_ybkub"]
+
+[sub_resource type="Resource" id="Resource_6jpnv"]
+script = ExtResource("1_b82wp")
+stat_type = 5
+value = 0.4
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_a64gr"]
+script = ExtResource("1_b82wp")
+stat_type = 6
+value = 0.8
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_ybkub")
+item_name = "Spectrite Needle"
+type = 4
+grade = 2
+icon = ExtResource("2_hqw5f")
+effects = Array[ExtResource("1_b82wp")]([SubResource("Resource_6jpnv"), SubResource("Resource_a64gr")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

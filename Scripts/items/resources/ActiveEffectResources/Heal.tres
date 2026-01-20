@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ActiveEffectResource" load_steps=2 format=3 uid="uid://b7u27nahctfnu"]
+
+[ext_resource type="Script" uid="uid://rwrpa5fevhio" path="res://Scripts/items/resources/ActiveEffectResource.gd" id="1_h2shq"]
+
+[resource]
+script = ExtResource("1_h2shq")
+active_effect_value = 3.0
+active_effect_cooldown = 15.0
+metadata/_custom_type_script = "uid://rwrpa5fevhio"

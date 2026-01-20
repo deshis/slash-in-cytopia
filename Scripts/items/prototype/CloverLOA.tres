@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://ccdohgeu6j0a2"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_3hjef"]
+[ext_resource type="Texture2D" uid="uid://cmqdwn83wmapb" path="res://Assets/items/icons/Prototype/CloverLOA.png" id="2_eig5g"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_mf5r6"]
+
+[sub_resource type="Resource" id="Resource_qp0c6"]
+script = ExtResource("1_3hjef")
+stat_type = 22
+value = 50.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_euiy1"]
+script = ExtResource("1_3hjef")
+stat_type = 23
+value = 33.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_mf5r6")
+item_name = "Clover L.O.A"
+item_description = "Ancient device that gives the bearer the grandest of luck"
+type = 3
+grade = 2
+icon = ExtResource("2_eig5g")
+effects = Array[ExtResource("1_3hjef")]([SubResource("Resource_qp0c6"), SubResource("Resource_euiy1")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

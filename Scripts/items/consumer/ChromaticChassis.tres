@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://bqtg07mqs3cu2"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_yuiqv"]
+[ext_resource type="Texture2D" uid="uid://dw0os5x053trc" path="res://Assets/items/icons/Consumer/ChromaticChassis.png" id="2_yuiqv"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_n4ceq"]
+
+[sub_resource type="Resource" id="Resource_7khyf"]
+script = ExtResource("1_yuiqv")
+stat_type = 3
+value = 15.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_pka6w"]
+script = ExtResource("1_yuiqv")
+stat_type = 4
+value = -0.5
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_n4ceq")
+item_name = "Chromatic Chassis"
+type = 1
+icon = ExtResource("2_yuiqv")
+effects = Array[ExtResource("1_yuiqv")]([SubResource("Resource_7khyf"), SubResource("Resource_pka6w")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

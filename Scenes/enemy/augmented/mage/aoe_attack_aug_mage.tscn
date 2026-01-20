@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://co3gggxnesrgf"]
+
+[ext_resource type="Script" uid="uid://bsqk1o4xtv20x" path="res://Scripts/enemy/normal/mage/aoe_attack_mage.gd" id="1_57rnl"]
+[ext_resource type="Shader" uid="uid://b8iblmoq1ynr7" path="res://Assets/effects/magic/magic_aoe_blast.gdshader" id="2_uida1"]
+[ext_resource type="Texture2D" uid="uid://daip0sr333i42" path="res://Assets/effects/magic/erosion_texture.png" id="3_3anq3"]
+[ext_resource type="Texture2D" uid="uid://c5okhx5774ilm" path="res://Assets/effects/impact/impact_tex.png" id="4_op31a"]
+[ext_resource type="ArrayMesh" uid="uid://4j44jtq5ds0n" path="res://Assets/enemy/mage/magic_circle.res" id="5_e7mdn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n2h7i"]
+render_priority = 0
+shader = ExtResource("2_uida1")
+shader_parameter/tex = ExtResource("4_op31a")
+shader_parameter/color = Color(0.5921569, 0.16862746, 0.27058825, 1)
+shader_parameter/erosion_noise = ExtResource("3_3anq3")
+shader_parameter/fade = 0.050000002375
+shader_parameter/shader_time = 0.0
+shader_parameter/life_time = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u4e4v"]
+radius = 2.75
+
+[node name="aoe attack" type="Node3D"]
+script = ExtResource("1_57rnl")
+damage_per_level = 0.08
+duration = 0.5
+
+[node name="Circle" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 1, 0)
+material_override = SubResource("ShaderMaterial_n2h7i")
+mesh = ExtResource("5_e7mdn")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16384
+collision_mask = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_u4e4v")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

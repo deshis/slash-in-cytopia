@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://dbyx18fdbmfnx"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_pct25"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_ik34e"]
+[ext_resource type="Resource" path="res://Scripts/items/resources/ActiveEffectResources/Dash.tres" id="2_xd6k2"]
+[ext_resource type="Texture2D" uid="uid://crgir1u58mmcu" path="res://Assets/items/icons/Military/DashReplicator.png" id="3_5f0l7"]
+
+[sub_resource type="Resource" id="Resource_pct25"]
+script = ExtResource("1_pct25")
+stat_type = 25
+active_effect_resource = ExtResource("2_xd6k2")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_ik34e")
+item_name = "Dash Replicator"
+item_stat_info = "On use: Dash"
+item_description = "Cooldown: 4 sec"
+type = 5
+grade = 1
+icon = ExtResource("3_5f0l7")
+effects = Array[ExtResource("1_pct25")]([SubResource("Resource_pct25")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=19 format=3 uid="uid://btqoki0dx13kb"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_ohs3p"]
+[ext_resource type="Texture2D" uid="uid://b4taiqqen1woo" path="res://Assets/items/icons/Prototype/Statstick.png" id="2_ohs3p"]
+[ext_resource type="Resource" uid="uid://ggdtprqadem7" path="res://Scripts/items/resources/BleedDot.tres" id="2_umq30"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_l56pq"]
+[ext_resource type="ArrayMesh" uid="uid://b6sqrafjuknb8" path="res://Assets/player/weapons/stick.res" id="4_8pof4"]
+
+[sub_resource type="Resource" id="Resource_pptsh"]
+script = ExtResource("1_ohs3p")
+stat_type = 9
+value = 70.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_pwjje"]
+script = ExtResource("1_ohs3p")
+stat_type = 10
+value = 60.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_ohs3p"]
+script = ExtResource("1_ohs3p")
+stat_type = 1
+value = 0.1
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_umq30"]
+script = ExtResource("1_ohs3p")
+value = 1.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_hb1fl"]
+script = ExtResource("1_ohs3p")
+stat_type = 5
+value = 0.3
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_itrkx"]
+script = ExtResource("1_ohs3p")
+stat_type = 7
+value = 35.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_cebxw"]
+script = ExtResource("1_ohs3p")
+stat_type = 13
+value = 7.5
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_l56pq"]
+script = ExtResource("1_ohs3p")
+stat_type = 2
+value = 0.2
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_uu11y"]
+script = ExtResource("1_ohs3p")
+stat_type = 3
+value = 5.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_r84h6"]
+script = ExtResource("1_ohs3p")
+stat_type = 4
+value = 0.5
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_8pof4"]
+script = ExtResource("1_ohs3p")
+stat_type = 17
+value = -0.2
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_pgu5x"]
+script = ExtResource("1_ohs3p")
+stat_type = 26
+value = 25.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_xsn0n"]
+script = ExtResource("1_ohs3p")
+stat_type = 14
+dot_resource = ExtResource("2_umq30")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_l56pq")
+item_name = "The Statstick"
+item_description = "A well preserved stick."
+type = 6
+grade = 2
+attack_type = 1
+weapon_type = 2
+weapon_mesh = ExtResource("4_8pof4")
+icon = ExtResource("2_ohs3p")
+effects = Array[ExtResource("1_ohs3p")]([SubResource("Resource_pptsh"), SubResource("Resource_pwjje"), SubResource("Resource_ohs3p"), SubResource("Resource_umq30"), SubResource("Resource_hb1fl"), SubResource("Resource_itrkx"), SubResource("Resource_cebxw"), SubResource("Resource_l56pq"), SubResource("Resource_uu11y"), SubResource("Resource_r84h6"), SubResource("Resource_8pof4"), SubResource("Resource_pgu5x"), SubResource("Resource_xsn0n")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

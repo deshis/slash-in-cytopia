@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DebuffResource" load_steps=3 format=3 uid="uid://dsttcxra3ev7r"]
+
+[ext_resource type="Script" uid="uid://c6a5ggi5363a" path="res://Scripts/items/resources/DebuffResource.gd" id="1_54y85"]
+[ext_resource type="PackedScene" uid="uid://dkmfql71pbmmt" path="res://Scenes/particles/stun.tscn" id="1_xich0"]
+
+[resource]
+script = ExtResource("1_54y85")
+debuff_tick_rate = 0.75
+debuff_duration = 4.0
+particle_scene = ExtResource("1_xich0")
+metadata/_custom_type_script = "uid://c6a5ggi5363a"

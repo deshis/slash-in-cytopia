@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfr3rgsf2qctj"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_w81se"]
+
+[node name="Light" type="Node3D"]
+transform = Transform3D(0.9680864, -0.25061655, 0, 0.25061655, 0.9680864, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PrismMesh_w81se")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.93345696, 0.05730006, -0.35408318, 0.3515464, 0.049879223, 0.9348408, 0.07122782, -0.99711025, 0.02641648, 0.17325957, -0.08617956, 0)
+light_color = Color(0.90588236, 0.8352941, 0.7019608, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_size = 1.0
+light_specular = 16.0
+light_bake_mode = 1
+spot_range = 12.141
+spot_attenuation = 2.65
+spot_angle = 47.96
+spot_angle_attenuation = 0.19614601

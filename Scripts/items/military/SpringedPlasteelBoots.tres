@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=7 format=3 uid="uid://blccwyrh541mj"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_osf0u"]
+[ext_resource type="Texture2D" uid="uid://byml0bq2ojeck" path="res://Assets/items/icons/Military/SpringedPlasteelBoots.png" id="2_osf0u"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_eoko5"]
+
+[sub_resource type="Resource" id="Resource_iq6hr"]
+script = ExtResource("1_osf0u")
+stat_type = 4
+value = 0.5
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_wra5x"]
+script = ExtResource("1_osf0u")
+stat_type = 18
+value = 0.1
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_onnrd"]
+script = ExtResource("1_osf0u")
+stat_type = 17
+value = -0.6
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_eoko5")
+item_name = "Springed Plasteel Boots"
+type = 2
+grade = 1
+icon = ExtResource("2_osf0u")
+effects = Array[ExtResource("1_osf0u")]([SubResource("Resource_iq6hr"), SubResource("Resource_wra5x"), SubResource("Resource_onnrd")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl58s8gkullwa"]
+
+[ext_resource type="Script" uid="uid://d0ne14c7y6fvb" path="res://Scripts/items/pickupable_loot.gd" id="1_3a1hq"]
+[ext_resource type="ArrayMesh" uid="uid://c13720qsautjx" path="res://Assets/items/pickups/gear.res" id="2_3a1hq"]
+[ext_resource type="ArrayMesh" uid="uid://cny0ra281uuu0" path="res://Assets/items/pickups/bolt.res" id="3_t6aaw"]
+[ext_resource type="Material" uid="uid://o0d72hmec3tm" path="res://Assets/items/pickups/item_pickup_material.tres" id="4_3a1hq"]
+[ext_resource type="PackedScene" uid="uid://cheduqgq01lw6" path="res://Scenes/item.tscn" id="5_vbco5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3a1hq"]
+size = Vector3(1, 2, 1)
+
+[node name="PickupableItem" type="Area3D" node_paths=PackedStringArray("mesh_instance", "label")]
+collision_layer = 65536
+collision_mask = 0
+script = ExtResource("1_3a1hq")
+mesh_instance = NodePath("MeshInstance3D")
+mesh_list = Array[Mesh]([ExtResource("2_3a1hq"), ExtResource("3_t6aaw")])
+item_material = ExtResource("4_3a1hq")
+item_scene = ExtResource("5_vbco5")
+label = NodePath("Label3D")
+strength = 3.5
+duration = 0.25
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_3a1hq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.2, 0)
+mesh = ExtResource("3_t6aaw")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 0.55826163, -0.59474856)
+text = "F interact"

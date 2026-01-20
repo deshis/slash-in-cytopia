@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://cjdsxaae6hsd0"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_70c3d"]
+[ext_resource type="Texture2D" uid="uid://by3m44r6vqpr8" path="res://Assets/items/icons/Prototype/RealityFracture.png" id="2_f15ce"]
+[ext_resource type="Resource" uid="uid://dw566mrh6te1c" path="res://Scripts/items/resources/ActiveEffectResources/RealityFractureEffect.tres" id="2_hmu75"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_xg1kl"]
+
+[sub_resource type="Resource" id="Resource_xg1kl"]
+script = ExtResource("1_70c3d")
+stat_type = 25
+active_effect_resource = ExtResource("2_hmu75")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_xg1kl")
+item_name = "Reality Fracture"
+item_stat_info = "On use: Apply DoT in a 25 meter radius around you"
+item_description = "Blur the line between what is real and what is fiction. For a fleeting moment fracture reality exposing it to your subconscious. Cooldown: 30 sec"
+type = 5
+grade = 2
+icon = ExtResource("2_f15ce")
+effects = Array[ExtResource("1_70c3d")]([SubResource("Resource_xg1kl")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

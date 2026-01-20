@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfkdv2pchj0io"]
+
+[ext_resource type="Texture2D" uid="uid://cmlqhxck6ha23" path="res://Assets/particles/smoke_08.png" id="1_3j8v6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sply2"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_3j8v6")
+albedo_texture_force_srgb = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4dx00"]
+material = SubResource("StandardMaterial3D_sply2")
+
+[sub_resource type="Gradient" id="Gradient_toas6"]
+offsets = PackedFloat32Array(0, 0.8088889, 1)
+colors = PackedColorArray(0.23392546, 0.23392546, 0.23392543, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_xoijd"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -0.49922085), 0.0, 0.0, 0, 0, Vector2(1, 0.5948052), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="reality_fracture" type="CPUParticles3D"]
+emitting = false
+amount = 4
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.25
+randomness = 0.5
+lifetime_randomness = 0.25
+fixed_fps = 24
+mesh = SubResource("PlaneMesh_4dx00")
+emission_shape = 3
+emission_box_extents = Vector3(1, 0.1, 1)
+particle_flag_rotate_y = true
+direction = Vector3(1, 0, 1)
+gravity = Vector3(0, 0, 0)
+angle_max = 360.0
+scale_amount_max = 1.5
+color = Color(5.031437, 0, 9.304714, 1)
+color_ramp = SubResource("Gradient_toas6")
+hue_variation_min = -0.26
+hue_variation_max = 0.26
+hue_variation_curve = SubResource("Curve_xoijd")

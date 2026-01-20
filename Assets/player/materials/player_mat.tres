@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dhhknt7kteyse"]
+
+[ext_resource type="Texture2D" uid="uid://caaqyxqi3wkkw" path="res://Assets/player/scifi-character_apollo-1x.png" id="1_dbqo5"]
+[ext_resource type="Material" uid="uid://diws2buqgorvv" path="res://Assets/effects/hit_flash/hit_flash.tres" id="2_4eso0"]
+
+[resource]
+next_pass = ExtResource("2_4eso0")
+shading_mode = 0
+albedo_texture = ExtResource("1_dbqo5")

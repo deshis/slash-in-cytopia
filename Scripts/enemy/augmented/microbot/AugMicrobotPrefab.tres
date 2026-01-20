@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyPrefab" load_steps=6 format=3 uid="uid://xrq4kt1wxhud"]
+
+[ext_resource type="PackedScene" uid="uid://b8vlajaauat2k" path="res://Scenes/enemy/augmented/microbot/aug_microbot.tscn" id="1_n6r3g"]
+[ext_resource type="Script" uid="uid://cqw5n3pgcmai6" path="res://Scripts/enemy/EnemyPrefab.gd" id="2_7avwc"]
+[ext_resource type="Resource" uid="uid://dbm4m2fjlwic3" path="res://Scripts/enemy/augmented/microbot/aug_microbot_stats.tres" id="3_irlhp"]
+[ext_resource type="Script" uid="uid://c3xt5r4pnu2pd" path="res://Scripts/enemy/targets/TargetPlayer.gd" id="4_n6r3g"]
+
+[sub_resource type="Resource" id="Resource_by155"]
+script = ExtResource("4_n6r3g")
+metadata/_custom_type_script = "uid://c3xt5r4pnu2pd"
+
+[resource]
+script = ExtResource("2_7avwc")
+stats = ExtResource("3_irlhp")
+scene = ExtResource("1_n6r3g")
+target_provider = SubResource("Resource_by155")
+metadata/_custom_type_script = "uid://cqw5n3pgcmai6"

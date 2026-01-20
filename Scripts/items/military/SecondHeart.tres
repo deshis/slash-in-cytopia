@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://cqk2hd68kypyk"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_8sdqs"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="1_ka6yg"]
+[ext_resource type="Texture2D" uid="uid://lboyl1l5ey11" path="res://Assets/items/icons/Military/SecondHeart.png" id="2_gboi7"]
+
+[sub_resource type="Resource" id="Resource_rhsoe"]
+script = ExtResource("1_8sdqs")
+value = 6.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_8sdqs"]
+script = ExtResource("1_8sdqs")
+stat_type = 1
+value = 0.2
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("1_ka6yg")
+item_name = "Second Heart"
+item_description = "Heartless"
+type = 1
+grade = 1
+icon = ExtResource("2_gboi7")
+effects = Array[ExtResource("1_8sdqs")]([SubResource("Resource_rhsoe"), SubResource("Resource_8sdqs")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

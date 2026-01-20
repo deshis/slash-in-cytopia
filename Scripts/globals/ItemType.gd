@@ -1,0 +1,32 @@
+extends Node
+
+enum Type {
+	NONE,
+	SURVIVABILITY,
+	MOVEMENT,
+	UTILITY,
+	DAMAGE,
+	ACTIVE_ITEM,
+	PRIMARY_ATTACK,
+	SECONDARY_ATTACK
+}
+
+enum Grade {
+	CONSUMER,
+	MILITARY,
+	PROTOTYPE
+}
+
+enum AttackType {
+	NONE,
+	PRIMARY,
+	SECONDARY
+}
+
+enum WeaponType {
+	NONE,
+	DAGGER,
+	SWORD,
+	MAUL,
+	AXE
+}

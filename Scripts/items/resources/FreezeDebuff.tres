@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DebuffResource" load_steps=3 format=3 uid="uid://ch2ywqcwatc8t"]
+
+[ext_resource type="PackedScene" uid="uid://cpoyxyxicacwu" path="res://Scenes/particles/freeze_particles_3D.tscn" id="1_ek13t"]
+[ext_resource type="Script" uid="uid://c6a5ggi5363a" path="res://Scripts/items/resources/DebuffResource.gd" id="1_t7u5h"]
+
+[resource]
+script = ExtResource("1_t7u5h")
+debuff_name = "Freeze"
+debuff_type = 1
+debuff_item_desc_color = "#7ab2ff"
+debuff_tick_rate = 6.0
+debuff_duration = 6.0
+particle_scene = ExtResource("1_ek13t")
+metadata/_custom_type_script = "uid://c6a5ggi5363a"

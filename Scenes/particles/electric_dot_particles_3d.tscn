@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvvj5hl8wpxu1"]
+
+[ext_resource type="Texture2D" uid="uid://b8c2ejljrsiv" path="res://Assets/particles/spark_05.png" id="1_a5bk2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sply2"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_a5bk2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4dx00"]
+material = SubResource("StandardMaterial3D_sply2")
+
+[sub_resource type="Gradient" id="Gradient_toas6"]
+offsets = PackedFloat32Array(0, 0.2260274, 0.29452056)
+colors = PackedColorArray(1, 1, 1, 1, 0.069665685, 0.06966572, 9.024516e-09, 1, 0, 0, 0, 0)
+
+[node name="electric_dot_particles_3D" type="CPUParticles3D"]
+emitting = false
+amount = 1
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.5
+randomness = 0.5
+lifetime_randomness = 0.5
+fixed_fps = 12
+mesh = SubResource("PlaneMesh_4dx00")
+emission_shape = 3
+emission_box_extents = Vector3(1, 0.1, 1)
+particle_flag_rotate_y = true
+direction = Vector3(1, 0, 1)
+gravity = Vector3(0, 0, 0)
+angle_max = 360.0
+scale_amount_min = 0.5
+color = Color(1.825, 1.678, 0.56, 1)
+color_ramp = SubResource("Gradient_toas6")

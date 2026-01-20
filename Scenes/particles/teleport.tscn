@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://dvxfvfrh4a2t7"]
+
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="1_m7xxd"]
+
+[sub_resource type="Curve" id="Curve_m7xxd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.21129328, 1), 0.0, 0.0, 0, 0, Vector2(0.3788707, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qt575"]
+curve = SubResource("Curve_m7xxd")
+
+[sub_resource type="Gradient" id="Gradient_kja04"]
+offsets = PackedFloat32Array(0, 0.043977056, 0.33652008)
+colors = PackedColorArray(0, 0, 0, 0, 0.9955097, 0.98244435, 0.99269444, 1, 0.12156863, 0.12156863, 0.12156863, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_46pj6"]
+gradient = SubResource("Gradient_kja04")
+
+[sub_resource type="Curve" id="Curve_632fo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2622951, 0.59757745), 0.0, 0.0, 0, 0, Vector2(0.58652097, 0.2695155), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lncj0"]
+curve = SubResource("Curve_632fo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sbt0b"]
+emission_shape_offset = Vector3(0, 1, 0)
+emission_shape = 1
+emission_sphere_radius = 1.5
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -5.000002
+linear_accel_max = -5.000002
+scale_curve = SubResource("CurveTexture_lncj0")
+color = Color(0.7432764, 0.26628035, 0.51313394, 1)
+color_ramp = SubResource("GradientTexture1D_46pj6")
+alpha_curve = SubResource("CurveTexture_qt575")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbt0b"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_ksoeo"]
+material = SubResource("StandardMaterial3D_sbt0b")
+
+[node name="Teleport" type="GPUParticles3D" node_paths=PackedStringArray("particles")]
+emitting = false
+amount = 100
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.75
+randomness = 0.1
+fixed_fps = 24
+process_material = SubResource("ParticleProcessMaterial_sbt0b")
+draw_pass_1 = SubResource("SphereMesh_ksoeo")
+script = ExtResource("1_m7xxd")
+particles = NodePath(".")

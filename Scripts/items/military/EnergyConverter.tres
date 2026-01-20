@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://0g8vs70ocqer"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_y71fv"]
+[ext_resource type="Texture2D" uid="uid://bs56nm3gv718y" path="res://Assets/items/icons/Military/EnergyConverter.png" id="2_y71fv"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_isanh"]
+
+[sub_resource type="Resource" id="Resource_qp0c6"]
+script = ExtResource("1_y71fv")
+stat_type = 5
+value = -0.25
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_hq16e"]
+script = ExtResource("1_y71fv")
+stat_type = 6
+value = 0.65
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_isanh")
+item_name = "Energy Converter"
+type = 4
+grade = 1
+icon = ExtResource("2_y71fv")
+effects = Array[ExtResource("1_y71fv")]([SubResource("Resource_qp0c6"), SubResource("Resource_hq16e")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

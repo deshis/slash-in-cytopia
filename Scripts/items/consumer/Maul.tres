@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://c3lirlkahxk7w"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_8whnk"]
+[ext_resource type="Texture2D" uid="uid://d3ovifho5kn2" path="res://Assets/items/icons/Consumer/Maul.png" id="2_8whnk"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_el5gs"]
+[ext_resource type="ArrayMesh" uid="uid://c43hvmywfkp1j" path="res://Assets/player/weapons/maul.res" id="4_ydlaf"]
+
+[sub_resource type="Resource" id="Resource_8whnk"]
+script = ExtResource("1_8whnk")
+stat_type = 6
+value = 0.15
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_6jpnv"]
+script = ExtResource("1_8whnk")
+stat_type = 11
+value = 135.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_vrl5g"]
+script = ExtResource("1_8whnk")
+stat_type = 8
+value = -10.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_el5gs")
+item_name = "Maul"
+item_description = "Bonk"
+type = 7
+attack_type = 2
+weapon_type = 3
+weapon_mesh = ExtResource("4_ydlaf")
+icon = ExtResource("2_8whnk")
+effects = Array[ExtResource("1_8whnk")]([SubResource("Resource_8whnk"), SubResource("Resource_6jpnv"), SubResource("Resource_vrl5g")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

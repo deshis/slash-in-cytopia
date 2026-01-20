@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=5 format=3 uid="uid://ceqbducwmhq8g"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_dm18n"]
+[ext_resource type="Texture2D" uid="uid://nxkd2d4jrahy" path="res://Assets/items/icons/Prototype/PlasmiumToolBelt.png" id="2_i5td4"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_w0niv"]
+
+[sub_resource type="Resource" id="Resource_6jpnv"]
+script = ExtResource("1_dm18n")
+stat_type = 24
+value = 2.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_w0niv")
+item_name = "Plasmium Toolbelt"
+item_description = "+2 slots  when selecting loot"
+type = 3
+grade = 2
+icon = ExtResource("2_i5td4")
+effects = Array[ExtResource("1_dm18n")]([SubResource("Resource_6jpnv")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

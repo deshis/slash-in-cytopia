@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://33utdnvlyfj1"]
+
+[ext_resource type="Texture2D" uid="uid://bvjlp6tc806hv" path="res://Assets/particles/DawnSmite.png" id="1_hbikf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sply2"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_hbikf")
+albedo_texture_force_srgb = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4dx00"]
+material = SubResource("StandardMaterial3D_sply2")
+orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_toas6"]
+offsets = PackedFloat32Array(0.0046948357, 0.032863848, 0.95539904, 1)
+colors = PackedColorArray(0.23529412, 0.23529412, 0.23529412, 0, 0.973535, 0.9735351, 0.973535, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_xoijd"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -0.49922085), 0.0, 0.0, 0, 0, Vector2(1, 0.5948052), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="smite" type="CPUParticles3D"]
+emitting = false
+amount = 2
+lifetime = 3.5
+one_shot = true
+explosiveness = 0.2
+randomness = 0.5
+lifetime_randomness = 0.25
+fixed_fps = 24
+mesh = SubResource("PlaneMesh_4dx00")
+emission_shape = 4
+emission_points = PackedVector3Array(0.4, 0.8, 0)
+direction = Vector3(1, 0, 1)
+spread = 6.5
+gravity = Vector3(0, 0, 0)
+angle_max = 360.0
+scale_amount_min = 1.75
+scale_amount_max = 1.85
+color = Color(3.7438855, 3.7438855, 3.7015226, 1)
+color_ramp = SubResource("Gradient_toas6")
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+hue_variation_curve = SubResource("Curve_xoijd")

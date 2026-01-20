@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://djdt3alsj7r5g"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_074gj"]
+[ext_resource type="Texture2D" uid="uid://b8qxc86u8ls07" path="res://Assets/items/icons/Consumer/Axe.png" id="2_8opt6"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_qp0c6"]
+[ext_resource type="ArrayMesh" uid="uid://c12sey2qp16od" path="res://Assets/player/weapons/axe.res" id="4_8opt6"]
+
+[sub_resource type="Resource" id="Resource_qp0c6"]
+script = ExtResource("1_074gj")
+stat_type = 8
+value = 20.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_qp0c6")
+item_name = "Axe"
+type = 7
+attack_type = 2
+weapon_type = 4
+weapon_mesh = ExtResource("4_8opt6")
+icon = ExtResource("2_8opt6")
+effects = Array[ExtResource("1_074gj")]([SubResource("Resource_qp0c6")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

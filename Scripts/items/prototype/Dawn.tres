@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=10 format=3 uid="uid://bedqwucilf65s"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_f1mrk"]
+[ext_resource type="Resource" uid="uid://blfuhogry0ula" path="res://Scripts/items/resources/SmiteDoT.tres" id="2_ldv8l"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_y8tfx"]
+[ext_resource type="Texture2D" uid="uid://df8u4shbpl10h" path="res://Assets/items/icons/Prototype/Dawn.png" id="3_788ns"]
+[ext_resource type="ArrayMesh" uid="uid://c0sp07x3df3qs" path="res://Assets/player/weapons/dawn.res" id="5_788ns"]
+
+[sub_resource type="Resource" id="Resource_sn67a"]
+script = ExtResource("1_f1mrk")
+stat_type = 14
+dot_resource = ExtResource("2_ldv8l")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_bto4v"]
+script = ExtResource("1_f1mrk")
+stat_type = 27
+value = 100.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_28isr"]
+script = ExtResource("1_f1mrk")
+stat_type = 1
+value = 0.2
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_ldv8l"]
+script = ExtResource("1_f1mrk")
+stat_type = 8
+value = 15.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_y8tfx")
+item_name = "Dawn - The Guiding Light"
+item_description = "Radiant in the face of encroaching dark, this sword deflects the abyss"
+type = 7
+grade = 2
+attack_type = 2
+weapon_type = 4
+weapon_mesh = ExtResource("5_788ns")
+icon = ExtResource("3_788ns")
+effects = Array[ExtResource("1_f1mrk")]([SubResource("Resource_sn67a"), SubResource("Resource_bto4v"), SubResource("Resource_28isr"), SubResource("Resource_ldv8l")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://csup3noua17jp"]
+
+[ext_resource type="Script" uid="uid://d2vt7j61xmm5j" path="res://Scripts/area_load_next.gd" id="1_p0e35"]
+[ext_resource type="PackedScene" uid="uid://hprkdq3l56nq" path="res://Assets/portal/door.glb" id="1_w6aom"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w6aom"]
+
+[node name="Door" type="Node3D" node_paths=PackedStringArray("label")]
+script = ExtResource("1_p0e35")
+label = NodePath("Label3D")
+
+[node name="door" parent="." instance=ExtResource("1_w6aom")]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 227091
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+shape = SubResource("BoxShape3D_w6aom")
+debug_color = Color(1.1055521, 0.7517919, 7.7706267e-07, 1)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 4.267144, 0.47494358)
+text = "F interact"
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

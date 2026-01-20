@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba7sw3bysmjlq"]
+
+[ext_resource type="Script" uid="uid://dc2fjcahylj5m" path="res://Scripts/enemy/bosses/saw/saw.gd" id="1_4ajmx"]
+[ext_resource type="Resource" uid="uid://ls7f57wsj6qm" path="res://Scripts/enemy/bosses/saw/nanobot/NanobotPrefab.tres" id="2_m4j6o"]
+[ext_resource type="PackedScene" uid="uid://ugc0f0kxp1h" path="res://Scenes/enemy/bosses/saw/attack_boomerang.tscn" id="3_yu75o"]
+[ext_resource type="PackedScene" uid="uid://c620d4y0nkij" path="res://Scenes/enemy/bosses/saw/attack_stab.tscn" id="4_30mev"]
+[ext_resource type="PackedScene" uid="uid://bikxi37eqi0c3" path="res://Scenes/enemy/bosses/saw/saw_model.tscn" id="5_56ygc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_puxwi"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_48d4a"]
+size = Vector3(1.3, 2, 1.5)
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+collision_layer = 4096
+collision_mask = 4097
+motion_mode = 1
+wall_min_slide_angle = 0.0
+safe_margin = 0.1
+script = ExtResource("1_4ajmx")
+nanobot = ExtResource("2_m4j6o")
+boomerang_attack_scene = ExtResource("3_yu75o")
+boomerang_attack_windup_duration = 0.5
+boomerang_attack_duration = 2.0
+attack_duration = 0.833
+nav_agent = NodePath("NavigationAgent3D")
+attack = ExtResource("4_30mev")
+attack_windup_duration = 0.75
+attack_range = 3.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+radius = 1.0
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_puxwi")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_48d4a")
+
+[node name="model" parent="." instance=ExtResource("5_56ygc")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, 0, 0, 0)
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://bjmy1qb1w1763"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_1q0kc"]
+[ext_resource type="Resource" uid="uid://bfo7yosr77kk5" path="res://Scripts/items/resources/ActiveEffectResources/Invulnerability.tres" id="2_1q0kc"]
+[ext_resource type="Texture2D" uid="uid://c0tqhsqwgjbod" path="res://Assets/items/icons/Consumer/UsedNeuroblocker.png" id="3_1q0kc"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="4_6x2nt"]
+
+[sub_resource type="Resource" id="Resource_l23d5"]
+script = ExtResource("1_1q0kc")
+stat_type = 25
+active_effect_resource = ExtResource("2_1q0kc")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("4_6x2nt")
+item_name = "Used Neuroblockers"
+item_stat_info = "On use: become invulnerable for 2 second"
+item_description = "Cooldown: 10 sec"
+type = 5
+icon = ExtResource("3_1q0kc")
+effects = Array[ExtResource("1_1q0kc")]([SubResource("Resource_l23d5")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

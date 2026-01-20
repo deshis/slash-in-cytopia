@@ -1,0 +1,120 @@
+[gd_scene load_steps=19 format=3 uid="uid://0weod6ft2wss"]
+
+[ext_resource type="Texture2D" uid="uid://bufaupro2ybf3" path="res://Assets/particles/star_06.png" id="1_up3n2"]
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="2_bpd16"]
+
+[sub_resource type="Curve" id="Curve_bpd16"]
+_data = [Vector2(0, 0), 0.0, 1.554743, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6bmlq"]
+_data = [Vector2(0, 1), 0.0, -3.0533037, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5af51"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_5af51"]
+curve_x = SubResource("Curve_bpd16")
+curve_y = SubResource("Curve_6bmlq")
+curve_z = SubResource("Curve_5af51")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h7vbn"]
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveXYZTexture_5af51")
+sub_emitter_mode = 4
+sub_emitter_amount_at_start = 32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hno5"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_up3n2")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ml3yf"]
+material = SubResource("StandardMaterial3D_0hno5")
+
+[sub_resource type="Skin" id="Skin_yj37t"]
+
+[sub_resource type="Curve" id="Curve_xws0o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5567765, 0.5410663), -3.0485666, -3.0485666, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1ftfm"]
+curve = SubResource("Curve_xws0o")
+
+[sub_resource type="Gradient" id="Gradient_yu5da"]
+offsets = PackedFloat32Array(0, 0.022271715, 0.46547884, 0.9933185)
+colors = PackedColorArray(1, 1, 1, 1, 0.84470415, 0.64046234, 0, 1, 0.7440023, 0.41338083, 0.23676166, 1, 0.26657522, 0.2665752, 0.2665752, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v8wxc"]
+gradient = SubResource("Gradient_yu5da")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h6fhd"]
+particle_flag_align_y = true
+emission_shape = 3
+emission_box_extents = Vector3(0, 0, 0)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+inherit_velocity_ratio = 1.0
+velocity_pivot = Vector3(1, 0, 1)
+direction = Vector3(1, 0, 1)
+spread = 180.0
+initial_velocity_min = 4.0
+initial_velocity_max = 7.0
+scale_min = 0.14999999
+scale_max = 0.14999999
+color_ramp = SubResource("GradientTexture1D_v8wxc")
+alpha_curve = SubResource("CurveTexture_1ftfm")
+
+[sub_resource type="Curve" id="Curve_f0cef"]
+_data = [Vector2(0, 0), 0.0, 8.107042, 0, 0, Vector2(0.15737703, 0.6034482), -0.09390385, -0.09390385, 0, 0, Vector2(0.41967213, 0.37068963), -1.115465, -1.115465, 0, 0, Vector2(1, 0.043103337), -0.2629307, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06j3b"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_particle_trails = true
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_w0ed7"]
+material = SubResource("StandardMaterial3D_06j3b")
+radius = 0.1
+section_rings = 7
+curve = SubResource("Curve_f0cef")
+
+[node name="OnHitParticles" type="GPUParticles3D" node_paths=PackedStringArray("particles")]
+emitting = false
+amount = 1
+sub_emitter = NodePath("sparkles")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_h7vbn")
+draw_pass_1 = SubResource("QuadMesh_ml3yf")
+draw_skin = SubResource("Skin_yj37t")
+script = ExtResource("2_bpd16")
+particles = NodePath(".")
+
+[node name="sparkles" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 200
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_h6fhd")
+draw_pass_1 = SubResource("TubeTrailMesh_w0ed7")

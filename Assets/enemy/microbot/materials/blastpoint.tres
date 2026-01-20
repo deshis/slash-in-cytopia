@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dnq7kodfn01sk"]
+
+[ext_resource type="Shader" uid="uid://bda80f5kf7quh" path="res://Assets/enemy/microbot/materials/blastpoint.gdshader" id="1_o4i0o"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_o4i0o")
+shader_parameter/color_a = Color(0.35686275, 0.13333334, 0.3647059, 1)
+shader_parameter/color_b = Color(0.8954895, 0.69206166, 0.89582336, 1)
+shader_parameter/blend = 0.0

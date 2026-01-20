@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cank8wc1ic5am"]
+
+[ext_resource type="Texture2D" uid="uid://ceywic8omkrab" path="res://Assets/particles/light_02.png" id="1_tmcvn"]
+[ext_resource type="Texture2D" uid="uid://dovdqeuldcpu" path="res://Assets/particles/light_01.png" id="2_hq3q0"]
+[ext_resource type="Script" uid="uid://ceixtqqc0hvxq" path="res://Scripts/particles/particle_cleaner.gd" id="2_qx2c8"]
+
+[sub_resource type="Curve" id="Curve_qx2c8"]
+_data = [Vector2(0, 0), 0.0, 55056.184, 0, 0, Vector2(1e-05, 0.55056185), 0.0, 0.0, 0, 0, Vector2(0.058139548, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_tmcvn"]
+offsets = PackedFloat32Array(0, 0.23972602, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[node name="OnDeathParticles" type="CPUParticles2D"]
+emitting = false
+amount = 1
+texture = ExtResource("1_tmcvn")
+lifetime = 1.25
+one_shot = true
+gravity = Vector2(0, 0)
+angular_velocity_min = 15.0
+angular_velocity_max = 25.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_qx2c8")
+color = Color(1.3655106, 0.69228286, 0, 1)
+color_ramp = SubResource("Gradient_tmcvn")
+script = ExtResource("2_qx2c8")
+
+[node name="OnDeathParticles2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+texture = ExtResource("2_hq3q0")
+one_shot = true
+gravity = Vector2(0, 0)
+angular_velocity_min = 15.0
+angular_velocity_max = 25.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color = Color(1.2401211, 0.628592, 0.0030244577, 1)
+color_ramp = SubResource("Gradient_tmcvn")

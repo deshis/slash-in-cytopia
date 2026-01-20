@@ -1,0 +1,346 @@
+[gd_scene load_steps=10 format=3 uid="uid://btj605votyjy8"]
+
+[ext_resource type="Script" uid="uid://cqkdhw5hj1i28" path="res://Scripts/ui/settings/settings_menu.gd" id="1_fsgis"]
+[ext_resource type="Script" uid="uid://gvan738cxsdf" path="res://Scripts/ui/settings/settings_menu_tab_container.gd" id="1_jjs6x"]
+[ext_resource type="Script" uid="uid://ld2d7mva0ifb" path="res://Scripts/ui/settings/volume_slider.gd" id="2_fsgis"]
+[ext_resource type="Script" uid="uid://dmr6e5sqx26og" path="res://Scripts/ui/button.gd" id="3_vv31b"]
+[ext_resource type="Script" uid="uid://dq6p024uli4gt" path="res://Scripts/ui/settings/resolution_selection.gd" id="4_hmele"]
+[ext_resource type="Script" uid="uid://t88puge8eq6" path="res://Scripts/ui/settings/full_screen_toggle.gd" id="5_n0ctm"]
+[ext_resource type="Script" uid="uid://dxh73gj138c6" path="res://Scripts/ui/settings/anti_aliasing_selection.gd" id="6_rkth2"]
+[ext_resource type="Script" uid="uid://cx5ta3jfi5jxf" path="res://Scripts/ui/settings/vsync_toggle.gd" id="7_cdah7"]
+[ext_resource type="Script" uid="uid://bvr7eycdvq5oh" path="res://Scripts/ui/settings/control_remap_button.gd" id="8_ssx55"]
+
+[node name="SettingsMenu" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_fsgis")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+script = ExtResource("1_jjs6x")
+
+[node name="Audio" type="MarginContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Master Volume" type="RichTextLabel" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Master"
+fit_content = true
+
+[node name="MasterVolumeSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+scrollable = false
+script = ExtResource("2_fsgis")
+bus_name = "Master"
+
+[node name="SFX Volume" type="RichTextLabel" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]SFX"
+fit_content = true
+
+[node name="SFXVolumeSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+scrollable = false
+script = ExtResource("2_fsgis")
+bus_name = "SFX"
+
+[node name="Music Volume" type="RichTextLabel" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Music"
+fit_content = true
+
+[node name="MusicVolumeSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+scrollable = false
+script = ExtResource("2_fsgis")
+bus_name = "Music"
+
+[node name="BackToMenuButton" type="Button" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Back to menu"
+script = ExtResource("3_vv31b")
+
+[node name="Graphics" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Resolution" type="RichTextLabel" parent="TabContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Resolution"
+fit_content = true
+
+[node name="ResolutionSelection" type="OptionButton" parent="TabContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("4_hmele")
+
+[node name="Fullscreentoggle" type="CheckButton" parent="TabContainer/Graphics/VBoxContainer" node_paths=PackedStringArray("res_selection")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Full Screen"
+script = ExtResource("5_n0ctm")
+res_selection = NodePath("../ResolutionSelection")
+
+[node name="Anti-aliasing" type="RichTextLabel" parent="TabContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Anti-aliasing"
+fit_content = true
+
+[node name="AntiAliasingSelection" type="OptionButton" parent="TabContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+selected = 0
+item_count = 5
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "TAA"
+popup/item_1/id = 1
+popup/item_2/text = "MSAA 2x"
+popup/item_2/id = 2
+popup/item_3/text = "MSAA 4x"
+popup/item_3/id = 3
+popup/item_4/text = "MSAA 8x"
+popup/item_4/id = 4
+script = ExtResource("6_rkth2")
+
+[node name="Vsynctoggle" type="CheckButton" parent="TabContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "V-Sync"
+script = ExtResource("7_cdah7")
+
+[node name="BackToMenuButton" type="Button" parent="TabContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Back to menu"
+script = ExtResource("3_vv31b")
+
+[node name="Controls" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="primary" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/primary"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Primary Attack"
+
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/primary"]
+layout_mode = 2
+script = ExtResource("8_ssx55")
+action = "light_attack"
+
+[node name="secondary" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/secondary"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Secondary Attack"
+
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/secondary"]
+layout_mode = 2
+script = ExtResource("8_ssx55")
+action = "heavy_attack"
+
+[node name="moveup" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/moveup"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Move Up"
+
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/moveup"]
+layout_mode = 2
+script = ExtResource("8_ssx55")
+action = "move_up"
+
+[node name="moveleft" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/moveleft"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Move Left"
+
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/moveleft"]
+layout_mode = 2
+script = ExtResource("8_ssx55")
+action = "move_left"
+
+[node name="movedown" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/movedown"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Move Down"
+
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/movedown"]
+layout_mode = 2
+script = ExtResource("8_ssx55")
+action = "move_down"
+
+[node name="moveright" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/moveright"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Move Right"
+
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/moveright"]
+layout_mode = 2
+script = ExtResource("8_ssx55")
+action = "move_right"
+
+[node name="interact" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/interact"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Interact"
+
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/interact"]
+layout_mode = 2
+script = ExtResource("8_ssx55")
+action = "interact"
+
+[node name="active" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/active"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Active item"
+
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/active"]
+layout_mode = 2
+script = ExtResource("8_ssx55")
+action = "active_item"
+
+[node name="dash" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/dash"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Movement Ability"
+
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/dash"]
+layout_mode = 2
+script = ExtResource("8_ssx55")
+action = "movement_ability"
+
+[node name="inventory" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Open Inventory"
+
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/inventory"]
+layout_mode = 2
+script = ExtResource("8_ssx55")
+action = "inventory"
+
+[node name="BackToMenuButton" type="Button" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Back to menu"
+script = ExtResource("3_vv31b")
+
+[connection signal="pressed" from="TabContainer/Audio/VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="item_selected" from="TabContainer/Graphics/VBoxContainer/ResolutionSelection" to="TabContainer/Graphics/VBoxContainer/ResolutionSelection" method="_on_item_selected"]
+[connection signal="toggled" from="TabContainer/Graphics/VBoxContainer/Fullscreentoggle" to="TabContainer/Graphics/VBoxContainer/Fullscreentoggle" method="_on_toggled"]
+[connection signal="item_selected" from="TabContainer/Graphics/VBoxContainer/AntiAliasingSelection" to="TabContainer/Graphics/VBoxContainer/AntiAliasingSelection" method="_on_item_selected"]
+[connection signal="toggled" from="TabContainer/Graphics/VBoxContainer/Vsynctoggle" to="TabContainer/Graphics/VBoxContainer/Vsynctoggle" method="_on_toggled"]
+[connection signal="pressed" from="TabContainer/Graphics/VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="TabContainer/Controls/VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

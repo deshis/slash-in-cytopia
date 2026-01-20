@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=5 format=3 uid="uid://ct80oxdb1fg72"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_fp0af"]
+[ext_resource type="Texture2D" uid="uid://bmnium7lqfhos" path="res://Assets/items/icons/Military/NanoShell.png" id="2_fp0af"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_ildfx"]
+
+[sub_resource type="Resource" id="Resource_6jpnv"]
+script = ExtResource("1_fp0af")
+stat_type = 21
+value = 50.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_ildfx")
+item_name = "Nano Shell"
+type = 3
+grade = 1
+icon = ExtResource("2_fp0af")
+effects = Array[ExtResource("1_fp0af")]([SubResource("Resource_6jpnv")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

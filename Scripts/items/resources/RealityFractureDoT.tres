@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DotResource" load_steps=3 format=3 uid="uid://ce4l0kmhn3iw5"]
+
+[ext_resource type="PackedScene" uid="uid://bfkdv2pchj0io" path="res://Scenes/particles/reality_fracture_particles.tscn" id="1_1cbqy"]
+[ext_resource type="Script" uid="uid://ko57id0ce143" path="res://Scripts/items/resources/DotResource.gd" id="1_uaey2"]
+
+[resource]
+script = ExtResource("1_uaey2")
+dot_name = "Reality Fracture"
+dot_item_desc_color = "#8d54ff"
+dot_tick_damage = 0.5
+dot_tick_rate = 0.75
+dot_duration = 5.0
+particle_scene = ExtResource("1_1cbqy")
+metadata/_custom_type_script = "uid://ko57id0ce143"

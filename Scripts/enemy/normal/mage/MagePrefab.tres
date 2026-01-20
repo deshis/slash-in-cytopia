@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyPrefab" load_steps=6 format=3 uid="uid://x8fs3x2upf2j"]
+
+[ext_resource type="PackedScene" uid="uid://de3corsl6kg0s" path="res://Scenes/enemy/normal/mage/mage.tscn" id="1_8gjp8"]
+[ext_resource type="Script" uid="uid://cqw5n3pgcmai6" path="res://Scripts/enemy/EnemyPrefab.gd" id="2_vopf8"]
+[ext_resource type="Resource" uid="uid://byjorjxgw7dvd" path="res://Scripts/enemy/normal/mage/mage_stats.tres" id="3_vopf8"]
+[ext_resource type="Script" uid="uid://cstuktwrv6qs8" path="res://Scripts/enemy/targets/TargetSelf.gd" id="4_awi56"]
+
+[sub_resource type="Resource" id="Resource_vopf8"]
+script = ExtResource("4_awi56")
+metadata/_custom_type_script = "uid://cstuktwrv6qs8"
+
+[resource]
+script = ExtResource("2_vopf8")
+stats = ExtResource("3_vopf8")
+scene = ExtResource("1_8gjp8")
+target_provider = SubResource("Resource_vopf8")
+metadata/_custom_type_script = "uid://cqw5n3pgcmai6"

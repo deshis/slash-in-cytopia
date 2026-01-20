@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=5 format=3 uid="uid://dg45eotmhgvtu"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_n8nek"]
+[ext_resource type="Texture2D" uid="uid://xpvot50idfgl" path="res://Assets/items/icons/Consumer/QuantumGloves.png" id="2_n8nek"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_hbncg"]
+
+[sub_resource type="Resource" id="Resource_qp0c6"]
+script = ExtResource("1_n8nek")
+stat_type = 23
+value = 20.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_hbncg")
+item_name = "Quantum Gloves"
+type = 3
+icon = ExtResource("2_n8nek")
+effects = Array[ExtResource("1_n8nek")]([SubResource("Resource_qp0c6")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

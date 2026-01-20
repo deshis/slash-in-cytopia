@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://btnllu36psfjc"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_t1f5g"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_4h643"]
+[ext_resource type="Texture2D" uid="uid://8xf8b1m8un5g" path="res://Assets/items/icons/Consumer/Dagger.png" id="2_ejw8b"]
+[ext_resource type="ArrayMesh" uid="uid://c1qky7i8nboe7" path="res://Assets/player/weapons/electric_dagger.res" id="4_ejw8b"]
+
+[sub_resource type="Resource" id="Resource_4h643"]
+script = ExtResource("1_t1f5g")
+stat_type = 9
+value = 70.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_ejw8b"]
+script = ExtResource("1_t1f5g")
+stat_type = 10
+value = 80.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_n6x88"]
+script = ExtResource("1_t1f5g")
+stat_type = 7
+value = 20.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_4h643")
+item_name = "Dagger"
+type = 6
+attack_type = 1
+weapon_type = 1
+weapon_mesh = ExtResource("4_ejw8b")
+icon = ExtResource("2_ejw8b")
+effects = Array[ExtResource("1_t1f5g")]([SubResource("Resource_4h643"), SubResource("Resource_ejw8b"), SubResource("Resource_n6x88")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

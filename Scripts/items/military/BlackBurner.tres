@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=5 format=3 uid="uid://bvfndnghi8y4b"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_roaht"]
+[ext_resource type="Texture2D" uid="uid://dhro37hjq5f65" path="res://Assets/items/icons/Military/BlackBurner.png" id="2_roaht"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_jp6i4"]
+
+[sub_resource type="Resource" id="Resource_l23d5"]
+script = ExtResource("1_roaht")
+stat_type = 31
+value = 2.5
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_jp6i4")
+item_name = "Black Burner"
+item_stat_info = "Dash deals damage to enemies around you. Faster speeds deal more damage"
+type = 4
+grade = 1
+icon = ExtResource("2_roaht")
+effects = Array[ExtResource("1_roaht")]([SubResource("Resource_l23d5")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

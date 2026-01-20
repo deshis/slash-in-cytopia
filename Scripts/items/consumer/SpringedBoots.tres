@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://crgoakv30q0y"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_6l2e4"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_4sn3w"]
+[ext_resource type="Texture2D" uid="uid://byf1eshe6ifaw" path="res://Assets/items/icons/Consumer/SpringedBoots.png" id="2_tiybg"]
+
+[sub_resource type="Resource" id="Resource_iq6hr"]
+script = ExtResource("1_6l2e4")
+stat_type = 4
+value = 0.2
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_wra5x"]
+script = ExtResource("1_6l2e4")
+stat_type = 18
+value = 0.05
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_4sn3w")
+item_name = "Springed Boots"
+type = 2
+icon = ExtResource("2_tiybg")
+effects = Array[ExtResource("1_6l2e4")]([SubResource("Resource_iq6hr"), SubResource("Resource_wra5x")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://3ukru8rivxut"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_jvxiq"]
+[ext_resource type="Texture2D" uid="uid://c8kjtghde8w7a" path="res://Assets/items/icons/Consumer/DashInverter.png" id="2_n24lv"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_ui3h8"]
+
+[sub_resource type="Resource" id="Resource_ui3h8"]
+script = ExtResource("1_jvxiq")
+stat_type = 17
+value = -0.3
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_jvxiq"]
+script = ExtResource("1_jvxiq")
+stat_type = 19
+value = -60.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_ui3h8")
+item_name = "Dash Inverter"
+item_description = "Dash backwards "
+type = 3
+icon = ExtResource("2_n24lv")
+effects = Array[ExtResource("1_jvxiq")]([SubResource("Resource_ui3h8"), SubResource("Resource_jvxiq")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

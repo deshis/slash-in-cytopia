@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba6kasdy5sv28"]
+
+[ext_resource type="PackedScene" uid="uid://bsfn5eblbq7qw" path="res://Assets/enemy/microbot/microbot.glb" id="1_3xijb"]
+[ext_resource type="Shader" uid="uid://cv55fdtqonax8" path="res://Assets/effects/impact/impact.gdshader" id="3_6qdf0"]
+[ext_resource type="Texture2D" uid="uid://c5okhx5774ilm" path="res://Assets/effects/impact/impact_tex.png" id="4_kjevb"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fpnq0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j30b5"]
+noise = SubResource("FastNoiseLite_fpnq0")
+
+[sub_resource type="Gradient" id="Gradient_rc3uy"]
+offsets = PackedFloat32Array(0, 0.1, 0.9, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jwwmi"]
+gradient = SubResource("Gradient_rc3uy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rbu7e"]
+render_priority = 0
+shader = ExtResource("3_6qdf0")
+shader_parameter/base_color = Color(0.9490196, 0.8156863, 0.9490196, 1)
+shader_parameter/texture_albedo = ExtResource("4_kjevb")
+shader_parameter/erosion_texture = SubResource("NoiseTexture2D_j30b5")
+shader_parameter/gradient_texture = SubResource("GradientTexture1D_jwwmi")
+shader_parameter/erosion = 0.0
+shader_parameter/fade = 0.05099999892989999
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, -0.5)
+
+[node name="microbot" instance=ExtResource("1_3xijb")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="BlastWave" parent="." index="1"]
+transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1.4, 0, 0, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_rbu7e")
+
+[node name="AugmentedBlastWave" parent="." index="2"]
+visible = false

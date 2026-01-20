@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://daq8gv1iuisrc"]
+
+[ext_resource type="Script" uid="uid://c4os75u4ygtvm" path="res://Scripts/enemy/augmented/mage/aug_mage.gd" id="1_c7l0u"]
+[ext_resource type="PackedScene" uid="uid://co3gggxnesrgf" path="res://Scenes/enemy/augmented/mage/aoe_attack_aug_mage.tscn" id="2_1t6lu"]
+[ext_resource type="PackedScene" uid="uid://bwlfm3jqpp534" path="res://Scenes/enemy/augmented/mage/small_ranged_magic_attack_aug_mage.tscn" id="2_evroh"]
+[ext_resource type="PackedScene" uid="uid://cr032bmqvwc80" path="res://Scenes/enemy/augmented/mage/ranged_magic_attack_aug_mage.tscn" id="3_evroh"]
+[ext_resource type="PackedScene" uid="uid://dvxfvfrh4a2t7" path="res://Scenes/particles/teleport.tscn" id="4_u4vbu"]
+[ext_resource type="PackedScene" uid="uid://byxsto3jgbjf4" path="res://Scenes/enemy/augmented/mage/aug_mage_model.tscn" id="5_oaq04"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jn0u"]
+size = Vector3(0.8, 2, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmbf2"]
+size = Vector3(1, 2, 1)
+
+[node name="Enemy2" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent")]
+collision_layer = 4096
+collision_mask = 4353
+motion_mode = 1
+wall_min_slide_angle = 0.0
+safe_margin = 0.1
+script = ExtResource("1_c7l0u")
+ranged_attack_small = ExtResource("2_evroh")
+aoe_radius_min = 0.8
+ranged_attack = ExtResource("3_evroh")
+tp_attack_duration = 0.75
+nav_agent = NodePath("NavigationAgent3D")
+attack = ExtResource("2_1t6lu")
+attack_windup_duration = 0.3
+attack_range = 2.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+radius = 1.0
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_5jn0u")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_rmbf2")
+
+[node name="TeleportArea" type="Area3D" parent="."]
+collision_layer = 8192
+collision_mask = 0
+
+[node name="AttackAreaHitbox" type="CollisionShape3D" parent="TeleportArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_5jn0u")
+
+[node name="Teleport" parent="." instance=ExtResource("4_u4vbu")]
+
+[node name="model" parent="." instance=ExtResource("5_oaq04")]

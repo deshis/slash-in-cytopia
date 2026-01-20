@@ -1,0 +1,90 @@
+[gd_scene load_steps=18 format=3 uid="uid://cr032bmqvwc80"]
+
+[ext_resource type="Script" uid="uid://dtkihblrjwjo2" path="res://Scripts/enemy/normal/mage/ranged_magic_attack.gd" id="1_hjky7"]
+[ext_resource type="Shader" uid="uid://344gstuhtvey" path="res://Assets/effects/magic/magic_circle.gdshader" id="2_l3gdh"]
+[ext_resource type="Texture2D" uid="uid://daip0sr333i42" path="res://Assets/effects/magic/erosion_texture.png" id="3_8a54o"]
+[ext_resource type="Texture2D" uid="uid://dj6kc3a5xucbq" path="res://Assets/effects/magic/pulse.png" id="4_05nfg"]
+[ext_resource type="ArrayMesh" uid="uid://4j44jtq5ds0n" path="res://Assets/enemy/mage/magic_circle.res" id="5_hvumg"]
+[ext_resource type="Shader" uid="uid://c1lmfjj2g5oxx" path="res://Assets/effects/magic/magic_blast.gdshader" id="6_xt5xl"]
+[ext_resource type="ArrayMesh" uid="uid://dj3oe35rc5d3o" path="res://Assets/enemy/mage/magic_flare.res" id="7_srh7b"]
+
+[sub_resource type="Gradient" id="Gradient_iru8m"]
+offsets = PackedFloat32Array(0, 0.95, 0.95, 0.99, 1)
+colors = PackedColorArray(0.14571935, 0.017221795, 0.044020288, 0.78431374, 0.5921569, 0.16862746, 0.27058825, 0.78431374, 1, 1, 1, 0.50179946, 1, 1, 1, 0.5019608, 0.5921569, 0.16862746, 0.27058825, 0.78431374)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fkiw7"]
+gradient = SubResource("Gradient_iru8m")
+
+[sub_resource type="Curve" id="Curve_r5b78"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 0), 0.0, 0.45, 1, 0, Vector2(1, 0.98264813), 2.8, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bkkqw"]
+texture_mode = 1
+curve = SubResource("Curve_r5b78")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkiw7"]
+render_priority = 0
+shader = ExtResource("2_l3gdh")
+shader_parameter/tex = ExtResource("4_05nfg")
+shader_parameter/pulse_color = Color(0.863963, 0, 0.1935279, 1)
+shader_parameter/color_range = SubResource("GradientTexture1D_fkiw7")
+shader_parameter/erosion_noise = ExtResource("3_8a54o")
+shader_parameter/erosion = 0.0
+shader_parameter/shader_time = 0.0
+shader_parameter/life_time = 1.0
+shader_parameter/pulse_curve = SubResource("CurveTexture_bkkqw")
+shader_parameter/pulse_speed = 750.0
+shader_parameter/stop = false
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u4e4v"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iru8m"]
+noise = SubResource("FastNoiseLite_u4e4v")
+normalize = false
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r5b78"]
+load_path = "res://.godot/imported/blast.png-3aee525b943b540781c1114a3eb86899.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iru8m"]
+render_priority = 0
+shader = ExtResource("6_xt5xl")
+shader_parameter/tex = SubResource("CompressedTexture2D_r5b78")
+shader_parameter/color = Color(0.5921569, 0.16862746, 0.27058825, 1)
+shader_parameter/highlight_color = Color(0.7867915, 0.31880644, 0.32146746, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_iru8m")
+shader_parameter/noise_scroll = 1.60000002384192
+shader_parameter/erosion_noise = ExtResource("3_8a54o")
+shader_parameter/erosion = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u4e4v"]
+radius = 1.65
+
+[node name="RangedMagicAttackMage" type="Node3D"]
+script = ExtResource("1_hjky7")
+pulse_speed = 5.0
+anticipation_duration = 2.0
+damage = 4.0
+duration = 1.0
+follow = false
+
+[node name="Circle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.4, 0)
+material_override = SubResource("ShaderMaterial_fkiw7")
+mesh = ExtResource("5_hvumg")
+
+[node name="Blast" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_iru8m")
+custom_aabb = AABB(0, 0.4, 0, 0, 0, 0)
+mesh = ExtResource("7_srh7b")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16384
+collision_mask = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_u4e4v")

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=5 format=3 uid="uid://cyy4re0rs16s3"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_gust7"]
+[ext_resource type="Texture2D" uid="uid://ct12kmtuvbpq6" path="res://Assets/items/icons/Military/SingularityGloves.png" id="2_gust7"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_afap3"]
+
+[sub_resource type="Resource" id="Resource_qp0c6"]
+script = ExtResource("1_gust7")
+stat_type = 23
+value = 40.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_afap3")
+item_name = "Singularity Gloves"
+type = 3
+grade = 1
+icon = ExtResource("2_gust7")
+effects = Array[ExtResource("1_gust7")]([SubResource("Resource_qp0c6")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

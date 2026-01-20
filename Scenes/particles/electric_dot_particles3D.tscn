@@ -1,0 +1,90 @@
+[gd_scene load_steps=15 format=3 uid="uid://c1osf1x8t41y3"]
+
+[ext_resource type="Texture2D" uid="uid://b8c2ejljrsiv" path="res://Assets/particles/spark_05.png" id="1_4vs8c"]
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="2_86ivy"]
+
+[sub_resource type="Curve" id="Curve_sixqa"]
+_data = [Vector2(0, 0), 0.0, 4.0632024, 0, 0, Vector2(0.5171103, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.139229, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uq3x2"]
+curve = SubResource("Curve_sixqa")
+
+[sub_resource type="Curve" id="Curve_yxm3d"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_j56qy"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_xkx8m"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_h3ns0"]
+curve_x = SubResource("Curve_yxm3d")
+curve_y = SubResource("Curve_j56qy")
+curve_z = SubResource("Curve_xkx8m")
+
+[sub_resource type="Curve" id="Curve_4ljps"]
+_data = [Vector2(0, 0), 0.0, 2.7277443, 0, 0, Vector2(0.4904943, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.9550562, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uso0d"]
+curve = SubResource("Curve_4ljps")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4aufj"]
+particle_flag_align_y = true
+emission_shape_offset = Vector3(0, 0.25, 0)
+emission_shape_scale = Vector3(0.4, 0.25, 0.4)
+emission_shape = 1
+emission_sphere_radius = 4.18
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+angular_velocity_min = 29.999983
+angular_velocity_max = 29.999983
+orbit_velocity_min = -0.49999994
+orbit_velocity_max = 0.5000001
+orbit_velocity_curve = SubResource("CurveXYZTexture_h3ns0")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_uso0d")
+color = Color(0.92195714, 0.9203971, 0, 1)
+alpha_curve = SubResource("CurveTexture_uq3x2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fvt0"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_4vs8c")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_q5vl4"]
+lightmap_size_hint = Vector2i(4, 4)
+material = SubResource("StandardMaterial3D_3fvt0")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="Skin" id="Skin_xhh24"]
+
+[node name="ElectricDotParticles" type="GPUParticles3D" node_paths=PackedStringArray("particles")]
+emitting = false
+amount = 1
+one_shot = true
+visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+process_material = SubResource("ParticleProcessMaterial_4aufj")
+draw_pass_1 = SubResource("QuadMesh_q5vl4")
+draw_skin = SubResource("Skin_xhh24")
+script = ExtResource("2_86ivy")
+particles = NodePath(".")

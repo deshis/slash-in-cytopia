@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DotResource" load_steps=3 format=3 uid="uid://blfuhogry0ula"]
+
+[ext_resource type="Script" uid="uid://ko57id0ce143" path="res://Scripts/items/resources/DotResource.gd" id="1_6vdjf"]
+[ext_resource type="PackedScene" uid="uid://33utdnvlyfj1" path="res://Scenes/particles/smite_particle.tscn" id="1_o4002"]
+
+[resource]
+script = ExtResource("1_6vdjf")
+dot_name = "Smite"
+dot_item_desc_color = "#feffe6"
+dot_tick_damage = 2.0
+dot_tick_rate = 0.5
+dot_duration = 0.5
+particle_scene = ExtResource("1_o4002")
+metadata/_custom_type_script = "uid://ko57id0ce143"

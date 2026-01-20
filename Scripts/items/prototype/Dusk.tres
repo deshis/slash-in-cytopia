@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=12 format=3 uid="uid://dw4dnugyroxh4"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_tnyvk"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_upjoc"]
+[ext_resource type="PackedScene" uid="uid://bfkdv2pchj0io" path="res://Scenes/particles/reality_fracture_particles.tscn" id="2_wtkxn"]
+[ext_resource type="Texture2D" uid="uid://c5rq652pmxoor" path="res://Assets/items/icons/Prototype/Dusk.png" id="3_7a6sa"]
+[ext_resource type="Script" uid="uid://ko57id0ce143" path="res://Scripts/items/resources/DotResource.gd" id="3_ihgk8"]
+[ext_resource type="ArrayMesh" uid="uid://c6thpqps7xbt7" path="res://Assets/player/weapons/dusk.res" id="5_7a6sa"]
+
+[sub_resource type="Resource" id="Resource_wtkxn"]
+script = ExtResource("1_tnyvk")
+stat_type = 27
+value = 100.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_d30di"]
+script = ExtResource("3_ihgk8")
+dot_name = "Reality Fracture"
+dot_item_desc_color = "#8d54ff"
+dot_tick_damage = 0.6
+dot_tick_rate = 0.75
+dot_duration = 5.0
+particle_scene = ExtResource("2_wtkxn")
+metadata/_custom_type_script = "uid://ko57id0ce143"
+
+[sub_resource type="Resource" id="Resource_ihgk8"]
+script = ExtResource("1_tnyvk")
+stat_type = 14
+dot_resource = SubResource("Resource_d30di")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_ykwlg"]
+script = ExtResource("1_tnyvk")
+stat_type = 13
+value = 25.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_7a6sa"]
+script = ExtResource("1_tnyvk")
+stat_type = 8
+value = 15.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_upjoc")
+item_name = "Dusk - Light's Extinction"
+item_description = "Legendary blade rumored to be capable of absorbing entire stars."
+type = 7
+grade = 2
+attack_type = 2
+weapon_type = 4
+weapon_mesh = ExtResource("5_7a6sa")
+icon = ExtResource("3_7a6sa")
+effects = Array[ExtResource("1_tnyvk")]([SubResource("Resource_wtkxn"), SubResource("Resource_ihgk8"), SubResource("Resource_ykwlg"), SubResource("Resource_7a6sa")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

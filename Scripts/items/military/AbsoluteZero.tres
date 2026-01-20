@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=10 format=3 uid="uid://dx2tkbin5n0nq"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_7x0q4"]
+[ext_resource type="Resource" uid="uid://ch2ywqcwatc8t" path="res://Scripts/items/resources/FreezeDebuff.tres" id="2_mkab5"]
+[ext_resource type="Texture2D" uid="uid://dmaqf3a41hxep" path="res://Assets/items/icons/Military/AbsoluteZero.png" id="3_mkab5"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_uba5p"]
+[ext_resource type="ArrayMesh" uid="uid://bhvax4f5pu47m" path="res://Assets/player/weapons/absolutezero.res" id="5_mkab5"]
+
+[sub_resource type="Resource" id="Resource_6jpnv"]
+script = ExtResource("1_7x0q4")
+stat_type = 11
+value = 135.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_vrl5g"]
+script = ExtResource("1_7x0q4")
+stat_type = 8
+value = -10.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_as8ef"]
+script = ExtResource("1_7x0q4")
+stat_type = 29
+value = 33.4
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_s6lyc"]
+script = ExtResource("1_7x0q4")
+stat_type = 16
+debuff_resource = ExtResource("2_mkab5")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_uba5p")
+item_name = "Absolute Zero"
+item_description = "I'm cold"
+type = 7
+grade = 1
+attack_type = 2
+weapon_type = 3
+weapon_mesh = ExtResource("5_mkab5")
+icon = ExtResource("3_mkab5")
+effects = Array[ExtResource("1_7x0q4")]([SubResource("Resource_6jpnv"), SubResource("Resource_vrl5g"), SubResource("Resource_as8ef"), SubResource("Resource_s6lyc")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

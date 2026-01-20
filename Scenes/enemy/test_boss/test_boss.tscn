@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwiavd3bgd63w"]
+
+[ext_resource type="PackedScene" uid="uid://bfykyy2y7odt7" path="res://Scenes/enemy/normal/slasher/enemy_slasher.tscn" id="1_5r271"]
+[ext_resource type="Script" uid="uid://t76ghlhghorw" path="res://Scripts/enemy/EnemyStats.gd" id="2_8flpb"]
+[ext_resource type="Script" uid="uid://b4if25763viv3" path="res://Scripts/enemy/test_boss/boss.gd" id="2_n3hpa"]
+
+[sub_resource type="Resource" id="Resource_7i6gw"]
+script = ExtResource("2_8flpb")
+name = "boss"
+metadata/_custom_type_script = "uid://t76ghlhghorw"
+
+[sub_resource type="Gradient" id="Gradient_cvnsp"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0, 0.16106194, 0.78938055, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.7560538, 1, 1, 1, 0.46666667, 1, 1, 1, 0.54901963)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5r271"]
+gradient = SubResource("Gradient_cvnsp")
+fill_from = Vector2(1, 1)
+
+[node name="boss" instance=ExtResource("1_5r271")]
+scale = Vector2(1.8100461, 1.8100461)
+script = ExtResource("2_n3hpa")
+enemy = SubResource("Resource_7i6gw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AttackArea" index="0"]
+visible = false
+position = Vector2(0, 69.5)
+scale = Vector2(1.5, 3.25)
+texture = SubResource("GradientTexture2D_5r271")

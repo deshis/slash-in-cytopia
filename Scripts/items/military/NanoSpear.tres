@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://htlnkhxfaxyy"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_5j2s0"]
+[ext_resource type="Texture2D" uid="uid://codu1e4vdgmjv" path="res://Assets/items/icons/Military/NanoSpear.png" id="2_62dp0"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_l8nmo"]
+[ext_resource type="ArrayMesh" uid="uid://ccvgbak7x3nmg" path="res://Assets/player/weapons/spear.res" id="4_62dp0"]
+
+[sub_resource type="Resource" id="Resource_4h643"]
+script = ExtResource("1_5j2s0")
+stat_type = 9
+value = 60.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_ejw8b"]
+script = ExtResource("1_5j2s0")
+stat_type = 10
+value = 220.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_56f5n"]
+script = ExtResource("1_5j2s0")
+stat_type = 7
+value = -10.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_l8nmo")
+item_name = "Nano Spear"
+type = 6
+grade = 1
+attack_type = 1
+weapon_type = 1
+weapon_mesh = ExtResource("4_62dp0")
+icon = ExtResource("2_62dp0")
+effects = Array[ExtResource("1_5j2s0")]([SubResource("Resource_4h643"), SubResource("Resource_ejw8b"), SubResource("Resource_56f5n")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

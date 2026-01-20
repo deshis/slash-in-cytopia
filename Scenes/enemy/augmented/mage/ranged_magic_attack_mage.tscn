@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddex5x8vjef88"]
+
+[ext_resource type="Shader" uid="uid://344gstuhtvey" path="res://Assets/effects/magic/magic_circle.gdshader" id="1_73ky8"]
+[ext_resource type="ArrayMesh" uid="uid://dj3oe35rc5d3o" path="res://Assets/enemy/mage/magic_flare.res" id="2_uuj5p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uuj5p"]
+render_priority = 0
+shader = ExtResource("1_73ky8")
+shader_parameter/pulse_color = Color(0, 0, 0, 1)
+shader_parameter/erosion = 0.0
+shader_parameter/shader_time = 0.0
+shader_parameter/life_time = 0.0
+shader_parameter/pulse_speed = 0.0
+shader_parameter/stop = false
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_73ky8"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bkkqw"]
+gravity = Vector3(0, 0, 0)
+
+[node name="RangedMagicAttackMage2" type="Node3D"]
+
+[node name="Circle" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 1
+one_shot = true
+fixed_fps = 24
+process_material = SubResource("ShaderMaterial_uuj5p")
+draw_pass_1 = SubResource("CapsuleMesh_73ky8")
+
+[node name="Shitter" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_bkkqw")
+draw_pass_1 = ExtResource("2_uuj5p")

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=5 format=3 uid="uid://b08rvxo7tmygc"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_xjpxs"]
+[ext_resource type="Texture2D" uid="uid://ujy77qo70oo" path="res://Assets/items/icons/Military/LaserSensor.png" id="2_8jqpw"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_hfh8r"]
+
+[sub_resource type="Resource" id="Resource_x4600"]
+script = ExtResource("1_xjpxs")
+stat_type = 20
+value = 12.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_hfh8r")
+item_name = "Laser Sensor"
+type = 4
+grade = 1
+icon = ExtResource("2_8jqpw")
+effects = Array[ExtResource("1_xjpxs")]([SubResource("Resource_x4600")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

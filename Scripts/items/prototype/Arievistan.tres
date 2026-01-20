@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://kn1u641vc4v5"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_n8phm"]
+[ext_resource type="Texture2D" uid="uid://df00u36c5wj0n" path="res://Assets/items/icons/Prototype/Arievistan2.png" id="2_n8phm"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_0m5rt"]
+
+[sub_resource type="Resource" id="Resource_iq6hr"]
+script = ExtResource("1_n8phm")
+stat_type = 4
+value = 1.1
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_wra5x"]
+script = ExtResource("1_n8phm")
+stat_type = 18
+value = 0.15
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_onnrd"]
+script = ExtResource("1_n8phm")
+stat_type = 17
+value = -0.9
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_yig8w"]
+script = ExtResource("1_n8phm")
+stat_type = 30
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_0m5rt")
+item_name = "Arievistan"
+item_description = "Allows turning during dash"
+type = 2
+grade = 2
+icon = ExtResource("2_n8phm")
+effects = Array[ExtResource("1_n8phm")]([SubResource("Resource_iq6hr"), SubResource("Resource_wra5x"), SubResource("Resource_onnrd"), SubResource("Resource_yig8w")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

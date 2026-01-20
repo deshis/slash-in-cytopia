@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=11 format=3 uid="uid://ck8g6fmyxihxq"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_l2r6n"]
+[ext_resource type="Resource" uid="uid://hylp888g1m6u" path="res://Scripts/items/resources/ShockDoT.tres" id="2_qa0gr"]
+[ext_resource type="Texture2D" uid="uid://y0k25wj1iaj8" path="res://Assets/items/icons/Prototype/ArcFlash.png" id="4_1ou3j"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="4_uy24y"]
+[ext_resource type="ArrayMesh" uid="uid://c1qky7i8nboe7" path="res://Assets/player/weapons/electric_dagger.res" id="6_07rmr"]
+
+[sub_resource type="Resource" id="Resource_iqmce"]
+script = ExtResource("1_l2r6n")
+stat_type = 9
+value = 70.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_f64o5"]
+script = ExtResource("1_l2r6n")
+stat_type = 10
+value = 115.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_gc6pf"]
+script = ExtResource("1_l2r6n")
+stat_type = 14
+dot_resource = ExtResource("2_qa0gr")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_n4h0w"]
+script = ExtResource("1_l2r6n")
+stat_type = 7
+value = 10.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_1ou3j"]
+script = ExtResource("1_l2r6n")
+stat_type = 26
+value = 40.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("4_uy24y")
+item_name = "The Arc Flash"
+type = 6
+grade = 2
+attack_type = 1
+weapon_type = 1
+weapon_mesh = ExtResource("6_07rmr")
+icon = ExtResource("4_1ou3j")
+effects = Array[ExtResource("1_l2r6n")]([SubResource("Resource_iqmce"), SubResource("Resource_f64o5"), SubResource("Resource_gc6pf"), SubResource("Resource_n4h0w"), SubResource("Resource_1ou3j")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

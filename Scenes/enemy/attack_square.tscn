@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlxhhja64imfy"]
+
+[ext_resource type="Script" uid="uid://b6hmx5rlg6myc" path="res://Scripts/enemy/Attack.gd" id="1_coq2s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1dm0"]
+size = Vector2(100.000015, 100.000015)
+
+[sub_resource type="Gradient" id="Gradient_86i4k"]
+colors = PackedColorArray(0, 0, 0, 0.33333334, 1, 1, 1, 0.3254902)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m053x"]
+gradient = SubResource("Gradient_86i4k")
+fill_from = Vector2(1, 1)
+
+[node name="Attack" type="Node2D"]
+script = ExtResource("1_coq2s")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16384
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(1.4901163e-06, -4.1723257e-07)
+shape = SubResource("RectangleShape2D_q1dm0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.9802325e-06, 0)
+scale = Vector2(1.5625, 1.5625001)
+texture = SubResource("GradientTexture2D_m053x")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

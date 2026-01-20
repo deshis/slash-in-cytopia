@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dmj2tq625wyph"]
+
+[ext_resource type="Shader" path="res://Assets/environment/tree.gdshader" id="1_ef6ep"]
+[ext_resource type="Texture2D" uid="uid://cca6frlpahjqq" path="res://Assets/environment/tree_assets_apollo-1x.png" id="2_ug75v"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ef6ep")
+shader_parameter/tex = ExtResource("2_ug75v")
+shader_parameter/wind_frequency = 1.0
+shader_parameter/wind_strength = 0.5
+shader_parameter/wind_speed = 0.75
+shader_parameter/wind_direction = Vector3(1, 0, -1)
+shader_parameter/height = 0.75
+shader_parameter/height_influence = 10.0

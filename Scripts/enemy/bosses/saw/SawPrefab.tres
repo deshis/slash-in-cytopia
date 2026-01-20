@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyPrefab" load_steps=6 format=3 uid="uid://bm0jberehwd8k"]
+
+[ext_resource type="PackedScene" uid="uid://ba7sw3bysmjlq" path="res://Scenes/enemy/bosses/saw/saw.tscn" id="1_7o254"]
+[ext_resource type="Script" uid="uid://cqw5n3pgcmai6" path="res://Scripts/enemy/EnemyPrefab.gd" id="2_jjvsl"]
+[ext_resource type="Resource" uid="uid://uv02mt6astjd" path="res://Scripts/enemy/bosses/saw/saw_stats.tres" id="3_js5d5"]
+[ext_resource type="Script" uid="uid://c3xt5r4pnu2pd" path="res://Scripts/enemy/targets/TargetPlayer.gd" id="4_7o254"]
+
+[sub_resource type="Resource" id="Resource_jjvsl"]
+script = ExtResource("4_7o254")
+metadata/_custom_type_script = "uid://c3xt5r4pnu2pd"
+
+[resource]
+script = ExtResource("2_jjvsl")
+stats = ExtResource("3_js5d5")
+scene = ExtResource("1_7o254")
+target_provider = SubResource("Resource_jjvsl")
+metadata/_custom_type_script = "uid://cqw5n3pgcmai6"

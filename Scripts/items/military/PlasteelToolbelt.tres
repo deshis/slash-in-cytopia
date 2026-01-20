@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=5 format=3 uid="uid://bpbj17flv3ftv"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_q1l31"]
+[ext_resource type="Texture2D" uid="uid://b8csdmt2gqqg6" path="res://Assets/items/icons/Military/PlasteelToolBelt.png" id="2_vrx35"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_1tskf"]
+
+[sub_resource type="Resource" id="Resource_6jpnv"]
+script = ExtResource("1_q1l31")
+stat_type = 24
+value = 1.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("3_1tskf")
+item_name = "Plasteel Toolbelt"
+item_description = "+1 slot  when selecting loot (soon tm)"
+type = 3
+grade = 1
+icon = ExtResource("2_vrx35")
+effects = Array[ExtResource("1_q1l31")]([SubResource("Resource_6jpnv")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"
