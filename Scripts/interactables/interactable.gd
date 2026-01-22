@@ -6,7 +6,6 @@ class_name Interactable
 
 func take_damage(amount: float) -> void:
 	health -= amount
-	print(health)
 	
 	if health <= 0:
 		die()
