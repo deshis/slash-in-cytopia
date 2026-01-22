@@ -129,18 +129,20 @@ var pickup_slot_amount := 3
 var pickupable_item = preload("res://Scenes/pickupable_loot.tscn")
 var pickupable_health = preload("res://Scenes/pickupable_health.tscn")
 
-func drop_loot(enemy: EnemyController) -> void:
-	var loot_table = get_loot_table(enemy.enemy)
+func drop_loot(object: Node3D, loot_table: LootTable = null) -> void:
+	if not loot_table:
+		loot_table = get_loot_table(object.enemy)
+	
 	var player = GameManager.player
 	
 	# ITEM
 	if randf() < loot_table.loot_drop_chance:
 		var loot = pickupable_item.instantiate()
 		GameManager.stage_root.add_child(loot)
-		loot.global_position = enemy.global_position
+		loot.global_position = object.global_position
 		loot.set_loot(LootDatabase.get_loot_rarity(loot_table.loot_rarity_weights))
 		
-		var dir = player.global_position.direction_to(enemy.global_position)
+		var dir = player.global_position.direction_to(object.global_position)
 		loot.setup(player, dir)
 	
 	# HEALTH
@@ -148,9 +150,9 @@ func drop_loot(enemy: EnemyController) -> void:
 		if randf() < loot_table.health_drop_chance:
 			var pickup = LootDatabase.pickupable_health.instantiate()
 			GameManager.stage_root.add_child(pickup)
-			pickup.global_position = enemy.global_position
+			pickup.global_position = object.global_position
 
-			var dir = player.global_position.direction_to(enemy.global_position)
+			var dir = player.global_position.direction_to(object.global_position)
 			pickup.setup(player, dir)
 
 

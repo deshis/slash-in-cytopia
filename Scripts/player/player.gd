@@ -560,14 +560,11 @@ func get_closest_pickup() -> Area3D:
 	return closest
 
 func deal_damage(area: Area3D, amount: float, e: EnemyController = null) -> void:
-	
 	var enemy = null
 	if e:
 		enemy = e
 	else:
-		enemy = area.get_parent() as EnemyController
-	
-	#var enemy = area.get_parent() as EnemyController
+		enemy = area.get_parent()
 	
 	# crit chance
 	if randf() * 100 < crit_chance:

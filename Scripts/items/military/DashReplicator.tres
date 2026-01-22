@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_pct25"]
 [ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_ik34e"]
-[ext_resource type="Resource" path="res://Scripts/items/resources/ActiveEffectResources/Dash.tres" id="2_xd6k2"]
+[ext_resource type="Resource" uid="uid://cyd61klh8ghrt" path="res://Scripts/items/resources/ActiveEffectResources/Dash.tres" id="2_xd6k2"]
 [ext_resource type="Texture2D" uid="uid://crgir1u58mmcu" path="res://Assets/items/icons/Military/DashReplicator.png" id="3_5f0l7"]
 
 [sub_resource type="Resource" id="Resource_pct25"]
