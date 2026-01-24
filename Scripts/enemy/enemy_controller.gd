@@ -226,8 +226,14 @@ func _on_dot_tick() -> void:
 		GameStats.total_damage_dealt += current_tick_damage
 		
 		if dot_lifesteal_multiplier > 0:
+			
 			dot_life_stolen = current_tick_damage * dot_lifesteal_multiplier
-			snappedf(dot_life_stolen,3)
+			snappedf(dot_life_stolen,3)	
+			
+			##NOTE: Player object isn't removed when you die, the script is detached
+			if player is not Player:
+				return 
+			
 			player.health += dot_life_stolen
 			
 			if player.health > player.max_health:
