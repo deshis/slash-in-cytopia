@@ -4,8 +4,11 @@ class_name Item
 @export var item : ItemResource
 
 @onready var description = $PanelContainer/RichTextLabel
+@onready var description_copy = $BorderPanelContainer/RichTextLabel
 @onready var texture_rect = $MarginContainer/TextureRect
 @onready var panel_container1 = $PanelContainer
+@onready var border_container = $BorderPanelContainer
+@onready var border = $BorderPanelContainer/NinePatchRect
 
 var max_chars_per_line := 25
 
@@ -34,6 +37,7 @@ func update_item_display(res: ItemResource) -> void:
 	_create_description()
 	
 	panel_container1.visible = false
+	border_container.visible = false
 	texture_rect.texture = item.icon
 
 func _position_description() -> void:
@@ -43,12 +47,13 @@ func _position_description() -> void:
 	
 	var viewport_size = get_viewport_rect().size
 	var panel_size = panel_container1.size
+	border_container.size = panel_container1.size
 	
 	new_pos.x = clamp(new_pos.x, 0, viewport_size.x - panel_size.x)
 	new_pos.y = clamp(new_pos.y, 0, viewport_size.y - panel_size.y)
 	panel_container1.global_position = new_pos
-
-
+	border_container.global_position = new_pos
+	
 func get_type() -> int:
 	return item.type
 
@@ -69,7 +74,7 @@ func _get_drag_data(_pos: Vector2) -> Variant:
 	if item != null:
 		description.visible = false
 		panel_container1.visible = false
-		
+		border_container.visible = false
 	return get_parent()
 
 func _notification(what):
@@ -86,6 +91,7 @@ func _input(event: InputEvent) -> void:
 		pass
 		description.visible = false
 		panel_container1.visible = false
+		border_container.visible = false
 
 #Godot has switch statements with match
 func _set_grade() -> void:
@@ -119,7 +125,6 @@ func _set_type_name() -> void:
 			type_name = "Light Attack"
 		ItemType.Type.SECONDARY_ATTACK:
 			type_name = "Heavy Attack"
-
 
 func _create_description() -> void:
 
@@ -183,13 +188,30 @@ func wrap_text(text: String) -> String:
 	
 	result += current_line
 	return result
-
+	
+func choose_border_texture() -> void:
+	var border_texture: Texture2D
+	
+	if grade_name == "Consumer":
+		border_texture = preload("res://Assets/ui/TestItemBorder3.png")
+		
+	if grade_name == "Military":
+		border_texture = preload("res://Assets/ui/TestItemBorder2.png")
+		
+	if grade_name == "Prototype":
+		border_texture = preload("res://Assets/ui/TestItemBorder.png")
+		
+	border.texture = border_texture
+		
 func _on_mouse_entered() -> void:
 	if item == null:
 		return
+		
+	choose_border_texture()
 	
 	description.visible = true
 	panel_container1.visible = true
+	border_container.visible = true
 
 func _on_mouse_exited() -> void:
 	if item == null:
@@ -197,3 +219,4 @@ func _on_mouse_exited() -> void:
 	
 	description.visible = false
 	panel_container1.visible = false
+	border_container.visible = false
