@@ -24,6 +24,8 @@ var remaining_dot_duration := 0.0
 var current_tick_damage := 0.0
 var current_debuff_tick_rate := 0.0
 var current_dot_tick_rate := 0.0
+var dot_lifesteal_multiplier := 0.0
+var dot_life_stolen := 0.0
 
 var current_stat_damage := 0.0
 var remaining_debuff_duration := 0.0
@@ -63,6 +65,7 @@ func _ready() -> void:
 	dot_timer = Timer.new()
 	debuff_timer = Timer.new()
 	hit_flash_timer = Timer.new()
+
 	
 	hit_flash = hit_flash_material.duplicate()
 	if  $"model/rig/Skeleton3D/":
@@ -191,6 +194,10 @@ func take_dot_damage(dot: DotResource) -> void:
 	
 	dot_timer.set_wait_time(current_dot_tick_rate)
 	
+	if dot.dot_tick_lifesteal > 0:
+		dot_lifesteal_multiplier = dot.dot_tick_lifesteal/100
+		dot_life_stolen = dot.dot_tick_damage * dot_lifesteal_multiplier
+	 
 	if dot.dot_duration <= 0.0:
 		dot_timer.stop()
 		dot.dot_tick_damage = 0
@@ -218,6 +225,18 @@ func _on_dot_tick() -> void:
 		
 		GameStats.total_damage_dealt += current_tick_damage
 		
+		if dot_lifesteal_multiplier > 0:
+			dot_life_stolen = current_tick_damage * dot_lifesteal_multiplier
+			snappedf(dot_life_stolen,3)
+			player.health += dot_life_stolen
+			
+			if player.health > player.max_health:
+				player.health = player.max_health
+			
+			#In case of negative dmg, don't heal the enemies!
+			if current_tick_damage < 0:
+				current_tick_damage = 0
+		
 		if remaining_dot_duration <= 0.0:
 			dot_timer.stop()
 			remaining_dot_duration = 0
@@ -226,7 +245,6 @@ func _on_dot_tick() -> void:
 			
 		if enemy.health <= 0.0:
 			die()
-			
 			return
 		
 		dot_timer.start()

@@ -4,7 +4,6 @@ class_name Item
 @export var item : ItemResource
 
 @onready var description = $PanelContainer/RichTextLabel
-@onready var description_copy = $BorderPanelContainer/RichTextLabel
 @onready var texture_rect = $MarginContainer/TextureRect
 @onready var panel_container1 = $PanelContainer
 @onready var border_container = $BorderPanelContainer
@@ -169,7 +168,7 @@ func change_panel_color() -> void:
 	var alpha = 0.9
 	var brightness = 0.2
 	c = Color(c.r * brightness, c.g * brightness, c.b * brightness, alpha)
-	stylebox.border_color = grade_color
+	#stylebox.border_color = grade_color
 	
 	stylebox.bg_color = c
 	panel_container1.add_theme_stylebox_override("panel", stylebox)

@@ -415,6 +415,12 @@ func use_active_item(active_effect: ActiveEffectResource):
 func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 	var value = active_effect.active_effect_value
 	var radius = active_effect.aoe_radius
+	var set_facing_direction = active_effect.set_facing_direction
+	
+	##TODO: Rotate character towards direction of activation in a more graceful manner
+	##Probably pause movement for a bit
+	if set_facing_direction == true:
+		set_facing_dir() 
 	
 	match active_effect.active_type:
 		ActiveEffectResource.ActiveType.HEAL:
@@ -445,24 +451,24 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 			change_state(DASH)
 			
 		ActiveEffectResource.ActiveType.DAMAGE_AOE:
-			var dot_length = value
+
 			var aoe_damage = active_effect.aoe_damage
-			
-			var fracture_dot = preload("res://Scripts/items/resources/RealityFractureDoT.tres").duplicate()
-			fracture_dot.dot_duration = dot_length
-			#fracture_dot.dot_tick_rate = 1
+			var dot = active_effect.dot_resource.duplicate()
 			
 			for enemy in GameManager.spawner.get_children():
 				if enemy is not EnemyController or not enemy.visible:
 					continue
 				
+				##TODO: Update the AOE to be modifiable
+				##TODO: Give the AOE a visual indicator
 				if global_position.distance_to(enemy.global_position) < radius:
-					#enemy.change_state(enemy.STUN, dot_length)
-					deal_dot_damage(null, fracture_dot, enemy)
+
+					if active_item_effect.dot_resource:
+							deal_dot_damage(null, dot, enemy)
 					
 					if active_effect.aoe_damage != 0:
 						deal_damage(null, aoe_damage, enemy)
-
+						
 
 func process_move(delta: float) -> void:	
 	apply_movement(delta)
@@ -597,8 +603,6 @@ func deal_dot_damage(area: Area3D, dot: DotResource, e: EnemyController = null) 
 		enemy = e
 	else:
 		enemy = area.get_parent() as EnemyController
-	
-	#var enemy = area.get_parent() as EnemyController
 	
 	if dot.dot_tick_damage > 0:
 		enemy.take_dot_damage(dot)

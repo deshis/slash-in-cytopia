@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_yal25")
-active_type = 2
+active_type = 4
 active_effect_value = 5.0
 aoe_radius = 6.0
 active_effect_cooldown = 20.0
