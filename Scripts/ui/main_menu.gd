@@ -4,9 +4,20 @@ extends Node3D
 @onready var settings_container: MarginContainer = $Menu/SettingsMargin
 @onready var credits_container: MarginContainer = $Menu/CreditsMargin
 @onready var tutorial_container: MarginContainer = $Menu/TutorialMargin
+@onready var welcome_label: Label = $Menu/WelcomeMargin/WelcomeLabel
+
+const CREATE_PROFILE_MENU = preload("res://Scenes/create_profile_window.tscn")
 
 
 func _ready() -> void:
+
+	welcome_label.visible = false
+	
+	if not ProfileManager.has_profile():
+		_show_create_profile_dialog()
+	else:
+		ProfileManager.load_profile()
+		_setup_main_menu()
 	
 	$Menu/MenuMargin/VBoxContainer/Play.grab_focus()
 	
@@ -20,7 +31,29 @@ func _ready() -> void:
 	$Menu/CreditsMargin/Panel/MarginContainer/close_credits.add_to_group("ui_button")
 	$Menu/TutorialMargin/Panel/MarginContainer/close_tutorial.add_to_group("ui_button")
 
+################ Profile creation ####################
 
+func _show_create_profile_dialog() -> void:
+	menu_container.visible = false
+	
+	var profile_menu = CREATE_PROFILE_MENU.instantiate()
+	add_child(profile_menu)
+	
+	profile_menu.profile_created.connect(_on_profile_created)
+
+func _on_profile_created() -> void:
+	_setup_main_menu()
+
+func _setup_main_menu() -> void:
+	menu_container.visible = true
+	welcome_label.visible = true
+
+	if ProfileManager.current_profile.has("username"):
+		welcome_label.text = "Welcome, " + ProfileManager.current_profile["username"]
+	
+	$Menu/MenuMargin/VBoxContainer/Play.grab_focus()
+
+#######################################################
 
 func _on_play_pressed() -> void:
 	GameManager.restart()
