@@ -25,5 +25,5 @@ collision_mask = 8192
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_7cbq3")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+[node name="Mesh" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
