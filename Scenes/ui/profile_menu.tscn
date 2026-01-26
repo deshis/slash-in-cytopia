@@ -1,0 +1,145 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8x7q6y504w3"]
+
+[ext_resource type="Script" uid="uid://b3heauhu1io3g" path="res://Scripts/ui/profile_menu.gd" id="1_profile_menu"]
+
+[node name="ProfileMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_profile_menu")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="ProfileList" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/ProfileList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Select Profile"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/HBoxContainer/ProfileList"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/ProfileList/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ProfileList/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Actions" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+size_flags_stretch_ratio = 0.5
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="LoadButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Load Profile"
+
+[node name="CreateButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Create New"
+
+[node name="RenameButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Rename"
+
+[node name="DeleteButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Delete"
+
+[node name="BackButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="RenameDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+title = "Rename Profile"
+initial_position = 2
+size = Vector2i(300, 115)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RenameDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 292.0
+offset_bottom = 66.0
+
+[node name="Label" type="Label" parent="RenameDialog/VBoxContainer"]
+layout_mode = 2
+text = "Enter new name:"
+
+[node name="RenameInput" type="LineEdit" parent="RenameDialog/VBoxContainer"]
+layout_mode = 2
+
+[node name="DeleteConfirmDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+title = "Delete Profile"
+initial_position = 2
+size = Vector2i(357, 132)
+ok_button_text = "Delete"
+
+[node name="Label" type="Label" parent="DeleteConfirmDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 349.0
+offset_bottom = 83.0
+text = "Are you sure you want to delete this profile?
+This action cannot be undone."
+horizontal_alignment = 1
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+oversampling_override = 1.0
+title = "Error"
+initial_position = 2
+size = Vector2i(300, 100)

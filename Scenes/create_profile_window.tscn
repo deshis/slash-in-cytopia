@@ -44,3 +44,12 @@ placeholder_text = "e.g. BigSkull123"
 [node name="CreateButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Create profile"
+
+[node name="CancelButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+title = "Error"
+initial_position = 2
+size = Vector2i(300, 100)

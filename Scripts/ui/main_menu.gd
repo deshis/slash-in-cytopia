@@ -7,23 +7,29 @@ extends Node3D
 @onready var welcome_label: Label = $Menu/WelcomeMargin/WelcomeLabel
 
 const CREATE_PROFILE_MENU = preload("res://Scenes/create_profile_window.tscn")
+const PROFILE_MENU = preload("res://Scenes/ui/profile_menu.tscn")
 
+var active_profile_menu: Control = null
 
 func _ready() -> void:
 
 	welcome_label.visible = false
+	menu_container.visible = false
 	
-	if not ProfileManager.has_profile():
+	if not ProfileManager.has_any_profile():
 		_show_create_profile_dialog()
 	else:
-		ProfileManager.load_profile()
-		_setup_main_menu()
-	
-	$Menu/MenuMargin/VBoxContainer/Play.grab_focus()
+		var last_profile = ProfileManager.get_last_loaded_profile()
+		if last_profile != "" and ProfileManager.profile_exists(last_profile.replace(".json", "")):
+			ProfileManager.load_profile(last_profile)
+			_setup_main_menu()
+		else:
+			_show_profile_selection(true)
 	
 	# Add SFX to buttons
 	$Menu/MenuMargin/VBoxContainer/Play.add_to_group("start_button")
 	$Menu/MenuMargin/VBoxContainer/Settings.add_to_group("ui_button")
+	$Menu/MenuMargin/VBoxContainer/Profiles.add_to_group("ui_button")
 	$Menu/MenuMargin/VBoxContainer/Tutorial.add_to_group("ui_button")
 	$Menu/MenuMargin/VBoxContainer/Credits.add_to_group("ui_button")
 	$Menu/MenuMargin/VBoxContainer/Quit.add_to_group("ui_button")
@@ -35,6 +41,7 @@ func _ready() -> void:
 
 func _show_create_profile_dialog() -> void:
 	menu_container.visible = false
+	welcome_label.visible = false
 	
 	var profile_menu = CREATE_PROFILE_MENU.instantiate()
 	add_child(profile_menu)
@@ -42,6 +49,32 @@ func _show_create_profile_dialog() -> void:
 	profile_menu.profile_created.connect(_on_profile_created)
 
 func _on_profile_created() -> void:
+	_setup_main_menu()
+
+func _show_profile_selection(is_startup: bool) -> void:
+	menu_container.visible = false
+	welcome_label.visible = false
+	
+	if active_profile_menu:
+		active_profile_menu.queue_free()
+		
+	active_profile_menu = PROFILE_MENU.instantiate()
+	add_child(active_profile_menu)
+	
+	active_profile_menu.set_startup_mode(is_startup)
+	active_profile_menu.profile_selected.connect(_on_profile_selected)
+	active_profile_menu.back_pressed.connect(_on_profile_menu_back)
+
+func _on_profile_selected() -> void:
+	if active_profile_menu:
+		active_profile_menu.queue_free()
+		active_profile_menu = null
+	_setup_main_menu()
+
+func _on_profile_menu_back() -> void:
+	if active_profile_menu:
+		active_profile_menu.queue_free()
+		active_profile_menu = null
 	_setup_main_menu()
 
 func _setup_main_menu() -> void:
@@ -98,3 +131,10 @@ func _on_close_credits_pressed() -> void:
 	menu_container.visible = true
 	credits_container.visible = false
 	$Menu/MenuMargin/VBoxContainer/Play.grab_focus()
+
+func _on_profiles_pressed() -> void:
+	_show_profile_selection(false)
+
+
+func mainmenu() -> void:
+	pass
