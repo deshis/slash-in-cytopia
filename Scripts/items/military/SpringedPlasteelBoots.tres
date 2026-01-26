@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=7 format=3 uid="uid://blccwyrh541mj"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://blccwyrh541mj"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_osf0u"]
 [ext_resource type="Texture2D" uid="uid://byml0bq2ojeck" path="res://Assets/items/icons/Military/SpringedPlasteelBoots.png" id="2_osf0u"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://htlnkhxfaxyy"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://htlnkhxfaxyy"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_5j2s0"]
 [ext_resource type="Texture2D" uid="uid://codu1e4vdgmjv" path="res://Assets/items/icons/Military/NanoSpear.png" id="2_62dp0"]

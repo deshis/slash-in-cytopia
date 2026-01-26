@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyPrefab" load_steps=6 format=3 uid="uid://ctly0bibi2t2d"]
+[gd_resource type="Resource" script_class="EnemyPrefab" format=3 uid="uid://ctly0bibi2t2d"]
 
 [ext_resource type="PackedScene" uid="uid://bfykyy2y7odt7" path="res://Scenes/enemy/normal/slasher/enemy_slasher.tscn" id="1_6gvlw"]
 [ext_resource type="Script" uid="uid://cqw5n3pgcmai6" path="res://Scripts/enemy/EnemyPrefab.gd" id="1_076bs"]

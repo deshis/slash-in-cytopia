@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=19 format=3 uid="uid://btqoki0dx13kb"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://btqoki0dx13kb"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_ohs3p"]
 [ext_resource type="Texture2D" uid="uid://b4taiqqen1woo" path="res://Assets/items/icons/Prototype/Statstick.png" id="2_ohs3p"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cuuem545ega72"]
+[gd_scene format=3 uid="uid://cuuem545ega72"]
 
 [ext_resource type="Script" uid="uid://cptm56sk2qede" path="res://Scripts/ui/hud/hud_manager.gd" id="1_36s6t"]
 [ext_resource type="Script" uid="uid://b3p4e86xoqqh3" path="res://Scripts/ui/hud/cooldowns.gd" id="2_36s6t"]
@@ -55,11 +55,11 @@ gradient = SubResource("Gradient_484xk")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=2045051478]
 script = ExtResource("1_36s6t")
 metadata/_edit_horizontal_guides_ = []
 
-[node name="HPBarPlayer" parent="." instance=ExtResource("2_ajim5")]
+[node name="HPBarPlayer" parent="." unique_id=1270549420 instance=ExtResource("2_ajim5")]
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
@@ -72,9 +72,9 @@ offset_bottom = 51.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="HPBars" type="Node2D" parent="."]
+[node name="HPBars" type="Node2D" parent="." unique_id=244677121]
 
-[node name="SkillCooldowns" type="Control" parent="."]
+[node name="SkillCooldowns" type="Control" parent="." unique_id=516375861]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -87,7 +87,7 @@ default_primary_attack_icon = ExtResource("4_oersf")
 default_secondary_attack_icon = ExtResource("5_oersf")
 default_active_item_icon = SubResource("ImageTexture_36s6t")
 
-[node name="MarginContainer" type="MarginContainer" parent="SkillCooldowns"]
+[node name="MarginContainer" type="MarginContainer" parent="SkillCooldowns" unique_id=1048569818]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,16 +100,16 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SkillCooldowns/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SkillCooldowns/MarginContainer" unique_id=1978833995]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="PrimaryAttack" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer"]
+[node name="PrimaryAttack" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=1911847463]
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_8gbba")
 expand_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="SkillCooldowns/MarginContainer/HBoxContainer/PrimaryAttack"]
+[node name="ProgressBar" type="ProgressBar" parent="SkillCooldowns/MarginContainer/HBoxContainer/PrimaryAttack" unique_id=1022920715]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,10 +121,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_21xkr")
 fill_mode = 2
 show_percentage = false
 
-[node name="Timer" type="Timer" parent="SkillCooldowns/MarginContainer/HBoxContainer/PrimaryAttack"]
+[node name="Timer" type="Timer" parent="SkillCooldowns/MarginContainer/HBoxContainer/PrimaryAttack" unique_id=1946097485]
 one_shot = true
 
-[node name="Background" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/PrimaryAttack"]
+[node name="Background" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/PrimaryAttack" unique_id=790603918]
 z_index = -1
 layout_mode = 1
 anchors_preset = 8
@@ -141,12 +141,12 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_484xk")
 expand_mode = 2
 
-[node name="SecondaryAttack" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer"]
+[node name="SecondaryAttack" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=1624386932]
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_8gbba")
 expand_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="SkillCooldowns/MarginContainer/HBoxContainer/SecondaryAttack"]
+[node name="ProgressBar" type="ProgressBar" parent="SkillCooldowns/MarginContainer/HBoxContainer/SecondaryAttack" unique_id=1671663505]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,10 +158,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_21xkr")
 fill_mode = 2
 show_percentage = false
 
-[node name="Timer" type="Timer" parent="SkillCooldowns/MarginContainer/HBoxContainer/SecondaryAttack"]
+[node name="Timer" type="Timer" parent="SkillCooldowns/MarginContainer/HBoxContainer/SecondaryAttack" unique_id=137491784]
 one_shot = true
 
-[node name="Background" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/SecondaryAttack"]
+[node name="Background" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/SecondaryAttack" unique_id=760062886]
 z_index = -1
 layout_mode = 1
 anchors_preset = 8
@@ -178,12 +178,12 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_vxf74")
 expand_mode = 2
 
-[node name="DashCooldown" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer"]
+[node name="DashCooldown" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=1943223829]
 layout_mode = 2
 texture = ExtResource("4_0iicw")
 expand_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown"]
+[node name="ProgressBar" type="ProgressBar" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown" unique_id=1418343838]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -195,15 +195,15 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_21xkr")
 fill_mode = 2
 show_percentage = false
 
-[node name="Timer" type="Timer" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown"]
+[node name="Timer" type="Timer" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown" unique_id=213702068]
 one_shot = true
 
-[node name="ActiveItem" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer"]
+[node name="ActiveItem" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=317445757]
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_ba8gd")
 expand_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="SkillCooldowns/MarginContainer/HBoxContainer/ActiveItem"]
+[node name="ProgressBar" type="ProgressBar" parent="SkillCooldowns/MarginContainer/HBoxContainer/ActiveItem" unique_id=1313758080]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -215,10 +215,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_21xkr")
 fill_mode = 2
 show_percentage = false
 
-[node name="Timer" type="Timer" parent="SkillCooldowns/MarginContainer/HBoxContainer/ActiveItem"]
+[node name="Timer" type="Timer" parent="SkillCooldowns/MarginContainer/HBoxContainer/ActiveItem" unique_id=395596647]
 one_shot = true
 
-[node name="Background" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ActiveItem"]
+[node name="Background" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ActiveItem" unique_id=1085617789]
 z_index = -1
 layout_mode = 1
 anchors_preset = 8
@@ -235,7 +235,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_lkt4f")
 expand_mode = 2
 
-[node name="Inventory" type="Control" parent="."]
+[node name="Inventory" type="Control" parent="." unique_id=1756702059]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -245,7 +245,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Inventory"]
+[node name="Panel" type="Panel" parent="Inventory" unique_id=1596950018]
 modulate = Color(1, 1, 1, 0.5019608)
 layout_mode = 1
 anchors_preset = 15
@@ -254,7 +254,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Backpack" type="GridContainer" parent="Inventory"]
+[node name="Backpack" type="GridContainer" parent="Inventory" unique_id=867018475]
 layout_mode = 0
 offset_left = 213.0
 offset_top = 302.0
@@ -262,26 +262,26 @@ offset_right = 473.0
 offset_bottom = 474.0
 columns = 3
 
-[node name="Slot1" parent="Inventory/Backpack" instance=ExtResource("10_36s6t")]
+[node name="Slot1" parent="Inventory/Backpack" unique_id=1779575348 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 
-[node name="Slot2" parent="Inventory/Backpack" instance=ExtResource("10_36s6t")]
+[node name="Slot2" parent="Inventory/Backpack" unique_id=1146027325 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 slot_name = "Backpack"
 
-[node name="Slot3" parent="Inventory/Backpack" instance=ExtResource("10_36s6t")]
+[node name="Slot3" parent="Inventory/Backpack" unique_id=575839100 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 
-[node name="Slot4" parent="Inventory/Backpack" instance=ExtResource("10_36s6t")]
+[node name="Slot4" parent="Inventory/Backpack" unique_id=1339591803 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 
-[node name="Slot5" parent="Inventory/Backpack" instance=ExtResource("10_36s6t")]
+[node name="Slot5" parent="Inventory/Backpack" unique_id=1438146431 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 
-[node name="Slot6" parent="Inventory/Backpack" instance=ExtResource("10_36s6t")]
+[node name="Slot6" parent="Inventory/Backpack" unique_id=1022502862 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 
-[node name="AugmentSlots" type="Control" parent="Inventory"]
+[node name="AugmentSlots" type="Control" parent="Inventory" unique_id=1682484675]
 layout_mode = 1
 anchor_left = 0.418
 anchor_right = 1.0
@@ -293,7 +293,7 @@ offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Survivability" parent="Inventory/AugmentSlots" instance=ExtResource("10_36s6t")]
+[node name="Survivability" parent="Inventory/AugmentSlots" unique_id=1545021085 instance=ExtResource("10_36s6t")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -308,7 +308,7 @@ script = ExtResource("9_pbtju")
 slot_name = "Survivability"
 type = 1
 
-[node name="Movement" parent="Inventory/AugmentSlots" instance=ExtResource("10_36s6t")]
+[node name="Movement" parent="Inventory/AugmentSlots" unique_id=1643619528 instance=ExtResource("10_36s6t")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -323,7 +323,7 @@ script = ExtResource("9_pbtju")
 slot_name = "Movement"
 type = 2
 
-[node name="Utility" parent="Inventory/AugmentSlots" instance=ExtResource("10_36s6t")]
+[node name="Utility" parent="Inventory/AugmentSlots" unique_id=955726024 instance=ExtResource("10_36s6t")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -338,7 +338,7 @@ script = ExtResource("9_pbtju")
 slot_name = "Utility"
 type = 3
 
-[node name="Damage" parent="Inventory/AugmentSlots" instance=ExtResource("10_36s6t")]
+[node name="Damage" parent="Inventory/AugmentSlots" unique_id=1381558076 instance=ExtResource("10_36s6t")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -353,7 +353,7 @@ script = ExtResource("9_pbtju")
 slot_name = "Damage"
 type = 4
 
-[node name="PrimaryAttack" parent="Inventory/AugmentSlots" instance=ExtResource("10_36s6t")]
+[node name="PrimaryAttack" parent="Inventory/AugmentSlots" unique_id=1177296643 instance=ExtResource("10_36s6t")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -368,7 +368,7 @@ script = ExtResource("9_pbtju")
 slot_name = "Light Attack"
 type = 6
 
-[node name="SecondaryAttack" parent="Inventory/AugmentSlots" instance=ExtResource("10_36s6t")]
+[node name="SecondaryAttack" parent="Inventory/AugmentSlots" unique_id=840109095 instance=ExtResource("10_36s6t")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -383,7 +383,7 @@ script = ExtResource("9_pbtju")
 slot_name = "Heavy Attack"
 type = 7
 
-[node name="ActiveItem" parent="Inventory/AugmentSlots" instance=ExtResource("10_36s6t")]
+[node name="ActiveItem" parent="Inventory/AugmentSlots" unique_id=1028453924 instance=ExtResource("10_36s6t")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -398,7 +398,7 @@ script = ExtResource("9_pbtju")
 slot_name = "Brainchip"
 type = 5
 
-[node name="TrashSlot" parent="Inventory" instance=ExtResource("10_36s6t")]
+[node name="TrashSlot" parent="Inventory" unique_id=654756306 instance=ExtResource("10_36s6t")]
 modulate = Color(1, 0, 0, 1)
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 1
@@ -414,14 +414,14 @@ grow_vertical = 1
 script = ExtResource("9_36s6t")
 slot_name = "Trash"
 
-[node name="Panel2" type="Panel" parent="Inventory"]
+[node name="Panel2" type="Panel" parent="Inventory" unique_id=1879076268]
 layout_mode = 0
 offset_left = 812.0
 offset_top = 202.0
 offset_right = 1000.0
 offset_bottom = 533.0
 
-[node name="TextureRect" type="TextureRect" parent="Inventory/Panel2"]
+[node name="TextureRect" type="TextureRect" parent="Inventory/Panel2" unique_id=1943809547]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -435,56 +435,56 @@ texture = ExtResource("6_yidpd")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="lines" type="Control" parent="Inventory/Panel2"]
+[node name="lines" type="Control" parent="Inventory/Panel2" unique_id=1831954582]
 anchors_preset = 0
 offset_left = -812.0
 offset_top = -202.0
 offset_right = -812.0
 offset_bottom = -202.0
 
-[node name="Line2D" type="Line2D" parent="Inventory/Panel2/lines"]
+[node name="Line2D" type="Line2D" parent="Inventory/Panel2/lines" unique_id=257954444]
 position = Vector2(-250, -2)
 points = PackedVector2Array(1033, 187, 1033, 296, 1155, 296)
 width = 2.0
 default_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
 
-[node name="Line2D2" type="Line2D" parent="Inventory/Panel2/lines"]
+[node name="Line2D2" type="Line2D" parent="Inventory/Panel2/lines" unique_id=686799736]
 position = Vector2(-270, 5)
 points = PackedVector2Array(1177, 321, 1299, 321, 1299, 180)
 width = 2.0
 default_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
 
-[node name="Line2D3" type="Line2D" parent="Inventory/Panel2/lines"]
+[node name="Line2D3" type="Line2D" parent="Inventory/Panel2/lines" unique_id=475320080]
 position = Vector2(-244, 3)
 points = PackedVector2Array(1096, 375, 1029, 375, 1029, 343, 964, 343)
 width = 2.0
 default_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
 
-[node name="Line2D4" type="Line2D" parent="Inventory/Panel2/lines"]
+[node name="Line2D4" type="Line2D" parent="Inventory/Panel2/lines" unique_id=660003601]
 position = Vector2(-250, 4)
 points = PackedVector2Array(1344, 343, 1296, 343, 1296, 374, 1211, 374)
 width = 2.0
 default_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
 
-[node name="Line2D5" type="Line2D" parent="Inventory/Panel2/lines"]
+[node name="Line2D5" type="Line2D" parent="Inventory/Panel2/lines" unique_id=1596205061]
 position = Vector2(-253, 11)
 points = PackedVector2Array(1196, 495, 1218, 495, 1218, 578, 1240, 578)
 width = 2.0
 default_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
 
-[node name="Line2D6" type="Line2D" parent="Inventory/Panel2/lines"]
+[node name="Line2D6" type="Line2D" parent="Inventory/Panel2/lines" unique_id=945829476]
 position = Vector2(-251, 2)
 points = PackedVector2Array(1124, 406, 1100, 406, 1100, 587, 1075, 587)
 width = 2.0
 default_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
 
-[node name="Line2D7" type="Line2D" parent="Inventory/Panel2/lines"]
+[node name="Line2D7" type="Line2D" parent="Inventory/Panel2/lines" unique_id=76488458]
 position = Vector2(-250, 0)
 points = PackedVector2Array(1157, 225, 1157, 183)
 width = 2.0
 default_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
 
-[node name="ItemSelection" type="Control" parent="Inventory"]
+[node name="ItemSelection" type="Control" parent="Inventory" unique_id=337330758]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -500,7 +500,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_484xk")
 
-[node name="Panel" type="Panel" parent="Inventory/ItemSelection"]
+[node name="Panel" type="Panel" parent="Inventory/ItemSelection" unique_id=1875371141]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -514,7 +514,7 @@ offset_bottom = 89.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/ItemSelection"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/ItemSelection" unique_id=1806334753]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -530,42 +530,42 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Inventory/ItemSelection/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Inventory/ItemSelection/VBoxContainer" unique_id=1490935828]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center] Pick one augment:"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Inventory/ItemSelection/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Inventory/ItemSelection/VBoxContainer" unique_id=2091039709]
 layout_mode = 2
 alignment = 1
 
-[node name="SelectionSlot1" parent="Inventory/ItemSelection/VBoxContainer/HBoxContainer" instance=ExtResource("10_36s6t")]
+[node name="SelectionSlot1" parent="Inventory/ItemSelection/VBoxContainer/HBoxContainer" unique_id=1842836105 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
 
-[node name="SelectionSlot2" parent="Inventory/ItemSelection/VBoxContainer/HBoxContainer" instance=ExtResource("10_36s6t")]
+[node name="SelectionSlot2" parent="Inventory/ItemSelection/VBoxContainer/HBoxContainer" unique_id=2026668319 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
 
-[node name="SelectionSlot3" parent="Inventory/ItemSelection/VBoxContainer/HBoxContainer" instance=ExtResource("10_36s6t")]
+[node name="SelectionSlot3" parent="Inventory/ItemSelection/VBoxContainer/HBoxContainer" unique_id=1922630795 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
 
-[node name="SelectionSlot4" parent="Inventory/ItemSelection/VBoxContainer/HBoxContainer" instance=ExtResource("10_36s6t")]
+[node name="SelectionSlot4" parent="Inventory/ItemSelection/VBoxContainer/HBoxContainer" unique_id=97810018 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
 
-[node name="SelectionSlot5" parent="Inventory/ItemSelection/VBoxContainer/HBoxContainer" instance=ExtResource("10_36s6t")]
+[node name="SelectionSlot5" parent="Inventory/ItemSelection/VBoxContainer/HBoxContainer" unique_id=1331910921 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
 
-[node name="MarginContainer" type="MarginContainer" parent="Inventory/ItemSelection/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Inventory/ItemSelection/VBoxContainer" unique_id=1333421068]
 layout_mode = 2
 theme_override_constants/margin_left = -60
 theme_override_constants/margin_right = 20
 
-[node name="PauseMenu" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="." unique_id=292451703]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -578,7 +578,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_lkt4f")
 
-[node name="Panel" type="Panel" parent="PauseMenu"]
+[node name="Panel" type="Panel" parent="PauseMenu" unique_id=1460050646]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -592,7 +592,7 @@ offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/Panel" unique_id=764165256]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -604,12 +604,12 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel/MarginContainer" unique_id=365346436]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=1216578983]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]GAME PAUSED
@@ -617,25 +617,25 @@ text = "[center]GAME PAUSED
 "
 fit_content = true
 
-[node name="ContinueButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=752100226]
 layout_mode = 2
 text = "Continue"
 script = ExtResource("11_wfkbc")
 
-[node name="SettingsButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=782318015]
 layout_mode = 2
 text = "Settings"
 script = ExtResource("11_wfkbc")
 
-[node name="QuitButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=2017637311]
 layout_mode = 2
 text = "Quit Game"
 script = ExtResource("11_wfkbc")
 
-[node name="SettingsMenu" parent="PauseMenu" instance=ExtResource("16_36s6t")]
+[node name="SettingsMenu" parent="PauseMenu" unique_id=1679534907 instance=ExtResource("16_36s6t")]
 layout_mode = 0
 
-[node name="GameOverScreen" type="Control" parent="."]
+[node name="GameOverScreen" type="Control" parent="." unique_id=1309488011]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -646,7 +646,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 script = ExtResource("23_vxf74")
 
-[node name="Panel" type="Panel" parent="GameOverScreen"]
+[node name="Panel" type="Panel" parent="GameOverScreen" unique_id=1409918307]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -655,7 +655,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="GameOverScreen/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="GameOverScreen/Panel" unique_id=1505349053]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
@@ -664,11 +664,11 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/Panel/MarginContainer" unique_id=1574851616]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="YOU DIED" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer"]
+[node name="YOU DIED" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer" unique_id=1890702162]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
@@ -676,57 +676,57 @@ text = "[center] [color=red]YOU DIED
 "
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer" unique_id=189175508]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=154220164]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 50
 
-[node name="cause_of_death" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="cause_of_death" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=887351499]
 layout_mode = 2
 bbcode_enabled = true
 text = "Cause of death: "
 fit_content = true
 
-[node name="time_alive" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="time_alive" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2094252223]
 layout_mode = 2
 bbcode_enabled = true
 text = "Time alive: "
 fit_content = true
 
-[node name="stages_cleared" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="stages_cleared" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=287229587]
 layout_mode = 2
 bbcode_enabled = true
 text = "Stages cleared: "
 fit_content = true
 
-[node name="enemies_killed" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="enemies_killed" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1610839358]
 layout_mode = 2
 bbcode_enabled = true
 text = "Enemies killed: "
 fit_content = true
 
-[node name="damage_dealt" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="damage_dealt" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=724079185]
 layout_mode = 2
 bbcode_enabled = true
 text = "Total damage dealt: "
 fit_content = true
 
-[node name="damage_taken" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="damage_taken" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1719685869]
 layout_mode = 2
 bbcode_enabled = true
 text = "Total damage taken: "
 fit_content = true
 
-[node name="items_picked_up" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="items_picked_up" type="RichTextLabel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=114968562]
 layout_mode = 2
 bbcode_enabled = true
 text = "Items picked up:  "
 fit_content = true
 
-[node name="MarginContainer" type="MarginContainer" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=451317434]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 100
@@ -734,11 +734,11 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 
-[node name="Panel" type="Panel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=1926969067]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Panel"]
+[node name="TextureRect" type="TextureRect" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Panel" unique_id=1450231325]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -748,17 +748,17 @@ grow_vertical = 2
 texture = ExtResource("19_pbtju")
 stretch_mode = 5
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer" unique_id=1217710686]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 50
 
-[node name="restart_button" type="Button" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="restart_button" type="Button" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1117927125]
 layout_mode = 2
 text = "Restart"
 script = ExtResource("11_wfkbc")
 
-[node name="quit_button" type="Button" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="quit_button" type="Button" parent="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=185961151]
 layout_mode = 2
 text = "Quit"
 script = ExtResource("11_wfkbc")

@@ -1,9 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw5jqew75whcf"]
+[gd_scene load_steps=9 format=3 uid="uid://dw5jqew75whcf"]
 
 [ext_resource type="Script" uid="uid://b8rtnvnstvdg4" path="res://Scripts/ui/hud/healthbar.gd" id="1_wsiwr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gbba"]
-bg_color = Color(0.27450982, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy76q"]
+bg_color = Color(0.35257247, 4.4220127e-07, 1.4439226e-07, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsiwr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsiwr"]
+bg_color = Color(0.78460205, 0.50372005, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avp23"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avp23"]
+bg_color = Color(0, 0.627451, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4br7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjvhh"]
 bg_color = Color(0.78431374, 0, 0, 1)
@@ -36,10 +48,41 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
+[node name="BackgroundBar" type="ProgressBar" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_oy76q")
+show_percentage = false
+
+[node name="OrangeBar" type="ProgressBar" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_wsiwr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wsiwr")
+value = 3.05
+show_percentage = false
+
+[node name="GreenBar" type="ProgressBar" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_avp23")
+theme_override_styles/fill = SubResource("StyleBoxFlat_avp23")
+value = 3.05
+show_percentage = false
+
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_8gbba")
+theme_override_styles/background = SubResource("StyleBoxEmpty_m4br7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jjvhh")
 value = 3.05
 show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "1 / 100"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1

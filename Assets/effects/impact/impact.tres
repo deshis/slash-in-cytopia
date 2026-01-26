@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dl6k6vdol5kxt"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dl6k6vdol5kxt"]
 
 [ext_resource type="Shader" uid="uid://cv55fdtqonax8" path="res://Assets/effects/impact/impact.gdshader" id="1_fpnq0"]
 [ext_resource type="Texture2D" uid="uid://c5okhx5774ilm" path="res://Assets/effects/impact/impact_tex.png" id="2_fpnq0"]

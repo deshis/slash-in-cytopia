@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://ccdohgeu6j0a2"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://ccdohgeu6j0a2"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_3hjef"]
 [ext_resource type="Texture2D" uid="uid://cmqdwn83wmapb" path="res://Assets/items/icons/Prototype/CloverLOA.png" id="2_eig5g"]

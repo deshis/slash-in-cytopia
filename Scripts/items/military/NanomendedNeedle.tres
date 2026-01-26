@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://cck71yd7rldsj"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cck71yd7rldsj"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_qccj8"]
 [ext_resource type="Texture2D" uid="uid://odaclt3ed4fh" path="res://Assets/items/icons/Military/NanomendedNeedle.png" id="2_dv8jn"]

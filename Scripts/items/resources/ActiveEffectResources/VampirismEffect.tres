@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ActiveEffectResource" load_steps=5 format=3 uid="uid://ifm3rf634612"]
+[gd_resource type="Resource" script_class="ActiveEffectResource" format=3 uid="uid://ifm3rf634612"]
 
 [ext_resource type="PackedScene" uid="uid://bn26kn4nhfwt7" path="res://Scenes/particles/player_on_hit.tscn" id="1_mkwyp"]
 [ext_resource type="Script" uid="uid://rwrpa5fevhio" path="res://Scripts/items/resources/ActiveEffectResource.gd" id="1_wnt5p"]

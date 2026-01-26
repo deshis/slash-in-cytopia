@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=5 format=3 uid="uid://cyy4re0rs16s3"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cyy4re0rs16s3"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_gust7"]
 [ext_resource type="Texture2D" uid="uid://ct12kmtuvbpq6" path="res://Assets/items/icons/Military/SingularityGloves.png" id="2_gust7"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyPrefab" load_steps=6 format=3 uid="uid://x8fs3x2upf2j"]
+[gd_resource type="Resource" script_class="EnemyPrefab" format=3 uid="uid://x8fs3x2upf2j"]
 
 [ext_resource type="PackedScene" uid="uid://de3corsl6kg0s" path="res://Scenes/enemy/normal/mage/mage.tscn" id="1_8gjp8"]
 [ext_resource type="Script" uid="uid://cqw5n3pgcmai6" path="res://Scripts/enemy/EnemyPrefab.gd" id="2_vopf8"]

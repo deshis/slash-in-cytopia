@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://870846bg7viw"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://870846bg7viw"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_08brk"]
 [ext_resource type="Resource" uid="uid://ifm3rf634612" path="res://Scripts/items/resources/ActiveEffectResources/VampirismEffect.tres" id="2_3gpol"]

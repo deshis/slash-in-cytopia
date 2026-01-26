@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://byavlywsvg0fx"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://byavlywsvg0fx"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_b82wp"]
 [ext_resource type="Texture2D" uid="uid://sq6fmvgxig7h" path="res://Assets/items/icons/Prototype/SpectriteNeedle.png" id="2_hqw5f"]

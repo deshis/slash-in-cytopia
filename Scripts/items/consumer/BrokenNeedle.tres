@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://dycb8jlhufk4j"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://dycb8jlhufk4j"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_a64gr"]
 [ext_resource type="Texture2D" uid="uid://bpbddb0ikji" path="res://Assets/items/icons/Consumer/BrokenNeedle.png" id="2_a64gr"]

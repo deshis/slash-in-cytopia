@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://kn1u641vc4v5"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://kn1u641vc4v5"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_n8phm"]
 [ext_resource type="Texture2D" uid="uid://df00u36c5wj0n" path="res://Assets/items/icons/Prototype/Arievistan2.png" id="2_n8phm"]

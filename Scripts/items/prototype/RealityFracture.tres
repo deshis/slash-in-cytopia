@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://cjdsxaae6hsd0"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cjdsxaae6hsd0"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_70c3d"]
 [ext_resource type="Texture2D" uid="uid://by3m44r6vqpr8" path="res://Assets/items/icons/Prototype/RealityFracture.png" id="2_f15ce"]

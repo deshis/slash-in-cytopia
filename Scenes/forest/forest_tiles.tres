@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=23 format=4 uid="uid://dj0d0nallr0i8"]
+[gd_resource type="MeshLibrary" format=4 uid="uid://dj0d0nallr0i8"]
 
 [ext_resource type="Shader" uid="uid://dp6r0lqa6n5ym" path="res://Scenes/forest/shaders/rocks.gdshader" id="1_lxcma"]
 [ext_resource type="Material" uid="uid://dmj2tq625wyph" path="res://Assets/environment/tree.tres" id="2_mjyu1"]

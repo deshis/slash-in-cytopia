@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://bhplm2vdcl2gt"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bhplm2vdcl2gt"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_br0cw"]
 [ext_resource type="Texture2D" uid="uid://dw1rcq5auavmi" path="res://Assets/items/icons/Prototype/SpectriteShell.png" id="2_kxgnp"]

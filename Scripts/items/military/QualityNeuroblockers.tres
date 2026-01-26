@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://c2708fwhy1in3"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://c2708fwhy1in3"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_eeiy3"]
 [ext_resource type="Resource" uid="uid://ciy8ubygbr0qa" path="res://Scripts/items/resources/ActiveEffectResources/Invulnerability2.tres" id="2_eeiy3"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://j75asak835yt"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://j75asak835yt"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_6dvoj"]
 [ext_resource type="Texture2D" uid="uid://c4hrxnksocafr" path="res://Assets/items/icons/Military/LaserFlail.png" id="2_6dvoj"]

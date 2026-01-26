@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://ev2qu6cptrb8"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://ev2qu6cptrb8"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_kak8u"]
 [ext_resource type="Texture2D" uid="uid://ba34yaebuxpsj" path="res://Assets/items/icons/Prototype/EnergyConverterMk2.png" id="2_60nle"]

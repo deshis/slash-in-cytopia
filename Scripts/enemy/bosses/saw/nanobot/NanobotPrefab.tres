@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyPrefab" load_steps=6 format=3 uid="uid://ls7f57wsj6qm"]
+[gd_resource type="Resource" script_class="EnemyPrefab" format=3 uid="uid://ls7f57wsj6qm"]
 
 [ext_resource type="PackedScene" uid="uid://g8knt0evncvq" path="res://Scenes/enemy/bosses/saw/nanobot/nanobot.tscn" id="1_k3mc3"]
 [ext_resource type="Script" uid="uid://cqw5n3pgcmai6" path="res://Scripts/enemy/EnemyPrefab.gd" id="2_0bmon"]

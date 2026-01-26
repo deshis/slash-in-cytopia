@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://c3lirlkahxk7w"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://c3lirlkahxk7w"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_8whnk"]
 [ext_resource type="Texture2D" uid="uid://d3ovifho5kn2" path="res://Assets/items/icons/Consumer/Maul.png" id="2_8whnk"]

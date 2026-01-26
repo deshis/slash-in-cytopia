@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=5 format=3 uid="uid://coe7kbucldmga"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://coe7kbucldmga"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_cohhy"]
 [ext_resource type="Texture2D" uid="uid://cr4rw4wjtpuho" path="res://Assets/items/icons/Consumer/UnderClockedExoSkeleton.png" id="2_0posk"]

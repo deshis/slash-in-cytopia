@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=10 format=3 uid="uid://bedqwucilf65s"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bedqwucilf65s"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_f1mrk"]
 [ext_resource type="Resource" uid="uid://blfuhogry0ula" path="res://Scripts/items/resources/SmiteDoT.tres" id="2_ldv8l"]

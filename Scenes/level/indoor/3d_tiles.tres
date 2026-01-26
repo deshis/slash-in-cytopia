@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=16 format=3 uid="uid://be33ucnlf86fx"]
+[gd_resource type="MeshLibrary" format=3 uid="uid://be33ucnlf86fx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yf8mt"]
 shading_mode = 0
