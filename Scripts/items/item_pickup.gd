@@ -3,14 +3,14 @@ extends Control
 @onready var inventory: Control = $".."
 @onready var container: Control = $VBoxContainer/HBoxContainer
 
-var item_on_ground:Area3D
+var item_on_ground: Node3D
 
 func setup() -> void:
 	if GameManager.player:
 		GameManager.player.item_picked_up.connect(open_item_selection)
 
-func open_item_selection(area:Area3D):
-	item_on_ground = area
+func open_item_selection(node: Node3D):
+	item_on_ground = node
 	inventory.visible = true
 	visible = true
 	
@@ -19,8 +19,8 @@ func open_item_selection(area:Area3D):
 		clear_slot(slot)
 		slot.visible = false
 		
-		if i < area.items.size():
-			var item = area.get_item(i).duplicate()
+		if i < node.items.size():
+			var item = node.get_item(i).duplicate()
 			slot.add_child(InventoryManager.create_item_control(item))
 			slot.visible = true
 	

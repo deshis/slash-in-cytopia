@@ -1,34 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl58s8gkullwa"]
+[gd_scene load_steps=8 format=3 uid="uid://dl58s8gkullwa"]
 
 [ext_resource type="Script" uid="uid://d0ne14c7y6fvb" path="res://Scripts/items/pickupable_loot.gd" id="1_3a1hq"]
 [ext_resource type="ArrayMesh" uid="uid://c13720qsautjx" path="res://Assets/items/pickups/gear.res" id="2_3a1hq"]
 [ext_resource type="ArrayMesh" uid="uid://cny0ra281uuu0" path="res://Assets/items/pickups/bolt.res" id="3_t6aaw"]
 [ext_resource type="Material" uid="uid://o0d72hmec3tm" path="res://Assets/items/pickups/item_pickup_material.tres" id="4_3a1hq"]
 [ext_resource type="PackedScene" uid="uid://cheduqgq01lw6" path="res://Scenes/item.tscn" id="5_vbco5"]
+[ext_resource type="PackedScene" uid="uid://cmj2ut7etid6c" path="res://Scenes/interact_label.tscn" id="6_t6aaw"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3a1hq"]
-size = Vector3(1, 2, 1)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t6aaw"]
+radius = 1.0
 
-[node name="PickupableItem" type="Area3D" node_paths=PackedStringArray("mesh_instance", "label")]
-collision_layer = 65536
-collision_mask = 0
+[node name="PickupableItem" type="Node3D" node_paths=PackedStringArray("mesh_instance")]
 script = ExtResource("1_3a1hq")
 mesh_instance = NodePath("MeshInstance3D")
 mesh_list = Array[Mesh]([ExtResource("2_3a1hq"), ExtResource("3_t6aaw")])
 item_material = ExtResource("4_3a1hq")
 item_scene = ExtResource("5_vbco5")
-label = NodePath("Label3D")
-strength = 3.5
-duration = 0.25
+strength = 5.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 65536
+collision_mask = 256
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_3a1hq")
+shape = SubResource("CylinderShape3D_t6aaw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.2, 0)
 mesh = ExtResource("3_t6aaw")
+skeleton = NodePath("../Hitbox")
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 0.55826163, -0.59474856)
-text = "F interact"
+[node name="Label3D" parent="." node_paths=PackedStringArray("hitbox", "interactable_object") instance=ExtResource("6_t6aaw")]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 1.1315582, -0.26228577)
+hitbox = NodePath("../Hitbox")
+interactable_object = NodePath("..")

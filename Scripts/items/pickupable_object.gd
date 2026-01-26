@@ -1,7 +1,7 @@
 extends Node3D
 class_name PickupableObject
 
-@export var strength := 250.0
+@export var strength := 2.5
 @export var duration := 0.3
 
 var player: Player
@@ -11,9 +11,10 @@ var velocity := Vector3.ZERO
 var active := false
 var time_left := 0.0
 
-func setup(p: Player, dir: Vector3) -> void:
+func setup(p: Player, dir: Vector3, impulse: float = strength) -> void:
 	player = p
 	direction = dir
+	strength = strength if impulse == 0 else impulse
 	apply_impulse()
 
 func apply_impulse() -> void:

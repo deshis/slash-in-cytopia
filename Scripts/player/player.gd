@@ -8,11 +8,11 @@ signal primary_attack_used
 signal secondary_attack_used
 signal active_item_used
 
-signal item_picked_up(area)
+signal item_picked_up(node: Node3D)
 
 signal game_over
 
-var overlapping_pickups := []
+var interactables := []
 
 # PLAYER STATS
 @export var max_health := 10.0
@@ -155,10 +155,9 @@ func _physics_process(delta: float) -> void:
 	update_state()
 	process_state(delta)
 	
-	if Input.is_action_pressed("interact"):
-		var item = get_closest_pickup()
-		if item is Area3D:
-			item_picked_up.emit(item)
+	update_closest_interactable()
+	if Input.is_action_just_pressed("interact"):
+		perform_interact()
 	
 	if Input.is_action_just_pressed("active_item") and active_item_effect and can_active_item:
 		use_active_item(active_item_effect)
@@ -553,11 +552,11 @@ func heal(amount: float) -> void:
 	if health > max_health:
 		health = max_health
 
-func get_closest_pickup() -> Area3D:
+func get_closest_pickup() -> PickupableObject:
 	var closest = null
 	var min_dist = INF
 	
-	for item in overlapping_pickups:
+	for item in interactables:
 		var dist = global_position.distance_to(item.global_position)
 		if dist < min_dist:
 			min_dist = dist
@@ -676,6 +675,30 @@ func hitstop(duration: float) -> void:
 	Engine.time_scale = 1.0
 	hit_stop_active = false
 
+
+func update_closest_interactable() -> void:
+	if interactables.size() < 1:
+		return
+	
+	interactables.sort_custom(sort_dist_to_player)
+
+
+func sort_dist_to_player(a, b) -> int:
+	var da = a.global_position.distance_to(GameManager.player.global_position)
+	var db = b.global_position.distance_to(GameManager.player.global_position)
+	
+	if da <= db:
+		return true
+	else:
+		return false
+
+func perform_interact() -> void:
+	var item = interactables.front()
+	
+	if item is PickupableLoot:
+		item_picked_up.emit(item)
+
+
 func _on_animation_finished(anim_name):
 	if state == DASH:
 		return
@@ -754,12 +777,6 @@ func _on_health_radius_area_entered(area: Area3D) -> void:
 	
 	SoundManager.play_sfx("heal", global_position)
 	area.queue_free()
-
-func _on_loot_radius_area_entered(area: Area3D) -> void:
-	overlapping_pickups.append(area)
-
-func _on_loot_radius_area_exited(area: Area3D) -> void:
-	overlapping_pickups.erase(area)
 
 
 func _on_hit_flash_timeout() -> void:

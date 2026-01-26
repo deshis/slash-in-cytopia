@@ -1,5 +1,5 @@
 extends Node3D
-class_name Interactable
+class_name Destroyable
 
 @export var health := 4.0
 @export var shake_duration := 0.1
