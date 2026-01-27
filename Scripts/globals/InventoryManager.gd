@@ -23,6 +23,7 @@ func _input(event: InputEvent) -> void:
 			GameManager.set_menu(false)
 	
 	if event.is_action_pressed("ui_cancel") and inventory_node.visible:
+		get_viewport().set_input_as_handled()
 		inventory_node.visible = false
 		GameManager.set_menu(false)
 
