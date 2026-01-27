@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw5jqew75whcf"]
+[gd_scene format=3 uid="uid://dw5jqew75whcf"]
 
 [ext_resource type="Script" uid="uid://b8rtnvnstvdg4" path="res://Scripts/ui/hud/healthbar.gd" id="1_wsiwr"]
 
@@ -20,7 +20,7 @@ bg_color = Color(0, 0.627451, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjvhh"]
 bg_color = Color(0.78431374, 0, 0, 1)
 
-[node name="HPBar" type="Control"]
+[node name="HPBar" type="Control" unique_id=14939807]
 custom_minimum_size = Vector2(117, 25)
 layout_mode = 3
 anchors_preset = 8
@@ -36,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wsiwr")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=520756185]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,13 +48,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="BackgroundBar" type="ProgressBar" parent="MarginContainer"]
+[node name="BackgroundBar" type="ProgressBar" parent="MarginContainer" unique_id=1925614669]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_oy76q")
 show_percentage = false
 
-[node name="OrangeBar" type="ProgressBar" parent="MarginContainer"]
+[node name="OrangeBar" type="ProgressBar" parent="MarginContainer" unique_id=733111768]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxEmpty_wsiwr")
@@ -62,7 +62,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_wsiwr")
 value = 3.05
 show_percentage = false
 
-[node name="GreenBar" type="ProgressBar" parent="MarginContainer"]
+[node name="GreenBar" type="ProgressBar" parent="MarginContainer" unique_id=228178985]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxEmpty_avp23")
@@ -70,7 +70,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_avp23")
 value = 3.05
 show_percentage = false
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer" unique_id=1291815694]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxEmpty_m4br7")
@@ -78,7 +78,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_jjvhh")
 value = 3.05
 show_percentage = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1251093036]
 layout_mode = 2
 bbcode_enabled = true
 text = "1 / 100"

@@ -57,6 +57,9 @@ const ATTACK = "attack"
 const STUN = "stun"
 const COOLDOWN = "cooldown"
 
+var damage_number = preload("res://Scenes/enemy/damage_number.tscn")
+
+
 func _ready() -> void:
 	nav_agent.target_desired_distance = attack_range
 	set_collision_layer_value(13, true)
@@ -216,6 +219,12 @@ func _on_dot_tick() -> void:
 	if remaining_dot_duration > 0.0:
 		enemy.health -= current_tick_damage
 		update_health_bar.emit(enemy.health)
+		
+		var instance = damage_number.instantiate()
+		add_child(instance)
+		instance.initialise(current_tick_damage, position)
+		instance.reparent(get_tree().get_root())
+		
 		SoundManager.play_sfx("dot_sfx", global_position)  #Might want DoT SFX here, maybe even separate depending on DoT (From resource)
 		
 		if active_dots.particle_scene:
@@ -357,6 +366,11 @@ func take_damage(damage:float) -> void:
 	GameManager.particles.emit_particles("on_hit", global_position, self)
 	
 	GameStats.total_damage_dealt += damage
+	
+	var instance = damage_number.instantiate()
+	add_child(instance)
+	instance.initialise(damage, position)
+	instance.reparent(get_tree().get_root())
 	
 	if enemy.health <= 0.0:
 		die()
