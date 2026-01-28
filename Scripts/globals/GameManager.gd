@@ -56,6 +56,7 @@ func load_stage(num: int) -> void:
 	
 	stage_root.add_child(current_stage)
 	player.global_position = Vector3.ZERO
+	player.interactables.clear()
 	
 	HUD.remove_all_bars()
 	

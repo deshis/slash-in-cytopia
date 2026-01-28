@@ -596,14 +596,13 @@ func deal_damage(area: Area3D, amount: float, e: EnemyController = null) -> void
 	enemy.take_damage(amount)
 
 func deal_dot_damage(area: Area3D, dot: DotResource, e: EnemyController = null) -> void:
-
 	var enemy = null
 	if e:
 		enemy = e
 	else:
 		enemy = area.get_parent() as EnemyController
 	
-	if dot.dot_tick_damage > 0:
+	if dot.dot_tick_damage > 0 and enemy:
 		enemy.take_dot_damage(dot)
 
 func deal_stat_damage(area: Area3D, debuff: DebuffResource, e: EnemyController = null) -> void:
@@ -617,7 +616,7 @@ func deal_stat_damage(area: Area3D, debuff: DebuffResource, e: EnemyController =
 	
 	#print(enemy.current_speed)
 	
-	if debuff.debuff_stat_damage > 0:
+	if debuff.debuff_stat_damage > 0 and enemy:
 		#print("Take stat damage")
 		enemy.take_stat_damage(debuff)
 

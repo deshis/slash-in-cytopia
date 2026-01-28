@@ -104,7 +104,7 @@ func _set_grade() -> void:
 		ItemType.Grade.PROTOTYPE:
 			grade_name = "Prototype"
 		ItemType.Grade.APEX_ANOMALY:
-			grade_name = "Apex_Anomaly"
+			grade_name = "Apex Anomaly"
 
 func _set_type_name() -> void:
 	type_color = LootDatabase.type_colors.get(item.type)

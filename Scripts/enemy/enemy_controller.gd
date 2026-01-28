@@ -377,7 +377,7 @@ func take_damage(damage:float) -> void:
 
 func die(drop_loot: bool = true) -> void:
 	set_collision_layer_value(13, false)
-	$Collision.disabled = true
+	$Collision.set_deferred("disabled", true)
 	
 	SoundManager.play_sfx("enemy_die", global_position)
 	
