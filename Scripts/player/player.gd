@@ -106,6 +106,10 @@ var can_active_item := true
 @onready var animator = $"model/AnimationPlayer"
 @onready var weapon_mesh = $model/rig/Skeleton3D/BoneAttachment3D/Weapon/Mesh
 
+# THROWABLES
+var brick_scene = preload("res://Scenes/items/brick.tscn")
+@onready var throw_point = $"ThrowPoint"
+
 # TAKING DAMAGE
 @export var hitstop_duration := 0.2
 var hit_stop_active := false
@@ -468,6 +472,32 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 					if active_effect.aoe_damage != 0:
 						deal_damage(null, aoe_damage, enemy)
 						
+						
+		ActiveEffectResource.ActiveType.THROWABLE:
+			var throw_force := 3.0
+			var upward_arc  := 1.0
+			
+			var brick = brick_scene.instantiate()
+			get_tree().root.add_child(brick)
+			
+			brick.global_position = throw_point.global_position
+			
+			var cam = get_viewport().get_camera_3d()
+			var mouse_pos = get_viewport().get_mouse_position()
+			var from = cam.project_ray_origin(mouse_pos)
+			var to = cam.project_ray_normal(mouse_pos)
+			
+			var plane = Plane(Vector3.UP, global_position.y)
+			var hit_pos = plane.intersects_ray(from, to)
+			
+			if hit_pos:
+				#Normalize distance for throwables?
+				#var direction = (hit_pos - global_position).normalized() 
+				var direction = (hit_pos - global_position)
+				var impulse = direction * throw_force
+				impulse.y = upward_arc
+				brick.apply_central_impulse(impulse)
+
 
 func process_move(delta: float) -> void:	
 	apply_movement(delta)

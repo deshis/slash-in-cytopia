@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://dww18pcnyuj1b"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_jyfgf"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_3dagh"]
+[ext_resource type="Resource" uid="uid://lsj6rmbmboa4" path="res://Scripts/items/resources/ActiveEffectResources/ThrowableBrick.tres" id="2_nntok"]
+[ext_resource type="Texture2D" uid="uid://bv2mfqy2ssu56" path="res://Assets/items/icons/Consumer/Brick.jpg" id="3_qr7de"]
+
+[sub_resource type="Resource" id="Resource_boy11"]
+script = ExtResource("1_jyfgf")
+stat_type = 25
+active_effect_resource = ExtResource("2_nntok")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_3dagh")
+item_name = "Brick"
+item_stat_info = "Throw a brick."
+type = 5
+icon = ExtResource("3_qr7de")
+effects = Array[ExtResource("1_jyfgf")]([SubResource("Resource_boy11")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://cj0664r6m3qql"]
+[gd_scene format=4 uid="uid://cj0664r6m3qql"]
 
 [ext_resource type="Script" uid="uid://c7qe3c1q04hnv" path="res://Scripts/player/player.gd" id="1_eo61r"]
 [ext_resource type="Material" uid="uid://dhhknt7kteyse" path="res://Assets/player/materials/player_mat.tres" id="2_mnu3u"]
@@ -1032,7 +1032,7 @@ size = Vector3(1, 2, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mxepk"]
 radius = 0.3
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("trails")]
+[node name="Player" type="CharacterBody3D" unique_id=1801829177 node_paths=PackedStringArray("trails")]
 collision_layer = 257
 collision_mask = 69633
 motion_mode = 1
@@ -1041,30 +1041,30 @@ movement_speed = 5.0
 dash_speed = 25.0
 trails = [NodePath("model/DaggerTrail"), NodePath("model/SwordTrail"), NodePath("model/MaulTrail"), NodePath("model/KickTrail"), NodePath("model/AxeTrail")]
 
-[node name="Timers" type="Node" parent="."]
+[node name="Timers" type="Node" parent="." unique_id=262827231]
 
-[node name="TimeAliveTimer" type="Timer" parent="Timers"]
+[node name="TimeAliveTimer" type="Timer" parent="Timers" unique_id=1154528981]
 autostart = true
 
-[node name="HealthRegenTimer" type="Timer" parent="Timers"]
+[node name="HealthRegenTimer" type="Timer" parent="Timers" unique_id=1612736265]
 autostart = true
 
-[node name="DashCooldownTimer" type="Timer" parent="Timers"]
+[node name="DashCooldownTimer" type="Timer" parent="Timers" unique_id=1210472442]
 autostart = true
 
-[node name="ItemActiveCooldownTimer" type="Timer" parent="Timers"]
+[node name="ItemActiveCooldownTimer" type="Timer" parent="Timers" unique_id=1131713128]
 
-[node name="HitFlash" type="Timer" parent="Timers"]
+[node name="HitFlash" type="Timer" parent="Timers" unique_id=192333675]
 wait_time = 0.6
 one_shot = true
 
-[node name="model" type="Node3D" parent="."]
+[node name="model" type="Node3D" parent="." unique_id=91078354]
 
-[node name="Weapons" type="Node3D" parent="model"]
+[node name="Weapons" type="Node3D" parent="model" unique_id=1505813321]
 
-[node name="rig" type="Node3D" parent="model"]
+[node name="rig" type="Node3D" parent="model" unique_id=304511413]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="model/rig"]
+[node name="Skeleton3D" type="Skeleton3D" parent="model/rig" unique_id=1542514995]
 bones/0/name = "root"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -2578,149 +2578,150 @@ bones/215/position = Vector3(0, 0, 0)
 bones/215/rotation = Quaternion(-0.035034463, 2.3851712e-10, -0.21421053, 0.97615904)
 bones/215/scale = Vector3(1, 0.99999994, 1)
 
-[node name="Char" type="MeshInstance3D" parent="model/rig/Skeleton3D"]
+[node name="Char" type="MeshInstance3D" parent="model/rig/Skeleton3D" unique_id=1560254414]
 mesh = SubResource("ArrayMesh_wurae")
 skin = SubResource("Skin_ck2nw")
 
-[node name="Hair" type="MeshInstance3D" parent="model/rig/Skeleton3D"]
+[node name="Hair" type="MeshInstance3D" parent="model/rig/Skeleton3D" unique_id=25013419]
 mesh = SubResource("ArrayMesh_8ar7c")
 skin = SubResource("Skin_ck2nw")
 
-[node name="LegAugment" type="MeshInstance3D" parent="model/rig/Skeleton3D"]
+[node name="LegAugment" type="MeshInstance3D" parent="model/rig/Skeleton3D" unique_id=963257816]
 mesh = SubResource("ArrayMesh_m5brc")
 skin = SubResource("Skin_ck2nw")
 
-[node name="SpineAugments" type="MeshInstance3D" parent="model/rig/Skeleton3D"]
+[node name="SpineAugments" type="MeshInstance3D" parent="model/rig/Skeleton3D" unique_id=255950948]
 mesh = SubResource("ArrayMesh_fus5b")
 skin = SubResource("Skin_ck2nw")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="model/rig/Skeleton3D"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="model/rig/Skeleton3D" unique_id=1042360276]
 transform = Transform3D(-0.9097561, -0.29940853, -0.28434187, 0.1238385, -0.84935826, 0.5099329, -0.39717942, 0.43221512, 0.8127827, -0.43557426, 0.9922211, 0.12866089)
 bone_name = "DEF-hand.R"
 bone_idx = 174
 
-[node name="Weapon" type="Node3D" parent="model/rig/Skeleton3D/BoneAttachment3D"]
+[node name="Weapon" type="Node3D" parent="model/rig/Skeleton3D/BoneAttachment3D" unique_id=634937227]
 transform = Transform3D(1, 0, 0, 0, -4.371138e-08, -0.9999999, 0, 0.9999998, -4.3711385e-08, -0.044, 0.108, -0.003)
 
-[node name="Mesh" type="MeshInstance3D" parent="model/rig/Skeleton3D/BoneAttachment3D/Weapon"]
+[node name="Mesh" type="MeshInstance3D" parent="model/rig/Skeleton3D/BoneAttachment3D/Weapon" unique_id=1716956617]
 
-[node name="DaggerTrail" type="MeshInstance3D" parent="model"]
+[node name="DaggerTrail" type="MeshInstance3D" parent="model" unique_id=1846987734]
 visible = false
 mesh = SubResource("ArrayMesh_mpjj3")
 skeleton = NodePath("")
 
-[node name="SwordTrail" type="MeshInstance3D" parent="model"]
+[node name="SwordTrail" type="MeshInstance3D" parent="model" unique_id=1861841876]
 visible = false
 material_override = SubResource("ShaderMaterial_mqtts")
 mesh = SubResource("ArrayMesh_qc78s")
 skeleton = NodePath("")
 
-[node name="KickTrail" type="MeshInstance3D" parent="model"]
+[node name="KickTrail" type="MeshInstance3D" parent="model" unique_id=2111742985]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 visible = false
 material_override = SubResource("ShaderMaterial_y36al")
 mesh = SubResource("ArrayMesh_sevrn")
 skeleton = NodePath("")
 
-[node name="MaulTrail" type="MeshInstance3D" parent="model"]
+[node name="MaulTrail" type="MeshInstance3D" parent="model" unique_id=2045408756]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 visible = false
 material_override = ExtResource("11_l71q1")
 mesh = SubResource("ArrayMesh_5sxw2")
 skeleton = NodePath("")
 
-[node name="AxeTrail" type="MeshInstance3D" parent="model"]
+[node name="AxeTrail" type="MeshInstance3D" parent="model" unique_id=1084231622]
 visible = false
 material_override = SubResource("ShaderMaterial_2q234")
 mesh = SubResource("ArrayMesh_7e4no")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="model"]
-libraries = {
-&"": SubResource("AnimationLibrary_4lhs8")
-}
-autoplay = "Idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="model" unique_id=649090014]
+libraries/ = SubResource("AnimationLibrary_4lhs8")
+autoplay = &"Idle"
 
-[node name="LightAttack" type="Area3D" parent="."]
+[node name="LightAttack" type="Area3D" parent="." unique_id=995221955]
 collision_layer = 1024
 collision_mask = 8192
 
-[node name="Default" type="CollisionShape3D" parent="LightAttack"]
+[node name="Default" type="CollisionShape3D" parent="LightAttack" unique_id=957173596]
 transform = Transform3D(0.9822611, 0, -0.18751848, 0, 1, 0, 0.18751848, 0, 0.9822611, 0.31930536, 0, 0.4112283)
 visible = false
 shape = SubResource("ConcavePolygonShape3D_mnu3u")
 debug_color = Color(0.6901961, 0.16470589, 0.5019608, 0.9882353)
 
-[node name="Dagger" type="CollisionShape3D" parent="LightAttack"]
+[node name="Dagger" type="CollisionShape3D" parent="LightAttack" unique_id=274647419]
 transform = Transform3D(0.9976089, 0, -0.069112256, 0, 1, 0, 0.069112256, 0, 0.9976089, 0.13461637, 0, 0.35548383)
 visible = false
 shape = SubResource("ConcavePolygonShape3D_mnu3u")
 debug_color = Color(0.6901961, 0.16470589, 0.5019608, 0.9882353)
 
-[node name="Sword" type="CollisionShape3D" parent="LightAttack"]
+[node name="Sword" type="CollisionShape3D" parent="LightAttack" unique_id=387380187]
 visible = false
 shape = SubResource("ConcavePolygonShape3D_rwmec")
 debug_color = Color(0.6901961, 0.16470589, 0.5019608, 0.9882353)
 
-[node name="HeavyAttack" type="Area3D" parent="."]
+[node name="HeavyAttack" type="Area3D" parent="." unique_id=1185750527]
 collision_layer = 1024
 collision_mask = 8192
 
-[node name="Default" type="CollisionShape3D" parent="HeavyAttack"]
+[node name="Default" type="CollisionShape3D" parent="HeavyAttack" unique_id=1101448782]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 shape = SubResource("ConcavePolygonShape3D_utcu2")
 debug_color = Color(0.6901961, 0.16470589, 0.5019608, 0.9882353)
 
-[node name="Axe" type="CollisionShape3D" parent="HeavyAttack"]
+[node name="Axe" type="CollisionShape3D" parent="HeavyAttack" unique_id=1501959500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false
 shape = SubResource("ConcavePolygonShape3D_emekf")
 debug_color = Color(0.6901961, 0.16470589, 0.5019608, 0.9882353)
 
-[node name="Maul" type="CollisionShape3D" parent="HeavyAttack"]
+[node name="Maul" type="CollisionShape3D" parent="HeavyAttack" unique_id=781822946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 shape = SubResource("ConcavePolygonShape3D_mj82b")
 debug_color = Color(0.6901961, 0.16470589, 0.5019608, 0.9882353)
 
-[node name="DashAttackHitbox" type="Area3D" parent="."]
+[node name="DashAttackHitbox" type="Area3D" parent="." unique_id=1596170260]
 collision_layer = 1024
 collision_mask = 8192
 monitoring = false
 
-[node name="Box" type="CollisionShape3D" parent="DashAttackHitbox"]
+[node name="Box" type="CollisionShape3D" parent="DashAttackHitbox" unique_id=2111528088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_nyrd7")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1942333250]
 collision_layer = 512
 collision_mask = 0
 
-[node name="Box" type="CollisionShape3D" parent="Hurtbox"]
+[node name="Box" type="CollisionShape3D" parent="Hurtbox" unique_id=1996117162]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_e41v5")
 
-[node name="LootRadius" type="Area3D" parent="."]
+[node name="LootRadius" type="Area3D" parent="." unique_id=1872017883]
 visible = false
 collision_layer = 0
 collision_mask = 65536
 
-[node name="Radius" type="CollisionShape3D" parent="LootRadius"]
+[node name="Radius" type="CollisionShape3D" parent="LootRadius" unique_id=965135478]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_eo61r")
 
-[node name="HealthRadius" type="Area3D" parent="."]
+[node name="HealthRadius" type="Area3D" parent="." unique_id=1886224016]
 collision_layer = 0
 collision_mask = 131072
 
-[node name="Radius" type="CollisionShape3D" parent="HealthRadius"]
+[node name="Radius" type="CollisionShape3D" parent="HealthRadius" unique_id=1771163969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_eo61r")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1953596440]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_mxepk")
+
+[node name="ThrowPoint" type="Node3D" parent="." unique_id=1322018418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1397032, 0.67848736)
 
 [connection signal="timeout" from="Timers/TimeAliveTimer" to="." method="_on_time_alive_timer_timeout"]
 [connection signal="timeout" from="Timers/HealthRegenTimer" to="." method="_on_health_regen_timer_timeout"]

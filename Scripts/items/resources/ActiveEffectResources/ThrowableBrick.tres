@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActiveEffectResource" format=3 uid="uid://lsj6rmbmboa4"]
+
+[ext_resource type="Script" uid="uid://rwrpa5fevhio" path="res://Scripts/items/resources/ActiveEffectResource.gd" id="1_jq24i"]
+
+[resource]
+script = ExtResource("1_jq24i")
+active_type = 6
+set_facing_direction = true
+active_effect_cooldown = 0.2
+metadata/_custom_type_script = "uid://rwrpa5fevhio"
