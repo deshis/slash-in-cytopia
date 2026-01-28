@@ -112,7 +112,6 @@ var brick_scene = preload("res://Scenes/items/brick.tscn")
 
 # TAKING DAMAGE
 @export var hitstop_duration := 0.2
-var hit_stop_active := false
 
 @onready var hit_flash = $"model/rig/Skeleton3D/Char".mesh.surface_get_material(0).get_next_pass()
 @onready var hit_flash_timer = $Timers/HitFlash
@@ -149,9 +148,6 @@ func _ready() -> void:
 	change_state(IDLE)
 
 func _physics_process(delta: float) -> void:
-	if hit_stop_active:
-		return
-	
 	state_timer -= delta
 	
 	if state != DASH or move_during_dash:
@@ -696,13 +692,9 @@ func blink() -> void:
 	hit_flash.set_shader_parameter('strength', phase)
 
 func hitstop(duration: float) -> void:
-	Engine.time_scale = 0.0
-	hit_stop_active = true
-	
+	Engine.time_scale = 0.01
 	await get_tree().create_timer(duration, false, false, true).timeout
-	
 	Engine.time_scale = 1.0
-	hit_stop_active = false
 
 
 func update_closest_interactable() -> void:

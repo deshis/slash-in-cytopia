@@ -13,6 +13,9 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if GameManager.player is not Player:
+		return
+	
 	var interactables = GameManager.player.interactables
 	if interactables.size() < 1:
 		visible = false
