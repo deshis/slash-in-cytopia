@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://blxccuyejqgpb"]
 
-[ext_resource type="Script" uid="uid://lr1ep66iolvh" path="res://Scenes/enemy/damage_number.gd" id="1_o68q8"]
+[ext_resource type="Script" uid="uid://lr1ep66iolvh" path="res://Scripts/enemy/damage_number.gd" id="1_o68q8"]
+
 
 [node name="DamageNumber" type="Node3D" unique_id=1490967219]
 top_level = true

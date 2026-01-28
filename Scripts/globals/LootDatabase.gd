@@ -127,8 +127,8 @@ var base_boss_loot_table = preload("res://Scripts/globals/loot_table_boss.tres")
 var upgrade_loot_rarity_chance := 0.0
 var pickup_slot_amount := 3
 
-var pickupable_item = preload("res://Scenes/pickupable_loot.tscn")
-var pickupable_health = preload("res://Scenes/pickupable_health.tscn")
+var pickupable_item = preload("res://Scenes/items/pickupable_loot.tscn")
+var pickupable_health = preload("res://Scenes/items/pickupable_health.tscn")
 
 func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_strength: float = 0.0) -> void:
 	if not loot_table:

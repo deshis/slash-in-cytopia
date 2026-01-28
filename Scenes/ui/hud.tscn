@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cptm56sk2qede" path="res://Scripts/ui/hud/hud_manager.gd" id="1_36s6t"]
 [ext_resource type="Script" uid="uid://b3p4e86xoqqh3" path="res://Scripts/ui/hud/cooldowns.gd" id="2_36s6t"]
-[ext_resource type="PackedScene" uid="uid://dw5jqew75whcf" path="res://Scenes/HPBar.tscn" id="2_ajim5"]
+[ext_resource type="PackedScene" uid="uid://dw5jqew75whcf" path="res://Scenes/enemy/HPBar.tscn" id="2_ajim5"]
 [ext_resource type="Texture2D" uid="uid://dnop5pqrq8fbx" path="res://Assets/ui/DashIcon.png" id="4_0iicw"]
 [ext_resource type="Texture2D" uid="uid://b343ghjhwphjn" path="res://Assets/ui/punch.png" id="4_oersf"]
 [ext_resource type="Texture2D" uid="uid://cvquudwe72x8p" path="res://Assets/ui/kick.png" id="5_oersf"]
@@ -10,13 +10,14 @@
 [ext_resource type="Script" uid="uid://cnrj2cq3cvdn7" path="res://Scripts/ui/inventory/trash_slot.gd" id="9_36s6t"]
 [ext_resource type="Script" uid="uid://dglo22okhueyv" path="res://Scripts/items/item_pickup.gd" id="9_484xk"]
 [ext_resource type="Script" uid="uid://c8noump2yhng5" path="res://Scripts/ui/inventory/augment_slot.gd" id="9_pbtju"]
-[ext_resource type="PackedScene" uid="uid://cexexdh4re63h" path="res://Scenes/inventory_slot.tscn" id="10_36s6t"]
+[ext_resource type="PackedScene" uid="uid://cexexdh4re63h" path="res://Scenes/ui/inventory_slot.tscn" id="10_36s6t"]
 [ext_resource type="Script" uid="uid://c081ighahaot6" path="res://Scripts/ui/pause_menu.gd" id="10_lkt4f"]
 [ext_resource type="Script" uid="uid://dmr6e5sqx26og" path="res://Scripts/ui/button.gd" id="11_wfkbc"]
 [ext_resource type="Script" uid="uid://cdh5pjfwavchk" path="res://Scripts/ui/inventory/pickup_slot.gd" id="12_yidpd"]
-[ext_resource type="PackedScene" uid="uid://btj605votyjy8" path="res://Scenes/settings_menu.tscn" id="16_36s6t"]
+[ext_resource type="PackedScene" uid="uid://btj605votyjy8" path="res://Scenes/main_menu/settings_menu.tscn" id="16_36s6t"]
 [ext_resource type="Texture2D" uid="uid://cev4768d6kdbs" path="res://Assets/ui/UI_player_defeated.png" id="19_pbtju"]
 [ext_resource type="Script" uid="uid://6jore1um42bw" path="res://Scripts/ui/game_over.gd" id="23_vxf74"]
+
 
 [sub_resource type="ImageTexture" id="ImageTexture_36s6t"]
 

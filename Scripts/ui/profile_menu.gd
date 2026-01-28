@@ -16,8 +16,8 @@ signal back_pressed
 @onready var delete_confirm_dialog: ConfirmationDialog = $DeleteConfirmDialog
 @onready var accept_dialog: AcceptDialog = $AcceptDialog
 
-const CREATE_PROFILE_MENU = preload("res://Scenes/create_profile_window.tscn")
-const PROFILE_ITEM_SCENE = preload("res://Scenes/ui/profile.tscn")
+const CREATE_PROFILE_MENU = preload("res://Scenes/main_menu/profile/create_profile_window.tscn")
+const PROFILE_ITEM_SCENE = preload("res://Scenes/main_menu/profile/profile.tscn")
 
 var selected_profile_filename: String = ""
 var profile_buttons: Array[Button] = []

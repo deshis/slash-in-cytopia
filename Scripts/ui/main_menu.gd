@@ -6,8 +6,8 @@ extends Node3D
 @onready var tutorial_container: MarginContainer = $Menu/TutorialMargin
 @onready var welcome_label: Label = $Menu/WelcomeMargin/WelcomeLabel
 
-const CREATE_PROFILE_MENU = preload("res://Scenes/create_profile_window.tscn")
-const PROFILE_MENU = preload("res://Scenes/ui/profile_menu.tscn")
+const CREATE_PROFILE_MENU = preload("res://Scenes/main_menu/profile/create_profile_window.tscn")
+const PROFILE_MENU = preload("res://Scenes/main_menu/profile/profile_menu.tscn")
 
 var active_profile_menu: Control = null
 

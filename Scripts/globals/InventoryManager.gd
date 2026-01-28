@@ -11,7 +11,7 @@ var starter_items: Array[ItemResource] = [preload("res://Scripts/items/military/
 var augment_items: Array[ItemResource] = []
 var backpack_items: Array[ItemResource] = [] # pls don't clean me! [preload("res://Scripts/items/prototype/Item6.tres"),preload("res://Scripts/items/consumer/Item4.tres")] #[preload("res://Scripts/items/prototype/Item6.tres")]
 
-var item_scene: PackedScene = preload("res://Scenes/item.tscn")
+var item_scene: PackedScene = preload("res://Scenes/items/item.tscn")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):

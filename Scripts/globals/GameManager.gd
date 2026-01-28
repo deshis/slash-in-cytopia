@@ -30,7 +30,7 @@ func start_game() -> void:
 	add_child(stage_root)
 	
 	# init hud
-	HUD = preload("res://Scenes/hud.tscn").instantiate() as HudManager
+	HUD = preload("res://Scenes/ui/hud.tscn").instantiate() as HudManager
 	add_child(HUD)
 	
 	# init particle manager
@@ -111,5 +111,5 @@ func quit_to_menu()->void:
 	for child in get_children():
 		child.queue_free()
 	
-	var main_menu = preload("res://Scenes/main_menu.tscn").instantiate()
+	var main_menu = preload("res://Scenes/main_menu/main_menu.tscn").instantiate()
 	add_child(main_menu)

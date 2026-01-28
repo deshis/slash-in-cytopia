@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dc7mk8vah201v"]
+[gd_scene format=4 uid="uid://dc7mk8vah201v"]
 
 [ext_resource type="Shader" uid="uid://1rauri1px6gq" path="res://Assets/environment/grass_alternative.gdshader" id="1_je7sg"]
 [ext_resource type="Texture2D" uid="uid://cu5w0ne7m2cet" path="res://Assets/environment/grass.png" id="2_t17al"]
@@ -6,10 +6,11 @@
 [ext_resource type="MeshLibrary" uid="uid://be33ucnlf86fx" path="res://Scenes/level/indoor/3d_tiles.tres" id="4_kpsj7"]
 [ext_resource type="Script" uid="uid://cmae0knsts5rg" path="res://Scenes/level/indoor/indoor_3d_gen.gd" id="5_difuy"]
 [ext_resource type="Texture2D" uid="uid://dp2qderulb6q" path="res://Assets/apollo-8x.png" id="6_oswjh"]
-[ext_resource type="PackedScene" uid="uid://dk104ll3dehau" path="res://Scenes/level_changer.tscn" id="7_cehh3"]
+[ext_resource type="PackedScene" uid="uid://dk104ll3dehau" path="res://Scenes/interactables/level_changer.tscn" id="7_cehh3"]
 [ext_resource type="Script" uid="uid://bshiktda2qqip" path="res://Scripts/player/camera_follow.gd" id="8_cadgk"]
 [ext_resource type="PackedScene" uid="uid://c1h6pqnhbr5no" path="res://Scenes/enemy/enemy_spawner.tscn" id="9_0bdye"]
 [ext_resource type="PackedScene" uid="uid://dfr3rgsf2qctj" path="res://Scenes/level/indoor/light.tscn" id="10_t17al"]
+
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cqmb3"]
 

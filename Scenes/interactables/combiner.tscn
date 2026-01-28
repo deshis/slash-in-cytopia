@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp1iy75msp6ch"]
+[gd_scene format=3 uid="uid://dp1iy75msp6ch"]
 
 [ext_resource type="Script" uid="uid://ba0atxf1gu283" path="res://Scripts/interactables/combiner.gd" id="1_n2wuf"]
-[ext_resource type="PackedScene" uid="uid://cmj2ut7etid6c" path="res://Scenes/interact_label.tscn" id="2_lxw0t"]
+[ext_resource type="PackedScene" uid="uid://cmj2ut7etid6c" path="res://Scenes/interactables/interact_label.tscn" id="2_lxw0t"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ursst"]
 height = 1.0
@@ -11,31 +11,31 @@ radius = 0.9
 height = 1.0
 radius = 1.8
 
-[node name="Combiner" type="Node3D"]
+[node name="Combiner" type="Node3D" unique_id=231240284]
 script = ExtResource("1_n2wuf")
 
-[node name="Hitbox" type="StaticBody3D" parent="."]
+[node name="Hitbox" type="StaticBody3D" parent="." unique_id=1161439758]
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape" type="CollisionShape3D" parent="Hitbox" unique_id=800749978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_ursst")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=89502404]
 collision_layer = 0
 collision_mask = 256
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox" unique_id=1563998740]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_7cbq3")
 
-[node name="Mesh" type="CSGCylinder3D" parent="."]
+[node name="Mesh" type="CSGCylinder3D" parent="." unique_id=11413582]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 radius = 1.177
 height = 1.0
 sides = 14
 
-[node name="InteractLabel" parent="." node_paths=PackedStringArray("hitbox", "interactable_object") instance=ExtResource("2_lxw0t")]
+[node name="InteractLabel" parent="." unique_id=932181717 node_paths=PackedStringArray("hitbox", "interactable_object") instance=ExtResource("2_lxw0t")]
 transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 1.3857374, 0)
 hitbox = NodePath("../Hurtbox")
 interactable_object = NodePath("..")

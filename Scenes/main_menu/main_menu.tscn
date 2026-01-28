@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=4 uid="uid://b3psee5bqieh3"]
+[gd_scene format=4 uid="uid://b3psee5bqieh3"]
 
 [ext_resource type="Script" uid="uid://bjlev0n8eco11" path="res://Scripts/ui/main_menu.gd" id="1_6m47u"]
 [ext_resource type="Texture2D" uid="uid://caaqyxqi3wkkw" path="res://Assets/player/scifi-character_apollo-1x.png" id="1_28flt"]
@@ -17,7 +17,7 @@
 [ext_resource type="Animation" uid="uid://bh8kkq3v0seri" path="res://Assets/player/animations/Light_attack_default.res" id="17_1xund"]
 [ext_resource type="Animation" uid="uid://knb304bgijjg" path="res://Assets/player/animations/Light_attack_sword.res" id="18_msuys"]
 [ext_resource type="Animation" uid="uid://bx28axxgs0hbt" path="res://Assets/player/animations/Run.res" id="19_aylim"]
-[ext_resource type="Texture2D" uid="uid://4yspita4vhwj" path="res://Assets/enemy/slasher/slasher_apollo-1x.png" id="20_jr6u5"]
+[ext_resource type="Texture2D" uid="uid://d16v0k85pmlw7" path="res://Assets/enemy/slasher/slasher_apollo-1x.png" id="20_jr6u5"]
 [ext_resource type="Shader" uid="uid://1rauri1px6gq" path="res://Assets/environment/grass_alternative.gdshader" id="20_pavwk"]
 [ext_resource type="Texture2D" uid="uid://cu5w0ne7m2cet" path="res://Assets/environment/grass.png" id="21_4v5qc"]
 [ext_resource type="ArrayMesh" uid="uid://diakqbwpn4uyl" path="res://Assets/player/weapons/sword.res" id="21_6m47u"]
@@ -47,8 +47,9 @@
 [ext_resource type="Animation" uid="uid://cwqkot5rdivlm" path="res://Assets/enemy/claw/animations/Attack.res" id="42_y17f6"]
 [ext_resource type="Animation" uid="uid://brc3yosvna3yp" path="res://Assets/enemy/claw/animations/Idle.res" id="43_hovqx"]
 [ext_resource type="Animation" uid="uid://dhyy6biddxi7w" path="res://Assets/enemy/claw/animations/SpinAttack.res" id="44_pavwk"]
-[ext_resource type="PackedScene" uid="uid://btj605votyjy8" path="res://Scenes/settings_menu.tscn" id="46_aj2v6"]
+[ext_resource type="PackedScene" uid="uid://btj605votyjy8" path="res://Scenes/main_menu/settings_menu.tscn" id="46_aj2v6"]
 [ext_resource type="Script" uid="uid://bcm50amd2bo6l" path="res://Scripts/ui/tutorial_text.gd" id="47_vj5y7"]
+
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jr6u5"]
 
