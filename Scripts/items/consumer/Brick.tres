@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 [resource]
 script = ExtResource("2_3dagh")
 item_name = "Brick"
-item_stat_info = "Throw a brick."
+item_stat_info = "Catch."
 type = 5
 icon = ExtResource("3_qr7de")
 effects = Array[ExtResource("1_jyfgf")]([SubResource("Resource_boy11")])

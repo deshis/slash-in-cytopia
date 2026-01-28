@@ -472,8 +472,12 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 		ActiveEffectResource.ActiveType.THROWABLE:
 			var throw_force := 3.0
 			var upward_arc  := 1.0
-			
+			#var dot = active_effect.dot_resource.duplicate()
 			var brick = brick_scene.instantiate()
+			
+			brick.aoe_damage = active_item_effect.aoe_damage
+			brick.aoe_radius = active_item_effect.aoe_radius
+			
 			get_tree().root.add_child(brick)
 			
 			brick.global_position = throw_point.global_position
@@ -485,8 +489,9 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 			
 			var plane = Plane(Vector3.UP, global_position.y)
 			var hit_pos = plane.intersects_ray(from, to)
-			
+
 			if hit_pos:
+			
 				#Normalize distance for throwables?
 				#var direction = (hit_pos - global_position).normalized() 
 				var direction = (hit_pos - global_position)

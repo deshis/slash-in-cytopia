@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://c7mhrt7gbpjjh"]
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_s421u"]
-[ext_resource type="Texture2D" uid="uid://dueggg4fi7fkb" path="res://Assets/portal/portal_normal.png" id="2_7uulb"]
+[ext_resource type="Texture2D" uid="uid://b1ey4uowign5g" path="res://Assets/items/icons/ApexAnomaly/SingularityCircuit.png" id="2_s421u"]
 [ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="3_hceua"]
 
 [sub_resource type="Resource" id="Resource_x4pr6"]
@@ -16,6 +16,6 @@ item_name = "Singularity Circuit"
 item_description = "The ultimate form of circuitry that enhances every part of the body"
 type = 3
 grade = 3
-icon = ExtResource("2_7uulb")
+icon = ExtResource("2_s421u")
 effects = Array[ExtResource("1_s421u")]([SubResource("Resource_x4pr6")])
 metadata/_custom_type_script = "uid://dulvf1v1d8so8"

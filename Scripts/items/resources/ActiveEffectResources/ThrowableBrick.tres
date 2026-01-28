@@ -6,5 +6,7 @@
 script = ExtResource("1_jq24i")
 active_type = 6
 set_facing_direction = true
+aoe_radius = 2.0
+aoe_damage = 1.0
 active_effect_cooldown = 0.2
 metadata/_custom_type_script = "uid://rwrpa5fevhio"
