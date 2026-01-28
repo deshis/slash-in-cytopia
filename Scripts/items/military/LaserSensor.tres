@@ -7,7 +7,13 @@
 [sub_resource type="Resource" id="Resource_x4600"]
 script = ExtResource("1_xjpxs")
 stat_type = 20
-value = 12.0
+value = 20.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_8jqpw"]
+script = ExtResource("1_xjpxs")
+stat_type = 13
+value = 8.0
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [resource]
@@ -16,5 +22,5 @@ item_name = "Laser Sensor"
 type = 4
 grade = 1
 icon = ExtResource("2_8jqpw")
-effects = Array[ExtResource("1_xjpxs")]([SubResource("Resource_x4600")])
+effects = Array[ExtResource("1_xjpxs")]([SubResource("Resource_x4600"), SubResource("Resource_8jqpw")])
 metadata/_custom_type_script = "uid://dulvf1v1d8so8"

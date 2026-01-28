@@ -3,13 +3,13 @@ extends Node
 var consumer_items := [
 	# SURVIVABILITY
 	preload("res://Scripts/items/consumer/ChromaticChassis.tres"),
+	preload("res://Scripts/items/consumer/CrystalShell.tres"),
 	
 	# MOVEMENT
 	preload("res://Scripts/items/consumer/SpringedBoots.tres"),
 	preload("res://Scripts/items/consumer/UnderclockedExoskeleton.tres"),
 	
 	# UTILITY
-	preload("res://Scripts/items/consumer/CrystalShell.tres"),
 	preload("res://Scripts/items/consumer/DashInverter.tres"),
 	preload("res://Scripts/items/consumer/OneLeafClover.tres"),
 	preload("res://Scripts/items/consumer/QuantumGlove.tres"),
@@ -34,6 +34,7 @@ var consumer_items := [
 
 var military_items := [
 	# SURVIVABILITY
+	preload("res://Scripts/items/military/NanoShell.tres"),
 	preload("res://Scripts/items/military/PlasteelChassis.tres"),
 	preload("res://Scripts/items/military/SecondHeart.tres"),
 	
@@ -44,7 +45,6 @@ var military_items := [
 	# UTILITY
 	preload("res://Scripts/items/military/DashLimiter.tres"),
 	preload("res://Scripts/items/military/MilitaryClover.tres"),
-	preload("res://Scripts/items/military/NanoShell.tres"),
 	preload("res://Scripts/items/military/PlasteelToolbelt.tres"),
 	preload("res://Scripts/items/military/SingularityGlove.tres"),
 	
@@ -71,19 +71,19 @@ var military_items := [
 var prototype_items := [
 	# SURVIVABILITY
 	preload("res://Scripts/items/prototype/SpectriteChassis.tres"),
+	preload("res://Scripts/items/prototype/SpectriteShell.tres"),
 	
 	# MOVEMENT
 	preload("res://Scripts/items/prototype/Arievistan.tres"),
 	preload("res://Scripts/items/prototype/OverclockedExoskeleton.tres"),
-	preload("res://Scripts/items/prototype/PlasmiumSensor.tres"),
 	
 	# UTILITY
 	preload("res://Scripts/items/prototype/CloverLOA.tres"),
 	preload("res://Scripts/items/prototype/PlasmiumToolbelt.tres"),
-	preload("res://Scripts/items/prototype/SpectriteShell.tres"),
 	
 	# DAMAGE
 	preload("res://Scripts/items/prototype/EnergyConverterMk2.tres"),
+	preload("res://Scripts/items/prototype/PlasmiumSensor.tres"),
 	preload("res://Scripts/items/prototype/SpectriteNeedle.tres"),
 	
 	# ACTIVE_ITEM
