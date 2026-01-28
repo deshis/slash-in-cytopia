@@ -7,11 +7,14 @@ var augments_node: Node
 var item_selection_node: Node
 var trash_slot_node: Node
 
-var starter_items: Array[ItemResource] = [preload("res://Scripts/items/military/Vampirism.tres")]#[preload("res://Scripts/items/military/DashReplicator.tres"), preload("res://Scripts/items/prototype/Dawn.tres"),preload("res://Scripts/items/military/BlackBurner.tres"), preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/prototype/Arievistan.tres")]#[preload("res://Scripts/items/prototype/ArcFlash.tres"),preload("res://Scripts/items/prototype/Labrys.tres"),preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/consumer/UnderclockedExoskeleton.tres"),preload("res://Scripts/items/military/SecondHeart.tres"),preload("res://Scripts/items/prototype/RealityFracture.tres")]
+var starter_items: Array[ItemResource] = [load("res://Scripts/items/prototype/CloverLOA.tres"), load("res://Scripts/items/prototype/Arievistan.tres"), load("res://Scripts/items/prototype/ArcFlash.tres"),]#[preload("res://Scripts/items/military/DashReplicator.tres"), preload("res://Scripts/items/prototype/Dawn.tres"),preload("res://Scripts/items/military/BlackBurner.tres"), preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/prototype/Arievistan.tres")]#[preload("res://Scripts/items/prototype/ArcFlash.tres"),preload("res://Scripts/items/prototype/Labrys.tres"),preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/consumer/UnderclockedExoskeleton.tres"),preload("res://Scripts/items/military/SecondHeart.tres"),preload("res://Scripts/items/prototype/RealityFracture.tres")]
 var augment_items: Array[ItemResource] = []
 var backpack_items: Array[ItemResource] = [] # pls don't clean me! [preload("res://Scripts/items/prototype/Item6.tres"),preload("res://Scripts/items/consumer/Item4.tres")] #[preload("res://Scripts/items/prototype/Item6.tres")]
 
 var item_scene: PackedScene = preload("res://Scenes/items/item.tscn")
+
+var extra_augment_nodes = []
+var extra_augment_slots := false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -37,6 +40,11 @@ func init() -> void:
 	augments_node = inventory_node.get_node("AugmentSlots")
 	trash_slot_node = inventory_node.get_node("TrashSlot")
 	item_selection_node = inventory_node.get_node("ItemSelection")
+	extra_augment_nodes = [
+		augments_node.get_node("Survivability2"),
+		augments_node.get_node("Movement2"),
+		augments_node.get_node("Damage2"),
+	]
 	init_slots()
 	
 	# setup backpack
@@ -141,10 +149,18 @@ func delete_item(item: Control):
 	item.queue_free()
 
 func get_augment_slot(item) -> Control:
+	var available_slots = []
 	for slot in augments_node.get_children():
 		if slot.type == item.item.type:
-			return slot
-	return null
+			available_slots.append(slot)
+	
+	# extra augment slot will return free slot if available
+	if extra_augment_slots:
+		for slot in available_slots:
+			if not slot.get_item():
+				return slot
+	
+	return available_slots[0]
 
 func get_backpack_slot() -> Control:
 	for slot in backpack_node.get_children():
@@ -239,7 +255,23 @@ func remove_item_effects(item: ItemResource) -> void:
 	ItemGlobals.primary = false
 	ItemGlobals.secondary = false
 
+
+func enable_extra_augment_slots() -> void:
+	extra_augment_slots = true
+	for node in extra_augment_nodes:
+		node.visible = true
+
+
+func disable_extra_augment_slots() -> void:
+	extra_augment_slots = false
+	for node in extra_augment_nodes:
+		node.visible = false
+		if node.get_item():
+			move_item(node)
+
+
 func reset_inventory() -> void:
+	extra_augment_slots = false
 	augment_items.clear()
 	backpack_items.clear()
 

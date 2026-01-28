@@ -103,6 +103,8 @@ func _set_grade() -> void:
 			grade_name = "Military"
 		ItemType.Grade.PROTOTYPE:
 			grade_name = "Prototype"
+		ItemType.Grade.APEX_ANOMALY:
+			grade_name = "Apex_Anomaly"
 
 func _set_type_name() -> void:
 	type_color = LootDatabase.type_colors.get(item.type)
@@ -200,8 +202,11 @@ func choose_border_texture() -> void:
 	if grade_name == "Prototype":
 		border_texture = preload("res://Assets/ui/TestItemBorder.png")
 		
+	if grade_name == "Apex_Anomaly":
+		border_texture = preload("res://Assets/ui/TestItemBorder.png")
+	
 	border.texture = border_texture
-		
+
 func _on_mouse_entered() -> void:
 	if item == null:
 		return

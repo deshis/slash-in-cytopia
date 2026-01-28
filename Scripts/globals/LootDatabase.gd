@@ -99,6 +99,10 @@ var prototype_items := [
 	preload("res://Scripts/items/prototype/Labrys.tres"),
 ]
 
+var apex_anomaly_items := [
+	preload("res://Scripts/items/apex_anomaly/SingularityCircuit.tres"),
+]
+
 var type_colors := {
 	ItemType.Type.NONE: Color(0.78, 0.812, 0.8, 1.0),
 	ItemType.Type.SURVIVABILITY: Color(0.659, 0.792, 0.345, 1.0),
@@ -113,7 +117,8 @@ var type_colors := {
 var grade_colors := {
 	ItemType.Grade.CONSUMER: Color(0.922, 0.929, 0.914, 1.0),
 	ItemType.Grade.MILITARY: Color(0.478, 0.212, 0.482, 1.0),
-	ItemType.Grade.PROTOTYPE: Color(0.91, 0.757, 0.439, 1.0)
+	ItemType.Grade.PROTOTYPE: Color(0.91, 0.757, 0.439, 1.0),
+	ItemType.Grade.APEX_ANOMALY: Color(0.46, 0.622, 1.0, 1.0)
 }
 
 var enemy_loot_table = preload("res://Scripts/globals/loot_table_enemy.tres").duplicate(true)
@@ -175,10 +180,11 @@ func get_loot_rarity(loot_weights: Dictionary) -> ItemType.Type:
 	var consumer_chance = loot_weights.get("consumer")
 	var military_chance = loot_weights.get("military")
 	var prototype_chance = loot_weights.get("prototype")
+	var apex_anomaly_chance = loot_weights.get("apex_anomaly")
 	
 	# pick weighted chance
 	var rng = RandomNumberGenerator.new()
-	var weights = PackedFloat32Array([consumer_chance, military_chance, prototype_chance])
+	var weights = PackedFloat32Array([consumer_chance, military_chance, prototype_chance, apex_anomaly_chance])
 	var rarity = rng.rand_weighted(weights)
 	
 	if randf() * 100 < upgrade_loot_rarity_chance:
@@ -195,6 +201,8 @@ func get_items_by_rarity(rarity: ItemType.Grade) -> Array:
 			list = military_items.duplicate()
 		ItemType.Grade.PROTOTYPE:
 			list = prototype_items.duplicate()
+		ItemType.Grade.APEX_ANOMALY:
+			list = apex_anomaly_items.duplicate()
 	
 	list.shuffle()
 	return list.slice(0, pickup_slot_amount)

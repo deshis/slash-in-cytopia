@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://cev4768d6kdbs" path="res://Assets/ui/UI_player_defeated.png" id="19_pbtju"]
 [ext_resource type="Script" uid="uid://6jore1um42bw" path="res://Scripts/ui/game_over.gd" id="23_vxf74"]
 
-
 [sub_resource type="ImageTexture" id="ImageTexture_36s6t"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8gbba"]
@@ -309,6 +308,22 @@ script = ExtResource("9_pbtju")
 slot_name = "Survivability"
 type = 1
 
+[node name="Survivability2" parent="Inventory/AugmentSlots" unique_id=846119843 instance=ExtResource("10_36s6t")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 183.0
+offset_top = 144.0
+offset_right = 267.0
+offset_bottom = 228.0
+grow_horizontal = 1
+grow_vertical = 1
+script = ExtResource("9_pbtju")
+slot_name = "Survivability"
+type = 1
+
 [node name="Movement" parent="Inventory/AugmentSlots" unique_id=1643619528 instance=ExtResource("10_36s6t")]
 layout_mode = 0
 anchors_preset = 0
@@ -317,6 +332,22 @@ anchor_bottom = 0.0
 offset_left = 516.0
 offset_top = 594.0
 offset_right = 600.0
+offset_bottom = 678.0
+grow_horizontal = 1
+grow_vertical = 1
+script = ExtResource("9_pbtju")
+slot_name = "Movement"
+type = 2
+
+[node name="Movement2" parent="Inventory/AugmentSlots" unique_id=1230536516 instance=ExtResource("10_36s6t")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 604.0
+offset_top = 594.0
+offset_right = 688.0
 offset_bottom = 678.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -347,6 +378,22 @@ anchor_bottom = 0.0
 offset_left = 516.0
 offset_top = 144.0
 offset_right = 600.0
+offset_bottom = 228.0
+grow_horizontal = 1
+grow_vertical = 1
+script = ExtResource("9_pbtju")
+slot_name = "Damage"
+type = 4
+
+[node name="Damage2" parent="Inventory/AugmentSlots" unique_id=1180873162 instance=ExtResource("10_36s6t")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 604.0
+offset_top = 144.0
+offset_right = 688.0
 offset_bottom = 228.0
 grow_horizontal = 1
 grow_vertical = 1

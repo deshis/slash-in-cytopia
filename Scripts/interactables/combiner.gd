@@ -31,6 +31,13 @@ func combine_items() -> void:
 		var loot_table = generate_loot_table(ItemType.Grade.PROTOTYPE)
 		LootDatabase.drop_loot(self, loot_table, loot_impulse_strength)
 	
+	# prototype -> apex anomaly
+	elif slots[2].size() >= item_combine_amount:
+		use_amount -= 1
+		destroy_items(slots[2])
+		var loot_table = generate_loot_table(ItemType.Grade.APEX_ANOMALY)
+		LootDatabase.drop_loot(self, loot_table, loot_impulse_strength)
+	
 	if use_amount <= 0:
 		get_node("InteractLabel").queue_free()
 
@@ -66,17 +73,21 @@ func generate_loot_table(rarity: ItemType.Grade) -> LootTable:
 	var loot_table = LootTable.new()
 	var military = 0
 	var prototype = 0
+	var apex_anomaly = 0
 	
 	match rarity:
 		ItemType.Grade.MILITARY:
 			military = 1
 		ItemType.Grade.PROTOTYPE:
 			prototype = 1
+		ItemType.Grade.APEX_ANOMALY:
+			apex_anomaly = 1
 	
 	loot_table.loot_rarity_weights = {
 		"consumer": 0,
 		"military": military,
 		"prototype": prototype,
+		"apex_anomaly": apex_anomaly,
 	}
 	
 	loot_table.loot_drop_chance = 1

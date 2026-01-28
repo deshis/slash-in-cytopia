@@ -56,6 +56,8 @@ enum Stat {
 	
 	DASH_TURNING,
 	DASH_ATTACK,
+	
+	EXTRA_AUG_SLOTS,
 	}
 
 func apply_effect(player) -> void:
@@ -151,6 +153,9 @@ func apply_effect(player) -> void:
 		Stat.DASH_ATTACK:
 			player.dash_attack_mult += value
 			player.attack_during_dash = true
+		
+		Stat.EXTRA_AUG_SLOTS:
+			InventoryManager.enable_extra_augment_slots()
 
 func remove_effect(player) -> void:
 	match stat_type:
@@ -245,3 +250,6 @@ func remove_effect(player) -> void:
 		Stat.DASH_ATTACK:
 			player.dash_attack_mult -= value
 			player.attack_during_dash = false
+		
+		Stat.EXTRA_AUG_SLOTS:
+			InventoryManager.disable_extra_augment_slots()

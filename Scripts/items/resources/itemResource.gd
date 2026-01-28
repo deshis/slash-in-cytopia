@@ -50,6 +50,8 @@ const STAT_BEHAVIOR := {
 	Stats.Stat.LOOT_DROP_CHANCE: { DESC: "loot drop chance", PERCENT: true },
 	Stats.Stat.LOOT_RARITY_INC_PERCENT: { DESC: "chance to upgrade loot", PERCENT: true },
 	Stats.Stat.PICKUP_LOOT_AMOUNT: { DESC: "loot drop slots" },
+	
+	Stats.Stat.EXTRA_AUG_SLOTS: { DESC: "augment slot for damage,\n survivability and movement"}
 }
 
 #CRITICAL: DEFINITELY SYNC THESE WITH THE STATS

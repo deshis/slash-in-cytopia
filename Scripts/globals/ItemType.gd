@@ -14,7 +14,8 @@ enum Type {
 enum Grade {
 	CONSUMER,
 	MILITARY,
-	PROTOTYPE
+	PROTOTYPE,
+	APEX_ANOMALY
 }
 
 enum AttackType {
