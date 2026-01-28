@@ -7,13 +7,36 @@
 [sub_resource type="Resource" id="Resource_6jpnv"]
 script = ExtResource("1_xgsmm")
 stat_type = 21
-value = 20.0
+value = 25.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_daxb8"]
+script = ExtResource("1_xgsmm")
+value = 2.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_xgsmm"]
+script = ExtResource("1_xgsmm")
+stat_type = 2
+value = 0.5
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_d856w"]
+script = ExtResource("1_xgsmm")
+stat_type = 18
+value = -0.115
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_wsy4x"]
+script = ExtResource("1_xgsmm")
+stat_type = 4
+value = -0.5
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [resource]
 script = ExtResource("3_wsy4x")
 item_name = "Crystal Shell"
-type = 3
+type = 1
 icon = ExtResource("2_daxb8")
-effects = Array[ExtResource("1_xgsmm")]([SubResource("Resource_6jpnv")])
+effects = Array[ExtResource("1_xgsmm")]([SubResource("Resource_6jpnv"), SubResource("Resource_daxb8"), SubResource("Resource_xgsmm"), SubResource("Resource_d856w"), SubResource("Resource_wsy4x")])
 metadata/_custom_type_script = "uid://dulvf1v1d8so8"

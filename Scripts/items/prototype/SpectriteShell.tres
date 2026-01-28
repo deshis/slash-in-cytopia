@@ -7,20 +7,37 @@
 [sub_resource type="Resource" id="Resource_6jpnv"]
 script = ExtResource("1_br0cw")
 stat_type = 21
-value = 80.0
+value = 75.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_p728d"]
+script = ExtResource("1_br0cw")
+value = 6.0
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [sub_resource type="Resource" id="Resource_kxgnp"]
 script = ExtResource("1_br0cw")
 stat_type = 2
-value = 0.5
+value = 1.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_vguwk"]
+script = ExtResource("1_br0cw")
+stat_type = 19
+value = -0.115
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_tslu4"]
+script = ExtResource("1_br0cw")
+stat_type = 4
+value = -0.5
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [resource]
 script = ExtResource("3_xah6d")
 item_name = "Spectrite Shell"
-type = 3
+type = 1
 grade = 2
 icon = ExtResource("2_kxgnp")
-effects = Array[ExtResource("1_br0cw")]([SubResource("Resource_6jpnv"), SubResource("Resource_kxgnp")])
+effects = Array[ExtResource("1_br0cw")]([SubResource("Resource_6jpnv"), SubResource("Resource_p728d"), SubResource("Resource_kxgnp"), SubResource("Resource_vguwk"), SubResource("Resource_tslu4")])
 metadata/_custom_type_script = "uid://dulvf1v1d8so8"

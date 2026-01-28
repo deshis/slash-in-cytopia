@@ -7,7 +7,13 @@
 [sub_resource type="Resource" id="Resource_qp0c6"]
 script = ExtResource("1_7vi2j")
 stat_type = 22
-value = 7.5
+value = 7.0
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_8p02d"]
+script = ExtResource("1_7vi2j")
+stat_type = 20
+value = 7.0
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [resource]
@@ -15,5 +21,5 @@ script = ExtResource("3_gxo32")
 item_name = "One Leaf Clover"
 type = 3
 icon = ExtResource("2_8p02d")
-effects = Array[ExtResource("1_7vi2j")]([SubResource("Resource_qp0c6")])
+effects = Array[ExtResource("1_7vi2j")]([SubResource("Resource_qp0c6"), SubResource("Resource_8p02d")])
 metadata/_custom_type_script = "uid://dulvf1v1d8so8"

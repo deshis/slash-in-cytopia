@@ -20,6 +20,7 @@ var consumer_items := [
 	# ACTIVE_ITEM
 	preload("res://Scripts/items/consumer/TestActiveItem.tres"),
 	preload("res://Scripts/items/consumer/UsedNeuroblockers.tres"),
+	preload("res://Scripts/items/consumer/Brick.tres"),
 	
 	# PRIMARY_ATTACK
 	preload("res://Scripts/items/consumer/ChromeTippedSpear.tres"),
