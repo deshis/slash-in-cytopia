@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://mfnmbfkdy55d"]
 
 [ext_resource type="PackedScene" uid="uid://bjqe6n33mjx0d" path="res://Assets/environment/foliage/grass_plane.glb" id="1_wh6qu"]
+[ext_resource type="Material" uid="uid://bmifxuqdgick0" path="res://Assets/environment/foliage/grass.tres" id="2_n44tq"]
 
-[node name="grass_plane" unique_id=1440189800 instance=ExtResource("1_wh6qu")]
+[node name="grass_plane" unique_id=737076300 instance=ExtResource("1_wh6qu")]
+
+[node name="Plane" parent="." index="0" unique_id=1282618824]
+surface_material_override/0 = ExtResource("2_n44tq")
