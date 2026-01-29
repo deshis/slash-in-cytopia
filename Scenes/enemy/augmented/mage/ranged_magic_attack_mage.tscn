@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddex5x8vjef88"]
+[gd_scene format=3 uid="uid://ddex5x8vjef88"]
 
-[ext_resource type="Shader" uid="uid://344gstuhtvey" path="res://Assets/effects/magic/magic_circle.gdshader" id="1_73ky8"]
+[ext_resource type="Shader" uid="uid://344gstuhtvey" path="res://Assets/vfx/magic/magic_circle.gdshader" id="1_73ky8"]
 [ext_resource type="ArrayMesh" uid="uid://dj3oe35rc5d3o" path="res://Assets/enemy/mage/magic_flare.res" id="2_uuj5p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uuj5p"]

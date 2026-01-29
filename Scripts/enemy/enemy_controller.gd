@@ -37,7 +37,7 @@ var enemy_frozen := false
 var hit_flash_timer: Timer
 var hit_flash_duration := 0.15
 var hit_flash
-var hit_flash_material = preload("res://Assets/effects/hit_flash/hit_flash.tres")
+var hit_flash_material = preload("res://Assets/vfx/hit_flash/hit_flash.tres")
 
 # ATTACK
 @export var attack: PackedScene = null

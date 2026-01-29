@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://diws2buqgorvv"]
+
+[ext_resource type="Shader" uid="uid://dd6y3jqiyq4ej" path="res://Assets/vfx/hit_flash/hit_flash.gdshader" id="1_on2i3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_on2i3")
+shader_parameter/strength = 0.0

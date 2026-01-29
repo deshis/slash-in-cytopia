@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bc23pj2ij86kk"]
+
+[ext_resource type="Shader" uid="uid://4hwgr3jdxls" path="res://Assets/vfx/slash/slash.gdshader" id="1_s7ko6"]
+[ext_resource type="Texture2D" uid="uid://c4to5uo6rpnur" path="res://Assets/vfx/slash/slash_erosion.png" id="2_27o1f"]
+[ext_resource type="Texture2D" uid="uid://dg11j431speyx" path="res://Assets/vfx/slash/slash_tex.png" id="3_27o1f"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_s7ko6")
+shader_parameter/base_color = Color(0.42352942, 0.42352942, 0.42352942, 0.89411765)
+shader_parameter/highlight_color = Color(1, 1, 1, 0.7058824)
+shader_parameter/texture_albedo = ExtResource("3_27o1f")
+shader_parameter/erosion_texture = ExtResource("2_27o1f")
+shader_parameter/highlight_scale = 1.2000000095
+shader_parameter/erosion = 0.050000002375
+shader_parameter/fade = 0.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

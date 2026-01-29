@@ -1,11 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dvjxfoukpyxiu"]
+[gd_scene format=3 uid="uid://dvjxfoukpyxiu"]
 
-[ext_resource type="Shader" uid="uid://344gstuhtvey" path="res://Assets/effects/magic/magic_circle.gdshader" id="1_73ky8"]
+[ext_resource type="Shader" uid="uid://344gstuhtvey" path="res://Assets/vfx/magic/magic_circle.gdshader" id="1_73ky8"]
 [ext_resource type="ArrayMesh" uid="uid://4j44jtq5ds0n" path="res://Assets/enemy/mage/magic_circle.res" id="1_mipin"]
 [ext_resource type="Script" uid="uid://dtkihblrjwjo2" path="res://Scripts/enemy/normal/mage/ranged_magic_attack.gd" id="1_r5b78"]
-[ext_resource type="Texture2D" uid="uid://dj6kc3a5xucbq" path="res://Assets/effects/magic/pulse.png" id="4_8ipa7"]
-[ext_resource type="Shader" uid="uid://c1lmfjj2g5oxx" path="res://Assets/effects/magic/magic_blast.gdshader" id="4_fkiw7"]
-[ext_resource type="Texture2D" uid="uid://daip0sr333i42" path="res://Assets/effects/magic/erosion_texture.png" id="5_fkiw7"]
+[ext_resource type="Texture2D" uid="uid://dj6kc3a5xucbq" path="res://Assets/vfx/magic/pulse.png" id="4_8ipa7"]
+[ext_resource type="Shader" uid="uid://c1lmfjj2g5oxx" path="res://Assets/vfx/magic/magic_blast.gdshader" id="4_fkiw7"]
+[ext_resource type="Texture2D" uid="uid://daip0sr333i42" path="res://Assets/vfx/magic/erosion_texture.png" id="5_fkiw7"]
 [ext_resource type="ArrayMesh" uid="uid://dj3oe35rc5d3o" path="res://Assets/enemy/mage/magic_flare.res" id="6_bkkqw"]
 
 [sub_resource type="Gradient" id="Gradient_iru8m"]

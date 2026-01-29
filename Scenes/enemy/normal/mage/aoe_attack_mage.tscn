@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://di0yisambo68k"]
+[gd_scene format=3 uid="uid://di0yisambo68k"]
 
 [ext_resource type="Script" uid="uid://bsqk1o4xtv20x" path="res://Scripts/enemy/normal/mage/aoe_attack_mage.gd" id="1_wwa4c"]
-[ext_resource type="Shader" uid="uid://b8iblmoq1ynr7" path="res://Assets/effects/magic/magic_aoe_blast.gdshader" id="2_k4bhx"]
-[ext_resource type="Texture2D" uid="uid://daip0sr333i42" path="res://Assets/effects/magic/erosion_texture.png" id="3_n2h7i"]
+[ext_resource type="Shader" uid="uid://b8iblmoq1ynr7" path="res://Assets/vfx/magic/magic_aoe_blast.gdshader" id="2_k4bhx"]
+[ext_resource type="Texture2D" uid="uid://daip0sr333i42" path="res://Assets/vfx/magic/erosion_texture.png" id="3_n2h7i"]
 [ext_resource type="ArrayMesh" uid="uid://4j44jtq5ds0n" path="res://Assets/enemy/mage/magic_circle.res" id="4_hoel1"]
-[ext_resource type="Texture2D" uid="uid://c5okhx5774ilm" path="res://Assets/effects/impact/impact_tex.png" id="4_vel0m"]
+[ext_resource type="Texture2D" uid="uid://c5okhx5774ilm" path="res://Assets/vfx/impact/impact_tex.png" id="4_vel0m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n2h7i"]
 render_priority = 0

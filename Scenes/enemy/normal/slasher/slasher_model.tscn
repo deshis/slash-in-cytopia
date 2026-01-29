@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtmntfwnrv3ig"]
+[gd_scene format=3 uid="uid://dtmntfwnrv3ig"]
 
 [ext_resource type="PackedScene" uid="uid://dpw0yx7k2op5e" path="res://Assets/enemy/slasher/slasher.glb" id="1_2xu6g"]
-[ext_resource type="ArrayMesh" path="res://Assets/player/weapons/sword.res" id="2_7scrd"]
-[ext_resource type="Shader" uid="uid://4hwgr3jdxls" path="res://Assets/effects/slash/slash.gdshader" id="2_ptm0w"]
-[ext_resource type="Texture2D" uid="uid://q04o05q62k23" path="res://Assets/effects/slash/energy_slash.png" id="4_k7c8y"]
+[ext_resource type="ArrayMesh" uid="uid://diakqbwpn4uyl" path="res://Assets/player/weapons/sword.res" id="2_7scrd"]
+[ext_resource type="Shader" uid="uid://4hwgr3jdxls" path="res://Assets/vfx/slash/slash.gdshader" id="2_ptm0w"]
+[ext_resource type="Texture2D" uid="uid://q04o05q62k23" path="res://Assets/vfx/slash/energy_slash.png" id="4_k7c8y"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_latqk"]
 

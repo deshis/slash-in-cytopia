@@ -16,7 +16,7 @@ var spawner: EnemySpawner = null
 var portaldoor= preload("res://Assets/portal/portal.tscn")
 
 var stages := [
-	preload("res://Scenes/forest/forest_test_variety.tscn"),
+	preload("res://Scenes/level/forest/forest_test_variety.tscn"),
 	preload("res://Scenes/level/indoor/indoor.tscn"),
 	preload("res://Scenes/level/indoor/boss_lab.tscn")
 ]

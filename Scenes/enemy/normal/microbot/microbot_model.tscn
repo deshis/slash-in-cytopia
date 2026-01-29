@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpp1xnash21x2"]
+[gd_scene format=3 uid="uid://cpp1xnash21x2"]
 
 [ext_resource type="PackedScene" uid="uid://bsfn5eblbq7qw" path="res://Assets/enemy/microbot/microbot.glb" id="1_86sj6"]
-[ext_resource type="Shader" uid="uid://cv55fdtqonax8" path="res://Assets/effects/impact/impact.gdshader" id="3_k2fx4"]
-[ext_resource type="Texture2D" uid="uid://c5okhx5774ilm" path="res://Assets/effects/impact/impact_tex.png" id="4_qplab"]
+[ext_resource type="Shader" uid="uid://cv55fdtqonax8" path="res://Assets/vfx/impact/impact.gdshader" id="3_k2fx4"]
+[ext_resource type="Texture2D" uid="uid://c5okhx5774ilm" path="res://Assets/vfx/impact/impact_tex.png" id="4_qplab"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fpnq0"]
 
