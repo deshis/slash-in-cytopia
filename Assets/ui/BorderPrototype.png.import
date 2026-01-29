@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg2sbtp0dqguw"
-path.s3tc="res://.godot/imported/TestItemBorder2.png-2f29dfa003ee7b8755277ea1e0872de5.s3tc.ctex"
+uid="uid://d0ppwbvva3e2u"
+path.s3tc="res://.godot/imported/BorderPrototype.png-c1150d079b441460e4da1682cbf92db0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/TestItemBorder2.png"
-dest_files=["res://.godot/imported/TestItemBorder2.png-2f29dfa003ee7b8755277ea1e0872de5.s3tc.ctex"]
+source_file="res://Assets/ui/BorderPrototype.png"
+dest_files=["res://.godot/imported/BorderPrototype.png-c1150d079b441460e4da1682cbf92db0.s3tc.ctex"]
 
 [params]
 

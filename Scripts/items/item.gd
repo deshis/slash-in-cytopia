@@ -194,16 +194,16 @@ func choose_border_texture() -> void:
 	var border_texture: Texture2D
 	
 	if grade_name == "Consumer":
-		border_texture = preload("res://Assets/ui/TestItemBorder3.png")
+		border_texture = preload("res://Assets/ui/BorderConsumer.png")
 		
 	if grade_name == "Military":
-		border_texture = preload("res://Assets/ui/TestItemBorder2.png")
+		border_texture = preload("res://Assets/ui/BorderMilitary.png")
 		
 	if grade_name == "Prototype":
-		border_texture = preload("res://Assets/ui/TestItemBorder.png")
-		
-	if grade_name == "Apex_Anomaly":
-		border_texture = preload("res://Assets/ui/TestItemBorder.png")
+		border_texture = preload("res://Assets/ui/BorderPrototype.png")
+	
+	if grade_name == "Apex Anomaly":
+		border_texture = preload("res://Assets/ui/BorderApex.png")
 	
 	border.texture = border_texture
 
