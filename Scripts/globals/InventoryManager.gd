@@ -132,6 +132,9 @@ func move_item(origin_slot: InventorySlot, new_slot: InventorySlot = null) -> vo
 		if pickup_slot != new_slot:
 			close_item_pickup_menu()
 	
+	if not new_slot:
+		new_slot = origin_slot
+	
 	place_or_swap(item, origin_slot, new_slot)
 	update_inventory_data()
 
