@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dbfkvxug6rcx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_leldo"]
+transparency = 1
+albedo_color = Color(0.74, 0, 0, 0.9764706)
+
+[sub_resource type="SphereMesh" id="SphereMesh_f16xd"]
+material = SubResource("StandardMaterial3D_leldo")
+radius = 1.0
+height = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=1151328164]
+mesh = SubResource("SphereMesh_f16xd")

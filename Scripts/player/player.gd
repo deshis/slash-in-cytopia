@@ -106,6 +106,10 @@ var can_active_item := true
 @onready var animator = $"model/AnimationPlayer"
 @onready var weapon_mesh = $model/rig/Skeleton3D/BoneAttachment3D/Weapon/Mesh
 
+# DAMAGE MODEL
+
+var area_damage_indicator = preload("res://Scenes/items/AreaDamageIndicator.tscn")
+
 # THROWABLES
 var brick_scene = preload("res://Scenes/items/brick.tscn")
 @onready var throw_point = $"ThrowPoint"
@@ -450,7 +454,16 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 			change_state(DASH)
 			
 		ActiveEffectResource.ActiveType.DAMAGE_AOE:
-
+			
+			var area_damage_indicator_copy = area_damage_indicator.instantiate()
+			
+			get_tree().root.add_child(area_damage_indicator_copy)
+			area_damage_indicator_copy.global_position = global_position
+			area_damage_indicator_copy.scale = Vector3(radius, radius, radius)
+			
+			#Wait 0.5 seconds, then delete
+			get_tree().create_timer(0.5).timeout.connect(area_damage_indicator_copy.queue_free)
+			
 			var aoe_damage = active_effect.aoe_damage
 			var dot = active_effect.dot_resource.duplicate()
 			
@@ -703,7 +716,7 @@ func hitstop(duration: float) -> void:
 
 
 func update_closest_interactable() -> void:
-	if interactables.size() < 1:
+	if interactables.size() < 1.5:
 		return
 	
 	interactables.sort_custom(sort_dist_to_player)

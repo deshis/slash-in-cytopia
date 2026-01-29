@@ -88,7 +88,7 @@ var prototype_items := [
 	
 	# ACTIVE_ITEM
 	preload("res://Scripts/items/prototype/RealityFracture.tres"),
-	preload("res://Scripts/items/military/Vampirism.tres"),
+	preload("res://Scripts/items/prototype/Vampirism.tres"),
 	
 	# PRIMARY_ATTACK
 	preload("res://Scripts/items/prototype/ArcFlash.tres"),
