@@ -10,7 +10,6 @@ var health := max_health
 @export var cost := 2.0
 
 @export var health_per_level := 0.2
-@export var damage_per_level := 0.1
 
 var acceleration := 20.0
 var rotation_speed := 8.0

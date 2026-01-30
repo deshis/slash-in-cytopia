@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_4r28c"]
 script = ExtResource("1_mdnjn")
-value = 5.0
+value = 50.0
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [sub_resource type="Resource" id="Resource_7khyf"]
@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 [sub_resource type="Resource" id="Resource_mtacj"]
 script = ExtResource("1_mdnjn")
 stat_type = 1
-value = 0.1
+value = 1.0
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [sub_resource type="Resource" id="Resource_pka6w"]

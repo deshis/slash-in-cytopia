@@ -61,31 +61,31 @@ shader_parameter/erosion = 0.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_u4e4v"]
 radius = 1.65
 
-[node name="RangedMagicAttackMage2" type="Node3D"]
+[node name="RangedMagicAttackMage2" type="Node3D" unique_id=1448783837]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
 script = ExtResource("1_flbfx")
 pulse_speed = 5.0
 anticipation_duration = 2.2
-damage = 1.0
-damage_per_level = 0.08
+damage = 10.0
+damage_per_level = 0.8
 duration = 1.0
 follow = false
 
-[node name="Circle" type="MeshInstance3D" parent="."]
+[node name="Circle" type="MeshInstance3D" parent="." unique_id=794079618]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.4, 0)
 material_override = SubResource("ShaderMaterial_fkiw7")
 mesh = ExtResource("5_qjmt2")
 
-[node name="Blast" type="MeshInstance3D" parent="."]
+[node name="Blast" type="MeshInstance3D" parent="." unique_id=901930392]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.4, 0)
 visible = false
 material_override = SubResource("ShaderMaterial_iru8m")
 mesh = ExtResource("7_b6eu7")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=648534638]
 collision_layer = 16384
 collision_mask = 512
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=657408789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_u4e4v")

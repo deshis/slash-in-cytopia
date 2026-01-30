@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ActiveEffectResource" load_steps=3 format=3 uid="uid://dw566mrh6te1c"]
+[gd_resource type="Resource" script_class="ActiveEffectResource" format=3 uid="uid://dw566mrh6te1c"]
 
 [ext_resource type="Resource" uid="uid://ce4l0kmhn3iw5" path="res://Scripts/items/resources/RealityFractureDoT.tres" id="1_0j72h"]
 [ext_resource type="Script" uid="uid://rwrpa5fevhio" path="res://Scripts/items/resources/ActiveEffectResource.gd" id="1_l1igw"]
@@ -8,7 +8,7 @@ script = ExtResource("1_l1igw")
 active_type = 4
 active_effect_value = 8.0
 aoe_radius = 25.0
-aoe_damage = 1.5
+aoe_damage = 15.0
 active_effect_cooldown = 30.0
 dot_resource = ExtResource("1_0j72h")
 metadata/_custom_type_script = "uid://rwrpa5fevhio"

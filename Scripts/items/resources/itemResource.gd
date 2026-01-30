@@ -132,15 +132,15 @@ func get_formatted_stats() -> String:
 					dot_chance = e.value
 			
 			stat_string += get_sign(dot_chance)
-			stat_string += get_snapped_string(dot_chance)
+			stat_string += Helper.get_snapped_string(dot_chance)
 			stat_string += get_percent(true)
 			stat_string += " chance to "
 			stat_string += dot.dot_name
 			stat_string += " for\n"
 			var damage = dot.dot_tick_damage * (dot.dot_duration / dot.dot_tick_rate)
-			stat_string += get_snapped_string(damage)
+			stat_string += Helper.get_snapped_string(damage)
 			stat_string += " damage over "
-			stat_string += get_snapped_string(dot.dot_duration)
+			stat_string += Helper.get_snapped_string(dot.dot_duration)
 			stat_string += " seconds"
 			special_stats += colored_text(stat_string, dot.dot_item_desc_color) + "\n"
 			continue
@@ -154,18 +154,18 @@ func get_formatted_stats() -> String:
 					dot_chance = e.value
 			
 			stat_string += get_sign(dot_chance)
-			stat_string += get_snapped_string(dot_chance)
+			stat_string += Helper.get_snapped_string(dot_chance)
 			stat_string += get_percent(true)
 			stat_string += " chance to "
 			stat_string += debuff.debuff_name
 			stat_string += " for "
-			stat_string += get_snapped_string(debuff.debuff_duration)
+			stat_string += Helper.get_snapped_string(debuff.debuff_duration)
 			stat_string += " seconds"
 			special_stats += colored_text(stat_string, debuff.debuff_item_desc_color) + "\n"
 			continue
 		
 		stat_string += get_sign(value) 
-		stat_string += get_snapped_string(value)
+		stat_string += Helper.get_snapped_string(value)
 		stat_string += get_percent(behavior.get(PERCENT, false)) + " "
 		stat_string += behavior.get(DESC)
 		
@@ -191,11 +191,6 @@ func get_sign(value: float) -> String:
 	else:
 		return ""
 
-func get_snapped_string(value: float) -> String:
-	if value == int(value):
-		return str(int(value))
-	else:
-		return str(snappedf(value, 0.1))
 
 func get_relative_value(value, stat_type: Stats.Stat) -> float:
 	match stat_type:

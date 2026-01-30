@@ -4,7 +4,7 @@ class_name DifficultyManager
 @export var seconds_per_level := 20
 @export var enemy_spawn_amount_per_level := 0.2
 @export var credits_per_level := 0.3
-@export var heal_amount_per_level := 0.2
+@export var heal_amount_per_level := 2.0
 @export var augment_enemy_chance_per_level := 0.015
 
 var difficulty := 0.0

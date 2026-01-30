@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxhwn4dky6shb"]
+[gd_scene format=3 uid="uid://bxhwn4dky6shb"]
 
 [ext_resource type="Script" uid="uid://b6hmx5rlg6myc" path="res://Scripts/enemy/Attack.gd" id="1_xl5ob"]
 
@@ -6,17 +6,17 @@
 height = 3.0
 radius = 4.8
 
-[node name="Attack2" type="Node3D"]
+[node name="Attack2" type="Node3D" unique_id=911567007]
 script = ExtResource("1_xl5ob")
-damage = 3.0
-damage_per_level = 0.15
+damage = 30.0
+damage_per_level = 1.5
 duration = 1.7
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=68798014]
 collision_layer = 16384
 collision_mask = 512
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1627325306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_f713x")
 debug_color = Color(0.9641152, 0.17557746, 0.18122959, 1)

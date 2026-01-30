@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://0sl2ws8x8lck"]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://0sl2ws8x8lck"]
 
 [ext_resource type="Script" uid="uid://t76ghlhghorw" path="res://Scripts/enemy/EnemyStats.gd" id="1_tj2j6"]
 
@@ -6,8 +6,7 @@
 script = ExtResource("1_tj2j6")
 name = "Nanobot-300"
 speed = 10.5
-max_health = 0.4
 cost = 0.0
-health_per_level = 0.05
-damage_per_level = 0.03
+health_per_level = 0.5
+damage_per_level = 0.3
 metadata/_custom_type_script = "uid://t76ghlhghorw"

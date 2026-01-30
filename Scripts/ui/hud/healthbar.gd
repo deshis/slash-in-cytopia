@@ -15,7 +15,7 @@ func setup(c: Node, value: float, max_value: float) -> void:
 	
 	initialise_bars(value, max_value)
 	
-	rich_text_label.text = "%.1f / %.1f" % [clampf(value, 0.1, max_value), max_value]
+	rich_text_label.text = Helper.get_snapped_string(clampf(value, 0.0, max_value)) + " / " + Helper.get_snapped_string(max_value)
 	
 	visible = true
 	character.update_health_bar.connect(update_health)
@@ -42,7 +42,7 @@ func update_health(health:float, max_health:float = progress_bar.max_value)->voi
 	green_bar.max_value = max_health
 	orange_bar.max_value = max_health
 	
-	rich_text_label.text = "%.1f / %.1f" % [clampf(health, 0.1, max_health) , max_health]
+	rich_text_label.text = Helper.get_snapped_string(clampf(health, 0.0, max_health)) + " / " + Helper.get_snapped_string(max_health)
 
 
 func _physics_process(_delta: float) -> void:

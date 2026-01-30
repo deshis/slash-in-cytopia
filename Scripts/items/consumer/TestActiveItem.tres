@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 [resource]
 script = ExtResource("2_3jxtt")
 item_name = "Mender Chip"
-item_stat_info = "On use: heal 3 health"
+item_stat_info = "On use: heal 30 health"
 item_description = "Cooldown: 15 sec"
 type = 5
 icon = ExtResource("3_m7r36")

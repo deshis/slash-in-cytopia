@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 [sub_resource type="Resource" id="Resource_28isr"]
 script = ExtResource("1_f1mrk")
 stat_type = 1
-value = 0.2
+value = 2.0
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [sub_resource type="Resource" id="Resource_ldv8l"]

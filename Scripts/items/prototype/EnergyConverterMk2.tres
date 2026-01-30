@@ -7,13 +7,13 @@
 [sub_resource type="Resource" id="Resource_qp0c6"]
 script = ExtResource("1_kak8u")
 stat_type = 5
-value = -0.75
+value = -7.5
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [sub_resource type="Resource" id="Resource_hq16e"]
 script = ExtResource("1_kak8u")
 stat_type = 6
-value = 1.4
+value = 14.0
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [resource]

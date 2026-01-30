@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://cp84x7kb4ufke"]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://cp84x7kb4ufke"]
 
 [ext_resource type="Script" uid="uid://t76ghlhghorw" path="res://Scripts/enemy/EnemyStats.gd" id="1_3avky"]
 
@@ -7,9 +7,8 @@ script = ExtResource("1_3avky")
 name = "Augmented Kheel"
 type = 1
 speed = 3.5
-max_health = 6.0
-damage = 4.0
+max_health = 60.0
 cost = 3.0
-health_per_level = 0.3
-damage_per_level = 0.05
+health_per_level = 3.0
+damage_per_level = 0.5
 metadata/_custom_type_script = "uid://t76ghlhghorw"

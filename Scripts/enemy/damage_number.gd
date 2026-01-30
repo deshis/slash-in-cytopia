@@ -1,11 +1,13 @@
 extends Node3D
 
+var decimal_step := 0.1
+
 @onready var timer: Timer = $Timer
 @onready var label_3d: Label3D = $Label3D
 
 func initialise(dmg:float, pos:Vector3) -> void:
 	position = pos
-	label_3d.text = str(dmg)
+	label_3d.text = "-" + Helper.get_snapped_string(dmg, decimal_step)
 	timer.start(1.0)
 	
 	position.x += randf_range(-0.5, 0.5)

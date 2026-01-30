@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DotResource" load_steps=3 format=3 uid="uid://ggdtprqadem7"]
+[gd_resource type="Resource" script_class="DotResource" format=3 uid="uid://ggdtprqadem7"]
 
 [ext_resource type="PackedScene" uid="uid://bn26kn4nhfwt7" path="res://Scenes/particles/player_on_hit.tscn" id="1_bcd7x"]
 [ext_resource type="Script" uid="uid://ko57id0ce143" path="res://Scripts/items/resources/DotResource.gd" id="2_w2j22"]
@@ -7,7 +7,7 @@
 script = ExtResource("2_w2j22")
 dot_name = "Bleed"
 dot_item_desc_color = "#fa0000"
-dot_tick_damage = 0.75
+dot_tick_damage = 7.5
 dot_tick_rate = 0.8
 particle_scene = ExtResource("1_bcd7x")
 metadata/_custom_type_script = "uid://ko57id0ce143"

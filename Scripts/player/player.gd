@@ -15,8 +15,8 @@ signal game_over
 var interactables := []
 
 # PLAYER STATS
-@export var max_health := 10.0
-@export var health := 10.0
+@export var max_health := 100.0
+var health := max_health
 var health_regen:= 0.0
 
 var percent_damage_reduction := 0
@@ -55,8 +55,8 @@ var attack_during_dash := false
 var dash_attack_mult := 0.0
 
 # ATTACKS
-@export var attack_light_damage := 1.0
-@export var attack_heavy_damage := 2.0
+@export var attack_light_damage := 10.0
+@export var attack_heavy_damage := 20.0
 @export var crit_chance := 1.0
 
 @onready var light_attack = $LightAttack
@@ -137,7 +137,6 @@ const LIGHT_ATTACK_WINDUP = "light_attack_windup"
 const LIGHT_ATTACK = "light_attack"
 const HEAVY_ATTACK_WINDUP = "heavy_attack_windup"
 const HEAVY_ATTACK = "heavy_attack"
-
 
 
 func _ready() -> void:
@@ -811,7 +810,7 @@ func _on_heavy_attack_area_entered(area: Area3D) -> void:
 
 func _on_health_radius_area_entered(area: Area3D) -> void:
 	var diff = GameManager.spawner.diff
-	var heal_amount = 1.5 + diff.get_difficulty() * diff.heal_amount_per_level
+	var heal_amount = 15.0 + diff.get_difficulty() * diff.heal_amount_per_level
 	heal(heal_amount)
 	
 	SoundManager.play_sfx("heal", global_position)

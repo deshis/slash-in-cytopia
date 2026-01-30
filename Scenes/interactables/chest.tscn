@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctnsonp5fhgsn"]
+[gd_scene format=3 uid="uid://ctnsonp5fhgsn"]
 
 [ext_resource type="Script" uid="uid://n76c1vn6mwme" path="res://Scripts/interactables/destroyable.gd" id="1_lljn5"]
 [ext_resource type="Resource" uid="uid://bgptb27bahneb" path="res://Scripts/globals/loot_table_chest.tres" id="2_7cbq3"]
@@ -8,24 +8,24 @@ radius = 0.3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7cbq3"]
 
-[node name="Chest" type="Node3D"]
+[node name="Chest" type="Node3D" unique_id=300150525]
 script = ExtResource("1_lljn5")
 loot_table = ExtResource("2_7cbq3")
 
-[node name="Hitbox" type="StaticBody3D" parent="."]
+[node name="Hitbox" type="StaticBody3D" parent="." unique_id=437107714]
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape" type="CollisionShape3D" parent="Hitbox" unique_id=772612374]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_ursst")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=459866241]
 collision_layer = 8192
 collision_mask = 8192
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox" unique_id=106283508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_7cbq3")
 
-[node name="Mesh" type="CSGCylinder3D" parent="."]
+[node name="Mesh" type="CSGCylinder3D" parent="." unique_id=1927564901]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

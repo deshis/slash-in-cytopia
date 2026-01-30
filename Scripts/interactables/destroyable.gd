@@ -1,7 +1,7 @@
 extends Node3D
 class_name Destroyable
 
-@export var health := 4.0
+@export var health := 40.0
 @export var shake_duration := 0.1
 @export var shake_strength := 0.1
 @export var shake_interval := 0.02

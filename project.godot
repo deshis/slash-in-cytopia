@@ -35,6 +35,7 @@ InventoryManager="*res://Scripts/globals/InventoryManager.gd"
 GameStats="*res://Scripts/globals/GameStats.gd"
 ItemGlobals="*res://Scripts/globals/ItemGlobals.gd"
 ProfileManager="*res://Scripts/globals/ProfileManager.gd"
+Helper="*uid://cud05m64qjwb8"
 
 [debug]
 
