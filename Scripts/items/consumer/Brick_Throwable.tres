@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://dh2el8hxhviui"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_jr8ey"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_pf36g"]
+[ext_resource type="Resource" uid="uid://c85vau41wqfdm" path="res://Scripts/items/resources/ThrowableResource/Brick.tres" id="2_whdqg"]
+[ext_resource type="Texture2D" uid="uid://bks88ucfuabrg" path="res://Assets/items/icons/Consumer/Brick.png" id="3_whdqg"]
+
+[sub_resource type="Resource" id="Resource_2oipq"]
+script = ExtResource("1_jr8ey")
+stat_type = 33
+throwable_resource = ExtResource("2_whdqg")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_pf36g")
+item_name = "Brick Throwable Slot"
+item_stat_info = "test"
+item_description = "test"
+type = 8
+icon = ExtResource("3_whdqg")
+effects = Array[ExtResource("1_jr8ey")]([SubResource("Resource_2oipq")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

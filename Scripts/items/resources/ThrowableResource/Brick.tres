@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ThrowableResource" format=3 uid="uid://c85vau41wqfdm"]
+
+[ext_resource type="Script" uid="uid://bwqwn07goaljh" path="res://Scripts/items/resources/ThrowableResource.gd" id="1_6yef4"]
+
+[resource]
+script = ExtResource("1_6yef4")
+set_facing_direction = true
+pierce = true
+aoe_radius = 1.4
+aoe_damage = 1.0
+throwable_cooldown = 0.1
+throw_force = 3.0
+upward_arc = 1.0
+metadata/_custom_type_script = "uid://bwqwn07goaljh"

@@ -6,6 +6,7 @@ class_name Stats
 @export var dot_resource: DotResource
 @export var debuff_resource: DebuffResource
 @export var active_effect_resource: ActiveEffectResource
+@export var throwable_resource: ThrowableResource
 
 signal update_health_bar
 
@@ -58,6 +59,7 @@ enum Stat {
 	DASH_ATTACK,
 	
 	EXTRA_AUG_SLOTS,
+	THROWABLE
 	}
 
 func apply_effect(player) -> void:
@@ -156,6 +158,10 @@ func apply_effect(player) -> void:
 		
 		Stat.EXTRA_AUG_SLOTS:
 			InventoryManager.enable_extra_augment_slots()
+			
+		Stat.THROWABLE:
+			if throwable_resource:
+				player.active_throwable_resource = throwable_resource
 
 func remove_effect(player) -> void:
 	match stat_type:
@@ -253,3 +259,7 @@ func remove_effect(player) -> void:
 		
 		Stat.EXTRA_AUG_SLOTS:
 			InventoryManager.disable_extra_augment_slots()
+			
+		Stat.THROWABLE:
+			if throwable_resource:
+				player.active_throwable_resource = null

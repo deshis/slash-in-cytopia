@@ -17,6 +17,7 @@ func _ready() -> void:
 	bgm_players = {
 		"common_bgm": load("res://Assets/audio/bgm.mp3")
 		
+		
 	}
 	
 	# TODO Hard-coded bgm_player, go with this before we have a proper level system and bgm for different levels.

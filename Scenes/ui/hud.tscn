@@ -235,6 +235,43 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_lkt4f")
 expand_mode = 2
 
+[node name="ThrowableItem" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=792240261]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_ba8gd")
+expand_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="SkillCooldowns/MarginContainer/HBoxContainer/ThrowableItem" unique_id=1654883381]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_kry3j")
+theme_override_styles/fill = SubResource("StyleBoxFlat_21xkr")
+fill_mode = 2
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="SkillCooldowns/MarginContainer/HBoxContainer/ThrowableItem" unique_id=748444578]
+one_shot = true
+
+[node name="Background" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ThrowableItem" unique_id=2093278690]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -34.5
+offset_right = 34.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lkt4f")
+expand_mode = 2
+
 [node name="Inventory" type="Control" parent="." unique_id=1756702059]
 process_mode = 3
 visible = false
@@ -445,6 +482,21 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 slot_name = "Brainchip"
 type = 5
+
+[node name="ThrowableItem" parent="Inventory/AugmentSlots" unique_id=1534490260 instance=ExtResource("10_36s6t")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 623.0
+offset_top = 464.0
+offset_right = 707.0
+offset_bottom = 548.0
+grow_horizontal = 1
+grow_vertical = 1
+script = ExtResource("9_pbtju")
+slot_name = "Throwable (NAME?)"
+type = 8
 
 [node name="TrashSlot" parent="Inventory" unique_id=654756306 instance=ExtResource("10_36s6t")]
 modulate = Color(1, 0, 0, 1)

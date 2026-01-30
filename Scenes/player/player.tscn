@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c7qe3c1q04hnv" path="res://Scripts/player/player.gd" id="1_eo61r"]
 [ext_resource type="Material" uid="uid://dhhknt7kteyse" path="res://Assets/player/materials/player_mat.tres" id="2_mnu3u"]
-[ext_resource type="Shader" uid="uid://4hwgr3jdxls" path="res://Assets/effects/slash/slash.gdshader" id="6_mj82b"]
-[ext_resource type="Texture2D" uid="uid://cy85se48blcs8" path="res://Assets/effects/spin_trail/spin.png" id="6_nyrd7"]
-[ext_resource type="Texture2D" uid="uid://dg11j431speyx" path="res://Assets/effects/slash/slash_tex.png" id="7_0rs8m"]
-[ext_resource type="Texture2D" uid="uid://cwhxuiydsf4bw" path="res://Assets/effects/slash/erosion_tex.png" id="8_ge7b5"]
-[ext_resource type="Material" uid="uid://dl6k6vdol5kxt" path="res://Assets/effects/impact/impact.tres" id="11_l71q1"]
+[ext_resource type="Shader" uid="uid://4hwgr3jdxls" path="res://Assets/vfx/slash/slash.gdshader" id="6_mj82b"]
+[ext_resource type="Texture2D" uid="uid://cy85se48blcs8" path="res://Assets/vfx/spin_trail/spin.png" id="6_nyrd7"]
+[ext_resource type="Texture2D" uid="uid://dg11j431speyx" path="res://Assets/vfx/slash/slash_tex.png" id="7_0rs8m"]
+[ext_resource type="Texture2D" uid="uid://cwhxuiydsf4bw" path="res://Assets/vfx/slash/erosion_tex.png" id="8_ge7b5"]
+[ext_resource type="Material" uid="uid://dl6k6vdol5kxt" path="res://Assets/vfx/impact/impact.tres" id="11_l71q1"]
 [ext_resource type="Animation" uid="uid://di4si2o4d8plm" path="res://Assets/player/animations/Dash.res" id="15_1larn"]
 [ext_resource type="Animation" uid="uid://mbww5et2k6fw" path="res://Assets/player/animations/Death.res" id="16_tiw0p"]
 [ext_resource type="Animation" uid="uid://cx0wr6dud71uw" path="res://Assets/player/animations/Heavy_attack_axe.res" id="17_ktyyn"]
@@ -1057,6 +1057,8 @@ autostart = true
 [node name="HitFlash" type="Timer" parent="Timers" unique_id=192333675]
 wait_time = 0.6
 one_shot = true
+
+[node name="ThrowableCooldownTimer" type="Timer" parent="Timers" unique_id=1279142291]
 
 [node name="model" type="Node3D" parent="." unique_id=91078354]
 
@@ -2728,6 +2730,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1397032, 0.67848736)
 [connection signal="timeout" from="Timers/DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="Timers/ItemActiveCooldownTimer" to="." method="_on_item_active_cooldown_timer_timeout"]
 [connection signal="timeout" from="Timers/HitFlash" to="." method="_on_hit_flash_timeout"]
+[connection signal="timeout" from="Timers/ThrowableCooldownTimer" to="." method="_on_throwable_cooldown_timer_timeout"]
 [connection signal="area_entered" from="LightAttack" to="." method="_on_light_attack_area_entered"]
 [connection signal="area_entered" from="HeavyAttack" to="." method="_on_heavy_attack_area_entered"]
 [connection signal="area_entered" from="DashAttackHitbox" to="." method="_on_dash_attack_hitbox_area_entered"]

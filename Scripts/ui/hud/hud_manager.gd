@@ -49,3 +49,7 @@ func set_cooldown_icon(icon: Texture2D, item_type: String) -> void:
 func remove_all_bars() -> void:
 	for bar in health_bar_pool:
 		bar.visible = false
+
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.

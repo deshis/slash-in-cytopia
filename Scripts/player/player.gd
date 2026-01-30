@@ -7,6 +7,7 @@ signal dash_used
 signal primary_attack_used
 signal secondary_attack_used
 signal active_item_used
+signal throwable_used
 
 signal item_picked_up(node: Node3D)
 
@@ -102,17 +103,23 @@ var picked_animation := false
 #@onready var active_item_icon
 var can_active_item := true
 
+
+# THROW 
+@onready var throwable_cooldown_timer: Timer = $Timers/ThrowableCooldownTimer
+@onready var throw_point = $"ThrowPoint"
+var brick_scene = preload("res://Scenes/items/brick.tscn")
+var can_throwable_item := true
+var active_throwable_resource: ThrowableResource = null
+
+
 # MODEL
 @onready var animator = $"model/AnimationPlayer"
 @onready var weapon_mesh = $model/rig/Skeleton3D/BoneAttachment3D/Weapon/Mesh
 
 # DAMAGE MODEL
-
 var area_damage_indicator = preload("res://Scenes/items/AreaDamageIndicator.tscn")
 
-# THROWABLES
-var brick_scene = preload("res://Scenes/items/brick.tscn")
-@onready var throw_point = $"ThrowPoint"
+
 
 # TAKING DAMAGE
 @export var hitstop_duration := 0.2
@@ -164,6 +171,9 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("active_item") and active_item_effect and can_active_item:
 		use_active_item(active_item_effect)
+		
+	if Input.is_action_just_pressed("throwable_item") and active_throwable_resource and can_throwable_item:
+		use_throwable_item(active_throwable_resource)
 	
 	if hit_flash_timer.time_left > 0:
 		blink()
@@ -387,6 +397,8 @@ func perform_heavy_attack() -> void:
 			SoundManager.play_sfx("heavy_attack_axe", global_position)
 		_:
 			SoundManager.play_sfx("heavy_attack_default", global_position)
+			
+
 
 func use_active_item(active_effect: ActiveEffectResource):
 	var active_item_cooldown = active_effect.active_effect_cooldown
@@ -510,6 +522,57 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 				var impulse = direction * throw_force
 				impulse.y = upward_arc
 				brick.apply_central_impulse(impulse)
+				
+func use_throwable_item(throw_resource: ThrowableResource):
+	var throwable_cooldown = throw_resource.throwable_cooldown
+	
+	can_throwable_item = false
+	throwable_cooldown_timer.start(throwable_cooldown)
+	throwable_used.emit(throwable_cooldown)
+	
+	SoundManager.play_sfx("effect_damage_Taken", global_position)
+	
+	throw(throw_resource)
+	
+func throw(throw_resource: ThrowableResource):
+	#var radius = throw_resource.aoe_radius
+	var set_facing_direction = throw_resource.set_facing_direction
+	var throwable_fuse = throw_resource.fuse
+	var throwable_pierce = throw_resource.pierce
+	
+	var throw_force = throw_resource.throw_force
+	var upward_arc = throw_resource.upward_arc
+	
+	if set_facing_direction == true:
+		set_facing_dir() 
+		
+	#var dot = active_effect.dot_resource.duplicate()
+	var brick = brick_scene.instantiate()
+	
+	brick.fuse = throwable_fuse
+	brick.pierce = throwable_pierce
+	brick.aoe_damage = active_item_effect.aoe_damage
+	brick.aoe_radius = active_item_effect.aoe_radius
+			
+	get_tree().root.add_child(brick)
+			
+	brick.global_position = throw_point.global_position
+			
+	var cam = get_viewport().get_camera_3d()
+	var mouse_pos = get_viewport().get_mouse_position()
+	var from = cam.project_ray_origin(mouse_pos)
+	var to = cam.project_ray_normal(mouse_pos)
+			
+	var plane = Plane(Vector3.UP, global_position.y)
+	var hit_pos = plane.intersects_ray(from, to)
+	
+	if hit_pos:
+		#Normalize distance for throwables?
+		#var direction = (hit_pos - global_position).normalized() 
+		var direction = (hit_pos - global_position)
+		var impulse = direction * throw_force
+		impulse.y = upward_arc
+		brick.apply_central_impulse(impulse)
 
 
 func process_move(delta: float) -> void:	
@@ -759,6 +822,9 @@ func _on_dash_cooldown_timer_timeout() -> void:
 
 func _on_item_active_cooldown_timer_timeout() -> void:
 	can_active_item = true
+	
+func _on_throwable_cooldown_timer_timeout() -> void:
+	can_throwable_item = true
 
 func _on_light_attack_area_entered(area: Area3D) -> void:
 	deal_damage(area, attack_light_damage)
