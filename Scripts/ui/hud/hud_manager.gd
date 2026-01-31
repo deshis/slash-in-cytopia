@@ -21,7 +21,7 @@ func _ready() -> void:
 		instantiate_hp_bar()
 
 func instantiate_hp_bar() -> Control:
-	var bar = preload("res://Scenes/enemy/HPBar.tscn").instantiate()
+	var bar = preload("res://Scenes/enemy/hp_bar_enemy.tscn").instantiate()
 	bar.is_static = false
 	bar.visible = false
 	health_bars.add_child(bar)

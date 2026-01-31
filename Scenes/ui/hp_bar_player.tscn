@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dq80cdl8tixeo"]
+
+[ext_resource type="Script" uid="uid://b8rtnvnstvdg4" path="res://Scripts/ui/hud/healthbar.gd" id="1_ve1ry"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy76q"]
+bg_color = Color(0.35257247, 4.4220127e-07, 1.4439226e-07, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsiwr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsiwr"]
+bg_color = Color(0.78460205, 0.50372005, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avp23"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avp23"]
+bg_color = Color(0, 0.627451, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4br7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjvhh"]
+bg_color = Color(0.78431374, 0, 0, 1)
+
+[node name="HPBarPlayer" type="Control" unique_id=589468563]
+custom_minimum_size = Vector2(117, 25)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 415.6
+offset_bottom = 51.0
+script = ExtResource("1_ve1ry")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1545832686]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BackgroundBar" type="ProgressBar" parent="MarginContainer" unique_id=444239002]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_oy76q")
+show_percentage = false
+
+[node name="OrangeBar" type="ProgressBar" parent="MarginContainer" unique_id=1679303141]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_wsiwr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wsiwr")
+value = 3.05
+show_percentage = false
+
+[node name="GreenBar" type="ProgressBar" parent="MarginContainer" unique_id=2013786268]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_avp23")
+theme_override_styles/fill = SubResource("StyleBoxFlat_avp23")
+value = 3.05
+show_percentage = false
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer" unique_id=462144628]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_m4br7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jjvhh")
+value = 3.05
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1598527494]
+layout_mode = 2
+bbcode_enabled = true
+text = "1 / 100"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1

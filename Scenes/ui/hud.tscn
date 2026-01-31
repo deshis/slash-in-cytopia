@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cptm56sk2qede" path="res://Scripts/ui/hud/hud_manager.gd" id="1_36s6t"]
 [ext_resource type="Script" uid="uid://b3p4e86xoqqh3" path="res://Scripts/ui/hud/cooldowns.gd" id="2_36s6t"]
-[ext_resource type="PackedScene" uid="uid://dw5jqew75whcf" path="res://Scenes/enemy/HPBar.tscn" id="2_ajim5"]
+[ext_resource type="PackedScene" uid="uid://dq80cdl8tixeo" path="res://Scenes/ui/hp_bar_player.tscn" id="2_ium74"]
 [ext_resource type="Texture2D" uid="uid://dnop5pqrq8fbx" path="res://Assets/ui/DashIcon.png" id="4_0iicw"]
 [ext_resource type="Texture2D" uid="uid://b343ghjhwphjn" path="res://Assets/ui/punch.png" id="4_oersf"]
 [ext_resource type="Texture2D" uid="uid://cvquudwe72x8p" path="res://Assets/ui/kick.png" id="5_oersf"]
@@ -59,18 +59,7 @@ fill_from = Vector2(0.5, 0.5)
 script = ExtResource("1_36s6t")
 metadata/_edit_horizontal_guides_ = []
 
-[node name="HPBarPlayer" parent="." unique_id=1270549420 instance=ExtResource("2_ajim5")]
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 415.6
-offset_bottom = 51.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="HPBarPlayer" parent="." unique_id=589468563 instance=ExtResource("2_ium74")]
 
 [node name="HPBars" type="Node2D" parent="." unique_id=244677121]
 

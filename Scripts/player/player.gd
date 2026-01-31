@@ -696,7 +696,7 @@ func deal_damage(area: Area3D, amount: float, e: EnemyController = null) -> void
 	#In case of negative dmg, don't heal the enemies!
 	if amount < 0:
 		amount = 0
-		
+	
 	update_health_bar.emit(health)
 	
 	enemy.take_damage(amount)

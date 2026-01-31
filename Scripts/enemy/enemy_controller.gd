@@ -220,11 +220,6 @@ func _on_dot_tick() -> void:
 		enemy.health -= current_tick_damage
 		update_health_bar.emit(enemy.health)
 		
-		var instance = damage_number.instantiate()
-		add_child(instance)
-		instance.initialise(current_tick_damage, position)
-		instance.reparent(get_tree().get_root())
-		
 		SoundManager.play_sfx("dot_sfx", global_position)  #Might want DoT SFX here, maybe even separate depending on DoT (From resource)
 		
 		if active_dots.particle_scene:
@@ -366,11 +361,6 @@ func take_damage(damage:float) -> void:
 	GameManager.particles.emit_particles("on_hit", global_position, self)
 	
 	GameStats.total_damage_dealt += damage
-	
-	var instance = damage_number.instantiate()
-	add_child(instance)
-	instance.initialise(damage, position)
-	instance.reparent(get_tree().get_root())
 	
 	if enemy.health <= 0.0:
 		die()
