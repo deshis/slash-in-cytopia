@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bjqe6n33mjx0d"
-path="res://.godot/imported/grass_plane.glb-92abee341f7dad6977178a56b2c4c82f.scn"
+uid="uid://spu6ybsgkfxo"
+path="res://.godot/imported/trees.glb-b20a3db5cd15df8d22cb61df214f6077.scn"
 
 [deps]
 
-source_file="res://Assets/environment/foliage/grass_plane.glb"
-dest_files=["res://.godot/imported/grass_plane.glb-92abee341f7dad6977178a56b2c4c82f.scn"]
+source_file="res://Assets/environment/foliage/trees/trees.glb"
+dest_files=["res://.godot/imported/trees.glb-b20a3db5cd15df8d22cb61df214f6077.scn"]
 
 [params]
 
@@ -37,18 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"meshes": {
-"grass_plane_Plane_002": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/environment/foliage/grass_plane.res",
-"save_to_file/path": "uid://6b1sg8dx4pse"
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

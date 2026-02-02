@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dlmpevm4vwb4g"]
+
+[ext_resource type="Shader" uid="uid://l3xmt2edrl2y" path="res://Assets/environment/foliage/trees/leaves.gdshader" id="1_hfrb5"]
+[ext_resource type="Texture2D" uid="uid://bwnycbechew3v" path="res://Assets/environment/foliage/trees/leaves.png" id="2_bckvm"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_jjqsb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k2rrk"]
+render_priority = 0
+shader = ExtResource("1_hfrb5")
+shader_parameter/leaf_color = Color(0.440047, 0.6105342, 0.2554895, 1)
+shader_parameter/leaf_alpha = ExtResource("2_bckvm")
+shader_parameter/leaf_bend_amount = 0.7
+shader_parameter/light_steps = 3.0
+
+[node name="leaf" type="MeshInstance3D" unique_id=1484560587]
+mesh = SubResource("QuadMesh_jjqsb")
+surface_material_override/0 = SubResource("ShaderMaterial_k2rrk")

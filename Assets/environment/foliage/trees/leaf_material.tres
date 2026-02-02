@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dcmgq7a0uwirg"]
+
+[ext_resource type="Shader" uid="uid://l3xmt2edrl2y" path="res://Assets/environment/foliage/trees/leaves.gdshader" id="1_fdx81"]
+[ext_resource type="Texture2D" uid="uid://bwnycbechew3v" path="res://Assets/environment/foliage/trees/leaves.png" id="2_8te58"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fdx81")
+shader_parameter/color = Color(0.29360515, 0.43803975, 0, 1)
+shader_parameter/alpha = ExtResource("2_8te58")
+shader_parameter/leaves_scale = 0.7
+shader_parameter/leaf_bend_amount = 0.7
+shader_parameter/light_steps = 5.0

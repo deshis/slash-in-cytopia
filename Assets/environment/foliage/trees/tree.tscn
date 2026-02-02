@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://8r4pwmgy5thh"]
+
+[ext_resource type="PackedScene" uid="uid://spu6ybsgkfxo" path="res://Assets/environment/foliage/trees/trees.glb" id="1_brfkd"]
+[ext_resource type="Material" uid="uid://dcmgq7a0uwirg" path="res://Assets/environment/foliage/trees/leaf_material.tres" id="2_ytdn2"]
+[ext_resource type="Shader" uid="uid://dp145x6w65ey5" path="res://Assets/materials/shaders/cell_shader.gdshader" id="3_dh4q2"]
+
+[sub_resource type="Gradient" id="Gradient_dh4q2"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.2572026, 0.12862784, 0.002923847, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_enhcp"]
+gradient = SubResource("Gradient_dh4q2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7lp8"]
+render_priority = 0
+shader = ExtResource("3_dh4q2")
+shader_parameter/albedo_texture = SubResource("GradientTexture1D_enhcp")
+shader_parameter/light_steps = 3.0
+
+[node name="trees" unique_id=1744588643 instance=ExtResource("1_brfkd")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="Trunk" parent="." index="0" unique_id=1872940009]
+material_override = SubResource("ShaderMaterial_r7lp8")
+
+[node name="Leaves" parent="." index="1" unique_id=65659518]
+material_override = ExtResource("2_ytdn2")
