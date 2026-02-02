@@ -162,6 +162,7 @@ throwable_item={
 3d_physics/layer_2="Layer 2"
 2d_physics/layer_5="navigation"
 3d_physics/layer_5="navigation"
+3d_physics/layer_6="ragdolls"
 2d_physics/layer_9="player_hitbox"
 3d_physics/layer_9="player_hitbox"
 2d_physics/layer_10="player_hurtbox"
@@ -178,6 +179,10 @@ throwable_item={
 3d_physics/layer_17="ItemPickup"
 2d_physics/layer_18="health_pickup"
 3d_physics/layer_18="health_pickup"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
 
 [rendering]
 

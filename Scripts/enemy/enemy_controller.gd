@@ -56,8 +56,12 @@ const NAVIGATE = "navigate"
 const ATTACK = "attack"
 const STUN = "stun"
 const COOLDOWN = "cooldown"
+const RAGDOLL = "ragdoll"
 
-var damage_number = preload("res://Scenes/enemy/damage_number.tscn")
+
+var ragdoll
+var model
+var ragdoll_duration = 10.0
 
 
 func _ready() -> void:
@@ -91,6 +95,10 @@ func _ready() -> void:
 	add_child(hit_flash_timer)
 	
 	change_state(IDLE)
+	
+	ragdoll = get_node_or_null("model/rig/Skeleton3D/PhysicalBoneSimulator3D")
+	model = get_node_or_null("model/rig/Skeleton3D/Body")
+
 
 func _activate() -> void:
 	visible = true
@@ -107,6 +115,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	state_timer -= delta
+	
 	
 	match state:
 		IDLE:
@@ -383,11 +392,15 @@ func die(drop_loot: bool = true) -> void:
 	if drop_loot:
 		LootDatabase.drop_loot(self)
 	
-	return_to_pool()
+	if ragdoll and model:
+		spawn_ragdoll()
+	else:
+		return_to_pool()
 
 func return_to_pool() -> void:
 	visible = false
 	process_mode = Node.PROCESS_MODE_DISABLED
+	
 	health_bar.remove_health_bar()
 	
 	hit_flash.set_shader_parameter('strength',0.0)
@@ -446,3 +459,22 @@ func _on_navigation_agent_3d_target_reached() -> void:
 
 func _on_hit_flash_end():
 	hit_flash.set_shader_parameter('strength',0.0)
+
+func spawn_ragdoll()->void:
+	ragdoll.physical_bones_start_simulation()
+	
+	var tween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	tween.tween_property(model, "transparency", 1.0, ragdoll_duration)
+	tween.tween_callback(clean_up_ragdoll)
+	
+	
+	change_state(RAGDOLL, ragdoll_duration)
+
+
+func clean_up_ragdoll()->void:
+	ragdoll.physical_bones_stop_simulation()
+	model.transparency = 0
+	
+	change_state(IDLE)
+	
+	return_to_pool()
