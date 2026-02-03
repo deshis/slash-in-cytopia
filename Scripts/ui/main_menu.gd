@@ -99,7 +99,7 @@ func _setup_main_menu() -> void:
 #######################################################
 
 func _on_play_pressed() -> void:
-	GameManager.restart()
+	GameManager.new_game()
 
 
 func _on_quit_pressed() -> void:

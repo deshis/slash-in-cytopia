@@ -81,16 +81,21 @@ func boss_killed(boss: EnemyController) -> void:
 	GameStats.bosses_killed_by_type[boss.enemy.name] = GameStats.bosses_killed_by_type.get(boss.enemy.name, 0) + 1
 
 
-func restart() -> void:
-	ProfileManager.update_stats_from_run()
+func new_game() -> void:
 	GameStats.reset_game_stats()
-	
+	_setup_game()
+
+func restart() -> void:
+	GameStats.reset_game_stats()
+	_setup_game()
+
+func _setup_game() -> void:
 	for child in get_children():
 		child.queue_free()
-	
+
 	player = preload("res://Scenes/player/player.tscn").instantiate() as Player
 	add_child(player)
-	
+
 	starting_difficulty = 0.0
 	InventoryManager.reset_inventory()
 	LootDatabase.reset_loot_database()

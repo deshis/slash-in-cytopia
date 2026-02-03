@@ -535,9 +535,7 @@ func use_throwable_item(throw_resource: ThrowableResource):
 	throwable_used.emit(throwable_cooldown)
 	
 	GameStats.throwables_used += 1
-	
-	SoundManager.play_sfx("effect_damage_Taken", global_position)
-	
+
 	throw(throw_resource)
 	
 func throw(throw_resource: ThrowableResource):
