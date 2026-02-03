@@ -1,6 +1,6 @@
 extends Control
 
-@export var container: Control
+@export var slots: Array[Control]
 
 var item_on_ground: Node3D
 
@@ -11,8 +11,8 @@ func setup() -> void:
 func open_item_selection(node: Node3D):
 	item_on_ground = node
 	
-	for i in range(container.get_child_count()):
-		var slot = container.get_child(i)
+	for i in range(slots.size()):
+		var slot = slots[i]
 		clear_slot(slot)
 		slot.visible = false
 		

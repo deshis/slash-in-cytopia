@@ -388,13 +388,13 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Combine"
 
-[node name="ItemSelection" type="MarginContainer" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer" unique_id=1809721560 node_paths=PackedStringArray("container")]
+[node name="ItemSelection" type="MarginContainer" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer" unique_id=1809721560 node_paths=PackedStringArray("slots")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("9_484xk")
-container = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
+slots = [NodePath("MarginContainer/VBoxContainer/HBoxContainer/SelectionSlot1"), NodePath("MarginContainer/VBoxContainer/HBoxContainer/SelectionSlot2"), NodePath("MarginContainer/VBoxContainer/HBoxContainer/SelectionSlot3"), NodePath("MarginContainer/VBoxContainer/HBoxContainer/SelectionSlot4"), NodePath("MarginContainer/VBoxContainer/HBoxContainer/SelectionSlot5")]
 
 [node name="Panel" type="Panel" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/ItemSelection" unique_id=1875371141]
 layout_mode = 2
