@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dnop5pqrq8fbx" path="res://Assets/ui/DashIcon.png" id="4_0iicw"]
 [ext_resource type="Texture2D" uid="uid://b343ghjhwphjn" path="res://Assets/ui/punch.png" id="4_oersf"]
 [ext_resource type="Texture2D" uid="uid://cvquudwe72x8p" path="res://Assets/ui/kick.png" id="5_oersf"]
+[ext_resource type="Texture2D" uid="uid://dluotk16ptpbk" path="res://Assets/ui/AbilityIconBorder.png" id="6_og236"]
 [ext_resource type="Texture2D" uid="uid://chmb0vt4rda71" path="res://Assets/ui/player_UI_view.png" id="6_yidpd"]
 [ext_resource type="Script" uid="uid://oao7o8ug10v6" path="res://Scripts/ui/inventory/inventory_handler.gd" id="7_0p5tk"]
 [ext_resource type="Script" uid="uid://ccj2vjwy4hvnf" path="res://Scripts/ui/inventory/combiner_handler.gd" id="8_8hm0j"]
@@ -117,7 +118,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SkillCooldowns/MarginContainer" unique_id=1978833995]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 20
 
 [node name="PrimaryAttack" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=1911847463]
 layout_mode = 2
@@ -156,6 +157,23 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_484xk")
 expand_mode = 2
 
+[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/PrimaryAttack" unique_id=1420213815]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -38.5
+offset_right = 40.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_og236")
+expand_mode = 1
+
 [node name="SecondaryAttack" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=1624386932]
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_8gbba")
@@ -193,6 +211,23 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_vxf74")
 expand_mode = 2
 
+[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/SecondaryAttack" unique_id=1104740523]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -38.5
+offset_right = 40.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_og236")
+expand_mode = 1
+
 [node name="DashCooldown" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=1943223829]
 layout_mode = 2
 texture = ExtResource("4_0iicw")
@@ -212,6 +247,23 @@ show_percentage = false
 
 [node name="Timer" type="Timer" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown" unique_id=213702068]
 one_shot = true
+
+[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown" unique_id=119228577]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -38.5
+offset_right = 40.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_og236")
+expand_mode = 1
 
 [node name="ActiveItem" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=317445757]
 layout_mode = 2
@@ -250,6 +302,23 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_lkt4f")
 expand_mode = 2
 
+[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ActiveItem" unique_id=571822061]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -38.5
+offset_right = 40.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_og236")
+expand_mode = 1
+
 [node name="ThrowableItem" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=792240261]
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_ba8gd")
@@ -286,6 +355,23 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_lkt4f")
 expand_mode = 2
+
+[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ThrowableItem" unique_id=829675825]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -38.5
+offset_right = 40.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_og236")
+expand_mode = 1
 
 [node name="Inventory" type="Control" parent="." unique_id=1756702059 node_paths=PackedStringArray("backpack_node", "trash_slot_node", "augments_node", "item_selection_node", "combiner_node", "extra_augment_nodes")]
 process_mode = 3
