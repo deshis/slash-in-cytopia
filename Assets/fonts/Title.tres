@@ -1,0 +1,12 @@
+[gd_resource type="Theme" format=3 uid="uid://cc7hwsh8wtwx6"]
+
+[ext_resource type="FontFile" uid="uid://bw55lcp2bmwk2" path="res://Assets/fonts/EdgeOfTheGalaxyItalic-ZVJB3.otf" id="1_7wjxl"]
+[ext_resource type="FontFile" uid="uid://bstpc8gepc8bh" path="res://Assets/fonts/EdgeOfTheGalaxyRegular-OVEa6.otf" id="1_gfon2"]
+
+[resource]
+default_font = ExtResource("1_gfon2")
+default_font_size = 75
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 8
+RichTextLabel/fonts/italics_font = ExtResource("1_7wjxl")

@@ -6,6 +6,14 @@ extends Node3D
 @onready var tutorial_container: MarginContainer = $Menu/TutorialMargin
 @onready var welcome_label: Label = $Menu/WelcomeMargin/WelcomeLabel
 
+@onready var play_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Play
+@onready var profiles_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Profiles
+@onready var settings_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Settings
+@onready var tutorial_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Tutorial
+@onready var credits_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Credits
+@onready var quit_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Quit
+
+
 const CREATE_PROFILE_MENU = preload("res://Scenes/main_menu/profile/create_profile_window.tscn")
 const PROFILE_MENU = preload("res://Scenes/main_menu/profile/profile_menu.tscn")
 
@@ -27,12 +35,12 @@ func _ready() -> void:
 			_show_profile_selection(true)
 	
 	# Add SFX to buttons
-	$Menu/MenuMargin/VBoxContainer/Play.add_to_group("start_button")
-	$Menu/MenuMargin/VBoxContainer/Settings.add_to_group("ui_button")
-	$Menu/MenuMargin/VBoxContainer/Profiles.add_to_group("ui_button")
-	$Menu/MenuMargin/VBoxContainer/Tutorial.add_to_group("ui_button")
-	$Menu/MenuMargin/VBoxContainer/Credits.add_to_group("ui_button")
-	$Menu/MenuMargin/VBoxContainer/Quit.add_to_group("ui_button")
+	play_button.add_to_group("start_button")
+	profiles_button.add_to_group("ui_button")
+	settings_button.add_to_group("ui_button")
+	tutorial_button.add_to_group("ui_button")
+	credits_button.add_to_group("ui_button")
+	quit_button.add_to_group("ui_button")
 	
 	$Menu/CreditsMargin/Panel/MarginContainer/close_credits.add_to_group("ui_button")
 	$Menu/TutorialMargin/Panel/MarginContainer/close_tutorial.add_to_group("ui_button")
@@ -84,7 +92,7 @@ func _setup_main_menu() -> void:
 	if ProfileManager.current_profile.has("username"):
 		welcome_label.text = "Welcome, " + ProfileManager.current_profile["username"]
 	
-	$Menu/MenuMargin/VBoxContainer/Play.grab_focus()
+	play_button.grab_focus()
 
 #######################################################
 
@@ -106,7 +114,7 @@ func _on_settings_pressed() -> void:
 func _on_settings_menu_relay_back_to_menu_signal() -> void:
 	menu_container.visible = true
 	settings_container.visible = false
-	$Menu/MenuMargin/VBoxContainer/Play.grab_focus()
+	play_button.grab_focus()
 
 
 func _on_tutorial_pressed() -> void:
@@ -118,7 +126,7 @@ func _on_tutorial_pressed() -> void:
 func _on_close_tutorial_pressed() -> void:
 	menu_container.visible = true
 	tutorial_container.visible = false
-	$Menu/MenuMargin/VBoxContainer/Play.grab_focus()
+	play_button.grab_focus()
 
 
 func _on_credits_pressed() -> void:
@@ -130,7 +138,7 @@ func _on_credits_pressed() -> void:
 func _on_close_credits_pressed() -> void:
 	menu_container.visible = true
 	credits_container.visible = false
-	$Menu/MenuMargin/VBoxContainer/Play.grab_focus()
+	play_button.grab_focus()
 
 func _on_profiles_pressed() -> void:
 	_show_profile_selection(false)

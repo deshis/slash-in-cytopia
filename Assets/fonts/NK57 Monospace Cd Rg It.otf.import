@@ -1,0 +1,36 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cajgikfb7xubp"
+path="res://.godot/imported/NK57 Monospace Cd Rg It.otf-3063916a350462b38bf665f4b661998c.fontdata"
+
+[deps]
+
+source_file="res://Assets/fonts/NK57 Monospace Cd Rg It.otf"
+dest_files=["res://.godot/imported/NK57 Monospace Cd Rg It.otf-3063916a350462b38bf665f4b661998c.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+modulate_color_glyphs=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
