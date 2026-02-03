@@ -52,9 +52,14 @@ func _position_description() -> void:
 	new_pos.y = clamp(new_pos.y, 0, viewport_size.y - panel_size.y)
 	panel_container1.global_position = new_pos
 	border_container.global_position = new_pos
-	
+
 func get_type() -> int:
 	return item.type
+
+
+func get_grade() -> ItemType.Grade:
+	return item.grade
+
 
 func _get_drag_data(_pos: Vector2) -> Variant:
 	var preview := duplicate(true)

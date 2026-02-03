@@ -57,8 +57,8 @@ const STAT_BEHAVIOR := {
 #CRITICAL: DEFINITELY SYNC THESE WITH THE STATS
 #var stat_name
 var base_movement_speed := 5.0
-var base_light_attack_damage := 1.0
-var base_heavy_attack_damage := 2.0
+var base_light_attack_damage := 10.0
+var base_heavy_attack_damage := 20.0
 var base_dash_cooldown := 3.0
 var base_dash_length := 0.15
 var base_dash_speed := 25

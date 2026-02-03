@@ -189,8 +189,7 @@ func get_loot_rarity(loot_weights: Dictionary) -> ItemType.Type:
 	var rarity = rng.rand_weighted(weights)
 	
 	if randf() * 100 < upgrade_loot_rarity_chance:
-		rarity = clamp(rarity + 1, 0, 2)
-	
+		rarity = clamp(rarity + 1, 0, ItemType.Grade.size() - 1)
 	return ItemType.Type.values()[rarity]
 
 func get_items_by_rarity(rarity: ItemType.Grade) -> Array:

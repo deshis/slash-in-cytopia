@@ -1,7 +1,6 @@
 extends Control
 
-@onready var inventory: Control = $".."
-@onready var container: Control = $VBoxContainer/HBoxContainer
+@export var container: Control
 
 var item_on_ground: Node3D
 
@@ -11,8 +10,6 @@ func setup() -> void:
 
 func open_item_selection(node: Node3D):
 	item_on_ground = node
-	inventory.visible = true
-	visible = true
 	
 	for i in range(container.get_child_count()):
 		var slot = container.get_child(i)
@@ -24,8 +21,7 @@ func open_item_selection(node: Node3D):
 			slot.add_child(InventoryManager.create_item_control(item))
 			slot.visible = true
 	
-	visible = true
-	GameManager.open_menu()
+	MenuManager.open_menu(MenuManager.MENU.ITEM_SELECTION)
 
 
 func clear_slot(slot: Control)->void:

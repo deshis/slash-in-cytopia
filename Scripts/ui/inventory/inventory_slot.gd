@@ -30,9 +30,6 @@ func _gui_input(event: InputEvent) -> void:
 		slot_right_clicked()
 
 func _can_drop_data(_pos: Vector2, data: Variant) -> bool:
-	if not (data is InventorySlot):
-		return false
-	
 	var origin_slot: InventorySlot = data
 	var item = origin_slot.get_item()
 	

@@ -1,72 +1,34 @@
 extends Node3D
 
 @export var use_amount := 1
-@export var item_combine_amount := 3
 
 var loot_impulse_strength := -12.0
 
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory"):
+		var combiner_menu = MenuManager.menus[MenuManager.MENU.COMBINER]
+		combiner_menu.move_items_from_combiner()
+		MenuManager.close_menu(MenuManager.MENU.COMBINER)
+
+
 func _physics_process(_delta: float) -> void:
-	if use_amount <= 0:
-		return
-	
 	if Input.is_action_just_pressed("interact"):
 		if GameManager.player.interactables.front() == self:
-			combine_items()
+			MenuManager.open_menu(MenuManager.MENU.COMBINER)
+			MenuManager.menus[MenuManager.MENU.COMBINER].items_combined.connect(combine_items)
 
 
-func combine_items() -> void:
-	var slots = get_slots_with_items()
+func combine_items(rarity: ItemType.Grade) -> void:
+	var loot_table = generate_loot_table(clamp(rarity + 1, 0, ItemType.Grade.size()))
+	LootDatabase.drop_loot(self, loot_table, loot_impulse_strength)
 	
-	# consumer -> military
-	if slots[0].size() >= item_combine_amount:
-		use_amount -= 1
-		destroy_items(slots[0])
-		var loot_table = generate_loot_table(ItemType.Grade.MILITARY)
-		LootDatabase.drop_loot(self, loot_table, loot_impulse_strength)
+	MenuManager.close_menu(MenuManager.MENU.COMBINER)
 	
-	# military -> prototype
-	elif slots[1].size() >= item_combine_amount:
-		use_amount -= 1
-		destroy_items(slots[1])
-		var loot_table = generate_loot_table(ItemType.Grade.PROTOTYPE)
-		LootDatabase.drop_loot(self, loot_table, loot_impulse_strength)
-	
-	# prototype -> apex anomaly
-	elif slots[2].size() >= item_combine_amount:
-		use_amount -= 1
-		destroy_items(slots[2])
-		var loot_table = generate_loot_table(ItemType.Grade.APEX_ANOMALY)
-		LootDatabase.drop_loot(self, loot_table, loot_impulse_strength)
-	
+	use_amount -= 1
 	if use_amount <= 0:
 		get_node("InteractLabel").queue_free()
-
-
-func get_slots_with_items() -> Array:
-	var inv = InventoryManager.backpack_node
-	var slots = inv.get_children()
-	
-	var items := []
-	items.resize(ItemType.Grade.size())
-	for i in range(items.size()):
-		items[i] = []
-	
-	for i in range(slots.size()):
-		var slot = slots[i]
-		var item_node = slot.get_item()
-		if not item_node:
-			continue
-		
-		items[item_node.item.grade].append(slot)
-	
-	return items
-
-
-func destroy_items(slots: Array) -> void:
-	var inv = InventoryManager
-	var trash = InventoryManager.trash_slot_node
-	for slot in slots:
-		inv.move_item(slot, trash)
+		set_script(null)
 
 
 func generate_loot_table(rarity: ItemType.Grade) -> LootTable:

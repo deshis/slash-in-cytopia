@@ -11,8 +11,9 @@ extends Control
 
 
 func _ready() -> void:
+	MenuManager.add_menu(MenuManager.MENU.PAUSE, self)
 	visible = false
-
+	
 	for b in [continue_button, settings_button, quit_button]:
 		if b:
 			b.add_to_group("ui_button")
@@ -20,32 +21,16 @@ func _ready() -> void:
 			push_warning("Pause menu button missing")
 
 
-
-func pause()->void:
-	visible = true
-	GameManager.set_menu(true)
-	continue_button.grab_focus()
-
-
-func unpause()->void:
-	visible = false
-	GameManager.set_menu(false)
-	continue_button.grab_focus()
-
-
 func _unhandled_input(event):
-	if event is InputEventKey:
-		if event.is_action_pressed("ui_cancel"):
-			if GameManager.open_menu_count < 1:
-				pause()
-			elif settings_menu.visible:
-				toggle_settings_menu()
-			else:
-				unpause()
+	if event.is_action_pressed("ui_cancel"):
+		if MenuManager.active_menu == MenuManager.MENU.PAUSE:
+			MenuManager.close_menu(MenuManager.MENU.PAUSE)
+		else:
+			MenuManager.open_menu(MenuManager.MENU.PAUSE)
 
 
 func _on_continue_button_pressed() -> void:
-	unpause()
+	MenuManager.close_menu(MenuManager.MENU.PAUSE)
 
 
 func _on_settings_button_pressed() -> void:

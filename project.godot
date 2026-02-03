@@ -36,6 +36,7 @@ GameStats="*res://Scripts/globals/GameStats.gd"
 ItemGlobals="*res://Scripts/globals/ItemGlobals.gd"
 ProfileManager="*res://Scripts/globals/ProfileManager.gd"
 Helper="*uid://cud05m64qjwb8"
+MenuManager="*uid://ds06swbi4xsa4"
 
 [debug]
 
