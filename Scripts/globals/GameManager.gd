@@ -77,9 +77,14 @@ func boss_killed(boss: EnemyController) -> void:
 	
 	spawner.credits_cooldown_timer.stop()
 	spawner.wave_cooldown_timer.stop()
+	
+	GameStats.bosses_killed_by_type[boss.enemy.name] = GameStats.bosses_killed_by_type.get(boss.enemy.name, 0) + 1
 
 
 func restart() -> void:
+	ProfileManager.update_stats_from_run()
+	GameStats.reset_game_stats()
+	
 	for child in get_children():
 		child.queue_free()
 	
@@ -93,6 +98,9 @@ func restart() -> void:
 
 
 func quit_to_menu()->void:
+	ProfileManager.update_stats_from_run()
+	GameStats.reset_game_stats()
+	
 	open_menu_count = 0
 	get_tree().paused = false
 	InventoryManager.process_mode = Node.PROCESS_MODE_DISABLED

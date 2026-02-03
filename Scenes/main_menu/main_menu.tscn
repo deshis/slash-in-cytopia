@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dg11j431speyx" path="res://Assets/vfx/slash/slash_tex.png" id="31_qtdmj"]
 [ext_resource type="Animation" uid="uid://br0rk3ytqpkho" path="res://Assets/enemy/microbot/animations/Stun.res" id="32_ko05x"]
 [ext_resource type="Animation" uid="uid://bf47w0rk2h23r" path="res://Assets/enemy/microbot/animations/Walk.res" id="33_43km2"]
-[ext_resource type="Texture2D" uid="uid://dhvqq1gpt36pr" path="res://Assets/enemy/mage/mage_apollo-1x.png" id="33_bmhhk"]
+[ext_resource type="Texture2D" uid="uid://uqdlllrj8oxc" path="res://Assets/enemy/mage/mage_apollo-1x.png" id="33_bmhhk"]
 [ext_resource type="ArrayMesh" uid="uid://d20gb3onvusch" path="res://Assets/enemy/mage/mage_staff.res" id="34_pddej"]
 [ext_resource type="Animation" uid="uid://mbww5et2k6fw" path="res://Assets/player/animations/Death.res" id="35_fgwar"]
 [ext_resource type="ArrayMesh" uid="uid://dj3oe35rc5d3o" path="res://Assets/enemy/mage/magic_flare.res" id="35_ko05x"]
@@ -19535,6 +19535,15 @@ theme_override_font_sizes/font_size = 32
 text = "Profiles"
 script = ExtResource("35_msuys")
 
+[node name="Stats" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1687232059]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("52_ybtaw")
+theme_override_font_sizes/font_size = 32
+text = "Stats
+"
+script = ExtResource("35_msuys")
+
 [node name="Settings" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1718876543]
 layout_mode = 2
 size_flags_vertical = 4
@@ -19711,6 +19720,7 @@ text = "Welcome"
 
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Profiles" to="." method="_on_profiles_pressed"]
+[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Stats" to="." method="_on_stats_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]

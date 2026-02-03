@@ -16,8 +16,10 @@ extends Node3D
 
 const CREATE_PROFILE_MENU = preload("res://Scenes/main_menu/profile/create_profile_window.tscn")
 const PROFILE_MENU = preload("res://Scenes/main_menu/profile/profile_menu.tscn")
+const STATS_MENU = preload("res://Scenes/main_menu/profile/stats_menu.tscn")
 
 var active_profile_menu: Control = null
+var active_stats_menu: Control = null
 
 func _ready() -> void:
 
@@ -146,3 +148,23 @@ func _on_profiles_pressed() -> void:
 
 func mainmenu() -> void:
 	pass
+
+
+func _on_stats_pressed() -> void:
+	menu_container.visible = false
+	welcome_label.visible = false
+
+	if active_stats_menu:
+		active_stats_menu.queue_free()
+
+	active_stats_menu = STATS_MENU.instantiate()
+	add_child(active_stats_menu)
+
+	active_stats_menu.back_pressed.connect(_on_stats_menu_back)
+	active_stats_menu.focus()
+
+func _on_stats_menu_back() -> void:
+	if active_stats_menu:
+		active_stats_menu.queue_free()
+		active_stats_menu = null
+	_setup_main_menu()

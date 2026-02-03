@@ -76,10 +76,34 @@ func create_profile(username: String) -> bool:
 	current_profile = {
 		"username": username,
 		"created_at": Time.get_datetime_string_from_system(),
-		"filename": filename
+		"filename": filename,
+		"stats": {
+			"game_count": 0,
+			"playing_time": 0,
+			"total_damage_dealt": 0.0,
+			"total_damage_taken": 0.0,
+			"damage_mitigated": 0.0,
+			"critical_hits": 0,
+			"highest_single_hit": 0.0,
+			"thorns_damage": 0.0,
+			"frozen_enemies_shattered": 0,
+			"enemies_killed": 0,
+			"bosses_killed": 0,
+			"enemies_killed_by_type": {},
+			"bosses_killed_by_type": {},
+			"dashes_used": 0,
+			"active_items_used": 0,
+			"throwables_used": 0,
+			"items_picked_up": 0,
+			"items_trashed": 0,
+			"player_deaths": 0,
+			"total_healing": 0.0,
+			"health_stolen": 0.0,
+			"longest_run_time": 0
+		}
 	}
 	
-	save_profile() 
+	save_profile()
 	return true
 
 func save_profile() -> void:
@@ -114,6 +138,89 @@ func delete_profile(filename: String) -> void:
 		
 		if get_last_loaded_profile() == filename:
 			set_last_loaded_profile("")
+
+func update_stats_from_run() -> void:
+	if current_profile.is_empty():
+		return
+		
+	if not current_profile.has("stats"):
+		current_profile["stats"] = {
+			"game_count": 0,
+			"playing_time": 0,
+			"total_damage_dealt": 0.0,
+			"total_damage_taken": 0.0,
+			"damage_mitigated": 0.0,
+			"critical_hits": 0,
+			"highest_single_hit": 0.0,
+			"thorns_damage": 0.0,
+			"frozen_enemies_shattered": 0,
+			"enemies_killed": 0,
+			"bosses_killed": 0,
+			"enemies_killed_by_type": {},
+			"bosses_killed_by_type": {},
+			"dashes_used": 0,
+			"active_items_used": 0,
+			"throwables_used": 0,
+			"items_picked_up": 0,
+			"items_trashed": 0,
+			"player_deaths": 0,
+			"total_healing": 0.0,
+			"health_stolen": 0.0,
+			"longest_run_time": 0
+		}
+	
+	var stats = current_profile["stats"]
+	
+	stats["game_count"] += 1
+	stats["playing_time"] += GameStats.time_alive_seconds
+	
+	stats["total_damage_dealt"] += GameStats.total_damage_dealt
+	stats["total_damage_taken"] += GameStats.total_damage_taken
+	stats["damage_mitigated"] += GameStats.damage_mitigated
+	stats["critical_hits"] += GameStats.critical_hits
+	
+	if GameStats.highest_single_hit > stats.get("highest_single_hit", 0.0):
+		stats["highest_single_hit"] = GameStats.highest_single_hit
+		
+	stats["thorns_damage"] += GameStats.thorns_damage
+	stats["frozen_enemies_shattered"] += GameStats.frozen_enemies_shattered
+	
+	stats["enemies_killed"] += GameStats.enemies_killed
+	
+	# Merge enemy kills by type
+	for enemy_type in GameStats.enemies_killed_by_type:
+		if not stats["enemies_killed_by_type"].has(enemy_type):
+			stats["enemies_killed_by_type"][enemy_type] = 0
+		stats["enemies_killed_by_type"][enemy_type] += GameStats.enemies_killed_by_type[enemy_type]
+	
+	# Merge boss kills by type
+	var boss_kills_this_run = 0
+	for boss_type in GameStats.bosses_killed_by_type:
+		var count = GameStats.bosses_killed_by_type[boss_type]
+		boss_kills_this_run += count
+		
+		if not stats["bosses_killed_by_type"].has(boss_type):
+			stats["bosses_killed_by_type"][boss_type] = 0
+		stats["bosses_killed_by_type"][boss_type] += count
+		
+	stats["bosses_killed"] += boss_kills_this_run
+	
+	stats["dashes_used"] += GameStats.dashes_used
+	stats["active_items_used"] += GameStats.active_items_used
+	stats["throwables_used"] += GameStats.throwables_used
+	stats["items_picked_up"] += GameStats.items_picked_up
+	stats["items_trashed"] += GameStats.items_trashed
+	
+	if GameManager.player and GameManager.player.is_dead:
+		stats["player_deaths"] += 1
+		
+	stats["total_healing"] += GameStats.total_healing
+	stats["health_stolen"] += GameStats.health_stolen
+		
+	if GameStats.time_alive_seconds > stats.get("longest_run_time", 0):
+		stats["longest_run_time"] = GameStats.time_alive_seconds
+		
+	save_profile()
 
 func rename_profile(old_filename: String, new_username: String) -> bool:
 	var old_path = PROFILE_DIR + old_filename

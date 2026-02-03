@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://c8q2y5x704w1"]
+
+[ext_resource type="Script" uid="uid://dr0jcskqv0o48" path="res://Scripts/ui/stats_menu.gd" id="1_yyulg"]
+[ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="2_theme"]
+
+[node name="StatsMenu" type="Control" unique_id=1254274056]
+theme = ExtResource("2_theme")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yyulg")
+
+[node name="Panel" type="Panel" parent="." unique_id=119397505]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1130805735]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer" unique_id=1457263762]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="ContentColumn" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer" unique_id=35904886]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/HBoxContainer/ContentColumn" unique_id=1916476942]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Stats"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn" unique_id=2136217739]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StatsContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer" unique_id=2008636938]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 50
+
+[node name="LeftColumn" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/StatsContainer" unique_id=924306435]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="MiddleColumn" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/StatsContainer" unique_id=226700115]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="RightColumn" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/StatsContainer" unique_id=1289114291]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="ButtonContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer" unique_id=216855195]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 2
+
+[node name="BackButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/ButtonContainer" unique_id=1642779237]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="HeaderTemplate" type="VBoxContainer" parent="Panel" unique_id=1693220830]
+visible = false
+layout_mode = 0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/HeaderTemplate" unique_id=1262532644]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "Header"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/HeaderTemplate" unique_id=562299409]
+layout_mode = 2
+
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]

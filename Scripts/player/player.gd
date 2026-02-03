@@ -18,6 +18,7 @@ var interactables := []
 # PLAYER STATS
 @export var max_health := 100.0
 var health := max_health
+var is_dead := false
 var health_regen:= 0.0
 
 var percent_damage_reduction := 0
@@ -371,6 +372,7 @@ func perform_dash():
 	if attack_during_dash:
 		$DashAttackHitbox.monitoring = true
 	
+	GameStats.dashes_used += 1
 	SoundManager.play_sfx("dash", global_position)
 
 func perform_light_attack() -> void:
@@ -406,6 +408,8 @@ func use_active_item(active_effect: ActiveEffectResource):
 	can_active_item = false
 	active_item_cooldown_timer.start(active_item_cooldown)
 	active_item_used.emit(active_item_cooldown)
+	
+	GameStats.active_items_used += 1
 
 	# Play SFX based on active item type
 	match active_effect.active_type:
@@ -530,6 +534,8 @@ func use_throwable_item(throw_resource: ThrowableResource):
 	throwable_cooldown_timer.start(throwable_cooldown)
 	throwable_used.emit(throwable_cooldown)
 	
+	GameStats.throwables_used += 1
+	
 	SoundManager.play_sfx("effect_damage_Taken", global_position)
 	
 	throw(throw_resource)
@@ -653,6 +659,7 @@ func heal(amount: float) -> void:
 		return
 	
 	health += amount
+	GameStats.total_healing += amount
 	update_health_bar.emit(health)
 	
 	if health > max_health:
@@ -680,15 +687,23 @@ func deal_damage(area: Area3D, amount: float, e: EnemyController = null) -> void
 	# crit chance
 	if randf() * 100 < crit_chance:
 		amount *= 2
+		GameStats.critical_hits += 1
 		SoundManager.play_sfx("hit_crit", enemy.global_position)
 	else:
 		SoundManager.play_sfx("hit", enemy.global_position)
+	
+	if amount > GameStats.highest_single_hit:
+		GameStats.highest_single_hit = amount
 	
 	#Lifesteal
 	#NOTE: Might just want to make this flat
 	life_stolen = amount * (life_steal/100)
 	snappedf(life_stolen,3)
 	health += life_stolen
+	
+	if life_stolen > 0:
+		GameStats.health_stolen += life_stolen
+		GameStats.total_healing += life_stolen
 	
 	if health > max_health:
 		health = max_health
@@ -740,13 +755,19 @@ func take_damage(damage:float, enemy: EnemyController, ignore_invulnerability: b
 	
 	# thorns
 	if thorns_percent > 0:
-		enemy.take_damage(damage * (thorns_percent * 0.01))
+		var thorns_dmg = damage * (thorns_percent * 0.01)
+		enemy.take_damage(thorns_dmg)
+		GameStats.thorns_damage += thorns_dmg
 	
 	#Damage reduction
 	#NOTE: Applying flat damage reduction before percent damage reduction results in less mitigation
+	var original_damage = damage
 	damage -= flat_damage_reduction
 	damage *= (100.0 - percent_damage_reduction)/100
 	damage = snappedf(damage,0.1)
+	
+	GameStats.damage_mitigated += (original_damage - damage)
+	
 	health -= damage
 	update_health_bar.emit(health)
 	
@@ -758,14 +779,15 @@ func take_damage(damage:float, enemy: EnemyController, ignore_invulnerability: b
 		die()
 
 func die() -> void:
+	is_dead = true
 	Engine.time_scale = 1.0
 	game_over.emit()
 	animator.play("Death")
 	$Hurtbox.set_collision_layer_value(10, false)
-	$Hurtbox.monitoring = false
-	$Hurtbox.monitorable = false
+	$Hurtbox.set_deferred("monitoring", false)
+	$Hurtbox.set_deferred("monitorable", false)
 	hit_flash.set_shader_parameter('strength', 0.0)
-	self.set_script(null)
+	set_physics_process(false)
 
 func blink() -> void:
 	var phase := int(Time.get_ticks_msec() / (hit_flash_blink_speed * 1000)) % 2
@@ -803,7 +825,10 @@ func perform_interact() -> void:
 func _on_animation_finished(anim_name):
 	if state == DASH:
 		return
-	
+
+	if is_dead:
+		return
+
 	change_state(IDLE)
 	animator.speed_scale = 1
 
@@ -878,6 +903,8 @@ func _on_health_radius_area_entered(area: Area3D) -> void:
 	var diff = GameManager.spawner.diff
 	var heal_amount = 15.0 + diff.get_difficulty() * diff.heal_amount_per_level
 	heal(heal_amount)
+	
+	GameStats.items_picked_up += 1
 	
 	SoundManager.play_sfx("heal", global_position)
 	area.queue_free()

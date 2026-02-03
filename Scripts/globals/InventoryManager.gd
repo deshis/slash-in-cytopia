@@ -146,6 +146,7 @@ func place_or_swap(item: Control, origin_slot: Control, new_slot: Control) -> vo
 	update_inventory_data()
 
 func delete_item(item: Control):
+	GameStats.items_trashed += 1
 	item.queue_free()
 
 func get_augment_slot(item) -> Control:

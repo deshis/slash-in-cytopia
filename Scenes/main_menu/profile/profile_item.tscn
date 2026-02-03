@@ -1,8 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://djvmwp4jg8ehg"]
+[gd_scene format=3 uid="uid://dqqe4fiybegpb"]
 
-[ext_resource type="Script" path="res://Scripts/ui/profile_item.gd" id="1_profile_item"]
-
-[node name="ProfileItem" type="Button"]
+[node name="ProfileItem" type="Button" unique_id=302919678]
 custom_minimum_size = Vector2(0, 60)
 anchors_preset = 10
 anchor_right = 1.0
@@ -11,9 +9,8 @@ grow_horizontal = 2
 toggle_mode = true
 action_mode = 0
 alignment = 0
-script = ExtResource("1_profile_item")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=899401903]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,17 +20,17 @@ grow_vertical = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1897586001]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=956846576]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Profile Name"
 vertical_alignment = 1
 
-[node name="DateLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="DateLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=257142329]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 text = "2023-10-27 10:00"

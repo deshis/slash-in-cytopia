@@ -150,6 +150,8 @@ func change_state(new_state: String, duration := 0.0):
 				instance.remove_attack()
 
 func process_idle() -> void:
+	if GameManager.player and GameManager.player.is_dead:
+		return
 	change_state(NAVIGATE)
 
 func process_attack() -> void:
@@ -160,6 +162,9 @@ func process_attack() -> void:
 	change_state(COOLDOWN, cooldown_duration)
 
 func process_navigation(delta: float) -> void:
+	if GameManager.player and GameManager.player.is_dead:
+		change_state(IDLE)
+		return
 	var new_target_pos = target_provider.get_target(self)
 	nav_agent.set_target_position(new_target_pos)
 	var next_pos = nav_agent.get_next_path_position()
@@ -389,6 +394,13 @@ func die(drop_loot: bool = true) -> void:
 	
 	GameStats.enemies_killed +=1
 	
+	# Track enemy type kills
+	var enemy_name = enemy.name
+	if GameStats.enemies_killed_by_type.has(enemy_name):
+		GameStats.enemies_killed_by_type[enemy_name] += 1
+	else:
+		GameStats.enemies_killed_by_type[enemy_name] = 1
+
 	if drop_loot:
 		LootDatabase.drop_loot(self)
 	
@@ -415,6 +427,8 @@ func return_to_pool() -> void:
 func shatter_ice() -> void:
 
 	print("Ice shattered")
+	
+	GameStats.frozen_enemies_shattered += 1
 
 	#get_node("freeze_particles").process_material.set("lifetime", 1 )
 	#Reset everything
@@ -455,6 +469,9 @@ func _on_attack_removed(node: Node3D) -> void:
 	active_attacks.erase(node)
 
 func _on_navigation_agent_3d_target_reached() -> void:
+	if GameManager.player and GameManager.player.is_dead:
+		change_state(IDLE)
+		return
 	change_state(ATTACK, attack_windup_duration)
 
 func _on_hit_flash_end():

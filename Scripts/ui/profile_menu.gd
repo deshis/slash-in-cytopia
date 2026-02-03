@@ -57,8 +57,12 @@ func refresh_profile_list() -> void:
 	for profile in profiles:
 		var btn = PROFILE_ITEM_SCENE.instantiate()
 		var created_at = profile["created_at"].replace("T", " ")
-		
-		btn.set_profile_data(profile["username"], created_at)
+
+		var display_name = profile["username"]
+		if profile["filename"] == ProfileManager.current_profile.get("filename", ""):
+			display_name += " (Current)"
+
+		btn.set_profile_data(display_name, created_at)
 		
 		btn.set_meta("filename", profile["filename"])
 		btn.pressed.connect(_on_profile_button_pressed.bind(btn))
@@ -99,7 +103,8 @@ func _on_profile_button_pressed(pressed_btn: Button) -> void:
 
 func update_buttons_state() -> void:
 	var has_selection = selected_profile_filename != ""
-	load_button.disabled = !has_selection
+	var is_current_profile = selected_profile_filename == ProfileManager.current_profile.get("filename", "")
+	load_button.disabled = !has_selection or is_current_profile
 	delete_button.disabled = !has_selection
 	rename_button.disabled = !has_selection
 

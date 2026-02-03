@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://stat_row_scene"]
+
+[node name="StatRow" type="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stat Name"
+
+[node name="ValueLabel" type="Label" parent="."]
+layout_mode = 2
+horizontal_alignment = 2
+text = "0"
