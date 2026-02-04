@@ -30,6 +30,7 @@ var dot_life_stolen := 0.0
 var current_stat_damage := 0.0
 var remaining_debuff_duration := 0.0
 var enemy_frozen := false
+var is_dead := false
 
 # 3D MODEL
 @onready var animator = $"model/AnimationPlayer"
@@ -101,6 +102,7 @@ func _ready() -> void:
 
 
 func _activate() -> void:
+	is_dead = false
 	visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
 	
@@ -380,6 +382,9 @@ func take_damage(damage:float) -> void:
 		die()
 
 func die(drop_loot: bool = true) -> void:
+	if is_dead:
+		return
+	is_dead = true
 	set_collision_layer_value(13, false)
 	$Collision.set_deferred("disabled", true)
 	
