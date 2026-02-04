@@ -8,6 +8,8 @@ var item_selection_node: Node
 var combiner_node: Node
 var trash_slot_node: Node
 
+var slot_type = InventorySlot.SLOT
+
 var starter_items: Array[ItemResource] =  [load("res://Scripts/items/prototype/CloverLOA.tres"),load("res://Scripts/items/consumer/Brick_Throwable.tres"),load("res://Scripts/items/military/PlasteelChassis.tres"), load("res://Scripts/items/prototype/Arievistan.tres"), load("res://Scripts/items/prototype/ArcFlash.tres"), load("res://Scripts/items/prototype/Vampirism.tres"), load("res://Scripts/items/consumer/Brick.tres")] #, load("res://Scripts/items/prototype/Vampirism.tres")]#[preload("res://Scripts/items/military/DashReplicator.tres"), preload("res://Scripts/items/prototype/Dawn.tres"),preload("res://Scripts/items/military/BlackBurner.tres"), preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/prototype/Arievistan.tres")]#[preload("res://Scripts/items/prototype/ArcFlash.tres"),preload("res://Scripts/items/prototype/Labrys.tres"),preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/consumer/UnderclockedExoskeleton.tres"),preload("res://Scripts/items/military/SecondHeart.tres"),preload("res://Scripts/items/prototype/RealityFracture.tres")]
 var augment_items: Array[ItemResource] = []
 var backpack_items: Array[ItemResource] = [] # pls don't clean me! [preload("res://Scripts/items/prototype/Item6.tres"),preload("res://Scripts/items/consumer/Item4.tres")] #[preload("res://Scripts/items/prototype/Item6.tres")]
@@ -16,6 +18,7 @@ var item_scene: PackedScene = preload("res://Scenes/items/item.tscn")
 
 var extra_augment_nodes = []
 var extra_augment_slots := false
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -69,6 +72,7 @@ func init() -> void:
 	
 	equip_starter_items()
 
+
 func init_slots() -> void:
 	for i in range(backpack_node.get_child_count()):
 		var slot = backpack_node.get_child(i)
@@ -81,10 +85,12 @@ func init_slots() -> void:
 	trash_slot_node.setup()
 	item_selection_node.setup()
 
+
 func create_item_control(item_res: ItemResource) -> Control:
 	var instance: Control = item_scene.instantiate() as Control
 	instance.item = item_res.duplicate(true)
 	return instance
+
 
 func move_item(origin_slot: InventorySlot, new_slot: InventorySlot = null) -> void:
 	var item = origin_slot.get_item()
@@ -92,67 +98,104 @@ func move_item(origin_slot: InventorySlot, new_slot: InventorySlot = null) -> vo
 	if not item:
 		return
 	
-	if item.get_parent():
-		item.get_parent().remove_child(item)
-	
-	# item was dragged into a slot
-	if new_slot:
-		pass
-	
-	# item was right clicked
-	# augments -> backpack
-	elif origin_slot in augments_node.get_children():
-		new_slot = get_backpack_slot()
-	
-	#backpack -> augments
-	elif origin_slot in backpack_node.get_children():
-		new_slot = get_augment_slot(item)
-	
-	# combiner -> augment/bacpack
-	elif origin_slot in combiner_node.slots:
-		new_slot = get_augment_slot(item)
-		if new_slot.get_item():
-			new_slot = get_backpack_slot()
-	
-	# pickup -> augment/backpack
-	if origin_slot in item_selection_node.slots:
-		if not new_slot:
-			new_slot = get_augment_slot(item)
-		
-		if new_slot.get_item():
-			var aug_slot = new_slot as AugmentSlot
-			var bp_slot = get_backpack_slot()
-			
-			if aug_slot:
-				if bp_slot:
-					move_item(aug_slot)
-				else:
-					new_slot = origin_slot
-		
-		if new_slot != origin_slot:
-			close_item_pickup_menu()
+	match origin_slot.slot_type:
+		slot_type.NONE:
+			pass
+		slot_type.BACKPACK:
+			new_slot = handle_backpack_move(origin_slot, new_slot, item)
+		slot_type.AUGMENT:
+			new_slot = handle_augment_move(origin_slot, new_slot, item)
+		slot_type.PICKUP:
+			new_slot = handle_pickup_move(origin_slot, new_slot, item)
+		slot_type.COMBINER:
+			new_slot = handle_combiner_move(origin_slot, new_slot, item)
+		slot_type.TRASH:
+			pass
 	
 	place_or_swap(item, origin_slot, new_slot)
 	update_inventory_data()
+	
+	if MenuManager.active_menu == MenuManager.MENU.COMBINER:
+		combiner_node.update_state()
+
+
+func can_replace_item(slot: InventorySlot) -> bool:
+	if not slot.get_item():
+		return true
+	elif get_backpack_slot():
+		return true
+	return false
+
+
+func handle_backpack_move(origin_slot: InventorySlot, new_slot: InventorySlot, item: Control) -> Control:
+	if new_slot:
+		return new_slot
+	
+	if MenuManager.active_menu == MenuManager.MENU.COMBINER:
+		return get_combiner_slot(origin_slot, item)
+	else:
+		return get_augment_slot(item)
+
+
+func handle_augment_move(origin_slot: AugmentSlot, new_slot: InventorySlot, item: Control) -> Control:
+	if new_slot:
+		return new_slot
+	
+	if MenuManager.active_menu == MenuManager.MENU.COMBINER:
+		return get_combiner_slot(origin_slot, item)
+	else:
+		return get_backpack_slot()
+
+
+func handle_pickup_move(_origin_slot: PickupSlot, new_slot: InventorySlot, item: Control) -> Control:
+	if not new_slot:
+		new_slot = get_augment_slot(item)
+	
+	if not can_replace_item(new_slot):
+		return null
+	
+	move_item(new_slot)
+	close_item_pickup_menu()
+	return new_slot
+
+
+func handle_combiner_move(_origin_slot: CombinerSlot, new_slot: InventorySlot, item: Control) -> Control:
+	if not new_slot:
+		new_slot = get_backpack_slot()
+		
+		if new_slot:
+			return new_slot
+	
+	if new_slot.get_item():
+		if not new_slot.get_item().item.grade == item.item.grade:
+				return null
+	
+	combiner_node.update_state()
+	return new_slot
+
 
 func place_or_swap(item: Control, origin_slot: Control, new_slot: Control) -> void:
+	if not new_slot:
+		new_slot = origin_slot
+	
 	if new_slot.get_item():
 		var item_to_swap = new_slot.get_item()
 		new_slot.remove_child(item_to_swap)
 		origin_slot.set_item(item_to_swap)
 	
 	new_slot.set_item(item)
-	
 	update_inventory_data()
+
 
 func delete_item(item: Control):
 	GameStats.items_trashed += 1
 	item.queue_free()
 
+
 func get_augment_slot(item) -> Control:
 	var available_slots = []
 	for slot in augments_node.get_children():
-		if slot.type == item.item.type:
+		if slot.item_type == item.item.type:
 			available_slots.append(slot)
 	
 	# extra augment slot will return free slot if available
@@ -163,11 +206,36 @@ func get_augment_slot(item) -> Control:
 	
 	return available_slots[0]
 
+
 func get_backpack_slot() -> Control:
 	for slot in backpack_node.get_children():
-		if slot.get_item() == null:
+		if not slot.get_item():
 			return slot
 	return null
+
+
+func get_combiner_slot(origin_slot: InventorySlot, item: Control) -> Control:
+	var item_count = combiner_node.item_count
+	
+	if item_count == 0:
+		return combiner_node.get_empty_slot()
+	
+	elif item_count == 1:
+		if item.item.grade == combiner_node.grade:
+			return combiner_node.get_empty_slot()
+		
+		elif origin_slot.slot_type == slot_type.AUGMENT:
+			var slot_with_item = combiner_node.get_slots_with_items()[0]
+			var item_in_combiner = slot_with_item.get_item()
+			if item.item.type == item_in_combiner.item.type:
+				return slot_with_item
+	
+	elif item_count == 2:
+		if item.item.grade == combiner_node.grade:
+			return combiner_node.get_empty_slot()
+	
+	return null
+
 
 func close_item_pickup_menu() -> void:
 	GameStats.items_picked_up += 1
@@ -191,12 +259,14 @@ func update_inventory_data() -> void:
 		update_item_effects(old_item, new_item)
 		augment_items[i] = new_item
 
+
 func update_item_effects(old_item: ItemResource, new_item: ItemResource) -> void:
 	if old_item and old_item != new_item:
 		remove_item_effects(old_item)
 	
 	if new_item and old_item != new_item:
 		apply_item_effects(new_item)
+
 
 func apply_item_effects(item: ItemResource) -> void:
 	if not item:
@@ -228,6 +298,7 @@ func apply_item_effects(item: ItemResource) -> void:
 	#reset the check
 	ItemGlobals.primary = false
 	ItemGlobals.secondary = false
+
 
 func remove_item_effects(item: ItemResource) -> void:
 
@@ -275,6 +346,7 @@ func reset_inventory() -> void:
 	extra_augment_slots = false
 	augment_items.clear()
 	backpack_items.clear()
+
 
 func equip_starter_items() -> void:
 	if starter_items.size() == 0:

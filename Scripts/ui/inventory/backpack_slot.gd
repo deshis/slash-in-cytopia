@@ -1,10 +1,13 @@
 extends InventorySlot
-class_name AugmentSlot
+class_name BackpackSlot
 
-@export var item_type: ItemType.Type
 
 func _can_drop_data(_pos: Vector2, data: Variant) -> bool:
 	var origin_slot: InventorySlot = data
 	var item = origin_slot.get_item()
 	
-	return item.get_type() == item_type
+	if origin_slot.slot_type == SLOT.AUGMENT:
+		if get_item():
+			return get_item().item.type == item.item.type
+	
+	return true
