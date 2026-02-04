@@ -10,6 +10,7 @@ func _input(event: InputEvent) -> void:
 		var combiner_menu = MenuManager.menus[MenuManager.MENU.COMBINER]
 		combiner_menu.move_items_from_combiner()
 		MenuManager.close_menu(MenuManager.MENU.COMBINER)
+		MenuManager.menus[MenuManager.MENU.COMBINER].items_combined.disconnect(combine_items)
 
 
 func _physics_process(_delta: float) -> void:

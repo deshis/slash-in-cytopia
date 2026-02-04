@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bvygox0uhweaq" path="res://Assets/ui/Trash.png" id="11_nx6hg"]
 [ext_resource type="Script" uid="uid://dmr6e5sqx26og" path="res://Scripts/ui/button.gd" id="11_wfkbc"]
 [ext_resource type="Script" uid="uid://cdh5pjfwavchk" path="res://Scripts/ui/inventory/pickup_slot.gd" id="12_yidpd"]
+[ext_resource type="Script" uid="uid://c30htnqqxh3hc" path="res://Scripts/ui/inventory/backpack_slot.gd" id="14_wl13q"]
 [ext_resource type="PackedScene" uid="uid://btj605votyjy8" path="res://Scenes/main_menu/settings_menu.tscn" id="16_36s6t"]
 [ext_resource type="Texture2D" uid="uid://cev4768d6kdbs" path="res://Assets/ui/UI_player_defeated.png" id="19_pbtju"]
 [ext_resource type="Script" uid="uid://6jore1um42bw" path="res://Scripts/ui/game_over.gd" id="23_vxf74"]
@@ -453,14 +454,17 @@ alignment = 1
 [node name="CombinerSlot1" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=478402899 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("10_dpa8n")
+slot_type = 4
 
 [node name="CombinerSlot2" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1303632517 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("10_dpa8n")
+slot_type = 4
 
 [node name="CombinerSlot3" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1091072765 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("10_dpa8n")
+slot_type = 4
 
 [node name="CombineButton" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=526808491 instance=ExtResource("10_36s6t")]
 layout_mode = 2
@@ -511,22 +515,27 @@ alignment = 1
 [node name="SelectionSlot1" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/ItemSelection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1842836105 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
+slot_type = 3
 
 [node name="SelectionSlot2" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/ItemSelection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2026668319 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
+slot_type = 3
 
 [node name="SelectionSlot3" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/ItemSelection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1922630795 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
+slot_type = 3
 
 [node name="SelectionSlot4" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/ItemSelection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=97810018 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
+slot_type = 3
 
 [node name="SelectionSlot5" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/ItemSelection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1331910921 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
+slot_type = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer" unique_id=1134784886]
 layout_mode = 2
@@ -543,28 +552,40 @@ columns = 3
 
 [node name="Slot1" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/Backpack" unique_id=1779575348 instance=ExtResource("10_36s6t")]
 layout_mode = 2
+script = ExtResource("14_wl13q")
+slot_type = 1
 
 [node name="Slot2" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/Backpack" unique_id=1146027325 instance=ExtResource("10_36s6t")]
 layout_mode = 2
-slot_name = "Backpack"
+script = ExtResource("14_wl13q")
+slot_type = 1
 
 [node name="Slot3" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/Backpack" unique_id=575839100 instance=ExtResource("10_36s6t")]
 layout_mode = 2
+script = ExtResource("14_wl13q")
+slot_type = 1
 
 [node name="Slot4" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/Backpack" unique_id=1339591803 instance=ExtResource("10_36s6t")]
 layout_mode = 2
+script = ExtResource("14_wl13q")
+slot_type = 1
 
 [node name="Slot5" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/Backpack" unique_id=1438146431 instance=ExtResource("10_36s6t")]
 layout_mode = 2
+script = ExtResource("14_wl13q")
+slot_type = 1
 
 [node name="Slot6" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/Backpack" unique_id=1022502862 instance=ExtResource("10_36s6t")]
 layout_mode = 2
+script = ExtResource("14_wl13q")
+slot_type = 1
 
 [node name="TrashSlot" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer" unique_id=654756306 instance=ExtResource("10_36s6t")]
 modulate = Color(1, 0, 0, 1)
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 script = ExtResource("9_36s6t")
+slot_type = 5
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/TrashSlot" unique_id=1563746356]
 modulate = Color(1, 1, 1, 0.5019608)
@@ -593,8 +614,9 @@ offset_bottom = -182.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
+item_type = 1
 slot_name = "Survivability"
-type = 1
+slot_type = 2
 
 [node name="Survivability2" parent="Inventory/HBoxContainer/RightSide/AugmentSlots" unique_id=846119843 instance=ExtResource("10_36s6t")]
 visible = false
@@ -609,8 +631,9 @@ offset_bottom = -182.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
+item_type = 1
 slot_name = "Survivability"
-type = 1
+slot_type = 2
 
 [node name="Movement" parent="Inventory/HBoxContainer/RightSide/AugmentSlots" unique_id=1643619528 instance=ExtResource("10_36s6t")]
 layout_mode = 0
@@ -624,8 +647,9 @@ offset_bottom = 262.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
+item_type = 2
 slot_name = "Movement"
-type = 2
+slot_type = 2
 
 [node name="Movement2" parent="Inventory/HBoxContainer/RightSide/AugmentSlots" unique_id=1230536516 instance=ExtResource("10_36s6t")]
 visible = false
@@ -640,8 +664,9 @@ offset_bottom = 262.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
+item_type = 2
 slot_name = "Movement"
-type = 2
+slot_type = 2
 
 [node name="Utility" parent="Inventory/HBoxContainer/RightSide/AugmentSlots" unique_id=955726024 instance=ExtResource("10_36s6t")]
 layout_mode = 0
@@ -655,8 +680,9 @@ offset_bottom = 261.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
+item_type = 3
 slot_name = "Utility"
-type = 3
+slot_type = 2
 
 [node name="Damage" parent="Inventory/HBoxContainer/RightSide/AugmentSlots" unique_id=1381558076 instance=ExtResource("10_36s6t")]
 layout_mode = 0
@@ -670,8 +696,9 @@ offset_bottom = -182.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
+item_type = 4
 slot_name = "Damage"
-type = 4
+slot_type = 2
 
 [node name="Damage2" parent="Inventory/HBoxContainer/RightSide/AugmentSlots" unique_id=1180873162 instance=ExtResource("10_36s6t")]
 visible = false
@@ -686,8 +713,9 @@ offset_bottom = -183.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
+item_type = 4
 slot_name = "Damage"
-type = 4
+slot_type = 2
 
 [node name="PrimaryAttack" parent="Inventory/HBoxContainer/RightSide/AugmentSlots" unique_id=1177296643 instance=ExtResource("10_36s6t")]
 layout_mode = 0
@@ -701,8 +729,9 @@ offset_bottom = 18.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
+item_type = 6
 slot_name = "Light Attack"
-type = 6
+slot_type = 2
 
 [node name="SecondaryAttack" parent="Inventory/HBoxContainer/RightSide/AugmentSlots" unique_id=840109095 instance=ExtResource("10_36s6t")]
 layout_mode = 0
@@ -716,8 +745,9 @@ offset_bottom = 18.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
+item_type = 7
 slot_name = "Heavy Attack"
-type = 7
+slot_type = 2
 
 [node name="ActiveItem" parent="Inventory/HBoxContainer/RightSide/AugmentSlots" unique_id=1028453924 instance=ExtResource("10_36s6t")]
 layout_mode = 0
@@ -731,8 +761,9 @@ offset_bottom = -184.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
+item_type = 5
 slot_name = "Brainchip"
-type = 5
+slot_type = 2
 
 [node name="ThrowableItem" parent="Inventory/HBoxContainer/RightSide/AugmentSlots" unique_id=1534490260 instance=ExtResource("10_36s6t")]
 layout_mode = 0
@@ -746,8 +777,9 @@ offset_bottom = 133.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
+item_type = 8
 slot_name = "Throwable (NAME?)"
-type = 8
+slot_type = 2
 
 [node name="Character" type="Panel" parent="Inventory/HBoxContainer/RightSide" unique_id=1879076268]
 custom_minimum_size = Vector2(188, 331)
