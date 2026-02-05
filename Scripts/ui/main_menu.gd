@@ -58,7 +58,8 @@ func _show_create_profile_dialog() -> void:
 	
 	profile_menu.profile_created.connect(_on_profile_created)
 
-func _on_profile_created() -> void:
+func _on_profile_created(filename: String) -> void:
+	ProfileManager.load_profile(filename)
 	_setup_main_menu()
 
 func _show_profile_selection(is_startup: bool) -> void:

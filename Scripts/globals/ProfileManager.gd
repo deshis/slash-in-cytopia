@@ -71,9 +71,9 @@ func create_profile(username: String) -> bool:
 	if profile_exists(username):
 		printerr("Profile with name " + username + " already exists.")
 		return false
-		
+
 	var filename = username + ".json"
-	current_profile = {
+	var profile_data = {
 		"username": username,
 		"created_at": Time.get_datetime_string_from_system(),
 		"filename": filename,
@@ -100,10 +100,14 @@ func create_profile(username: String) -> bool:
 			"total_healing": 0.0,
 			"health_stolen": 0.0,
 			"longest_run_time": 0
-		}
+		},
+		"achievements": []
 	}
-	
-	save_profile()
+
+	var full_path = PROFILE_DIR + filename
+	var file = FileAccess.open(full_path, FileAccess.WRITE)
+	file.store_string(JSON.stringify(profile_data, "\t"))
+	file.close()
 	return true
 
 func save_profile() -> void:
@@ -125,6 +129,8 @@ func load_profile(filename: String) -> void:
 		current_profile = JSON.parse_string(file.get_as_text())
 		current_profile["filename"] = filename
 		file.close()
+		if not current_profile.has("achievements"):
+			current_profile["achievements"] = []
 		set_last_loaded_profile(filename)
 	else:
 		printerr("Profile not found: " + filename)

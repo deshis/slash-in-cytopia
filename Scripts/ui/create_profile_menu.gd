@@ -1,6 +1,6 @@
 extends Control
 
-signal profile_created
+signal profile_created(filename: String)
 
 @onready var username_input: LineEdit = $Panel/VBoxContainer/UsernameInput
 @onready var create_button: Button = $Panel/VBoxContainer/CreateButton
@@ -38,7 +38,7 @@ func submit_profile() -> void:
 		return
 		
 	if ProfileManager.create_profile(username):
-		profile_created.emit()
+		profile_created.emit(username + ".json")
 		queue_free()
 	else:
 		accept_dialog.dialog_text = "Profile with name '" + username + "' already exists."

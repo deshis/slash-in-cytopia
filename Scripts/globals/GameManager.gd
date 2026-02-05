@@ -79,6 +79,7 @@ func boss_killed(boss: EnemyController) -> void:
 	spawner.wave_cooldown_timer.stop()
 	
 	GameStats.bosses_killed_by_type[boss.enemy.name] = GameStats.bosses_killed_by_type.get(boss.enemy.name, 0) + 1
+	AchievementManager.check_achievements()
 
 
 func new_game() -> void:
@@ -100,9 +101,11 @@ func _setup_game() -> void:
 	InventoryManager.reset_inventory()
 	LootDatabase.reset_loot_database()
 	start_game()
+	AchievementManager.start_checking()
 
 
 func quit_to_menu()->void:
+	AchievementManager.stop_checking()
 	ProfileManager.update_stats_from_run()
 	GameStats.reset_game_stats()
 	

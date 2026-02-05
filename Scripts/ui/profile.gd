@@ -7,6 +7,7 @@ var _username: String = ""
 var _created_at: String = ""
 
 func _ready() -> void:
+	mouse_entered.connect(grab_focus)
 	if not _username.is_empty():
 		name_label.text = _username
 	if not _created_at.is_empty():

@@ -12,6 +12,10 @@ var player: Player = GameManager.player
 var health_bar_pool = []
 var health_bar_pool_size := 16
 
+var _popup_queue: Array[Dictionary] = []
+var _current_popup: Control = null
+const AchievementPopupScene = preload("res://Scenes/ui/achievement_popup.tscn")
+
 func _ready() -> void:
 	if player:
 		health_bar.setup(player, player.health, player.max_health)
@@ -19,6 +23,8 @@ func _ready() -> void:
 	
 	for i in range(health_bar_pool_size):
 		instantiate_hp_bar()
+
+	AchievementManager.achievement_unlocked.connect(_on_achievement_unlocked)
 
 func instantiate_hp_bar() -> Control:
 	var bar = preload("res://Scenes/enemy/hp_bar_enemy.tscn").instantiate()
@@ -53,3 +59,25 @@ func remove_all_bars() -> void:
 
 func _on_timer_timeout() -> void:
 	pass # Replace with function body.
+
+
+func _on_achievement_unlocked(data: Dictionary) -> void:
+	_popup_queue.append(data)
+	if _current_popup == null:
+		_show_next_popup()
+
+
+func _show_next_popup() -> void:
+	if _popup_queue.is_empty():
+		return
+	var data := _popup_queue.pop_front() as Dictionary
+	var popup := AchievementPopupScene.instantiate()
+	add_child(popup)
+	_current_popup = popup
+	popup.popup_finished.connect(_on_popup_finished)
+	popup.setup(data)
+
+
+func _on_popup_finished() -> void:
+	_current_popup = null
+	_show_next_popup()

@@ -21,6 +21,7 @@ const PROFILE_ITEM_SCENE = preload("res://Scenes/main_menu/profile/profile.tscn"
 
 var selected_profile_filename: String = ""
 var profile_buttons: Array[Button] = []
+var _is_startup: bool = false
 
 func _ready() -> void:
 	create_button.pressed.connect(_on_create_pressed)
@@ -37,14 +38,16 @@ func _ready() -> void:
 	delete_button.add_to_group("ui_button")
 	rename_button.add_to_group("ui_button")
 	back_button.add_to_group("ui_button")
+
+	for btn in [load_button, create_button, rename_button, delete_button, back_button]:
+		btn.mouse_entered.connect(btn.grab_focus)
 	
 	refresh_profile_list()
 	update_buttons_state()
 
 func set_startup_mode(is_startup: bool) -> void:
+	_is_startup = is_startup
 	back_button.visible = !is_startup
-	# If startup, maybe change "Load" text to "Start Game" or similar if desired
-	# For now, keep it consistent
 
 func refresh_profile_list() -> void:
 
@@ -104,7 +107,7 @@ func _on_profile_button_pressed(pressed_btn: Button) -> void:
 func update_buttons_state() -> void:
 	var has_selection = selected_profile_filename != ""
 	var is_current_profile = selected_profile_filename == ProfileManager.current_profile.get("filename", "")
-	load_button.disabled = !has_selection or is_current_profile
+	load_button.disabled = !has_selection or (is_current_profile and not _is_startup)
 	delete_button.disabled = !has_selection
 	rename_button.disabled = !has_selection
 
@@ -113,7 +116,8 @@ func _on_create_pressed() -> void:
 	add_child(create_menu)
 	create_menu.profile_created.connect(_on_profile_created_from_dialog)
 
-func _on_profile_created_from_dialog() -> void:
+func _on_profile_created_from_dialog(filename: String) -> void:
+	selected_profile_filename = filename
 	refresh_profile_list()
 
 func _on_load_pressed() -> void:
