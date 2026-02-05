@@ -26,6 +26,8 @@
 
 [sub_resource type="ImageTexture" id="ImageTexture_36s6t"]
 
+[sub_resource type="ImageTexture" id="ImageTexture_wl13q"]
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8gbba"]
 size = Vector2(50, 50)
 
@@ -103,6 +105,7 @@ script = ExtResource("2_36s6t")
 default_primary_attack_icon = ExtResource("4_oersf")
 default_secondary_attack_icon = ExtResource("5_oersf")
 default_active_item_icon = SubResource("ImageTexture_36s6t")
+default_throwable_item_icon = SubResource("ImageTexture_wl13q")
 
 [node name="MarginContainer" type="MarginContainer" parent="SkillCooldowns" unique_id=1048569818]
 layout_mode = 1

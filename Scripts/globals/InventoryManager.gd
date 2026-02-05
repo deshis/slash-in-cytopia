@@ -291,6 +291,9 @@ func apply_item_effects(item: ItemResource) -> void:
 	if item.type == ItemType.Type.ACTIVE_ITEM:
 		GameManager.HUD.set_cooldown_icon(item.icon, "ActiveItem")
 	
+	if item.type == ItemType.Type.THROWABLE:
+		GameManager.HUD.set_cooldown_icon(item.icon, "ThrowableItem")
+	
 	#print("Applying effects for: ", item.item_name)
 	for effect in item.effects:
 		effect.apply_effect(GameManager.player)

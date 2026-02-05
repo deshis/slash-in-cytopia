@@ -21,6 +21,7 @@ var player: Player = GameManager.player
 @export var default_primary_attack_icon : Texture2D
 @export var default_secondary_attack_icon : Texture2D
 @export var default_active_item_icon : Texture2D
+@export var default_throwable_item_icon : Texture2D
 
 func _ready() -> void:
 	if not player:
@@ -35,6 +36,7 @@ func _ready() -> void:
 	set_icon(null, "PrimaryAttack")
 	set_icon(null, "SecondaryAttack")
 	set_icon(null, "ActiveItem")
+	set_icon(null, "ThrowableItem")
 
 func _process(_delta: float) -> void:
 	dash_cooldown_progress_bar.value = dash_cooldown_timer.time_left
@@ -67,7 +69,7 @@ func update_throwable_item_cooldown(cooldown:float)->void:
 	throwable_item_progress_bar.max_value = cooldown
 	throwable_item_progress_bar.value = cooldown
 	throwable_item_timer.start(cooldown)
-	
+
 func set_icon(icon: Texture2D, item_type: String) -> void:
 	for i in range(container.get_child_count()):
 		var child = container.get_child(i)
@@ -86,5 +88,7 @@ func get_default_texture(item_type: String) -> Texture2D:
 			return default_secondary_attack_icon
 		"ActiveItem":
 			return default_active_item_icon
+		"ThrowableItem":
+			return default_throwable_item_icon
 		
 	return null

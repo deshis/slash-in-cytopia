@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bshiktda2qqip" path="res://Scripts/player/camera_follow.gd" id="2_fsgfm"]
 [ext_resource type="ArrayMesh" uid="uid://6b1sg8dx4pse" path="res://Assets/environment/foliage/grass/grass_plane.res" id="3_7ri5u"]
 [ext_resource type="PackedScene" uid="uid://c1h6pqnhbr5no" path="res://Scenes/enemy/enemy_spawner.tscn" id="10_bfs1g"]
+[ext_resource type="PackedScene" uid="uid://dp1iy75msp6ch" path="res://Scenes/interactables/combiner.tscn" id="12_4ifjb"]
 [ext_resource type="PackedScene" uid="uid://t7qfk3mxfyoe" path="res://Assets/environment/forest/props/bus_stop.tscn" id="25_ccosh"]
 [ext_resource type="PackedScene" uid="uid://cwqkohfs16f1m" path="res://Assets/environment/forest/buildings/bar_building.tscn" id="25_q0xy8"]
 [ext_resource type="PackedScene" uid="uid://cead8ewvqdchl" path="res://Assets/environment/fence/regular_fence.tscn" id="26_f2cab"]
@@ -457,3 +458,6 @@ light_energy = 1.2
 shadow_enabled = true
 directional_shadow_mode = 0
 directional_shadow_pancake_size = 0.2
+
+[node name="Combiner" parent="." unique_id=231240284 instance=ExtResource("12_4ifjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.6412854)
