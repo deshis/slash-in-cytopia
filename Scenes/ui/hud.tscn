@@ -162,6 +162,7 @@ texture = SubResource("GradientTexture2D_484xk")
 expand_mode = 2
 
 [node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/PrimaryAttack" unique_id=1420213815]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -216,6 +217,7 @@ texture = SubResource("GradientTexture2D_vxf74")
 expand_mode = 2
 
 [node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/SecondaryAttack" unique_id=1104740523]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -253,6 +255,7 @@ show_percentage = false
 one_shot = true
 
 [node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown" unique_id=119228577]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -307,6 +310,7 @@ texture = SubResource("GradientTexture2D_lkt4f")
 expand_mode = 2
 
 [node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ActiveItem" unique_id=571822061]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -361,6 +365,7 @@ texture = SubResource("GradientTexture2D_lkt4f")
 expand_mode = 2
 
 [node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ThrowableItem" unique_id=829675825]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
