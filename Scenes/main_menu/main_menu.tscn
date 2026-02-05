@@ -19544,6 +19544,14 @@ text = "Stats
 "
 script = ExtResource("35_msuys")
 
+[node name="Achievements" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("52_ybtaw")
+theme_override_font_sizes/font_size = 32
+text = "Achievements"
+script = ExtResource("35_msuys")
+
 [node name="Settings" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1718876543]
 layout_mode = 2
 size_flags_vertical = 4
@@ -19721,6 +19729,7 @@ text = "Welcome"
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Profiles" to="." method="_on_profiles_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Stats" to="." method="_on_stats_pressed"]
+[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Achievements" to="." method="_on_achievements_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
