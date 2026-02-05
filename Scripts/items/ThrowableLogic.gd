@@ -1,6 +1,8 @@
 extends RigidBody3D
 class_name ThrowableLogic
 
+var status_effect: DebuffResource
+var dot_effect: DotResource
 var aoe_damage := 0.0
 var aoe_damage_og := 0.0
 var aoe_radius := 0.0
@@ -12,12 +14,14 @@ var on_contact_damage := false
 var contact_damage := 0.0
 var contact_aoe_radius := 0.0
 var fuse_duration := 0.0
-var primed := false ##Multiple _on_body_entered calls shouldn't call fuse_delay function repeatedly
+var fuse_start_on_hit := false
+var primed := false
+var collided := false ##Multiple _on_body_entered calls shouldn't call fuse_delay function repeatedly
 
-func _ready() -> void:
-	aoe_damage_og = aoe_damage
-	aoe_radius_og = aoe_radius
-
+func _ready () -> void:
+	if fuse || not fuse_start_on_hit:
+		fuse_delay()
+	
 func fuse_delay() -> void:
 	get_tree().create_timer(fuse_duration).timeout.connect(func(): explosion(aoe_damage, aoe_radius, true, true))
 	pass
@@ -27,24 +31,24 @@ func _on_body_entered(body: Node):
 	if on_contact_damage:
 		explosion(contact_damage,contact_aoe_radius,false, false)
 		
-	if primed:
+	if collided:
 		return
-		
+
 	if !pierce:
-		primed = true
-			
+		collided = true
+
 	if stick:
 		self.freeze = true
 		
 		$CollisionShape3D.set_deferred("disabled", true)
 		reparent_to_target(body)
-		
-	##Could be redundant. One option is to just have the fuse_duration without the fuse check
-	if fuse:
+
+	if fuse_start_on_hit:
 		fuse_delay()
 		return
 		
-	explosion(aoe_damage,aoe_radius,true, true)
+	if !fuse:
+		explosion(aoe_damage,aoe_radius,true, true)
 
 func reparent_to_target(target: Node):
 
@@ -67,6 +71,12 @@ func explosion(damage: float, aoe: float, clean: bool, area_damage_indicator: bo
 			if damage != 0:
 				GameManager.player.deal_damage(null, damage, enemy)
 				
+				if status_effect:
+					GameManager.player.deal_stat_damage(null, status_effect, enemy)
+					
+				if dot_effect:
+					GameManager.player.deal_dot_damage(null, dot_effect, enemy)
+				
 	if area_damage_indicator:
 		var area_damage_indicator_copy = GameManager.area_damage_indicator.instantiate()
 		get_tree().root.add_child(area_damage_indicator_copy)
@@ -76,7 +86,9 @@ func explosion(damage: float, aoe: float, clean: bool, area_damage_indicator: bo
 		SoundManager.play_sfx("explosion", self.global_position)
 		
 	if clean:
-		get_tree().create_timer(1).timeout.connect(queue_free)
+		queue_free()
+		##If a timer is needed for whatever reason here
+		#get_tree().create_timer(0).timeout.connect(queue_free)
 	
 	##Contact damage somewhere?
 	#SoundManager.play_sfx("explosion", self.global_position)

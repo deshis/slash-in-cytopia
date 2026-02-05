@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://b6rl30pvi63h8"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_cj6xe"]
+[ext_resource type="Resource" uid="uid://c3ljvcbyurgbk" path="res://Scripts/items/resources/ThrowableResource/ThrowableCryoGrenade.tres" id="2_py4v2"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_wji5b"]
+[ext_resource type="Texture2D" uid="uid://besoo00oruvbh" path="res://Assets/items/icons/Prototype/CryoGrenade.png" id="3_aefui"]
+
+[sub_resource type="Resource" id="Resource_py4v2"]
+script = ExtResource("1_cj6xe")
+stat_type = 33
+throwable_resource = ExtResource("2_py4v2")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_wji5b")
+type = 8
+grade = 2
+icon = ExtResource("3_aefui")
+effects = Array[ExtResource("1_cj6xe")]([SubResource("Resource_py4v2")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

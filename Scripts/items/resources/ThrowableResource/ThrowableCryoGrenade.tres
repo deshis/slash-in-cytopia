@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ThrowableResource" format=3 uid="uid://c3ljvcbyurgbk"]
+
+[ext_resource type="Script" uid="uid://bwqwn07goaljh" path="res://Scripts/items/resources/ThrowableResource.gd" id="1_dvdpn"]
+[ext_resource type="Resource" uid="uid://ch2ywqcwatc8t" path="res://Scripts/items/resources/FreezeDebuff.tres" id="2_1qgib"]
+[ext_resource type="PackedScene" uid="uid://cnt51i8qbm67e" path="res://Scenes/items/grenade.tscn" id="2_5422u"]
+
+[resource]
+script = ExtResource("1_dvdpn")
+throwable_object = ExtResource("2_5422u")
+status_effect = ExtResource("2_1qgib")
+set_facing_direction = true
+fuse = true
+fuse_duration = 1.0
+aoe_radius = 2.6
+aoe_damage = 10.0
+contact_aoe_radius = 0.0
+throwable_cooldown = 0.1
+throw_force = 2.0
+upward_arc = 5.0
+metadata/_custom_type_script = "uid://bwqwn07goaljh"

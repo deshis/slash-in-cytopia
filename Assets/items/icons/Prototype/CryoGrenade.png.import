@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhok6ijwl26q6"
-path.s3tc="res://.godot/imported/Grenade4.png-91fab821a44968e07c45e4d9c886f168.s3tc.ctex"
+uid="uid://besoo00oruvbh"
+path.s3tc="res://.godot/imported/CryoGrenade.png-e199f3cbe01531d2250854a6d79fc747.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/items/icons/Prototype/Grenade4.png"
-dest_files=["res://.godot/imported/Grenade4.png-91fab821a44968e07c45e4d9c886f168.s3tc.ctex"]
+source_file="res://Assets/items/icons/Prototype/CryoGrenade.png"
+dest_files=["res://.godot/imported/CryoGrenade.png-e199f3cbe01531d2250854a6d79fc747.s3tc.ctex"]
 
 [params]
 

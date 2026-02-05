@@ -2,10 +2,13 @@ extends Resource
 class_name ThrowableResource
 
 @export var throwable_object: PackedScene
+@export var status_effect: DebuffResource
+@export var dot_effect: DebuffResource
 @export var set_facing_direction: bool
 @export var pierce: bool
 @export var stick: bool
 @export var fuse: bool
+@export var fuse_on_hit: bool
 @export var fuse_duration: float
 @export var aoe_radius: float
 @export var aoe_damage: float

@@ -557,6 +557,7 @@ func throw(throw_resource: ThrowableResource):
 	#var brick = brick_scene.instantiate()
 	
 	throwable_object.fuse = throwable_fuse
+	throwable_object.fuse_start_on_hit = throw_resource.fuse_on_hit
 	throwable_object.pierce = throwable_pierce
 	throwable_object.stick = throwable_stick
 	throwable_object.aoe_damage = throw_resource.aoe_damage
@@ -565,6 +566,9 @@ func throw(throw_resource: ThrowableResource):
 	throwable_object.on_contact_damage = throw_resource.on_contact_damage
 	throwable_object.contact_damage = throw_resource.contact_damage
 	throwable_object.contact_aoe_radius = throw_resource.contact_aoe_radius
+	throwable_object.status_effect = throw_resource.status_effect
+	throwable_object.dot_effect = throw_resource.dot_effect
+
 	
 	get_tree().root.add_child(throwable_object)
 			
