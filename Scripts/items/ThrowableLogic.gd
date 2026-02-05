@@ -1,6 +1,7 @@
 extends RigidBody3D
 class_name ThrowableLogic
 
+var impact_particle: PackedScene
 var status_effect: DebuffResource
 var dot_effect: DotResource
 var aoe_damage := 0.0
@@ -35,7 +36,18 @@ func _on_body_entered(body: Node):
 		
 	if on_contact_damage:
 
-		GameManager.particles.emit_particles("impact_dust", global_position - Vector3(0, 1, 0), self)
+		if impact_particle:
+			var particle_instance = impact_particle.instantiate()
+			get_tree().root.add_child(particle_instance)
+			particle_instance.global_position = global_position + Vector3.DOWN * 1.0
+			
+			if particle_instance is GPUParticles3D:
+				particle_instance.emitting = true
+				particle_instance.finished.connect(func(): particle_instance.queue_free())
+		
+		
+		#GameManager.particles.emit_particles(impact_particle., global_position - Vector3(0, 1, 0), self)
+		
 		explosion(contact_damage,contact_aoe_radius,false, false)
 
 

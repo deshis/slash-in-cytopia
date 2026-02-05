@@ -53,6 +53,9 @@ tonemap_mode = 2
 ssil_radius = 8.61
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bfs1g"]
+size = Vector3(60, 0.5, 60)
+
 [node name="ForestLevel" type="Node3D" unique_id=1117914240]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1086796885]
@@ -457,3 +460,10 @@ light_energy = 1.2
 shadow_enabled = true
 directional_shadow_mode = 0
 directional_shadow_pancake_size = 0.2
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=958571371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03322795, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=324436586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22000965, 0)
+shape = SubResource("BoxShape3D_bfs1g")
