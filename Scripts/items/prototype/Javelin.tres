@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 [resource]
 script = ExtResource("2_r6t1y")
 item_name = "Javelin"
-item_stat_info = "Kinetic bombardment"
+item_stat_info = "Launch a javelin from the orbit.."
 type = 8
 grade = 2
 icon = ExtResource("3_ioo04")

@@ -34,8 +34,10 @@ func _on_body_entered(body: Node):
 		collided = true
 		
 	if on_contact_damage:
-		print("contact damage")
+
+		GameManager.particles.emit_particles("impact_dust", global_position - Vector3(0, 1, 0), self)
 		explosion(contact_damage,contact_aoe_radius,false, false)
+
 
 	if stick:
 		self.freeze = true

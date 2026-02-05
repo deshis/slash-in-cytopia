@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cco7705ip0bjr"]
+[gd_scene format=3 uid="uid://cco7705ip0bjr"]
 
 [ext_resource type="Script" uid="uid://5nas3lr5rq7w" path="res://Scripts/particles/particle_manager.gd" id="1_6iwin"]
 [ext_resource type="PackedScene" uid="uid://bn26kn4nhfwt7" path="res://Scenes/particles/player_on_hit.tscn" id="2_nidn3"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dqbrma0g3xx0g" path="res://Scenes/particles/heal.tscn" id="7_dsfbh"]
 [ext_resource type="PackedScene" uid="uid://cpoyxyxicacwu" path="res://Scenes/particles/freeze_particles_3D.tscn" id="8_u5q0x"]
 [ext_resource type="PackedScene" uid="uid://bcvo0fqryhmi8" path="res://Scenes/particles/freeze_shatter_particles_3D.tscn" id="9_ja0vp"]
+[ext_resource type="PackedScene" uid="uid://4g15p6wdfnqs" path="res://Scenes/particles/impact_dust.tscn" id="10_sc5gm"]
 
-[node name="ParticleManager" type="Node3D"]
+[node name="ParticleManager" type="Node3D" unique_id=520727591]
 script = ExtResource("1_6iwin")
-particles = Array[PackedScene]([ExtResource("2_nidn3"), ExtResource("3_fii50"), ExtResource("4_drpqi"), ExtResource("5_bjocm"), ExtResource("6_4nwpp"), ExtResource("7_dsfbh"), ExtResource("8_u5q0x"), ExtResource("9_ja0vp"), ExtResource("6_4nwpp")])
+particles = Array[PackedScene]([ExtResource("2_nidn3"), ExtResource("3_fii50"), ExtResource("4_drpqi"), ExtResource("5_bjocm"), ExtResource("6_4nwpp"), ExtResource("7_dsfbh"), ExtResource("8_u5q0x"), ExtResource("9_ja0vp"), ExtResource("6_4nwpp"), ExtResource("10_sc5gm")])

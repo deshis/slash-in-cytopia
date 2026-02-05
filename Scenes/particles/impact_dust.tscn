@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dvxfvfrh4a2t7"]
+[gd_scene format=3 uid="uid://4g15p6wdfnqs"]
 
-[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="1_m7xxd"]
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="1_cnqyf"]
 
 [sub_resource type="Curve" id="Curve_m7xxd"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.21129328, 1), 0.0, 0.0, 0, 0, Vector2(0.3788707, 0), 0.0, 0.0, 0, 0]
@@ -17,26 +17,25 @@ colors = PackedColorArray(0, 0, 0, 0, 0.9955097, 0.98244435, 0.99269444, 1, 0.12
 gradient = SubResource("Gradient_kja04")
 
 [sub_resource type="Curve" id="Curve_632fo"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2622951, 0.59757745), 0.0, 0.0, 0, 0, Vector2(0.58652097, 0.2695155), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0.009900987, 0.4102983), 0.0, 0.0, 0, 0, Vector2(0.4587459, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_lncj0"]
 curve = SubResource("Curve_632fo")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sbt0b"]
-emission_shape_offset = Vector3(0, 1, 0)
-emission_shape = 1
-emission_sphere_radius = 1.5
+emission_shape_offset = Vector3(0, 0.1, 0)
 angle_min = 1.0728835e-05
 angle_max = 360.00003
-spread = 180.0
-initial_velocity_min = 5.0
-initial_velocity_max = 5.0
+direction = Vector3(1, 2, 0)
+spread = 90.0
+initial_velocity_min = 4.0
+initial_velocity_max = 4.0
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -5.000002
 linear_accel_max = -5.000002
 scale_curve = SubResource("CurveTexture_lncj0")
-color = Color(0.7432764, 0.26628035, 0.51313394, 1)
+color = Color(0.34, 0.1836, 0.1836, 1)
 color_ramp = SubResource("GradientTexture1D_46pj6")
 alpha_curve = SubResource("CurveTexture_qt575")
 
@@ -48,15 +47,16 @@ vertex_color_use_as_albedo = true
 [sub_resource type="SphereMesh" id="SphereMesh_ksoeo"]
 material = SubResource("StandardMaterial3D_sbt0b")
 
-[node name="Teleport" type="GPUParticles3D" unique_id=1364558215 node_paths=PackedStringArray("particles")]
+[node name="impact_dust" type="GPUParticles3D" unique_id=1212537711 node_paths=PackedStringArray("particles")]
 emitting = false
 amount = 100
-lifetime = 0.6
+lifetime = 3.0
 one_shot = true
-explosiveness = 0.75
+speed_scale = 1.75
+explosiveness = 0.85
 randomness = 0.1
 fixed_fps = 24
 process_material = SubResource("ParticleProcessMaterial_sbt0b")
 draw_pass_1 = SubResource("SphereMesh_ksoeo")
-script = ExtResource("1_m7xxd")
+script = ExtResource("1_cnqyf")
 particles = NodePath(".")
