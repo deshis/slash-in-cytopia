@@ -7,9 +7,10 @@
 script = ExtResource("1_6yef4")
 throwable_object = ExtResource("1_3e8fg")
 set_facing_direction = true
-fuse_duration = 1.0
-aoe_radius = 1.2
-aoe_damage = 1.0
+aoe_radius = 1.0
+on_contact_damage = true
+contact_damage = 10.0
+contact_aoe_radius = 2.0
 throwable_cooldown = 0.1
 throw_force = 3.0
 upward_arc = 1.0

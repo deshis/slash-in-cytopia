@@ -131,6 +131,8 @@ func _set_type_name() -> void:
 			type_name = "Light Attack"
 		ItemType.Type.SECONDARY_ATTACK:
 			type_name = "Heavy Attack"
+		ItemType.Type.THROWABLE:
+			type_name = "Throwable"
 
 func _create_description() -> void:
 

@@ -108,6 +108,7 @@ var can_active_item := true
 # THROW 
 @onready var throwable_cooldown_timer: Timer = $Timers/ThrowableCooldownTimer
 @onready var throw_point = $"ThrowPoint"
+@onready var orbital_throw_point = $"OrbitalThrowPoint"
 var brick_scene = preload("res://Scenes/items/brick.tscn")
 var can_throwable_item := true
 var active_throwable_resource: ThrowableResource = null
@@ -496,7 +497,7 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 					if active_effect.aoe_damage != 0:
 						deal_damage(null, aoe_damage, enemy)
 						
-		##NOTE: Redundant	
+		##NOTE: Redundant?
 		ActiveEffectResource.ActiveType.THROWABLE:
 			var throw_force := 3.0
 			var upward_arc  := 1.0
@@ -546,7 +547,6 @@ func throw(throw_resource: ThrowableResource):
 	var throwable_stick = throw_resource.stick
 	var throwable_pierce = throw_resource.pierce
 
-	
 	var throw_force = throw_resource.throw_force
 	var upward_arc = throw_resource.upward_arc
 	
@@ -569,10 +569,12 @@ func throw(throw_resource: ThrowableResource):
 	throwable_object.status_effect = throw_resource.status_effect
 	throwable_object.dot_effect = throw_resource.dot_effect
 
-	
 	get_tree().root.add_child(throwable_object)
-			
-	throwable_object.global_position = throw_point.global_position
+	
+	if throw_resource.projectile_from_sky:
+		throwable_object.global_position = orbital_throw_point.global_position
+	else:
+		throwable_object.global_position = throw_point.global_position
 			
 	var cam = get_viewport().get_camera_3d()
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -583,13 +585,23 @@ func throw(throw_resource: ThrowableResource):
 	var hit_pos = plane.intersects_ray(from, to)
 	
 	if hit_pos:
-		#Normalize distance for throwables?
-		#var direction = (hit_pos - global_position).normalized() 
-		var direction = (hit_pos - global_position)
-		var impulse = direction * throw_force
-		impulse.y = upward_arc
-		throwable_object.apply_central_impulse(impulse)
 
+		if throw_resource.projectile_from_sky:
+			var direction = (hit_pos - throwable_object.global_position)
+			var impulse = direction * throw_force
+			throwable_object.apply_central_impulse(impulse)
+			
+			#var angled_rotation = throwable_object.global_transform.looking_at(hit_pos, Vector3.UP)
+			#var vertical_rotation = throwable_object.global_transform.looking_at(throwable_object.global_position + Vector3.DOWN, Vector3.UP)
+			#
+			#var angle_intensity = 0.3  # Adjust this value (0.0 to 1.0)
+			#throwable_object.global_transform = vertical_rotation.interpolate_with(angled_rotation, angle_intensity)
+		else:
+			var direction = (hit_pos - global_position)
+			var impulse = direction * throw_force
+			impulse.y = upward_arc
+			throwable_object.apply_central_impulse(impulse)
+			
 
 func process_move(delta: float) -> void:	
 	apply_movement(delta)

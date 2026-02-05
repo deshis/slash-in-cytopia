@@ -19,23 +19,23 @@ var primed := false
 var collided := false ##Multiple _on_body_entered calls shouldn't call fuse_delay function repeatedly
 
 func _ready () -> void:
-	if fuse || not fuse_start_on_hit:
+	if fuse:
 		fuse_delay()
 	
 func fuse_delay() -> void:
 	get_tree().create_timer(fuse_duration).timeout.connect(func(): explosion(aoe_damage, aoe_radius, true, true))
-	pass
 	
 func _on_body_entered(body: Node):
-
-	if on_contact_damage:
-		explosion(contact_damage,contact_aoe_radius,false, false)
-		
+	
 	if collided:
 		return
-
+		
 	if !pierce:
 		collided = true
+		
+	if on_contact_damage:
+		print("contact damage")
+		explosion(contact_damage,contact_aoe_radius,false, false)
 
 	if stick:
 		self.freeze = true
@@ -47,7 +47,7 @@ func _on_body_entered(body: Node):
 		fuse_delay()
 		return
 		
-	if !fuse:
+	if !fuse && !on_contact_damage:
 		explosion(aoe_damage,aoe_radius,true, true)
 
 func reparent_to_target(target: Node):
@@ -67,7 +67,7 @@ func explosion(damage: float, aoe: float, clean: bool, area_damage_indicator: bo
 		if enemy is not EnemyController or not enemy.visible:
 			continue
 			
-		if global_position.distance_to(enemy.global_position) < aoe_radius:
+		if global_position.distance_to(enemy.global_position) < aoe:
 			if damage != 0:
 				GameManager.player.deal_damage(null, damage, enemy)
 				

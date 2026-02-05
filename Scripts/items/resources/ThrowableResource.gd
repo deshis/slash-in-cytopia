@@ -4,6 +4,7 @@ class_name ThrowableResource
 @export var throwable_object: PackedScene
 @export var status_effect: DebuffResource
 @export var dot_effect: DebuffResource
+@export var projectile_from_sky: bool
 @export var set_facing_direction: bool
 @export var pierce: bool
 @export var stick: bool

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dscwu0gai51q2"
-path.s3tc="res://.godot/imported/CyberShuriken.png-ad06f6017ad7d1abe3a0a4a66705a597.s3tc.ctex"
+uid="uid://cd06jrr1pdiid"
+path.s3tc="res://.godot/imported/Javelin.png-38568ed853d464985365e8ec0e781a75.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/items/icons/Military/CyberShuriken.png"
-dest_files=["res://.godot/imported/CyberShuriken.png-ad06f6017ad7d1abe3a0a4a66705a597.s3tc.ctex"]
+source_file="res://Assets/items/icons/Prototype/Javelin.png"
+dest_files=["res://.godot/imported/Javelin.png-38568ed853d464985365e8ec0e781a75.s3tc.ctex"]
 
 [params]
 

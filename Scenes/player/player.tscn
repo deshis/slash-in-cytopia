@@ -2725,6 +2725,9 @@ shape = SubResource("CylinderShape3D_mxepk")
 [node name="ThrowPoint" type="Node3D" parent="." unique_id=1322018418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1397032, 0.67848736)
 
+[node name="OrbitalThrowPoint" type="Node3D" parent="." unique_id=1458579878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.63545, -0.11289656)
+
 [connection signal="timeout" from="Timers/TimeAliveTimer" to="." method="_on_time_alive_timer_timeout"]
 [connection signal="timeout" from="Timers/HealthRegenTimer" to="." method="_on_health_regen_timer_timeout"]
 [connection signal="timeout" from="Timers/DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]

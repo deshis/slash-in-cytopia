@@ -18,5 +18,4 @@ contact_damage = 5.0
 contact_aoe_radius = 1.0
 throwable_cooldown = 0.1
 throw_force = 4.0
-upward_arc = 0.5
 metadata/_custom_type_script = "uid://bwqwn07goaljh"
