@@ -122,6 +122,7 @@ func is_unlocked(achievement_id: String) -> bool:
 
 
 func get_all_achievements() -> Array[Dictionary]:
+	_load_unlocked()
 	var result: Array[Dictionary] = []
 	for achievement in achievements:
 		var data = achievement.duplicate()

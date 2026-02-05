@@ -9,6 +9,8 @@ extends Node3D
 
 @onready var play_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Play
 @onready var profiles_button: Button = $Menu/ProfileMargin/HBoxContainer/Profiles
+@onready var stats_button: Button = $Menu/ProfileMargin/HBoxContainer/Stats
+@onready var achievements_button: Button = $Menu/ProfileMargin/HBoxContainer/Achievements
 @onready var settings_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Settings
 @onready var tutorial_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Tutorial
 @onready var credits_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Credits
@@ -43,6 +45,8 @@ func _ready() -> void:
 	# Add SFX to buttons
 	play_button.add_to_group("start_button")
 	profiles_button.add_to_group("ui_button")
+	stats_button.add_to_group("ui_button")
+	achievements_button.add_to_group("ui_button")
 	settings_button.add_to_group("ui_button")
 	tutorial_button.add_to_group("ui_button")
 	credits_button.add_to_group("ui_button")

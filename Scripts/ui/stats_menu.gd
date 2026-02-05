@@ -13,6 +13,7 @@ func focus() -> void:
 	$Panel/MarginContainer/HBoxContainer/ButtonContainer/BackButton.grab_focus()
 
 func _ready() -> void:
+	$Panel/MarginContainer/HBoxContainer/ButtonContainer/BackButton.add_to_group("ui_button")
 	update_stats()
 
 func update_stats() -> void:
