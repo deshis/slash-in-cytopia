@@ -1,13 +1,18 @@
 extends Resource
 class_name ThrowableResource
 
+@export var throwable_object: PackedScene
 @export var set_facing_direction: bool
 @export var pierce: bool
+@export var stick: bool
 @export var fuse: bool
 @export var fuse_duration: float
 @export var aoe_radius: float
 @export var aoe_damage: float
-@export var throwable_cooldown: float = 5
+@export var on_contact_damage: bool
+@export var contact_damage: float
+@export var contact_aoe_radius: float = 1.2
+@export var throwable_cooldown: float
 @export var throw_force: float
 @export var upward_arc: float
 

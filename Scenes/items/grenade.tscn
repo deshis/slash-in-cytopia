@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cnt51i8qbm67e"]
+
+[ext_resource type="Script" uid="uid://b3c60k0xmmh2q" path="res://Scripts/items/ThrowableLogic.gd" id="1_ux5in"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ux5in"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ttsdu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1gfq"]
+albedo_color = Color(0.54, 0.2862, 0.2862, 1)
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=525632464]
+input_ray_pickable = false
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_ux5in")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=88139252]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("SphereShape3D_ux5in")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=244137259]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+mesh = SubResource("SphereMesh_ttsdu")
+surface_material_override/0 = SubResource("StandardMaterial3D_k1gfq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

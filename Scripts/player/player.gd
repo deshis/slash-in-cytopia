@@ -496,7 +496,7 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 					if active_effect.aoe_damage != 0:
 						deal_damage(null, aoe_damage, enemy)
 						
-						
+		##NOTE: Redundant	
 		ActiveEffectResource.ActiveType.THROWABLE:
 			var throw_force := 3.0
 			var upward_arc  := 1.0
@@ -540,9 +540,12 @@ func use_throwable_item(throw_resource: ThrowableResource):
 	
 func throw(throw_resource: ThrowableResource):
 	#var radius = throw_resource.aoe_radius
+	var throwable_object = throw_resource.throwable_object.instantiate()
 	var set_facing_direction = throw_resource.set_facing_direction
 	var throwable_fuse = throw_resource.fuse
+	var throwable_stick = throw_resource.stick
 	var throwable_pierce = throw_resource.pierce
+
 	
 	var throw_force = throw_resource.throw_force
 	var upward_arc = throw_resource.upward_arc
@@ -551,16 +554,21 @@ func throw(throw_resource: ThrowableResource):
 		set_facing_dir() 
 		
 	#var dot = active_effect.dot_resource.duplicate()
-	var brick = brick_scene.instantiate()
+	#var brick = brick_scene.instantiate()
 	
-	brick.fuse = throwable_fuse
-	brick.pierce = throwable_pierce
-	brick.aoe_damage = active_item_effect.aoe_damage
-	brick.aoe_radius = active_item_effect.aoe_radius
+	throwable_object.fuse = throwable_fuse
+	throwable_object.pierce = throwable_pierce
+	throwable_object.stick = throwable_stick
+	throwable_object.aoe_damage = throw_resource.aoe_damage
+	throwable_object.aoe_radius = throw_resource.aoe_radius
+	throwable_object.fuse_duration = throw_resource.fuse_duration
+	throwable_object.on_contact_damage = throw_resource.on_contact_damage
+	throwable_object.contact_damage = throw_resource.contact_damage
+	throwable_object.contact_aoe_radius = throw_resource.contact_aoe_radius
+	
+	get_tree().root.add_child(throwable_object)
 			
-	get_tree().root.add_child(brick)
-			
-	brick.global_position = throw_point.global_position
+	throwable_object.global_position = throw_point.global_position
 			
 	var cam = get_viewport().get_camera_3d()
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -576,7 +584,7 @@ func throw(throw_resource: ThrowableResource):
 		var direction = (hit_pos - global_position)
 		var impulse = direction * throw_force
 		impulse.y = upward_arc
-		brick.apply_central_impulse(impulse)
+		throwable_object.apply_central_impulse(impulse)
 
 
 func process_move(delta: float) -> void:	

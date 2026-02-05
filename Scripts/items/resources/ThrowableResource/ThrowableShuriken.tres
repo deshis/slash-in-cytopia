@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ThrowableResource" format=3 uid="uid://dq4owfx5reu28"]
+
+[ext_resource type="Script" uid="uid://bwqwn07goaljh" path="res://Scripts/items/resources/ThrowableResource.gd" id="1_dcjcl"]
+[ext_resource type="PackedScene" uid="uid://b0b76u6s21w7g" path="res://Scenes/items/shuriken.tscn" id="2_24qk1"]
+
+[resource]
+script = ExtResource("1_dcjcl")
+throwable_object = ExtResource("2_24qk1")
+set_facing_direction = true
+stick = true
+fuse = true
+fuse_duration = 1.5
+aoe_radius = 1.6
+aoe_damage = 10.0
+on_contact_damage = true
+contact_damage = 5.0
+contact_aoe_radius = 1.0
+throwable_cooldown = 0.1
+throw_force = 4.0
+upward_arc = 0.5
+metadata/_custom_type_script = "uid://bwqwn07goaljh"
