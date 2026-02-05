@@ -1,13 +1,31 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://bqd8v0ecwmhcl"]
 
-[ext_resource type="Shader" uid="uid://dp145x6w65ey5" path="res://Assets/materials/shaders/cell_shader.gdshader" id="2_khwys"]
+[ext_resource type="Shader" uid="uid://bh7yfb7btfpg0" path="res://Assets/vfx/player_stencil.gdshader" id="1_b02ol"]
+[ext_resource type="Shader" uid="uid://32mluao674dg" path="res://Assets/player/player.gdshader" id="1_dd7lu"]
+[ext_resource type="Shader" uid="uid://dd6y3jqiyq4ej" path="res://Assets/vfx/hit_flash/hit_flash.gdshader" id="1_khwys"]
 [ext_resource type="Texture2D" uid="uid://dp2qderulb6q" path="res://Assets/apollo-8x.png" id="3_8pbx8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihwbr"]
+[sub_resource type="Gradient" id="Gradient_b02ol"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8pbx8"]
+gradient = SubResource("Gradient_b02ol")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8pbx8"]
+render_priority = 0
+shader = ExtResource("1_b02ol")
+shader_parameter/dither_image = SubResource("GradientTexture1D_8pbx8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b02ol"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_8pbx8")
+shader = ExtResource("1_khwys")
+shader_parameter/strength = 0.0
 
 [resource]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ihwbr")
-shader = ExtResource("2_khwys")
+next_pass = SubResource("ShaderMaterial_b02ol")
+shader = ExtResource("1_dd7lu")
 shader_parameter/albedo_texture = ExtResource("3_8pbx8")
 shader_parameter/light_steps = 3.0

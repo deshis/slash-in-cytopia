@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://br7yobcthvqjh"]
+
+[ext_resource type="PackedScene" uid="uid://0ke1vk30jkwv" path="res://Assets/environment/forest/props/hologram.glb" id="1_vnxe7"]
+[ext_resource type="Script" uid="uid://byh6xjffe6hao" path="res://Scripts/environment/flicker_controller.gd" id="2_4jgry"]
+[ext_resource type="Shader" uid="uid://c08vud63h7adf" path="res://Assets/materials/shaders/neon_light.gdshader" id="3_kka6s"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vnxe7"]
+radius = 1.235
+
+[node name="hologram" unique_id=1266443416 instance=ExtResource("1_vnxe7")]
+
+[node name="HologramBase" parent="." index="0" unique_id=69475292 node_paths=PackedStringArray("light", "meshInstance")]
+script = ExtResource("2_4jgry")
+light = NodePath("OmniLight3D")
+meshInstance = NodePath(".")
+shader = ExtResource("3_kka6s")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="HologramBase" index="0" unique_id=2021644260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.88235295, 1, 1, 1)
+omni_range = 3.0
+
+[node name="Area3D" type="StaticBody3D" parent="." index="2" unique_id=1668235183]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=34419633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_vnxe7")
+
+[node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="." index="3" unique_id=840142575]
+transform = Transform3D(0.73238826, 0, 0, 0, 1, 0, 0, 0, 0.3, 0, 0, 0)
+height = 20.0
+vertices = PackedVector3Array(1.5, 0, -3, -1.5, 0, -3, -1.5, 0, 3, 1.5, 0, 3)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_enabled = false

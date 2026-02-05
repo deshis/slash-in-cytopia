@@ -79,7 +79,7 @@ shader_parameter/uv_offset = Vector2(0.1, 0)
 
 [node name="Weapons" type="Node3D" parent="." index="0" unique_id=616640463]
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(1147127939) index="4" unique_id=1062340820]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(287403461) index="4" unique_id=1062340820]
 transform = Transform3D(-0.9636043, -0.09248335, 0.25082436, 0.13574164, -0.9775683, 0.16103853, 0.2303047, 0.18922493, 0.95454353, -0.4392984, 1.0608519, 0.038848236)
 bone_name = "DEF-hand.R"
 bone_idx = 174
@@ -89,45 +89,45 @@ transform = Transform3D(1, 0, 0, 0, -4.371138e-08, -0.9999999, 0, 0.9999998, -4.
 
 [node name="Mesh" type="MeshInstance3D" parent="rig/Skeleton3D/BoneAttachment3D/Weapon" index="0" unique_id=1957296987]
 
-[node name="Dagger" parent="." index="2" unique_id=1600881226]
+[node name="Dagger" parent="." index="2" unique_id=1983349036]
 visible = false
 
-[node name="DaggerTrail" parent="." index="3" unique_id=499822320]
+[node name="DaggerTrail" parent="." index="3" unique_id=1165610111]
 visible = false
 
-[node name="Katana" parent="." index="4" unique_id=1199168076]
+[node name="Katana" parent="." index="4" unique_id=1006599510]
 visible = false
 
-[node name="Maul" parent="." index="5" unique_id=562972130]
+[node name="Maul" parent="." index="5" unique_id=1533749518]
 visible = false
 
-[node name="SwordTrail" parent="." index="6" unique_id=1686708219]
+[node name="SwordTrail" parent="." index="6" unique_id=828698531]
 visible = false
 material_override = SubResource("ShaderMaterial_mqtts")
 
-[node name="KickTrail" parent="." index="7" unique_id=1169952189]
+[node name="KickTrail" parent="." index="7" unique_id=257722520]
 visible = false
 material_override = SubResource("ShaderMaterial_y36al")
 
-[node name="TrainingSword" parent="." index="8" unique_id=1982458785]
+[node name="TrainingSword" parent="." index="8" unique_id=194590455]
 visible = false
 
-[node name="MaulTrail" parent="." index="9" unique_id=708748830]
+[node name="MaulTrail" parent="." index="9" unique_id=423527246]
 visible = false
 material_override = ExtResource("7_740jx")
 
-[node name="Stick" parent="." index="10" unique_id=937824178]
+[node name="Stick" parent="." index="10" unique_id=336897172]
 visible = false
 
-[node name="ElectricDagger" parent="." index="11" unique_id=1783567382]
+[node name="ElectricDagger" parent="." index="11" unique_id=1753913498]
 visible = false
 
-[node name="Labrys" parent="." index="12" unique_id=2088867125]
+[node name="Labrys" parent="." index="12" unique_id=1187912986]
 visible = false
 
-[node name="AxeTrail" parent="." index="13" unique_id=147565021]
+[node name="AxeTrail" parent="." index="13" unique_id=2124410097]
 visible = false
 material_override = SubResource("ShaderMaterial_2q234")
 
-[node name="AnimationPlayer" parent="." index="19" unique_id=7796655]
+[node name="AnimationPlayer" parent="." index="19" unique_id=843873245]
 autoplay = &"Idle"

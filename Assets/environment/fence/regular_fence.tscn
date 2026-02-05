@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cead8ewvqdchl"]
+
+[ext_resource type="PackedScene" uid="uid://uggn50asp0na" path="res://Assets/environment/fence/fence.glb" id="1_p4b4i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4b4i"]
+size = Vector3(2, 2, 1)
+
+[node name="fence" unique_id=2041866441 instance=ExtResource("1_p4b4i")]
+
+[node name="FenceCorner" parent="." index="1" unique_id=1885761970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+visible = false
+
+[node name="Area3D" type="StaticBody3D" parent="." index="2" unique_id=683938246]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=2144760965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_p4b4i")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="3" unique_id=1224245926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+light_color = Color(0.30980393, 0.9254902, 1, 1)

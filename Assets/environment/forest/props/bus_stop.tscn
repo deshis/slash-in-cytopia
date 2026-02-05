@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://t7qfk3mxfyoe"]
+
+[ext_resource type="PackedScene" uid="uid://cq53k4esjiawi" path="res://Assets/environment/forest/props/bus_stop.glb" id="1_q08el"]
+[ext_resource type="Script" uid="uid://byh6xjffe6hao" path="res://Scripts/environment/flicker_controller.gd" id="2_0t1kt"]
+[ext_resource type="Shader" uid="uid://c08vud63h7adf" path="res://Assets/materials/shaders/neon_light.gdshader" id="3_mlhlw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qbm4f"]
+size = Vector3(3.075, 3, 7)
+
+[node name="bus_stop" unique_id=560826652 instance=ExtResource("1_q08el")]
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="0" unique_id=891701679]
+height = 20.0
+vertices = PackedVector3Array(1.5, 0, -3, -1.5, 0, -3, -1.5, 0, 3, 1.5, 0, 3)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_enabled = false
+
+[node name="BusStop" parent="." index="1" unique_id=670173660 node_paths=PackedStringArray("light", "meshInstance")]
+script = ExtResource("2_0t1kt")
+light = NodePath("")
+meshInstance = NodePath(".")
+shader = ExtResource("3_mlhlw")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="BusStop" index="0" unique_id=1157192804]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 2, -2)
+light_color = Color(0.4117647, 1, 1, 1)
+spot_range = 4.0
+spot_angle = 70.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=2042479165]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1178995530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.25)
+shape = SubResource("BoxShape3D_qbm4f")

@@ -17,11 +17,29 @@ shader = ExtResource("3_dh4q2")
 shader_parameter/albedo_texture = SubResource("GradientTexture1D_enhcp")
 shader_parameter/light_steps = 3.0
 
-[node name="trees" unique_id=1744588643 instance=ExtResource("1_brfkd")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dh4q2"]
+height = 4.0
+radius = 0.983
 
-[node name="Trunk" parent="." index="0" unique_id=1872940009]
+[node name="trees" unique_id=1160092882 instance=ExtResource("1_brfkd")]
+transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, 0, 0, 0)
+
+[node name="Trunk" parent="." index="0" unique_id=217700789]
 material_override = SubResource("ShaderMaterial_r7lp8")
 
-[node name="Leaves" parent="." index="1" unique_id=65659518]
+[node name="Leaves" parent="." index="1" unique_id=1043723209]
 material_override = ExtResource("2_ytdn2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=1856983501]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=2102199945]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 2, 0)
+shape = SubResource("CylinderShape3D_dh4q2")
+
+[node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="." index="3" unique_id=1116046678]
+transform = Transform3D(0.24412927, 0, 0, 0, 1, 0, 0, 0, 0.15999995, 0, 0, 0)
+height = 20.0
+vertices = PackedVector3Array(1.5, 0, -3, -1.5, 0, -3, -1.5, 0, 3, 1.5, 0, 3)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_enabled = false

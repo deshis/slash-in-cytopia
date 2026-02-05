@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cwqkohfs16f1m"]
+
+[ext_resource type="PackedScene" uid="uid://lhpm2as0swpv" path="res://Assets/environment/forest/buildings/bar_building.glb" id="1_coco0"]
+[ext_resource type="Script" uid="uid://byh6xjffe6hao" path="res://Scripts/environment/flicker_controller.gd" id="2_7vouy"]
+[ext_resource type="Shader" uid="uid://c08vud63h7adf" path="res://Assets/materials/shaders/neon_light.gdshader" id="3_lbleb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_coco0"]
+size = Vector3(6.685, 8, 5.19)
+
+[node name="bar_building" unique_id=585423511 instance=ExtResource("1_coco0")]
+
+[node name="Lighttube" parent="." index="1" unique_id=1315615738 node_paths=PackedStringArray("light", "meshInstance")]
+script = ExtResource("2_7vouy")
+light = NodePath("OmniLight3D")
+meshInstance = NodePath(".")
+shader = ExtResource("3_lbleb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighttube" index="0" unique_id=2112488308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.783502, 2.2855268, -1.1838496)
+light_color = Color(0.4117647, 1, 1, 1)
+light_energy = 0.5
+omni_range = 3.0
+
+[node name="Text" parent="." index="6" unique_id=1583072154 node_paths=PackedStringArray("light", "meshInstance")]
+script = ExtResource("2_7vouy")
+light = NodePath("OmniLight3D")
+meshInstance = NodePath(".")
+shader = ExtResource("3_lbleb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Text" index="0" unique_id=1947342568]
+light_color = Color(0.5529412, 1, 1, 1)
+
+[node name="Area3D" type="StaticBody3D" parent="." index="8" unique_id=640466214]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1701845635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_coco0")
+
+[node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="." index="9" unique_id=1900063708]
+transform = Transform3D(2.4412942, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+height = 20.0
+vertices = PackedVector3Array(1.5, 0, -3, -1.5, 0, -3, -1.5, 0, 3, 1.5, 0, 3)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_enabled = false

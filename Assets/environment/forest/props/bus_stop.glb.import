@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cuyfbuf0mr2bi"
-path="res://.godot/imported/forest_assets.glb-a1d40550fda314dec7096a8f7b59b67e.scn"
+uid="uid://cq53k4esjiawi"
+path="res://.godot/imported/bus_stop.glb-88da8af4e471f268f23104d5fa0fcdd2.scn"
 
 [deps]
 
-source_file="res://Assets/environment/forest/forest_assets.glb"
-dest_files=["res://.godot/imported/forest_assets.glb-a1d40550fda314dec7096a8f7b59b67e.scn"]
+source_file="res://Assets/environment/forest/props/bus_stop.glb"
+dest_files=["res://.godot/imported/bus_stop.glb-88da8af4e471f268f23104d5fa0fcdd2.scn"]
 
 [params]
 
@@ -39,20 +39,20 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"Barrier": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://Assets/materials/fence_hologram_material.tres",
-"use_external/path": "uid://y454g3jutaoh"
-},
 "BaseColor": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Assets/materials/basic_cell_shaded_material.tres",
-"use_external/path": "uid://biwi4od666f1t"
+"use_external/fallback_path": "res://Assets/materials/mossy_cell_shader.tres",
+"use_external/path": "uid://5l1ixy8by66k"
 },
 "LightColor": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Assets/materials/light.tres",
-"use_external/path": "uid://baabf0nmhxkta"
+"use_external/fallback_path": "res://Assets/materials/neon_light.tres",
+"use_external/path": "uid://06fy6wbh6kgg"
+},
+"Screen": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/materials/neon_light.tres",
+"use_external/path": "uid://06fy6wbh6kgg"
 }
 }
 }

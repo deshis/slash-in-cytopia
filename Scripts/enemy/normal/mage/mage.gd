@@ -168,7 +168,7 @@ func get_pos(start_pos: Vector3, end_pos: Vector3, max_dist: float, overshoot: f
 		pos = start_pos + dir * max_tp_dist
 	
 	# this feels very scuffed but I can't be bothered
-	var nav_region = GameManager.current_stage.get_node("Node3D").get_node("NavigationRegion3D")
+	var nav_region = GameManager.current_stage.get_node("NavigationRegion3D")
 	var nav_map = nav_region.get_navigation_map()
 	var fixed_pos = NavigationServer3D.map_get_closest_point(nav_map, pos)
 	return fixed_pos

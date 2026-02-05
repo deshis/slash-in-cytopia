@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://curkaa0ur604f"
-path.s3tc="res://.godot/imported/forest_assets_hologram_tiles.png-01f36a3629baf4c3863c4ae9e475d555.s3tc.ctex"
+uid="uid://dgh2cwip7dvb6"
+path.s3tc="res://.godot/imported/glass.jpg-1a875e578e3721b7139f1a215812a14b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "20f4842b1ce8d172ce5b88e1cbef4463"
-}
 
 [deps]
 
-source_file="res://Assets/environment/forest/forest_assets_hologram_tiles.png"
-dest_files=["res://.godot/imported/forest_assets_hologram_tiles.png-01f36a3629baf4c3863c4ae9e475d555.s3tc.ctex"]
+source_file="res://Assets/materials/textures/glass.jpg"
+dest_files=["res://.godot/imported/glass.jpg-1a875e578e3721b7139f1a215812a14b.s3tc.ctex"]
 
 [params]
 

@@ -18,7 +18,7 @@ var portaldoor = preload("res://Assets/portal/portal.tscn")
 var area_damage_indicator = preload("res://Scenes/items/AreaDamageIndicator.tscn")
 
 var stages := [
-	preload("res://Scenes/level/forest/forest_test_variety.tscn"),
+	preload("res://Scenes/level/forest/forest_level.tscn"),
 	preload("res://Scenes/level/indoor/indoor.tscn"),
 	preload("res://Scenes/level/indoor/boss_lab.tscn")
 ]

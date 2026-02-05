@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://boadpbbuytgxk"]
+
+[ext_resource type="Shader" uid="uid://b8vtqtbtecopo" path="res://Assets/materials/shaders/window.gdshader" id="1_h6brg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_h6brg")
+shader_parameter/window_color = Color(0.28351495, 0.5788407, 0.760887, 1)
+shader_parameter/top_gradient_color = Color(0.14233318, 0.28615966, 0.4046925, 1)
+shader_parameter/reflection_color = Color(0.5970039, 0.7483971, 0.34954736, 1)
+shader_parameter/reflection_strength = 0.742
+shader_parameter/top_gradient_strength = 0.50000002375
+shader_parameter/light_steps = 3.0
