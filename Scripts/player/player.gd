@@ -568,6 +568,7 @@ func throw(throw_resource: ThrowableResource):
 	throwable_object.contact_aoe_radius = throw_resource.contact_aoe_radius
 	throwable_object.status_effect = throw_resource.status_effect
 	throwable_object.dot_effect = throw_resource.dot_effect
+	throwable_object.impact_particle = throw_resource.impact_particle
 
 	get_tree().root.add_child(throwable_object)
 	
