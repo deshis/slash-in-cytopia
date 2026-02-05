@@ -16,7 +16,7 @@
 [ext_resource type="ArrayMesh" uid="uid://diakqbwpn4uyl" path="res://Assets/player/weapons/sword.res" id="21_6m47u"]
 [ext_resource type="Animation" uid="uid://ec1qucemvnhv" path="res://Assets/enemy/slasher/Attack.res" id="22_84iac"]
 [ext_resource type="Animation" uid="uid://cucm1wv4yupl1" path="res://Assets/enemy/slasher/Walk.res" id="23_5n0dv"]
-[ext_resource type="Texture2D" uid="uid://dpd71tn6okkkh" path="res://Assets/enemy/microbot/microbot_apollo-1x.png" id="25_6vfk8"]
+[ext_resource type="Texture2D" uid="uid://bel88ft5t7hnw" path="res://Assets/enemy/microbot/microbot_apollo-1x.png" id="25_6vfk8"]
 [ext_resource type="Shader" uid="uid://d20frcusg3c45" path="res://Assets/environment/foliage/ground.gdshader" id="27_4p7h4"]
 [ext_resource type="Shader" uid="uid://cv55fdtqonax8" path="res://Assets/vfx/impact/impact.gdshader" id="27_msuys"]
 [ext_resource type="Texture2D" uid="uid://c5okhx5774ilm" path="res://Assets/vfx/impact/impact_tex.png" id="28_aylim"]
@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dg11j431speyx" path="res://Assets/vfx/slash/slash_tex.png" id="31_qtdmj"]
 [ext_resource type="Animation" uid="uid://br0rk3ytqpkho" path="res://Assets/enemy/microbot/animations/Stun.res" id="32_ko05x"]
 [ext_resource type="Animation" uid="uid://bf47w0rk2h23r" path="res://Assets/enemy/microbot/animations/Walk.res" id="33_43km2"]
-[ext_resource type="Texture2D" uid="uid://envfqktqgqnq" path="res://Assets/enemy/mage/mage_apollo-1x.png" id="33_bmhhk"]
+[ext_resource type="Texture2D" uid="uid://uqdlllrj8oxc" path="res://Assets/enemy/mage/mage_apollo-1x.png" id="33_bmhhk"]
 [ext_resource type="ArrayMesh" uid="uid://d20gb3onvusch" path="res://Assets/enemy/mage/mage_staff.res" id="34_pddej"]
 [ext_resource type="Animation" uid="uid://mbww5et2k6fw" path="res://Assets/player/animations/Death.res" id="35_fgwar"]
 [ext_resource type="ArrayMesh" uid="uid://dj3oe35rc5d3o" path="res://Assets/enemy/mage/magic_flare.res" id="35_ko05x"]
@@ -19482,6 +19482,48 @@ skeleton = NodePath("")
 
 [node name="Menu" type="CanvasLayer" parent="." unique_id=1285395075]
 
+[node name="ProfileMargin" type="MarginContainer" parent="Menu" unique_id=2126870752]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -215.0
+offset_top = -180.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Menu/ProfileMargin" unique_id=138871955]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Profiles" type="Button" parent="Menu/ProfileMargin/HBoxContainer" unique_id=1979312858]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("52_ybtaw")
+theme_override_font_sizes/font_size = 32
+text = "Profiles"
+script = ExtResource("35_msuys")
+
+[node name="Stats" type="Button" parent="Menu/ProfileMargin/HBoxContainer" unique_id=1687232059]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("52_ybtaw")
+theme_override_font_sizes/font_size = 32
+text = "Stats
+"
+script = ExtResource("35_msuys")
+
+[node name="Achievements" type="Button" parent="Menu/ProfileMargin/HBoxContainer" unique_id=911909624]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("52_ybtaw")
+theme_override_font_sizes/font_size = 32
+text = "Achievements"
+script = ExtResource("35_msuys")
+
 [node name="MenuMargin" type="MarginContainer" parent="Menu" unique_id=1769672804]
 anchors_preset = 4
 anchor_top = 0.5
@@ -19525,31 +19567,6 @@ size_flags_vertical = 4
 theme = ExtResource("52_ybtaw")
 theme_override_font_sizes/font_size = 32
 text = "   Start Game   "
-script = ExtResource("35_msuys")
-
-[node name="Profiles" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1979312858]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
-text = "Profiles"
-script = ExtResource("35_msuys")
-
-[node name="Stats" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1687232059]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
-text = "Stats
-"
-script = ExtResource("35_msuys")
-
-[node name="Achievements" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
-text = "Achievements"
 script = ExtResource("35_msuys")
 
 [node name="Settings" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1718876543]
@@ -19726,10 +19743,10 @@ theme = ExtResource("52_ybtaw")
 theme_override_font_sizes/font_size = 32
 text = "Welcome"
 
+[connection signal="pressed" from="Menu/ProfileMargin/HBoxContainer/Profiles" to="." method="_on_profiles_pressed"]
+[connection signal="pressed" from="Menu/ProfileMargin/HBoxContainer/Stats" to="." method="_on_stats_pressed"]
+[connection signal="pressed" from="Menu/ProfileMargin/HBoxContainer/Achievements" to="." method="_on_achievements_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Profiles" to="." method="_on_profiles_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Stats" to="." method="_on_stats_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Achievements" to="." method="_on_achievements_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]

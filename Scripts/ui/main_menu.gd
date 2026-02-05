@@ -1,13 +1,14 @@
 extends Node3D
 
 @onready var menu_container: MarginContainer = $Menu/MenuMargin
+@onready var profile_container: MarginContainer = $Menu/ProfileMargin
 @onready var settings_container: MarginContainer = $Menu/SettingsMargin
 @onready var credits_container: MarginContainer = $Menu/CreditsMargin
 @onready var tutorial_container: MarginContainer = $Menu/TutorialMargin
 @onready var welcome_label: Label = $Menu/WelcomeMargin/WelcomeLabel
 
 @onready var play_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Play
-@onready var profiles_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Profiles
+@onready var profiles_button: Button = $Menu/ProfileMargin/HBoxContainer/Profiles
 @onready var settings_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Settings
 @onready var tutorial_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Tutorial
 @onready var credits_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Credits
@@ -27,7 +28,8 @@ func _ready() -> void:
 
 	welcome_label.visible = false
 	menu_container.visible = false
-	
+	profile_container.visible = false
+
 	if not ProfileManager.has_any_profile():
 		_show_create_profile_dialog()
 	else:
@@ -53,6 +55,7 @@ func _ready() -> void:
 
 func _show_create_profile_dialog() -> void:
 	menu_container.visible = false
+	profile_container.visible = false
 	welcome_label.visible = false
 	
 	var profile_menu = CREATE_PROFILE_MENU.instantiate()
@@ -66,6 +69,7 @@ func _on_profile_created(filename: String) -> void:
 
 func _show_profile_selection(is_startup: bool) -> void:
 	menu_container.visible = false
+	profile_container.visible = false
 	welcome_label.visible = false
 	
 	if active_profile_menu:
@@ -92,6 +96,7 @@ func _on_profile_menu_back() -> void:
 
 func _setup_main_menu() -> void:
 	menu_container.visible = true
+	profile_container.visible = true
 	welcome_label.visible = true
 
 	if ProfileManager.current_profile.has("username"):
@@ -112,36 +117,42 @@ func _on_quit_pressed() -> void:
 
 func _on_settings_pressed() -> void:
 	menu_container.visible = false
+	profile_container.visible = false
 	settings_container.visible = true
 	$Menu/SettingsMargin/SettingsMenu.take_focus()
 
 
 func _on_settings_menu_relay_back_to_menu_signal() -> void:
 	menu_container.visible = true
+	profile_container.visible = true
 	settings_container.visible = false
 	play_button.grab_focus()
 
 
 func _on_tutorial_pressed() -> void:
 	menu_container.visible = false
+	profile_container.visible = false
 	tutorial_container.visible = true
 	$Menu/TutorialMargin/Panel/MarginContainer/close_tutorial.grab_focus()
 
 
 func _on_close_tutorial_pressed() -> void:
 	menu_container.visible = true
+	profile_container.visible = true
 	tutorial_container.visible = false
 	play_button.grab_focus()
 
 
 func _on_credits_pressed() -> void:
 	menu_container.visible = false
+	profile_container.visible = false
 	credits_container.visible = true
 	$Menu/CreditsMargin/Panel/MarginContainer/close_credits.grab_focus()
 
 
 func _on_close_credits_pressed() -> void:
 	menu_container.visible = true
+	profile_container.visible = true
 	credits_container.visible = false
 	play_button.grab_focus()
 
@@ -155,6 +166,7 @@ func mainmenu() -> void:
 
 func _on_stats_pressed() -> void:
 	menu_container.visible = false
+	profile_container.visible = false
 	welcome_label.visible = false
 
 	if active_stats_menu:
@@ -175,6 +187,7 @@ func _on_stats_menu_back() -> void:
 
 func _on_achievements_pressed() -> void:
 	menu_container.visible = false
+	profile_container.visible = false
 	welcome_label.visible = false
 
 	if active_achievements_menu:
