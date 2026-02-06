@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_6qwoe"]
 [ext_resource type="Resource" uid="uid://brn4wywy7usnv" path="res://Scripts/items/resources/ThrowableResource/ThrowableJavelin.tres" id="2_ioo04"]
 [ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_r6t1y"]
-[ext_resource type="Texture2D" uid="uid://cd06jrr1pdiid" path="res://Assets/items/icons/Prototype/Javelin.png" id="3_ioo04"]
+[ext_resource type="Texture2D" uid="uid://c1yw3kn4rsf4t" path="res://Assets/items/icons/Prototype/Javelin4.png" id="3_ioo04"]
 
 [sub_resource type="Resource" id="Resource_6qwoe"]
 script = ExtResource("1_6qwoe")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bxrtjk3cl0lhr"]
+
+[ext_resource type="Script" uid="uid://ckdw63a1vmhfg" path="res://Scripts/AoeScaler.gd" id="1_npopb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_d7pqs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npopb"]
+transparency = 1
+albedo_color = Color(0.74, 0, 0, 0.627451)
+metallic_specular = 0.0
+anisotropy = 0.41
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=852272685]
+mesh = SubResource("SphereMesh_d7pqs")
+surface_material_override/0 = SubResource("StandardMaterial3D_npopb")
+script = ExtResource("1_npopb")

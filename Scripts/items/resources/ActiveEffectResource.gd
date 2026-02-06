@@ -12,6 +12,7 @@ class_name ActiveEffectResource
 #NOTE: Might be redundant. Can call GameManager for the particles.
 @export var dot_resource: DotResource
 @export var particle_scene: PackedScene
+@export var aoe_resource: AoeResource
 
 enum ActiveType { 
 	HEAL,

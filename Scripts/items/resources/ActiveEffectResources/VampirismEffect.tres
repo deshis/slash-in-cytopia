@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ActiveEffectResource" format=3 uid="uid://ifm3rf634612"]
 
+[ext_resource type="Resource" uid="uid://jf8qhr7i5yas" path="res://Scripts/items/resources/Aoe/Test.tres" id="1_a3kyj"]
 [ext_resource type="PackedScene" uid="uid://bn26kn4nhfwt7" path="res://Scenes/particles/player_on_hit.tscn" id="1_mkwyp"]
 [ext_resource type="Script" uid="uid://rwrpa5fevhio" path="res://Scripts/items/resources/ActiveEffectResource.gd" id="1_wnt5p"]
 [ext_resource type="Script" uid="uid://ko57id0ce143" path="res://Scripts/items/resources/DotResource.gd" id="2_a3kyj"]
@@ -8,7 +9,7 @@
 script = ExtResource("2_a3kyj")
 dot_name = "Bleed"
 dot_item_desc_color = "#fa0000"
-dot_tick_damage = 0.75
+dot_tick_damage = 6.0
 dot_tick_lifesteal = 50.0
 dot_tick_rate = 0.8
 particle_scene = ExtResource("1_mkwyp")
@@ -20,6 +21,8 @@ active_type = 4
 set_facing_direction = true
 active_effect_value = 1.0
 aoe_radius = 3.0
-aoe_damage = 2.5
+aoe_damage = 6.0
+active_effect_cooldown = 1.0
 dot_resource = SubResource("Resource_5fxjl")
+aoe_resource = ExtResource("1_a3kyj")
 metadata/_custom_type_script = "uid://rwrpa5fevhio"

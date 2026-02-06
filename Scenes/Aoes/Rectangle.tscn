@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dpsu4w5s78s3i"]
+
+[ext_resource type="Script" uid="uid://ckdw63a1vmhfg" path="res://Scripts/AoeScaler.gd" id="1_o3ond"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wn65n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3ond"]
+transparency = 1
+albedo_color = Color(0.74, 0, 0, 0.627451)
+metallic_specular = 0.0
+anisotropy = 0.41
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=588122652]
+mesh = SubResource("BoxMesh_wn65n")
+surface_material_override/0 = SubResource("StandardMaterial3D_o3ond")
+script = ExtResource("1_o3ond")

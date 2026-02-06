@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_jfqo2"]
 [ext_resource type="Resource" uid="uid://ifm3rf634612" path="res://Scripts/items/resources/ActiveEffectResources/VampirismEffect.tres" id="2_78l43"]
-[ext_resource type="Texture2D" uid="uid://30u5uqcdct56" path="res://Assets/items/icons/Military/Vampirism.png" id="3_yh4r0"]
+[ext_resource type="Texture2D" uid="uid://b3bi11wpeou1u" path="res://Assets/items/icons/Military/Vampirism2.png" id="3_jfqo2"]
 [ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="4_kegr3"]
 
 [sub_resource type="Resource" id="Resource_x4mto"]
@@ -17,6 +17,6 @@ item_name = "Vampirism"
 item_stat_info = "Cause bleeding in a radius and siphon back 50% of the damage as health"
 type = 5
 grade = 2
-icon = ExtResource("3_yh4r0")
+icon = ExtResource("3_jfqo2")
 effects = Array[ExtResource("1_jfqo2")]([SubResource("Resource_x4mto")])
 metadata/_custom_type_script = "uid://dulvf1v1d8so8"

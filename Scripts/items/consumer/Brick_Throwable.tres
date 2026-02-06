@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [resource]
 script = ExtResource("2_pf36g")
-item_name = "Brick Throwable Slot"
+item_name = "Brick"
 item_stat_info = "Throw a brick for 10 damage."
 type = 8
 icon = ExtResource("3_whdqg")

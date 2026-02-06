@@ -471,14 +471,19 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 			
 		ActiveEffectResource.ActiveType.DAMAGE_AOE:
 			
-			var area_damage_indicator_copy = area_damage_indicator.instantiate()
+			var aoe = active_effect.aoe_resource
 			
-			get_tree().root.add_child(area_damage_indicator_copy)
-			area_damage_indicator_copy.global_position = global_position
-			area_damage_indicator_copy.scale = Vector3(radius, radius, radius)
+			var spawn_transform = throw_point.global_transform
+			var aoe_position = spawn_transform.origin + (spawn_transform.basis * aoe.offset)
+			var aoe_rotation = spawn_transform.basis.get_euler().y
 			
-			#Wait 0.5 seconds, then delete
-			get_tree().create_timer(0.5).timeout.connect(area_damage_indicator_copy.queue_free)
+			#indicator
+			var indicator = aoe.create_indicator()
+			get_tree().root.add_child(indicator)
+			indicator.global_position = aoe_position
+			indicator.rotation.y = aoe_rotation
+			
+			get_tree().create_timer(aoe.indicator_duration).timeout.connect(indicator.queue_free)
 			
 			var aoe_damage = active_effect.aoe_damage
 			var dot = active_effect.dot_resource.duplicate()
@@ -486,14 +491,12 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 			for enemy in GameManager.spawner.get_children():
 				if enemy is not EnemyController or not enemy.visible:
 					continue
-				
-				##TODO: Update the AOE to be modifiable
-				##TODO: Give the AOE a visual indicator
-				if global_position.distance_to(enemy.global_position) < radius:
+					
+				if aoe.is_position_in_aoe(aoe_position, enemy.global_position):
 
 					if active_item_effect.dot_resource:
-							deal_dot_damage(null, dot, enemy)
-					
+						deal_dot_damage(null, dot, enemy)
+	
 					if active_effect.aoe_damage != 0:
 						deal_damage(null, aoe_damage, enemy)
 						
@@ -556,6 +559,7 @@ func throw(throw_resource: ThrowableResource):
 	#var dot = active_effect.dot_resource.duplicate()
 	#var brick = brick_scene.instantiate()
 	
+	#bruh
 	throwable_object.fuse = throwable_fuse
 	throwable_object.fuse_start_on_hit = throw_resource.fuse_on_hit
 	throwable_object.pierce = throwable_pierce
@@ -592,11 +596,6 @@ func throw(throw_resource: ThrowableResource):
 			var impulse = direction * throw_force
 			throwable_object.apply_central_impulse(impulse)
 			
-			#var angled_rotation = throwable_object.global_transform.looking_at(hit_pos, Vector3.UP)
-			#var vertical_rotation = throwable_object.global_transform.looking_at(throwable_object.global_position + Vector3.DOWN, Vector3.UP)
-			#
-			#var angle_intensity = 0.3  # Adjust this value (0.0 to 1.0)
-			#throwable_object.global_transform = vertical_rotation.interpolate_with(angled_rotation, angle_intensity)
 		else:
 			var direction = (hit_pos - global_position)
 			var impulse = direction * throw_force

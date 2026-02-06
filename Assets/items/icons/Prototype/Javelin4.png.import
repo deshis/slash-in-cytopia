@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd06jrr1pdiid"
-path.s3tc="res://.godot/imported/Javelin.png-38568ed853d464985365e8ec0e781a75.s3tc.ctex"
+uid="uid://c1yw3kn4rsf4t"
+path.s3tc="res://.godot/imported/Javelin4.png-fd6b63860b4de41497ce4aa4fc4ca89d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/items/icons/Prototype/Javelin.png"
-dest_files=["res://.godot/imported/Javelin.png-38568ed853d464985365e8ec0e781a75.s3tc.ctex"]
+source_file="res://Assets/items/icons/Prototype/Javelin4.png"
+dest_files=["res://.godot/imported/Javelin4.png-fd6b63860b4de41497ce4aa4fc4ca89d.s3tc.ctex"]
 
 [params]
 

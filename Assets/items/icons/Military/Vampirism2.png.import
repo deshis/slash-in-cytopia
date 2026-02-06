@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doaybxvfrxrbp"
-path.s3tc="res://.godot/imported/CyberShuriken.png-ad06f6017ad7d1abe3a0a4a66705a597.s3tc.ctex"
+uid="uid://b3bi11wpeou1u"
+path.s3tc="res://.godot/imported/Vampirism2.png-67e705d0954d49b8855ada4d6065ce3f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/items/icons/Military/CyberShuriken.png"
-dest_files=["res://.godot/imported/CyberShuriken.png-ad06f6017ad7d1abe3a0a4a66705a597.s3tc.ctex"]
+source_file="res://Assets/items/icons/Military/Vampirism2.png"
+dest_files=["res://.godot/imported/Vampirism2.png-67e705d0954d49b8855ada4d6065ce3f.s3tc.ctex"]
 
 [params]
 

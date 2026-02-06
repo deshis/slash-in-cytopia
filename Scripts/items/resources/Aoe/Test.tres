@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AoeResource" format=3 uid="uid://jf8qhr7i5yas"]
+
+[ext_resource type="Script" uid="uid://cl2mw12pdltyo" path="res://Scripts/items/resources/AOEresource.gd" id="1_2o2q1"]
+[ext_resource type="PackedScene" uid="uid://dpsu4w5s78s3i" path="res://Scenes/Aoes/Rectangle.tscn" id="1_n6oum"]
+
+[resource]
+script = ExtResource("1_2o2q1")
+shape = 1
+radius = 0.0
+size = Vector3(2, 2, 2.5)
+offset = Vector3(0, 0, 1)
+indicator_scene = ExtResource("1_n6oum")
+metadata/_custom_type_script = "uid://cl2mw12pdltyo"
