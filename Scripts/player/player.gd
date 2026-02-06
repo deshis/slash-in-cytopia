@@ -736,7 +736,7 @@ func deal_damage(area: Area3D, amount: float, e: EnemyController = null) -> void
 	
 	update_health_bar.emit(health)
 	
-	enemy.take_damage(amount)
+	enemy.take_damage(amount, self)
 
 func deal_dot_damage(area: Area3D, dot: DotResource, e: EnemyController = null) -> void:
 	var enemy = null

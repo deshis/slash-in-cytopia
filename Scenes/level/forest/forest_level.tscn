@@ -5,6 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://6b1sg8dx4pse" path="res://Assets/environment/foliage/grass/grass_plane.res" id="3_7ri5u"]
 [ext_resource type="PackedScene" uid="uid://c1h6pqnhbr5no" path="res://Scenes/enemy/enemy_spawner.tscn" id="10_bfs1g"]
 [ext_resource type="PackedScene" uid="uid://dp1iy75msp6ch" path="res://Scenes/interactables/combiner.tscn" id="12_4ifjb"]
+[ext_resource type="PackedScene" uid="uid://ctnsonp5fhgsn" path="res://Scenes/interactables/chest.tscn" id="13_mom3f"]
 [ext_resource type="PackedScene" uid="uid://t7qfk3mxfyoe" path="res://Assets/environment/forest/props/bus_stop.tscn" id="25_ccosh"]
 [ext_resource type="PackedScene" uid="uid://cwqkohfs16f1m" path="res://Assets/environment/forest/buildings/bar_building.tscn" id="25_q0xy8"]
 [ext_resource type="PackedScene" uid="uid://cead8ewvqdchl" path="res://Assets/environment/fence/regular_fence.tscn" id="26_f2cab"]
@@ -471,3 +472,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03322795, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=324436586]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22000965, 0)
 shape = SubResource("BoxShape3D_bfs1g")
+
+[node name="Chest" parent="." unique_id=300150525 instance=ExtResource("13_mom3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7675629, 0, 6.8753605)

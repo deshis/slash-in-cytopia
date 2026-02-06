@@ -360,7 +360,7 @@ func _on_debuff_tick() -> void:
 		debuff_timer.start()
 			
 
-func take_damage(damage:float) -> void:
+func take_damage(damage:float, _damage_dealer = null) -> void:
 	if damage <= 0:
 		return
 	
