@@ -5,4 +5,5 @@ extends Control
 @export var augments_node: Control
 @export var item_selection_node: Control
 @export var combiner_node: Control
+@export var recycler_node: Control
 @export var extra_augment_nodes: Array[Control]

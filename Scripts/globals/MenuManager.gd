@@ -7,7 +7,8 @@ enum MENU {
 	PAUSE,
 	INVENTORY,
 	ITEM_SELECTION,
-	COMBINER
+	COMBINER,
+	RECYCLER,
 }
 
 
@@ -28,6 +29,9 @@ func open_menu(menu: MENU) -> void:
 		
 		MENU.COMBINER:
 			menus[MENU.INVENTORY].visible = true
+		
+		MENU.RECYCLER:
+			menus[MENU.INVENTORY].visible = true
 	
 	active_menu = menu
 	menus[menu].visible = true
@@ -42,11 +46,15 @@ func close_menu(menu: MENU) -> void:
 		MENU.INVENTORY:
 			menus[MENU.ITEM_SELECTION].visible = false
 			menus[MENU.COMBINER].visible = false
+			menus[MENU.RECYCLER].visible = false
 		
 		MENU.ITEM_SELECTION:
 			menus[MENU.INVENTORY].visible = false
 		
 		MENU.COMBINER:
+			menus[MENU.INVENTORY].visible = false
+		
+		MENU.RECYCLER:
 			menus[MENU.INVENTORY].visible = false
 	
 	active_menu = null

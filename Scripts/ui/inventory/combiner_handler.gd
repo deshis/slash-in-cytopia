@@ -30,6 +30,8 @@ func combine_items() -> void:
 	
 	for slot in slots:
 		slot.get_item().queue_free()
+	
+	items_combined.emit(grade)
 
 
 func move_items_from_combiner() -> void:
@@ -52,4 +54,4 @@ func update_state() -> void:
 
 func _on_button_pressed() -> void:
 	if item_count == 3:
-		items_combined.emit(grade)
+		combine_items()

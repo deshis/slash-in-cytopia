@@ -11,6 +11,7 @@ enum SLOT {
 	PICKUP,
 	COMBINER,
 	TRASH,
+	RECYCLER,
 }
 
 

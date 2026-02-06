@@ -18,6 +18,8 @@
 [ext_resource type="Script" uid="uid://c081ighahaot6" path="res://Scripts/ui/pause_menu.gd" id="10_lkt4f"]
 [ext_resource type="Texture2D" uid="uid://bvygox0uhweaq" path="res://Assets/ui/Trash.png" id="11_nx6hg"]
 [ext_resource type="Script" uid="uid://dmr6e5sqx26og" path="res://Scripts/ui/button.gd" id="11_wfkbc"]
+[ext_resource type="Script" uid="uid://d0plhhw6e3v2e" path="res://Scripts/ui/inventory/recycler_slot.gd" id="12_b7c12"]
+[ext_resource type="Script" uid="uid://c3ehekbpdphma" path="res://Scripts/ui/inventory/recycler_handler.gd" id="12_m8ver"]
 [ext_resource type="Script" uid="uid://cdh5pjfwavchk" path="res://Scripts/ui/inventory/pickup_slot.gd" id="12_yidpd"]
 [ext_resource type="Script" uid="uid://c30htnqqxh3hc" path="res://Scripts/ui/inventory/backpack_slot.gd" id="14_wl13q"]
 [ext_resource type="PackedScene" uid="uid://btj605votyjy8" path="res://Scenes/main_menu/settings_menu.tscn" id="16_36s6t"]
@@ -399,7 +401,7 @@ grow_vertical = 2
 texture = ExtResource("6_og236")
 expand_mode = 1
 
-[node name="Inventory" type="Control" parent="." unique_id=1756702059 node_paths=PackedStringArray("backpack_node", "trash_slot_node", "augments_node", "item_selection_node", "combiner_node", "extra_augment_nodes")]
+[node name="Inventory" type="Control" parent="." unique_id=1756702059 node_paths=PackedStringArray("backpack_node", "trash_slot_node", "augments_node", "item_selection_node", "combiner_node", "recycler_node", "extra_augment_nodes")]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -414,6 +416,7 @@ trash_slot_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/MarginContainer
 augments_node = NodePath("HBoxContainer/RightSide/AugmentSlots")
 item_selection_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/ItemSelection")
 combiner_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/Combiner")
+recycler_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/Recycler")
 extra_augment_nodes = [NodePath("HBoxContainer/RightSide/AugmentSlots/Survivability2"), NodePath("HBoxContainer/RightSide/AugmentSlots/Movement2"), NodePath("HBoxContainer/RightSide/AugmentSlots/Damage2")]
 
 [node name="Background" type="Panel" parent="Inventory" unique_id=1596950018]
@@ -468,7 +471,7 @@ alignment = 1
 [node name="RichTextLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer" unique_id=1949498213]
 layout_mode = 2
 bbcode_enabled = true
-text = "Combine augments into a single augment of a higher rarity"
+text = "Combine augments into a higher grade"
 fit_content = true
 horizontal_alignment = 1
 
@@ -502,6 +505,57 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Combine"
+
+[node name="Recycler" type="MarginContainer" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer" unique_id=1114433404 node_paths=PackedStringArray("slot")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("12_m8ver")
+slot = NodePath("MarginContainer/VBoxContainer/HBoxContainer/RecyclerSlot")
+
+[node name="Panel" type="Panel" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler" unique_id=144176415]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler" unique_id=1667035087]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer" unique_id=64706265]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer" unique_id=939229901]
+layout_mode = 2
+bbcode_enabled = true
+text = "Recycle an augment"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer" unique_id=1285087504]
+layout_mode = 2
+alignment = 1
+
+[node name="RecyclerSlot" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1324508129 instance=ExtResource("10_36s6t")]
+layout_mode = 2
+script = ExtResource("12_b7c12")
+slot_type = 6
+
+[node name="RecycleButton" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer/HBoxContainer" unique_id=889762167 instance=ExtResource("10_36s6t")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer/HBoxContainer/RecycleButton" unique_id=711207852]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Recycle"
 
 [node name="ItemSelection" type="MarginContainer" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer" unique_id=1809721560 node_paths=PackedStringArray("slots")]
 visible = false
@@ -1074,6 +1128,7 @@ text = "Quit"
 script = ExtResource("11_wfkbc")
 
 [connection signal="pressed" from="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer/HBoxContainer/CombineButton/Button" to="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner" method="_on_button_pressed"]
+[connection signal="pressed" from="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer/HBoxContainer/RecycleButton/Button" to="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler" method="_on_button_pressed"]
 [connection signal="mouse_exited" from="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/TrashSlot" to="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/TrashSlot" method="_on_mouse_exited"]
 [connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/ContinueButton" to="PauseMenu" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/SettingsButton" to="PauseMenu" method="_on_settings_button_pressed"]

@@ -6,6 +6,7 @@ var backpack_node: Node
 var augments_node: Node
 var item_selection_node: Node
 var combiner_node: Node
+var recycler_node: Node
 var trash_slot_node: Node
 
 var slot_type = InventorySlot.SLOT
@@ -42,6 +43,7 @@ func init() -> void:
 	augments_node = inventory_node.augments_node
 	item_selection_node = inventory_node.item_selection_node
 	combiner_node = inventory_node.combiner_node
+	recycler_node = inventory_node.recycler_node
 	extra_augment_nodes = inventory_node.extra_augment_nodes
 	init_slots()
 	
@@ -49,6 +51,7 @@ func init() -> void:
 	MenuManager.add_menu(MenuManager.MENU.INVENTORY, inventory_node)
 	MenuManager.add_menu(MenuManager.MENU.ITEM_SELECTION, item_selection_node)
 	MenuManager.add_menu(MenuManager.MENU.COMBINER, combiner_node)
+	MenuManager.add_menu(MenuManager.MENU.RECYCLER, recycler_node)
 	
 	# setup backpack
 	backpack_items.resize(backpack_node.get_child_count())

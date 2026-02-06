@@ -1,0 +1,60 @@
+extends Node3D
+
+@export var use_amount := 1
+
+var loot_impulse_strength := -12.0
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory"):
+		var recycler_menu = MenuManager.menus[MenuManager.MENU.RECYCLER]
+		recycler_menu.move_items_from_recycler()
+		MenuManager.close_menu(MenuManager.MENU.RECYCLER)
+		MenuManager.menus[MenuManager.MENU.RECYCLER].items_recycled.disconnect(recycle_items)
+
+
+func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("interact"):
+		if GameManager.player.interactables.front() == self:
+			MenuManager.open_menu(MenuManager.MENU.RECYCLER)
+			MenuManager.menus[MenuManager.MENU.RECYCLER].items_recycled.connect(recycle_items)
+
+
+func recycle_items(rarity: ItemType.Grade) -> void:
+	var loot_table = generate_loot_table(rarity)
+	LootDatabase.drop_loot(self, loot_table, loot_impulse_strength)
+	
+	MenuManager.close_menu(MenuManager.MENU.RECYCLER)
+	
+	use_amount -= 1
+	if use_amount <= 0:
+		get_node("InteractLabel").queue_free()
+		set_script(null)
+
+
+func generate_loot_table(rarity: ItemType.Grade) -> LootTable:
+	var loot_table = LootTable.new()
+	var consumer = 0
+	var military = 0
+	var prototype = 0
+	var apex_anomaly = 0
+	
+	match rarity:
+		ItemType.Grade.CONSUMER:
+			consumer = 1
+		ItemType.Grade.MILITARY:
+			military = 1
+		ItemType.Grade.PROTOTYPE:
+			prototype = 1
+		ItemType.Grade.APEX_ANOMALY:
+			apex_anomaly = 1
+	
+	loot_table.loot_rarity_weights = {
+		"consumer": consumer,
+		"military": military,
+		"prototype": prototype,
+		"apex_anomaly": apex_anomaly,
+	}
+	
+	loot_table.loot_drop_chance = 1
+	return loot_table

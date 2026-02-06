@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1h6pqnhbr5no" path="res://Scenes/enemy/enemy_spawner.tscn" id="10_bfs1g"]
 [ext_resource type="PackedScene" uid="uid://dp1iy75msp6ch" path="res://Scenes/interactables/combiner.tscn" id="12_4ifjb"]
 [ext_resource type="PackedScene" uid="uid://ctnsonp5fhgsn" path="res://Scenes/interactables/chest.tscn" id="13_mom3f"]
+[ext_resource type="PackedScene" uid="uid://b7aa8d3y2tv45" path="res://Scenes/interactables/recycler.tscn" id="14_yi4r0"]
 [ext_resource type="PackedScene" uid="uid://t7qfk3mxfyoe" path="res://Assets/environment/forest/props/bus_stop.tscn" id="25_ccosh"]
 [ext_resource type="PackedScene" uid="uid://cwqkohfs16f1m" path="res://Assets/environment/forest/buildings/bar_building.tscn" id="25_q0xy8"]
 [ext_resource type="PackedScene" uid="uid://cead8ewvqdchl" path="res://Assets/environment/fence/regular_fence.tscn" id="26_f2cab"]
@@ -475,3 +476,6 @@ shape = SubResource("BoxShape3D_bfs1g")
 
 [node name="Chest" parent="." unique_id=300150525 instance=ExtResource("13_mom3f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7675629, 0, 6.8753605)
+
+[node name="Recycler" parent="." unique_id=136251054 instance=ExtResource("14_yi4r0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6187015, 0, -4.0896053)
