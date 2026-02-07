@@ -8,7 +8,7 @@ var item : ItemResource
 @onready var description = $Description
 @onready var desc_text = $Description/MarginContainer/RichTextLabel
 @onready var item_icon = $MarginContainer/TextureRect
-@onready var grade_icon = $Description/GradeIcon
+@onready var grade_icon = $Description/Control/GradeIcon
 @onready var border = $Description/Frame
 
 var type_color = "#b5b5b5"
@@ -20,7 +20,6 @@ var stats = "?"
 
 func _ready() -> void:
 	update_item_display(item)
-
 
 func _physics_process(_delta: float) -> void:
 	if description.visible:
@@ -85,7 +84,7 @@ func _get_drag_data(_pos: Vector2) -> Variant:
 #Godot has switch statements with match
 func _set_grade() -> void:
 	grade_color = LootDatabase.grade_colors.get(item.grade)
-	
+
 	match item.grade: 
 		ItemType.Grade.CONSUMER:
 			grade_name = "Consumer"
@@ -191,6 +190,7 @@ func wrap_text(text: String) -> String:
 
 func choose_border_texture() -> void:
 	var border_texture: Texture2D
+	#grade_icon.position += Vector2(0, -1)
 	
 	if grade_name == "Consumer":
 		border_texture = preload("res://Assets/ui/BorderConsumer.png")
@@ -199,6 +199,7 @@ func choose_border_texture() -> void:
 	if grade_name == "Military":
 		border_texture = preload("res://Assets/ui/BorderMilitary.png")
 		grade_icon.texture = grade_icons[1]
+		
 		
 	if grade_name == "Prototype":
 		border_texture = preload("res://Assets/ui/BorderPrototype.png")

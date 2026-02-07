@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cqp1l0dofg8ft" path="res://Scripts/items/item.gd" id="1_76mu4"]
 [ext_resource type="Texture2D" uid="uid://dxdkt76vmq0em" path="res://Assets/icon.svg" id="1_ys0gr"]
-[ext_resource type="Texture2D" uid="uid://p4lfqkp2eylq" path="res://Assets/items/icons/Consumer/OneLeafClover.png" id="2_ckxwd"]
+[ext_resource type="Texture2D" uid="uid://b8ew6oh4q6xvs" path="res://Assets/ui/GemConsumer2.png" id="2_cdyif"]
+[ext_resource type="Texture2D" uid="uid://4vlsf8b685l6" path="res://Assets/ui/GemMilitary.png" id="3_okahq"]
 [ext_resource type="Texture2D" uid="uid://cuilipmk5cqed" path="res://Assets/ui/BorderApex.png" id="3_wps36"]
-[ext_resource type="Texture2D" uid="uid://cmqdwn83wmapb" path="res://Assets/items/icons/Prototype/CloverLOA.png" id="4_cdyif"]
-[ext_resource type="Texture2D" uid="uid://c4cijsyp3os5i" path="res://Assets/items/icons/Consumer/HomemadeClover.png" id="4_ifq0x"]
-[ext_resource type="Texture2D" uid="uid://b1ey4uowign5g" path="res://Assets/items/icons/ApexAnomaly/SingularityCircuit.png" id="5_okahq"]
+[ext_resource type="Texture2D" uid="uid://bpsnc26gm6si5" path="res://Assets/ui/GemPrototype.png" id="4_2637l"]
+[ext_resource type="Texture2D" uid="uid://bfwjxxmpp1qyl" path="res://Assets/ui/GemApex.png" id="5_sy6q6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u06aw"]
 bg_color = Color(0.09803922, 0.09803922, 0.09803922, 0.9411765)
@@ -24,7 +24,7 @@ offset_right = 82.0
 offset_bottom = 82.0
 mouse_filter = 1
 script = ExtResource("1_76mu4")
-grade_icons = Array[CompressedTexture2D]([ExtResource("2_ckxwd"), ExtResource("4_ifq0x"), ExtResource("4_cdyif"), ExtResource("5_okahq")])
+grade_icons = Array[CompressedTexture2D]([ExtResource("2_cdyif"), ExtResource("3_okahq"), ExtResource("4_2637l"), ExtResource("5_sy6q6")])
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1794495915]
 layout_mode = 1
@@ -70,18 +70,29 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="GradeIcon" type="TextureRect" parent="Description" unique_id=360667433]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-texture = ExtResource("4_ifq0x")
-expand_mode = 1
-stretch_mode = 4
-
 [node name="Frame" type="NinePatchRect" parent="Description" unique_id=1962305996]
 layout_mode = 2
 texture = ExtResource("3_wps36")
+
+[node name="Control" type="Control" parent="Description" unique_id=368488005]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="GradeIcon" type="TextureRect" parent="Description/Control" unique_id=360667433]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("5_sy6q6")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
