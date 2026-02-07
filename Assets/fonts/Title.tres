@@ -5,7 +5,7 @@
 
 [resource]
 default_font = ExtResource("1_gfon2")
-default_font_size = 75
+default_font_size = 48
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
 RichTextLabel/constants/outline_size = 8

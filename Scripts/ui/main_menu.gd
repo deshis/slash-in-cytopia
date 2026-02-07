@@ -7,14 +7,19 @@ extends Node3D
 @onready var tutorial_container: MarginContainer = $Menu/TutorialMargin
 @onready var welcome_label: Label = $Menu/WelcomeMargin/WelcomeLabel
 
-@onready var play_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Play
-@onready var profiles_button: Button = $Menu/ProfileMargin/HBoxContainer/Profiles
-@onready var stats_button: Button = $Menu/ProfileMargin/HBoxContainer/Stats
-@onready var achievements_button: Button = $Menu/ProfileMargin/HBoxContainer/Achievements
-@onready var settings_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Settings
-@onready var tutorial_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Tutorial
-@onready var credits_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Credits
-@onready var quit_button: Button = $Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Quit
+@onready var profiles_button:= $Menu/ProfileMargin/HBoxContainer/Profiles
+@onready var stats_button:= $Menu/ProfileMargin/HBoxContainer/Stats
+@onready var achievements_button:= $Menu/ProfileMargin/HBoxContainer/Achievements
+
+
+@onready var play_button: TextureButton = $Menu/MenuMargin/VBoxContainer/Play
+@onready var settings_button: TextureButton = $Menu/MenuMargin/VBoxContainer/Settings
+@onready var tutorial_button: TextureButton = $Menu/MenuMargin/VBoxContainer/Tutorial
+@onready var credits_button: TextureButton = $Menu/MenuMargin/VBoxContainer/Credits
+@onready var quit_button: TextureButton = $Menu/MenuMargin/VBoxContainer/Quit
+
+
+
 
 
 const CREATE_PROFILE_MENU = preload("res://Scenes/main_menu/profile/create_profile_window.tscn")
@@ -27,7 +32,9 @@ var active_stats_menu: Control = null
 var active_achievements_menu: Control = null
 
 func _ready() -> void:
-
+	
+	Engine.time_scale = 1.0
+	
 	welcome_label.visible = false
 	menu_container.visible = false
 	profile_container.visible = false

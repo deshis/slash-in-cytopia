@@ -41,9 +41,12 @@
 [ext_resource type="PackedScene" uid="uid://8r4pwmgy5thh" path="res://Assets/environment/foliage/trees/tree.tscn" id="39_3pko2"]
 [ext_resource type="PackedScene" uid="uid://br7yobcthvqjh" path="res://Assets/environment/forest/props/hologram.tscn" id="40_j1q0m"]
 [ext_resource type="Texture2D" uid="uid://cy85se48blcs8" path="res://Assets/vfx/spin_trail/spin.png" id="40_vj5y7"]
+[ext_resource type="Texture2D" uid="uid://dve8p1ru55hhc" path="res://Assets/ui/logo.png" id="43_j1q0m"]
+[ext_resource type="Texture2D" uid="uid://bc1yvyqjwxee" path="res://Assets/ui/main_menu_button2.png" id="44_3pko2"]
+[ext_resource type="Texture2D" uid="uid://dqrs4dp02wqle" path="res://Assets/ui/main_menu_button.png" id="44_ph3u6"]
 [ext_resource type="PackedScene" uid="uid://btj605votyjy8" path="res://Scenes/main_menu/settings_menu.tscn" id="46_aj2v6"]
+[ext_resource type="Script" uid="uid://dsofje5g51l5" path="res://Scripts/ui/main_menu_button.gd" id="46_j1q0m"]
 [ext_resource type="Script" uid="uid://bcm50amd2bo6l" path="res://Scripts/ui/tutorial_text.gd" id="47_vj5y7"]
-[ext_resource type="Theme" uid="uid://cc7hwsh8wtwx6" path="res://Assets/fonts/Title.tres" id="51_ybtaw"]
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="52_ybtaw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpe5h"]
@@ -19258,73 +19261,173 @@ offset_right = 432.0
 offset_bottom = 362.0
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 80
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/MenuMargin" unique_id=1179496242]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 30
+theme_override_constants/separation = 15
 
-[node name="Title" type="RichTextLabel" parent="Menu/MenuMargin/VBoxContainer" unique_id=1860489951]
+[node name="Logo" type="TextureRect" parent="Menu/MenuMargin/VBoxContainer" unique_id=515723434]
+texture_filter = 2
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
-theme = ExtResource("51_ybtaw")
-bbcode_enabled = true
-text = "  
- [i]Slash in Cytopia  
-"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("43_j1q0m")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="Menu/MenuMargin/VBoxContainer" unique_id=1472195136]
+[node name="Play" type="TextureButton" parent="Menu/MenuMargin/VBoxContainer" unique_id=1977862837]
+custom_minimum_size = Vector2(280, 80)
 layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MenuMargin/VBoxContainer/MarginContainer" unique_id=514693132]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 30
-
-[node name="Play" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=942705888]
-layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
-text = "   Start Game   "
-script = ExtResource("35_msuys")
+texture_normal = ExtResource("44_3pko2")
+texture_focused = ExtResource("44_ph3u6")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("46_j1q0m")
 
-[node name="Settings" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1718876543]
+[node name="MarginContainer" type="MarginContainer" parent="Menu/MenuMargin/VBoxContainer/Play" unique_id=1147475340]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 27
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Menu/MenuMargin/VBoxContainer/Play/MarginContainer" unique_id=720542156]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[node name="Settings" type="TextureButton" parent="Menu/MenuMargin/VBoxContainer" unique_id=529194173]
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
+texture_normal = ExtResource("44_3pko2")
+texture_focused = ExtResource("44_ph3u6")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("46_j1q0m")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/MenuMargin/VBoxContainer/Settings" unique_id=1795273264]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 27
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Menu/MenuMargin/VBoxContainer/Settings/MarginContainer" unique_id=687929508]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
 text = "Settings"
-script = ExtResource("35_msuys")
 
-[node name="Tutorial" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1705746354]
+[node name="Tutorial" type="TextureButton" parent="Menu/MenuMargin/VBoxContainer" unique_id=513008101]
+custom_minimum_size = Vector2(280, 80)
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
+texture_normal = ExtResource("44_3pko2")
+texture_focused = ExtResource("44_ph3u6")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("46_j1q0m")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/MenuMargin/VBoxContainer/Tutorial" unique_id=1477309971]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 27
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Menu/MenuMargin/VBoxContainer/Tutorial/MarginContainer" unique_id=1819069801]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
 text = "Tutorial"
-script = ExtResource("35_msuys")
 
-[node name="Credits" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=677205141]
+[node name="Credits" type="TextureButton" parent="Menu/MenuMargin/VBoxContainer" unique_id=2055066671]
+custom_minimum_size = Vector2(280, 80)
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
+texture_normal = ExtResource("44_3pko2")
+texture_focused = ExtResource("44_ph3u6")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("46_j1q0m")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/MenuMargin/VBoxContainer/Credits" unique_id=2030868706]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 27
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Menu/MenuMargin/VBoxContainer/Credits/MarginContainer" unique_id=718988768]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
 text = "Credits"
-script = ExtResource("35_msuys")
 
-[node name="Quit" type="Button" parent="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1004067956]
+[node name="Quit" type="TextureButton" parent="Menu/MenuMargin/VBoxContainer" unique_id=985678190]
+custom_minimum_size = Vector2(280, 80)
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
+texture_normal = ExtResource("44_3pko2")
+texture_focused = ExtResource("44_ph3u6")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("46_j1q0m")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/MenuMargin/VBoxContainer/Quit" unique_id=551046404]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 27
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Menu/MenuMargin/VBoxContainer/Quit/MarginContainer" unique_id=2054732221]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
 text = "Quit Game"
-script = ExtResource("35_msuys")
 
 [node name="SettingsMargin" type="MarginContainer" parent="Menu" unique_id=2036061751]
 visible = false
@@ -19471,11 +19574,11 @@ text = "Welcome"
 [connection signal="pressed" from="Menu/ProfileMargin/HBoxContainer/Profiles" to="." method="_on_profiles_pressed"]
 [connection signal="pressed" from="Menu/ProfileMargin/HBoxContainer/Stats" to="." method="_on_stats_pressed"]
 [connection signal="pressed" from="Menu/ProfileMargin/HBoxContainer/Achievements" to="." method="_on_achievements_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="relay_back_to_menu_signal" from="Menu/SettingsMargin/SettingsMenu" to="." method="_on_settings_menu_relay_back_to_menu_signal"]
 [connection signal="pressed" from="Menu/TutorialMargin/Panel/MarginContainer/close_tutorial" to="." method="_on_close_tutorial_pressed"]
 [connection signal="pressed" from="Menu/CreditsMargin/Panel/MarginContainer/close_credits" to="." method="_on_close_credits_pressed"]
