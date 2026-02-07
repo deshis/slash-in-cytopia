@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cptm56sk2qede" path="res://Scripts/ui/hud/hud_manager.gd" id="1_36s6t"]
 [ext_resource type="Script" uid="uid://b3p4e86xoqqh3" path="res://Scripts/ui/hud/cooldowns.gd" id="2_36s6t"]
 [ext_resource type="PackedScene" uid="uid://dq80cdl8tixeo" path="res://Scenes/ui/hp_bar_player.tscn" id="2_ium74"]
+[ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="3_spcc7"]
 [ext_resource type="Texture2D" uid="uid://b343ghjhwphjn" path="res://Assets/ui/punch.png" id="4_oersf"]
 [ext_resource type="Texture2D" uid="uid://cvquudwe72x8p" path="res://Assets/ui/kick.png" id="5_oersf"]
 [ext_resource type="Texture2D" uid="uid://dluotk16ptpbk" path="res://Assets/ui/AbilityIconBorder.png" id="6_og236"]
@@ -92,6 +93,7 @@ script = ExtResource("1_36s6t")
 metadata/_edit_horizontal_guides_ = []
 
 [node name="HPBarPlayer" parent="." unique_id=589468563 instance=ExtResource("2_ium74")]
+theme = ExtResource("3_spcc7")
 
 [node name="HPBars" type="Node2D" parent="." unique_id=244677121]
 
@@ -410,6 +412,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_spcc7")
 script = ExtResource("7_0p5tk")
 backpack_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/Backpack")
 trash_slot_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/TrashSlot")
@@ -940,6 +943,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_spcc7")
 script = ExtResource("10_lkt4f")
 
 [node name="Panel" type="Panel" parent="PauseMenu" unique_id=1460050646]
@@ -1008,6 +1012,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+theme = ExtResource("3_spcc7")
 script = ExtResource("23_vxf74")
 
 [node name="Panel" type="Panel" parent="GameOverScreen" unique_id=1409918307]

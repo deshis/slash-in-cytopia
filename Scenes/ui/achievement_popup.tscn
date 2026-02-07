@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7q074b1hyxlt"]
 
-[ext_resource type="Script" uid="uid://j0dl2n1yac3x" path="res://Scripts/ui/hud/achievement_popup.gd" id="1"]
+[ext_resource type="Script" uid="uid://b3vhcndbo2hye" path="res://Scripts/ui/hud/achievement_popup.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://bstpc8gepc8bh" path="res://Assets/fonts/EdgeOfTheGalaxyRegular-OVEa6.otf" id="2"]
 [ext_resource type="FontFile" uid="uid://t6bkmvdx6wst" path="res://Assets/fonts/NK57 Monospace Cd Rg.otf" id="3_se2mr"]
 

@@ -63,6 +63,7 @@ const RAGDOLL = "ragdoll"
 var ragdoll
 var model
 var ragdoll_duration = 10.0
+var hurtbox
 
 
 func _ready() -> void:
@@ -99,6 +100,7 @@ func _ready() -> void:
 	
 	ragdoll = get_node_or_null("model/rig/Skeleton3D/PhysicalBoneSimulator3D")
 	model = get_node_or_null("model/rig/Skeleton3D/Body")
+	hurtbox = get_node_or_null("Hurtbox")
 
 
 func _activate() -> void:
@@ -409,7 +411,7 @@ func die(drop_loot: bool = true) -> void:
 	if drop_loot:
 		LootDatabase.drop_loot(self)
 	
-	if ragdoll and model:
+	if ragdoll and model and hurtbox:
 		spawn_ragdoll()
 	else:
 		return_to_pool()
@@ -489,6 +491,8 @@ func spawn_ragdoll()->void:
 	tween.tween_property(model, "transparency", 1.0, ragdoll_duration)
 	tween.tween_callback(clean_up_ragdoll)
 	
+	hurtbox.set_collision_layer_value(14, false)
+	health_bar.remove_health_bar()
 	
 	change_state(RAGDOLL, ragdoll_duration)
 
@@ -496,6 +500,8 @@ func spawn_ragdoll()->void:
 func clean_up_ragdoll()->void:
 	ragdoll.physical_bones_stop_simulation()
 	model.transparency = 0
+	
+	hurtbox.set_collision_layer_value(14, true)
 	
 	change_state(IDLE)
 	
