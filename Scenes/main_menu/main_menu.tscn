@@ -19270,7 +19270,6 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="Logo" type="TextureRect" parent="Menu/MenuMargin/VBoxContainer" unique_id=515723434]
-texture_filter = 2
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 size_flags_horizontal = 0
