@@ -206,7 +206,7 @@ func choose_border_texture() -> void:
 		grade_icon.texture = grade_icons[2]
 	
 	if grade_name == "Apex Anomaly":
-		border_texture = preload("res://Assets/ui/BorderApex2.png")
+		border_texture = preload("res://Assets/ui/BorderApex3.png")
 		grade_icon.texture = grade_icons[3]
 	
 	border.texture = border_texture
