@@ -16,15 +16,21 @@
 [ext_resource type="PackedScene" uid="uid://cexexdh4re63h" path="res://Scenes/ui/inventory_slot.tscn" id="10_36s6t"]
 [ext_resource type="Script" uid="uid://c8pqri156f3xa" path="res://Scripts/ui/inventory/combiner_slot.gd" id="10_dpa8n"]
 [ext_resource type="Script" uid="uid://c081ighahaot6" path="res://Scripts/ui/pause_menu.gd" id="10_lkt4f"]
-[ext_resource type="Texture2D" uid="uid://bvygox0uhweaq" path="res://Assets/ui/Trash.png" id="11_nx6hg"]
 [ext_resource type="Script" uid="uid://dmr6e5sqx26og" path="res://Scripts/ui/button.gd" id="11_wfkbc"]
 [ext_resource type="Script" uid="uid://d0plhhw6e3v2e" path="res://Scripts/ui/inventory/recycler_slot.gd" id="12_b7c12"]
 [ext_resource type="Script" uid="uid://c3ehekbpdphma" path="res://Scripts/ui/inventory/recycler_handler.gd" id="12_m8ver"]
 [ext_resource type="Script" uid="uid://cdh5pjfwavchk" path="res://Scripts/ui/inventory/pickup_slot.gd" id="12_yidpd"]
 [ext_resource type="Script" uid="uid://c30htnqqxh3hc" path="res://Scripts/ui/inventory/backpack_slot.gd" id="14_wl13q"]
 [ext_resource type="PackedScene" uid="uid://btj605votyjy8" path="res://Scenes/main_menu/settings_menu.tscn" id="16_36s6t"]
+[ext_resource type="Texture2D" uid="uid://bfnkbhqqk0y3g" path="res://Assets/ui/TrashOpen.png" id="18_spcc7"]
+[ext_resource type="Texture2D" uid="uid://4k5fatqbxh1d" path="res://Assets/ui/TrashClosed.png" id="19_dw40x"]
 [ext_resource type="Texture2D" uid="uid://cev4768d6kdbs" path="res://Assets/ui/UI_player_defeated.png" id="19_pbtju"]
+[ext_resource type="Texture2D" uid="uid://bchfdd33nq5mq" path="res://Assets/ui/ItemIconSurvivability.png" id="21_tmvkh"]
+[ext_resource type="Texture2D" uid="uid://ca3cyfd65f8ck" path="res://Assets/ui/ItemIconMovement.png" id="22_p31k0"]
+[ext_resource type="Texture2D" uid="uid://10qcvwxmfrwp" path="res://Assets/ui/ItemIconUtility.png" id="23_0s5ks"]
 [ext_resource type="Script" uid="uid://6jore1um42bw" path="res://Scripts/ui/game_over.gd" id="23_vxf74"]
+[ext_resource type="Texture2D" uid="uid://3gcpmo12q0kr" path="res://Assets/ui/ItemIconDamage.png" id="24_r3t7s"]
+[ext_resource type="Texture2D" uid="uid://djlowtuly6nfu" path="res://Assets/ui/ItemIconBrainchip.png" id="25_2874v"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_36s6t"]
 
@@ -64,28 +70,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ba8gd"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nx6hg"]
-atlas = ExtResource("11_nx6hg")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0p5tk"]
-atlas = ExtResource("11_nx6hg")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8hm0j"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nx6hg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0p5tk")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="HUD" type="CanvasLayer" unique_id=2045051478]
 script = ExtResource("1_36s6t")
@@ -403,7 +387,6 @@ expand_mode = 1
 
 [node name="Inventory" type="Control" parent="." unique_id=1756702059 node_paths=PackedStringArray("backpack_node", "trash_slot_node", "augments_node", "item_selection_node", "combiner_node", "recycler_node", "extra_augment_nodes")]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -663,14 +646,11 @@ slot_type = 1
 modulate = Color(1, 0, 0, 1)
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
+size_flags_vertical = 4
 script = ExtResource("9_36s6t")
+opened_icon = ExtResource("18_spcc7")
+icon = ExtResource("19_dw40x")
 slot_type = 5
-
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/TrashSlot" unique_id=1563746356]
-modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(41.5, 41)
-scale = Vector2(0.111328155, 0.11270258)
-sprite_frames = SubResource("SpriteFrames_8hm0j")
 
 [node name="RightSide" type="MarginContainer" parent="Inventory/HBoxContainer" unique_id=2097617315]
 layout_mode = 2
@@ -694,6 +674,8 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 1
+icon = ExtResource("21_tmvkh")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Survivability"
 slot_type = 2
 
@@ -711,6 +693,8 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 1
+icon = ExtResource("21_tmvkh")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Survivability"
 slot_type = 2
 
@@ -727,6 +711,8 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 2
+icon = ExtResource("22_p31k0")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Movement"
 slot_type = 2
 
@@ -744,6 +730,8 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 2
+icon = ExtResource("22_p31k0")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Movement"
 slot_type = 2
 
@@ -760,6 +748,8 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 3
+icon = ExtResource("23_0s5ks")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Utility"
 slot_type = 2
 
@@ -776,6 +766,8 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 4
+icon = ExtResource("24_r3t7s")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Damage"
 slot_type = 2
 
@@ -793,6 +785,8 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 4
+icon = ExtResource("24_r3t7s")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Damage"
 slot_type = 2
 
@@ -841,6 +835,8 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 5
+icon = ExtResource("25_2874v")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Brainchip"
 slot_type = 2
 

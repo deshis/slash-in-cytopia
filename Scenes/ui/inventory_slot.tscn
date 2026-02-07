@@ -1,29 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://cexexdh4re63h"]
+[gd_scene format=3 uid="uid://cexexdh4re63h"]
 
 [ext_resource type="Script" uid="uid://dme15a5tqiyvp" path="res://Scripts/ui/inventory/inventory_slot.gd" id="2_0cu6i"]
 
-[node name="InventorySlot" type="Control"]
-custom_minimum_size = Vector2(84, 84)
+[node name="InventorySlot" type="Control" unique_id=1530991904]
+custom_minimum_size = Vector2(82, 82)
 layout_mode = 3
 anchor_right = 0.043
 anchor_bottom = 0.076000005
-offset_right = 0.4399948
+offset_right = -0.5600052
 offset_bottom = -0.08000183
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_0cu6i")
 
-[node name="Name" type="RichTextLabel" parent="."]
-layout_mode = 0
+[node name="Name" type="RichTextLabel" parent="." unique_id=923521486]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -53.0
 offset_top = -40.0
-offset_right = 135.0
+offset_right = 53.0
+offset_bottom = -82.0
 mouse_filter = 2
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Slot" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 82.0
-offset_bottom = 82.0
+[node name="Slot" type="Panel" parent="." unique_id=211965957]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1912443901]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Icon" type="TextureRect" parent="MarginContainer" unique_id=208311074]
+layout_mode = 2
+expand_mode = 2

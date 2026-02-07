@@ -120,6 +120,12 @@ func move_item(origin_slot: InventorySlot, new_slot: InventorySlot = null) -> vo
 	
 	if MenuManager.active_menu == MenuManager.MENU.COMBINER:
 		combiner_node.update_state()
+	
+	# set slot icon visible if item moved away
+	# TODO: FIX LATER
+	await get_tree().physics_frame
+	if not origin_slot.get_item():
+		origin_slot.icon_node.texture = origin_slot.icon
 
 
 func can_replace_item(slot: InventorySlot) -> bool:
@@ -187,7 +193,6 @@ func place_or_swap(item: Control, origin_slot: Control, new_slot: Control) -> vo
 		origin_slot.set_item(item_to_swap)
 	
 	new_slot.set_item(item)
-	update_inventory_data()
 
 
 func delete_item(item: Control):

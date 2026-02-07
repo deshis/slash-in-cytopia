@@ -1,23 +1,27 @@
 extends InventorySlot
+class_name TrashSlot
 
-@onready var icon: AnimatedSprite2D = $Sprite2D
-
+@export var opened_icon: CompressedTexture2D
 
 func set_item(item: Control) -> void:
 	item.queue_free()
 
 
+func set_open(state: bool) -> void:
+	icon_node.texture = opened_icon if state else icon
+
+
 func _can_drop_data(pos: Vector2, data: Variant) -> bool:
-	icon.frame = 1
+	set_open(true)
 	
 	return super._can_drop_data(pos, data)
 
 
 func _drop_data(pos: Vector2, data: Variant) -> void:
-	icon.frame = 0
+	set_open(false)
 	
 	super._drop_data(pos, data)
 
 
 func _on_mouse_exited() -> void:
-	icon.frame = 0
+	set_open(false)
