@@ -32,13 +32,13 @@ func setup(c: Node, value: float, max_value: float) -> void:
 
 func remove_health_bar() -> void:
 	
-	#reparent damage pop up to root so it doesn't disappear when enemy dies
-	for child in get_children():
-		if child is Label:
-			child.reparent(get_tree().root)
-	
-	visible = false
-	character.update_health_bar.disconnect(update_health)
+	if visible:
+		#reparent damage pop up to root so it doesn't disappear when enemy dies
+		for child in get_children():
+			if child is Label:
+				child.reparent(get_tree().root)
+		visible = false
+		character.update_health_bar.disconnect(update_health)
 
 func update_health(health:float, max_health:float = progress_bar.max_value)->void:
 	if tween and health != previous_health:

@@ -34,7 +34,7 @@ func update_interact_keybind() -> void:
 	
 	if keybind != interact_keybind:
 		interact_keybind = keybind
-		text = keybind + " to interact"
+		text = "[%s] Interact" % keybind
 
 
 func _on_body_entered(_body: Node3D) -> void:
