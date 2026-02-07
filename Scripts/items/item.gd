@@ -193,20 +193,20 @@ func choose_border_texture() -> void:
 	#grade_icon.position += Vector2(0, -1)
 	
 	if grade_name == "Consumer":
-		border_texture = preload("res://Assets/ui/BorderConsumer.png")
+		border_texture = preload("res://Assets/ui/BorderConsumer2.png")
 		grade_icon.texture = grade_icons[0]
 		
 	if grade_name == "Military":
-		border_texture = preload("res://Assets/ui/BorderMilitary.png")
+		border_texture = preload("res://Assets/ui/BorderMilitary2.png")
 		grade_icon.texture = grade_icons[1]
 		
 		
 	if grade_name == "Prototype":
-		border_texture = preload("res://Assets/ui/BorderPrototype.png")
+		border_texture = preload("res://Assets/ui/BorderPrototype2.png")
 		grade_icon.texture = grade_icons[2]
 	
 	if grade_name == "Apex Anomaly":
-		border_texture = preload("res://Assets/ui/BorderApex.png")
+		border_texture = preload("res://Assets/ui/BorderApex2.png")
 		grade_icon.texture = grade_icons[3]
 	
 	border.texture = border_texture
