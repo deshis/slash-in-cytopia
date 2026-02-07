@@ -1,15 +1,15 @@
 extends Control
 class_name Item
 
-@export var item : ItemResource
+var item : ItemResource
+@export var grade_icons: Array[CompressedTexture2D]
+@export var max_chars_per_line := 25
 
-@onready var description = $PanelContainer/RichTextLabel
-@onready var texture_rect = $MarginContainer/TextureRect
-@onready var panel_container1 = $PanelContainer
-@onready var border_container = $BorderPanelContainer
-@onready var border = $BorderPanelContainer/NinePatchRect
-
-var max_chars_per_line := 25
+@onready var description = $Description
+@onready var desc_text = $Description/MarginContainer/RichTextLabel
+@onready var item_icon = $MarginContainer/TextureRect
+@onready var grade_icon = $Description/GradeIcon
+@onready var border = $Description/Frame
 
 var type_color = "#b5b5b5"
 var grade_color = "#"
@@ -17,12 +17,15 @@ var type_name = "?"
 var grade_name = "?"
 var stats = "?"
 
+
 func _ready() -> void:
 	update_item_display(item)
 
+
 func _physics_process(_delta: float) -> void:
-	if panel_container1.visible:
+	if description.visible:
 		_position_description()
+
 
 func update_item_display(res: ItemResource) -> void:
 	if not item:
@@ -34,10 +37,10 @@ func update_item_display(res: ItemResource) -> void:
 	_set_grade()
 	_set_type_name()
 	_create_description()
+	choose_border_texture()
 	
-	panel_container1.visible = false
-	border_container.visible = false
-	texture_rect.texture = item.icon
+	item_icon.texture = item.icon
+
 
 func _position_description() -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -45,13 +48,12 @@ func _position_description() -> void:
 	var new_pos = mouse_pos + offset
 	
 	var viewport_size = get_viewport_rect().size
-	var panel_size = panel_container1.size
-	border_container.size = panel_container1.size
+	var panel_size = description.size
 	
 	new_pos.x = clamp(new_pos.x, 0, viewport_size.x - panel_size.x)
 	new_pos.y = clamp(new_pos.y, 0, viewport_size.y - panel_size.y)
-	panel_container1.global_position = new_pos
-	border_container.global_position = new_pos
+	description.global_position = new_pos
+
 
 func get_type() -> int:
 	return item.type
@@ -62,6 +64,9 @@ func get_grade() -> ItemType.Grade:
 
 
 func _get_drag_data(_pos: Vector2) -> Variant:
+	if item != null:
+		description.visible = false
+	
 	var preview := duplicate(true)
 	
 	preview.anchor_left = 0
@@ -72,30 +77,10 @@ func _get_drag_data(_pos: Vector2) -> Variant:
 	
 	set_drag_preview(preview)
 	
-	var texture = $MarginContainer/TextureRect
-	texture.modulate = Color(1,1,1,0.5)
+	item_icon.modulate = Color(1,1,1,0.5)
 	
-	if item != null:
-		description.visible = false
-		panel_container1.visible = false
-		border_container.visible = false
 	return get_parent()
 
-func _notification(what):
-	if what == NOTIFICATION_DRAG_END:
-		texture_rect.modulate = Color(1,1,1,1)
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_released("click"):
-		pass
-		var texture = $MarginContainer/TextureRect
-		texture.modulate = Color(1,1,1,1)
-		
-	if event.is_action_pressed("click"):
-		pass
-		description.visible = false
-		panel_container1.visible = false
-		border_container.visible = false
 
 #Godot has switch statements with match
 func _set_grade() -> void:
@@ -110,6 +95,7 @@ func _set_grade() -> void:
 			grade_name = "Prototype"
 		ItemType.Grade.APEX_ANOMALY:
 			grade_name = "Apex Anomaly"
+
 
 func _set_type_name() -> void:
 	type_color = LootDatabase.type_colors.get(item.type)
@@ -134,30 +120,30 @@ func _set_type_name() -> void:
 		ItemType.Type.THROWABLE:
 			type_name = "Throwable"
 
-func _create_description() -> void:
 
+func _create_description() -> void:
 	name = item.item_name
 	var formatted_desc = ""
-
+	
 	#Item name
 	var formatted_name = ""
 	formatted_name += "[center][color=" + hex(grade_color) + "][b]" + wrap_text(item.item_name) + "[/b][/color][/center]"
 	formatted_desc += formatted_name
-
+	
 	#Item grade
-	formatted_desc += "\n[center][font_size=14][color=" + hex(grade_color) + "]---- " + grade_name + " ----[/color][/font_size][/center]"
-
-		
+	#formatted_desc += "\n[center][font_size=14][color=" + hex(grade_color) + "]---- " + grade_name + " ----[/color][/font_size][/center]"
+	
+	
 	#Item type
 	if type_color == null:
 		type_color = "#777777"
 	
-	formatted_desc += "\n[center][color=" + hex(type_color) + "]" + type_name + "[/color][/center]\n\n"
+	formatted_desc += "\n[center][font_size=12][color=" + hex(type_color) + "]" + type_name + "[/color][/font_size][/center]\n\n"
 	change_panel_color()
 	
 	#Item stat info if one exists (for active items)
 	if item.item_stat_info != "":
-		formatted_desc += "[center][color=" + "#bdbbbb" + "]" + wrap_text(item.item_stat_info) + "[/color][/center]\n"
+		formatted_desc += "[center][color=" + "#bdbbbb" + "]" + wrap_text(item.item_stat_info) + "[/color][/center]"
 	
 	formatted_desc += item.get_formatted_stats()
 	
@@ -165,13 +151,17 @@ func _create_description() -> void:
 	if item.item_description != "":
 		formatted_desc += "\n[center][color=" + "#777777" + "]" + wrap_text(item.item_description) + "[/color][/center]"
 	
-	description.set_text(formatted_desc)
+	formatted_desc += "\n\n"
+	
+	desc_text.set_text(formatted_desc)
+
 
 func hex(c: Color) -> String:
 	return "#" + c.to_html(false)
 
+
 func change_panel_color() -> void:
-	var stylebox = panel_container1.get("theme_override_styles/panel").duplicate()
+	var stylebox = description.get("theme_override_styles/panel").duplicate()
 	var c = grade_color
 	
 	var alpha = 0.9
@@ -180,7 +170,8 @@ func change_panel_color() -> void:
 	#stylebox.border_color = grade_color
 	
 	stylebox.bg_color = c
-	panel_container1.add_theme_stylebox_override("panel", stylebox)
+	description.add_theme_stylebox_override("panel", stylebox)
+
 
 func wrap_text(text: String) -> String:
 	var result = ""
@@ -196,38 +187,45 @@ func wrap_text(text: String) -> String:
 	
 	result += current_line
 	return result
-	
+
+
 func choose_border_texture() -> void:
 	var border_texture: Texture2D
 	
 	if grade_name == "Consumer":
 		border_texture = preload("res://Assets/ui/BorderConsumer.png")
+		grade_icon.texture = grade_icons[0]
 		
 	if grade_name == "Military":
 		border_texture = preload("res://Assets/ui/BorderMilitary.png")
+		grade_icon.texture = grade_icons[1]
 		
 	if grade_name == "Prototype":
 		border_texture = preload("res://Assets/ui/BorderPrototype.png")
+		grade_icon.texture = grade_icons[2]
 	
 	if grade_name == "Apex Anomaly":
 		border_texture = preload("res://Assets/ui/BorderApex.png")
+		grade_icon.texture = grade_icons[3]
 	
 	border.texture = border_texture
+
+
+func _notification(what):
+	if what == NOTIFICATION_DRAG_END:
+		item_icon.modulate = Color(1,1,1,1)
+
 
 func _on_mouse_entered() -> void:
 	if item == null:
 		return
-		
-	choose_border_texture()
 	
-	description.visible = true
-	panel_container1.visible = true
-	border_container.visible = true
+	if not get_viewport().gui_is_dragging():
+		description.visible = true
+
 
 func _on_mouse_exited() -> void:
 	if item == null:
 		return
 	
 	description.visible = false
-	panel_container1.visible = false
-	border_container.visible = false
