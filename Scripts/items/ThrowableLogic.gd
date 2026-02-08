@@ -114,6 +114,9 @@ func explosion(damage: float, aoe: float, clean: bool, area_damage_indicator: bo
 		SoundManager.play_sfx("explosion2", self.global_position)
 		for particle in all_particles:
 			particle.emitting = true
+			
+		var anim_player = particle_instance.get_node("AnimationPlayer")
+		anim_player.play("explosion_light_fade")
 				
 		#particle_instance.finished.connect(func(): particle_instance.queue_free())
 		##hacky but works

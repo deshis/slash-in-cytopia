@@ -60,8 +60,8 @@ curve = SubResource("Curve_mej3t")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_frj5g"]
 gravity = Vector3(0, 0, 0)
-scale_min = 6.0
-scale_max = 6.0
+scale_min = 7.0
+scale_max = 7.0
 scale_curve = SubResource("CurveTexture_dehpx")
 color = Color(2.253293, 1.8448745, 1.5531472, 1)
 
@@ -101,7 +101,7 @@ emission_sphere_radius = 0.35
 spread = 180.0
 gravity = Vector3(0, -0.2, 0)
 scale_min = 0.79999995
-scale_max = 3.0
+scale_max = 3.25
 scale_curve = SubResource("CurveTexture_5dts7")
 color = Color(4.562, 2.7963762, 2.0423558, 1)
 color_ramp = SubResource("GradientTexture1D_v8yxn")
@@ -123,6 +123,42 @@ material = SubResource("StandardMaterial3D_j273a")
 
 [sub_resource type="Environment" id="Environment_58kb5"]
 glow_enabled = true
+
+[sub_resource type="Animation" id="Animation_l765s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_876rw"]
+resource_name = "explosion_light_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [6.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5xt3"]
+_data = {
+&"RESET": SubResource("Animation_l765s"),
+&"explosion_light_fade": SubResource("Animation_876rw")
+}
 
 [node name="ExplosionParticles" type="Node3D" unique_id=195263052]
 
@@ -156,7 +192,16 @@ trail_lifetime = 3.2699999999999996
 process_material = SubResource("ParticleProcessMaterial_qo3i0")
 draw_pass_1 = SubResource("QuadMesh_knj3b")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1007594467]
+light_color = Color(1.4729998, 0.5434897, 0.21065032, 1)
+omni_range = 2.9
+omni_attenuation = 1.75
+
 [node name="Node" type="Node" parent="." unique_id=1682433673]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node" unique_id=344389832]
 environment = SubResource("Environment_58kb5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2146227173]
+root_node = NodePath("../OmniLight3D")
+libraries/ = SubResource("AnimationLibrary_u5xt3")
