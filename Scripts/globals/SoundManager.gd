@@ -46,7 +46,8 @@ func _ready() -> void:
 		"invulnerability":load("res://Assets/audio/effect_invulnerability.wav"),
 		"speed_buff":load("res://Assets/audio/effect_speedbuff.wav"),
 		"explosion":load("res://Assets/audio/effect_explosion.wav"),
-		"explosion2":load("res://Assets/audio/effect_explosion2.mp3"),
+		"explosion_small":load("res://Assets/audio/effect_explosion2.mp3"),
+		"explosion_medium":load("res://Assets/audio/effect_explosion2.mp3"),
 	}
 	
 	ui_players = {
@@ -71,8 +72,8 @@ func _ready() -> void:
 		"freeze_sfx": [0.9, 1.1],
 		"stun_sfx": [0.7,0.9],
 		"explosion":[0.7,0.9],
-		"explosion2":[0.9,1.1]
-		
+		"explosion_small":[0.9,1.1],
+		"explosion_medium":[0.8,0.9]
 	}
 	# Auto-connect to all buttons in the scene tree
 	get_tree().node_added.connect(_on_node_added)

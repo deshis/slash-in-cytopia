@@ -111,7 +111,8 @@ func explosion(damage: float, aoe: float, clean: bool, area_damage_indicator: bo
 		particle_instance.global_position = global_position #+ Vector3.DOWN * 0.1
 		
 		var all_particles = particle_instance.find_children("*", "GPUParticles3D")
-		SoundManager.play_sfx("explosion2", self.global_position)
+		SoundManager.play_sfx("explosion_medium", self.global_position)
+		
 		for particle in all_particles:
 			particle.emitting = true
 			

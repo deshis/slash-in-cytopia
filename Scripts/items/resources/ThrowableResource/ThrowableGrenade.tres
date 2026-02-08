@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ThrowableResource" format=3 uid="uid://ddk8udvnrnoc"]
+
+[ext_resource type="PackedScene" uid="uid://t1ld5ro2lndg" path="res://Scenes/particles/expl_particles_medium.tscn" id="1_hsutk"]
+[ext_resource type="Script" uid="uid://bwqwn07goaljh" path="res://Scripts/items/resources/ThrowableResource.gd" id="1_suu8y"]
+[ext_resource type="PackedScene" uid="uid://clra2ht5etft7" path="res://Scenes/items/grenade2.tscn" id="3_hsutk"]
+
+[resource]
+script = ExtResource("1_suu8y")
+throwable_object = ExtResource("3_hsutk")
+explosion_particle = ExtResource("1_hsutk")
+set_facing_direction = true
+aoe_radius = 2.8
+aoe_damage = 15.0
+throwable_cooldown = 0.1
+throw_force = 2.0
+upward_arc = 2.0
+metadata/_custom_type_script = "uid://bwqwn07goaljh"

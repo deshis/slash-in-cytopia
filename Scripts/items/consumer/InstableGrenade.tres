@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://5f54kl2js8mn"]
+
+[ext_resource type="Script" uid="uid://dpdusrc1o1nfp" path="res://Scripts/items/resources/Stats.gd" id="1_fiyvo"]
+[ext_resource type="Resource" uid="uid://ddk8udvnrnoc" path="res://Scripts/items/resources/ThrowableResource/ThrowableGrenade.tres" id="2_anp8b"]
+[ext_resource type="Script" uid="uid://dulvf1v1d8so8" path="res://Scripts/items/resources/itemResource.gd" id="2_ba61m"]
+[ext_resource type="Texture2D" uid="uid://3k3w37df40fj" path="res://Assets/items/icons/Consumer/Grenade.png" id="3_u5a0u"]
+
+[sub_resource type="Resource" id="Resource_fiyvo"]
+script = ExtResource("1_fiyvo")
+stat_type = 33
+throwable_resource = ExtResource("2_anp8b")
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[resource]
+script = ExtResource("2_ba61m")
+item_name = "Instable Grenade"
+item_stat_info = "Explodes on impact for 15 damage"
+type = 8
+icon = ExtResource("3_u5a0u")
+effects = Array[ExtResource("1_fiyvo")]([SubResource("Resource_fiyvo")])
+metadata/_custom_type_script = "uid://dulvf1v1d8so8"

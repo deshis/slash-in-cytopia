@@ -602,7 +602,7 @@ func throw(throw_resource: ThrowableResource):
 			var impulse = direction * throw_force
 			impulse.y = upward_arc
 			throwable_object.apply_central_impulse(impulse)
-			
+			throwable_object.apply_torque_impulse(Vector3(randf(), randf(), randf()) * 0.5)
 
 func process_move(delta: float) -> void:	
 	apply_movement(delta)
