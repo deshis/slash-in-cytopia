@@ -2,27 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqp1l0dofg8ft" path="res://Scripts/items/item.gd" id="1_76mu4"]
 [ext_resource type="Texture2D" uid="uid://dxdkt76vmq0em" path="res://Assets/icon.svg" id="1_ys0gr"]
-[ext_resource type="Texture2D" uid="uid://didc4k2i2t3on" path="res://Assets/ui/GemConsumer2.png" id="2_cdyif"]
-[ext_resource type="Texture2D" uid="uid://4vlsf8b685l6" path="res://Assets/ui/GemMilitary.png" id="3_okahq"]
-[ext_resource type="Texture2D" uid="uid://bpsnc26gm6si5" path="res://Assets/ui/GemPrototype.png" id="4_2637l"]
-[ext_resource type="Texture2D" uid="uid://b3bovew241qhp" path="res://Assets/ui/GemApex.png" id="5_sy6q6"]
-[ext_resource type="Texture2D" uid="uid://dmqqts54ufoif" path="res://Assets/ui/CornerConsumer.png" id="6_exvev"]
-[ext_resource type="Texture2D" uid="uid://c7iwn8v7sjvx3" path="res://Assets/ui/CornerApex3.png" id="7_cdyif"]
-[ext_resource type="Texture2D" uid="uid://ce1k2tvrodwis" path="res://Assets/ui/CornerMilitary.png" id="7_cm17f"]
-[ext_resource type="Texture2D" uid="uid://blko1n5r4msb5" path="res://Assets/ui/CornerPrototype.png" id="8_6wqhd"]
-[ext_resource type="Texture2D" uid="uid://cbgtdkp0g6012" path="res://Assets/ui/CornerApex.png" id="9_wggks"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u06aw"]
-bg_color = Color(0.1, 0.1, 0.1, 1)
-border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-corner_detail = 2
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sy6q6"]
-load_path = "res://.godot/imported/GemApex.png-582d12c46297c35a8c91727d304f76d6.s3tc.ctex"
+[ext_resource type="PackedScene" uid="uid://rjrrnm3gxivj" path="res://Scenes/items/item_description.tscn" id="11_sy6q6"]
 
 [node name="Item" type="Control" unique_id=454744185]
 layout_mode = 3
@@ -31,8 +11,6 @@ offset_right = 82.0
 offset_bottom = 82.0
 mouse_filter = 1
 script = ExtResource("1_76mu4")
-grade_icons = Array[CompressedTexture2D]([ExtResource("2_cdyif"), ExtResource("3_okahq"), ExtResource("4_2637l"), ExtResource("5_sy6q6")])
-border_corners = Array[CompressedTexture2D]([ExtResource("6_exvev"), ExtResource("7_cm17f"), ExtResource("8_6wqhd"), ExtResource("9_wggks")])
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1794495915]
 layout_mode = 1
@@ -53,96 +31,8 @@ mouse_filter = 2
 texture = ExtResource("1_ys0gr")
 expand_mode = 2
 
-[node name="Description" type="PanelContainer" parent="." unique_id=232717436]
-visible = false
-z_index = 5
+[node name="Background" parent="." unique_id=239486507 instance=ExtResource("11_sy6q6")]
 layout_mode = 0
-offset_right = 10.0
-offset_bottom = 5.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_u06aw")
-
-[node name="MarginContainer" type="MarginContainer" parent="Description" unique_id=1696774442]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 5
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Description/MarginContainer" unique_id=331037910]
-clip_contents = false
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Frame" type="GridContainer" parent="Description" unique_id=2096533642]
-layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 2
-
-[node name="TopLeft" type="TextureRect" parent="Description/Frame" unique_id=1915784396]
-texture_filter = 4
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-texture = ExtResource("7_cdyif")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="TopRight" type="TextureRect" parent="Description/Frame" unique_id=1072149400]
-texture_filter = 4
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 2
-texture = ExtResource("7_cdyif")
-expand_mode = 1
-stretch_mode = 4
-flip_h = true
-
-[node name="BottomLeft" type="TextureRect" parent="Description/Frame" unique_id=1631255228]
-texture_filter = 4
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 10
-texture = ExtResource("7_cdyif")
-expand_mode = 1
-stretch_mode = 4
-flip_v = true
-
-[node name="BottomRight" type="TextureRect" parent="Description/Frame" unique_id=991902355]
-texture_filter = 4
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 10
-texture = ExtResource("7_cdyif")
-expand_mode = 1
-stretch_mode = 4
-flip_h = true
-flip_v = true
-
-[node name="Control" type="Control" parent="Description" unique_id=368488005]
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="GradeIcon" type="TextureRect" parent="Description/Control" unique_id=360667433]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-texture = SubResource("CompressedTexture2D_sy6q6")
-expand_mode = 1
-stretch_mode = 5
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

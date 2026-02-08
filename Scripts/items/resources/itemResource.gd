@@ -219,7 +219,7 @@ func get_percent(is_percent: bool) -> String:
 		return ""
 
 func get_color(value: float, is_inverted: bool) -> String:
-	var positive_color := "#a0a3a1"
+	var positive_color := "#bdbbbb"
 	var negative_color := "#b32a20"
 	
 	if is_inverted:
