@@ -116,10 +116,10 @@ var type_colors := {
 }
 
 var grade_colors := {
-	ItemType.Grade.CONSUMER: Color(0.922, 0.929, 0.914, 1.0),
-	ItemType.Grade.MILITARY: Color(0.478, 0.212, 0.482, 1.0),
-	ItemType.Grade.PROTOTYPE: Color(0.91, 0.757, 0.439, 1.0),
-	ItemType.Grade.APEX_ANOMALY: Color(0.46, 0.622, 1.0, 1.0)
+	ItemType.Grade.CONSUMER: Color(0.722, 0.722, 0.722, 1.0),
+	ItemType.Grade.MILITARY: Color(0.738, 0.462, 0.982, 1.0),
+	ItemType.Grade.PROTOTYPE: Color(1.129, 0.843, 0.346, 1.0),
+	ItemType.Grade.APEX_ANOMALY: Color(0.3, 0.5, 1.0, 1.0)
 }
 
 var enemy_loot_table = preload("res://Scripts/globals/loot_table_enemy.tres").duplicate(true)

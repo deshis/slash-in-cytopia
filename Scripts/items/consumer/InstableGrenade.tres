@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [resource]
 script = ExtResource("2_ba61m")
-item_name = "Instable Grenade"
+item_name = "Improvised Explosive Device"
 item_stat_info = "Explodes on impact for 15 damage"
 type = 8
 icon = ExtResource("3_u5a0u")

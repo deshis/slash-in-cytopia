@@ -8,8 +8,8 @@ radius = 0.7
 
 [sub_resource type="SphereMesh" id="SphereMesh_06ob3"]
 lightmap_size_hint = Vector2i(9, 5)
-radius = 0.18
-height = 0.4
+radius = 0.16
+height = 0.38
 radial_segments = 12
 rings = 12
 
@@ -30,8 +30,8 @@ heightmap_enabled = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_odsos"]
 lightmap_size_hint = Vector2i(9, 5)
-radius = 0.18
-height = 0.4
+radius = 0.16
+height = 0.38
 radial_segments = 12
 rings = 12
 

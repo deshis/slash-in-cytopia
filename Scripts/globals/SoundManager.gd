@@ -46,8 +46,8 @@ func _ready() -> void:
 		"invulnerability":load("res://Assets/audio/effect_invulnerability.wav"),
 		"speed_buff":load("res://Assets/audio/effect_speedbuff.wav"),
 		"explosion":load("res://Assets/audio/effect_explosion.wav"),
-		"explosion_small":load("res://Assets/audio/effect_explosion2.mp3"),
-		"explosion_medium":load("res://Assets/audio/effect_explosion2.mp3"),
+		"explosion_small":load("res://Assets/audio/effect_explosion2.wav"),
+		"explosion_medium":load("res://Assets/audio/effect_explosion2.wav"),
 	}
 	
 	ui_players = {

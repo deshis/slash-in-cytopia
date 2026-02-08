@@ -14,7 +14,7 @@ var corner: CompressedTexture2D
 @onready var grade_icon = $Description/Control/GradeIcon
 @onready var border = $Description/Frame
 
-var type_color = "#b5b5b5"
+var type_color = Color(0.6, 0.8, 0.6, 1.0)
 var grade_color = "#"
 var type_name = "?"
 var grade_name = "?"
@@ -106,7 +106,8 @@ func _set_grade() -> void:
 
 
 func _set_type_name() -> void:
-	type_color = LootDatabase.type_colors.get(item.type)
+	##NOTE: uncomment for type-based coloring
+	#type_color = LootDatabase.type_colors.get(item.type)
 	
 	match item.type: 
 		ItemType.Type.SURVIVABILITY:
@@ -132,10 +133,14 @@ func _set_type_name() -> void:
 func _create_description() -> void:
 	name = item.item_name
 	var formatted_desc = ""
-	
+
 	#Item name
 	var formatted_name = ""
-	formatted_name += "[center][color=" + hex(grade_color) + "][b]" + wrap_text(item.item_name) + "[/b][/color][/center]"
+	
+	if grade_name == "Apex Anomaly":
+		formatted_name += "[center]" + "[rainbow freq=0.2 sat=0.7 val=0.8 speed=1.0]" + "[b]" + wrap_text(item.item_name) + "[/b][/rainbow][/center]"
+	else: formatted_name += "[center][color=" + hex(grade_color) + "][b]" + wrap_text(item.item_name) + "[/b][/color][/center]"
+	
 	formatted_desc += formatted_name
 	
 	#Item grade
@@ -145,7 +150,7 @@ func _create_description() -> void:
 	#Item type
 	if type_color == null:
 		type_color = "#777777"
-	
+
 	formatted_desc += "\n[center][font_size=12][color=" + hex(type_color) + "]" + type_name + "[/color][/font_size][/center]\n\n"
 	change_panel_color()
 	

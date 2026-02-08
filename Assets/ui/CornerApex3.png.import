@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://didc4k2i2t3on"
-path.s3tc="res://.godot/imported/GemConsumer2.png-798b1e4e7db202f9f88fb856a23f2dbd.s3tc.ctex"
+uid="uid://c7iwn8v7sjvx3"
+path.s3tc="res://.godot/imported/CornerApex3.png-313cc63f250d5e2ca08dbee0c9bff2ed.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/GemConsumer2.png"
-dest_files=["res://.godot/imported/GemConsumer2.png-798b1e4e7db202f9f88fb856a23f2dbd.s3tc.ctex"]
+source_file="res://Assets/ui/CornerApex3.png"
+dest_files=["res://.godot/imported/CornerApex3.png-313cc63f250d5e2ca08dbee0c9bff2ed.s3tc.ctex"]
 
 [params]
 
