@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="ThrowableResource" format=3 uid="uid://dq4owfx5reu28"]
 
+[ext_resource type="PackedScene" uid="uid://unihvbid3j10" path="res://Scenes/particles/explosion_particles.tscn" id="1_24qk1"]
 [ext_resource type="Script" uid="uid://bwqwn07goaljh" path="res://Scripts/items/resources/ThrowableResource.gd" id="1_dcjcl"]
 [ext_resource type="PackedScene" uid="uid://b0b76u6s21w7g" path="res://Scenes/items/shuriken.tscn" id="2_24qk1"]
 
 [resource]
 script = ExtResource("1_dcjcl")
 throwable_object = ExtResource("2_24qk1")
+explosion_particle = ExtResource("1_24qk1")
 set_facing_direction = true
 stick = true
 fuse = true

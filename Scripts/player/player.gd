@@ -573,7 +573,8 @@ func throw(throw_resource: ThrowableResource):
 	throwable_object.status_effect = throw_resource.status_effect
 	throwable_object.dot_effect = throw_resource.dot_effect
 	throwable_object.impact_particle = throw_resource.impact_particle
-
+	throwable_object.explosion_particle = throw_resource.explosion_particle
+	throwable_object.aoe_indicator = throw_resource.aoe_indicator
 	get_tree().root.add_child(throwable_object)
 	
 	if throw_resource.projectile_from_sky:

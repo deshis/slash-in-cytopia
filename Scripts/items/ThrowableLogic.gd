@@ -2,6 +2,7 @@ extends RigidBody3D
 class_name ThrowableLogic
 
 var impact_particle: PackedScene
+var explosion_particle: PackedScene
 var status_effect: DebuffResource
 var dot_effect: DotResource
 var aoe_damage := 0.0
@@ -11,6 +12,7 @@ var aoe_radius_og := 0.0
 var pierce := false
 var fuse := false
 var stick := false
+var aoe_indicator := false
 var on_contact_damage := false
 var contact_damage := 0.0
 var contact_aoe_radius := 0.0
@@ -24,7 +26,7 @@ func _ready () -> void:
 		fuse_delay()
 	
 func fuse_delay() -> void:
-	get_tree().create_timer(fuse_duration).timeout.connect(func(): explosion(aoe_damage, aoe_radius, true, true))
+	get_tree().create_timer(fuse_duration).timeout.connect(func(): explosion(aoe_damage, aoe_radius, true, true, true))
 	
 func _on_body_entered(body: Node):
 	
@@ -48,7 +50,7 @@ func _on_body_entered(body: Node):
 		
 		#GameManager.particles.emit_particles(impact_particle., global_position - Vector3(0, 1, 0), self)
 		
-		explosion(contact_damage,contact_aoe_radius,false, false)
+		explosion(contact_damage,contact_aoe_radius,false, false, false)
 
 
 	if stick:
@@ -62,7 +64,8 @@ func _on_body_entered(body: Node):
 		return
 		
 	if !fuse && !on_contact_damage:
-		explosion(aoe_damage,aoe_radius,true, true)
+		#so true!
+		explosion(aoe_damage,aoe_radius,true, true, true)
 
 func reparent_to_target(target: Node):
 
@@ -75,7 +78,7 @@ func reparent_to_target(target: Node):
 	global_transform = current_transform
 
 ##CRITICAL Update this to utilize Area3D for finding enemies 	
-func explosion(damage: float, aoe: float, clean: bool, area_damage_indicator: bool) -> void:
+func explosion(damage: float, aoe: float, clean: bool, area_damage_indicator: bool, emit_explosion_particles: bool) -> void:
 	
 	for enemy in GameManager.spawner.get_children():
 		if enemy is not EnemyController or not enemy.visible:
@@ -91,13 +94,32 @@ func explosion(damage: float, aoe: float, clean: bool, area_damage_indicator: bo
 				if dot_effect:
 					GameManager.player.deal_dot_damage(null, dot_effect, enemy)
 				
-	if area_damage_indicator:
+	if aoe_indicator:
+		
 		var area_damage_indicator_copy = GameManager.area_damage_indicator.instantiate()
 		get_tree().root.add_child(area_damage_indicator_copy)
 		area_damage_indicator_copy.global_position = global_position
 		area_damage_indicator_copy.scale = Vector3(aoe, aoe, aoe)
+		
 		get_tree().create_timer(0.5).timeout.connect(area_damage_indicator_copy.queue_free)
-		SoundManager.play_sfx("explosion", self.global_position)
+		#SoundManager.play_sfx("explosion", self.global_position)
+
+	if explosion_particle && emit_explosion_particles:
+
+		var particle_instance = explosion_particle.instantiate()
+		get_tree().root.add_child(particle_instance)
+		particle_instance.global_position = global_position #+ Vector3.DOWN * 0.1
+		
+		var all_particles = particle_instance.find_children("*", "GPUParticles3D")
+		SoundManager.play_sfx("explosion2", self.global_position)
+		for particle in all_particles:
+			particle.emitting = true
+				
+		#particle_instance.finished.connect(func(): particle_instance.queue_free())
+		##hacky but works
+		get_tree().create_timer(5).timeout.connect(particle_instance.queue_free)
+		
+		#SoundManager.play_sfx("explosion2", self.global_position)
 		
 	if clean:
 		queue_free()

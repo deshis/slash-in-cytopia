@@ -3,8 +3,10 @@ class_name ThrowableResource
 
 @export var throwable_object: PackedScene
 @export var impact_particle: PackedScene
+@export var explosion_particle: PackedScene
 @export var status_effect: DebuffResource
 @export var dot_effect: DebuffResource
+@export var aoe_indicator: bool
 @export var projectile_from_sky: bool
 @export var set_facing_direction: bool
 @export var pierce: bool
