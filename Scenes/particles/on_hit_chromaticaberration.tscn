@@ -39,9 +39,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.68, 0.68)
+mouse_filter = 2
 
 [node name="Flash" type="TextureRect" parent="Control" unique_id=1455367530]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("3_47v2w")
