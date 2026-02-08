@@ -3,6 +3,9 @@ class_name Item
 
 var item : ItemResource
 @export var grade_icons: Array[CompressedTexture2D]
+@export var border_corners: Array[CompressedTexture2D]
+var corner: CompressedTexture2D
+
 @export var max_chars_per_line := 25
 
 @onready var description = $Description
@@ -48,10 +51,16 @@ func _position_description() -> void:
 	
 	var viewport_size = get_viewport_rect().size
 	var panel_size = description.size
+	var padding = grade_icon.custom_minimum_size.y / 2
 	
 	new_pos.x = clamp(new_pos.x, 0, viewport_size.x - panel_size.x)
-	new_pos.y = clamp(new_pos.y, 0, viewport_size.y - panel_size.y)
+	new_pos.y = clamp(new_pos.y, 0, viewport_size.y - panel_size.y - padding)
 	description.global_position = new_pos
+	
+	var min_description_size = min(panel_size.x, panel_size.y)
+	var frame_size = Vector2(min_description_size, min_description_size) / 2
+	for frame in border.get_children():
+		frame.custom_minimum_size = frame_size
 
 
 func get_type() -> int:
@@ -166,7 +175,6 @@ func change_panel_color() -> void:
 	var alpha = 0.9
 	var brightness = 0.2
 	c = Color(c.r * brightness, c.g * brightness, c.b * brightness, alpha)
-	#stylebox.border_color = grade_color
 	
 	stylebox.bg_color = c
 	description.add_theme_stylebox_override("panel", stylebox)
@@ -189,27 +197,24 @@ func wrap_text(text: String) -> String:
 
 
 func choose_border_texture() -> void:
-	var border_texture: Texture2D
-	#grade_icon.position += Vector2(0, -1)
-	
 	if grade_name == "Consumer":
-		border_texture = preload("res://Assets/ui/BorderConsumer2.png")
 		grade_icon.texture = grade_icons[0]
-		
+		corner = border_corners[0]
+	
 	if grade_name == "Military":
-		border_texture = preload("res://Assets/ui/BorderMilitary2.png")
 		grade_icon.texture = grade_icons[1]
-		
-		
+		corner = border_corners[1]
+	
 	if grade_name == "Prototype":
-		border_texture = preload("res://Assets/ui/BorderPrototype2.png")
 		grade_icon.texture = grade_icons[2]
+		corner = border_corners[2]
 	
 	if grade_name == "Apex Anomaly":
-		border_texture = preload("res://Assets/ui/BorderApex3.png")
 		grade_icon.texture = grade_icons[3]
+		corner = border_corners[3]
 	
-	border.texture = border_texture
+	for c in border.get_children():
+		c.texture = corner
 
 
 func _notification(what):

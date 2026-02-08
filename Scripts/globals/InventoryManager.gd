@@ -365,7 +365,7 @@ func equip_starter_items() -> void:
 	
 	for item in starter_items:
 		var item_control = create_item_control(item)
-		var slot = backpack_node.get_child(0)
+		var slot = get_backpack_slot()
 		slot.set_item(item_control)
 		move_item(slot)
 		

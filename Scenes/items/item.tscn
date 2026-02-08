@@ -6,16 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://4vlsf8b685l6" path="res://Assets/ui/GemMilitary.png" id="3_okahq"]
 [ext_resource type="Texture2D" uid="uid://bpsnc26gm6si5" path="res://Assets/ui/GemPrototype.png" id="4_2637l"]
 [ext_resource type="Texture2D" uid="uid://bfwjxxmpp1qyl" path="res://Assets/ui/GemApex.png" id="5_sy6q6"]
-[ext_resource type="Texture2D" uid="uid://vykdx7mjp1ic" path="res://Assets/ui/BorderApex2.png" id="7_ckxwd"]
+[ext_resource type="Texture2D" uid="uid://dmqqts54ufoif" path="res://Assets/ui/CornerConsumer.png" id="6_exvev"]
+[ext_resource type="Texture2D" path="res://Assets/ui/CornerApex3.png" id="7_cdyif"]
+[ext_resource type="Texture2D" uid="uid://ce1k2tvrodwis" path="res://Assets/ui/CornerMilitary.png" id="7_cm17f"]
+[ext_resource type="Texture2D" uid="uid://blko1n5r4msb5" path="res://Assets/ui/CornerPrototype.png" id="8_6wqhd"]
+[ext_resource type="Texture2D" uid="uid://cbgtdkp0g6012" path="res://Assets/ui/CornerApex.png" id="9_wggks"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u06aw"]
-bg_color = Color(0.09803922, 0.09803922, 0.09803922, 0.9411765)
+bg_color = Color(0.1, 0.1, 0.1, 1)
 border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-corner_detail = 1
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 2
 
 [node name="Item" type="Control" unique_id=454744185]
 layout_mode = 3
@@ -25,6 +29,7 @@ offset_bottom = 82.0
 mouse_filter = 1
 script = ExtResource("1_76mu4")
 grade_icons = Array[CompressedTexture2D]([ExtResource("2_cdyif"), ExtResource("3_okahq"), ExtResource("4_2637l"), ExtResource("5_sy6q6")])
+border_corners = Array[CompressedTexture2D]([ExtResource("6_exvev"), ExtResource("7_cm17f"), ExtResource("8_6wqhd"), ExtResource("9_wggks")])
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1794495915]
 layout_mode = 1
@@ -49,8 +54,8 @@ expand_mode = 2
 visible = false
 z_index = 5
 layout_mode = 0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_right = 10.0
+offset_bottom = 5.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_u06aw")
 
@@ -58,7 +63,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_u06aw")
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 5
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Description/MarginContainer" unique_id=331037910]
@@ -70,17 +75,58 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Frame" type="NinePatchRect" parent="Description" unique_id=1962305996]
+[node name="Frame" type="GridContainer" parent="Description" unique_id=2096533642]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="TopLeft" type="TextureRect" parent="Description/Frame" unique_id=1915784396]
 texture_filter = 4
 layout_mode = 2
-texture = ExtResource("7_ckxwd")
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource("7_cdyif")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TopRight" type="TextureRect" parent="Description/Frame" unique_id=1072149400]
+texture_filter = 4
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 2
+texture = ExtResource("7_cdyif")
+expand_mode = 1
+stretch_mode = 4
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Description/Frame" unique_id=1631255228]
+texture_filter = 4
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 10
+texture = ExtResource("7_cdyif")
+expand_mode = 1
+stretch_mode = 4
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Description/Frame" unique_id=991902355]
+texture_filter = 4
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 10
+texture = ExtResource("7_cdyif")
+expand_mode = 1
+stretch_mode = 4
+flip_h = true
+flip_v = true
 
 [node name="Control" type="Control" parent="Description" unique_id=368488005]
 layout_mode = 2
 size_flags_vertical = 8
 
 [node name="GradeIcon" type="TextureRect" parent="Description/Control" unique_id=360667433]
-custom_minimum_size = Vector2(54, 54)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
