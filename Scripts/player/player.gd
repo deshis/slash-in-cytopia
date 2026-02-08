@@ -125,7 +125,6 @@ var area_damage_indicator = preload("res://Scenes/items/AreaDamageIndicator.tscn
 
 # TAKING DAMAGE
 @export var hitstop_duration := 0.2
-
 @onready var hit_flash = $"model/rig/Skeleton3D/Char".mesh.surface_get_material(0).get_next_pass()
 @onready var hit_flash_timer = $Timers/HitFlash
 var hit_flash_duration := 0.6
@@ -134,6 +133,10 @@ var hit_flash_blink_speed := 0.1
 @export var trails : Array[MeshInstance3D]
 
 var thorns_percent := 0.0
+
+# DAMAGE CHROMATIC ABERRATION
+var chromatic_aberration_scene = preload("res://Scenes/particles/on_hit_chromaticaberration.tscn")
+var chromatic_aberration = null
 
 # STATE MACHINE
 var state = IDLE
@@ -147,7 +150,6 @@ const LIGHT_ATTACK = "light_attack"
 const HEAVY_ATTACK_WINDUP = "heavy_attack_windup"
 const HEAVY_ATTACK = "heavy_attack"
 
-
 func _ready() -> void:
 	hit_flash.set_shader_parameter('strength',0.0)
 	animator.animation_finished.connect(_on_animation_finished)
@@ -157,8 +159,10 @@ func _ready() -> void:
 	
 	ItemGlobals.reset()
 	
+	chromatic_aberration = chromatic_aberration_scene.instantiate()
+	get_tree().root.add_child(chromatic_aberration)
+	
 	change_state(IDLE)
-
 func _physics_process(delta: float) -> void:
 	state_timer -= delta
 	
@@ -401,10 +405,14 @@ func perform_heavy_attack() -> void:
 		_:
 			SoundManager.play_sfx("heavy_attack_default", global_position)
 			
-
+func trigger_chromatic_aberration():
+	# Convert world position to screen position
+	chromatic_aberration.trigger_chromatic_aberration()
 
 func use_active_item(active_effect: ActiveEffectResource):
 	var active_item_cooldown = active_effect.active_effect_cooldown
+	
+	trigger_chromatic_aberration()
 	
 	can_active_item = false
 	active_item_cooldown_timer.start(active_item_cooldown)
@@ -766,6 +774,8 @@ func deal_stat_damage(area: Area3D, debuff: DebuffResource, e: EnemyController =
 
 func take_damage(damage:float, enemy: EnemyController, ignore_invulnerability: bool = false) -> void:
 	GameManager.particles.emit_particles("player_on_hit", global_position, self)
+	
+	trigger_chromatic_aberration()
 	
 	# hit flash = invulnerability as well
 	if hit_flash_timer.time_left > 0 and not ignore_invulnerability:

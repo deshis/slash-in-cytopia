@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://d4uf3ysho53s"]
+
+[ext_resource type="Script" uid="uid://0la4ibh0t7kn" path="res://Scripts/particles/ChromaticAberrationController.gd" id="1_r7m2r"]
+[ext_resource type="Shader" uid="uid://5ir66i0bnk2u" path="res://Scenes/particles/hit_chromatic_aberration.gdshader" id="2_47v2w"]
+[ext_resource type="Texture2D" uid="uid://deux1b45ucd2m" path="res://Assets/ui/damagebordertest.png" id="3_47v2w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_epias"]
+shader = ExtResource("2_47v2w")
+shader_parameter/chromatic_progress = 0.0
+shader_parameter/chromatic_aberration = 0.02
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1561946974]
+script = ExtResource("1_r7m2r")
+
+[node name="ChromaticRect" type="ColorRect" parent="." unique_id=1635587054]
+material = SubResource("ShaderMaterial_epias")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Flash2" type="ColorRect" parent="." unique_id=203142387]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.60253805, 0, 0.097355224, 0.60784316)
+
+[node name="Control" type="Control" parent="." unique_id=1429871866]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.68, 0.68)
+
+[node name="Flash" type="TextureRect" parent="Control" unique_id=1455367530]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_47v2w")
