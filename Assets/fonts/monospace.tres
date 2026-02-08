@@ -2,6 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://t6bkmvdx6wst" path="res://Assets/fonts/NK57 Monospace Cd Rg.otf" id="1_a1ne7"]
 [ext_resource type="FontFile" uid="uid://cajgikfb7xubp" path="res://Assets/fonts/NK57 Monospace Cd Rg It.otf" id="2_fgx30"]
+[ext_resource type="FontFile" uid="uid://b6koe0jc8qexs" path="res://Assets/fonts/NK57 Monospace Cd Bd.otf" id="2_o45jm"]
+[ext_resource type="FontFile" uid="uid://bf6hu08cmn07p" path="res://Assets/fonts/NK57 Monospace Cd Bd It.otf" id="3_ucybp"]
 
 [resource]
 default_font = ExtResource("1_a1ne7")
@@ -12,5 +14,7 @@ Button/fonts/font = ExtResource("1_a1ne7")
 Label/fonts/font = ExtResource("1_a1ne7")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/fonts/bold_font = ExtResource("2_o45jm")
+RichTextLabel/fonts/bold_italics_font = ExtResource("3_ucybp")
 RichTextLabel/fonts/italics_font = ExtResource("2_fgx30")
 RichTextLabel/fonts/normal_font = ExtResource("1_a1ne7")
