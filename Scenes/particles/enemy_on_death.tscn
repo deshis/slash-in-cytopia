@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://btscgfflc4d5l"]
+[gd_scene format=3 uid="uid://btscgfflc4d5l"]
 
 [ext_resource type="Texture2D" uid="uid://ceywic8omkrab" path="res://Assets/particles/light_02.png" id="1_hltrj"]
 [ext_resource type="Texture2D" uid="uid://dovdqeuldcpu" path="res://Assets/particles/light_01.png" id="2_jvck1"]
@@ -85,7 +85,7 @@ color = Color(0.757452, 0.37396663, 0, 1)
 color_ramp = SubResource("GradientTexture1D_yq44w")
 alpha_curve = SubResource("CurveTexture_dse36")
 sub_emitter_mode = 4
-sub_emitter_amount_at_start = 32
+sub_emitter_amount_at_start = 15
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jd1mb"]
 transparency = 1
@@ -109,27 +109,21 @@ curve = SubResource("Curve_jvck1")
 
 [sub_resource type="Gradient" id="Gradient_hf7ff"]
 offsets = PackedFloat32Array(0, 0.022271715, 0.46547884, 0.9933185)
-colors = PackedColorArray(1, 1, 1, 1, 0.84470415, 0.64046234, 0, 1, 0.7440023, 0.41338083, 0.23676166, 1, 0.26657522, 0.2665752, 0.2665752, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.9457709, 0.7017033, 0, 1, 0.9106288, 0.43804002, 0.17890584, 1, 0.26657522, 0.2665752, 0.2665752, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_stg8g"]
 gradient = SubResource("Gradient_hf7ff")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dse36"]
 particle_flag_align_y = true
-emission_shape = 3
-emission_box_extents = Vector3(0, 0, 0)
-angle_min = 1.0728835e-05
-angle_max = 1.0728835e-05
-inherit_velocity_ratio = 1.0
-velocity_pivot = Vector3(1, 0, 1)
-direction = Vector3(1, 0, 1)
+direction = Vector3(0, 1, 0)
 spread = 180.0
-initial_velocity_min = 6.0
-initial_velocity_max = 10.0
-scale_min = 0.14999999
-scale_max = 0.14999999
+initial_velocity_min = 10.0
+initial_velocity_max = 12.0
+scale_min = 0.5
 color_ramp = SubResource("GradientTexture1D_stg8g")
 alpha_curve = SubResource("CurveTexture_xkbka")
+emission_curve = SubResource("CurveTexture_xkbka")
 
 [sub_resource type="Curve" id="Curve_ojkjj"]
 _data = [Vector2(0, 0), 0.0, 8.107042, 0, 0, Vector2(0.15737703, 0.6034482), -0.09390385, -0.09390385, 0, 0, Vector2(0.41967213, 0.37068963), -1.115465, -1.115465, 0, 0, Vector2(1, 0.043103337), -0.2629307, 0.0, 0, 0]
@@ -138,17 +132,20 @@ point_count = 4
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aa3vp"]
 transparency = 1
 no_depth_test = true
-shading_mode = 0
 vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0.94509804, 0.7019608, 0, 1)
+emission_energy_multiplier = 3.0
+billboard_keep_scale = true
 use_particle_trails = true
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_qe783"]
 material = SubResource("StandardMaterial3D_aa3vp")
-radius = 0.1
+radius = 0.025
 section_rings = 7
 curve = SubResource("Curve_ojkjj")
 
-[node name="on_death_particles" type="GPUParticles3D" node_paths=PackedStringArray("particles")]
+[node name="on_death_particles" type="GPUParticles3D" unique_id=67407773 node_paths=PackedStringArray("particles")]
 emitting = false
 amount = 1
 sub_emitter = NodePath("sub")
@@ -161,7 +158,7 @@ draw_pass_1 = SubResource("QuadMesh_bj7xt")
 script = ExtResource("2_xkbka")
 particles = NodePath(".")
 
-[node name="sub" type="GPUParticles3D" parent="."]
+[node name="sub" type="GPUParticles3D" parent="." unique_id=1481617022]
 emitting = false
 amount = 1
 sub_emitter = NodePath("../sparkles")
@@ -172,14 +169,13 @@ interpolate = false
 process_material = SubResource("ParticleProcessMaterial_ssgi5")
 draw_pass_1 = SubResource("QuadMesh_tug6l")
 
-[node name="sparkles" type="GPUParticles3D" parent="."]
+[node name="sparkles" type="GPUParticles3D" parent="." unique_id=1984915242]
 emitting = false
-amount = 200
-lifetime = 0.4
+amount = 15
+lifetime = 0.25
 one_shot = true
 explosiveness = 1.0
-fixed_fps = 24
 trail_enabled = true
-trail_lifetime = 0.15000000000000002
+trail_lifetime = 0.060000000000000005
 process_material = SubResource("ParticleProcessMaterial_dse36")
 draw_pass_1 = SubResource("TubeTrailMesh_qe783")
