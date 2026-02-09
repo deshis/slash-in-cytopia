@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://18awx7tw2tog"]
+
+[ext_resource type="Shader" uid="uid://dp145x6w65ey5" path="res://Assets/materials/shaders/cell_shader.gdshader" id="1_a8gxb"]
+
+[sub_resource type="Gradient" id="Gradient_a8gxb"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.47345775, 0.41525912, 0.17926228, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bpur3"]
+gradient = SubResource("Gradient_a8gxb")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_a8gxb")
+shader_parameter/albedo_texture = SubResource("GradientTexture1D_bpur3")
+shader_parameter/light_steps = 3.0
