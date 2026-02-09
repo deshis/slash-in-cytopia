@@ -32,6 +32,10 @@
 [ext_resource type="Script" uid="uid://6jore1um42bw" path="res://Scripts/ui/game_over.gd" id="23_vxf74"]
 [ext_resource type="Texture2D" uid="uid://3gcpmo12q0kr" path="res://Assets/ui/ItemIconDamage.png" id="24_r3t7s"]
 [ext_resource type="Texture2D" uid="uid://djlowtuly6nfu" path="res://Assets/ui/ItemIconBrainchip.png" id="25_2874v"]
+[ext_resource type="Texture2D" uid="uid://b1dcqmm1vfynd" path="res://Assets/ui/ItemIconLightAttack.png" id="26_2874v"]
+[ext_resource type="Texture2D" uid="uid://dm5ljywx0xvxq" path="res://Assets/ui/ItemIconHeavyAttack.png" id="27_5m6rh"]
+[ext_resource type="Texture2D" uid="uid://chnw20ws0ybfy" path="res://Assets/ui/ItemIconThrowable.png" id="27_r3t7s"]
+[ext_resource type="PackedScene" uid="uid://rjrrnm3gxivj" path="res://Scenes/items/item_description.tscn" id="28_0s5ks"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_36s6t"]
 
@@ -387,7 +391,7 @@ grow_vertical = 2
 texture = ExtResource("6_og236")
 expand_mode = 1
 
-[node name="Inventory" type="Control" parent="." unique_id=1756702059 node_paths=PackedStringArray("backpack_node", "trash_slot_node", "augments_node", "item_selection_node", "combiner_node", "recycler_node", "extra_augment_nodes")]
+[node name="Inventory" type="Control" parent="." unique_id=1756702059 node_paths=PackedStringArray("backpack_node", "trash_slot_node", "augments_node", "item_selection_node", "combiner_node", "recycler_node", "extra_augment_nodes", "item_description_node")]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -405,6 +409,7 @@ item_selection_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/ItemSelecti
 combiner_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/Combiner")
 recycler_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/Recycler")
 extra_augment_nodes = [NodePath("HBoxContainer/RightSide/AugmentSlots/Survivability2"), NodePath("HBoxContainer/RightSide/AugmentSlots/Movement2"), NodePath("HBoxContainer/RightSide/AugmentSlots/Damage2")]
+item_description_node = NodePath("ItemDescription")
 
 [node name="Background" type="Panel" parent="Inventory" unique_id=1596950018]
 modulate = Color(1, 1, 1, 0.5019608)
@@ -807,6 +812,8 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 6
+icon = ExtResource("26_2874v")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Light Attack"
 slot_type = 2
 
@@ -823,6 +830,8 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 7
+icon = ExtResource("27_5m6rh")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Heavy Attack"
 slot_type = 2
 
@@ -857,6 +866,8 @@ grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 8
+icon = ExtResource("27_r3t7s")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Throwable (NAME?)"
 slot_type = 2
 
@@ -928,6 +939,10 @@ position = Vector2(-250, 0)
 points = PackedVector2Array(1157, 225, 1157, 183)
 width = 2.0
 default_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
+
+[node name="ItemDescription" parent="Inventory" unique_id=239486507 instance=ExtResource("28_0s5ks")]
+visible = false
+layout_mode = 0
 
 [node name="PauseMenu" type="Control" parent="." unique_id=292451703]
 process_mode = 3

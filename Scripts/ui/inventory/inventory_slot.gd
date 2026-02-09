@@ -7,7 +7,8 @@ class_name InventorySlot
 @export var slot_name: String
 @export var slot_type: SLOT
 
-@onready var icon_node = $MarginContainer/Icon
+@onready var item_slot = $ItemSlot
+@onready var icon_node = $ItemSlot/Icon
 
 enum SLOT {
 	NONE,
@@ -27,7 +28,7 @@ func setup() -> void:
 
 
 func get_item() -> Control:
-	for child in get_children():
+	for child in item_slot.get_children():
 		if child is Item:
 			return child
 	return null
@@ -36,12 +37,13 @@ func get_item() -> Control:
 func set_item(item: Control) -> void:
 	if item.get_parent():
 		item.get_parent().remove_child(item)
-	add_child(item)
-	icon_node.texture = null
+	item_slot.add_child(item)
+	item.slot = self
+	icon_node.visible = false
 
 
-func clear_item() -> void:
-	for child in get_children():
+func clear() -> void:
+	for child in item_slot.get_children():
 		if child is Item:
 			child.queue_free()
 

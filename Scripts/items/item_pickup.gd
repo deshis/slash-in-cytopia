@@ -13,21 +13,16 @@ func open_item_selection(node: Node3D):
 	
 	for i in range(slots.size()):
 		var slot = slots[i]
-		clear_slot(slot)
+		slot.clear()
 		slot.visible = false
 		
 		if i < node.items.size():
 			var item = node.get_item(i).duplicate()
-			slot.add_child(InventoryManager.create_item_control(item))
+			slot.set_item(InventoryManager.create_item_control(item))
 			slot.visible = true
 	
 	MenuManager.open_menu(MenuManager.MENU.ITEM_SELECTION)
 
-
-func clear_slot(slot: Control)->void:
-	for child in slot.get_children():
-		if child is Item:
-			child.queue_free()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):

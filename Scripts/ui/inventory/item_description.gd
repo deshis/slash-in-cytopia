@@ -4,7 +4,6 @@ var item : ItemResource
 @export var grade_icons: Dictionary[ItemType.Grade, CompressedTexture2D]
 @export var border_corners: Dictionary[ItemType.Grade, CompressedTexture2D]
 @export var item_types: Dictionary[ItemType.Type, CompressedTexture2D]
-var corner: CompressedTexture2D
 
 @export var max_chars_per_line := 25
 
@@ -17,9 +16,9 @@ var corner: CompressedTexture2D
 @onready var item_stats = $Description/VBoxContainer/Stats
 @onready var item_desc = $Description/VBoxContainer/Description
 
-
 var type_color = Color(0.6, 0.8, 0.6, 1.0)
 var type_name = ""
+
 
 func _physics_process(_delta: float) -> void:
 	if visible:
@@ -35,11 +34,37 @@ func set_description(i: ItemResource) -> void:
 	_set_stats()
 	_set_description()
 	_set_panel_color()
+	_update_size()
 	
-	var min_description_size = min(size.x, size.y)
-	var frame_size = Vector2(min_description_size, min_description_size) / 2
-	for frame in border.get_children():
-		frame.custom_minimum_size = frame_size
+	activate()
+
+
+func activate() -> void:
+	_reposition()
+	visible = true
+
+
+func deactivate() -> void:
+	visible = false
+
+
+func wrap_text(text: String) -> String:
+	if text == "":
+		return ""
+	
+	var result = ""
+	var current_line = ""
+	var words = text.split(" ")
+	
+	for word in words:
+		if current_line.length() + word.length() + 1 > max_chars_per_line:
+			result += current_line + "\n"
+			current_line = word + " "
+		else:
+			current_line += word + " "
+	
+	result += current_line
+	return result
 
 
 func _set_type() -> void:
@@ -64,7 +89,7 @@ func _set_type() -> void:
 		ItemType.Type.THROWABLE:
 			type_name = "Throwable"
 	
-	item_type.text = "[color=" + hex(type_color) + "]" + type_name + "[/color]"
+	item_type.text = "[color=" + Helper.to_hex(type_color) + "]" + type_name + "[/color]"
 
 
 func _set_grade() -> void:
@@ -74,8 +99,8 @@ func _set_grade() -> void:
 
 func _set_border_texture() -> void:
 	grade_icon.texture = grade_icons.get(item.grade, null)
-	corner = border_corners.get(item.grade, null)
 	
+	var corner = border_corners.get(item.grade, null)
 	for c in border.get_children():
 		c.texture = corner
 
@@ -86,7 +111,7 @@ func _set_name() -> void:
 	if item.grade == ItemType.Grade.APEX_ANOMALY:
 		item_name.text = "[rainbow freq=0.2 sat=0.7 val=0.8 speed=1.0]" + wrap_text(item.item_name) + "[/rainbow]"
 	else:
-		item_name.text = "[color=" + hex(grade_color) + "]" + wrap_text(item.item_name) + "[/color]"
+		item_name.text = "[color=" + Helper.to_hex(grade_color) + "]" + wrap_text(item.item_name) + "[/color]"
 
 
 func _set_stats() -> void:
@@ -98,9 +123,11 @@ func _set_stats() -> void:
 
 func _set_description() -> void:
 	if item.item_description == "":
+		item_desc.text = ""
 		$Description/VBoxContainer/PaddingStatsDesc.visible = false
 	else:
 		item_desc.text = "[color=#777777]" + wrap_text(item.item_description) + "[/color]"
+		$Description/VBoxContainer/PaddingStatsDesc.visible = true
 
 
 func _set_panel_color() -> void:
@@ -116,27 +143,16 @@ func _set_panel_color() -> void:
 	add_theme_stylebox_override("panel", stylebox)
 
 
-func hex(c: Color) -> String:
-	return "#" + c.to_html(false)
-
-
-func wrap_text(text: String) -> String:
-	if text == "":
-		return ""
+func _update_size() -> void:
+	border.visible = false
+	reset_size()
 	
-	var result = ""
-	var current_line = ""
-	var words = text.split(" ")
+	var min_size = min(size.x, size.y)
+	var border_size = Vector2.ONE * min_size / 2
+	for corner in border.get_children():
+		corner.custom_minimum_size = border_size
 	
-	for word in words:
-		if current_line.length() + word.length() + 1 > max_chars_per_line:
-			result += current_line + "\n"
-			current_line = word + " "
-		else:
-			current_line += word + " "
-	
-	result += current_line
-	return result
+	border.visible = true
 
 
 func _reposition() -> void:

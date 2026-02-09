@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://cheduqgq01lw6"]
 
 [ext_resource type="Script" uid="uid://cqp1l0dofg8ft" path="res://Scripts/items/item.gd" id="1_76mu4"]
-[ext_resource type="Texture2D" uid="uid://dxdkt76vmq0em" path="res://Assets/icon.svg" id="1_ys0gr"]
-[ext_resource type="PackedScene" uid="uid://rjrrnm3gxivj" path="res://Scenes/items/item_description.tscn" id="11_sy6q6"]
+[ext_resource type="Texture2D" uid="uid://dnop5pqrq8fbx" path="res://Assets/ui/DashIcon.png" id="2_scmcr"]
 
 [node name="Item" type="Control" unique_id=454744185]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 82.0
-offset_bottom = 82.0
+anchor_right = 0.043
+anchor_bottom = 0.076000005
+offset_right = -0.5600052
+offset_bottom = -0.08000183
 mouse_filter = 1
 script = ExtResource("1_76mu4")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1794495915]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=506086048]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,19 +20,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=506086048]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_ys0gr")
+texture = ExtResource("2_scmcr")
 expand_mode = 2
-
-[node name="Background" parent="." unique_id=239486507 instance=ExtResource("11_sy6q6")]
-layout_mode = 0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

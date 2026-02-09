@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://10qcvwxmfrwp" path="res://Assets/ui/ItemIconUtility.png" id="12_robl6"]
 [ext_resource type="Texture2D" uid="uid://3gcpmo12q0kr" path="res://Assets/ui/ItemIconDamage.png" id="13_iopav"]
 [ext_resource type="Texture2D" uid="uid://djlowtuly6nfu" path="res://Assets/ui/ItemIconBrainchip.png" id="14_fu54p"]
+[ext_resource type="Texture2D" uid="uid://chnw20ws0ybfy" path="res://Assets/ui/ItemIconThrowable.png" id="15_l6lwg"]
+[ext_resource type="Texture2D" uid="uid://b1dcqmm1vfynd" path="res://Assets/ui/ItemIconLightAttack.png" id="16_7b8rr"]
+[ext_resource type="Texture2D" uid="uid://dm5ljywx0xvxq" path="res://Assets/ui/ItemIconHeavyAttack.png" id="17_uf1q7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u06aw"]
 bg_color = Color(0.1, 0.1, 0.1, 1)
@@ -27,7 +30,6 @@ corner_radius_bottom_left = 20
 corner_detail = 2
 
 [node name="Background" type="PanelContainer" unique_id=239486507]
-visible = false
 z_index = 5
 offset_right = 24.0
 offset_bottom = 113.0
@@ -51,20 +53,27 @@ item_types = Dictionary[int, CompressedTexture2D]({
 2: ExtResource("11_lxx5c"),
 3: ExtResource("12_robl6"),
 4: ExtResource("13_iopav"),
-5: ExtResource("14_fu54p")
+5: ExtResource("14_fu54p"),
+6: ExtResource("16_7b8rr"),
+7: ExtResource("17_uf1q7"),
+8: ExtResource("15_l6lwg")
 })
 
 [node name="Description" type="MarginContainer" parent="." unique_id=636350832]
+custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Description" unique_id=1335774228]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="PaddingTop" type="MarginContainer" parent="Description/VBoxContainer" unique_id=1862965906]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Name" type="RichTextLabel" parent="Description/VBoxContainer" unique_id=1429628719]
 clip_contents = false
@@ -81,11 +90,13 @@ horizontal_alignment = 1
 
 [node name="Type" type="HBoxContainer" parent="Description/VBoxContainer" unique_id=1982285297]
 layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="Icon" type="TextureRect" parent="Description/VBoxContainer/Type" unique_id=1046901273]
 texture_filter = 4
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_wg64m")
 expand_mode = 2
 
@@ -103,6 +114,7 @@ autowrap_mode = 0
 [node name="PaddingNameStats" type="MarginContainer" parent="Description/VBoxContainer" unique_id=1645781692]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Stats" type="RichTextLabel" parent="Description/VBoxContainer" unique_id=117726411]
 clip_contents = false
@@ -117,6 +129,7 @@ autowrap_mode = 0
 [node name="PaddingStatsDesc" type="MarginContainer" parent="Description/VBoxContainer" unique_id=893496248]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Description" type="RichTextLabel" parent="Description/VBoxContainer" unique_id=552818778]
 clip_contents = false
@@ -133,9 +146,11 @@ horizontal_alignment = 1
 [node name="PaddingBottom" type="MarginContainer" parent="Description/VBoxContainer" unique_id=411144980]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Frame" type="GridContainer" parent="." unique_id=1249788939]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 2
@@ -145,6 +160,7 @@ texture_filter = 4
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 4
 
@@ -153,6 +169,7 @@ texture_filter = 4
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 2
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 4
 flip_h = true
@@ -162,6 +179,7 @@ texture_filter = 4
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 10
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 4
 flip_v = true
@@ -171,6 +189,7 @@ texture_filter = 4
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 10
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 4
 flip_h = true
@@ -179,6 +198,7 @@ flip_v = true
 [node name="Control" type="Control" parent="." unique_id=212883982]
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="GradeIcon" type="TextureRect" parent="Control" unique_id=1985967098]
 texture_filter = 4
@@ -193,5 +213,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5

@@ -9,6 +9,8 @@ var combiner_node: Node
 var recycler_node: Node
 var trash_slot_node: Node
 
+var item_description: Node
+
 var slot_type = InventorySlot.SLOT
 
 var starter_items: Array[ItemResource] =  [load("res://Scripts/items/apex_anomaly/SingularityCircuit.tres"),load("res://Scripts/items/military/Katana.tres"),load("res://Scripts/items/military/PlasteelChassis.tres"), load("res://Scripts/items/prototype/Arievistan.tres"), load("res://Scripts/items/prototype/Vampirism.tres"),load("res://Scripts/items/consumer/InstableGrenade.tres"),load("res://Scripts/items/military/Shuriken.tres"),load("res://Scripts/items/prototype/Javelin.tres")] #, load("res://Scripts/items/prototype/Vampirism.tres")]#[preload("res://Scripts/items/military/DashReplicator.tres"), preload("res://Scripts/items/prototype/Dawn.tres"),preload("res://Scripts/items/military/BlackBurner.tres"), preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/prototype/Arievistan.tres")]#[preload("res://Scripts/items/prototype/ArcFlash.tres"),preload("res://Scripts/items/prototype/Labrys.tres"),preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/consumer/UnderclockedExoskeleton.tres"),preload("res://Scripts/items/military/SecondHeart.tres"),preload("res://Scripts/items/prototype/RealityFracture.tres")]
@@ -45,6 +47,7 @@ func init() -> void:
 	combiner_node = inventory_node.combiner_node
 	recycler_node = inventory_node.recycler_node
 	extra_augment_nodes = inventory_node.extra_augment_nodes
+	item_description = inventory_node.item_description_node
 	init_slots()
 	
 	# setup menu manager
@@ -97,7 +100,6 @@ func create_item_control(item_res: ItemResource) -> Control:
 
 func move_item(origin_slot: InventorySlot, new_slot: InventorySlot = null) -> void:
 	var item = origin_slot.get_item()
-	
 	if not item:
 		return
 	
@@ -115,17 +117,12 @@ func move_item(origin_slot: InventorySlot, new_slot: InventorySlot = null) -> vo
 		slot_type.TRASH:
 			pass
 	
+	origin_slot.icon_node.visible = true
 	place_or_swap(item, origin_slot, new_slot)
 	update_inventory_data()
 	
 	if MenuManager.active_menu == MenuManager.MENU.COMBINER:
 		combiner_node.update_state()
-	
-	# set slot icon visible if item moved away
-	# TODO: FIX LATER
-	await get_tree().physics_frame
-	if not origin_slot.get_item():
-		origin_slot.icon_node.texture = origin_slot.icon
 
 
 func can_replace_item(slot: InventorySlot) -> bool:
