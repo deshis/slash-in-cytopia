@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1dcqmm1vfynd"
-path.s3tc="res://.godot/imported/ItemIconLightAttack.png-452ccc6c71fae9364525f36e57e764d4.s3tc.ctex"
+uid="uid://b3bovew241qhp"
+path.s3tc="res://.godot/imported/GemApex.png-15ebb48fe412d89bd1ed103aaebd33f2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/ItemIconLightAttack.png"
-dest_files=["res://.godot/imported/ItemIconLightAttack.png-452ccc6c71fae9364525f36e57e764d4.s3tc.ctex"]
+source_file="res://Assets/items/icons/grades/GemApex.png"
+dest_files=["res://.godot/imported/GemApex.png-15ebb48fe412d89bd1ed103aaebd33f2.s3tc.ctex"]
 
 [params]
 

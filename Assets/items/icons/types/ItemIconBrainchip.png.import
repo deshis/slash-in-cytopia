@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vykdx7mjp1ic"
-path.s3tc="res://.godot/imported/BorderApex2.png-c6ca2af4b76d66fa2c584790aab30577.s3tc.ctex"
+uid="uid://djlowtuly6nfu"
+path.s3tc="res://.godot/imported/ItemIconBrainchip.png-a37ea9d946e4f30c71a6737ff633d5ce.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/BorderApex2.png"
-dest_files=["res://.godot/imported/BorderApex2.png-c6ca2af4b76d66fa2c584790aab30577.s3tc.ctex"]
+source_file="res://Assets/items/icons/types/ItemIconBrainchip.png"
+dest_files=["res://.godot/imported/ItemIconBrainchip.png-a37ea9d946e4f30c71a6737ff633d5ce.s3tc.ctex"]
 
 [params]
 

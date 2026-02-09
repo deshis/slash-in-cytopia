@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://didc4k2i2t3on"
-path.s3tc="res://.godot/imported/GemConsumer2.png-798b1e4e7db202f9f88fb856a23f2dbd.s3tc.ctex"
+uid="uid://4vlsf8b685l6"
+path.s3tc="res://.godot/imported/GemMilitary.png-ce82e64ad1c18564e39bbeb6f53528a2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/GemConsumer2.png"
-dest_files=["res://.godot/imported/GemConsumer2.png-798b1e4e7db202f9f88fb856a23f2dbd.s3tc.ctex"]
+source_file="res://Assets/items/icons/grades/GemMilitary.png"
+dest_files=["res://.godot/imported/GemMilitary.png-ce82e64ad1c18564e39bbeb6f53528a2.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blko1n5r4msb5"
-path.s3tc="res://.godot/imported/CornerPrototype.png-634b23b9e72d33ebdd4209f6e7ae15f7.s3tc.ctex"
+uid="uid://b1dcqmm1vfynd"
+path.s3tc="res://.godot/imported/ItemIconLightAttack.png-a4131dbc3c2f493083573979c33a86e4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/CornerPrototype.png"
-dest_files=["res://.godot/imported/CornerPrototype.png-634b23b9e72d33ebdd4209f6e7ae15f7.s3tc.ctex"]
+source_file="res://Assets/items/icons/types/ItemIconLightAttack.png"
+dest_files=["res://.godot/imported/ItemIconLightAttack.png-a4131dbc3c2f493083573979c33a86e4.s3tc.ctex"]
 
 [params]
 

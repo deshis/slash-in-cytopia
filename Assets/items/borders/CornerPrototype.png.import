@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bchfdd33nq5mq"
-path.s3tc="res://.godot/imported/ItemIconSurvivability.png-e918fd082209bb33c2c458425e56591b.s3tc.ctex"
+uid="uid://blko1n5r4msb5"
+path.s3tc="res://.godot/imported/CornerPrototype.png-086edb407177991cc553902581eb4835.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/ItemIconSurvivability.png"
-dest_files=["res://.godot/imported/ItemIconSurvivability.png-e918fd082209bb33c2c458425e56591b.s3tc.ctex"]
+source_file="res://Assets/items/borders/CornerPrototype.png"
+dest_files=["res://.godot/imported/CornerPrototype.png-086edb407177991cc553902581eb4835.s3tc.ctex"]
 
 [params]
 

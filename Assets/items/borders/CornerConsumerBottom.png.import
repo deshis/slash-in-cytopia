@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqe0j63rsd351"
-path.s3tc="res://.godot/imported/BorderConsumer2.png-306dc8b864235aff5c7d46e75e746f83.s3tc.ctex"
+uid="uid://cf106cbguvydv"
+path.s3tc="res://.godot/imported/CornerConsumerBottom.png-8308a85a60c74a266f7ef996a7567cf8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/BorderConsumer2.png"
-dest_files=["res://.godot/imported/BorderConsumer2.png-306dc8b864235aff5c7d46e75e746f83.s3tc.ctex"]
+source_file="res://Assets/items/borders/CornerConsumerBottom.png"
+dest_files=["res://.godot/imported/CornerConsumerBottom.png-8308a85a60c74a266f7ef996a7567cf8.s3tc.ctex"]
 
 [params]
 

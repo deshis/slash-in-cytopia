@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf106cbguvydv"
-path.s3tc="res://.godot/imported/CornerConsumerBottom.png-cf2f5b5fda2cdee298ff135aeef959cb.s3tc.ctex"
+uid="uid://chnw20ws0ybfy"
+path.s3tc="res://.godot/imported/ItemIconThrowable.png-05c2c1c5842fc9efa506e9377e3612c9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/CornerConsumerBottom.png"
-dest_files=["res://.godot/imported/CornerConsumerBottom.png-cf2f5b5fda2cdee298ff135aeef959cb.s3tc.ctex"]
+source_file="res://Assets/items/icons/types/ItemIconThrowable.png"
+dest_files=["res://.godot/imported/ItemIconThrowable.png-05c2c1c5842fc9efa506e9377e3612c9.s3tc.ctex"]
 
 [params]
 

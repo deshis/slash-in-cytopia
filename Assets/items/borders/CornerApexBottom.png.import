@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca3cyfd65f8ck"
-path.s3tc="res://.godot/imported/ItemIconMovement.png-b8eb1adf97784671331ae8e97b23a9a0.s3tc.ctex"
+uid="uid://d80klbjqv265"
+path.s3tc="res://.godot/imported/CornerApexBottom.png-08617eaf6a6221b87ae3bc0df3ff39c3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/ItemIconMovement.png"
-dest_files=["res://.godot/imported/ItemIconMovement.png-b8eb1adf97784671331ae8e97b23a9a0.s3tc.ctex"]
+source_file="res://Assets/items/borders/CornerApexBottom.png"
+dest_files=["res://.godot/imported/CornerApexBottom.png-08617eaf6a6221b87ae3bc0df3ff39c3.s3tc.ctex"]
 
 [params]
 

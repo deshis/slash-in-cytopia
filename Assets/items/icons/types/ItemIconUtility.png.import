@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db5nsh48y0gho"
-path.s3tc="res://.godot/imported/BorderMilitary.png-3305b71277b3d9a5cfd51a3ba9cbca62.s3tc.ctex"
+uid="uid://10qcvwxmfrwp"
+path.s3tc="res://.godot/imported/ItemIconUtility.png-c1b565bd55c5604fcf97c67c50d1dff5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/BorderMilitary.png"
-dest_files=["res://.godot/imported/BorderMilitary.png-3305b71277b3d9a5cfd51a3ba9cbca62.s3tc.ctex"]
+source_file="res://Assets/items/icons/types/ItemIconUtility.png"
+dest_files=["res://.godot/imported/ItemIconUtility.png-c1b565bd55c5604fcf97c67c50d1dff5.s3tc.ctex"]
 
 [params]
 

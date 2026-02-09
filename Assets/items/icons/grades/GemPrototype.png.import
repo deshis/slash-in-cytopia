@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuilipmk5cqed"
-path.s3tc="res://.godot/imported/BorderApex.png-abd7e152f86ebd30a37e300cc7335d24.s3tc.ctex"
+uid="uid://bpsnc26gm6si5"
+path.s3tc="res://.godot/imported/GemPrototype.png-754f8b4802ecaf98e4ebf55dedab3f36.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/BorderApex.png"
-dest_files=["res://.godot/imported/BorderApex.png-abd7e152f86ebd30a37e300cc7335d24.s3tc.ctex"]
+source_file="res://Assets/items/icons/grades/GemPrototype.png"
+dest_files=["res://.godot/imported/GemPrototype.png-754f8b4802ecaf98e4ebf55dedab3f36.s3tc.ctex"]
 
 [params]
 
