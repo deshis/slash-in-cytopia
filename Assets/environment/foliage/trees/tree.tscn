@@ -4,17 +4,10 @@
 [ext_resource type="Material" uid="uid://dcmgq7a0uwirg" path="res://Assets/environment/foliage/trees/leaf_material.tres" id="2_ytdn2"]
 [ext_resource type="Shader" uid="uid://dp145x6w65ey5" path="res://Assets/materials/shaders/cell_shader.gdshader" id="3_dh4q2"]
 
-[sub_resource type="Gradient" id="Gradient_dh4q2"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.2572026, 0.12862784, 0.002923847, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_enhcp"]
-gradient = SubResource("Gradient_dh4q2")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r7lp8"]
 render_priority = 0
 shader = ExtResource("3_dh4q2")
-shader_parameter/albedo_texture = SubResource("GradientTexture1D_enhcp")
+shader_parameter/albedo_color = Color(0, 0, 0, 1)
 shader_parameter/light_steps = 3.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dh4q2"]

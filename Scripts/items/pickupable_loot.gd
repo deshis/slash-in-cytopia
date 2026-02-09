@@ -4,6 +4,7 @@ class_name PickupableLoot
 @export var interact_area: Area3D
 
 @export var mesh_instance : MeshInstance3D
+@export var base_material : Material
 @export var light_material : Material
 @export var highlight_material : Material
 @export var light : Light3D
@@ -11,6 +12,7 @@ class_name PickupableLoot
 @export var item_scene: PackedScene
 
 var items := [ItemResource]
+var base_mat : Material
 var light_mat : Material
 var highlight_mat : Material
 
@@ -20,11 +22,17 @@ func _ready() -> void:
 	for surface in mesh_instance.mesh.get_surface_count():
 		var mat = mesh_instance.mesh.surface_get_material(surface)
 		if mat:
-			if surface == 2:
+			if surface == 0:
+				base_mat = base_material.duplicate(true)
+				mesh_instance.set_surface_override_material(surface, base_mat)
+				base_mat.next_pass = highlight_mat
+
+			elif surface == 2:
 				light_mat = light_material.duplicate(true)
 				mesh_instance.set_surface_override_material(surface, light_mat)
 				light_mat.next_pass = highlight_mat
-			else: 
+
+			else:
 				var unique_mat = mat.duplicate(true)
 				mesh_instance.set_surface_override_material(surface, unique_mat)
 				unique_mat.next_pass = highlight_mat
@@ -32,6 +40,7 @@ func _ready() -> void:
 func set_loot(rarity: ItemType.Grade) -> void:
 	var color = LootDatabase.grade_colors[rarity]
 	light_mat.set_shader_parameter("neon_color", color)
+	base_mat.set_shader_parameter("albedo_color", color)
 	light.light_color = color
 	
 	items = []

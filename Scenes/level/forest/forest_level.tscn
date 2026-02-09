@@ -59,6 +59,7 @@ tonemap_exposure = 1.2
 ssil_radius = 8.61
 glow_enabled = true
 glow_normalized = true
+glow_intensity = 0.5
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.16256675, 0.3025965, 0.38915408, 1)
 
@@ -467,6 +468,7 @@ transform = Transform3D(0.3101456, 0.87244576, -0.37768787, -0.42062974, 0.48220
 light_color = Color(0.3923405, 0.59086585, 0.7054946, 1)
 light_energy = 0.5
 shadow_enabled = true
+shadow_opacity = 0.5
 directional_shadow_pancake_size = 0.2
 
 [node name="Combiner" parent="." unique_id=231240284 instance=ExtResource("12_4ifjb")]

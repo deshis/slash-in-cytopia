@@ -2,15 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://dp145x6w65ey5" path="res://Assets/materials/shaders/cell_shader.gdshader" id="1_jm278"]
 
-[sub_resource type="Gradient" id="Gradient_jm278"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.14005154, 0.14005175, 0.14005157, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_s4ola"]
-gradient = SubResource("Gradient_jm278")
-
 [resource]
 render_priority = 0
 shader = ExtResource("1_jm278")
-shader_parameter/albedo_texture = SubResource("GradientTexture1D_s4ola")
+shader_parameter/albedo_color = Color(0.24204671, 0.24204671, 0.24204668, 1)
 shader_parameter/light_steps = 3.0
