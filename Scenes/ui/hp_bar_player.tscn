@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dq80cdl8tixeo"]
 
 [ext_resource type="Script" uid="uid://b8rtnvnstvdg4" path="res://Scripts/ui/hud/healthbar.gd" id="1_ve1ry"]
-[ext_resource type="Texture2D" uid="uid://dm0hhlu606ueh" path="res://Assets/ui/player_hp_bar.png" id="2_iqpnx"]
-[ext_resource type="Texture2D" uid="uid://tclim8ur05b5" path="res://Assets/ui/player_hp_bar_circle_mask.png" id="3_4gxn7"]
+[ext_resource type="Texture2D" uid="uid://br0ce01ryy6sq" path="res://Assets/ui/player_hp_bar_2.png" id="2_j3bo4"]
+[ext_resource type="Texture2D" uid="uid://cgqboqbaep7jf" path="res://Assets/ui/player_hp_bar_circle_mask_2.png" id="3_ckmai"]
 [ext_resource type="Texture2D" uid="uid://3w3tokjxktqm" path="res://Assets/icon.png" id="4_j3bo4"]
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="5_4gxn7"]
 [ext_resource type="Texture2D" uid="uid://buom0xkmfh5or" path="res://Assets/ui/player_hp_bar_rectangle.png" id="6_j3bo4"]
@@ -33,17 +33,17 @@ script = ExtResource("1_ve1ry")
 [node name="PlayerHpBar" type="Sprite2D" parent="." unique_id=493679962]
 position = Vector2(198.2951, 60)
 scale = Vector2(0.32240438, 0.32240438)
-texture = ExtResource("2_iqpnx")
+texture = ExtResource("2_j3bo4")
 
 [node name="PlayerHpBarCircleMask" type="Sprite2D" parent="PlayerHpBar" unique_id=252983882]
 clip_children = 1
-position = Vector2(-441.5, 4)
-scale = Vector2(1.0167786, 1)
-texture = ExtResource("3_4gxn7")
+position = Vector2(-422.74585, -3.101697)
+scale = Vector2(1.0167786, 1.0000001)
+texture = ExtResource("3_ckmai")
 
 [node name="Johnathan Slashington" type="Sprite2D" parent="PlayerHpBar/PlayerHpBarCircleMask" unique_id=1374377338]
-position = Vector2(10.63635, 2.6363535)
-scale = Vector2(1.927557, 1.927557)
+position = Vector2(-12.201981, 12.406769)
+scale = Vector2(1.9275572, 1.9275569)
 texture = ExtResource("4_j3bo4")
 
 [node name="HealthTitleContainer" type="MarginContainer" parent="PlayerHpBar" unique_id=1658839479]
