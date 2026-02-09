@@ -1,11 +1,10 @@
 extends Control
 
-@onready var progress_bar: ProgressBar = $MarginContainer/ProgressBar
-@onready var rich_text_label: RichTextLabel = $MarginContainer/RichTextLabel
-@onready var orange_bar: ProgressBar = $MarginContainer/OrangeBar
-@onready var green_bar: ProgressBar = $MarginContainer/GreenBar
-
-@onready var margin_container: MarginContainer = $MarginContainer
+var progress_bar: ProgressBar 
+var rich_text_label: RichTextLabel 
+var orange_bar: ProgressBar 
+var green_bar: ProgressBar 
+var margin_container: MarginContainer
 
 @onready var damage_number = preload("res://Scenes/enemy/damage_number.tscn")
 
@@ -21,6 +20,19 @@ var previous_health:float
 
 func setup(c: Node, value: float, max_value: float) -> void:
 	character = c
+	
+	if character is Player:
+		progress_bar = $PlayerHpBarRectangleSkew/MarginContainer/ProgressBar
+		rich_text_label =$PlayerHpBar/HealthNumberContainer/RichTextLabel
+		orange_bar = $PlayerHpBarRectangleSkew/MarginContainer/OrangeBar
+		green_bar = $PlayerHpBarRectangleSkew/MarginContainer/GreenBar
+		margin_container = $PlayerHpBar/PlayerHpBarAngleMask/MarginContainer
+	else:
+		progress_bar = $MarginContainer/ProgressBar
+		rich_text_label = $MarginContainer/RichTextLabel
+		orange_bar = $MarginContainer/OrangeBar
+		green_bar = $MarginContainer/GreenBar
+		margin_container = $MarginContainer
 	
 	reset_bar_max_values(max_value)
 	reset_bar_values(value)

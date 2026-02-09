@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://dq80cdl8tixeo"]
 
 [ext_resource type="Script" uid="uid://b8rtnvnstvdg4" path="res://Scripts/ui/hud/healthbar.gd" id="1_ve1ry"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy76q"]
-bg_color = Color(0.35257247, 4.4220127e-07, 1.4439226e-07, 1)
+[ext_resource type="Texture2D" uid="uid://dm0hhlu606ueh" path="res://Assets/ui/player_hp_bar.png" id="2_iqpnx"]
+[ext_resource type="Texture2D" uid="uid://tclim8ur05b5" path="res://Assets/ui/player_hp_bar_circle_mask.png" id="3_4gxn7"]
+[ext_resource type="Texture2D" uid="uid://3w3tokjxktqm" path="res://Assets/icon.png" id="4_j3bo4"]
+[ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="5_4gxn7"]
+[ext_resource type="Texture2D" uid="uid://buom0xkmfh5or" path="res://Assets/ui/player_hp_bar_rectangle.png" id="6_j3bo4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsiwr"]
 
@@ -28,25 +30,76 @@ offset_right = 415.6
 offset_bottom = 51.0
 script = ExtResource("1_ve1ry")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1545832686]
-layout_mode = 1
+[node name="PlayerHpBar" type="Sprite2D" parent="." unique_id=493679962]
+position = Vector2(198.2951, 60)
+scale = Vector2(0.32240438, 0.32240438)
+texture = ExtResource("2_iqpnx")
+
+[node name="PlayerHpBarCircleMask" type="Sprite2D" parent="PlayerHpBar" unique_id=252983882]
+clip_children = 1
+position = Vector2(-441.5, 4)
+scale = Vector2(1.0167786, 1)
+texture = ExtResource("3_4gxn7")
+
+[node name="Johnathan Slashington" type="Sprite2D" parent="PlayerHpBar/PlayerHpBarCircleMask" unique_id=1374377338]
+position = Vector2(10.63635, 2.6363535)
+scale = Vector2(1.927557, 1.927557)
+texture = ExtResource("4_j3bo4")
+
+[node name="HealthTitleContainer" type="MarginContainer" parent="PlayerHpBar" unique_id=1658839479]
+offset_left = -243.0
+offset_top = -131.0
+offset_right = 271.0
+offset_bottom = -79.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerHpBar/HealthTitleContainer" unique_id=1509093629]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_4gxn7")
+theme_override_font_sizes/normal_font_size = 44
+text = "HEALTH"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthNumberContainer" type="MarginContainer" parent="PlayerHpBar" unique_id=819325086]
+offset_left = -301.0
+offset_top = 80.0
+offset_right = -21.0
+offset_bottom = 131.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerHpBar/HealthNumberContainer" unique_id=77889]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_4gxn7")
+theme_override_font_sizes/normal_font_size = 44
+text = "123"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerHpBarRectangleSkew" type="Sprite2D" parent="." unique_id=1275140212]
+position = Vector2(243.54918, 60.27)
+scale = Vector2(0.32315114, 0.336)
+skew = 0.2617994
+texture = ExtResource("6_j3bo4")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerHpBarRectangleSkew" unique_id=1545832686]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -418.0
+offset_top = -74.78022
+offset_right = -418.0
+offset_bottom = -72.80244
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="BackgroundBar" type="ProgressBar" parent="MarginContainer" unique_id=444239002]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_oy76q")
-show_percentage = false
-
-[node name="OrangeBar" type="ProgressBar" parent="MarginContainer" unique_id=1679303141]
+[node name="OrangeBar" type="ProgressBar" parent="PlayerHpBarRectangleSkew/MarginContainer" unique_id=1679303141]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxEmpty_wsiwr")
@@ -54,7 +107,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_wsiwr")
 value = 3.05
 show_percentage = false
 
-[node name="GreenBar" type="ProgressBar" parent="MarginContainer" unique_id=2013786268]
+[node name="GreenBar" type="ProgressBar" parent="PlayerHpBarRectangleSkew/MarginContainer" unique_id=2013786268]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxEmpty_avp23")
@@ -62,19 +115,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_avp23")
 value = 3.05
 show_percentage = false
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer" unique_id=462144628]
+[node name="ProgressBar" type="ProgressBar" parent="PlayerHpBarRectangleSkew/MarginContainer" unique_id=462144628]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxEmpty_m4br7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jjvhh")
 value = 3.05
 show_percentage = false
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1598527494]
-layout_mode = 2
-bbcode_enabled = true
-text = "1 / 100"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
