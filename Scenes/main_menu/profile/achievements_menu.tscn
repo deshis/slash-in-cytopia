@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://Scripts/ui/achievements_menu.gd" id="1_script"]
+[ext_resource type="Script" path="res://Scripts/ui/main_menu/profile/achievements_menu.gd" id="1_script"]
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="2_theme"]
 
 [node name="AchievementsMenu" type="Control"]

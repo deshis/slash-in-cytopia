@@ -49,6 +49,8 @@ func toggle_settings_menu()->void:
 
 
 func _on_quit_button_pressed() -> void:
+	InventoryManager.update_inventory_data()
+	GameStats.player_last_hit_by = "Ragequit"
 	GameManager.quit_to_menu()
 
 

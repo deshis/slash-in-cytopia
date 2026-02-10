@@ -1,6 +1,8 @@
 extends Resource
 class_name ItemResource
 
+var original_path: String = ""
+
 @export var item_name: String
 @export var item_stat_info: String #placeholder
 @export var item_description: String

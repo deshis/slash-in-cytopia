@@ -101,7 +101,8 @@ func create_profile(username: String) -> bool:
 			"health_stolen": 0.0,
 			"longest_run_time": 0
 		},
-		"achievements": []
+		"achievements": [],
+		"match_history": []
 	}
 
 	var full_path = PROFILE_DIR + filename
@@ -131,6 +132,8 @@ func load_profile(filename: String) -> void:
 		file.close()
 		if not current_profile.has("achievements"):
 			current_profile["achievements"] = []
+		if not current_profile.has("match_history"):
+			current_profile["match_history"] = []
 		set_last_loaded_profile(filename)
 	else:
 		printerr("Profile not found: " + filename)
@@ -144,6 +147,74 @@ func delete_profile(filename: String) -> void:
 		
 		if get_last_loaded_profile() == filename:
 			set_last_loaded_profile("")
+
+func add_match_to_history() -> void:
+	if current_profile.is_empty():
+		return
+
+	if not current_profile.has("match_history"):
+		current_profile["match_history"] = []
+
+	# Extract boss type
+	var boss_type = ""
+	if GameStats.bosses_killed_by_type.size() > 0:
+		boss_type = GameStats.bosses_killed_by_type.keys()[0]
+
+	# Get equipped items with their types
+	var equipped_items: Array[Dictionary] = []
+	for item in InventoryManager.augment_items:
+		if item:
+			var item_path = item.original_path if item.original_path != "" else item.resource_path
+			if item_path != "":
+				equipped_items.append({
+					"path": item_path,
+					"type": item.type
+				})
+	
+	var backpack_items: Array[Dictionary] = []
+	for item in InventoryManager.backpack_items:
+		if item:
+			var item_path = item.original_path if item.original_path != "" else item.resource_path
+			if item_path != "":
+				backpack_items.append({
+					"path": item_path,
+					"type": item.type
+				})
+
+	# Check if player had any Apex item
+	var had_apex_item = false
+	for item in InventoryManager.augment_items:
+		if item and item.grade == ItemType.Grade.APEX_ANOMALY:
+			had_apex_item = true
+			break
+	if not had_apex_item:
+		for item in InventoryManager.backpack_items:
+			if item and item.grade == ItemType.Grade.APEX_ANOMALY:
+				had_apex_item = true
+				break
+
+	var match_entry = {
+		"timestamp": Time.get_datetime_string_from_system(),
+		"duration_seconds": GameStats.time_alive_seconds,
+		"enemies_killed": GameStats.enemies_killed,
+		"damage_dealt": GameStats.total_damage_dealt,
+		"damage_taken": GameStats.total_damage_taken,
+		"items_picked_up": GameStats.items_picked_up,
+		"killed_by": GameStats.player_last_hit_by,
+		"throwables_used": GameStats.throwables_used,
+		"had_apex": had_apex_item,
+		"boss_type": boss_type,
+		"equipped_items": equipped_items,
+		"backpack_items": backpack_items,
+		"stages_cleared": GameStats.stages_cleared
+	}
+
+	# Prepend to match_history
+	current_profile["match_history"].push_front(match_entry)
+
+	# Limit match history entries
+	if current_profile["match_history"].size() > 50:
+		current_profile["match_history"].resize(50)
 
 func update_stats_from_run() -> void:
 	if current_profile.is_empty():
@@ -225,7 +296,8 @@ func update_stats_from_run() -> void:
 		
 	if GameStats.time_alive_seconds > stats.get("longest_run_time", 0):
 		stats["longest_run_time"] = GameStats.time_alive_seconds
-		
+
+	add_match_to_history()
 	save_profile()
 
 func rename_profile(old_filename: String, new_username: String) -> bool:

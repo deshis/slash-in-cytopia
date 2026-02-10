@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b8x7q6y504w3"]
 
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="1_hori7"]
-[ext_resource type="Script" uid="uid://d0eme1i1ko5e2" path="res://Scripts/ui/profile_menu.gd" id="1_profile_menu"]
+[ext_resource type="Script" uid="uid://d0eme1i1ko5e2" path="res://Scripts/ui/main_menu/profile/profile_menu.gd" id="1_profile_menu"]
 
 [node name="ProfileMenu" type="Control" unique_id=2030270487]
 layout_mode = 3

@@ -106,6 +106,7 @@ func _setup_game() -> void:
 
 func quit_to_menu()->void:
 	AchievementManager.stop_checking()
+	InventoryManager.update_inventory_data()
 	ProfileManager.update_stats_from_run()
 	GameStats.reset_game_stats()
 	

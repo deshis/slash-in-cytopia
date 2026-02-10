@@ -94,7 +94,12 @@ func init_slots() -> void:
 
 func create_item_control(item_res: ItemResource) -> Control:
 	var instance: Control = item_scene.instantiate() as Control
-	instance.item = item_res.duplicate(true)
+	var new_item_res = item_res.duplicate(true)
+	
+	var path_to_save = item_res.original_path if item_res.original_path != "" else item_res.resource_path
+	new_item_res.original_path = path_to_save
+	
+	instance.item = new_item_res
 	return instance
 
 
@@ -183,12 +188,11 @@ func handle_combiner_move(_origin_slot: CombinerSlot, new_slot: InventorySlot, i
 func place_or_swap(item: Control, origin_slot: Control, new_slot: Control) -> void:
 	if not new_slot:
 		new_slot = origin_slot
-	
+
 	if new_slot.get_item():
 		var item_to_swap = new_slot.get_item()
-		new_slot.remove_child(item_to_swap)
 		origin_slot.set_item(item_to_swap)
-	
+
 	new_slot.set_item(item)
 
 
@@ -248,6 +252,9 @@ func close_item_pickup_menu() -> void:
 
 
 func update_inventory_data() -> void:
+	if not backpack_node or not augments_node:
+		return
+
 	# update backpack
 	for i in range(backpack_node.get_child_count()):
 		var slot = backpack_node.get_child(i)
@@ -257,10 +264,11 @@ func update_inventory_data() -> void:
 	# update augments
 	for i in range(augments_node.get_child_count()):
 		var slot = augments_node.get_child(i)
-		
+
 		var old_item = augment_items[i]
-		var new_item = slot.get_item().item if slot.get_item() else null
-		
+		var slot_item = slot.get_item()
+		var new_item = slot_item.item if slot_item else null
+
 		update_item_effects(old_item, new_item)
 		augment_items[i] = new_item
 

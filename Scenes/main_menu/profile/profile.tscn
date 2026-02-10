@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c8q7y504w3x2"]
 
-[ext_resource type="Script" uid="uid://dkgt55xcsr722" path="res://Scripts/ui/profile.gd" id="1_profile_item"]
+[ext_resource type="Script" uid="uid://dkgt55xcsr722" path="res://Scripts/ui/main_menu/profile/profile.gd" id="1_profile_item"]
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="1_x7kn3"]
 
 [node name="ProfileItem" type="Button" unique_id=1181879087]

@@ -10,6 +10,7 @@ extends Node3D
 @onready var profiles_button:= $Menu/ProfileMargin/HBoxContainer/Profiles
 @onready var stats_button:= $Menu/ProfileMargin/HBoxContainer/Stats
 @onready var achievements_button:= $Menu/ProfileMargin/HBoxContainer/Achievements
+@onready var match_history_button:= $Menu/ProfileMargin/HBoxContainer/MatchHistory
 
 
 @onready var play_button: TextureButton = $Menu/MenuMargin/VBoxContainer/Play
@@ -26,10 +27,12 @@ const CREATE_PROFILE_MENU = preload("res://Scenes/main_menu/profile/create_profi
 const PROFILE_MENU = preload("res://Scenes/main_menu/profile/profile_menu.tscn")
 const STATS_MENU = preload("res://Scenes/main_menu/profile/stats_menu.tscn")
 const ACHIEVEMENTS_MENU = preload("res://Scenes/main_menu/profile/achievements_menu.tscn")
+const MATCH_HISTORY_MENU = preload("res://Scenes/main_menu/profile/match_history_menu.tscn")
 
 var active_profile_menu: Control = null
 var active_stats_menu: Control = null
 var active_achievements_menu: Control = null
+var active_match_history_menu: Control = null
 
 func _ready() -> void:
 	
@@ -54,6 +57,7 @@ func _ready() -> void:
 	profiles_button.add_to_group("ui_button")
 	stats_button.add_to_group("ui_button")
 	achievements_button.add_to_group("ui_button")
+	match_history_button.add_to_group("ui_button")
 	settings_button.add_to_group("ui_button")
 	tutorial_button.add_to_group("ui_button")
 	credits_button.add_to_group("ui_button")
@@ -214,4 +218,25 @@ func _on_achievements_menu_back() -> void:
 	if active_achievements_menu:
 		active_achievements_menu.queue_free()
 		active_achievements_menu = null
+	_setup_main_menu()
+
+
+func _on_match_history_pressed() -> void:
+	menu_container.visible = false
+	profile_container.visible = false
+	welcome_label.visible = false
+
+	if active_match_history_menu:
+		active_match_history_menu.queue_free()
+
+	active_match_history_menu = MATCH_HISTORY_MENU.instantiate()
+	add_child(active_match_history_menu)
+
+	active_match_history_menu.back_pressed.connect(_on_match_history_menu_back)
+	active_match_history_menu.focus()
+
+func _on_match_history_menu_back() -> void:
+	if active_match_history_menu:
+		active_match_history_menu.queue_free()
+		active_match_history_menu = null
 	_setup_main_menu()

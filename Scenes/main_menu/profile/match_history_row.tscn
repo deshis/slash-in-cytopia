@@ -1,0 +1,414 @@
+[gd_scene format=3 uid="uid://c24mwn1yuq3r6"]
+
+[ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="1_theme"]
+[ext_resource type="Script" uid="uid://dkd6ku5cnahl6" path="res://Scripts/ui/main_menu/profile/match_history_row.gd" id="2_script"]
+[ext_resource type="PackedScene" uid="uid://cexexdh4re63h" path="res://Scenes/ui/inventory_slot.tscn" id="3_2w3jr"]
+[ext_resource type="Script" uid="uid://c8noump2yhng5" path="res://Scripts/ui/inventory/augment_slot.gd" id="4_4xbu8"]
+[ext_resource type="Texture2D" uid="uid://bchfdd33nq5mq" path="res://Assets/items/icons/types/ItemIconSurvivability.png" id="5_442yx"]
+[ext_resource type="Texture2D" uid="uid://ca3cyfd65f8ck" path="res://Assets/items/icons/types/ItemIconMovement.png" id="6_c6gdx"]
+[ext_resource type="Texture2D" uid="uid://10qcvwxmfrwp" path="res://Assets/items/icons/types/ItemIconUtility.png" id="7_uhy41"]
+[ext_resource type="Texture2D" uid="uid://3gcpmo12q0kr" path="res://Assets/items/icons/types/ItemIconDamage.png" id="8_p52nu"]
+[ext_resource type="Texture2D" uid="uid://djlowtuly6nfu" path="res://Assets/items/icons/types/ItemIconBrainchip.png" id="9_uxt81"]
+[ext_resource type="Texture2D" uid="uid://chmb0vt4rda71" path="res://Assets/ui/player_UI_view.png" id="10_ku2q5"]
+
+[node name="MatchHistoryRow" type="PanelContainer" unique_id=1021291854]
+custom_minimum_size = Vector2(210, 480)
+offset_right = 210.0
+offset_bottom = 480.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_theme")
+script = ExtResource("2_script")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=731750982]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=560986170]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MainLayout" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1456104765]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TopRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout" unique_id=639215496]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="SurvivabilityGroup" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/TopRow" unique_id=636180897]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MainLayout/TopRow/SurvivabilityGroup" unique_id=582361230]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Survivability"
+horizontal_alignment = 1
+
+[node name="Slots" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/TopRow/SurvivabilityGroup" unique_id=473528175]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 2
+
+[node name="Survivability" parent="MarginContainer/VBoxContainer/MainLayout/TopRow/SurvivabilityGroup/Slots" unique_id=1098283896 instance=ExtResource("3_2w3jr")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("4_4xbu8")
+item_type = 1
+icon = ExtResource("5_442yx")
+icon_color = Color(1, 1, 1, 0.23529412)
+slot_name = "Survivability"
+slot_type = 2
+
+[node name="Survivability2" parent="MarginContainer/VBoxContainer/MainLayout/TopRow/SurvivabilityGroup/Slots" unique_id=1880774783 instance=ExtResource("3_2w3jr")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("4_4xbu8")
+item_type = 1
+icon = ExtResource("5_442yx")
+icon_color = Color(1, 1, 1, 0.23529412)
+slot_name = "Survivability"
+slot_type = 2
+
+[node name="ActiveItemGroup" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/TopRow" unique_id=1530065537]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MainLayout/TopRow/ActiveItemGroup" unique_id=196587777]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Brainchip"
+horizontal_alignment = 1
+
+[node name="ActiveItem" parent="MarginContainer/VBoxContainer/MainLayout/TopRow/ActiveItemGroup" unique_id=1339285301 instance=ExtResource("3_2w3jr")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("4_4xbu8")
+item_type = 5
+icon = ExtResource("9_uxt81")
+icon_color = Color(1, 1, 1, 0.23529412)
+slot_name = "Brainchip"
+slot_type = 2
+
+[node name="DamageGroup" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/TopRow" unique_id=737154045]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MainLayout/TopRow/DamageGroup" unique_id=381308527]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Damage"
+horizontal_alignment = 1
+
+[node name="Slots" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/TopRow/DamageGroup" unique_id=329835543]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 2
+
+[node name="Damage" parent="MarginContainer/VBoxContainer/MainLayout/TopRow/DamageGroup/Slots" unique_id=1693352832 instance=ExtResource("3_2w3jr")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("4_4xbu8")
+item_type = 4
+icon = ExtResource("8_p52nu")
+icon_color = Color(1, 1, 1, 0.23529412)
+slot_name = "Damage"
+slot_type = 2
+
+[node name="Damage2" parent="MarginContainer/VBoxContainer/MainLayout/TopRow/DamageGroup/Slots" unique_id=1368445095 instance=ExtResource("3_2w3jr")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("4_4xbu8")
+item_type = 4
+icon = ExtResource("8_p52nu")
+icon_color = Color(1, 1, 1, 0.23529412)
+slot_name = "Damage"
+slot_type = 2
+
+[node name="MiddleRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout" unique_id=1123788605]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="PrimaryAttackGroup" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow" unique_id=801221758]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow/PrimaryAttackGroup" unique_id=1005644211]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Light Attack"
+horizontal_alignment = 1
+
+[node name="PrimaryAttack" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow/PrimaryAttackGroup" unique_id=703397781 instance=ExtResource("3_2w3jr")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("4_4xbu8")
+item_type = 6
+slot_name = "Light Attack"
+slot_type = 2
+
+[node name="Character" type="Panel" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow" unique_id=1196852228]
+custom_minimum_size = Vector2(100, 170)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow/Character" unique_id=636755864]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_ku2q5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RightColumn" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow" unique_id=28967368]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="SecondaryAttackGroup" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow/RightColumn" unique_id=1019973000]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow/RightColumn/SecondaryAttackGroup" unique_id=1174673477]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Heavy Attack"
+horizontal_alignment = 1
+
+[node name="SecondaryAttack" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow/RightColumn/SecondaryAttackGroup" unique_id=296069044 instance=ExtResource("3_2w3jr")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("4_4xbu8")
+item_type = 7
+slot_name = "Heavy Attack"
+slot_type = 2
+
+[node name="ThrowableGroup" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow/RightColumn" unique_id=1402236985]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow/RightColumn/ThrowableGroup" unique_id=171620264]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Throwable"
+horizontal_alignment = 1
+
+[node name="ThrowableItem" parent="MarginContainer/VBoxContainer/MainLayout/MiddleRow/RightColumn/ThrowableGroup" unique_id=1933971326 instance=ExtResource("3_2w3jr")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("4_4xbu8")
+item_type = 8
+slot_name = "Throwable"
+slot_type = 2
+
+[node name="BottomRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout" unique_id=349248886]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="UtilityGroup" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/BottomRow" unique_id=921611991]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MainLayout/BottomRow/UtilityGroup" unique_id=1386088750]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Utility"
+horizontal_alignment = 1
+
+[node name="Utility" parent="MarginContainer/VBoxContainer/MainLayout/BottomRow/UtilityGroup" unique_id=895572289 instance=ExtResource("3_2w3jr")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("4_4xbu8")
+item_type = 3
+icon = ExtResource("7_uhy41")
+icon_color = Color(1, 1, 1, 0.23529412)
+slot_name = "Utility"
+slot_type = 2
+
+[node name="MovementGroup" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/BottomRow" unique_id=221461415]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MainLayout/BottomRow/MovementGroup" unique_id=625314873]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Movement"
+horizontal_alignment = 1
+
+[node name="Slots" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MainLayout/BottomRow/MovementGroup" unique_id=945820688]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 2
+
+[node name="Movement" parent="MarginContainer/VBoxContainer/MainLayout/BottomRow/MovementGroup/Slots" unique_id=115253289 instance=ExtResource("3_2w3jr")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("4_4xbu8")
+item_type = 2
+icon = ExtResource("6_c6gdx")
+icon_color = Color(1, 1, 1, 0.23529412)
+slot_name = "Movement"
+slot_type = 2
+
+[node name="Movement2" parent="MarginContainer/VBoxContainer/MainLayout/BottomRow/MovementGroup/Slots" unique_id=1236953838 instance=ExtResource("3_2w3jr")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("4_4xbu8")
+item_type = 2
+icon = ExtResource("6_c6gdx")
+icon_color = Color(1, 1, 1, 0.23529412)
+slot_name = "Movement"
+slot_type = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=307094058]
+layout_mode = 2
+
+[node name="StatsSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1132609503]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="HeaderContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/StatsSection" unique_id=1902631471]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/HeaderContainer" unique_id=1474986435]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+text = "08.02.2026 14:30"
+
+[node name="DurationLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/HeaderContainer" unique_id=762043220]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "30:47"
+horizontal_alignment = 2
+
+[node name="StatsGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/StatsSection" unique_id=921044300]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 2
+columns = 2
+
+[node name="StageLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=957062678]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Stage Cleared"
+
+[node name="StageValue" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=1930543716]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "2"
+horizontal_alignment = 2
+
+[node name="EnemiesKilledLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=171988360]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Enemies Killed"
+
+[node name="EnemiesKilledValue" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=2097884681]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "152"
+horizontal_alignment = 2
+
+[node name="DamageDealtLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=299572639]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Damage Dealt"
+
+[node name="DamageDealtValue" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=1352608819]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "4,532"
+horizontal_alignment = 2
+
+[node name="GearsLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=1377485911]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Damage Taken"
+
+[node name="GearsValue" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=983522012]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "847"
+horizontal_alignment = 2
+
+[node name="ItemsPickedUpLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=376500206]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Items Picked Up"
+
+[node name="ItemsPickedUpValue" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=466403696]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "0"
+horizontal_alignment = 2
+
+[node name="KilledByLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=376444490]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Killed By"
+
+[node name="KilledByValue" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=1899161328]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "-"
+horizontal_alignment = 2
+
+[node name="ThrowablesLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=1008371268]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Throwables"
+
+[node name="ThrowablesValue" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=500646005]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "0"
+horizontal_alignment = 2
+
+[node name="ApexLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=91107010]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Apex"
+
+[node name="ApexValue" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=980111109]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "No"
+horizontal_alignment = 2

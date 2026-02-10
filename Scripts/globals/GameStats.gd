@@ -47,6 +47,6 @@ func reset_game_stats()->void:
 	active_items_used = 0
 	throwables_used = 0
 	items_trashed = 0
-	
+
 	enemies_killed_by_type.clear()
 	bosses_killed_by_type.clear()

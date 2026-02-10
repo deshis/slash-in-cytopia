@@ -52,7 +52,9 @@ func set_loot(rarity: ItemType.Grade) -> void:
 	var item_list = LootDatabase.get_items_by_rarity(rarity)
 	
 	for res in item_list:
-		items.append(res.duplicate(true))
+		var new_item = res.duplicate(true)
+		new_item.original_path = res.resource_path
+		items.append(new_item)
 
 func start_rainbow_tween(cycle_time) -> void:
 	var tween = create_tween()
