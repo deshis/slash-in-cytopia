@@ -16,6 +16,8 @@ var base_mat : Material
 var light_mat : Material
 var highlight_mat : Material
 
+var isApexGrade = true
+
 func _ready() -> void:
 	highlight_mat = highlight_material.duplicate(true)
 	
@@ -38,10 +40,13 @@ func _ready() -> void:
 				unique_mat.next_pass = highlight_mat
 
 func set_loot(rarity: ItemType.Grade) -> void:
-	var color = LootDatabase.grade_colors[rarity]
-	light_mat.set_shader_parameter("neon_color", color)
-	base_mat.set_shader_parameter("albedo_color", color)
-	light.light_color = color
+	if rarity == ItemType.Grade.APEX_ANOMALY:
+		start_rainbow_tween(3.5)
+	else:
+		var color = LootDatabase.grade_colors[rarity]
+		light_mat.set_shader_parameter("neon_color", color)
+		base_mat.set_shader_parameter("albedo_color", color)
+		light.light_color = color
 	
 	items = []
 	var item_list = LootDatabase.get_items_by_rarity(rarity)
@@ -49,6 +54,21 @@ func set_loot(rarity: ItemType.Grade) -> void:
 	for res in item_list:
 		items.append(res.duplicate(true))
 
+func start_rainbow_tween(cycle_time) -> void:
+	var tween = create_tween()
+	tween.set_loops()
+	tween.set_trans(Tween.TRANS_LINEAR)
+
+	tween.tween_method(
+		func(hue):
+			var color = Color.from_hsv(hue, 1.0, 1.0)
+			light_mat.set_shader_parameter("neon_color", color)
+			base_mat.set_shader_parameter("albedo_color", color)
+			light.light_color = color,
+		0.0,
+		1.0,
+		cycle_time
+	)
 
 func get_item(index:int) -> ItemResource:
 	return items[index]

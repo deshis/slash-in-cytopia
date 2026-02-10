@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r7lp8"]
 render_priority = 0
 shader = ExtResource("3_dh4q2")
-shader_parameter/albedo_color = Color(0, 0, 0, 1)
+shader_parameter/albedo_color = Color(0.3250455, 0.20354038, 0.04480575, 1)
 shader_parameter/light_steps = 3.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dh4q2"]
