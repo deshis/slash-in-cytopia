@@ -3,15 +3,23 @@ class_name Destroyable
 
 @export var health := 40.0
 
+@export var chest : Node3D
+@export var baseTop : MeshInstance3D
+@export var physicsTop: RigidBody3D
+
+@export var hitbox : StaticBody3D
+@export var hurtbox : Area3D
+
 @export var knockback_strength := 0.35
 @export var knockback_duration := 0.2
 @export var shake_strength := 0.1
 @export var shake_duration := 0.1
 @export var shake_interval := 0.02
 
-@export var loot_table: LootTable
+@export var top_pop_force := 7.0
+@export var top_spin_force := 5.0
 
-@onready var mesh = $Mesh
+@export var loot_table: LootTable
 
 var shaking = false
 var shake_timer := 0.0
@@ -40,16 +48,16 @@ func shake() -> void:
 		cos(randf_range(0, TAU)),
 	).normalized() * shake_strength
 	
-	mesh.position = Vector3(
+	chest.position = Vector3(
 		pos_offset.x,
-		mesh.position.y,
+		chest.position.y,
 		pos_offset.y
 	)
 
 
 func reset_shake() -> void:
 	shaking = false
-	mesh.position = Vector3(0, mesh.position.y, 0)
+	chest.position = Vector3(0, chest.position.y, 0)
 
 
 func take_damage(amount: float, damage_dealer = null) -> void:
@@ -68,4 +76,20 @@ func take_damage(amount: float, damage_dealer = null) -> void:
 
 func die() -> void:
 	LootDatabase.drop_loot(self, loot_table)
+	baseTop.queue_free()
+	hitbox.queue_free()
+	hurtbox.queue_free()
+	
+	physicsTop.visible = true
+	physicsTop.freeze = false
+	
+	var crate_pos = chest.global_position
+	var player_pos = GameManager.player.global_position
+	var dir = (crate_pos - player_pos).normalized()
+	dir.y = 1.5
+	dir = dir.normalized()
+	
+	physicsTop.linear_velocity = dir * top_pop_force
+	physicsTop.angular_velocity = dir.cross(Vector3.UP) * top_spin_force
+	await get_tree().create_timer(6.0).timeout
 	queue_free()

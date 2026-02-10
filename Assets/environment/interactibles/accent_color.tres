@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dvmqg7jyfoybb"]
+
+[ext_resource type="Shader" uid="uid://dp145x6w65ey5" path="res://Assets/materials/shaders/cell_shader.gdshader" id="1_xbwp7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_xbwp7")
+shader_parameter/albedo_color = Color(0.13600415, 0.13600415, 0.13600415, 1)
+shader_parameter/light_steps = 3.0
