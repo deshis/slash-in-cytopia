@@ -1037,8 +1037,6 @@ collision_layer = 257
 collision_mask = 69633
 motion_mode = 1
 script = ExtResource("1_eo61r")
-movement_speed = 5.0
-dash_speed = 25.0
 trails = [NodePath("model/DaggerTrail"), NodePath("model/SwordTrail"), NodePath("model/MaulTrail"), NodePath("model/KickTrail"), NodePath("model/AxeTrail")]
 
 [node name="Timers" type="Node" parent="." unique_id=262827231]

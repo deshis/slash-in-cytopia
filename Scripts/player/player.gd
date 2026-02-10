@@ -38,7 +38,7 @@ var light_debuff_chance := 0.0
 var heavy_debuff_chance := 0.0
 
 # MOVEMENT
-@export var movement_speed := 500.0
+@export var movement_speed := 5.0
 @export var acceleration := 15.0
 var default_speed = movement_speed
 var current_speed := movement_speed
@@ -47,7 +47,7 @@ var input: Vector2
 # DASH
 @onready var dash_cooldown_timer: Timer = $Timers/DashCooldownTimer
 
-@export var dash_speed := 2500.0
+@export var dash_speed_mult := 5.0
 @export var dash_duration:= 0.15
 @export var dash_cooldown:= 3.0
 var can_dash := true
@@ -60,6 +60,8 @@ var dash_attack_mult := 0.0
 @export var attack_light_damage := 10.0
 @export var attack_heavy_damage := 20.0
 @export var crit_chance := 1.0
+
+var attack_light_move_speed_mult := 0.33
 
 @onready var light_attack = $LightAttack
 @onready var heavy_attack = $HeavyAttack
@@ -83,7 +85,7 @@ var heavy_attack_shape: Shape3D
 var light_attack_visual_shape: Sprite2D
 var heavy_attack_visual_shape: Sprite2D
 
-var heavy_attack_dash_speed := movement_speed * 0.1
+var heavy_attack_dash_speed_mult := 10
 var heavy_attack_dash_decay := 0.6
 
 var light_attack_windup_duration := 0.333
@@ -163,6 +165,8 @@ func _ready() -> void:
 	get_tree().root.add_child(chromatic_aberration)
 	
 	change_state(IDLE)
+
+
 func _physics_process(delta: float) -> void:
 	state_timer -= delta
 	
@@ -251,7 +255,7 @@ func enter_state(new_state) -> void:
 			perform_dash()
 		
 		LIGHT_ATTACK_WINDUP:
-			velocity = Vector3.ZERO
+			current_speed = movement_speed * attack_light_move_speed_mult
 			
 			animator.speed_scale = light_attack_speed_scale
 			weapon_mesh.mesh = ItemGlobals.primary_weapon_mesh
@@ -286,7 +290,7 @@ func enter_state(new_state) -> void:
 		HEAVY_ATTACK_WINDUP:
 			weapon_mesh.mesh = ItemGlobals.secondary_weapon_mesh
 			
-			current_speed = heavy_attack_dash_speed
+			current_speed = movement_speed * heavy_attack_dash_speed_mult
 			animator.speed_scale = heavy_attack_speed_scale
 			set_facing_dir()
 			
@@ -333,7 +337,10 @@ func process_state(delta: float) -> void:
 			process_dash(delta)
 		
 		LIGHT_ATTACK_WINDUP:
-			process_light_attack_windup()
+			process_light_attack_windup(delta)
+		
+		LIGHT_ATTACK:
+			process_light_attack(delta)
 		
 		HEAVY_ATTACK_WINDUP:
 			process_heavy_attack_windup(delta)
@@ -369,7 +376,7 @@ func update_heavy_attack_hitbox(enabled_type: String = ""):
 
 func perform_dash():
 	can_dash = false
-	current_speed = dash_speed
+	current_speed = movement_speed * dash_speed_mult
 	if not second_dash:
 		dash_cooldown_timer.start(dash_cooldown)
 		dash_used.emit(dash_cooldown)
@@ -381,9 +388,6 @@ func perform_dash():
 	SoundManager.play_sfx("dash", global_position)
 
 func perform_light_attack() -> void:
-	velocity = Vector3.ZERO
-	set_facing_dir()
-	
 	update_light_attack_hitbox(ItemGlobals.primary_weapon_type)
 	
 	match ItemGlobals.primary_weapon_type:
@@ -621,9 +625,16 @@ func process_dash(delta: float) -> void:
 	if state_timer < 0:
 		change_state(IDLE)
 
-func process_light_attack_windup() -> void:
+func process_light_attack_windup(delta: float) -> void:
+	apply_movement(delta)
+	
 	if state_timer < 0:
 		change_state(LIGHT_ATTACK)
+
+
+func process_light_attack(delta: float) -> void:
+	apply_movement(delta)
+
 
 func process_heavy_attack_windup(delta: float) -> void:
 	current_speed *= heavy_attack_dash_decay
@@ -661,7 +672,7 @@ func update_input() -> void:
 	input = input.normalized()
 
 func apply_movement(delta: float) -> void:
-	if state != HEAVY_ATTACK_WINDUP and state != HEAVY_ATTACK and state != IDLE:
+	if state != HEAVY_ATTACK_WINDUP and state != HEAVY_ATTACK and state != IDLE and state != LIGHT_ATTACK_WINDUP and state != LIGHT_ATTACK:
 		rotation.y = atan2(input.x, input.y)
 	
 	velocity = lerp(velocity, Vector3(input.x, 0.0, input.y)*current_speed, acceleration * delta)
