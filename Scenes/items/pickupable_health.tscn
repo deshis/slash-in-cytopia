@@ -2,28 +2,66 @@
 
 [ext_resource type="Script" uid="uid://c2mlvh78l8lyc" path="res://Scripts/items/pickupable_health.gd" id="1_hra3j"]
 [ext_resource type="Shader" uid="uid://c3vnwshetya1x" path="res://Assets/vfx/health/health_pickup.gdshader" id="2_34xcm"]
+[ext_resource type="Texture2D" uid="uid://bufaupro2ybf3" path="res://Assets/particles/star_06.png" id="3_xuwqa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ffcbt"]
 render_priority = 0
 shader = ExtResource("2_34xcm")
-shader_parameter/level = 1.0
-shader_parameter/emission_intensity = 0.0
-shader_parameter/fresnel_color = Color(0.19829297, 0.51785374, 0.20656762, 1)
-shader_parameter/fresnel_intensity = 1.5250000724375
-shader_parameter/fresnel_power = 1.0
-shader_parameter/rim_color = Color(0.30996388, 0.64572066, 0.29886872, 1)
-shader_parameter/rim_size = 0.4150000197125
-shader_parameter/rim_intensity = 0.05200000247
-shader_parameter/rim_start = 1.0
-shader_parameter/rim_end = -1.0
+shader_parameter/base_color = Color(0.36127254, 0.786824, 0, 1)
+shader_parameter/pulse_color = Color(0.6429343, 0.99744123, 0.47448832, 1)
+shader_parameter/base_power = 0.250000011875
+shader_parameter/rim_power = 2.50000011875
+shader_parameter/pulse_frequency = 2.0
+shader_parameter/emission_intensity = 5.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_34xcm"]
 material = SubResource("ShaderMaterial_ffcbt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1r6y2"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhb05"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_xuwqa")
+emission_enabled = true
+emission = Color(0.7019608, 1, 0.5764706, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_lqq0n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d7lsl"]
+curve = SubResource("Curve_lqq0n")
+
+[sub_resource type="Curve" id="Curve_xuwqa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_uhb05"]
+curve = SubResource("Curve_xuwqa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bx1so"]
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_sphere_radius = 0.5
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.25
+gravity = Vector3(0, 0, 0)
+color = Color(0.7012187, 1, 0.57463115, 1)
+alpha_curve = SubResource("CurveTexture_d7lsl")
+emission_curve = SubResource("CurveTexture_uhb05")
+
+[sub_resource type="QuadMesh" id="QuadMesh_i67t7"]
+size = Vector2(0.1, 0.1)
+
 [node name="PickupableHealth" type="Area3D" unique_id=1268675891]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 collision_layer = 131072
 collision_mask = 0
 script = ExtResource("1_hra3j")
@@ -38,3 +76,16 @@ mesh = SubResource("SphereMesh_34xcm")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=901995060]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("BoxShape3D_1r6y2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=308502649]
+light_color = Color(0.36078432, 0.7882353, 0, 1)
+light_energy = 0.5
+omni_range = 3.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1421567203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2118429, 0)
+material_override = SubResource("StandardMaterial3D_uhb05")
+lifetime = 2.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_bx1so")
+draw_pass_1 = SubResource("QuadMesh_i67t7")
