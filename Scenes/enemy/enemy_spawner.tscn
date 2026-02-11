@@ -20,7 +20,6 @@ boss_list = Array[ExtResource("2_tdwud")]([ExtResource("9_f438n"), ExtResource("
 wave_cooldown_timer = NodePath("WaveCooldownTimer")
 credits_cooldown_timer = NodePath("CreditsCooldownTimer")
 boss_cooldown_timer = NodePath("BossCooldownTimer")
-boss_cooldown_time = 2.0
 diff = NodePath("DifficultyManager")
 
 [node name="DifficultyManager" type="Node3D" parent="." unique_id=910481179]
