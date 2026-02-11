@@ -3,12 +3,11 @@
 [ext_resource type="Shader" uid="uid://b0p8bnfarjcyk" path="res://Assets/materials/shaders/highlight_outline.gdshader" id="1_vc06d"]
 
 [resource]
-resource_local_to_scene = true
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_vc06d")
-shader_parameter/thickness = 2.0
+shader_parameter/thickness = 3.45000005140914
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/samples = 4
-shader_parameter/sensitivity = 0.049999998882400004
+shader_parameter/sensitivity = 0.1499999966472
 shader_parameter/edge_fade = 0.015
 shader_parameter/highlight = false
