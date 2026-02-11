@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode blend_mix, depth_prepass_alpha;
 
 uniform vec3 tube_color : source_color = vec3(0.1, 0.6, 0.5);
 uniform vec3 neon_color : source_color = vec3(0.2, 1.0, 0.9);
@@ -10,6 +11,8 @@ uniform float flicker_value : hint_range(0.0, 1.0) = 1.0;
 
 uniform float fresnel_power = 3.0;
 uniform float fresnel_strength = 0.5;
+
+uniform float fade_alpha = 1.0;
 
 varying vec3 world_pos;
 varying vec3 world_normal;
@@ -32,4 +35,5 @@ void fragment() {
 
     ALBEDO = base_color;
     EMISSION = emission;
+	ALPHA = fade_alpha;
 }

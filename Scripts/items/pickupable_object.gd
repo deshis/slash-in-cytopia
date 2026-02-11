@@ -11,10 +11,11 @@ var velocity := Vector3.ZERO
 var active := false
 var time_left := 0.0
 
-func setup(p: Player, dir: Vector3, impulse: float = strength) -> void:
+func setup(p: Player, dir: Vector3, impulse: float = strength, dur: float = duration) -> void:
 	player = p
 	direction = dir
-	strength = strength if impulse == 0 else impulse
+	strength = strength if impulse == 0.0 else impulse
+	duration = duration if dur == -1.0 else dur
 	apply_impulse()
 
 func apply_impulse() -> void:
