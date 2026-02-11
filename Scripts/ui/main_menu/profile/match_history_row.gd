@@ -17,6 +17,13 @@ extends PanelContainer
 @onready var time_label = $MarginContainer/VBoxContainer/StatsSection/HeaderContainer/TimeLabel
 @onready var duration_label = $MarginContainer/VBoxContainer/StatsSection/HeaderContainer/DurationLabel
 
+# Groups for layout adjustment
+@onready var survivability_group = $MarginContainer/VBoxContainer/MainLayout/TopRow/SurvivabilityGroup
+@onready var active_item_group = $MarginContainer/VBoxContainer/MainLayout/TopRow/ActiveItemGroup
+@onready var damage_group = $MarginContainer/VBoxContainer/MainLayout/TopRow/DamageGroup
+@onready var utility_group = $MarginContainer/VBoxContainer/MainLayout/BottomRow/UtilityGroup
+@onready var movement_group = $MarginContainer/VBoxContainer/MainLayout/BottomRow/MovementGroup
+
 @onready var stage_value = $MarginContainer/VBoxContainer/StatsSection/StatsGrid/StageValue
 @onready var enemies_killed_value = $MarginContainer/VBoxContainer/StatsSection/StatsGrid/EnemiesKilledValue
 @onready var damage_dealt_value = $MarginContainer/VBoxContainer/StatsSection/StatsGrid/DamageDealtValue
@@ -30,7 +37,7 @@ extends PanelContainer
 func set_match_data(data: Dictionary) -> void:
 	_set_header_stats(data)
 	_set_grid_stats(data)
-	_populate_inventory(data.get("equipped_items", []))
+	_populate_inventory(data.get("equipped_items", []), data.get("had_apex", false))
 
 
 func _set_header_stats(data: Dictionary) -> void:
@@ -94,7 +101,8 @@ func _format_duration(seconds: int) -> String:
 	return "%d:%02d" % [minutes, secs]
 
 
-func _populate_inventory(equipped_items: Array) -> void:
+func _populate_inventory(equipped_items: Array, _had_apex: bool) -> void:
+	var apex_equipped = false
 	var filled_slots = {}
 
 	for item_data in equipped_items:
@@ -102,38 +110,66 @@ func _populate_inventory(equipped_items: Array) -> void:
 		var item_type: int
 
 		if item_data is String:
-			if item_data == "":
-				continue
-			var item_res = load(item_data)
-			if not item_res:
-				continue
 			item_path = item_data
-			item_type = item_res.type
 		elif item_data is Dictionary:
 			item_path = item_data.get("path", "")
 			item_type = int(item_data.get("type", ItemType.Type.NONE))
-			if item_path == "":
-				continue
 		else:
+			continue
+
+		if item_path == "":
 			continue
 
 		var item_res = load(item_path)
 		if not item_res:
 			continue
 
+		# Check for Apex
+		if item_res.grade == ItemType.Grade.APEX_ANOMALY:
+			apex_equipped = true
+
+		if item_data is String:
+			item_type = item_res.type
+
 		var slot_key = _get_slot_key(item_type, filled_slots)
 		if slot_key != "" and slots.has(slot_key):
 			_fill_slot(slots[slot_key], item_res)
 			filled_slots[slot_key] = true
 
+	# Configure extra slots based on Apex
+	_configure_extra_slots(apex_equipped)
+
+
+func _configure_extra_slots(apex_equipped: bool) -> void:
+	var extra_slots = ["survivability", "damage2", "movement2"]
+	for slot_key in extra_slots:
+		if slots.has(slot_key):
+			slots[slot_key].visible = apex_equipped
+
+	# Adjust layout for extra slot
+	if not apex_equipped:
+		# TopRow
+		survivability_group.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		active_item_group.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		damage_group.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		# BottomRow
+		utility_group.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		movement_group.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	else:
+		survivability_group.size_flags_horizontal = Control.SIZE_FILL
+		active_item_group.size_flags_horizontal = Control.SIZE_FILL
+		damage_group.size_flags_horizontal = Control.SIZE_FILL
+		utility_group.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		movement_group.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
 
 func _get_slot_key(item_type: int, filled_slots: Dictionary) -> String:
 	match item_type:
 		ItemType.Type.SURVIVABILITY:
-			if not filled_slots.has("survivability"):
-				return "survivability"
-			elif not filled_slots.has("survivability2"):
+			if not filled_slots.has("survivability2"):
 				return "survivability2"
+			elif not filled_slots.has("survivability"):
+				return "survivability"
 		ItemType.Type.DAMAGE:
 			if not filled_slots.has("damage"):
 				return "damage"

@@ -17,7 +17,7 @@ func open_item_selection(node: Node3D):
 		slot.visible = false
 		
 		if i < node.items.size():
-			var item = node.get_item(i).duplicate()
+			var item = node.get_item(i)
 			slot.set_item(InventoryManager.create_item_control(item))
 			slot.visible = true
 	
