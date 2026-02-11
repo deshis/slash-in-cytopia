@@ -72,7 +72,7 @@ func change_state(new_state: String, duration := 0.0):
 			target_provider = TargetSelf.new()
 		RANGED_ATTACK:
 			ranged_attack_pos = get_pos(global_position, player.global_position, ranged_attack_max_range)
-			ranged_attack_pos = get_random_pos(ranged_attack_pos, 0.0, 5.0)
+			ranged_attack_pos = get_random_pos(ranged_attack_pos, 0.0, 2.5)
 			perform_attack(ranged_attack, ranged_attack_pos)
 			animator.play("Attack")
 			target_provider = TargetSelf.new()

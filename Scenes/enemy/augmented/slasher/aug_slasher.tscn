@@ -3163,7 +3163,7 @@ size = Vector3(0.7, 2, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_48d4a"]
 size = Vector3(1, 2, 1)
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent")]
+[node name="Enemy" type="CharacterBody3D" unique_id=166883778 node_paths=PackedStringArray("nav_agent")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 collision_layer = 4096
 collision_mask = 4097
@@ -3171,20 +3171,21 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 safe_margin = 0.1
 script = ExtResource("1_q8pww")
-dash_speed = 9.0
+max_dash_amount = 2
+dash_speed = 7.5
 nav_agent = NodePath("NavigationAgent3D")
 attack = ExtResource("2_robxf")
 attack_range = 4.0
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=641874760]
 target_desired_distance = 5.0
 radius = 1.0
 
-[node name="model" type="Node3D" parent="."]
+[node name="model" type="Node3D" parent="." unique_id=92621551]
 
-[node name="rig" type="Node3D" parent="model"]
+[node name="rig" type="Node3D" parent="model" unique_id=1454267448]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="model/rig"]
+[node name="Skeleton3D" type="Skeleton3D" parent="model/rig" unique_id=843655612]
 bones/0/name = "root"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -4698,53 +4699,51 @@ bones/215/position = Vector3(0, 0, 0)
 bones/215/rotation = Quaternion(0.009405233, 0, 0.18774922, 0.98217195)
 bones/215/scale = Vector3(0.99999994, 1, 1)
 
-[node name="Body" type="MeshInstance3D" parent="model/rig/Skeleton3D"]
+[node name="Body" type="MeshInstance3D" parent="model/rig/Skeleton3D" unique_id=1250095399]
 mesh = SubResource("ArrayMesh_imljs")
 skin = SubResource("Skin_e43vj")
 
-[node name="Helmet" type="MeshInstance3D" parent="model/rig/Skeleton3D"]
+[node name="Helmet" type="MeshInstance3D" parent="model/rig/Skeleton3D" unique_id=714289883]
 mesh = SubResource("ArrayMesh_3jbja")
 skin = SubResource("Skin_e43vj")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="model/rig/Skeleton3D"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="model/rig/Skeleton3D" unique_id=204023059]
 transform = Transform3D(-0.9659116, 0.034293592, -0.2565911, -0.033144087, -0.9994116, -0.00880456, -0.25674215, 1.1920926e-07, 0.96648, -0.29032025, 1.0474355, 0.011782446)
 bone_name = "hand_ik.R"
 bone_idx = 184
 
-[node name="Offset" type="Node3D" parent="model/rig/Skeleton3D/BoneAttachment3D"]
+[node name="Offset" type="Node3D" parent="model/rig/Skeleton3D/BoneAttachment3D" unique_id=617615942]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.04, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="model/rig/Skeleton3D/BoneAttachment3D/Offset"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="model/rig/Skeleton3D/BoneAttachment3D/Offset" unique_id=1496867360]
 mesh = ExtResource("4_wf5k7")
 
-[node name="Sword" type="MeshInstance3D" parent="model"]
+[node name="Sword" type="MeshInstance3D" parent="model" unique_id=244381324]
 transform = Transform3D(-0.9659116, -0.25659114, -0.034293585, -0.033144064, -0.00880456, 0.9994118, -0.25674215, 0.96648, -1.1920929e-07, -0.2889485, 1.007459, 0.011782449)
 visible = false
 mesh = ExtResource("4_wf5k7")
 skeleton = NodePath("")
 
-[node name="SlashMesh" type="MeshInstance3D" parent="model"]
+[node name="SlashMesh" type="MeshInstance3D" parent="model" unique_id=967677005]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 visible = false
 material_override = SubResource("ShaderMaterial_ormpy")
 mesh = SubResource("ArrayMesh_q3286")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="model"]
-libraries = {
-&"": SubResource("AnimationLibrary_8n4ua")
-}
-autoplay = "Idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="model" unique_id=2078555877]
+libraries/ = SubResource("AnimationLibrary_8n4ua")
+autoplay = &"Idle"
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1666977638]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_puxwi")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1314687027]
 collision_layer = 8192
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox" unique_id=1709389980]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_48d4a")
 

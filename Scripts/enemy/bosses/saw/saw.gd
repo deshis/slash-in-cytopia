@@ -217,5 +217,16 @@ func die(drop_loot: bool = true) -> void:
 	GameManager.boss_killed(self)
 	super.die(drop_loot)
 
+
+func apply_debuff_effect(debuff: DebuffResource) -> void:
+	match debuff.debuff_type:
+		DebuffResource.DebuffType.STUN:
+			return
+		DebuffResource.DebuffType.FREEZE:
+			return
+	
+	super.apply_debuff_effect(debuff)
+
+
 func _on_navigation_agent_3d_target_reached() -> void:
 	perform_melee_attack()

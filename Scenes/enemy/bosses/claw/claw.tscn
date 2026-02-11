@@ -266,7 +266,7 @@ _data = {
 &"SpinAttack": ExtResource("10_hetm4")
 }
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent")]
+[node name="Enemy" type="CharacterBody3D" unique_id=2098888535 node_paths=PackedStringArray("nav_agent")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 collision_layer = 4096
 collision_mask = 4097
@@ -287,28 +287,28 @@ attack_windup_duration = 0.75
 attack_range = 4.0
 cooldown_duration = 0.8
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1502458277]
 target_desired_distance = 3.0
 radius = 1.0
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1568376355]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_puxwi")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1865886557]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 collision_layer = 8192
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox" unique_id=439607185]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_48d4a")
 
-[node name="model" type="Node3D" parent="."]
+[node name="model" type="Node3D" parent="." unique_id=680761355]
 
-[node name="rig" type="Node3D" parent="model"]
+[node name="rig" type="Node3D" parent="model" unique_id=796211618]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="model/rig"]
+[node name="Skeleton3D" type="Skeleton3D" parent="model/rig" unique_id=1542483083]
 bones/0/name = "rig"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -534,34 +534,32 @@ bones/31/position = Vector3(0, 0, 0)
 bones/31/rotation = Quaternion(0, 0, 0, 1)
 bones/31/scale = Vector3(1, 1, 1)
 
-[node name="Wheel_2" type="BoneAttachment3D" parent="model/rig/Skeleton3D"]
+[node name="Wheel_2" type="BoneAttachment3D" parent="model/rig/Skeleton3D" unique_id=1544169319]
 transform = Transform3D(1, -4.5474735e-13, -9.2200025e-11, 4.5474735e-13, 1, -2.327567e-15, 9.2200025e-11, -2.1158985e-15, 1, 8.185452e-12, 0, 0)
 bone_name = "Wheel_2"
 bone_idx = 12
 
-[node name="Wheel_2" type="MeshInstance3D" parent="model/rig/Skeleton3D/Wheel_2"]
+[node name="Wheel_2" type="MeshInstance3D" parent="model/rig/Skeleton3D/Wheel_2" unique_id=431180448]
 mesh = SubResource("ArrayMesh_ot4e2")
 skeleton = NodePath("")
 
-[node name="SpinTrail" type="BoneAttachment3D" parent="model/rig/Skeleton3D"]
+[node name="SpinTrail" type="BoneAttachment3D" parent="model/rig/Skeleton3D" unique_id=534248879]
 bone_name = "SpinTrail"
 bone_idx = 31
 
-[node name="SpinTrail" type="MeshInstance3D" parent="model/rig/Skeleton3D/SpinTrail"]
+[node name="SpinTrail" type="MeshInstance3D" parent="model/rig/Skeleton3D/SpinTrail" unique_id=1134456935]
 visible = false
 mesh = SubResource("ArrayMesh_f2532")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_2hgm5")
 
-[node name="Body" type="MeshInstance3D" parent="model/rig/Skeleton3D"]
+[node name="Body" type="MeshInstance3D" parent="model/rig/Skeleton3D" unique_id=1277042546]
 mesh = SubResource("ArrayMesh_71epe")
 skin = SubResource("Skin_xs5da")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="model"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="model" unique_id=1614464258]
 root_node = NodePath("../rig")
-libraries = {
-&"": SubResource("AnimationLibrary_et5go")
-}
-autoplay = "Idle"
+libraries/ = SubResource("AnimationLibrary_et5go")
+autoplay = &"Idle"
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

@@ -40,6 +40,6 @@ func process_dash(delta: float) -> void:
 		current_dash += 1
 		
 		if current_dash < dash_amount:
-			change_state(FACE_PLAYER, face_player_duration * 0.5)
+			change_state(FACE_PLAYER, face_player_duration)
 		else:
 			change_state(COOLDOWN, cooldown_duration)

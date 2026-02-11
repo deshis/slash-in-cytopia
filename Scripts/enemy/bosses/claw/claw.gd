@@ -154,6 +154,8 @@ func apply_debuff_effect(debuff: DebuffResource) -> void:
 	match debuff.debuff_type:
 		DebuffResource.DebuffType.STUN:
 			return
+		DebuffResource.DebuffType.FREEZE:
+			return
 	
 	super.apply_debuff_effect(debuff)
 

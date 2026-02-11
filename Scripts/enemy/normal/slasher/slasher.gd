@@ -2,7 +2,7 @@ extends EnemyController
 class_name Slasher
 
 @export var face_player_duration := 0.667
-@export var dash_speed := 1000.0
+@export var dash_speed := 6.5
 @export var dash_duration := 0.5
 
 @onready var attack_duration = $"model/AnimationPlayer".get_animation("Attack").length 
