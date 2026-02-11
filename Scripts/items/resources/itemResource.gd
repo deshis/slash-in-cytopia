@@ -44,7 +44,7 @@ const STAT_BEHAVIOR := {
 	Stats.Stat.DEBUFF_EFFECT: { DEBUFF: true},
 	
 	Stats.Stat.DASH_COOLDOWN: { DESC: "dash cooldown", INV_SCALE: true, PERCENT: true, RELATIVE: true },
-	Stats.Stat.DASH_LENGTH: { DESC: "dash duration", PERCENT: true, RELATIVE: true },
+	Stats.Stat.DASH_DURATION: { DESC: "dash duration", PERCENT: true, RELATIVE: true },
 	
 	Stats.Stat.CRIT_CHANCE: { DESC: "critical chance", PERCENT: true },
 	Stats.Stat.THORNS_PERCENT: { DESC: "thorns damage ", PERCENT: true},
@@ -206,7 +206,7 @@ func get_relative_value(value, stat_type: Stats.Stat) -> float:
 		
 		Stats.Stat.DASH_COOLDOWN:
 			return value / base_dash_cooldown * 100
-		Stats.Stat.DASH_LENGTH:
+		Stats.Stat.DASH_DURATION:
 			return value / base_dash_length * 100
 	
 	return 0.0

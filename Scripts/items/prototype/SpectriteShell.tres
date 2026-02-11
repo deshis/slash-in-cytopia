@@ -21,16 +21,16 @@ stat_type = 2
 value = 10.0
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
-[sub_resource type="Resource" id="Resource_vguwk"]
-script = ExtResource("1_br0cw")
-stat_type = 19
-value = -0.115
-metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
-
 [sub_resource type="Resource" id="Resource_tslu4"]
 script = ExtResource("1_br0cw")
 stat_type = 4
 value = -0.5
+metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
+
+[sub_resource type="Resource" id="Resource_vguwk"]
+script = ExtResource("1_br0cw")
+stat_type = 18
+value = -0.05
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [resource]
@@ -39,5 +39,5 @@ item_name = "Spectrite Shell"
 type = 1
 grade = 2
 icon = ExtResource("2_kxgnp")
-effects = Array[ExtResource("1_br0cw")]([SubResource("Resource_6jpnv"), SubResource("Resource_p728d"), SubResource("Resource_kxgnp"), SubResource("Resource_vguwk"), SubResource("Resource_tslu4")])
+effects = Array[ExtResource("1_br0cw")]([SubResource("Resource_6jpnv"), SubResource("Resource_p728d"), SubResource("Resource_kxgnp"), SubResource("Resource_tslu4"), SubResource("Resource_vguwk")])
 metadata/_custom_type_script = "uid://dulvf1v1d8so8"

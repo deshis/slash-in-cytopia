@@ -38,8 +38,8 @@ enum Stat {
 	PRIMARY_CHECK,
 	DEBUFF_EFFECT,
 	DASH_COOLDOWN,
-	DASH_LENGTH,
-	DASH_SPEED,
+	DASH_DURATION,
+	DASH_SPEED_MULT,
 	
 	CRIT_CHANCE,
 	THORNS_PERCENT,
@@ -119,10 +119,10 @@ func apply_effect(player) -> void:
 					
 		Stat.DASH_COOLDOWN:
 			player.dash_cooldown += value
-		Stat.DASH_LENGTH:
+		Stat.DASH_DURATION:
 			player.dash_duration += value
-		Stat.DASH_SPEED:
-			player.dash_speed += value
+		Stat.DASH_SPEED_MULT:
+			player.dash_speed_mult = -abs(player.dash_speed_mult)
 		
 		Stat.CRIT_CHANCE:
 			player.crit_chance += value
@@ -221,10 +221,10 @@ func remove_effect(player) -> void:
 					
 		Stat.DASH_COOLDOWN:
 			player.dash_cooldown -= value
-		Stat.DASH_LENGTH:
+		Stat.DASH_DURATION:
 			player.dash_duration -= value
-		Stat.DASH_SPEED:
-			player.dash_speed -= value
+		Stat.DASH_SPEED_MULT:
+			player.dash_speed_mult = abs(player.dash_speed_mult)
 		
 		Stat.CRIT_CHANCE:
 			player.crit_chance -= value

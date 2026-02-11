@@ -18,9 +18,9 @@ var consumer_items := [
 	preload("res://Scripts/items/consumer/BrokenNeedle.tres"),
 	
 	# ACTIVE_ITEM
-	preload("res://Scripts/items/consumer/TestActiveItem.tres"),
-	preload("res://Scripts/items/consumer/UsedNeuroblockers.tres"),
 	preload("res://Scripts/items/consumer/Brick.tres"),
+	preload("res://Scripts/items/consumer/MenderChip.tres"),
+	preload("res://Scripts/items/consumer/UsedNeuroblockers.tres"),
 	
 	# PRIMARY_ATTACK
 	preload("res://Scripts/items/consumer/ChromeTippedSpear.tres"),
