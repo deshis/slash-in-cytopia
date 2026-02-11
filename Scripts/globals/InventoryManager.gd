@@ -121,6 +121,8 @@ func move_item(origin_slot: InventorySlot, new_slot: InventorySlot = null) -> vo
 			new_slot = handle_combiner_move(origin_slot, new_slot, item)
 		slot_type.TRASH:
 			pass
+		slot_type.RECYCLER:
+			new_slot = handle_recycler_move(origin_slot, new_slot, item)
 	
 	origin_slot.icon_node.visible = true
 	place_or_swap(item, origin_slot, new_slot)
@@ -144,6 +146,8 @@ func handle_backpack_move(origin_slot: InventorySlot, new_slot: InventorySlot, i
 	
 	if MenuManager.active_menu == MenuManager.MENU.COMBINER:
 		return get_combiner_slot(origin_slot, item)
+	elif MenuManager.active_menu == MenuManager.MENU.RECYCLER:
+		return get_recycler_slot(origin_slot, item)
 	else:
 		return get_augment_slot(item)
 
@@ -154,6 +158,8 @@ func handle_augment_move(origin_slot: AugmentSlot, new_slot: InventorySlot, item
 	
 	if MenuManager.active_menu == MenuManager.MENU.COMBINER:
 		return get_combiner_slot(origin_slot, item)
+	elif MenuManager.active_menu == MenuManager.MENU.RECYCLER:
+		return get_recycler_slot(origin_slot, item)
 	else:
 		return get_backpack_slot()
 
@@ -182,6 +188,22 @@ func handle_combiner_move(_origin_slot: CombinerSlot, new_slot: InventorySlot, i
 				return null
 	
 	combiner_node.update_state()
+	return new_slot
+
+
+func handle_recycler_move(_origin_slot: RecyclerSlot, new_slot: InventorySlot, item: Control) -> Control:
+	if not new_slot:
+		new_slot = get_backpack_slot()
+		
+		if new_slot:
+			return new_slot
+	
+	if new_slot is AugmentSlot:
+		var aug_item = new_slot.get_item()
+		if aug_item:
+			if item.get_type() != aug_item.get_type():
+				return null
+	
 	return new_slot
 
 
@@ -244,6 +266,20 @@ func get_combiner_slot(origin_slot: InventorySlot, item: Control) -> Control:
 			return combiner_node.get_empty_slot()
 	
 	return null
+
+
+func get_recycler_slot(origin_slot: InventorySlot, item: Control) -> Control:
+	var new_slot = recycler_node.slot
+	
+	if origin_slot is AugmentSlot:
+		var recycler_item = new_slot.get_item()
+		if not recycler_item:
+			return new_slot
+		
+		if item.get_type() != recycler_item.get_type():
+			return null
+	
+	return new_slot
 
 
 func close_item_pickup_menu() -> void:
