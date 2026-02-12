@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkmfql71pbmmt"]
+[gd_scene format=3 uid="uid://dkmfql71pbmmt"]
 
 [ext_resource type="Texture2D" uid="uid://bufaupro2ybf3" path="res://Assets/particles/star_06.png" id="1_yxm3d"]
 [ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="2_xkx8m"]
@@ -79,7 +79,7 @@ size = Vector2(0.5, 0.5)
 
 [sub_resource type="Skin" id="Skin_xhh24"]
 
-[node name="StunParticles" type="GPUParticles3D" node_paths=PackedStringArray("particles")]
+[node name="StunParticles" type="GPUParticles3D" unique_id=1023642595 node_paths=PackedStringArray("particles")]
 emitting = false
 amount = 10
 one_shot = true

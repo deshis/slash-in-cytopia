@@ -41,7 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://8r4pwmgy5thh" path="res://Assets/environment/foliage/trees/tree.tscn" id="39_3pko2"]
 [ext_resource type="PackedScene" uid="uid://br7yobcthvqjh" path="res://Assets/environment/forest/props/hologram.tscn" id="40_j1q0m"]
 [ext_resource type="Texture2D" uid="uid://cy85se48blcs8" path="res://Assets/vfx/spin_trail/spin.png" id="40_vj5y7"]
-[ext_resource type="Texture2D" uid="uid://dve8p1ru55hhc" path="res://Assets/ui/logo.png" id="43_j1q0m"]
+[ext_resource type="Texture2D" uid="uid://c7mseb2r5dmrw" path="res://Assets/ui/logo3.png" id="43_j1q0m"]
 [ext_resource type="Texture2D" uid="uid://bc1yvyqjwxee" path="res://Assets/ui/main_menu_button2.png" id="44_3pko2"]
 [ext_resource type="Texture2D" uid="uid://dqrs4dp02wqle" path="res://Assets/ui/main_menu_button.png" id="44_ph3u6"]
 [ext_resource type="PackedScene" uid="uid://btj605votyjy8" path="res://Scenes/main_menu/settings_menu.tscn" id="46_aj2v6"]
