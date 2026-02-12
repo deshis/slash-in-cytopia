@@ -136,6 +136,8 @@ var pickup_slot_amount := 3
 var pickupable_item = preload("res://Scenes/items/pickupable_loot.tscn")
 var pickupable_health = preload("res://Scenes/items/pickupable_health.tscn")
 
+var loot_upgraded = false
+
 
 func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_strength: float = 0.0, loot_impulse_duration: float = -1.0) -> Node3D:
 	if not loot_table:
@@ -148,7 +150,11 @@ func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_streng
 		var loot = pickupable_item.instantiate()
 		GameManager.stage_root.add_child(loot)
 		loot.global_position = object.global_position
-		loot.set_loot(LootDatabase.get_loot_rarity(loot_table.loot_rarity_weights, object))
+		var rarity = LootDatabase.get_loot_rarity(loot_table.loot_rarity_weights)
+		loot.set_loot(rarity)
+		
+		if loot_upgraded:
+			emit_upgrade_visuals(rarity, loot)
 		
 		var dir = player.global_position.direction_to(object.global_position)
 		loot.setup(player, dir, loot_impulse_strength, loot_impulse_duration)
@@ -179,7 +185,7 @@ func get_loot_table(enemy: EnemyStats) -> LootTable:
 	
 	return null
 
-func get_loot_rarity(loot_weights: Dictionary, object: Node3D) -> ItemType.Type:
+func get_loot_rarity(loot_weights: Dictionary) -> ItemType.Type:
 	# set chances
 	var consumer_chance = loot_weights.get("consumer")
 	var military_chance = loot_weights.get("military")
@@ -191,20 +197,28 @@ func get_loot_rarity(loot_weights: Dictionary, object: Node3D) -> ItemType.Type:
 	var weights = PackedFloat32Array([consumer_chance, military_chance, prototype_chance, apex_anomaly_chance])
 	var rarity = rng.rand_weighted(weights)
 	
+	loot_upgraded = false
 	if randf() * 100 < upgrade_loot_rarity_chance:
-		rarity = upgrade_loot(rarity, object)
+		if rarity == ItemType.Grade.APEX_ANOMALY:
+			return ItemType.Type.values()[rarity]
+		
+		rarity = clamp(rarity + 1, 0, ItemType.Grade.size() - 1)
+		loot_upgraded = true
 	return ItemType.Type.values()[rarity]
 
 
-func upgrade_loot(rarity: ItemType.Grade, object: Node3D) -> ItemType.Grade:
-	rarity = clamp(rarity + 1, 0, ItemType.Grade.size() - 1)
-	var particle = GameManager.particles.emit_particles("loot_upgrade", object.global_position)
-	var particle2 = GameManager.particles.emit_particles("light_ray_particles", object.global_position)
-	particle.process_material.color = grade_colors[rarity]
+func emit_upgrade_visuals(rarity: ItemType.Grade, loot: Node3D) -> void:
+	loot.container.update_colors(grade_colors[rarity - 1], rarity == ItemType.Grade.APEX_ANOMALY)
 	
-	SoundManager.play_sfx("loot_upgrade", object.global_position)
+	await get_tree().create_timer(0.6).timeout
 	
-	return rarity
+	loot.container.update_colors(grade_colors[rarity], rarity == ItemType.Grade.APEX_ANOMALY)
+	
+	var beam_particle = GameManager.particles.emit_particles("loot_upgrade", loot.global_position, loot)
+	GameManager.particles.emit_particles("light_ray_particles", loot.global_position, loot)
+	beam_particle.process_material.color = grade_colors[rarity]
+	
+	SoundManager.play_sfx("loot_upgrade", loot.global_position)
 
 func get_items_by_rarity(rarity: ItemType.Grade) -> Array:
 	var list = []

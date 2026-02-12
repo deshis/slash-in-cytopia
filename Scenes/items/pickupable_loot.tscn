@@ -9,7 +9,7 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t6aaw"]
 radius = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3sucs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hkji2"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_qdjum")
@@ -43,4 +43,4 @@ hitbox = NodePath("../Hitbox")
 interactable_object = NodePath("..")
 
 [node name="augment_container" parent="." unique_id=1791461547 instance=ExtResource("4_hkji2")]
-light_material = SubResource("ShaderMaterial_3sucs")
+light_material = SubResource("ShaderMaterial_hkji2")
