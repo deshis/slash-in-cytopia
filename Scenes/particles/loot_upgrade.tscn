@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bd1g3aycmugy7"]
+
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="1_ppvnb"]
+
+[sub_resource type="Curve" id="Curve_m7xxd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23949578, 1), 0.20570438, 0.20570438, 0, 0, Vector2(1, 0), -1.9788761, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qt575"]
+curve = SubResource("Curve_m7xxd")
+
+[sub_resource type="Curve" id="Curve_632fo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2622951, 0.59757745), 0.0, 0.0, 0, 0, Vector2(0.58652097, 0.2695155), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.3850582, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_lncj0"]
+curve = SubResource("Curve_632fo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sbt0b"]
+lifetime_randomness = 0.4
+emission_shape_offset = Vector3(0, 0.2, 0)
+emission_shape = 1
+emission_sphere_radius = 0.4
+direction = Vector3(0, 1, 0)
+spread = 60.0
+initial_velocity_min = 2.3999999
+initial_velocity_max = 6.0
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = -2.2351742e-05
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -5.000002
+linear_accel_max = -5.000002
+scale_min = 1.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_lncj0")
+alpha_curve = SubResource("CurveTexture_qt575")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppvnb"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_ppvnb"]
+material = SubResource("StandardMaterial3D_ppvnb")
+
+[node name="LootUpgrade" type="GPUParticles3D" unique_id=1144299960 node_paths=PackedStringArray("particles")]
+emitting = false
+amount = 35
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.75
+randomness = 0.1
+fixed_fps = 24
+process_material = SubResource("ParticleProcessMaterial_sbt0b")
+draw_pass_1 = SubResource("SphereMesh_ppvnb")
+script = ExtResource("1_ppvnb")
+particles = NodePath(".")

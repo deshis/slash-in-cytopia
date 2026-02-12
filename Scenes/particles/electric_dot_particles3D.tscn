@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1osf1x8t41y3"]
+[gd_scene format=3 uid="uid://c1osf1x8t41y3"]
 
 [ext_resource type="Texture2D" uid="uid://b8c2ejljrsiv" path="res://Assets/particles/spark_05.png" id="1_4vs8c"]
 [ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="2_86ivy"]
@@ -78,7 +78,7 @@ size = Vector2(0.5, 0.5)
 
 [sub_resource type="Skin" id="Skin_xhh24"]
 
-[node name="ElectricDotParticles" type="GPUParticles3D" node_paths=PackedStringArray("particles")]
+[node name="ElectricDotParticles" type="GPUParticles3D" unique_id=136294016 node_paths=PackedStringArray("particles")]
 emitting = false
 amount = 1
 one_shot = true

@@ -136,6 +136,7 @@ var pickup_slot_amount := 3
 var pickupable_item = preload("res://Scenes/items/pickupable_loot.tscn")
 var pickupable_health = preload("res://Scenes/items/pickupable_health.tscn")
 
+
 func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_strength: float = 0.0, loot_impulse_duration: float = -1.0) -> void:
 	if not loot_table:
 		loot_table = get_loot_table(object.enemy)
@@ -147,7 +148,7 @@ func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_streng
 		var loot = pickupable_item.instantiate()
 		GameManager.stage_root.add_child(loot)
 		loot.global_position = object.global_position
-		loot.set_loot(LootDatabase.get_loot_rarity(loot_table.loot_rarity_weights))
+		loot.set_loot(LootDatabase.get_loot_rarity(loot_table.loot_rarity_weights, object))
 		
 		var dir = player.global_position.direction_to(object.global_position)
 		loot.setup(player, dir, loot_impulse_strength, loot_impulse_duration)
@@ -162,7 +163,6 @@ func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_streng
 			var dir = player.global_position.direction_to(object.global_position)
 			pickup.setup(player, dir, loot_impulse_strength, loot_impulse_duration)
 
-
 func get_loot_table(enemy: EnemyStats) -> LootTable:
 	match enemy.type:
 		EnemyType.Type.NORMAL:
@@ -176,7 +176,7 @@ func get_loot_table(enemy: EnemyStats) -> LootTable:
 	
 	return null
 
-func get_loot_rarity(loot_weights: Dictionary) -> ItemType.Type:
+func get_loot_rarity(loot_weights: Dictionary, object: Node3D) -> ItemType.Type:
 	# set chances
 	var consumer_chance = loot_weights.get("consumer")
 	var military_chance = loot_weights.get("military")
@@ -189,8 +189,19 @@ func get_loot_rarity(loot_weights: Dictionary) -> ItemType.Type:
 	var rarity = rng.rand_weighted(weights)
 	
 	if randf() * 100 < upgrade_loot_rarity_chance:
-		rarity = clamp(rarity + 1, 0, ItemType.Grade.size() - 1)
+		rarity = upgrade_loot(rarity, object)
 	return ItemType.Type.values()[rarity]
+
+
+func upgrade_loot(rarity: ItemType.Grade, object: Node3D) -> ItemType.Grade:
+	rarity = clamp(rarity + 1, 0, ItemType.Grade.size() - 1)
+	var particle = GameManager.particles.emit_particles("loot_upgrade", object.global_position)
+	particle.process_material.color = grade_colors[rarity]
+	
+	SoundManager.play_sfx("loot_upgrade", object.global_position)
+	
+	return rarity
+
 
 func get_items_by_rarity(rarity: ItemType.Grade) -> Array:
 	var list = []
@@ -207,9 +218,11 @@ func get_items_by_rarity(rarity: ItemType.Grade) -> Array:
 	list.shuffle()
 	return list.slice(0, pickup_slot_amount)
 
+
 func update_loot_drop_chance(amount: float) -> void:
 	enemy_loot_table.loot_drop_chance += base_enemy_loot_table.loot_drop_chance * amount * 0.01
 	aug_enemy_loot_table.loot_drop_chance += base_aug_enemy_loot_table.loot_drop_chance * amount * 0.01
+
 
 func reset_loot_database() -> void:
 	upgrade_loot_rarity_chance = 0.0

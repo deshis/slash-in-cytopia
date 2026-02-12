@@ -48,6 +48,7 @@ func _ready() -> void:
 		"explosion":load("res://Assets/audio/effect_explosion.wav"),
 		"explosion_small":load("res://Assets/audio/effect_explosion2.wav"),
 		"explosion_medium":load("res://Assets/audio/effect_explosion2.wav"),
+		"loot_upgrade":load("res://Assets/audio/effect_stun.wav"),
 	}
 	
 	ui_players = {

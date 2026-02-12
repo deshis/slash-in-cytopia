@@ -23,3 +23,5 @@ func emit_particles(n: String, pos: Vector3, parent: Node = null, duration : flo
 				pos.z
 			)
 			particle.restart()
+			
+			return particle

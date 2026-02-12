@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpoyxyxicacwu"]
+[gd_scene format=3 uid="uid://cpoyxyxicacwu"]
 
 [ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="1_v2sna"]
 
@@ -48,7 +48,7 @@ vertex_color_use_as_albedo = true
 [sub_resource type="BoxMesh" id="BoxMesh_v2sna"]
 material = SubResource("StandardMaterial3D_sbt0b")
 
-[node name="Freeze" type="GPUParticles3D" node_paths=PackedStringArray("particles")]
+[node name="Freeze" type="GPUParticles3D" unique_id=1578957381 node_paths=PackedStringArray("particles")]
 emitting = false
 amount = 5
 lifetime = 6.0
