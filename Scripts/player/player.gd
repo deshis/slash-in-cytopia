@@ -416,7 +416,7 @@ func trigger_chromatic_aberration():
 func use_active_item(active_effect: ActiveEffectResource):
 	var active_item_cooldown = active_effect.active_effect_cooldown
 	
-	trigger_chromatic_aberration()
+	#trigger_chromatic_aberration()
 	
 	can_active_item = false
 	active_item_cooldown_timer.start(active_item_cooldown)
