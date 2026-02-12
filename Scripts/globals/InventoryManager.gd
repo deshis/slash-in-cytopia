@@ -21,6 +21,7 @@ var item_scene: PackedScene = preload("res://Scenes/items/item.tscn")
 
 var extra_augment_nodes = []
 var extra_augment_slots := false
+var is_equipping_starter_items := false
 
 
 func _input(event: InputEvent) -> void:
@@ -131,6 +132,8 @@ func move_item(origin_slot: InventorySlot, new_slot: InventorySlot = null) -> vo
 	if MenuManager.active_menu == MenuManager.MENU.COMBINER:
 		combiner_node.update_state()
 
+	if not is_equipping_starter_items:
+		SoundManager.play_ui_sfx("equip")
 
 func can_replace_item(slot: InventorySlot) -> bool:
 	if not slot.get_item():
@@ -217,10 +220,10 @@ func place_or_swap(item: Control, origin_slot: Control, new_slot: Control) -> vo
 
 	new_slot.set_item(item)
 
-
 func delete_item(item: Control):
 	GameStats.items_trashed += 1
 	item.queue_free()
+	SoundManager.play_ui_sfx("trash")
 
 
 func get_augment_slot(item) -> Control:
@@ -403,10 +406,12 @@ func reset_inventory() -> void:
 func equip_starter_items() -> void:
 	if starter_items.size() == 0:
 		return
-	
+	is_equipping_starter_items = true
+
 	for item in starter_items:
 		var item_control = create_item_control(item)
 		var slot = get_backpack_slot()
 		slot.set_item(item_control)
 		move_item(slot)
+	is_equipping_starter_items = false
 		

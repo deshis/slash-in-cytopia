@@ -551,8 +551,9 @@ func use_throwable_item(throw_resource: ThrowableResource):
 	throwable_used.emit(throwable_cooldown)
 	
 	GameStats.throwables_used += 1
-
 	throw(throw_resource)
+	SoundManager.play_sfx("throw", global_position)
+	
 	
 func throw(throw_resource: ThrowableResource):
 	#var radius = throw_resource.aoe_radius
@@ -601,6 +602,8 @@ func throw(throw_resource: ThrowableResource):
 			
 	var plane = Plane(Vector3.UP, global_position.y)
 	var hit_pos = plane.intersects_ray(from, to)
+	
+
 	
 	if hit_pos:
 

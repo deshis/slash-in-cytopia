@@ -34,6 +34,7 @@ func _ready() -> void:
 		"heavy_attack_default": load("res://Assets/audio/effect_heavyattack_default.wav"), 
 		"heavy_attack_axe": load("res://Assets/audio/effect_heavyattack_axe.wav"),
 		"heavy_attack_maul": load("res://Assets/audio/effect_heavyattack_maul.wav"),
+		"throw":load("res://Assets/audio/effect_throw.wav"),
 		"dash": load("res://Assets/audio/effect_dash.wav"),
 		"hit": load("res://Assets/audio/effect_hit.wav"),
 		"hit_crit": load("res://Assets/audio/effect_hit_critical.wav"),
@@ -49,11 +50,15 @@ func _ready() -> void:
 		"explosion_small":load("res://Assets/audio/effect_explosion2.wav"),
 		"explosion_medium":load("res://Assets/audio/effect_explosion2.wav"),
 		"loot_upgrade":load("res://Assets/audio/effect_stun.wav"),
+		
 	}
 	
 	ui_players = {
 		"start": load("res://Assets/audio/effect_freeze.wav"),
-		"button": load("res://Assets/audio/ui_button_click.wav")
+		"button": load("res://Assets/audio/ui_button_click.wav"),
+		"trash":load("res://Assets/audio/effect_trash.wav"),
+		"equip":load("res://Assets/audio/effect_equip.wav"),
+		"combine":load("res://Assets/audio/effect_combine.wav")
 	}
 	
 	pitch_ranges = {
@@ -63,6 +68,7 @@ func _ready() -> void:
 		"heavy_attack_default": [0.8, 1.2],
 		"heavy_attack_axe": [0.9, 1.2],
 		"heavy_attack_maul": [0.8, 1.0],
+		"throw": [0.8, 1.0],
 		"dash": [0.8, 1.5],
 		"hit": [0.5, 1.2],
 		"hit_crit": [1.0, 1.5],
@@ -74,7 +80,7 @@ func _ready() -> void:
 		"stun_sfx": [0.7,0.9],
 		"explosion":[0.7,0.9],
 		"explosion_small":[0.9,1.1],
-		"explosion_medium":[0.8,0.9]
+		"explosion_medium":[0.8,0.9],
 	}
 	# Auto-connect to all buttons in the scene tree
 	get_tree().node_added.connect(_on_node_added)

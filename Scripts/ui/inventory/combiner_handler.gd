@@ -32,6 +32,7 @@ func combine_items() -> void:
 		slot.get_item().queue_free()
 	
 	items_combined.emit(grade)
+	SoundManager.play_ui_sfx("combine")
 
 
 func move_items_from_combiner() -> void:

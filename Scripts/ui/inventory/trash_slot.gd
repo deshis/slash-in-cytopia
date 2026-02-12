@@ -4,7 +4,7 @@ class_name TrashSlot
 @export var opened_icon: CompressedTexture2D
 
 func set_item(item: Control) -> void:
-	item.queue_free()
+	InventoryManager.delete_item(item)
 
 
 func set_open(state: bool) -> void:
