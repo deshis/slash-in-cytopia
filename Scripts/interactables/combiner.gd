@@ -4,6 +4,7 @@ extends Node3D
 
 @export var highlight_material : Material
 @export var light_shader : Shader
+@export var force_field_shader : Shader
 @export var compartments : Array[MeshInstance3D]
 @export var container : PackedScene
 
@@ -14,22 +15,42 @@ var loot_impulse_strength := -12.0
 var highlight_mat : Material
 var light_mat : Material
 
+var compartment_force_field : Material
+var base_force_field : Material
+
 func _ready() -> void:
 	highlight_mat = highlight_material.duplicate(true)
 	
 	for instance in find_children("*", "MeshInstance3D"):
 		for surface in instance.mesh.get_surface_count():
 			var mat = instance.mesh.surface_get_material(surface)
-			if mat.shader == light_shader:
-				if !light_mat:
-					light_mat = mat.duplicate(true)
-					light_mat.next_pass = highlight_mat
+			if instance in compartments:
+				if mat.shader == force_field_shader:
+					if !compartment_force_field:
+						compartment_force_field = mat.duplicate(true)
 					
-				instance.set_surface_override_material(surface, light_mat)
+					instance.set_surface_override_material(surface, compartment_force_field)
+				if mat.shader == light_shader:
+					if !light_mat:
+						light_mat = mat.duplicate(true)
+						
+					instance.set_surface_override_material(surface, light_mat)
 			else:
-				var unique_mat = mat.duplicate(true)
-				instance.set_surface_override_material(surface, unique_mat)
-				unique_mat.next_pass = highlight_mat
+				if mat.shader == light_shader:
+					if !light_mat:
+						light_mat = mat.duplicate(true)
+						light_mat.next_pass = highlight_mat
+						
+					instance.set_surface_override_material(surface, light_mat)
+				elif mat.shader == force_field_shader:
+					if !base_force_field:
+						base_force_field = mat.duplicate(true)
+					
+					instance.set_surface_override_material(surface, base_force_field)
+				else:
+					var unique_mat = mat.duplicate(true)
+					instance.set_surface_override_material(surface, unique_mat)
+					unique_mat.next_pass = highlight_mat
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -56,6 +77,7 @@ func combine_items(rarity: ItemType.Grade) -> void:
 		loot_containers.append(loot)
 		loot.update_colors(LootDatabase.grade_colors[rarity], rarity == ItemType.Grade.APEX_ANOMALY)
 		tween.tween_property(loot, "position", Vector3(0, -0.5, 0.0), 1.0)
+		tween.tween_property(compartment_force_field, "shader_parameter/dissolve_val", 1.0, 0.5)
 	
 	MenuManager.close_menu(MenuManager.MENU.COMBINER)
 	update_highlight(false)
@@ -63,20 +85,22 @@ func combine_items(rarity: ItemType.Grade) -> void:
 	
 	await tween.finished
 	
-	for loot_container in loot_containers:
-		loot_container.queue_free()
-	
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
+	tween.tween_property(compartment_force_field, "shader_parameter/dissolve_val", 0.0, 0.5)
 	tween.tween_property(light_mat, "shader_parameter/neon_intensity", 6.0, 1.0)
 	await tween.finished
+	
+	for loot_container in loot_containers:
+		loot_container.queue_free()
 	
 	var loot_table = generate_loot_table(clamp(rarity + 1, 0, ItemType.Grade.size()))
 	var final_loot = LootDatabase.drop_loot(self, loot_table, 0.0, 0.0)
 	final_loot.reparent(self)
 	final_loot.position = Vector3.ZERO
-	tween = create_tween()
+	tween = create_tween().set_parallel(true)
 	tween.set_trans(Tween.TRANS_BOUNCE)
+	tween.tween_property(base_force_field, "shader_parameter/dissolve_val", 1.0, 0.5)
 	tween.tween_property(final_loot, "position", Vector3(0, 1.0, 0.0), 1.0)
 	tween.tween_property(light_mat, "shader_parameter/neon_intensity", 3.0, 0.5)
 	
@@ -86,8 +110,10 @@ func combine_items(rarity: ItemType.Grade) -> void:
 	interact_area.monitoring = true
 	if use_amount <= 0:
 		get_node("InteractLabel").queue_free()
-		tween = create_tween()
+		tween = create_tween().set_parallel(true)
 		tween.tween_property(light_mat, "shader_parameter/flicker_value", 0.0, 1.0)
+		tween.tween_property(base_force_field, "shader_parameter/dissolve_val", 1.0, 0.5)
+		tween.tween_property(compartment_force_field, "shader_parameter/dissolve_val", 1.0, 0.5)
 		await tween.finished
 		set_script(null)
 

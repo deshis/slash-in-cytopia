@@ -1,15 +1,36 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://b7anj5ucq0pfi"]
 
-[ext_resource type="Shader" uid="uid://c08vud63h7adf" path="res://Assets/materials/shaders/neon_light.gdshader" id="1_51xbu"]
+[ext_resource type="Shader" uid="uid://bracjf31qgphm" path="res://Assets/materials/shaders/force_field.gdshader" id="1_sixv2"]
+[ext_resource type="Texture2D" uid="uid://r5t2ykvgmx5a" path="res://Assets/materials/textures/hex_pattern.png" id="2_sixv2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4o67v"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m3e47"]
+noise = SubResource("FastNoiseLite_4o67v")
+
+[sub_resource type="Gradient" id="Gradient_o2d20"]
+offsets = PackedFloat32Array(0.0020559211, 1)
+colors = PackedColorArray(0.7915021, 0.7915022, 0.79150194, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_is0o8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2l1d3"]
+noise = SubResource("FastNoiseLite_is0o8")
+color_ramp = SubResource("Gradient_o2d20")
+seamless = true
 
 [resource]
-render_priority = 0
-shader = ExtResource("1_51xbu")
-shader_parameter/tube_color = Color(0.1, 0.6, 0.5, 1)
-shader_parameter/neon_color = Color(0.2, 1, 0.9, 1)
-shader_parameter/tube_brightness = 0.4
-shader_parameter/neon_intensity = 3.0
-shader_parameter/flicker_value = 1.0
-shader_parameter/fresnel_power = 3.0
-shader_parameter/fresnel_strength = 0.5
-shader_parameter/fade_alpha = 1.0
+render_priority = 1
+shader = ExtResource("1_sixv2")
+shader_parameter/pattern_texture = ExtResource("2_sixv2")
+shader_parameter/scroll_noise = SubResource("NoiseTexture2D_2l1d3")
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_m3e47")
+shader_parameter/cell_size = 2.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/noise_scale = Vector2(2, 2)
+shader_parameter/hex_color = Color(0.36922315, 0.63569796, 0.9022191, 1)
+shader_parameter/fill_color = Color(0.31320003, 0.5916, 0.87, 0.5019608)
+shader_parameter/hex_glow = 4.0
+shader_parameter/fill_glow = 0.5
+shader_parameter/scroll_speed = 0.5
+shader_parameter/dissolve_val = 0.0
