@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bwr851pmgrv4p"]
+
+[ext_resource type="Shader" uid="uid://b0p8bnfarjcyk" path="res://Assets/materials/shaders/highlight_outline.gdshader" id="1_nsqof"]
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_nsqof")
+shader_parameter/thickness = 2.45000003650794
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/samples = 4
+shader_parameter/sensitivity = 0.029999999329440002
+shader_parameter/edge_fade = 0.015
+shader_parameter/highlight = false
