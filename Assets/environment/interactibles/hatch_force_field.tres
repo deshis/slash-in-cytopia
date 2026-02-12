@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b7anj5ucq0pfi"]
+
+[ext_resource type="Shader" uid="uid://c08vud63h7adf" path="res://Assets/materials/shaders/neon_light.gdshader" id="1_51xbu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_51xbu")
+shader_parameter/tube_color = Color(0.1, 0.6, 0.5, 1)
+shader_parameter/neon_color = Color(0.2, 1, 0.9, 1)
+shader_parameter/tube_brightness = 0.4
+shader_parameter/neon_intensity = 3.0
+shader_parameter/flicker_value = 1.0
+shader_parameter/fresnel_power = 3.0
+shader_parameter/fresnel_strength = 0.5
+shader_parameter/fade_alpha = 1.0

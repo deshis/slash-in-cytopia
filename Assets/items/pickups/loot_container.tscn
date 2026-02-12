@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b5mj1lo7f0jkl"]
+
+[ext_resource type="PackedScene" uid="uid://dqd46tri2sm8a" path="res://Assets/items/pickups/augment_container.glb" id="1_0uwaa"]
+[ext_resource type="Script" uid="uid://cn1h5b6wunw7f" path="res://Scripts/interactables/loot_container.gd" id="2_ycgls"]
+[ext_resource type="Material" uid="uid://18awx7tw2tog" path="res://Assets/items/pickups/materials/base_color.tres" id="3_xha1f"]
+[ext_resource type="Material" uid="uid://757w6o4rt4s3" path="res://Assets/items/pickups/materials/augment_light.tres" id="4_x31n3"]
+[ext_resource type="Material" uid="uid://oaasqspdnhtp" path="res://Assets/items/pickups/materials/highlight_outline.tres" id="5_urflc"]
+
+[node name="augment_container" unique_id=1791461547 node_paths=PackedStringArray("meshInstance", "light") instance=ExtResource("1_0uwaa")]
+script = ExtResource("2_ycgls")
+meshInstance = NodePath("AugmentContainer")
+base_material = ExtResource("3_xha1f")
+light_material = ExtResource("4_x31n3")
+highlight_material = ExtResource("5_urflc")
+light = NodePath("OmniLight3D")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1" unique_id=1095209906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0467263, 0)
+light_energy = 0.5
+omni_range = 3.0

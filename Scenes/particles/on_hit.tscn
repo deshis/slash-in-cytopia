@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="2_bpd16"]
 
 [sub_resource type="Curve" id="Curve_bpd16"]
-_data = [Vector2(0, 0), 0.0, 1.554743, 0, 0, Vector2(0.2529422, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 1.554743, 0, 0, Vector2(0.15, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_6bmlq"]
-_data = [Vector2(0, 1), 0.0, -3.0533037, 0, 0, Vector2(0.2463817, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, -3.0533037, 0, 0, Vector2(0.15, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_5af51"]
@@ -42,6 +42,7 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_ml3yf"]
 material = SubResource("StandardMaterial3D_0hno5")
+size = Vector2(0.5, 0.5)
 
 [sub_resource type="Skin" id="Skin_yj37t"]
 
@@ -110,6 +111,6 @@ lifetime = 0.25
 one_shot = true
 explosiveness = 1.0
 trail_enabled = true
-trail_lifetime = 0.060000000000000005
+trail_lifetime = 0.06
 process_material = SubResource("ParticleProcessMaterial_h6fhd")
 draw_pass_1 = SubResource("TubeTrailMesh_w0ed7")

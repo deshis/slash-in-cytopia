@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dqd46tri2sm8a"
-path="res://.godot/imported/augment_container.glb-703453188023a1e847ff37d3c29865e8.scn"
+uid="uid://wwh88fg2tu1v"
+path="res://.godot/imported/interactible_combiner.glb-0fdc657da2e34c5caf0db780b40e19d2.scn"
 
 [deps]
 
-source_file="res://Assets/items/augment_container.glb"
-dest_files=["res://.godot/imported/augment_container.glb-703453188023a1e847ff37d3c29865e8.scn"]
+source_file="res://Assets/environment/interactibles/interactible_combiner.glb"
+dest_files=["res://.godot/imported/interactible_combiner.glb-0fdc657da2e34c5caf0db780b40e19d2.scn"]
 
 [params]
 
@@ -41,18 +41,23 @@ _subresources={
 "materials": {
 "AccentColor": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Assets/items/pickups/materials/accent_color.tres",
-"use_external/path": "uid://dt4jqlmus3s55"
+"use_external/fallback_path": "res://Assets/environment/interactibles/accent_color.tres",
+"use_external/path": "uid://dvmqg7jyfoybb"
 },
 "AugmentLight": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Assets/items/pickups/materials/augment_light.tres",
-"use_external/path": "uid://757w6o4rt4s3"
+"use_external/fallback_path": "res://Assets/environment/interactibles/combiner_light.tres",
+"use_external/path": "uid://byf2ck17bca08"
 },
 "BaseColor": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Assets/items/pickups/materials/base_color.tres",
-"use_external/path": "uid://18awx7tw2tog"
+"use_external/fallback_path": "res://Assets/environment/interactibles/base_color.tres",
+"use_external/path": "uid://cki11h6p2lea7"
+},
+"ForceField": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/environment/interactibles/hatch_force_field.tres",
+"use_external/path": "uid://b7anj5ucq0pfi"
 }
 }
 }

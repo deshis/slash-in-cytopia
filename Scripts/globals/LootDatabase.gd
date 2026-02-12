@@ -137,7 +137,7 @@ var pickupable_item = preload("res://Scenes/items/pickupable_loot.tscn")
 var pickupable_health = preload("res://Scenes/items/pickupable_health.tscn")
 
 
-func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_strength: float = 0.0, loot_impulse_duration: float = -1.0) -> void:
+func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_strength: float = 0.0, loot_impulse_duration: float = -1.0) -> Node3D:
 	if not loot_table:
 		loot_table = get_loot_table(object.enemy)
 	
@@ -152,6 +152,7 @@ func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_streng
 		
 		var dir = player.global_position.direction_to(object.global_position)
 		loot.setup(player, dir, loot_impulse_strength, loot_impulse_duration)
+		return loot
 	
 	# HEALTH
 	for i in range(loot_table.health_drop_amount):
@@ -162,6 +163,8 @@ func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_streng
 			
 			var dir = player.global_position.direction_to(object.global_position)
 			pickup.setup(player, dir, loot_impulse_strength, loot_impulse_duration)
+	
+	return null
 
 func get_loot_table(enemy: EnemyStats) -> LootTable:
 	match enemy.type:
