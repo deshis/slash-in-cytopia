@@ -946,7 +946,6 @@ layout_mode = 0
 
 [node name="PauseMenu" type="Control" parent="." unique_id=292451703]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

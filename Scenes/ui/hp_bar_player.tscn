@@ -1,34 +1,20 @@
 [gd_scene format=3 uid="uid://dq80cdl8tixeo"]
 
-[ext_resource type="Script" uid="uid://b8rtnvnstvdg4" path="res://Scripts/ui/hud/healthbar.gd" id="1_ve1ry"]
+[ext_resource type="Script" uid="uid://d2jwo0umkarmf" path="res://Scripts/ui/hud/player_healthbar.gd" id="1_j3bo4"]
 [ext_resource type="Texture2D" uid="uid://br0ce01ryy6sq" path="res://Assets/ui/player_hp_bar_2.png" id="2_j3bo4"]
 [ext_resource type="Texture2D" uid="uid://cgqboqbaep7jf" path="res://Assets/ui/player_hp_bar_circle_mask_2.png" id="3_ckmai"]
 [ext_resource type="Texture2D" uid="uid://3w3tokjxktqm" path="res://Assets/icon.png" id="4_j3bo4"]
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="5_4gxn7"]
 [ext_resource type="Texture2D" uid="uid://buom0xkmfh5or" path="res://Assets/ui/player_hp_bar_rectangle.png" id="6_j3bo4"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsiwr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsiwr"]
-bg_color = Color(0.78460205, 0.50372005, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avp23"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avp23"]
-bg_color = Color(0, 0.627451, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4br7"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjvhh"]
-bg_color = Color(0.78431374, 0, 0, 1)
-
 [node name="HPBarPlayer" type="Control" unique_id=589468563]
+process_mode = 3
 custom_minimum_size = Vector2(117, 25)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 415.6
 offset_bottom = 51.0
-script = ExtResource("1_ve1ry")
+script = ExtResource("1_j3bo4")
 
 [node name="PlayerHpBar" type="Sprite2D" parent="." unique_id=493679962]
 position = Vector2(198.2951, 60)
@@ -42,9 +28,10 @@ scale = Vector2(1.0167786, 1.0000001)
 texture = ExtResource("3_ckmai")
 
 [node name="Johnathan Slashington" type="Sprite2D" parent="PlayerHpBar/PlayerHpBarCircleMask" unique_id=1374377338]
-position = Vector2(-12.201981, 12.406769)
-scale = Vector2(1.9275572, 1.9275569)
+position = Vector2(-9.151484, 12.406777)
+scale = Vector2(2.0600564, 2.060056)
 texture = ExtResource("4_j3bo4")
+flip_h = true
 
 [node name="HealthTitleContainer" type="MarginContainer" parent="PlayerHpBar" unique_id=1658839479]
 offset_left = -243.0
@@ -98,27 +85,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="OrangeBar" type="ProgressBar" parent="PlayerHpBarRectangleSkew/MarginContainer" unique_id=1679303141]
+[node name="HpBarSegmentContainer" type="HBoxContainer" parent="PlayerHpBarRectangleSkew/MarginContainer" unique_id=955390222]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxEmpty_wsiwr")
-theme_override_styles/fill = SubResource("StyleBoxFlat_wsiwr")
-value = 3.05
-show_percentage = false
-
-[node name="GreenBar" type="ProgressBar" parent="PlayerHpBarRectangleSkew/MarginContainer" unique_id=2013786268]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxEmpty_avp23")
-theme_override_styles/fill = SubResource("StyleBoxFlat_avp23")
-value = 3.05
-show_percentage = false
-
-[node name="ProgressBar" type="ProgressBar" parent="PlayerHpBarRectangleSkew/MarginContainer" unique_id=462144628]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxEmpty_m4br7")
-theme_override_styles/fill = SubResource("StyleBoxFlat_jjvhh")
-value = 3.05
-show_percentage = false
+theme_override_constants/separation = 10

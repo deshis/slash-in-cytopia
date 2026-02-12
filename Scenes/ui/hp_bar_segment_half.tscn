@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://wa0v5rn60g75"]
+
+[ext_resource type="PackedScene" uid="uid://bfmm8nxr0oufk" path="res://Scenes/ui/hp_bar_segment.tscn" id="1_b6s7p"]
+
+[node name="half_full_segment" type="MarginContainer" unique_id=1739270161]
+offset_right = 1.0
+offset_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 0
+
+[node name="ProgressBar" parent="." unique_id=862040891 instance=ExtResource("1_b6s7p")]
+layout_mode = 2
+value = 0.0

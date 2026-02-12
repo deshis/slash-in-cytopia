@@ -19252,7 +19252,7 @@ theme_override_font_sizes/font_size = 32
 text = "Achievements"
 script = ExtResource("35_msuys")
 
-[node name="MatchHistory" type="Button" parent="Menu/ProfileMargin/HBoxContainer"]
+[node name="MatchHistory" type="Button" parent="Menu/ProfileMargin/HBoxContainer" unique_id=310426385]
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("52_ybtaw")
