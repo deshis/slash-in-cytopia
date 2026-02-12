@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dq045j6q80a8e"]
+
+[ext_resource type="Texture2D" uid="uid://n0u6c4b0rjxi" path="res://Assets/particles/ray_of_light.png" id="1_dog8m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxjnh"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_dog8m")
+
+[sub_resource type="Gradient" id="Gradient_dog8m"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dog8m"]
+gradient = SubResource("Gradient_dog8m")
+
+[sub_resource type="Curve" id="Curve_d6qes"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_dnk0a"]
+_limits = [0.0, 6.0, 0.0, 1.0]
+_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_wf4je"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_sxjnh"]
+curve_x = SubResource("Curve_d6qes")
+curve_y = SubResource("Curve_dnk0a")
+curve_z = SubResource("Curve_wf4je")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hcc73"]
+particle_flag_align_y = true
+emission_shape_scale = Vector3(0.5, 0.8, 0.5)
+emission_shape = 6
+emission_ring_axis = Vector3(1, 90, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 4.0
+emission_ring_inner_radius = 3.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0.5, 0, 0)
+spread = 180.0
+flatness = 1.0
+orbit_velocity_min = 0.2000001
+orbit_velocity_max = 0.2000001
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 4.9999976
+radial_accel_max = 4.9999976
+damping_min = 4.0
+damping_max = 5.0
+scale_min = 0.14999999
+scale_max = 0.75
+scale_curve = SubResource("CurveXYZTexture_sxjnh")
+color = Color(1.4369954, 1.4369954, 1.4369954, 1)
+color_ramp = SubResource("GradientTexture1D_dog8m")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pojdg"]
+size = Vector2(1.5, 1.25)
+
+[node name="Sparks" type="GPUParticles3D" unique_id=689639274]
+material_override = SubResource("StandardMaterial3D_sxjnh")
+cast_shadow = 0
+emitting = false
+amount = 40
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_hcc73")
+draw_pass_1 = SubResource("QuadMesh_pojdg")

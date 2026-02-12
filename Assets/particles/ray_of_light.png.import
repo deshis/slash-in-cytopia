@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drca8bif8ar3p"
-path.s3tc="res://.godot/imported/trace_05.png-5d9995cdcb1ca3d7d2b2301b6bae440c.s3tc.ctex"
+uid="uid://n0u6c4b0rjxi"
+path.s3tc="res://.godot/imported/ray_of_light.png-1fa6223d21ba2a36fe4f2ecfd11d4b80.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/particles/trace_05.png"
-dest_files=["res://.godot/imported/trace_05.png-5d9995cdcb1ca3d7d2b2301b6bae440c.s3tc.ctex"]
+source_file="res://Assets/particles/ray_of_light.png"
+dest_files=["res://.godot/imported/ray_of_light.png-1fa6223d21ba2a36fe4f2ecfd11d4b80.s3tc.ctex"]
 
 [params]
 

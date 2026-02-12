@@ -196,12 +196,12 @@ func get_loot_rarity(loot_weights: Dictionary, object: Node3D) -> ItemType.Type:
 func upgrade_loot(rarity: ItemType.Grade, object: Node3D) -> ItemType.Grade:
 	rarity = clamp(rarity + 1, 0, ItemType.Grade.size() - 1)
 	var particle = GameManager.particles.emit_particles("loot_upgrade", object.global_position)
+	var particle2 = GameManager.particles.emit_particles("light_ray_particles", object.global_position)
 	particle.process_material.color = grade_colors[rarity]
 	
 	SoundManager.play_sfx("loot_upgrade", object.global_position)
 	
 	return rarity
-
 
 func get_items_by_rarity(rarity: ItemType.Grade) -> Array:
 	var list = []
