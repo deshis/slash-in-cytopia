@@ -6,7 +6,6 @@
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="3_spcc7"]
 [ext_resource type="Texture2D" uid="uid://b343ghjhwphjn" path="res://Assets/ui/punch.png" id="4_oersf"]
 [ext_resource type="Texture2D" uid="uid://cvquudwe72x8p" path="res://Assets/ui/kick.png" id="5_oersf"]
-[ext_resource type="Texture2D" uid="uid://dluotk16ptpbk" path="res://Assets/ui/AbilityIconBorder.png" id="6_og236"]
 [ext_resource type="Texture2D" uid="uid://chmb0vt4rda71" path="res://Assets/ui/player_UI_view.png" id="6_yidpd"]
 [ext_resource type="Script" uid="uid://oao7o8ug10v6" path="res://Scripts/ui/inventory/inventory_handler.gd" id="7_0p5tk"]
 [ext_resource type="Texture2D" uid="uid://dmidoj5ekks50" path="res://Assets/ui/DashIcon6.png" id="7_wl13q"]
@@ -57,6 +56,20 @@ colors = PackedColorArray(0.8117647, 0.34117648, 0.23529412, 1, 0.36952475, 0.12
 gradient = SubResource("Gradient_oersf")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_2874v"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.4745098, 0.7921569, 0.7411765, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5m6rh"]
+gradient = SubResource("Gradient_2874v")
+
+[sub_resource type="Gradient" id="Gradient_5m6rh"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wvxje"]
+gradient = SubResource("Gradient_5m6rh")
 
 [sub_resource type="Gradient" id="Gradient_ajim5"]
 colors = PackedColorArray(0.64705884, 0.1882353, 0.1882353, 1, 0.23560971, 0.04361274, 0.0441664, 1)
@@ -153,9 +166,8 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_484xk")
 expand_mode = 2
 
-[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/PrimaryAttack" unique_id=1420213815]
-visible = false
-z_index = 1
+[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/PrimaryAttack" unique_id=1404224535]
+z_index = -3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -164,11 +176,28 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -38.5
 offset_top = -38.5
-offset_right = 40.5
-offset_bottom = 40.5
+offset_right = 38.5
+offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_og236")
+texture = SubResource("GradientTexture1D_5m6rh")
+expand_mode = 1
+
+[node name="Border2" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/PrimaryAttack" unique_id=125934435]
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -36.5
+offset_right = 36.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_wvxje")
 expand_mode = 1
 
 [node name="SecondaryAttack" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=1624386932]
@@ -208,9 +237,8 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_vxf74")
 expand_mode = 2
 
-[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/SecondaryAttack" unique_id=1104740523]
-visible = false
-z_index = 1
+[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/SecondaryAttack" unique_id=232155900]
+z_index = -3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -219,11 +247,28 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -38.5
 offset_top = -38.5
-offset_right = 40.5
-offset_bottom = 40.5
+offset_right = 38.5
+offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_og236")
+texture = SubResource("GradientTexture1D_5m6rh")
+expand_mode = 1
+
+[node name="Border2" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/SecondaryAttack" unique_id=66229539]
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -36.5
+offset_right = 36.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_wvxje")
 expand_mode = 1
 
 [node name="DashCooldown" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=1943223829]
@@ -246,24 +291,6 @@ show_percentage = false
 [node name="Timer" type="Timer" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown" unique_id=213702068]
 one_shot = true
 
-[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown" unique_id=119228577]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.5
-offset_top = -38.5
-offset_right = 40.5
-offset_bottom = 40.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_og236")
-expand_mode = 1
-
 [node name="Background" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown" unique_id=2143517695]
 z_index = -1
 layout_mode = 1
@@ -280,6 +307,40 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_lkt4f")
 expand_mode = 2
+
+[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown" unique_id=356842750]
+z_index = -3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -38.5
+offset_right = 38.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_5m6rh")
+expand_mode = 1
+
+[node name="Border2" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/DashCooldown" unique_id=1583636396]
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -36.5
+offset_right = 36.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_wvxje")
+expand_mode = 1
 
 [node name="ActiveItem" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=317445757]
 layout_mode = 2
@@ -318,9 +379,8 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_lkt4f")
 expand_mode = 2
 
-[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ActiveItem" unique_id=571822061]
-visible = false
-z_index = 1
+[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ActiveItem" unique_id=986822698]
+z_index = -3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -329,11 +389,28 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -38.5
 offset_top = -38.5
-offset_right = 40.5
-offset_bottom = 40.5
+offset_right = 38.5
+offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_og236")
+texture = SubResource("GradientTexture1D_5m6rh")
+expand_mode = 1
+
+[node name="Border2" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ActiveItem" unique_id=1507570798]
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -36.5
+offset_right = 36.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_wvxje")
 expand_mode = 1
 
 [node name="ThrowableItem" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=792240261]
@@ -373,9 +450,8 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_lkt4f")
 expand_mode = 2
 
-[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ThrowableItem" unique_id=829675825]
-visible = false
-z_index = 1
+[node name="Border" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ThrowableItem" unique_id=1940978113]
+z_index = -2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -384,11 +460,28 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -38.5
 offset_top = -38.5
-offset_right = 40.5
-offset_bottom = 40.5
+offset_right = 38.5
+offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_og236")
+texture = SubResource("GradientTexture1D_5m6rh")
+expand_mode = 1
+
+[node name="Border2" type="TextureRect" parent="SkillCooldowns/MarginContainer/HBoxContainer/ThrowableItem" unique_id=829675825]
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -36.5
+offset_right = 36.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_wvxje")
 expand_mode = 1
 
 [node name="Inventory" type="Control" parent="." unique_id=1756702059 node_paths=PackedStringArray("backpack_node", "trash_slot_node", "augments_node", "item_selection_node", "combiner_node", "recycler_node", "extra_augment_nodes", "item_description_node")]
