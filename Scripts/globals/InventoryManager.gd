@@ -331,20 +331,20 @@ func apply_item_effects(item: ItemResource) -> void:
 			ItemGlobals.primary = true
 			item.set_primary_weapon_type_name()
 			item.set_primary_attack_type_name()
-			GameManager.HUD.set_cooldown_icon(item.icon, "PrimaryAttack")
+			GameManager.HUD.set_cooldown_icon(item.icon, ItemType.Type.PRIMARY_ATTACK)
 			
 		if item.attack_type == ItemType.AttackType.SECONDARY:
 			ItemGlobals.secondary_weapon_mesh = item.weapon_mesh
 			ItemGlobals.secondary = true
 			item.set_secondary_weapon_type_name()
 			item.set_secondary_attack_type_name()
-			GameManager.HUD.set_cooldown_icon(item.icon, "SecondaryAttack")
+			GameManager.HUD.set_cooldown_icon(item.icon, ItemType.Type.SECONDARY_ATTACK)
 	
 	if item.type == ItemType.Type.ACTIVE_ITEM:
-		GameManager.HUD.set_cooldown_icon(item.icon, "ActiveItem")
+		GameManager.HUD.set_cooldown_icon(item.icon, ItemType.Type.ACTIVE_ITEM)
 	
 	if item.type == ItemType.Type.THROWABLE:
-		GameManager.HUD.set_cooldown_icon(item.icon, "ThrowableItem")
+		GameManager.HUD.set_cooldown_icon(item.icon, ItemType.Type.THROWABLE)
 	
 	#print("Applying effects for: ", item.item_name)
 	for effect in item.effects:
@@ -363,16 +363,19 @@ func remove_item_effects(item: ItemResource) -> void:
 			ItemGlobals.primary_weapon_mesh = null
 			ItemGlobals.primary = true
 			ItemGlobals.primary_weapon_type = "Default"
-			GameManager.HUD.set_cooldown_icon(null, "PrimaryAttack")
+			GameManager.HUD.set_cooldown_icon(null, ItemType.Type.PRIMARY_ATTACK)
 			
 		if item.attack_type == ItemType.AttackType.SECONDARY:
 			ItemGlobals.secondary_weapon_mesh = null
 			ItemGlobals.secondary = true
 			ItemGlobals.secondary_weapon_type = "Default"
-			GameManager.HUD.set_cooldown_icon(null, "SecondaryAttack")
+			GameManager.HUD.set_cooldown_icon(null, ItemType.Type.SECONDARY_ATTACK)
 	
 	if item.type == ItemType.Type.ACTIVE_ITEM:
-		GameManager.HUD.set_cooldown_icon(null, "ActiveItem")
+		GameManager.HUD.set_cooldown_icon(null, ItemType.Type.ACTIVE_ITEM)
+	
+	if item.type == ItemType.Type.THROWABLE:
+		GameManager.HUD.set_cooldown_icon(null, ItemType.Type.THROWABLE)
 	
 	#print("Removing effects for: ", item.item_name)
 	for effect in item.effects:

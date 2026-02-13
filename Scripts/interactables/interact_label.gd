@@ -27,15 +27,13 @@ func _physics_process(_delta: float) -> void:
 	else:
 		visible = false
 
-
 func update_interact_keybind() -> void:
-	var interact = InputMap.action_get_events("interact")
-	var keybind = interact[0].as_text()
+	var keybind = Helper.get_keybind("interact")
 	
-	if keybind != interact_keybind:
-		interact_keybind = keybind
-		text = "[%s] Interact" % keybind
-
+	if keybind == interact_keybind:
+		return
+	
+	text = "[%s] Interact" % keybind
 
 func _on_body_entered(_body: Node3D) -> void:
 	GameManager.player.interactables.append(get_parent())

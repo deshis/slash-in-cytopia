@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://gwfafccqx5f2"]
+
+[ext_resource type="Script" uid="uid://bb85v4ja526qs" path="res://Scenes/ui/skill_icon.gd" id="1_trwys"]
+
+[sub_resource type="Gradient" id="Gradient_2874v"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.4745098, 0.7921569, 0.7411765, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5m6rh"]
+gradient = SubResource("Gradient_2874v")
+
+[sub_resource type="Gradient" id="Gradient_5m6rh"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wvxje"]
+gradient = SubResource("Gradient_5m6rh")
+
+[sub_resource type="Gradient" id="Gradient_oersf"]
+colors = PackedColorArray(0.2805, 0.5320333, 0.55, 1, 0.103199996, 0.18527998, 0.24, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_484xk"]
+gradient = SubResource("Gradient_oersf")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kry3j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21xkr"]
+bg_color = Color(0, 0, 0, 0.50980395)
+
+[node name="Skill" type="MarginContainer" unique_id=594477463]
+offset_right = 98.0
+offset_bottom = 125.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_trwys")
+
+[node name="Timer" type="Timer" parent="." unique_id=810692757]
+one_shot = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2123753127]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1922935383]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OuterBorder" type="MarginContainer" parent="VBoxContainer/MarginContainer" unique_id=1587762955]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/OuterBorder" unique_id=1316956431]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_5m6rh")
+expand_mode = 1
+
+[node name="InnerBorder" type="MarginContainer" parent="VBoxContainer/MarginContainer" unique_id=1879533138]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/InnerBorder" unique_id=1186698264]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_wvxje")
+expand_mode = 1
+
+[node name="Skill" type="MarginContainer" parent="VBoxContainer/MarginContainer" unique_id=1957710585]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Background" type="TextureRect" parent="VBoxContainer/MarginContainer/Skill" unique_id=147010553]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_484xk")
+expand_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/MarginContainer/Skill" unique_id=640799284]
+layout_mode = 2
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer/Skill" unique_id=593930078]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_kry3j")
+theme_override_styles/fill = SubResource("StyleBoxFlat_21xkr")
+fill_mode = 2
+show_percentage = false
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer" unique_id=1955574134]
+layout_mode = 2
+text = "[  ]"
+fit_content = true
+horizontal_alignment = 1
