@@ -447,6 +447,7 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 	var value = active_effect.active_effect_value
 	var radius = active_effect.aoe_radius
 	var set_facing_direction = active_effect.set_facing_direction
+	var particle = active_effect.particle_scene
 	
 	##TODO: Rotate character towards direction of activation in a more graceful manner
 	##Probably pause movement for a bit
@@ -489,14 +490,29 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 			var aoe_position = spawn_transform.origin + (spawn_transform.basis * aoe.offset)
 			var aoe_rotation = spawn_transform.basis.get_euler().y
 			
-			#indicator
-			var indicator = aoe.create_indicator()
-			get_tree().root.add_child(indicator)
-			indicator.global_position = aoe_position
-			indicator.rotation.y = aoe_rotation
+			##indicator
+			if active_effect.aoe_resource:
+				var indicator = aoe.create_indicator()
+				get_tree().root.add_child(indicator)
+				indicator.global_position = aoe_position
+				indicator.rotation.y = aoe_rotation
+				get_tree().create_timer(aoe.indicator_duration).timeout.connect(indicator.queue_free)
 			
-			get_tree().create_timer(aoe.indicator_duration).timeout.connect(indicator.queue_free)
-			
+			##particles
+			if active_effect.particle_scene:
+				var particle_instance = active_effect.particle_scene.instantiate()
+				get_tree().root.add_child(particle_instance)
+				particle_instance.global_position = aoe_position
+				
+				var all_particles = particle_instance.find_children("*", "GPUParticles3D")
+
+				for particle_found in all_particles:
+					particle_found.emitting = true
+				
+					get_tree().create_timer(5).timeout.connect(particle_instance.queue_free)
+				
+				particle_instance = particle.instantiate()
+
 			var aoe_damage = active_effect.aoe_damage
 			var dot = active_effect.dot_resource.duplicate()
 			

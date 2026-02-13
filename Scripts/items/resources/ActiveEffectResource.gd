@@ -9,7 +9,6 @@ class_name ActiveEffectResource
 @export var aoe_damage: float
 @export var active_effect_cooldown: float = 5
 #@export var active_effect_desc_color: String = "#edc939"
-#NOTE: Might be redundant. Can call GameManager for the particles.
 @export var dot_resource: DotResource
 @export var particle_scene: PackedScene
 @export var aoe_resource: AoeResource

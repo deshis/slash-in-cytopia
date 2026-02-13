@@ -14,11 +14,19 @@ enum AoeShape {
 @export var spawn_at_cursor: bool = false
 
 @export var indicator_scene: PackedScene
+@export var indicator_visible: bool
 @export var indicator_duration: float = 0.5
 
 func create_indicator() -> AoeIndicator:
+		
 	var indicator = indicator_scene.instantiate() as AoeIndicator
 	indicator.setup(self)
+	
+	if !indicator_visible:
+		var material : StandardMaterial3D = indicator.get_active_material( 0 )
+		#shader_material.set_shader_parameter("albedo_color",Color(0,0,0,0))
+		material.albedo_color = Color(0,0,0,0)
+	
 	return indicator
 
 func is_position_in_aoe(aoe_position: Vector3, target_position: Vector3) -> bool:

@@ -481,6 +481,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03322795, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22000965, 0)
 shape = SubResource("BoxShape3D_bfs1g")
 
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="StaticBody3D" unique_id=1520221670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2585173, 0)
+size = Vector3(60, 0.1, 60)
+
 [node name="Chest" parent="." unique_id=300150525 instance=ExtResource("13_mom3f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7675629, 0, 6.8753605)
 
