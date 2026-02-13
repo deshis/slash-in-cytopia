@@ -7,6 +7,8 @@ class_name InventorySlot
 @export var slot_name: String
 @export var slot_type: SLOT
 
+@export var sfx: String = "equip"
+
 @onready var item_slot = $ItemSlot
 @onready var icon_node = $ItemSlot/Icon
 
@@ -34,12 +36,18 @@ func get_item() -> Control:
 	return null
 
 
-func set_item(item: Control) -> void:
+func set_item(item: Control, play_sfx: bool = true) -> void:
 	if item.get_parent():
 		item.get_parent().remove_child(item)
 	item_slot.add_child(item)
 	item.slot = self
 	icon_node.visible = false
+	
+	if sfx == "" or InventoryManager.is_equipping_starter_items:
+		return
+	
+	if play_sfx:
+		SoundManager.play_ui_sfx(sfx)
 
 
 func clear() -> void:

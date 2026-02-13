@@ -9,6 +9,7 @@ func _ready() -> void:
 
 
 func recycle_items() -> void:
+	GameStats.items_recycled += 1
 	MenuManager.close_menu(MenuManager.MENU.RECYCLER)
 	slot.get_item().queue_free()
 	

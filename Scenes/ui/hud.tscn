@@ -294,26 +294,31 @@ alignment = 1
 layout_mode = 2
 script = ExtResource("12_yidpd")
 slot_type = 3
+sfx = ""
 
 [node name="SelectionSlot2" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/ItemSelection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2026668319 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
 slot_type = 3
+sfx = ""
 
 [node name="SelectionSlot3" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/ItemSelection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1922630795 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
 slot_type = 3
+sfx = ""
 
 [node name="SelectionSlot4" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/ItemSelection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=97810018 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
 slot_type = 3
+sfx = ""
 
 [node name="SelectionSlot5" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/ItemSelection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1331910921 instance=ExtResource("10_36s6t")]
 layout_mode = 2
 script = ExtResource("12_yidpd")
 slot_type = 3
+sfx = ""
 
 [node name="MarginContainer" type="MarginContainer" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer" unique_id=1134784886]
 layout_mode = 2
@@ -367,6 +372,7 @@ script = ExtResource("9_36s6t")
 opened_icon = ExtResource("18_spcc7")
 icon = ExtResource("19_dw40x")
 slot_type = 5
+sfx = "trash"
 
 [node name="RightSide" type="MarginContainer" parent="Inventory/HBoxContainer" unique_id=2097617315]
 layout_mode = 2

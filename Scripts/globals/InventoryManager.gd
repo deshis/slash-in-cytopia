@@ -126,14 +126,15 @@ func move_item(origin_slot: InventorySlot, new_slot: InventorySlot = null) -> vo
 			new_slot = handle_recycler_move(origin_slot, new_slot, item)
 	
 	origin_slot.icon_node.visible = true
+	
+	if new_slot == origin_slot:
+		return
+	
 	place_or_swap(item, origin_slot, new_slot)
 	update_inventory_data()
 	
 	if MenuManager.active_menu == MenuManager.MENU.COMBINER:
 		combiner_node.update_state()
-
-	if not is_equipping_starter_items:
-		SoundManager.play_ui_sfx("equip")
 
 func can_replace_item(slot: InventorySlot) -> bool:
 	if not slot.get_item():
@@ -174,7 +175,7 @@ func handle_pickup_move(_origin_slot: PickupSlot, new_slot: InventorySlot, item:
 	if not can_replace_item(new_slot):
 		return null
 	
-	move_item(new_slot)
+	place_or_swap(new_slot.get_item(), new_slot, get_backpack_slot(), false)
 	close_item_pickup_menu()
 	return new_slot
 
@@ -210,20 +211,12 @@ func handle_recycler_move(_origin_slot: RecyclerSlot, new_slot: InventorySlot, i
 	return new_slot
 
 
-func place_or_swap(item: Control, origin_slot: Control, new_slot: Control) -> void:
-	if not new_slot:
-		new_slot = origin_slot
-
+func place_or_swap(item: Control, origin_slot: Control, new_slot: Control, play_sfx := true) -> void:
 	if new_slot.get_item():
 		var item_to_swap = new_slot.get_item()
-		origin_slot.set_item(item_to_swap)
-
-	new_slot.set_item(item)
-
-func delete_item(item: Control):
-	GameStats.items_trashed += 1
-	item.queue_free()
-	SoundManager.play_ui_sfx("trash")
+		origin_slot.set_item(item_to_swap, false)
+	
+	new_slot.set_item(item, play_sfx)
 
 
 func get_augment_slot(item) -> Control:
@@ -303,11 +296,11 @@ func update_inventory_data() -> void:
 	# update augments
 	for i in range(augments_node.get_child_count()):
 		var slot = augments_node.get_child(i)
-
+	
 		var old_item = augment_items[i]
 		var slot_item = slot.get_item()
 		var new_item = slot_item.item if slot_item else null
-
+	
 		update_item_effects(old_item, new_item)
 		augment_items[i] = new_item
 
@@ -409,12 +402,13 @@ func reset_inventory() -> void:
 func equip_starter_items() -> void:
 	if starter_items.size() == 0:
 		return
+		
 	is_equipping_starter_items = true
-
+	
 	for item in starter_items:
 		var item_control = create_item_control(item)
 		var slot = get_backpack_slot()
 		slot.set_item(item_control)
 		move_item(slot)
+	
 	is_equipping_starter_items = false
-		

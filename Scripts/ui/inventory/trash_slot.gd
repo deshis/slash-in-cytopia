@@ -3,8 +3,13 @@ class_name TrashSlot
 
 @export var opened_icon: CompressedTexture2D
 
-func set_item(item: Control) -> void:
-	InventoryManager.delete_item(item)
+func set_item(item: Control, play_sfx: bool = false) -> void:
+	GameStats.items_trashed += 1
+	SoundManager.play_ui_sfx(sfx)
+	item.queue_free()
+	
+	await get_tree().physics_frame
+	InventoryManager.update_inventory_data()
 
 
 func set_open(state: bool) -> void:

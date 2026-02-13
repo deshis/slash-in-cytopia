@@ -26,6 +26,7 @@ func get_empty_slot() -> Control:
 
 
 func combine_items() -> void:
+	GameStats.items_combined += 1
 	MenuManager.close_menu(MenuManager.MENU.COMBINER)
 	
 	for slot in slots:

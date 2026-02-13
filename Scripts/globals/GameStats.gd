@@ -21,6 +21,8 @@ var dashes_used := 0
 var active_items_used := 0
 var throwables_used := 0
 var items_trashed := 0
+var items_recycled := 0
+var items_combined := 0
 
 var enemies_killed_by_type := {}
 var bosses_killed_by_type := {}
@@ -47,6 +49,8 @@ func reset_game_stats()->void:
 	active_items_used = 0
 	throwables_used = 0
 	items_trashed = 0
-
+	items_recycled = 0
+	items_combined = 0
+	
 	enemies_killed_by_type.clear()
 	bosses_killed_by_type.clear()
