@@ -175,7 +175,9 @@ func handle_pickup_move(_origin_slot: PickupSlot, new_slot: InventorySlot, item:
 	if not can_replace_item(new_slot):
 		return null
 	
-	place_or_swap(new_slot.get_item(), new_slot, get_backpack_slot(), false)
+	if new_slot.get_item():
+		place_or_swap(new_slot.get_item(), new_slot, get_backpack_slot(), false)
+	
 	close_item_pickup_menu()
 	return new_slot
 
