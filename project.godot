@@ -38,6 +38,7 @@ ProfileManager="*res://Scripts/globals/ProfileManager.gd"
 AchievementManager="*res://Scripts/globals/AchievementManager.gd"
 Helper="*uid://cud05m64qjwb8"
 MenuManager="*uid://ds06swbi4xsa4"
+SceneTransitionManager="*uid://rb3kvkmvbvic"
 
 [debug]
 

@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if GameManager.player is not Player:
+	if not GameManager.player or GameManager.player is not Player:
 		return
 	
 	var interactables = GameManager.player.interactables

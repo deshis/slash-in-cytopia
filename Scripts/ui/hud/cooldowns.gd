@@ -8,8 +8,6 @@ var player: Player = GameManager.player
 @export var brainchip_node: Control
 @export var throwable_node: Control
 
-@onready var container = $MarginContainer/HBoxContainer
-
 
 func _ready() -> void:
 	if not player:

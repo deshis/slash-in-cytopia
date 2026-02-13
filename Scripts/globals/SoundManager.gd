@@ -58,7 +58,8 @@ func _ready() -> void:
 		"button": load("res://Assets/audio/ui_button_click.wav"),
 		"trash":load("res://Assets/audio/effect_trash.wav"),
 		"equip":load("res://Assets/audio/effect_equip.wav"),
-		"combine":load("res://Assets/audio/effect_combine.wav")
+		"combine":load("res://Assets/audio/effect_combine.wav"),
+		"wipe_trans_swing":load("res://Assets/audio/wipe_trans_swing.ogg")
 	}
 	
 	pitch_ranges = {

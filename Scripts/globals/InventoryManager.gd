@@ -125,11 +125,11 @@ func move_item(origin_slot: InventorySlot, new_slot: InventorySlot = null) -> vo
 		slot_type.RECYCLER:
 			new_slot = handle_recycler_move(origin_slot, new_slot, item)
 	
-	origin_slot.icon_node.visible = true
-	
-	if new_slot == origin_slot:
+
+	if new_slot == origin_slot or not new_slot:
 		return
 	
+	origin_slot.icon_node.visible = true
 	place_or_swap(item, origin_slot, new_slot)
 	update_inventory_data()
 	

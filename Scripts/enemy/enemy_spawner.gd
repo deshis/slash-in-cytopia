@@ -30,6 +30,7 @@ var enemy_pools := {}
 var init_pool_size := 8
 
 func start_spawner() -> void:
+	player = GameManager.player
 	init_pools()
 	
 	_on_credits_cooldown_timer_timeout()

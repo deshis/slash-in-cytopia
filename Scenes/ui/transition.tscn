@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://bw8cyehliact5"]
+
+[ext_resource type="Script" uid="uid://bivkwbn1sfrmg" path="res://Scenes/ui/transition_handler.gd" id="1_4bosu"]
+
+[sub_resource type="Animation" id="Animation_3bm2s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SplitWipe/TopRect:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SplitWipe/BottomRect:custom_minimum_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4bosu"]
+resource_name = "fade_in"
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"new_marker",
+"time": -0.06666668
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y01tf"]
+resource_name = "fade_out"
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"new_marker",
+"time": -0.06666668
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k2l5x"]
+resource_name = "split_wipe"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SplitWipe/TopRect:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1000000),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1920, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SplitWipe/BottomRect:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 0.99996674),
+"transitions": PackedFloat32Array(1, 1000000),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1920, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["wipe_trans_swing"],
+"method": &"play_transition_sound"
+}, {
+"args": ["wipe_trans_swing"],
+"method": &"play_transition_sound"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k2l5x"]
+_data = {
+&"RESET": SubResource("Animation_3bm2s"),
+&"fade_in": SubResource("Animation_4bosu"),
+&"fade_out": SubResource("Animation_y01tf"),
+&"split_wipe": SubResource("Animation_k2l5x")
+}
+
+[node name="Transition" type="CanvasLayer" unique_id=537128442]
+layer = 100
+script = ExtResource("1_4bosu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1109502482]
+libraries/ = SubResource("AnimationLibrary_k2l5x")
+
+[node name="SplitWipe" type="VBoxContainer" parent="." unique_id=1553632742]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="TopRect" type="ColorRect" parent="SplitWipe" unique_id=681141952]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BottomRect" type="ColorRect" parent="SplitWipe" unique_id=145510966]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Fade" type="ColorRect" parent="." unique_id=738137958]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
