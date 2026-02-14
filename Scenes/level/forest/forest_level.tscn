@@ -458,7 +458,6 @@ fov = 50.0
 size = 6.0
 
 [node name="EnemySpawner" parent="." unique_id=398989895 node_paths=PackedStringArray("navigation_region") instance=ExtResource("10_bfs1g")]
-boss_cooldown_time = 2.0
 navigation_region = NodePath("../NavigationRegion3D")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1638144401]
