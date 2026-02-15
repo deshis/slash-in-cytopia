@@ -37,6 +37,7 @@ curve_z = SubResource("Curve_l765s")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3msxb"]
 particle_flag_align_y = true
+emission_shape_offset = Vector3(0, 0.8, 0)
 emission_shape_scale = Vector3(0.5, 1, 0.5)
 emission_shape = 6
 emission_ring_axis = Vector3(0, 90, 1)
@@ -107,7 +108,7 @@ material = SubResource("StandardMaterial3D_j273a")
 size = Vector2(0.35, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_fmwbk"]
-colors = PackedColorArray(1.3895293, 1.5565991, 1.5552554, 1, 0, 0, 0, 1)
+colors = PackedColorArray(1.2398502, 0.86425906, 0.4689276, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qbohk"]
 gradient = SubResource("Gradient_fmwbk")
@@ -120,12 +121,13 @@ point_count = 3
 curve = SubResource("Curve_mej3t")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_frj5g"]
+emission_shape_offset = Vector3(0, 0.5, 0)
 gravity = Vector3(0, 0, 0)
 attractor_interaction_enabled = false
-scale_min = 15.0
-scale_max = 15.0
+scale_min = 14.0
+scale_max = 14.0
 scale_curve = SubResource("CurveTexture_dehpx")
-color = Color(1.5139916, 1.6018212, 2.018, 1)
+color = Color(1.3706126, 1.4474745, 1.8247963, 1)
 color_ramp = SubResource("GradientTexture1D_qbohk")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c270s"]
@@ -216,6 +218,7 @@ process_material = SubResource("ParticleProcessMaterial_frj5g")
 draw_pass_1 = SubResource("QuadMesh_aqpo0")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1007594467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 light_color = Color(1.2983029, 1.1827805, 1.1289803, 1)
 omni_range = 3.9
 omni_attenuation = 1.75

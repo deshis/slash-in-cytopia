@@ -411,6 +411,7 @@ func die(drop_loot: bool = true) -> void:
 		
 		var all_particles = particle_instance.find_children("*", "GPUParticles3D")
 		var anim_player = particle_instance.get_node("AnimationPlayer")
+		
 		anim_player.play("explosion_light_fade")
 		for particle_found in all_particles:
 			particle_found.emitting = true

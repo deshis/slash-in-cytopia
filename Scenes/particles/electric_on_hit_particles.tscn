@@ -37,6 +37,7 @@ curve_z = SubResource("Curve_l765s")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3msxb"]
 particle_flag_align_y = true
+emission_shape_offset = Vector3(0, 1, 0)
 emission_shape_scale = Vector3(0.25, 0.6, 0.25)
 emission_shape = 6
 emission_ring_axis = Vector3(0, 90, 1)
@@ -117,7 +118,7 @@ emitting = false
 amount = 7
 sub_emitter = NodePath("SubExplosion")
 lifetime = 0.75
-interp_to_end = 0.15
+interp_to_end = 0.1
 one_shot = true
 explosiveness = 0.9
 fixed_fps = 60

@@ -10,8 +10,8 @@ point_count = 3
 curve = SubResource("Curve_m7xxd")
 
 [sub_resource type="Gradient" id="Gradient_kja04"]
-offsets = PackedFloat32Array(0, 0.043977056, 0.33652008)
-colors = PackedColorArray(0, 0, 0, 0, 0.9955097, 0.98244435, 0.99269444, 1, 0.12156863, 0.12156863, 0.12156863, 1)
+offsets = PackedFloat32Array(0, 0.043977056, 0.4716981)
+colors = PackedColorArray(0, 0, 0, 0, 0.9955097, 0.98244435, 0.99269444, 1, 0.20896688, 0.06296417, 0.04200106, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_46pj6"]
 gradient = SubResource("Gradient_kja04")
@@ -40,23 +40,39 @@ color = Color(0.34, 0.1836, 0.1836, 1)
 color_ramp = SubResource("GradientTexture1D_46pj6")
 alpha_curve = SubResource("CurveTexture_qt575")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cnqyf"]
+seed = 5
+frequency = 0.2907
+fractal_type = 2
+fractal_lacunarity = 2.04
+fractal_gain = -0.915
+cellular_return_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iccth"]
+noise = SubResource("FastNoiseLite_cnqyf")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbt0b"]
 transparency = 1
+blend_mode = 4
 shading_mode = 0
+disable_specular_occlusion = true
 vertex_color_use_as_albedo = true
+albedo_texture = SubResource("NoiseTexture2D_iccth")
+albedo_texture_force_srgb = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_ksoeo"]
 material = SubResource("StandardMaterial3D_sbt0b")
+radius = 1.0
 
 [node name="impact_dust" type="GPUParticles3D" unique_id=1212537711 node_paths=PackedStringArray("particles")]
 emitting = false
 amount = 100
 lifetime = 3.0
 one_shot = true
+preprocess = 0.15
 speed_scale = 1.75
 explosiveness = 0.85
 randomness = 0.1
-fixed_fps = 24
 process_material = SubResource("ParticleProcessMaterial_sbt0b")
 draw_pass_1 = SubResource("SphereMesh_ksoeo")
 script = ExtResource("1_cnqyf")

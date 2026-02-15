@@ -623,6 +623,7 @@ func throw(throw_resource: ThrowableResource):
 	if hit_pos:
 
 		if throw_resource.projectile_from_sky:
+			await get_tree().create_timer(1.5).timeout
 			var direction = (hit_pos - throwable_object.global_position)
 			var impulse = direction * throw_force
 			throwable_object.apply_central_impulse(impulse)

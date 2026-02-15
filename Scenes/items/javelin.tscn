@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ckwcf28s5qvop"]
 
 [ext_resource type="Script" uid="uid://b3c60k0xmmh2q" path="res://Scripts/items/ThrowableLogic.gd" id="1_mj2uu"]
+[ext_resource type="Texture2D" uid="uid://dovdqeuldcpu" path="res://Assets/particles/light_01.png" id="2_p5unl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mj2uu"]
 size = Vector3(0.6, 10, 1.2)
@@ -8,9 +9,10 @@ size = Vector3(0.6, 10, 1.2)
 [sub_resource type="BoxMesh" id="BoxMesh_p5unl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1gfq"]
-albedo_color = Color(0.29219002, 0.29219005, 0.29219, 1)
-emission = Color(0.37740332, 0.51798165, 0.9922901, 1)
-emission_energy_multiplier = 5.34
+albedo_color = Color(0.34158427, 0.34158427, 0.3415842, 1)
+albedo_texture = ExtResource("2_p5unl")
+emission = Color(0.93639684, 0.31955191, 0.16700774, 1)
+emission_energy_multiplier = 0.46
 
 [node name="RigidBody3D" type="RigidBody3D" unique_id=525632464]
 input_ray_pickable = false

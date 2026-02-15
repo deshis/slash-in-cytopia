@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://c84iea46i0ykh"]
+
+[ext_resource type="Texture2D" uid="uid://c15dsxqpwd0k" path="res://Assets/particles/star_05.png" id="2_4d27x"]
+[ext_resource type="Texture2D" uid="uid://cxdxsssevnamf" path="res://Assets/particles/blood.png" id="2_mbhww"]
+
+[sub_resource type="Curve" id="Curve_uycyg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5567765, 0.5410663), -3.0485666, -3.0485666, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c56q3"]
+curve = SubResource("Curve_uycyg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mryok"]
+particle_flag_align_y = true
+emission_shape_offset = Vector3(0, 1, 0)
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+attractor_interaction_enabled = false
+scale_min = 0.14999999
+scale_max = 0.14999999
+alpha_curve = SubResource("CurveTexture_c56q3")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="Curve" id="Curve_mryok"]
+_data = [Vector2(0, 0), 0.0, 8.107042, 0, 0, Vector2(0.15737703, 0.6034482), -0.09390385, -0.09390385, 0, 0, Vector2(0.41967213, 0.37068963), -1.115465, -1.115465, 0, 0, Vector2(1, 0.043103337), -0.2629307, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uycyg"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.5158843, 0, 0.06679484, 1)
+use_particle_trails = true
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_c56q3"]
+material = SubResource("StandardMaterial3D_uycyg")
+radius = 0.35
+section_rings = 7
+curve = SubResource("Curve_mryok")
+
+[sub_resource type="Gradient" id="Gradient_7wiwm"]
+offsets = PackedFloat32Array(0, 0.14339623, 0.709434, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.84651166, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mbhww"]
+gradient = SubResource("Gradient_7wiwm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4d27x"]
+emission_shape_offset = Vector3(0, 0.05, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+color = Color(1.353256, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_mbhww")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5viug"]
+transparency = 2
+alpha_scissor_threshold = 0.255
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_mbhww")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ejmwi"]
+material = SubResource("StandardMaterial3D_5viug")
+
+[sub_resource type="Gradient" id="Gradient_5viug"]
+offsets = PackedFloat32Array(0, 0.9018868)
+colors = PackedColorArray(0.77254903, 0, 0, 0.60784316, 0.77254903, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qbohk"]
+gradient = SubResource("Gradient_5viug")
+
+[sub_resource type="Curve" id="Curve_ejmwi"]
+_data = [Vector2(0.006600663, 1), 0.0, 0.0, 0, 0, Vector2(0.389439, 0.89906), -0.35771686, -0.35771686, 0, 0, Vector2(1, 0.8193706), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dehpx"]
+curve = SubResource("Curve_ejmwi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_as6xt"]
+emission_shape_offset = Vector3(0, 0.5, 0)
+gravity = Vector3(0, -1.5, 0)
+attractor_interaction_enabled = false
+scale_min = 14.0
+scale_max = 14.0
+scale_curve = SubResource("CurveTexture_dehpx")
+color_ramp = SubResource("GradientTexture1D_qbohk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c270s"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_4d27x")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_uw5dc"]
+material = SubResource("StandardMaterial3D_c270s")
+size = Vector2(1.1, 1.1)
+
+[node name="Node3D" type="Node3D" unique_id=343124799]
+
+[node name="death_particles_humanoid" type="GPUParticles3D" parent="." unique_id=53914993]
+emitting = false
+amount = 15
+sub_emitter = NodePath("Puddle")
+one_shot = true
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 0.25
+process_material = SubResource("ParticleProcessMaterial_mryok")
+draw_passes = 2
+draw_pass_1 = SubResource("TubeTrailMesh_c56q3")
+draw_pass_2 = null
+
+[node name="Puddle" type="GPUParticles3D" parent="death_particles_humanoid" unique_id=244107383]
+emitting = false
+amount = 20
+lifetime = 4.0
+one_shot = true
+collision_base_size = 0.02
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_4d27x")
+draw_pass_1 = SubResource("PlaneMesh_ejmwi")
+
+[node name="BloodCloud" type="GPUParticles3D" parent="." unique_id=127794367]
+emitting = false
+amount = 1
+lifetime = 1.25
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_as6xt")
+draw_pass_1 = SubResource("QuadMesh_uw5dc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=386857131]
