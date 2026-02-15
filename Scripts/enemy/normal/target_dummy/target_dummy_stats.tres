@@ -6,7 +6,7 @@
 script = ExtResource("1_un5fu")
 name = "Target Dummy"
 speed = 0.0
-max_health = 100.0
+max_health = 1337.0
 cost = 0.0
 health_per_level = 0.0
 metadata/_custom_type_script = "uid://t76ghlhghorw"

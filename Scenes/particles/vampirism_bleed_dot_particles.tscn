@@ -46,8 +46,10 @@ section_rings = 7
 curve = SubResource("Curve_mryok")
 
 [node name="player_on_hit_particles_3D" type="GPUParticles3D" unique_id=53914993 node_paths=PackedStringArray("particles")]
+emitting = false
 amount = 4
 lifetime = 0.75
+one_shot = true
 explosiveness = 0.75
 fixed_fps = 0
 trail_enabled = true
