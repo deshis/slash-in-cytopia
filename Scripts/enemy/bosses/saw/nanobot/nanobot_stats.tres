@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://0sl2ws8x8lck"]
 
+[ext_resource type="PackedScene" uid="uid://unihvbid3j10" path="res://Scenes/particles/explosion_particles.tscn" id="1_kj2f2"]
 [ext_resource type="Script" uid="uid://t76ghlhghorw" path="res://Scripts/enemy/EnemyStats.gd" id="1_tj2j6"]
 
 [resource]
 script = ExtResource("1_tj2j6")
 name = "Nanobot-300"
+death_particle_scene = ExtResource("1_kj2f2")
 speed = 10.5
 cost = 0.0
 health_per_level = 0.5
-damage_per_level = 0.3
 metadata/_custom_type_script = "uid://t76ghlhghorw"

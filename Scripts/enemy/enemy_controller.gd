@@ -369,14 +369,26 @@ func take_damage(damage:float, _damage_dealer = null) -> void:
 	if enemy_frozen:
 		enemy_frozen = false
 		shatter_ice()
-	
 	enemy.health -= damage
 	update_health_bar.emit(enemy.health)
 	
 	hit_flash.set_shader_parameter('strength',1.0)
 	hit_flash_timer.start(hit_flash_duration)
 	
-	GameManager.particles.emit_particles("on_hit", global_position, self)
+	#GameManager.particles.emit_particles("on_hit", global_position, self)
+	
+	if enemy.on_hit_particles:
+		print("wat")
+		var particle_instance = enemy.on_hit_particles.instantiate()
+		get_tree().root.add_child(particle_instance)
+		particle_instance.global_position = global_position
+		
+		var all_particles = particle_instance.find_children("*", "GPUParticles3D")
+		
+		for particle_found in all_particles:
+			particle_found.emitting = true
+	
+		get_tree().create_timer(4).timeout.connect(particle_instance.queue_free)
 	
 	GameStats.total_damage_dealt += damage
 	
@@ -384,6 +396,7 @@ func take_damage(damage:float, _damage_dealer = null) -> void:
 		die()
 
 func die(drop_loot: bool = true) -> void:
+
 	if is_dead:
 		return
 	is_dead = true
@@ -392,7 +405,18 @@ func die(drop_loot: bool = true) -> void:
 	
 	SoundManager.play_sfx("enemy_die", global_position)
 	
-	GameManager.particles.emit_particles("enemy_on_death", global_position)
+	if enemy.death_particles:
+		var particle_instance = enemy.death_particles.instantiate()
+		get_tree().root.add_child(particle_instance)
+		particle_instance.global_position = global_position
+		
+		var all_particles = particle_instance.find_children("*", "GPUParticles3D")
+		var anim_player = particle_instance.get_node("AnimationPlayer")
+		anim_player.play("explosion_light_fade")
+		for particle_found in all_particles:
+			particle_found.emitting = true
+		
+			get_tree().create_timer(4).timeout.connect(particle_instance.queue_free)
 	
 	#Remove active particles
 	for child in self.get_children():

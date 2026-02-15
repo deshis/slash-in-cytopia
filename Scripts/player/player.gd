@@ -918,7 +918,7 @@ func _on_light_attack_area_entered(area: Area3D) -> void:
 	deal_damage(area, attack_light_damage)
 	
 	#EMIT HIT PARTICLES
-	GameManager.particles.emit_particles("on_hit", area.global_position)
+	#GameManager.particles.emit_particles("on_hit", area.global_position)
 
 	if primary_attack_active_dot != null:
 		
@@ -943,7 +943,7 @@ func _on_heavy_attack_area_entered(area: Area3D) -> void:
 	deal_damage(area, attack_heavy_damage)
 	
 	#EMIT HIT PARTICLES
-	GameManager.particles.emit_particles("on_hit", area.global_position)
+	#GameManager.particles.emit_particles("on_hit", area.global_position)
 
 	if secondary_attack_active_dot != null:
 		

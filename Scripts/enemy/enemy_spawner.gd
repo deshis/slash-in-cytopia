@@ -75,6 +75,8 @@ func get_from_pool(prefab: EnemyPrefab) -> EnemyController:
 
 func spawn_enemy(prefab: EnemyPrefab, pos: Vector3 = Vector3.ZERO) -> void:
 	var enemy = get_from_pool(prefab)
+	var death_particles = prefab.death_particle_scene
+	var on_hit_particles = prefab.hit_particle_scene
 	
 	if not enemy:
 		enemy = instantiate_enemy(prefab)
@@ -85,6 +87,11 @@ func spawn_enemy(prefab: EnemyPrefab, pos: Vector3 = Vector3.ZERO) -> void:
 		enemy.global_position = Vector3(pos.x, 0.0, pos.z)
 	
 	enemy.enemy = prefab.stats.duplicate(true)
+	
+	#idk if this is ideal
+	enemy.enemy.death_particles = death_particles
+	enemy.enemy.on_hit_particles = on_hit_particles
+	
 	enemy.enemy.setup(diff.get_difficulty())
 	enemy._activate()
 
