@@ -1,6 +1,6 @@
 [gd_resource type="SphereMesh" format=3 uid="uid://y4wkjh0230vr"]
 
-[ext_resource type="Texture2D" uid="uid://b03fyshh7bk7g" path="res://Assets/particles/flame_04.png" id="1_o8v40"]
+[ext_resource type="Texture2D" uid="uid://dovdqeuldcpu" path="res://Assets/particles/light_01.png" id="1_o8v40"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmwbk"]
 transparency = 1
@@ -9,15 +9,17 @@ cull_mode = 2
 no_depth_test = true
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_color = Color(2.253293, 2.253293, 2.253293, 0.50200003)
+albedo_color = Color(2.253293, 2.253293, 2.253293, 0.165)
 albedo_texture = ExtResource("1_o8v40")
 metallic_specular = 0.46
 emission_enabled = true
-emission = Color(0, 0, 0.9795011, 1)
-emission_energy_multiplier = 2.13
+emission = Color(0.89624393, 0, 0, 1)
+emission_energy_multiplier = 5.5
+emission_operator = 1
 heightmap_scale = -2.526
 
 [resource]
 material = SubResource("StandardMaterial3D_fmwbk")
-radius = 0.25
-height = 0.5
+radius = 0.22
+height = 0.22
+is_hemisphere = true

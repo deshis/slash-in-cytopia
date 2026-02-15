@@ -24,6 +24,7 @@ radial_velocity_max = -2.2351742e-05
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -5.000002
 linear_accel_max = -5.000002
+attractor_interaction_enabled = false
 scale_curve = SubResource("CurveTexture_lncj0")
 alpha_curve = SubResource("CurveTexture_qt575")
 

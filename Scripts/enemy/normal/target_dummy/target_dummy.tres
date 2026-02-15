@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyPrefab" format=3 uid="uid://dws7qvjfwi5e2"]
+
+[ext_resource type="PackedScene" uid="uid://dkmsmarr7r4hc" path="res://Scenes/particles/death_particles_1.tscn" id="1_an3k3"]
+[ext_resource type="Script" uid="uid://cqw5n3pgcmai6" path="res://Scripts/enemy/EnemyPrefab.gd" id="1_npie6"]
+[ext_resource type="PackedScene" uid="uid://c6boujtbvj8ho" path="res://Scenes/particles/electric_on_hit_particles.tscn" id="2_krrvq"]
+[ext_resource type="PackedScene" uid="uid://bn7ljbixqfkl3" path="res://Scenes/enemy/normal/target_dummy/enemy_target_dummy.tscn" id="3_an3k3"]
+[ext_resource type="Resource" uid="uid://bad2xu74u14kx" path="res://Scripts/enemy/normal/target_dummy/target_dummy_stats.tres" id="5_6s7oh"]
+
+[resource]
+script = ExtResource("1_npie6")
+stats = ExtResource("5_6s7oh")
+scene = ExtResource("3_an3k3")
+death_particle_scene = ExtResource("1_an3k3")
+hit_particle_scene = ExtResource("2_krrvq")
+metadata/_custom_type_script = "uid://cqw5n3pgcmai6"

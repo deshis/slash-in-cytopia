@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bn7ljbixqfkl3"]
+
+[ext_resource type="Script" uid="uid://dshbeutojoowh" path="res://Scripts/enemy/normal/target_dummy/target_dummy.gd" id="1_sbl13"]
+[ext_resource type="PackedScene" uid="uid://bkluuxs7dqdp2" path="res://Scenes/enemy/normal/slasher/attack_slasher.tscn" id="2_rmahe"]
+[ext_resource type="PackedScene" uid="uid://dtmntfwnrv3ig" path="res://Scenes/enemy/normal/slasher/slasher_model.tscn" id="3_6x8dp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_puxwi"]
+size = Vector3(0.7, 2, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_48d4a"]
+size = Vector3(1, 2, 1)
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1376517030 node_paths=PackedStringArray("nav_agent")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+collision_layer = 4096
+collision_mask = 4097
+motion_mode = 1
+wall_min_slide_angle = 0.0
+safe_margin = 0.1
+script = ExtResource("1_sbl13")
+nav_agent = NodePath("NavigationAgent3D")
+attack = ExtResource("2_rmahe")
+attack_range = 2.2
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1889568083]
+target_desired_distance = 3.0
+radius = 1.0
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1297325411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_puxwi")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1901266866]
+collision_layer = 8192
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox" unique_id=586299555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_48d4a")
+
+[node name="model" parent="." unique_id=1909531779 instance=ExtResource("3_6x8dp")]
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

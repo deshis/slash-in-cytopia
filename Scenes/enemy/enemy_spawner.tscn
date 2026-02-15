@@ -11,12 +11,14 @@
 [ext_resource type="Resource" uid="uid://bhow6fae2mh5t" path="res://Scripts/enemy/augmented/mage/AugMagePrefab.tres" id="8_6o5gf"]
 [ext_resource type="Resource" uid="uid://bm0jberehwd8k" path="res://Scripts/enemy/bosses/saw/SawPrefab.tres" id="9_f438n"]
 [ext_resource type="Resource" uid="uid://baujclodehp88" path="res://Scripts/enemy/bosses/claw/ClawPrefab.tres" id="10_6o5gf"]
+[ext_resource type="Resource" uid="uid://dws7qvjfwi5e2" path="res://Scripts/enemy/normal/target_dummy/target_dummy.tres" id="11_o3b6r"]
 
 [node name="EnemySpawner" type="Node3D" unique_id=1830396069 node_paths=PackedStringArray("wave_cooldown_timer", "credits_cooldown_timer", "boss_cooldown_timer", "diff")]
 script = ExtResource("1_4l55s")
 enemy_list = Array[ExtResource("2_tdwud")]([ExtResource("4_mjc5i"), ExtResource("4_qiwfs"), ExtResource("5_te1bg")])
 augmented_list = Array[ExtResource("2_tdwud")]([ExtResource("4_5f1q1"), ExtResource("6_iav0j"), ExtResource("8_6o5gf")])
 boss_list = Array[ExtResource("2_tdwud")]([ExtResource("9_f438n"), ExtResource("10_6o5gf")])
+target_dummy = ExtResource("11_o3b6r")
 wave_cooldown_timer = NodePath("WaveCooldownTimer")
 credits_cooldown_timer = NodePath("CreditsCooldownTimer")
 boss_cooldown_timer = NodePath("BossCooldownTimer")

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="ActiveEffectResource" format=3 uid="uid://ifm3rf634612"]
 
 [ext_resource type="PackedScene" uid="uid://dpsu4w5s78s3i" path="res://Scenes/Aoes/Rectangle.tscn" id="1_ghiwh"]
-[ext_resource type="PackedScene" uid="uid://bn26kn4nhfwt7" path="res://Scenes/particles/player_on_hit.tscn" id="1_mkwyp"]
 [ext_resource type="Script" uid="uid://rwrpa5fevhio" path="res://Scripts/items/resources/ActiveEffectResource.gd" id="1_wnt5p"]
 [ext_resource type="Script" uid="uid://cl2mw12pdltyo" path="res://Scripts/items/resources/AOEresource.gd" id="2_88f8e"]
 [ext_resource type="Script" uid="uid://ko57id0ce143" path="res://Scripts/items/resources/DotResource.gd" id="2_a3kyj"]
+[ext_resource type="PackedScene" uid="uid://hodsqdek1yok" path="res://Scenes/particles/vampirism_bleed_dot_particles.tscn" id="3_ghiwh"]
 [ext_resource type="PackedScene" uid="uid://wl3rlpm040ut" path="res://Scenes/particles/vampirism_ability_particle.tscn" id="4_5fxjl"]
 
 [sub_resource type="Resource" id="Resource_dslir"]
@@ -23,7 +23,7 @@ dot_item_desc_color = "#fa0000"
 dot_tick_damage = 6.0
 dot_tick_lifesteal = 50.0
 dot_tick_rate = 0.8
-particle_scene = ExtResource("1_mkwyp")
+particle_scene = ExtResource("3_ghiwh")
 metadata/_custom_type_script = "uid://ko57id0ce143"
 
 [resource]

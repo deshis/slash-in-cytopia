@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://wl3rlpm040ut"]
 
 [ext_resource type="Texture2D" uid="uid://c15dsxqpwd0k" path="res://Assets/particles/star_05.png" id="1_n0de3"]
+[ext_resource type="Texture2D" uid="uid://dovdqeuldcpu" path="res://Assets/particles/light_01.png" id="2_glxhf"]
 [ext_resource type="Texture2D" uid="uid://cxdxsssevnamf" path="res://Assets/particles/blood.png" id="2_nw1os"]
 
 [sub_resource type="Curve" id="Curve_glxhf"]
@@ -12,16 +13,20 @@ curve = SubResource("Curve_glxhf")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f23km"]
 gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
 scale_min = 7.0
 scale_max = 7.0
 scale_curve = SubResource("CurveTexture_dehpx")
 color = Color(1.2844781, 0, 0.034392763, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c270s"]
+render_priority = 1
 transparency = 1
+blend_mode = 1
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
+albedo_color = Color(1.353256, 1.353256, 1.353256, 1)
 albedo_texture = ExtResource("1_n0de3")
 billboard_mode = 3
 billboard_keep_scale = true
@@ -31,6 +36,29 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_v6x33"]
 material = SubResource("StandardMaterial3D_c270s")
+size = Vector2(1.25, 1.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmwbk"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+no_depth_test = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(2.253293, 2.253293, 2.253293, 0.165)
+albedo_texture = ExtResource("2_glxhf")
+metallic_specular = 0.46
+emission_enabled = true
+emission = Color(0.89624393, 0, 0, 1)
+emission_energy_multiplier = 5.5
+emission_operator = 1
+heightmap_scale = -2.526
+
+[sub_resource type="SphereMesh" id="SphereMesh_f23km"]
+material = SubResource("StandardMaterial3D_fmwbk")
+radius = 0.22
+height = 0.22
+is_hemisphere = true
 
 [sub_resource type="Curve" id="Curve_2xa7e"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -76,7 +104,9 @@ amount = 2
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_f23km")
+draw_passes = 2
 draw_pass_1 = SubResource("QuadMesh_v6x33")
+draw_pass_2 = SubResource("SphereMesh_f23km")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1914925895]
 emitting = false

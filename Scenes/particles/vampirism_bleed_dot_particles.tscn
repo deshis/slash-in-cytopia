@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://hodsqdek1yok"]
+
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="1_vu4un"]
+
+[sub_resource type="Curve" id="Curve_uycyg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5567765, 0.5410663), -3.0485666, -3.0485666, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c56q3"]
+curve = SubResource("Curve_uycyg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mryok"]
+particle_flag_align_y = true
+emission_shape_offset = Vector3(0, 1, 0)
+emission_shape_scale = Vector3(0.4, 1, 0.4)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0.055, 0, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, -2, 0)
+scale_min = 0.39999998
+scale_max = 0.39999998
+alpha_curve = SubResource("CurveTexture_c56q3")
+
+[sub_resource type="Curve" id="Curve_mryok"]
+_data = [Vector2(0, 0), 0.0, 8.107042, 0, 0, Vector2(0.15737703, 0.6034482), -0.09390385, -0.09390385, 0, 0, Vector2(0.41967213, 0.37068963), -1.115465, -1.115465, 0, 0, Vector2(1, 0.043103337), -0.2629307, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uycyg"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.5221555, 0, 0, 1)
+use_particle_trails = true
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_c56q3"]
+material = SubResource("StandardMaterial3D_uycyg")
+radius = 0.35
+section_rings = 7
+curve = SubResource("Curve_mryok")
+
+[node name="player_on_hit_particles_3D" type="GPUParticles3D" unique_id=53914993 node_paths=PackedStringArray("particles")]
+amount = 4
+lifetime = 0.75
+explosiveness = 0.75
+fixed_fps = 0
+trail_enabled = true
+trail_lifetime = 0.15000000000000002
+process_material = SubResource("ParticleProcessMaterial_mryok")
+draw_pass_1 = SubResource("TubeTrailMesh_c56q3")
+script = ExtResource("1_vu4un")
+particles = NodePath(".")

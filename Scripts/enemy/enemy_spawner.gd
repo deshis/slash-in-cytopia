@@ -5,6 +5,7 @@ var player: Player = GameManager.player
 @export var enemy_list: Array[EnemyPrefab]
 @export var augmented_list: Array[EnemyPrefab]
 @export var boss_list: Array[EnemyPrefab]
+@export var target_dummy: EnemyPrefab
 
 @export var wave_cooldown_timer: Timer
 @export var wave_cooldown_min := 3.0
@@ -33,10 +34,17 @@ func start_spawner() -> void:
 	player = GameManager.player
 	init_pools()
 	
+	if target_dummy:
+		await get_tree().create_timer(0.5).timeout
+		spawn_target_dummy()
+	
 	_on_credits_cooldown_timer_timeout()
 	_on_wave_cooldown_timer_timeout()
 	boss_cooldown_timer.start(boss_cooldown_time)
-
+	
+func spawn_target_dummy() -> void:
+	spawn_enemy(target_dummy, Vector3(5,0,-5))
+	
 func init_pools() -> void:
 	var all_prefabs = enemy_list + augmented_list + boss_list
 	
@@ -94,6 +102,9 @@ func spawn_enemy(prefab: EnemyPrefab, pos: Vector3 = Vector3.ZERO) -> void:
 	
 	enemy.enemy.setup(diff.get_difficulty())
 	enemy._activate()
+	
+	active_enemies.append(enemy) 
+
 
 
 func spawn_wave_of_enemies(amount: int) -> void:

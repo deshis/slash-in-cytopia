@@ -378,7 +378,6 @@ func take_damage(damage:float, _damage_dealer = null) -> void:
 	#GameManager.particles.emit_particles("on_hit", global_position, self)
 	
 	if enemy.on_hit_particles:
-		print("wat")
 		var particle_instance = enemy.on_hit_particles.instantiate()
 		get_tree().root.add_child(particle_instance)
 		particle_instance.global_position = global_position
@@ -417,7 +416,7 @@ func die(drop_loot: bool = true) -> void:
 			particle_found.emitting = true
 		
 			get_tree().create_timer(4).timeout.connect(particle_instance.queue_free)
-	
+
 	#Remove active particles
 	for child in self.get_children():
 		if child is Particle:

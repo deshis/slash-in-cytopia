@@ -519,7 +519,6 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 			for enemy in GameManager.spawner.get_children():
 				if enemy is not EnemyController or not enemy.visible:
 					continue
-					
 				if aoe.is_position_in_aoe(aoe_position, enemy.global_position):
 
 					if active_item_effect.dot_resource:
