@@ -11,7 +11,7 @@
 script = ExtResource("2_88f8e")
 shape = 1
 radius = 0.0
-size = Vector3(2, 2, 2.5)
+size = Vector3(2.5, 2.5, 2.5)
 offset = Vector3(0, 0, 1)
 indicator_scene = ExtResource("1_ghiwh")
 metadata/_custom_type_script = "uid://cl2mw12pdltyo"

@@ -102,10 +102,6 @@ func spawn_enemy(prefab: EnemyPrefab, pos: Vector3 = Vector3.ZERO) -> void:
 	
 	enemy.enemy.setup(diff.get_difficulty())
 	enemy._activate()
-	
-	active_enemies.append(enemy) 
-
-
 
 func spawn_wave_of_enemies(amount: int) -> void:
 	for i in range(amount):
