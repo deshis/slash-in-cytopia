@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://boamjpbgi2ymo"]
+
+[ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="1_mj7p4"]
+[ext_resource type="Texture2D" uid="uid://bc1yvyqjwxee" path="res://Assets/ui/main_menu_button2.png" id="2_6uokr"]
+[ext_resource type="Texture2D" uid="uid://dqrs4dp02wqle" path="res://Assets/ui/main_menu_button.png" id="3_mllgj"]
+[ext_resource type="Script" uid="uid://dsofje5g51l5" path="res://Scripts/ui/main_menu/main_menu_button.gd" id="4_mtss3"]
+[ext_resource type="Shader" uid="uid://dltnkyf0hnwq0" path="res://Assets/materials/shaders/glitch.gdshader" id="5_wlow4"]
+[ext_resource type="Shader" uid="uid://cq3v485k8pb6o" path="res://Assets/materials/shaders/glitch_intense.gdshader" id="6_22887"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fj8lq"]
+shader = ExtResource("5_wlow4")
+shader_parameter/range = 0.05
+shader_parameter/noiseQuality = 300.0
+shader_parameter/noiseIntensity = 0.0010000047056399897
+shader_parameter/offsetIntensity = 0.0010000033073799958
+shader_parameter/colorOffsetIntensity = 0.10000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6harj"]
+shader = ExtResource("6_22887")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 1.0
+shader_parameter/shake_block_size = 60.0
+shader_parameter/shake_color_rate = 0.030000001425
+
+[node name="MainMenuButton" type="TextureButton" unique_id=639732658]
+custom_minimum_size = Vector2(280, 80)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("1_mj7p4")
+texture_normal = ExtResource("2_6uokr")
+texture_focused = ExtResource("3_mllgj")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_mtss3")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=787288551]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 27
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=100577493]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[node name="shader_mask" type="TextureRect" parent="." unique_id=1818705620]
+clip_children = 1
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -61.0
+offset_right = 140.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("2_6uokr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="shader_glitch" type="TextureRect" parent="shader_mask" unique_id=1587062242]
+material = SubResource("ShaderMaterial_fj8lq")
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 16.5
+offset_bottom = -20.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("2_6uokr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="shader_glitch_intense" type="TextureRect" parent="shader_mask" unique_id=1925246755]
+visible = false
+material = SubResource("ShaderMaterial_6harj")
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("2_6uokr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="IntenseGlitchTimer" type="Timer" parent="." unique_id=1781143066]
+
+[connection signal="timeout" from="IntenseGlitchTimer" to="." method="_on_intense_glitch_timer_timeout"]

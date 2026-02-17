@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://gwfafccqx5f2"]
 
 [ext_resource type="Script" uid="uid://bb85v4ja526qs" path="res://Scripts/ui/hud/skill_icon.gd" id="1_trwys"]
+[ext_resource type="Shader" uid="uid://dltnkyf0hnwq0" path="res://Assets/materials/shaders/glitch.gdshader" id="2_lejg5"]
 
 [sub_resource type="Gradient" id="Gradient_2874v"]
 offsets = PackedFloat32Array(0)
@@ -30,6 +31,14 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21xkr"]
 bg_color = Color(0, 0, 0, 0.50980395)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lejg5"]
+shader = ExtResource("2_lejg5")
+shader_parameter/range = 0.05
+shader_parameter/noiseQuality = 300.0
+shader_parameter/noiseIntensity = 0.005000004895640009
+shader_parameter/offsetIntensity = 0.0010000033073799958
+shader_parameter/colorOffsetIntensity = 0.400000019
+
 [node name="Skill" type="MarginContainer" unique_id=594477463]
 offset_right = 98.0
 offset_bottom = 125.0
@@ -47,6 +56,8 @@ alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1922935383]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
 
 [node name="OuterBorder" type="MarginContainer" parent="VBoxContainer/MarginContainer" unique_id=1587762955]
 layout_mode = 2
@@ -97,3 +108,21 @@ layout_mode = 2
 text = "[  ]"
 fit_content = true
 horizontal_alignment = 1
+
+[node name="GlitchMask" type="TextureRect" parent="." unique_id=2144078937]
+clip_children = 1
+layout_mode = 2
+texture = SubResource("GradientTexture2D_484xk")
+
+[node name="Glitch" type="TextureRect" parent="GlitchMask" unique_id=757508060]
+material = SubResource("ShaderMaterial_lejg5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.5
+offset_right = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_484xk")
+expand_mode = 2

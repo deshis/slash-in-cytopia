@@ -7,10 +7,16 @@ extends Control
 var hp_per_segment = 10.0
 @onready var hp_bar_segment_container: HBoxContainer = $PlayerHpBarRectangleSkew/MarginContainer/HpBarSegmentContainer
 
+@onready var glitch_mask: Sprite2D = $PlayerHpBarRectangleSkew/GlitchMask
+@onready var glitch_timer: Timer = $GlitchTimer
+var glitch_time = 0.2
+
+var previous_health = 0
 
 func setup(c: Node, value: float, max_value: float) -> void:
 	update_segments(value, max_value)
 	c.update_health_bar.connect(update_health)
+	previous_health = c.health
 
 func update_health(health:float, max_health:float=GameManager.player.max_health)->void:
 	update_segments(health, max_health)
@@ -21,8 +27,11 @@ func update_segments(value, max_value)->void:
 	
 	var overflow = segments_amount - int(segments_amount)
 	
+	var max_hp_changed = false
+	
 	#change max hp
 	if segments_amount != hp_bar_segment_container.get_child_count():
+		max_hp_changed=true
 		for child in hp_bar_segment_container.get_children():
 			child.free()
 		for i in range(segments_amount):
@@ -51,3 +60,14 @@ func update_segments(value, max_value)->void:
 		else:
 			s.value = 0
 		hp-=10
+
+	if max_hp_changed or previous_health != value:
+		glitch_mask.visible = true
+		glitch_timer.start(glitch_time)
+	
+	previous_health = value
+
+
+func _on_glitch_timer_timeout() -> void:
+	glitch_mask.visible = false
+	

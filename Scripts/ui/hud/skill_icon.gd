@@ -8,6 +8,8 @@ extends MarginContainer
 @onready var progress_bar = $VBoxContainer/MarginContainer/Skill/ProgressBar
 @onready var timer = $Timer
 
+@onready var glitch_mask: TextureRect = $GlitchMask
+
 func _ready() -> void:
 	set_icon(default_icon)
 	update_keybind()
@@ -19,6 +21,9 @@ func _physics_process(_delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	progress_bar.value = timer.time_left
+	
+	glitch_mask.visible = progress_bar.value > 0
+
 
 
 func set_icon(texture: CompressedTexture2D) -> void:

@@ -64,8 +64,8 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -108.0
-offset_right = 389.0
+offset_top = -112.0
+offset_right = 489.0
 grow_vertical = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 10
@@ -73,7 +73,7 @@ theme_override_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="SkillCooldowns/MarginContainer" unique_id=1978833995]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 0
 
 [node name="LightAttack" parent="SkillCooldowns/MarginContainer/HBoxContainer" unique_id=1869041637 instance=ExtResource("8_5m6rh")]
 layout_mode = 2

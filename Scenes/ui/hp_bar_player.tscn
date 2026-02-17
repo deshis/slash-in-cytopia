@@ -6,6 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://3w3tokjxktqm" path="res://Assets/icon.png" id="4_j3bo4"]
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="5_4gxn7"]
 [ext_resource type="Texture2D" uid="uid://buom0xkmfh5or" path="res://Assets/ui/player_hp_bar_rectangle.png" id="6_j3bo4"]
+[ext_resource type="Shader" uid="uid://cq3v485k8pb6o" path="res://Assets/materials/shaders/glitch_intense.gdshader" id="7_ckmai"]
+[ext_resource type="PackedScene" uid="uid://bfmm8nxr0oufk" path="res://Scenes/ui/hp_bar_segment.tscn" id="7_x44ss"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x44ss"]
+shader = ExtResource("7_ckmai")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 80.0
+shader_parameter/shake_color_rate = 0.010000000475
 
 [node name="HPBarPlayer" type="Control" unique_id=589468563]
 process_mode = 3
@@ -85,7 +95,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_left = 0
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
@@ -93,3 +103,29 @@ theme_override_constants/margin_bottom = 10
 [node name="HpBarSegmentContainer" type="HBoxContainer" parent="PlayerHpBarRectangleSkew/MarginContainer" unique_id=955390222]
 layout_mode = 2
 theme_override_constants/separation = 10
+
+[node name="ProgressBar" parent="PlayerHpBarRectangleSkew/MarginContainer/HpBarSegmentContainer" unique_id=862040891 instance=ExtResource("7_x44ss")]
+layout_mode = 2
+
+[node name="ProgressBar2" parent="PlayerHpBarRectangleSkew/MarginContainer/HpBarSegmentContainer" unique_id=2030826833 instance=ExtResource("7_x44ss")]
+layout_mode = 2
+
+[node name="ProgressBar3" parent="PlayerHpBarRectangleSkew/MarginContainer/HpBarSegmentContainer" unique_id=1318265474 instance=ExtResource("7_x44ss")]
+layout_mode = 2
+
+[node name="ProgressBar4" parent="PlayerHpBarRectangleSkew/MarginContainer/HpBarSegmentContainer" unique_id=2002548215 instance=ExtResource("7_x44ss")]
+layout_mode = 2
+
+[node name="GlitchMask" type="Sprite2D" parent="PlayerHpBarRectangleSkew" unique_id=61705426]
+clip_children = 1
+position = Vector2(46.152924, -0.8319073)
+scale = Vector2(1.1660193, 1.0753108)
+texture = ExtResource("6_j3bo4")
+
+[node name="Glitch" type="Sprite2D" parent="PlayerHpBarRectangleSkew/GlitchMask" unique_id=1515406118]
+material = SubResource("ShaderMaterial_x44ss")
+texture = ExtResource("6_j3bo4")
+
+[node name="GlitchTimer" type="Timer" parent="." unique_id=67253679]
+
+[connection signal="timeout" from="GlitchTimer" to="." method="_on_glitch_timer_timeout"]
