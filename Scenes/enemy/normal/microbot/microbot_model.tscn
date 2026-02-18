@@ -23,19 +23,45 @@ shader_parameter/base_color = Color(0.9490196, 0.8156863, 0.9490196, 1)
 shader_parameter/texture_albedo = ExtResource("4_qplab")
 shader_parameter/erosion_texture = SubResource("NoiseTexture2D_j30b5")
 shader_parameter/gradient_texture = SubResource("GradientTexture1D_jwwmi")
-shader_parameter/erosion = 0.4059998045741582
+shader_parameter/erosion = 0.550000026125
 shader_parameter/fade = 0.05099999892989999
 shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, -0.5)
+shader_parameter/uv_offset = Vector2(0, 0.3)
 
-[node name="microbot" instance=ExtResource("1_86sj6")]
+[node name="microbot" unique_id=1879852261 instance=ExtResource("1_86sj6")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="Skeleton3D" parent="rig" index="0"]
+bones/0/position = Vector3(0, 0.38588446, 0)
+bones/0/rotation = Quaternion(0, -0.0078539, 0, 0.9999692)
+bones/1/rotation = Quaternion(0.6103643, 0.2891438, -0.22156061, 0.70339334)
+bones/2/rotation = Quaternion(0.5777206, 0.025147669, -0.01780925, 0.8156528)
+bones/3/rotation = Quaternion(-0.26733336, -0.70720303, 0.5907899, -0.28171626)
+bones/4/rotation = Quaternion(0.5780156, 0.004316572, -0.003053314, 0.8160086)
+bones/5/rotation = Quaternion(-0.6137695, 0.27805838, -0.21194527, -0.7078488)
+bones/6/rotation = Quaternion(0.57772064, -0.02514763, 0.017812667, 0.8156526)
+bones/7/rotation = Quaternion(-0.27658153, 0.70268965, -0.58651763, -0.29279166)
+bones/8/rotation = Quaternion(0.5780152, -0.004316481, 0.003058722, 0.81600887)
+bones/9/rotation = Quaternion(0, -0.7071066, 0, 0.70710695)
+bones/10/position = Vector3(0.68752223, 0, 0.68752223)
+bones/10/scale = Vector3(0.7432828, 0.7432828, 0.7432828)
+bones/11/position = Vector3(0.68752223, 0.08335897, 0.68752223)
+bones/12/position = Vector3(0.6875222, 1.4901161e-08, -0.6875224)
+bones/12/scale = Vector3(0.7432828, 0.74328274, 0.74328274)
+bones/13/position = Vector3(0.6875222, 0.08335894, -0.6875224)
+bones/14/position = Vector3(-0.68752223, 0, 0.68752223)
+bones/14/scale = Vector3(0.7432828, 0.7432828, 0.7432828)
+bones/15/position = Vector3(-0.68752223, 0.08335897, 0.68752223)
+bones/16/position = Vector3(-0.6875222, 1.4901161e-08, -0.6875224)
+bones/16/scale = Vector3(0.7432828, 0.74328274, 0.74328274)
+bones/17/position = Vector3(-0.6875222, 0.08335894, -0.6875224)
 
 [node name="AugMicrobot" parent="rig/Skeleton3D" index="0"]
 visible = false
 
 [node name="BlastWave" parent="." index="1"]
 transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1.4, 0, 0, 0)
+visible = false
 material_override = SubResource("ShaderMaterial_rbu7e")
 
 [node name="AugmentedBlastWave" parent="." index="2"]

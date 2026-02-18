@@ -4,11 +4,10 @@
 
 [resource]
 script = ExtResource("1_ldrpo")
-name = "Augmented Micro_Bot_4000"
+name = "Augmented Microbot"
 type = 1
 speed = 5.0
 max_health = 65.0
 cost = 5.0
 health_per_level = 1.0
-damage_per_level = 2.0
 metadata/_custom_type_script = "uid://t76ghlhghorw"

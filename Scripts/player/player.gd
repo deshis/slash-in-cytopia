@@ -969,6 +969,7 @@ func _on_health_radius_area_entered(area: Area3D) -> void:
 	
 	GameStats.items_picked_up += 1
 	
+	GameManager.particles.emit_particles("heal", global_position)
 	SoundManager.play_sfx("heal", global_position)
 	area.queue_free()
 

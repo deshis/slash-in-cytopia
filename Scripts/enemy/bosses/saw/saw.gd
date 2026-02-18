@@ -89,12 +89,11 @@ func change_state(new_state: String, duration := 0.0):
 			navigation_time = 0
 		
 		FLEE:
-			target_provider = TargetPlayer.new()
 			animator.play("Track")
 			flee_duration = randf_range(flee_duration_min, flee_duration_max)
-			
-		SUMMON_ADS, BOOMERANG_ATTACK:
-			target_provider = TargetSelf.new()
+		
+		FACE_PLAYER, SUMMON_ADS:
+			nav_agent.set_velocity(Vector3.ZERO)
 
 func process_attack_windup():
 	if state_timer > 0:
@@ -137,6 +136,9 @@ func process_flee(delta):
 	elif target_provider is not TargetPlayer:
 		if dist_to_player >= flee_max_dist_from_player:
 			target_provider = TargetPlayer.new()
+	
+	if not target_provider:
+		target_provider = TargetPlayer.new()
 	
 	super.process_navigation(delta)
 

@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="ActiveEffectResource" format=3 uid="uid://b7u27nahctfnu"]
 
 [ext_resource type="Script" uid="uid://rwrpa5fevhio" path="res://Scripts/items/resources/ActiveEffectResource.gd" id="1_h2shq"]
+[ext_resource type="PackedScene" uid="uid://dqbrma0g3xx0g" path="res://Scenes/particles/heal.tscn" id="1_u8po2"]
 
 [resource]
 script = ExtResource("1_h2shq")
 active_effect_value = 30.0
 active_effect_cooldown = 15.0
+particle_scene = ExtResource("1_u8po2")
 metadata/_custom_type_script = "uid://rwrpa5fevhio"

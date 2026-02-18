@@ -25,12 +25,24 @@ func process_ranged_attack(delta: float) -> void:
 	
 	super.process_ranged_attack(delta)
 
+
 func change_state(new_state: String, duration := 0.0):
 	super.change_state(new_state, duration)
 	
 	match state:
 		RANGED_ATTACK:
 			aoe_amount = randi_range(small_aoe_min, small_aoe_max)
+
+
+func get_random_pos(center: Vector3, min_radius: float, max_radius: float) -> Vector3:
+	var angle = randf_range(0, TAU)
+	var dir = Vector3(cos(angle), 0.0, sin(angle))
+	var dist = randf_range(min_radius, max_radius)
+	var pos = center + dir * dist
+	pos.y = 0.0
+	
+	return pos
+
 
 func _on_attack_area_area_entered(_area: Area3D, damage: float = enemy.damage) -> void:
 	GameStats.player_last_hit_by = enemy.name

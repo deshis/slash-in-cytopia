@@ -4,11 +4,10 @@
 
 [resource]
 script = ExtResource("1_sfys4")
-name = "SAW-5"
+name = "SAW-5R"
 type = 2
 speed = 3.0
 max_health = 260.0
 cost = 14.0
 health_per_level = 4.0
-damage_per_level = 1.0
 metadata/_custom_type_script = "uid://t76ghlhghorw"

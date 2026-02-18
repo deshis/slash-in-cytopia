@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cmj2ut7etid6c" path="res://Scenes/interactables/interact_label.tscn" id="2_lxw0t"]
 [ext_resource type="Material" uid="uid://bwr851pmgrv4p" path="res://Assets/environment/interactibles/combiner_outline.tres" id="2_v5r0h"]
 [ext_resource type="Material" uid="uid://b7anj5ucq0pfi" path="res://Assets/environment/interactibles/hatch_force_field.tres" id="4_40k7y"]
-[ext_resource type="Shader" uid="uid://bracjf31qgphm" path="res://Assets/materials/shaders/force_field.gdshader" id="4_i3558"]
+[ext_resource type="Shader" path="res://Assets/materials/shaders/force_field.gdshader" id="4_i3558"]
 [ext_resource type="PackedScene" uid="uid://b5mj1lo7f0jkl" path="res://Assets/items/pickups/loot_container.tscn" id="4_v5r0h"]
 [ext_resource type="Material" uid="uid://cki11h6p2lea7" path="res://Assets/environment/interactibles/base_color.tres" id="5_v5r0h"]
 [ext_resource type="Material" uid="uid://dvmqg7jyfoybb" path="res://Assets/environment/interactibles/accent_color.tres" id="6_i3558"]
@@ -468,3 +468,11 @@ skeleton = NodePath("")
 transform = Transform3D(-0.5, 0.40026122, -0.76797855, -2.9802322e-08, 0.88678515, 0.46218184, 0.86602545, 0.23109093, -0.44339263, 0.5803161, 0.9773583, 0.33504564)
 mesh = SubResource("ArrayMesh_fpb0l")
 skeleton = NodePath("")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=1979048921]
+transform = Transform3D(0.799, 0, 0, 0, 1, 0, 0, 0, 0.385, 0, 0, 0)
+height = 20.0
+vertices = PackedVector3Array(1.5, 0, -3, -1.5, 0, -3, -1.5, 0, 3, 1.5, 0, 3)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_enabled = false

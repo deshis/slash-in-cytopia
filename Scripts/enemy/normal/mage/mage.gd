@@ -50,8 +50,7 @@ func _physics_process(delta: float) -> void:
 		
 		ATTACK_RECOVERY:
 			process_attack_recovery()
-		
-		
+
 
 func change_state(new_state: String, duration := 0.0):
 	super.change_state(new_state, duration)
@@ -61,27 +60,29 @@ func change_state(new_state: String, duration := 0.0):
 			particles.emitting = true
 			animator.play("Teleport_attack")
 		FACE_PLAYER:
-			target_provider = TargetSelf.new()
+			animator.play("Idle")
+			nav_agent.set_velocity(Vector3.ZERO)
 		IDLE:
 			particles.emitting = false
 			animator.play("Idle")
+			nav_agent.set_velocity(Vector3.ZERO)
 		NAVIGATE:
 			animator.play("Walk")
 		TP:
 			animator.play("Teleport")
-			target_provider = TargetSelf.new()
+			nav_agent.set_velocity(Vector3.ZERO)
 		RANGED_ATTACK:
-			ranged_attack_pos = get_pos(global_position, player.global_position, ranged_attack_max_range)
-			ranged_attack_pos = get_random_pos(ranged_attack_pos, 0.0, 2.5)
+			ranged_attack_pos = get_ranged_attack_pos()
 			perform_attack(ranged_attack, ranged_attack_pos)
 			animator.play("Attack")
-			target_provider = TargetSelf.new()
+			nav_agent.set_velocity(Vector3.ZERO)
 		COOLDOWN:
 			particles.emitting = false
 			animator.play("Idle")
 		STUN:
 			particles.emitting = false
 			animator.play("Stun")
+
 
 func process_navigation(delta: float) -> void:
 	var dist = global_position.distance_to(player.global_position)
@@ -93,17 +94,19 @@ func process_navigation(delta: float) -> void:
 			change_state(TP, tp_windup_duration)
 			return
 	
-	elif ranged_attack_cooldown < 0 and dist < ranged_attack_max_range:
+	elif ranged_attack_cooldown < 0:
 		ranged_attack_cooldown = randf_range(0.5, ranged_attack_max_cooldown)
 		
 		if randf() < ranged_attack_chance:
 			change_state(RANGED_ATTACK, ranged_attack_windup_duration)
 			return
 	
-	if dist < attack_range:
+	elif dist < attack_range:
 		change_state(FACE_PLAYER, face_player_duration)
+		return
 	
 	super.process_navigation(delta)
+
 
 func process_tp() -> void:
 	if state_timer > 0:
@@ -116,6 +119,7 @@ func process_tp() -> void:
 	
 	change_state(IDLE)
 
+
 func process_attack() -> void:
 	if state_timer > 0:
 		return
@@ -123,10 +127,12 @@ func process_attack() -> void:
 	perform_attack(attack)
 	change_state(ATTACK_RECOVERY, attack_duration-attack_windup_duration)
 
+
 func process_attack_recovery() -> void:
 	if state_timer > 0:
 		return
 	change_state(COOLDOWN, cooldown_duration)
+
 
 func process_face_player(delta: float) -> void:
 	if not player:
@@ -138,6 +144,7 @@ func process_face_player(delta: float) -> void:
 	if state_timer < 0:
 		change_state(ATTACK, attack_windup_duration)
 
+
 func process_ranged_attack(delta: float) -> void:
 	var dir = (ranged_attack_pos - global_position).normalized()
 	update_facing_dir(delta, dir)
@@ -147,31 +154,36 @@ func process_ranged_attack(delta: float) -> void:
 	
 	change_state(COOLDOWN, ranged_attack_cooldown)
 
-func get_random_pos(center: Vector3, min_radius: float, max_radius: float) -> Vector3:
+
+func get_ranged_attack_pos() -> Vector3:
+	var variance = Vector2(0.0, 2.5)
+	
+	var attack_pos = get_pos(global_position, player.global_position, ranged_attack_max_range)
+	var dist = global_position.distance_to(player.global_position)
+	var weight = inverse_lerp(0, ranged_attack_max_range, dist)
+	weight = clamp(weight, 0, 1)
+	var accuracy = lerp(variance.x, variance.y, weight)
+	
 	var angle = randf_range(0, TAU)
 	var dir = Vector3(cos(angle), 0.0, sin(angle))
-	var dist = randf_range(min_radius, max_radius)
-	var pos = center + dir * dist
-	pos.y = 0.0
+	attack_pos += dir * accuracy
+	attack_pos.y = 0.0
 	
-	return pos
+	return attack_pos
+
 
 func get_pos(start_pos: Vector3, end_pos: Vector3, max_dist: float, overshoot: float = 0.0) -> Vector3:
-	var dir = (end_pos - start_pos).normalized()
-	
+	var dir = start_pos.direction_to(end_pos).normalized()
 	var dist = start_pos.distance_to(end_pos)
-	var pos = Vector3.ZERO
+	var pos = start_pos + dir * clamp(dist + overshoot, 0, max_dist)
 	
-	if dist < max_dist:
-		pos = start_pos + dir * (dist + overshoot)
-	else:
-		pos = start_pos + dir * max_tp_dist
-	
-	# this feels very scuffed but I can't be bothered
-	var nav_region = GameManager.current_stage.get_node("NavigationRegion3D")
+	var nav_region = GameManager.nav_handler
 	var nav_map = nav_region.get_navigation_map()
 	var fixed_pos = NavigationServer3D.map_get_closest_point(nav_map, pos)
 	return fixed_pos
 
 func _on_navigation_agent_3d_target_reached() -> void:
-	change_state(FACE_PLAYER, face_player_duration)
+	if randf() < 0.5:
+		change_state(FACE_PLAYER, face_player_duration)
+	else:
+		change_state(RANGED_ATTACK, ranged_attack_windup_duration)

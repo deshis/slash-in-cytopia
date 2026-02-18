@@ -229,3 +229,10 @@ skeleton = NodePath("")
 [node name="Recycler" type="MeshInstance3D" parent="interactible_recycler" unique_id=258097590]
 mesh = SubResource("ArrayMesh_sg70e")
 skeleton = NodePath("")
+
+[node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="." unique_id=2044825315]
+height = 20.0
+vertices = PackedVector3Array(1, 0, -1, -1, 0, -1, -1, 0, 1, 1, 0, 1)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_enabled = false

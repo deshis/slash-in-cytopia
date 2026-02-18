@@ -28,13 +28,7 @@ func _get_drag_data(_pos: Vector2) -> Variant:
 		InventoryManager.item_description.deactivate()
 	
 	var preview := duplicate(true)
-	
-	preview.anchor_left = 0
-	preview.anchor_top = 0
-	preview.anchor_right = 0
-	preview.anchor_bottom = 0
 	preview.size = size
-	
 	set_drag_preview(preview)
 	
 	modulate = Color(1,1,1,0.5)

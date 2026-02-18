@@ -101,6 +101,13 @@ func _ready() -> void:
 	ragdoll = get_node_or_null("model/rig/Skeleton3D/PhysicalBoneSimulator3D")
 	model = get_node_or_null("model/rig/Skeleton3D/Body")
 	hurtbox = get_node_or_null("Hurtbox")
+	
+	nav_agent.velocity_computed.connect(Callable(_on_velocity_computed))
+
+
+func _on_velocity_computed(safe_velocity: Vector3):
+	velocity = safe_velocity
+	move_and_slide()
 
 
 func _activate() -> void:
@@ -120,12 +127,13 @@ func _physics_process(delta: float) -> void:
 	
 	state_timer -= delta
 	
-	
 	match state:
 		IDLE:
 			process_idle()
 		
 		NAVIGATE:
+			if target_provider is not TargetPlayer:
+				target_provider = TargetPlayer.new()
 			process_navigation(delta)
 		
 		ATTACK:
@@ -145,9 +153,11 @@ func change_state(new_state: String, duration := 0.0):
 	state_timer = duration
 	
 	match state:
+		IDLE:
+			nav_agent.set_velocity(Vector3.ZERO)
+		
 		NAVIGATE:
 			current_speed = enemy.speed
-			target_provider = TargetPlayer.new()
 		
 		STUN:
 			for instance in active_attacks:
@@ -169,14 +179,20 @@ func process_navigation(delta: float) -> void:
 	if GameManager.player and GameManager.player.is_dead:
 		change_state(IDLE)
 		return
+	
 	var new_target_pos = target_provider.get_target(self)
 	nav_agent.set_target_position(new_target_pos)
 	var next_pos = nav_agent.get_next_path_position()
 	
-	var dir = (next_pos - global_transform.origin).normalized()
-	update_facing_dir(delta, dir)
+	var dir = (next_pos - global_position).normalized()
+	var new_velocity = dir * current_speed
+	if nav_agent.avoidance_enabled:
+		nav_agent.set_velocity(new_velocity)
+	else:
+		_on_velocity_computed(new_velocity)
 	
-	apply_movement(delta, dir)
+	update_facing_dir(delta, dir)
+
 
 func apply_movement(delta: float, dir: Vector3) -> void:
 	velocity = lerp(velocity, dir * current_speed, enemy.acceleration * delta)

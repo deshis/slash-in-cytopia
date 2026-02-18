@@ -52,7 +52,7 @@ vertex_color_use_as_albedo = true
 [sub_resource type="SphereMesh" id="SphereMesh_ksoeo"]
 material = SubResource("StandardMaterial3D_sbt0b")
 
-[node name="Heal" type="GPUParticles3D" node_paths=PackedStringArray("particles")]
+[node name="Heal" type="GPUParticles3D" unique_id=1788986825 node_paths=PackedStringArray("particles")]
 emitting = false
 amount = 50
 lifetime = 0.6

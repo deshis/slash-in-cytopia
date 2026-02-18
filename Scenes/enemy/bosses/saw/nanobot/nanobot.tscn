@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://g8knt0evncvq"]
+[gd_scene format=3 uid="uid://g8knt0evncvq"]
 
 [ext_resource type="Script" uid="uid://chesackaw4aua" path="res://Scripts/enemy/bosses/saw/nanobot/nanobot.gd" id="1_sp4ew"]
 [ext_resource type="PackedScene" uid="uid://bl1oywharjent" path="res://Scenes/enemy/bosses/saw/nanobot/attack_nanobot.tscn" id="2_n4oim"]
@@ -12,7 +12,7 @@ radius = 0.4
 height = 4.0
 radius = 0.7
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent")]
+[node name="Nanobot" type="CharacterBody3D" unique_id=76952720 node_paths=PackedStringArray("nav_agent")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 collision_layer = 4096
 collision_mask = 4097
@@ -22,28 +22,31 @@ safe_margin = 0.1
 script = ExtResource("1_sp4ew")
 target_dist_min = 0.8
 target_dist_max = 1.5
+jump_height = 0.8
+jump_speed = 5.0
+jump_duration = 0.3
 nav_agent = NodePath("NavigationAgent3D")
 attack = ExtResource("2_n4oim")
 attack_windup_duration = 1.167
 attack_range = 1.0
 cooldown_duration = 0.6
 
-[node name="model" parent="." instance=ExtResource("3_ucg41")]
+[node name="model" parent="." unique_id=1483187709 instance=ExtResource("3_ucg41")]
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=45320819]
 target_desired_distance = 5.0
-radius = 1.0
+use_3d_avoidance = true
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1255254342]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 2, 0)
 shape = SubResource("CylinderShape3D_7v3s6")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1623693153]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 8192
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox" unique_id=1319577252]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_bfe2c")
 

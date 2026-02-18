@@ -1,4 +1,4 @@
-extends Attack
+extends AttackExplosion
 
 var attack_mat : ShaderMaterial
 

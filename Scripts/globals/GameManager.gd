@@ -10,6 +10,7 @@ var starting_difficulty := 0.0
 var HUD: HudManager = null
 var particles: ParticleManager = null
 var spawner: EnemySpawner = null
+var nav_handler: NavHandler = null
 
 var portaldoor = preload("res://Assets/portal/portal.tscn")
 
@@ -47,6 +48,7 @@ func start_game(init_player: bool = false) -> void:
 	
 	# init particle manager
 	particles = preload("res://Scenes/particles/particle_manager.tscn").instantiate() as ParticleManager
+	particles.prebake()
 	add_child(particles)
 	
 	Engine.time_scale = 1.0
@@ -69,6 +71,8 @@ func load_stage(num: int) -> void:
 	stage_root.name = "StageRoot"
 	add_child(stage_root)
 	current_stage.reparent(stage_root)
+	
+	nav_handler = current_stage.get_node("NavigationRegion3D")
 	
 	spawner = current_stage.get_child(2)
 	spawner.start_spawner.call_deferred()

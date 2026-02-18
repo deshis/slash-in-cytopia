@@ -4,11 +4,10 @@
 
 [resource]
 script = ExtResource("1_qs424")
-name = "C-14"
+name = "C-14WR"
 type = 2
 speed = 2.5
 max_health = 200.0
 cost = 15.0
 health_per_level = 3.0
-damage_per_level = 2.0
 metadata/_custom_type_script = "uid://t76ghlhghorw"

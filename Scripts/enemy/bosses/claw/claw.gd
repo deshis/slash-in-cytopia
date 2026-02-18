@@ -62,7 +62,7 @@ func change_state(new_state: String, duration := 0.0):
 			current_speed = 2 #enemy.speed
 		
 		FACE_PLAYER:
-			target_provider = TargetSelf.new()
+			nav_agent.set_velocity(Vector3.ZERO)
 		
 		GRAPPLE:
 			var claw_dir = Vector3(
@@ -79,7 +79,7 @@ func change_state(new_state: String, duration := 0.0):
 				change_state(COOLDOWN, cooldown_duration) 
 		
 		SPIN_WINDUP:
-			target_provider = TargetSelf.new()
+			nav_agent.set_velocity(Vector3.ZERO)
 			animator.play("SpinAttack")
 		
 		SPIN_ATTACK:

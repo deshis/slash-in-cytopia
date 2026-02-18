@@ -17,6 +17,8 @@ var shaking = false
 var shake_timer := 0.0
 var interval_timer := 0.0
 
+var current_pos = global_position
+
 
 func _physics_process(delta: float) -> void:
 	shake_timer -= delta
@@ -27,6 +29,9 @@ func _physics_process(delta: float) -> void:
 	
 	if shake_timer <= 0 and shaking:
 		reset_shake()
+	
+	if current_pos != global_position and GameManager.nav_handler:
+		GameManager.nav_handler.rebake()
 
 
 func shake() -> void:
@@ -66,5 +71,7 @@ func take_damage(amount: float, damage_dealer = null) -> void:
 	if health <= 0:
 		die()
 
+
 func die() -> void:
+	GameManager.nav_handler.rebake()
 	queue_free()

@@ -266,7 +266,7 @@ _data = {
 &"SpinAttack": ExtResource("10_hetm4")
 }
 
-[node name="Enemy" type="CharacterBody3D" unique_id=2098888535 node_paths=PackedStringArray("nav_agent")]
+[node name="Claw" type="CharacterBody3D" unique_id=2098888535 node_paths=PackedStringArray("nav_agent")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 collision_layer = 4096
 collision_mask = 4097
@@ -290,6 +290,8 @@ cooldown_duration = 0.8
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1502458277]
 target_desired_distance = 3.0
 radius = 1.0
+max_speed = 10000.0
+use_3d_avoidance = true
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1568376355]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 1.25, 0)

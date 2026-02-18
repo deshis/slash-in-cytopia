@@ -25,3 +25,12 @@ func emit_particles(n: String, pos: Vector3, parent: Node = null, duration : flo
 			particle.restart()
 			
 			return particle
+
+
+func prebake() -> void:
+	for scene in particles:
+		var particle = scene.instantiate()
+		particle.process_material = particle.process_material.duplicate(true)
+		particle.lifetime = 0.1;
+		add_child(particle)
+		particle.restart()

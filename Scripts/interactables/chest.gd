@@ -9,6 +9,7 @@ extends Destroyable
 @export var top_pop_force := 8.0
 @export var top_spin_force := 6.5
 
+
 func die() -> void:
 	baseTop.queue_free()
 	hitbox.queue_free()
@@ -43,4 +44,6 @@ func fade_and_remove(duration: float):
 			tween.tween_property(mat, "shader_parameter/fade_alpha", 0.0, duration)
 			
 	await tween.finished
+	
+	GameManager.nav_handler.rebake()
 	queue_free()
