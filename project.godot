@@ -10,6 +10,7 @@ config_version=5
 
 [animation]
 
+warnings/check_invalid_track_paths=false
 compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
@@ -42,7 +43,16 @@ SceneTransitionManager="*uid://rb3kvkmvbvic"
 
 [debug]
 
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_local_constant=0
+gdscript/warnings/unused_private_class_variable=0
+gdscript/warnings/unused_parameter=0
 gdscript/warnings/unused_signal=0
+gdscript/warnings/shadowed_variable=0
+gdscript/warnings/shadowed_variable_base_class=0
+gdscript/warnings/shadowed_global_identifier=0
+gdscript/warnings/integer_division=0
+gdscript/warnings/narrowing_conversion=0
 
 [display]
 

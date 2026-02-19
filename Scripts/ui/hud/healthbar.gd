@@ -8,7 +8,7 @@ extends Control
 
 @onready var damage_number = preload("res://Scenes/enemy/damage_number.tscn")
 
-var tween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+var tween:Tween
 
 var character: Node
 var is_static := true
@@ -42,8 +42,8 @@ func remove_health_bar() -> void:
 func update_health(health:float, max_health:float = progress_bar.max_value)->void:
 	if tween and health != previous_health:
 		tween.kill()
-		tween = create_tween()
-	tween.set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	
+	tween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	
 	
 	if previous_health != health:
