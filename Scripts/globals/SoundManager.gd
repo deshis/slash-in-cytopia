@@ -92,20 +92,20 @@ func _ready() -> void:
 	
 
 # Play one-shot sound effects
-func play_sfx(name: String, position: Vector3 = Vector3.ZERO) -> void:
+func play_sfx(sfx_name: String, position: Vector3 = Vector3.ZERO) -> void:
 	
-	if not sfx_players.has(name):
-		push_warning("SFX not found: " + name)
+	if not sfx_players.has(sfx_name):
+		push_warning("SFX not found: " + sfx_name)
 		return
 		
 	var player := AudioStreamPlayer2D.new()
-	player.stream = sfx_players[name]
+	player.stream = sfx_players[sfx_name]
 	player.position = Vector2(position.x, position.z)
 	
 	player.bus = "SFX"
 	
 	# Pitch variation
-	var pitch_range = pitch_ranges.get(name, [0.9, 1.1])
+	var pitch_range = pitch_ranges.get(sfx_name, [0.9, 1.1])
 	player.pitch_scale = randf_range(pitch_range[0], pitch_range[1])
 	
 	add_child(player)
@@ -127,13 +127,13 @@ func _on_button_pressed(button: Button) -> void:
 		play_ui_sfx("button")
 
 # Play UI sound effects
-func play_ui_sfx(name: String) -> void:
-	if not ui_players.has(name):
-		push_warning("UI SFX not found: " + name)
+func play_ui_sfx(sfx_name: String) -> void:
+	if not ui_players.has(sfx_name):
+		push_warning("UI SFX not found: " + sfx_name)
 		return
 		
 	var player := AudioStreamPlayer.new()
-	player.stream = ui_players[name]
+	player.stream = ui_players[sfx_name]
 	player.bus = "SFX"
 	
 	add_child(player)

@@ -16,11 +16,11 @@ var ranged_attack_pos := Vector3.ZERO
 
 @onready var tp_attack_area = $TeleportArea
 @onready var tp_attack_hitbox = $TeleportArea/AttackAreaHitbox
-@onready var particles = $model/rig/Skeleton3D/BoneAttachment3D/Mesh/Particles
+@onready var tp_particles = $model/rig/Skeleton3D/BoneAttachment3D/Mesh/Particles
 
 @export var tp_windup_duration := 0.4
 @export var tp_attack_duration := 0.8
-@export var max_tp_dist := 5
+@export var max_tp_dist := 5.0
 @export var tp_chance := 0.4
 @export var tp_max_cooldown := 2.5
 var tp_cooldown := 0.0
@@ -42,7 +42,6 @@ func _physics_process(delta: float) -> void:
 			process_face_player(delta)
 		
 		TP:
-			GameManager.particles.emit_particles("teleport", global_position)
 			process_tp()
 		
 		RANGED_ATTACK:
@@ -57,18 +56,19 @@ func change_state(new_state: String, duration := 0.0):
 	
 	match state:
 		ATTACK:
-			particles.emitting = true
+			tp_particles.emitting = true
 			animator.play("Teleport_attack")
 		FACE_PLAYER:
 			animator.play("Idle")
 			nav_agent.set_velocity(Vector3.ZERO)
 		IDLE:
-			particles.emitting = false
+			tp_particles.emitting = false
 			animator.play("Idle")
 			nav_agent.set_velocity(Vector3.ZERO)
 		NAVIGATE:
 			animator.play("Walk")
 		TP:
+			ParticleManager.emit_particles("kheel_teleport", global_position)
 			animator.play("Teleport")
 			nav_agent.set_velocity(Vector3.ZERO)
 		RANGED_ATTACK:
@@ -77,10 +77,10 @@ func change_state(new_state: String, duration := 0.0):
 			animator.play("Attack")
 			nav_agent.set_velocity(Vector3.ZERO)
 		COOLDOWN:
-			particles.emitting = false
+			tp_particles.emitting = false
 			animator.play("Idle")
 		STUN:
-			particles.emitting = false
+			tp_particles.emitting = false
 			animator.play("Stun")
 
 
@@ -115,7 +115,7 @@ func process_tp() -> void:
 	tp_target = get_pos(global_position, player.global_position, max_tp_dist, attack_range)
 	global_position = tp_target
 	
-	GameManager.particles.emit_particles("teleport", global_position)
+	ParticleManager.emit_particles("kheel_teleport", global_position)
 	
 	change_state(IDLE)
 

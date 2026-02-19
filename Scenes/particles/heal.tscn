@@ -52,7 +52,10 @@ vertex_color_use_as_albedo = true
 [sub_resource type="SphereMesh" id="SphereMesh_ksoeo"]
 material = SubResource("StandardMaterial3D_sbt0b")
 
-[node name="Heal" type="GPUParticles3D" unique_id=1788986825 node_paths=PackedStringArray("particles")]
+[node name="Node3D3" type="Node3D" unique_id=130045935]
+script = ExtResource("1_rndxo")
+
+[node name="Heal" type="GPUParticles3D" parent="." unique_id=1788986825]
 emitting = false
 amount = 50
 lifetime = 0.6
@@ -62,5 +65,3 @@ randomness = 0.1
 fixed_fps = 24
 process_material = SubResource("ParticleProcessMaterial_sbt0b")
 draw_pass_1 = SubResource("SphereMesh_ksoeo")
-script = ExtResource("1_rndxo")
-particles = NodePath(".")

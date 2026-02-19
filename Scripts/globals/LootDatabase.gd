@@ -214,9 +214,9 @@ func emit_upgrade_visuals(rarity: ItemType.Grade, loot: Node3D) -> void:
 	
 	loot.container.update_colors(grade_colors[rarity], rarity == ItemType.Grade.APEX_ANOMALY)
 	
-	var beam_particle = GameManager.particles.emit_particles("loot_upgrade", loot.global_position, loot)
-	GameManager.particles.emit_particles("light_ray_particles", loot.global_position, loot)
-	beam_particle.process_material.color = grade_colors[rarity]
+	var particle = ParticleManager.emit_particles("loot_upgrade_beam", loot.global_position)
+	var beam = particle.get_child(0)
+	beam.process_material.color = grade_colors[rarity]
 	
 	SoundManager.play_sfx("loot_upgrade", loot.global_position)
 

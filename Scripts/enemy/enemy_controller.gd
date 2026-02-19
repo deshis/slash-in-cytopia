@@ -32,6 +32,8 @@ var remaining_debuff_duration := 0.0
 var enemy_frozen := false
 var is_dead := false
 
+var particles = {}
+
 # 3D MODEL
 @onready var animator = $"model/AnimationPlayer"
 
@@ -101,13 +103,6 @@ func _ready() -> void:
 	ragdoll = get_node_or_null("model/rig/Skeleton3D/PhysicalBoneSimulator3D")
 	model = get_node_or_null("model/rig/Skeleton3D/Body")
 	hurtbox = get_node_or_null("Hurtbox")
-	
-	nav_agent.velocity_computed.connect(Callable(_on_velocity_computed))
-
-
-func _on_velocity_computed(safe_velocity: Vector3):
-	velocity = safe_velocity
-	move_and_slide()
 
 
 func _activate() -> void:
@@ -185,13 +180,14 @@ func process_navigation(delta: float) -> void:
 	var next_pos = nav_agent.get_next_path_position()
 	
 	var dir = (next_pos - global_position).normalized()
-	var new_velocity = dir * current_speed
-	if nav_agent.avoidance_enabled:
-		nav_agent.set_velocity(new_velocity)
-	else:
-		_on_velocity_computed(new_velocity)
+	velocity = dir * current_speed
+	#if nav_agent.avoidance_enabled:
+	#nav_agent.set_velocity(new_velocity)
+	#else:
+		#_on_velocity_computed(new_velocity)
 	
 	update_facing_dir(delta, dir)
+	move_and_slide()
 
 
 func apply_movement(delta: float, dir: Vector3) -> void:
@@ -256,8 +252,9 @@ func _on_dot_tick() -> void:
 		
 		SoundManager.play_sfx("dot_sfx", global_position)  #Might want DoT SFX here, maybe even separate depending on DoT (From resource)
 		
-		if active_dots.particle_scene:
-			instantiate_particles(active_dots.particle_scene)
+		var particle = active_dots.particle_effect
+		if particle:
+			ParticleManager.emit_particles(particle, global_position)
 			
 		remaining_dot_duration -= current_dot_tick_rate
 		
@@ -325,11 +322,11 @@ func apply_debuff_effect(debuff: DebuffResource) -> void:
 	#print("Applying debuff")
 	match debuff.debuff_type:
 		DebuffResource.DebuffType.STUN:
-			GameManager.particles.emit_particles("stun", global_position + Vector3.UP*2.0, self)
+			ParticleManager.emit_particles("stun", global_position + Vector3.UP*2.0, self)
 			SoundManager.play_sfx("stun_sfx", global_position)
 			change_state(STUN, remaining_debuff_duration)
 		DebuffResource.DebuffType.FREEZE:
-			GameManager.particles.emit_particles("freeze_particles_3D", global_position, self)
+			ParticleManager.emit_particles("freeze", global_position, self)
 			SoundManager.play_sfx("freeze_sfx", global_position)
 			enemy_frozen = true
 			change_state(COOLDOWN, remaining_debuff_duration)
@@ -348,8 +345,9 @@ func _on_debuff_tick() -> void:
 	if remaining_debuff_duration > 0.0:
 		#print("Debuff applied: ", remaining_debuff_duration, " seconds left")
 		
-		if active_stat_debuffs.particle_scene:
-			instantiate_particles(active_stat_debuffs.particle_scene)
+		var particle = active_stat_debuffs.particle_effect
+		if particle:
+			ParticleManager.emit_particles(particle, global_position)
 		
 		remaining_debuff_duration -= current_debuff_tick_rate
 		
@@ -391,19 +389,9 @@ func take_damage(damage:float, _damage_dealer = null) -> void:
 	hit_flash.set_shader_parameter('strength',1.0)
 	hit_flash_timer.start(hit_flash_duration)
 	
-	#GameManager.particles.emit_particles("on_hit", global_position, self)
-	
-	if enemy.on_hit_particles:
-		var particle_instance = enemy.on_hit_particles.instantiate()
-		get_tree().root.add_child(particle_instance)
-		particle_instance.global_position = global_position
-		
-		var all_particles = particle_instance.find_children("*", "GPUParticles3D")
-		
-		for particle_found in all_particles:
-			particle_found.emitting = true
-	
-		get_tree().create_timer(4).timeout.connect(particle_instance.queue_free)
+	var particle = particles.get("on_hit", null)
+	if particle:
+		ParticleManager.emit_particles(particle, global_position)
 	
 	GameStats.total_damage_dealt += damage
 	
@@ -420,24 +408,12 @@ func die(drop_loot: bool = true) -> void:
 	
 	SoundManager.play_sfx("enemy_die", global_position)
 	
-	if enemy.death_particles:
-		var particle_instance = enemy.death_particles.instantiate()
-		get_tree().root.add_child(particle_instance)
-		particle_instance.global_position = global_position
-		
-		var all_particles = particle_instance.find_children("*", "GPUParticles3D")
+	var particle = particles.get("on_death", null)
+	if particle:
+		var particle_instance = ParticleManager.emit_particles(particle, global_position)
 		var anim_player = particle_instance.get_node("AnimationPlayer")
-		
-		anim_player.play("explosion_light_fade")
-		for particle_found in all_particles:
-			particle_found.emitting = true
-		
-			get_tree().create_timer(4).timeout.connect(particle_instance.queue_free)
-
-	#Remove active particles
-	for child in self.get_children():
-		if child is Particle:
-			child.queue_free()
+		if anim_player:
+			anim_player.play("explosion_light_fade")
 	
 	GameStats.enemies_killed +=1
 	
@@ -491,21 +467,8 @@ func shatter_ice() -> void:
 	if state_timer:
 		state_timer = 0
 		
-	GameManager.particles.emit_particles("freeze_shatter_particles_3D", global_position, self)
-	
-func instantiate_particles(particle_scene: PackedScene):
-	var particles = particle_scene.instantiate()
-	
-	get_parent().add_child(particles)
-	#CRITICAL: Most particles are 2D, so this fucks up
-	particles.global_position = global_position
-	
-	particles.finished.connect(_on_particles_finished.bind(particles))
-	
-	particles.restart()
+	ParticleManager.emit_particles("freeze_shatter", global_position, self)
 
-func _on_particles_finished(particles_node: Node):
-	particles_node.queue_free()
 
 func _on_attack_area_area_entered(_area: Area3D, damage: float = enemy.damage) -> void:
 	if player is not Player: return

@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbfgmb1vgsifv"]
+[gd_scene format=3 uid="uid://dbfgmb1vgsifv"]
 
-[ext_resource type="Texture2D" uid="uid://by3m44r6vqpr8" path="res://Assets/item_icons/Prototype/RealityFracture.png" id="1_c3bth"]
+[ext_resource type="Texture2D" uid="uid://by3m44r6vqpr8" path="res://Assets/items/icons/Prototype/RealityFracture.png" id="1_c3bth"]
 [ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="1_cu4co"]
 
 [sub_resource type="Curve" id="Curve_m7xxd"]
@@ -58,7 +58,10 @@ refraction_scale = 0.29
 material = SubResource("StandardMaterial3D_sbt0b")
 radial_segments = 24
 
-[node name="RealityFracture" type="GPUParticles3D" node_paths=PackedStringArray("particles")]
+[node name="Node3D" type="Node3D" unique_id=1819774201]
+script = ExtResource("1_cu4co")
+
+[node name="RealityFracture" type="GPUParticles3D" parent="." unique_id=86129525]
 emitting = false
 amount = 20
 lifetime = 2.0
@@ -69,5 +72,3 @@ fixed_fps = 18
 trail_lifetime = 1.38
 process_material = SubResource("ParticleProcessMaterial_sbt0b")
 draw_pass_1 = SubResource("SphereMesh_ksoeo")
-script = ExtResource("1_cu4co")
-particles = NodePath(".")

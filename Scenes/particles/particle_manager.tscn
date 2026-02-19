@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cco7705ip0bjr"]
 
-[ext_resource type="Script" uid="uid://5nas3lr5rq7w" path="res://Scripts/particles/particle_manager.gd" id="1_6iwin"]
+[ext_resource type="Script" uid="uid://5nas3lr5rq7w" path="res://Scripts/globals/ParticleManager.gd" id="1_6iwin"]
 [ext_resource type="PackedScene" uid="uid://bn26kn4nhfwt7" path="res://Scenes/particles/player_on_hit.tscn" id="2_nidn3"]
 [ext_resource type="PackedScene" uid="uid://btscgfflc4d5l" path="res://Scenes/particles/old_enemy_on_death.tscn" id="3_fii50"]
 [ext_resource type="PackedScene" uid="uid://dvxfvfrh4a2t7" path="res://Scenes/particles/teleport.tscn" id="4_drpqi"]

@@ -20,7 +20,6 @@ wall_min_slide_angle = 0.0
 safe_margin = 0.1
 script = ExtResource("1_m24f1")
 ranged_attack = ExtResource("3_5jn0u")
-tp_attack_duration = 0.75
 nav_agent = NodePath("NavigationAgent3D")
 attack = ExtResource("2_5jn0u")
 attack_windup_duration = 0.4

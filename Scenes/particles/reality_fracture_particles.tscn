@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfkdv2pchj0io"]
+[gd_scene format=3 uid="uid://bfkdv2pchj0io"]
 
 [ext_resource type="Texture2D" uid="uid://cmlqhxck6ha23" path="res://Assets/particles/smoke_08.png" id="1_3j8v6"]
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="2_xoijd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sply2"]
 transparency = 1
@@ -22,7 +23,10 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, -0.49922085), 0.0, 0.0, 0, 0, Vector2(1, 0.5948052), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="reality_fracture" type="CPUParticles3D"]
+[node name="Node3D" type="Node3D" unique_id=108381761]
+script = ExtResource("2_xoijd")
+
+[node name="reality_fracture" type="CPUParticles3D" parent="." unique_id=1779109994]
 emitting = false
 amount = 4
 lifetime = 2.0

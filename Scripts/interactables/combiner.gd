@@ -54,10 +54,11 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
-		var combiner_menu = MenuManager.menus[MenuManager.MENU.COMBINER]
-		combiner_menu.move_items_from_combiner()
-		MenuManager.close_menu(MenuManager.MENU.COMBINER)
-		MenuManager.menus[MenuManager.MENU.COMBINER].items_combined.disconnect(combine_items)
+		if MenuManager.active_menu == MenuManager.MENU.COMBINER:
+			var combiner_menu = MenuManager.menus[MenuManager.MENU.COMBINER]
+			combiner_menu.move_items_from_combiner()
+			MenuManager.close_menu(MenuManager.MENU.COMBINER)
+			MenuManager.menus[MenuManager.MENU.COMBINER].items_combined.disconnect(combine_items)
 
 
 func _physics_process(_delta: float) -> void:

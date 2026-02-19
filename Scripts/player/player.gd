@@ -447,7 +447,7 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 	var value = active_effect.active_effect_value
 	var radius = active_effect.aoe_radius
 	var set_facing_direction = active_effect.set_facing_direction
-	var particle = active_effect.particle_scene
+	#var particle = active_effect.particle_scene
 	
 	##TODO: Rotate character towards direction of activation in a more graceful manner
 	##Probably pause movement for a bit
@@ -457,7 +457,7 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 	match active_effect.active_type:
 		ActiveEffectResource.ActiveType.HEAL:
 			heal(value)
-			GameManager.particles.emit_particles("heal", global_position, self)
+			ParticleManager.emit_particles("heal", global_position, self)
 
 		ActiveEffectResource.ActiveType.MOVEMENT_SPEED:
 			pass
@@ -500,19 +500,9 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 				get_tree().create_timer(aoe.indicator_duration).timeout.connect(indicator.queue_free)
 			
 			##particles
-			if active_effect.particle_scene:
-				var particle_instance = active_effect.particle_scene.instantiate()
-				get_tree().root.add_child(particle_instance)
-				particle_instance.global_position = aoe_position
-				
-				var all_particles = particle_instance.find_children("*", "GPUParticles3D")
-
-				for particle_found in all_particles:
-					particle_found.emitting = true
-				
-					get_tree().create_timer(5).timeout.connect(particle_instance.queue_free)
-				
-				particle_instance = particle.instantiate()
+			var particle = active_effect.particle_effect
+			if particle:
+				ParticleManager.emit_particles(particle, aoe_position)
 
 			var aoe_damage = active_effect.aoe_damage
 			var dot = active_effect.dot_resource.duplicate()
@@ -529,35 +519,35 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 						deal_damage(null, aoe_damage, enemy)
 						
 		##NOTE: Redundant?
-		ActiveEffectResource.ActiveType.THROWABLE:
-			var throw_force := 3.0
-			var upward_arc  := 1.0
-			#var dot = active_effect.dot_resource.duplicate()
-			var brick = brick_scene.instantiate()
-			
-			brick.aoe_damage = active_item_effect.aoe_damage
-			brick.aoe_radius = active_item_effect.aoe_radius
-			
-			get_tree().root.add_child(brick)
-			
-			brick.global_position = throw_point.global_position
-			
-			var cam = get_viewport().get_camera_3d()
-			var mouse_pos = get_viewport().get_mouse_position()
-			var from = cam.project_ray_origin(mouse_pos)
-			var to = cam.project_ray_normal(mouse_pos)
-			
-			var plane = Plane(Vector3.UP, global_position.y)
-			var hit_pos = plane.intersects_ray(from, to)
-
-			if hit_pos:
-			
-				#Normalize distance for throwables?
-				#var direction = (hit_pos - global_position).normalized() 
-				var direction = (hit_pos - global_position)
-				var impulse = direction * throw_force
-				impulse.y = upward_arc
-				brick.apply_central_impulse(impulse)
+		#ActiveEffectResource.ActiveType.THROWABLE:
+			#var throw_force := 3.0
+			#var upward_arc  := 1.0
+			##var dot = active_effect.dot_resource.duplicate()
+			#var brick = brick_scene.instantiate()
+			#
+			#brick.aoe_damage = active_item_effect.aoe_damage
+			#brick.aoe_radius = active_item_effect.aoe_radius
+			#
+			#get_tree().root.add_child(brick)
+			#
+			#brick.global_position = throw_point.global_position
+			#
+			#var cam = get_viewport().get_camera_3d()
+			#var mouse_pos = get_viewport().get_mouse_position()
+			#var from = cam.project_ray_origin(mouse_pos)
+			#var to = cam.project_ray_normal(mouse_pos)
+			#
+			#var plane = Plane(Vector3.UP, global_position.y)
+			#var hit_pos = plane.intersects_ray(from, to)
+#
+			#if hit_pos:
+			#
+				##Normalize distance for throwables?
+				##var direction = (hit_pos - global_position).normalized() 
+				#var direction = (hit_pos - global_position)
+				#var impulse = direction * throw_force
+				#impulse.y = upward_arc
+				#brick.apply_central_impulse(impulse)
 				
 func use_throwable_item(throw_resource: ThrowableResource):
 	var throwable_cooldown = throw_resource.throwable_cooldown
@@ -805,7 +795,7 @@ func deal_stat_damage(area: Area3D, debuff: DebuffResource, e: EnemyController =
 		enemy.take_stat_damage(debuff)
 
 func take_damage(damage:float, enemy: EnemyController, ignore_invulnerability: bool = false) -> void:
-	GameManager.particles.emit_particles("player_on_hit", global_position, self)
+	ParticleManager.emit_particles("on_hit_player", global_position)
 	
 	trigger_chromatic_aberration()
 	
@@ -920,7 +910,7 @@ func _on_light_attack_area_entered(area: Area3D) -> void:
 	deal_damage(area, attack_light_damage)
 	
 	#EMIT HIT PARTICLES
-	#GameManager.particles.emit_particles("on_hit", area.global_position)
+	#ParticleManager.emit_particles("on_hit", area.global_position)
 
 	if primary_attack_active_dot != null:
 		
@@ -945,7 +935,7 @@ func _on_heavy_attack_area_entered(area: Area3D) -> void:
 	deal_damage(area, attack_heavy_damage)
 	
 	#EMIT HIT PARTICLES
-	#GameManager.particles.emit_particles("on_hit", area.global_position)
+	#ParticleManager.emit_particles("on_hit", area.global_position)
 
 	if secondary_attack_active_dot != null:
 		
@@ -971,7 +961,7 @@ func _on_health_radius_area_entered(area: Area3D) -> void:
 	
 	GameStats.items_picked_up += 1
 	
-	GameManager.particles.emit_particles("heal", global_position)
+	ParticleManager.emit_particles("heal", global_position)
 	SoundManager.play_sfx("heal", global_position)
 	area.queue_free()
 
@@ -990,4 +980,4 @@ func _on_dash_attack_hitbox_area_entered(area: Area3D) -> void:
 	deal_damage(area, damage)
 	
 	#EMIT HIT PARTICLES
-	GameManager.particles.emit_particles("on_hit", area.global_position)
+	ParticleManager.emit_particles("on_hit_player", area.global_position)

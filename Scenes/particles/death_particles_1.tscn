@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dkmsmarr7r4hc"]
 
 [ext_resource type="Texture2D" uid="uid://c15dsxqpwd0k" path="res://Assets/particles/star_05.png" id="1_fmwbk"]
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="2_qbohk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_876rw"]
 transparency = 1
@@ -186,6 +187,7 @@ _data = {
 }
 
 [node name="DeathParticles" type="Node3D" unique_id=195263052]
+script = ExtResource("2_qbohk")
 
 [node name="Sparks" type="GPUParticles3D" parent="." unique_id=539364579]
 material_override = SubResource("StandardMaterial3D_876rw")

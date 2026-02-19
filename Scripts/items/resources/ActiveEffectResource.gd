@@ -10,7 +10,7 @@ class_name ActiveEffectResource
 @export var active_effect_cooldown: float = 5
 #@export var active_effect_desc_color: String = "#edc939"
 @export var dot_resource: DotResource
-@export var particle_scene: PackedScene
+@export var particle_effect: String
 @export var aoe_resource: AoeResource
 
 enum ActiveType { 

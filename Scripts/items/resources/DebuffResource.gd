@@ -7,7 +7,7 @@ class_name DebuffResource
 @export var debuff_stat_damage: float = 5.0
 @export var debuff_tick_rate: float = 1.0 #Could ramp up?
 @export var debuff_duration: float = 3.0
-@export var particle_scene: PackedScene
+@export var particle_effect: String
 
 enum DebuffType { 
 	STUN,

@@ -1,9 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyPrefab" format=3 uid="uid://xrq4kt1wxhud"]
 
-[ext_resource type="PackedScene" uid="uid://dkmsmarr7r4hc" path="res://Scenes/particles/death_particles_1.tscn" id="1_grps4"]
 [ext_resource type="PackedScene" uid="uid://b8vlajaauat2k" path="res://Scenes/enemy/augmented/microbot/aug_microbot.tscn" id="1_n6r3g"]
 [ext_resource type="Script" uid="uid://cqw5n3pgcmai6" path="res://Scripts/enemy/EnemyPrefab.gd" id="2_7avwc"]
-[ext_resource type="PackedScene" uid="uid://c6boujtbvj8ho" path="res://Scenes/particles/electric_on_hit_particles.tscn" id="2_8t0gv"]
 [ext_resource type="Resource" uid="uid://dbm4m2fjlwic3" path="res://Scripts/enemy/augmented/microbot/aug_microbot_stats.tres" id="3_irlhp"]
 [ext_resource type="Script" uid="uid://c3xt5r4pnu2pd" path="res://Scripts/enemy/targets/TargetPlayer.gd" id="4_n6r3g"]
 
@@ -15,7 +13,5 @@ metadata/_custom_type_script = "uid://c3xt5r4pnu2pd"
 script = ExtResource("2_7avwc")
 stats = ExtResource("3_irlhp")
 scene = ExtResource("1_n6r3g")
-death_particle_scene = ExtResource("1_grps4")
-hit_particle_scene = ExtResource("2_8t0gv")
 target_provider = SubResource("Resource_by155")
 metadata/_custom_type_script = "uid://cqw5n3pgcmai6"

@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://rwrpa5fevhio" path="res://Scripts/items/resources/ActiveEffectResource.gd" id="1_wnt5p"]
 [ext_resource type="Script" uid="uid://cl2mw12pdltyo" path="res://Scripts/items/resources/AOEresource.gd" id="2_88f8e"]
 [ext_resource type="Script" uid="uid://ko57id0ce143" path="res://Scripts/items/resources/DotResource.gd" id="2_a3kyj"]
-[ext_resource type="PackedScene" uid="uid://hodsqdek1yok" path="res://Scenes/particles/vampirism_bleed_dot_particles.tscn" id="3_ghiwh"]
-[ext_resource type="PackedScene" uid="uid://wl3rlpm040ut" path="res://Scenes/particles/vampirism_ability_particle.tscn" id="4_5fxjl"]
 
 [sub_resource type="Resource" id="Resource_dslir"]
 script = ExtResource("2_88f8e")
@@ -21,7 +19,7 @@ dot_item_desc_color = "#fa0000"
 dot_tick_damage = 6.0
 dot_tick_lifesteal = 50.0
 dot_tick_rate = 0.8
-particle_scene = ExtResource("3_ghiwh")
+particle_effect = "vampirism_bleed"
 metadata/_custom_type_script = "uid://ko57id0ce143"
 
 [resource]
@@ -33,6 +31,6 @@ aoe_radius = 3.0
 aoe_damage = 6.0
 active_effect_cooldown = 1.0
 dot_resource = SubResource("Resource_5fxjl")
-particle_scene = ExtResource("4_5fxjl")
+particle_effect = "vampirism_activate"
 aoe_resource = SubResource("Resource_dslir")
 metadata/_custom_type_script = "uid://rwrpa5fevhio"

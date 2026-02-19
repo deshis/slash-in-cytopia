@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c15dsxqpwd0k" path="res://Assets/particles/star_05.png" id="1_n0de3"]
 [ext_resource type="Texture2D" uid="uid://dovdqeuldcpu" path="res://Assets/particles/light_01.png" id="2_glxhf"]
 [ext_resource type="Texture2D" uid="uid://cxdxsssevnamf" path="res://Assets/particles/blood.png" id="2_nw1os"]
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="3_glxhf"]
 
 [sub_resource type="Curve" id="Curve_glxhf"]
 _data = [Vector2(0.006600663, 1), 0.0, 0.0, 0, 0, Vector2(0.43894392, 0.85655904), -0.35771686, -0.35771686, 0, 0, Vector2(0.72607267, 0), 0.0, 0.0, 0, 0]
@@ -97,6 +98,7 @@ material = SubResource("StandardMaterial3D_mmca1")
 size = Vector2(1.5, 1.5)
 
 [node name="Node3D" type="Node3D" unique_id=118667089]
+script = ExtResource("3_glxhf")
 
 [node name="ExplosionFlash" type="GPUParticles3D" parent="." unique_id=31475824]
 emitting = false

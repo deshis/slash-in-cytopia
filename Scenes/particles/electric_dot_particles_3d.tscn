@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvvj5hl8wpxu1"]
 
 [ext_resource type="Texture2D" uid="uid://b8c2ejljrsiv" path="res://Assets/particles/spark_05.png" id="1_a5bk2"]
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="2_3ghh0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sply2"]
 transparency = 1
@@ -16,7 +17,10 @@ material = SubResource("StandardMaterial3D_sply2")
 offsets = PackedFloat32Array(0, 0.2260274, 0.29452056)
 colors = PackedColorArray(1, 1, 1, 1, 0.069665685, 0.06966572, 9.024516e-09, 1, 0, 0, 0, 0)
 
-[node name="electric_dot_particles_3D" type="CPUParticles3D" unique_id=1550593468]
+[node name="Node3D" type="Node3D" unique_id=1981905101]
+script = ExtResource("2_3ghh0")
+
+[node name="electric_dot_particles_3D" type="CPUParticles3D" parent="." unique_id=1550593468]
 emitting = false
 amount = 1
 lifetime = 0.8

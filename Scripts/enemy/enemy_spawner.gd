@@ -30,6 +30,7 @@ var credits := 0.0
 var enemy_pools := {}
 var init_pool_size := 8
 
+
 func start_spawner() -> void:
 	player = GameManager.player
 	init_pools()
@@ -41,10 +42,12 @@ func start_spawner() -> void:
 	_on_credits_cooldown_timer_timeout()
 	_on_wave_cooldown_timer_timeout()
 	boss_cooldown_timer.start(boss_cooldown_time)
-	
+
+
 func spawn_target_dummy() -> void:
 	spawn_enemy(target_dummy, Vector3(2,0,-2))
-	
+
+
 func init_pools() -> void:
 	var all_prefabs = enemy_list + augmented_list + boss_list
 	
@@ -56,14 +59,16 @@ func init_pools() -> void:
 			var instance = instantiate_enemy(prefab)
 			enemy_pools[scene_key].append(instance)
 
+
 func instantiate_enemy(prefab: EnemyPrefab) -> EnemyController:
 	var instance = prefab.scene.instantiate() as EnemyController
-	add_child(instance)
 	
 	instance.visible = false
 	instance.process_mode = Node.PROCESS_MODE_DISABLED
 	
+	add_child(instance)
 	return instance
+
 
 func get_from_pool(prefab: EnemyPrefab) -> EnemyController:
 	var key = prefab.scene.resource_path
@@ -81,27 +86,24 @@ func get_from_pool(prefab: EnemyPrefab) -> EnemyController:
 	pool.append(new_instance)
 	return new_instance
 
+
 func spawn_enemy(prefab: EnemyPrefab, pos: Vector3 = Vector3.ZERO) -> void:
-	var enemy = get_from_pool(prefab)
-	var death_particles = prefab.death_particle_scene
-	var on_hit_particles = prefab.hit_particle_scene
+	var scene = get_from_pool(prefab)
 	
-	if not enemy:
-		enemy = instantiate_enemy(prefab)
+	if not scene:
+		scene = instantiate_enemy(prefab)
 	
 	if pos == Vector3.ZERO:
-		enemy.global_position = get_spawn_pos(enemy)
+		scene.global_position = get_spawn_pos(scene)
 	else:
-		enemy.global_position = Vector3(pos.x, 0.0, pos.z)
+		scene.global_position = Vector3(pos.x, 0.0, pos.z)
 	
-	enemy.enemy = prefab.stats.duplicate(true)
+	scene.enemy = prefab.stats.duplicate(true)
+	scene.particles = prefab.particles
 	
-	#idk if this is ideal
-	enemy.enemy.death_particles = death_particles
-	enemy.enemy.on_hit_particles = on_hit_particles
-	
-	enemy.enemy.setup(diff.get_difficulty())
-	enemy._activate()
+	scene.enemy.setup(diff.get_difficulty())
+	scene._activate()
+
 
 func spawn_wave_of_enemies(amount: int) -> void:
 	for i in range(amount):
@@ -120,6 +122,7 @@ func spawn_wave_of_enemies(amount: int) -> void:
 		if cost <= credits:
 			spawn_enemy(enemy)
 			credits -= enemy.stats.cost
+
 
 func get_spawn_pos(_enemy: EnemyController) -> Vector3:
 	var vp_size = get_viewport().get_size()
@@ -146,11 +149,13 @@ func get_spawn_pos(_enemy: EnemyController) -> Vector3:
 	var fixed_pos = NavigationServer3D.map_get_closest_point(nav_map, pos)
 	return fixed_pos
 
+
 func get_random_enemy(array: Array) -> EnemyPrefab:
 	var choice = randi_range(0, array.size() - 1)
 	var prefab = array[choice]
 	
 	return prefab
+
 
 func _on_wave_cooldown_timer_timeout() -> void:
 	if not player:
@@ -164,6 +169,7 @@ func _on_wave_cooldown_timer_timeout() -> void:
 	
 	var cooldown = randf_range(wave_cooldown_min, wave_cooldown_max)
 	wave_cooldown_timer.start(cooldown)
+
 
 func _on_boss_cooldown_timer_timeout() -> void:
 	if not player:

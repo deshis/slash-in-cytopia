@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://unihvbid3j10"]
 
 [ext_resource type="Texture2D" uid="uid://c15dsxqpwd0k" path="res://Assets/particles/star_05.png" id="1_l765s"]
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="2_876rw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_876rw"]
 transparency = 1
@@ -170,6 +171,7 @@ _data = {
 }
 
 [node name="ExplosionParticles" type="Node3D" unique_id=195263052]
+script = ExtResource("2_876rw")
 
 [node name="Sparks" type="GPUParticles3D" parent="." unique_id=539364579]
 material_override = SubResource("StandardMaterial3D_876rw")

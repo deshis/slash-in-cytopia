@@ -36,7 +36,10 @@ radius = 0.35
 section_rings = 7
 curve = SubResource("Curve_mryok")
 
-[node name="player_on_hit_particles_3D" type="GPUParticles3D" unique_id=53914993 node_paths=PackedStringArray("particles")]
+[node name="Node3D" type="Node3D" unique_id=1949583571]
+script = ExtResource("1_7es3i")
+
+[node name="player_on_hit_particles_3D" type="GPUParticles3D" parent="." unique_id=53914993]
 emitting = false
 amount = 30
 lifetime = 0.25
@@ -46,5 +49,3 @@ trail_enabled = true
 trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_mryok")
 draw_pass_1 = SubResource("TubeTrailMesh_c56q3")
-script = ExtResource("1_7es3i")
-particles = NodePath(".")

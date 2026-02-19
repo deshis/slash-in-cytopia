@@ -47,9 +47,8 @@ func start_game(init_player: bool = false) -> void:
 	HUD.remove_all_bars()
 	
 	# init particle manager
-	particles = preload("res://Scenes/particles/particle_manager.tscn").instantiate() as ParticleManager
-	particles.prebake()
-	add_child(particles)
+	#particles = preload("res://Scenes/particles/particle_manager.tscn").instantiate() as ParticleManager
+	#add_child(particles)
 	
 	Engine.time_scale = 1.0
 	

@@ -40,10 +40,11 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
-		var recycler_menu = MenuManager.menus[MenuManager.MENU.RECYCLER]
-		recycler_menu.move_items_from_recycler()
-		MenuManager.close_menu(MenuManager.MENU.RECYCLER)
-		MenuManager.menus[MenuManager.MENU.RECYCLER].items_recycled.disconnect(recycle_items)
+		if MenuManager.active_menu == MenuManager.MENU.RECYCLER:
+			var recycler_menu = MenuManager.menus[MenuManager.MENU.RECYCLER]
+			recycler_menu.move_items_from_recycler()
+			MenuManager.close_menu(MenuManager.MENU.RECYCLER)
+			MenuManager.menus[MenuManager.MENU.RECYCLER].items_recycled.disconnect(recycle_items)
 
 
 func _physics_process(_delta: float) -> void:

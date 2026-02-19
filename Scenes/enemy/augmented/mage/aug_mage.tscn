@@ -26,7 +26,7 @@ ranged_attack = ExtResource("3_evroh")
 tp_attack_duration = 0.75
 nav_agent = NodePath("NavigationAgent3D")
 attack = ExtResource("2_1t6lu")
-attack_windup_duration = 0.3
+attack_windup_duration = 0.4
 attack_range = 2.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1019313319]

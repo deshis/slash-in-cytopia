@@ -48,7 +48,10 @@ vertex_color_use_as_albedo = true
 [sub_resource type="BoxMesh" id="BoxMesh_v2sna"]
 material = SubResource("StandardMaterial3D_sbt0b")
 
-[node name="Freeze" type="GPUParticles3D" unique_id=1578957381 node_paths=PackedStringArray("particles")]
+[node name="Node3D" type="Node3D" unique_id=1493213817]
+script = ExtResource("1_v2sna")
+
+[node name="Freeze" type="GPUParticles3D" parent="." unique_id=1578957381]
 emitting = false
 amount = 5
 lifetime = 6.0
@@ -58,5 +61,3 @@ randomness = 0.1
 fixed_fps = 24
 process_material = SubResource("ParticleProcessMaterial_sbt0b")
 draw_pass_1 = SubResource("BoxMesh_v2sna")
-script = ExtResource("1_v2sna")
-particles = NodePath(".")

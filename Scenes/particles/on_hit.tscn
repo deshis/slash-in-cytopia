@@ -91,18 +91,19 @@ radius = 0.025
 section_rings = 7
 curve = SubResource("Curve_f0cef")
 
-[node name="OnHitParticles" type="GPUParticles3D" unique_id=740119265 node_paths=PackedStringArray("particles")]
+[node name="Node3D" type="Node3D" unique_id=103462314]
+script = ExtResource("2_bpd16")
+
+[node name="OnHitParticles" type="GPUParticles3D" parent="." unique_id=740119265]
 emitting = false
 amount = 1
-sub_emitter = NodePath("sparkles")
+sub_emitter = NodePath("../sparkles")
 lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_h7vbn")
 draw_pass_1 = SubResource("QuadMesh_ml3yf")
 draw_skin = SubResource("Skin_yj37t")
-script = ExtResource("2_bpd16")
-particles = NodePath(".")
 
 [node name="sparkles" type="GPUParticles3D" parent="." unique_id=1864544610]
 emitting = false

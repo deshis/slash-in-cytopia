@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c6boujtbvj8ho"]
 
 [ext_resource type="Texture2D" uid="uid://c15dsxqpwd0k" path="res://Assets/particles/star_05.png" id="1_b2efr"]
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="2_2u7y4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_876rw"]
 transparency = 1
@@ -111,6 +112,7 @@ size = Vector2(0.3, 0.4)
 glow_enabled = true
 
 [node name="OnHitParticles" type="Node3D" unique_id=195263052]
+script = ExtResource("2_2u7y4")
 
 [node name="Sparks" type="GPUParticles3D" parent="." unique_id=539364579]
 material_override = SubResource("StandardMaterial3D_876rw")

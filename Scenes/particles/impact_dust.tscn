@@ -64,7 +64,10 @@ albedo_texture_force_srgb = true
 material = SubResource("StandardMaterial3D_sbt0b")
 radius = 1.0
 
-[node name="impact_dust" type="GPUParticles3D" unique_id=1212537711 node_paths=PackedStringArray("particles")]
+[node name="Node3D" type="Node3D" unique_id=6255314]
+script = ExtResource("1_cnqyf")
+
+[node name="impact_dust" type="GPUParticles3D" parent="." unique_id=1212537711]
 emitting = false
 amount = 100
 lifetime = 3.0
@@ -75,5 +78,3 @@ explosiveness = 0.85
 randomness = 0.1
 process_material = SubResource("ParticleProcessMaterial_sbt0b")
 draw_pass_1 = SubResource("SphereMesh_ksoeo")
-script = ExtResource("1_cnqyf")
-particles = NodePath(".")
