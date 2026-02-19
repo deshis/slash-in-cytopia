@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://gwfafccqx5f2"]
 
 [ext_resource type="Script" uid="uid://bb85v4ja526qs" path="res://Scripts/ui/hud/skill_icon.gd" id="1_trwys"]
-[ext_resource type="Shader" path="res://Assets/materials/shaders/glitch.gdshader" id="2_lejg5"]
+[ext_resource type="Shader" uid="uid://dltnkyf0hnwq0" path="res://Assets/materials/shaders/glitch.gdshader" id="2_lejg5"]
 
 [sub_resource type="Gradient" id="Gradient_2874v"]
 offsets = PackedFloat32Array(0)
@@ -35,9 +35,9 @@ bg_color = Color(0, 0, 0, 0.50980395)
 shader = ExtResource("2_lejg5")
 shader_parameter/range = 0.05
 shader_parameter/noiseQuality = 300.0
-shader_parameter/noiseIntensity = 0.00500000489564
+shader_parameter/noiseIntensity = 0.00200000475313999
 shader_parameter/offsetIntensity = 0.00100000330737999
-shader_parameter/colorOffsetIntensity = 0.400000019
+shader_parameter/colorOffsetIntensity = 0.250000011875
 
 [node name="Skill" type="MarginContainer" unique_id=594477463]
 offset_right = 98.0

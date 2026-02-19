@@ -149,6 +149,7 @@ func _on_tutorial_pressed() -> void:
 	profile_container.visible = false
 	tutorial_container.visible = true
 	$Menu/TutorialMargin/Panel/MarginContainer/close_tutorial.grab_focus()
+	$Menu/TutorialMargin/Panel/MarginContainer2/RichTextLabel.update()
 
 
 func _on_close_tutorial_pressed() -> void:

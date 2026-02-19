@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://btj605votyjy8"]
+[gd_scene format=3 uid="uid://btj605votyjy8"]
 
 [ext_resource type="Script" uid="uid://cqkdhw5hj1i28" path="res://Scripts/ui/settings/settings_menu.gd" id="1_fsgis"]
 [ext_resource type="Script" uid="uid://gvan738cxsdf" path="res://Scripts/ui/settings/settings_menu_tab_container.gd" id="1_jjs6x"]
@@ -9,15 +9,16 @@
 [ext_resource type="Script" uid="uid://dxh73gj138c6" path="res://Scripts/ui/settings/anti_aliasing_selection.gd" id="6_rkth2"]
 [ext_resource type="Script" uid="uid://cx5ta3jfi5jxf" path="res://Scripts/ui/settings/vsync_toggle.gd" id="7_cdah7"]
 [ext_resource type="Script" uid="uid://bvr7eycdvq5oh" path="res://Scripts/ui/settings/control_remap_button.gd" id="8_ssx55"]
+[ext_resource type="Script" uid="uid://bpaqe2wpnfn7t" path="res://Scripts/ui/settings/max_fps_selection.gd" id="9_8kxmi"]
 
-[node name="SettingsMenu" type="Control"]
+[node name="SettingsMenu" type="Control" unique_id=1906599826]
 process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_fsgis")
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="." unique_id=620950131]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 1
 anchors_preset = 8
@@ -34,7 +35,7 @@ grow_vertical = 2
 current_tab = 0
 script = ExtResource("1_jjs6x")
 
-[node name="Audio" type="MarginContainer" parent="TabContainer"]
+[node name="Audio" type="MarginContainer" parent="TabContainer" unique_id=959985856]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -42,18 +43,18 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio" unique_id=1443290747]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Master Volume" type="RichTextLabel" parent="TabContainer/Audio/VBoxContainer"]
+[node name="Master Volume" type="RichTextLabel" parent="TabContainer/Audio/VBoxContainer" unique_id=1728048126]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Master"
 fit_content = true
 
-[node name="MasterVolumeSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+[node name="MasterVolumeSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer" unique_id=1537030156]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
@@ -61,13 +62,13 @@ scrollable = false
 script = ExtResource("2_fsgis")
 bus_name = "Master"
 
-[node name="SFX Volume" type="RichTextLabel" parent="TabContainer/Audio/VBoxContainer"]
+[node name="SFX Volume" type="RichTextLabel" parent="TabContainer/Audio/VBoxContainer" unique_id=297656313]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]SFX"
 fit_content = true
 
-[node name="SFXVolumeSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+[node name="SFXVolumeSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer" unique_id=497363833]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
@@ -75,13 +76,13 @@ scrollable = false
 script = ExtResource("2_fsgis")
 bus_name = "SFX"
 
-[node name="Music Volume" type="RichTextLabel" parent="TabContainer/Audio/VBoxContainer"]
+[node name="Music Volume" type="RichTextLabel" parent="TabContainer/Audio/VBoxContainer" unique_id=1971751778]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Music"
 fit_content = true
 
-[node name="MusicVolumeSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+[node name="MusicVolumeSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer" unique_id=897083003]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
@@ -89,14 +90,14 @@ scrollable = false
 script = ExtResource("2_fsgis")
 bus_name = "Music"
 
-[node name="BackToMenuButton" type="Button" parent="TabContainer/Audio/VBoxContainer"]
+[node name="BackToMenuButton" type="Button" parent="TabContainer/Audio/VBoxContainer" unique_id=1357067207]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Back to menu"
 script = ExtResource("3_vv31b")
 
-[node name="Graphics" type="MarginContainer" parent="TabContainer"]
+[node name="Graphics" type="MarginContainer" parent="TabContainer" unique_id=1238568319]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 10
@@ -105,37 +106,53 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 metadata/_tab_index = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics" unique_id=1354470894]
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Resolution" type="RichTextLabel" parent="TabContainer/Graphics/VBoxContainer"]
+[node name="ResolutionContainer" type="HBoxContainer" parent="TabContainer/Graphics/VBoxContainer" unique_id=1480854186]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Resolution" type="RichTextLabel" parent="TabContainer/Graphics/VBoxContainer/ResolutionContainer" unique_id=136188610]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Resolution"
 fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ResolutionSelection" type="OptionButton" parent="TabContainer/Graphics/VBoxContainer"]
+[node name="ResolutionSelection" type="OptionButton" parent="TabContainer/Graphics/VBoxContainer/ResolutionContainer" unique_id=1276970940]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("4_hmele")
 
-[node name="Fullscreentoggle" type="CheckButton" parent="TabContainer/Graphics/VBoxContainer" node_paths=PackedStringArray("res_selection")]
+[node name="Fullscreentoggle" type="CheckButton" parent="TabContainer/Graphics/VBoxContainer" unique_id=1379418447 node_paths=PackedStringArray("res_selection")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Full Screen"
 script = ExtResource("5_n0ctm")
-res_selection = NodePath("../ResolutionSelection")
+res_selection = NodePath("../ResolutionContainer/ResolutionSelection")
 
-[node name="Anti-aliasing" type="RichTextLabel" parent="TabContainer/Graphics/VBoxContainer"]
+[node name="AntiAliasingContainer" type="HBoxContainer" parent="TabContainer/Graphics/VBoxContainer" unique_id=71347436]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Anti-aliasing" type="RichTextLabel" parent="TabContainer/Graphics/VBoxContainer/AntiAliasingContainer" unique_id=800983404]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Anti-aliasing"
 fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="AntiAliasingSelection" type="OptionButton" parent="TabContainer/Graphics/VBoxContainer"]
+[node name="AntiAliasingSelection" type="OptionButton" parent="TabContainer/Graphics/VBoxContainer/AntiAliasingContainer" unique_id=1496964597]
 layout_mode = 2
 size_flags_horizontal = 4
 selected = 0
@@ -152,21 +169,56 @@ popup/item_4/text = "MSAA 8x"
 popup/item_4/id = 4
 script = ExtResource("6_rkth2")
 
-[node name="Vsynctoggle" type="CheckButton" parent="TabContainer/Graphics/VBoxContainer"]
+[node name="Vsynctoggle" type="CheckButton" parent="TabContainer/Graphics/VBoxContainer" unique_id=250881298]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "V-Sync"
 script = ExtResource("7_cdah7")
 
-[node name="BackToMenuButton" type="Button" parent="TabContainer/Graphics/VBoxContainer"]
+[node name="MaxFPSContainer" type="HBoxContainer" parent="TabContainer/Graphics/VBoxContainer" unique_id=422071662]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Max FPS" type="RichTextLabel" parent="TabContainer/Graphics/VBoxContainer/MaxFPSContainer" unique_id=509715435]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Max FPS"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaxFPSSelection" type="OptionButton" parent="TabContainer/Graphics/VBoxContainer/MaxFPSContainer" unique_id=1282953033]
+layout_mode = 2
+size_flags_horizontal = 4
+selected = 0
+item_count = 7
+popup/item_0/text = "Unlimited"
+popup/item_0/id = 0
+popup/item_1/text = "30"
+popup/item_1/id = 1
+popup/item_2/text = "60"
+popup/item_2/id = 2
+popup/item_3/text = "120"
+popup/item_3/id = 3
+popup/item_4/text = "144"
+popup/item_4/id = 4
+popup/item_5/text = "240"
+popup/item_5/id = 5
+popup/item_6/text = "300"
+popup/item_6/id = 6
+script = ExtResource("9_8kxmi")
+
+[node name="BackToMenuButton" type="Button" parent="TabContainer/Graphics/VBoxContainer" unique_id=400206826]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Back to menu"
 script = ExtResource("3_vv31b")
 
-[node name="Controls" type="MarginContainer" parent="TabContainer"]
+[node name="Controls" type="MarginContainer" parent="TabContainer" unique_id=1492455206]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 10
@@ -175,162 +227,177 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 metadata/_tab_index = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls" unique_id=1266966164]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 5
 alignment = 1
 
-[node name="primary" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+[node name="primary" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer" unique_id=1790553907]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/primary"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/primary" unique_id=354024924]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Primary Attack"
 
-[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/primary"]
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/primary" unique_id=1602167712]
 layout_mode = 2
 script = ExtResource("8_ssx55")
 action = "light_attack"
 
-[node name="secondary" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+[node name="secondary" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer" unique_id=46030535]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/secondary"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/secondary" unique_id=1618081829]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Secondary Attack"
 
-[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/secondary"]
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/secondary" unique_id=1748318216]
 layout_mode = 2
 script = ExtResource("8_ssx55")
 action = "heavy_attack"
 
-[node name="moveup" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+[node name="moveup" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer" unique_id=138110303]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/moveup"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/moveup" unique_id=1574882370]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Move Up"
 
-[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/moveup"]
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/moveup" unique_id=80278508]
 layout_mode = 2
 script = ExtResource("8_ssx55")
 action = "move_up"
 
-[node name="moveleft" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+[node name="moveleft" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer" unique_id=718099352]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/moveleft"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/moveleft" unique_id=334814381]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Move Left"
 
-[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/moveleft"]
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/moveleft" unique_id=104123884]
 layout_mode = 2
 script = ExtResource("8_ssx55")
 action = "move_left"
 
-[node name="movedown" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+[node name="movedown" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer" unique_id=589595409]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/movedown"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/movedown" unique_id=50356664]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Move Down"
 
-[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/movedown"]
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/movedown" unique_id=1435990651]
 layout_mode = 2
 script = ExtResource("8_ssx55")
 action = "move_down"
 
-[node name="moveright" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+[node name="moveright" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer" unique_id=923061956]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/moveright"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/moveright" unique_id=351667696]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Move Right"
 
-[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/moveright"]
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/moveright" unique_id=1253860064]
 layout_mode = 2
 script = ExtResource("8_ssx55")
 action = "move_right"
 
-[node name="interact" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+[node name="interact" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer" unique_id=1730683290]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/interact"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/interact" unique_id=205688166]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Interact"
 
-[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/interact"]
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/interact" unique_id=1736237317]
 layout_mode = 2
 script = ExtResource("8_ssx55")
 action = "interact"
 
-[node name="active" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+[node name="active" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer" unique_id=583297657]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/active"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/active" unique_id=270894575]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Active item"
 
-[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/active"]
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/active" unique_id=1588674813]
 layout_mode = 2
 script = ExtResource("8_ssx55")
 action = "active_item"
 
-[node name="dash" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+[node name="throwable" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer" unique_id=673720208]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/dash"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/throwable" unique_id=1310065091]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Throwable item"
+
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/throwable" unique_id=938460666]
+layout_mode = 2
+script = ExtResource("8_ssx55")
+action = "throwable_item"
+
+[node name="dash" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer" unique_id=97490963]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/dash" unique_id=590059990]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Movement Ability"
 
-[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/dash"]
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/dash" unique_id=1867274519]
 layout_mode = 2
 script = ExtResource("8_ssx55")
 action = "movement_ability"
 
-[node name="inventory" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+[node name="inventory" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer" unique_id=2052648929]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/inventory"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls/VBoxContainer/inventory" unique_id=1473999292]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Open Inventory"
 
-[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/inventory"]
+[node name="ControlRemapButton" type="Button" parent="TabContainer/Controls/VBoxContainer/inventory" unique_id=1162723995]
 layout_mode = 2
 script = ExtResource("8_ssx55")
 action = "inventory"
 
-[node name="BackToMenuButton" type="Button" parent="TabContainer/Controls/VBoxContainer"]
+[node name="BackToMenuButton" type="Button" parent="TabContainer/Controls/VBoxContainer" unique_id=147029426]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -338,9 +405,10 @@ text = "Back to menu"
 script = ExtResource("3_vv31b")
 
 [connection signal="pressed" from="TabContainer/Audio/VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
-[connection signal="item_selected" from="TabContainer/Graphics/VBoxContainer/ResolutionSelection" to="TabContainer/Graphics/VBoxContainer/ResolutionSelection" method="_on_item_selected"]
+[connection signal="item_selected" from="TabContainer/Graphics/VBoxContainer/ResolutionContainer/ResolutionSelection" to="TabContainer/Graphics/VBoxContainer/ResolutionContainer/ResolutionSelection" method="_on_item_selected"]
 [connection signal="toggled" from="TabContainer/Graphics/VBoxContainer/Fullscreentoggle" to="TabContainer/Graphics/VBoxContainer/Fullscreentoggle" method="_on_toggled"]
-[connection signal="item_selected" from="TabContainer/Graphics/VBoxContainer/AntiAliasingSelection" to="TabContainer/Graphics/VBoxContainer/AntiAliasingSelection" method="_on_item_selected"]
+[connection signal="item_selected" from="TabContainer/Graphics/VBoxContainer/AntiAliasingContainer/AntiAliasingSelection" to="TabContainer/Graphics/VBoxContainer/AntiAliasingContainer/AntiAliasingSelection" method="_on_item_selected"]
 [connection signal="toggled" from="TabContainer/Graphics/VBoxContainer/Vsynctoggle" to="TabContainer/Graphics/VBoxContainer/Vsynctoggle" method="_on_toggled"]
+[connection signal="item_selected" from="TabContainer/Graphics/VBoxContainer/MaxFPSContainer/MaxFPSSelection" to="TabContainer/Graphics/VBoxContainer/MaxFPSContainer/MaxFPSSelection" method="_on_item_selected"]
 [connection signal="pressed" from="TabContainer/Graphics/VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
 [connection signal="pressed" from="TabContainer/Controls/VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

@@ -12,6 +12,16 @@ enum AntiAliasing {
 	MSAA8X,
 }
 
+var framerates = [
+	0,
+	30,
+	60,
+	120,
+	144,
+	240,
+	300,
+]
+
 
 var Resolutions: Dictionary = {
 	"3840x2160": Vector2i(3840, 2160),
@@ -30,7 +40,9 @@ func _ready() -> void:
 
 
 func create_new_preferences_file() -> void:
-	print("missing setting detected, creating new preferences file")
+	print("Missing setting detected, creating new preferences file. Saved settings were reset to default values.")
+	
+	get_tree().reload_current_scene() #scene has to be reloaded to reset settings properly
 	
 	cfg.clear()
 	
@@ -44,11 +56,13 @@ func create_new_preferences_file() -> void:
 	cfg.set_value("keybinds", "heavy_attack", "Right Mouse Button")
 	cfg.set_value("keybinds", "interact", "F")
 	cfg.set_value("keybinds", "active_item", "Q")
+	cfg.set_value("keybinds", "throwable_item", "E")
 	
 	cfg.set_value("video", "antialiasing", AntiAliasing.TAA)
 	cfg.set_value("video", "resolution", "1920x1080")
 	cfg.set_value("video", "vsync", true)
 	cfg.set_value("video", "fullscreen", false)
+	cfg.set_value("video", "framerate", framerates[0])
 	
 	cfg.set_value ("audio", "Master", 1.0)
 	cfg.set_value ("audio", "Music", 1.0)

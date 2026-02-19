@@ -11,11 +11,11 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x44ss"]
 shader = ExtResource("7_ckmai")
-shader_parameter/shake_power = 0.03
+shader_parameter/shake_power = 0.015
 shader_parameter/shake_rate = 1.0
 shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 80.0
-shader_parameter/shake_color_rate = 0.010000000475
+shader_parameter/shake_color_rate = 0.0050000002375
 
 [node name="HPBarPlayer" type="Control" unique_id=589468563]
 process_mode = 3
