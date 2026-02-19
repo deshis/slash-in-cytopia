@@ -491,7 +491,8 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 			var aoe_rotation = spawn_transform.basis.get_euler().y
 			
 			##indicator
-			if active_effect.aoe_resource:
+	
+			if active_effect.aoe_resource.indicator_scene:
 				var indicator = aoe.create_indicator()
 				get_tree().root.add_child(indicator)
 				indicator.global_position = aoe_position

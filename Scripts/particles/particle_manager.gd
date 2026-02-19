@@ -26,11 +26,17 @@ func emit_particles(n: String, pos: Vector3, parent: Node = null, duration : flo
 			
 			return particle
 
-
 func prebake() -> void:
 	for scene in particles:
 		var particle = scene.instantiate()
-		particle.process_material = particle.process_material.duplicate(true)
-		particle.lifetime = 0.1;
-		add_child(particle)
-		particle.restart()
+		var all_particles = particle.find_children("*", "GPUParticles3D")
+		
+		for particle_instance in all_particles:
+			particle_instance.process_material = particle_instance.process_material.duplicate(true)
+			particle_instance.lifetime = 0.1;
+			add_child(particle_instance)
+			particle_instance.restart()
+			
+			
+			
+			
