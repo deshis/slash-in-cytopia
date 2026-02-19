@@ -1,8 +1,8 @@
 extends RigidBody3D
 class_name ThrowableLogic
 
-var impact_particle: PackedScene
-var explosion_particle: PackedScene
+var impact_particle: String
+var explosion_particle: String
 var status_effect: DebuffResource
 var dot_effect: DotResource
 var aoe_damage := 0.0
@@ -39,16 +39,7 @@ func _on_body_entered(body: Node):
 	if on_contact_damage:
 
 		if impact_particle:
-			var particle_instance = impact_particle.instantiate()
-			get_tree().root.add_child(particle_instance)
-			particle_instance.global_position = global_position + Vector3.DOWN * 1.0
-			
-			if particle_instance is GPUParticles3D:
-				particle_instance.emitting = true
-				particle_instance.finished.connect(func(): particle_instance.queue_free())
-		
-		
-		#GameManager.particles.emit_particles(impact_particle., global_position - Vector3(0, 1, 0), self)
+			ParticleManager.emit_particles(impact_particle, global_position + Vector3.DOWN * 1.0)
 		
 		explosion(contact_damage,contact_aoe_radius,false, false, false)
 
@@ -105,25 +96,11 @@ func explosion(damage: float, aoe: float, clean: bool, area_damage_indicator: bo
 		#SoundManager.play_sfx("explosion", self.global_position)
 
 	if explosion_particle && emit_explosion_particles:
+		var particle = ParticleManager.emit_particles(explosion_particle, global_position)
 
-		var particle_instance = explosion_particle.instantiate()
-		get_tree().root.add_child(particle_instance)
-		particle_instance.global_position = global_position #+ Vector3.DOWN * 0.1
-		
-		var all_particles = particle_instance.find_children("*", "GPUParticles3D")
-		SoundManager.play_sfx("explosion_medium", self.global_position)
-		
-		for particle in all_particles:
-			particle.emitting = true
-			
-		var anim_player = particle_instance.get_node("AnimationPlayer")
+		var anim_player = particle.get_node("AnimationPlayer")
 		anim_player.play("explosion_light_fade")
-				
-		#particle_instance.finished.connect(func(): particle_instance.queue_free())
-		##hacky but works
-		get_tree().create_timer(5).timeout.connect(particle_instance.queue_free)
-		
-		#SoundManager.play_sfx("explosion2", self.global_position)
+		SoundManager.play_sfx("explosion_medium", self.global_position)
 		
 	if clean:
 		queue_free()

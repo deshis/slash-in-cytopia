@@ -11,12 +11,6 @@ stat_type = 25
 active_effect_resource = ExtResource("2_78l43")
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
-[sub_resource type="Resource" id="Resource_jfqo2"]
-script = ExtResource("1_jfqo2")
-stat_type = 23
-value = 100.0
-metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
-
 [resource]
 script = ExtResource("4_kegr3")
 item_name = "Vampirism"
@@ -24,5 +18,5 @@ item_stat_info = "Cause bleeding in a radius and siphon back 50% of the damage a
 type = 5
 grade = 2
 icon = ExtResource("3_jfqo2")
-effects = Array[ExtResource("1_jfqo2")]([SubResource("Resource_x4mto"), SubResource("Resource_jfqo2")])
+effects = Array[ExtResource("1_jfqo2")]([SubResource("Resource_x4mto")])
 metadata/_custom_type_script = "uid://dulvf1v1d8so8"

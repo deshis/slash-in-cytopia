@@ -2,8 +2,8 @@ extends Resource
 class_name ThrowableResource
 
 @export var throwable_object: PackedScene
-@export var impact_particle: PackedScene
-@export var explosion_particle: PackedScene
+@export var impact_particle: String
+@export var explosion_particle: String
 @export var status_effect: DebuffResource
 @export var dot_effect: DebuffResource
 @export var aoe_indicator: bool

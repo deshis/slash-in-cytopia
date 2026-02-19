@@ -17,7 +17,7 @@ var shaking = false
 var shake_timer := 0.0
 var interval_timer := 0.0
 
-var current_pos = global_position
+var current_pos = Vector3.ZERO
 
 
 func _physics_process(delta: float) -> void:
