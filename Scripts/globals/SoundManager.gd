@@ -37,6 +37,7 @@ func _ready() -> void:
 		"throw":load("res://Assets/audio/effect_throw.wav"),
 		"dash": load("res://Assets/audio/effect_dash.wav"),
 		"hit": load("res://Assets/audio/effect_hit.wav"),
+		"hit2": load("res://Assets/audio/effect_hit2.wav"),
 		"hit_crit": load("res://Assets/audio/effect_hit_critical.wav"),
 		"damage_taken": load("res://Assets/audio/effect_damage_Taken.wav"),
 		"enemy_die": load("res://Assets/audio/effect_enemy_die.wav"),
@@ -49,6 +50,7 @@ func _ready() -> void:
 		"explosion":load("res://Assets/audio/effect_explosion.wav"),
 		"explosion_small":load("res://Assets/audio/effect_explosion2.wav"),
 		"explosion_medium":load("res://Assets/audio/effect_explosion2.wav"),
+		"explosion_hit":load("res://Assets/audio/effect_explosion_hit.wav"), # Hit sfx for explosion dmg
 		"loot_upgrade":load("res://Assets/audio/effect_stun.wav"),
 		
 	}
@@ -59,19 +61,21 @@ func _ready() -> void:
 		"trash":load("res://Assets/audio/effect_trash.wav"),
 		"equip":load("res://Assets/audio/effect_equip.wav"),
 		"combine":load("res://Assets/audio/effect_combine.wav"),
-		"wipe_trans_swing":load("res://Assets/audio/wipe_trans_swing.ogg")
+		"wipe_trans_swing":load("res://Assets/audio/wipe_trans_swing.ogg"),
+		"recycle":load("res://Assets/audio/effect_recycle.wav")
 	}
 	
 	pitch_ranges = {
 		"light_attack_default": [0.8, 1.5],
-		"light_attack_sword": [0.5, 1.5],
+		"light_attack_sword": [0.8, 1.5],
 		"light_attack_dagger": [0.8, 1.2],
 		"heavy_attack_default": [0.8, 1.2],
 		"heavy_attack_axe": [0.9, 1.2],
 		"heavy_attack_maul": [0.8, 1.0],
 		"throw": [0.8, 1.0],
-		"dash": [0.8, 1.5],
-		"hit": [0.5, 1.2],
+		"dash": [0.8, 1.2],
+		"hit": [0.9, 1.1],
+		"hit2": [0.9, 1.1],
 		"hit_crit": [1.0, 1.5],
 		"damage_taken": [0.8, 1.2],
 		"enemy_die": [0.5, 1.5],
@@ -79,7 +83,7 @@ func _ready() -> void:
 		"heal": [0.5, 1.0],
 		"freeze_sfx": [0.9, 1.1],
 		"stun_sfx": [0.7,0.9],
-		"explosion":[0.7,0.9],
+		"explosion":[0.9,1.1],
 		"explosion_small":[0.9,1.1],
 		"explosion_medium":[0.8,0.9],
 	}

@@ -752,7 +752,8 @@ func deal_damage(area: Area3D, amount: float, e: EnemyController = null) -> void
 		GameStats.critical_hits += 1
 		SoundManager.play_sfx("hit_crit", enemy.global_position)
 	else:
-		SoundManager.play_sfx("hit", enemy.global_position)
+		var hit_sfx = ["hit", "hit2"].pick_random()
+		SoundManager.play_sfx(hit_sfx, enemy.global_position)
 	
 	if amount > GameStats.highest_single_hit:
 		GameStats.highest_single_hit = amount

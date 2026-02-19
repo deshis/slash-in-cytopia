@@ -14,6 +14,8 @@ func recycle_items() -> void:
 	slot.get_item().queue_free()
 	
 	items_recycled.emit(slot.get_item().item.grade)
+	
+	SoundManager.play_ui_sfx("recycle")
 
 
 func move_items_from_recycler() -> void:
