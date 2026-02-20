@@ -2,6 +2,12 @@
 
 [ext_resource type="Resource" uid="uid://ce4l0kmhn3iw5" path="res://Scripts/items/resources/RealityFractureDoT.tres" id="1_0j72h"]
 [ext_resource type="Script" uid="uid://rwrpa5fevhio" path="res://Scripts/items/resources/ActiveEffectResource.gd" id="1_l1igw"]
+[ext_resource type="Script" uid="uid://cl2mw12pdltyo" path="res://Scripts/items/resources/AOEresource.gd" id="2_1cv6i"]
+
+[sub_resource type="Resource" id="Resource_f8upf"]
+script = ExtResource("2_1cv6i")
+radius = 25.0
+metadata/_custom_type_script = "uid://cl2mw12pdltyo"
 
 [resource]
 script = ExtResource("1_l1igw")
@@ -11,4 +17,5 @@ aoe_radius = 25.0
 aoe_damage = 15.0
 active_effect_cooldown = 20.0
 dot_resource = ExtResource("1_0j72h")
+aoe_resource = SubResource("Resource_f8upf")
 metadata/_custom_type_script = "uid://rwrpa5fevhio"

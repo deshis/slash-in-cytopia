@@ -10906,8 +10906,8 @@ volumetric_fog_density = 0.03
 shader = ExtResource("43_fj8lq")
 shader_parameter/range = 0.01999999955296
 shader_parameter/noiseQuality = 300.0
-shader_parameter/noiseIntensity = 0.0010000047056399897
-shader_parameter/offsetIntensity = 0.0010000033073799958
+shader_parameter/noiseIntensity = 0.00100000470563998
+shader_parameter/offsetIntensity = 0.00100000330737999
 shader_parameter/colorOffsetIntensity = 0.0
 
 [node name="MainMenu" type="Node3D" unique_id=1558360489]

@@ -10,6 +10,7 @@ func _ready() -> void:
 	hitbox.body_entered.connect(_on_body_entered)
 	hitbox.body_exited.connect(_on_body_exited)
 	visible = false
+	global_rotation = Vector3(rotation.x, 0, 0)
 
 
 func _physics_process(_delta: float) -> void:
@@ -24,8 +25,6 @@ func _physics_process(_delta: float) -> void:
 	update_interact_keybind()
 	if interactables.front() == get_parent():
 		visible = true
-		var p_rot = get_parent().rotation
-		rotation = Vector3(rotation.x, -p_rot.y, -p_rot.z)
 	else:
 		visible = false
 

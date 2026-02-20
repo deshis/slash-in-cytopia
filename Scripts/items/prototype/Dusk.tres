@@ -19,6 +19,7 @@ dot_item_desc_color = "#8d54ff"
 dot_tick_damage = 6.0
 dot_tick_rate = 0.75
 dot_duration = 5.0
+particle_effect = "reality_fracture"
 metadata/_custom_type_script = "uid://ko57id0ce143"
 
 [sub_resource type="Resource" id="Resource_ihgk8"]
