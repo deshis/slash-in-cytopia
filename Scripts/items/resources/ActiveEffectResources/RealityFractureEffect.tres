@@ -9,6 +9,6 @@ active_type = 4
 active_effect_value = 8.0
 aoe_radius = 25.0
 aoe_damage = 15.0
-active_effect_cooldown = 30.0
+active_effect_cooldown = 20.0
 dot_resource = ExtResource("1_0j72h")
 metadata/_custom_type_script = "uid://rwrpa5fevhio"

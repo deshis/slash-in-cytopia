@@ -10,5 +10,5 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var dist = global_position.distance_to(player.global_position)
-	if dist < magnet_distance:
+	if dist < magnet_distance and player.health < player.max_health:
 		global_position = global_position.move_toward(player.global_position, magnet_speed * delta)

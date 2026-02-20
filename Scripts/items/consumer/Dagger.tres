@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 [sub_resource type="Resource" id="Resource_n6x88"]
 script = ExtResource("1_t1f5g")
 stat_type = 7
-value = 20.0
+value = 10.0
 metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [resource]

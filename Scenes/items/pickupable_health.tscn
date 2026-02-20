@@ -53,6 +53,7 @@ direction = Vector3(0, 1, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 1.25
 gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
 color = Color(0.7012187, 1, 0.57463115, 1)
 alpha_curve = SubResource("CurveTexture_d7lsl")
 emission_curve = SubResource("CurveTexture_uhb05")

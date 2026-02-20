@@ -57,6 +57,7 @@ orbit_velocity_curve = SubResource("CurveXYZTexture_h3ns0")
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -2.2351742e-06
 radial_accel_max = -2.2351742e-06
+attractor_interaction_enabled = false
 scale_curve = SubResource("CurveTexture_uso0d")
 color = Color(0.92195714, 0.9203971, 0, 1)
 alpha_curve = SubResource("CurveTexture_uq3x2")

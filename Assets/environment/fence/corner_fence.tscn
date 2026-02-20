@@ -33,10 +33,10 @@ size = Vector3(2, 2, 2)
 
 [node name="fence" unique_id=2041866441 instance=ExtResource("1_j1o04")]
 
-[node name="Fence" parent="." index="0" unique_id=485209022]
+[node name="Fence" parent="." index="0" unique_id=1872675636]
 visible = false
 
-[node name="FenceCorner" parent="." index="1" unique_id=1885761970]
+[node name="FenceCorner" parent="." index="1" unique_id=1146138962]
 surface_material_override/1 = SubResource("ShaderMaterial_6cjcf")
 
 [node name="Area3D" type="StaticBody3D" parent="." index="2" unique_id=683938246]
@@ -49,3 +49,9 @@ shape = SubResource("BoxShape3D_p4b4i")
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="3" unique_id=1224245926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 light_color = Color(0.30980393, 0.9254902, 1, 1)
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="4" unique_id=539085103]
+height = 20.0
+vertices = PackedVector3Array(-1, 0, -0.5, -1, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, 1, 0.5, 0, 1, 0.5, 0, -0.5)
+affect_navigation_mesh = true
+avoidance_enabled = false

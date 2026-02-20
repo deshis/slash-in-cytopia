@@ -16,6 +16,10 @@ func setup(p: Player, dir: Vector3, impulse: float = strength, dur: float = dura
 	direction = dir
 	strength = strength if impulse == 0.0 else impulse
 	duration = duration if dur == -1.0 else dur
+	
+	# quick hack to ensure loot stays on ground
+	global_position.y = 0
+	direction.y = 0
 	apply_impulse()
 
 func apply_impulse() -> void:

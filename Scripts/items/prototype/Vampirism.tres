@@ -15,6 +15,7 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 script = ExtResource("4_kegr3")
 item_name = "Vampirism"
 item_stat_info = "Cause bleeding in a radius and siphon back 50% of the damage as health"
+item_description = "Cooldown: 8 sec"
 type = 5
 grade = 2
 icon = ExtResource("3_jfqo2")

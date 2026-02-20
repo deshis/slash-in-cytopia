@@ -186,7 +186,6 @@ shadow_mesh = SubResource("ArrayMesh_4oom1")
 
 [node name="Recycler" type="Node3D" unique_id=231240284 node_paths=PackedStringArray("base_instance", "entry_instance", "exit_instance", "interact_area")]
 script = ExtResource("1_c3gln")
-use_amount = 2
 base_instance = NodePath("interactible_recycler/Recycler")
 entry_instance = NodePath("interactible_recycler/EntryForceField")
 exit_instance = NodePath("interactible_recycler/ExitForceField")

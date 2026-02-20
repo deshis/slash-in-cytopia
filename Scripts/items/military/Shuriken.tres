@@ -14,7 +14,8 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 [resource]
 script = ExtResource("2_8sqtm")
 item_name = "Shuriken"
-item_stat_info = "Throw a shuriken which sticks to a target and explodes after a 1.5s fuse"
+item_stat_info = "Throw a shuriken that sticks to a target and explodes after 1.5s"
+item_description = "Cooldown: 6 sec"
 type = 8
 grade = 1
 icon = ExtResource("2_e4r6v")

@@ -18,9 +18,13 @@ var consumer_items := [
 	preload("res://Scripts/items/consumer/BrokenNeedle.tres"),
 	
 	# ACTIVE_ITEM
-	preload("res://Scripts/items/consumer/Brick.tres"),
+	#preload("res://Scripts/items/consumer/Brick.tres"),
 	preload("res://Scripts/items/consumer/MenderChip.tres"),
 	preload("res://Scripts/items/consumer/UsedNeuroblockers.tres"),
+	
+	# THROWBALES
+	load("res://Scripts/items/consumer/Brick_Throwable.tres"),
+	load("res://Scripts/items/consumer/InstableGrenade.tres"),
 	
 	# PRIMARY_ATTACK
 	preload("res://Scripts/items/consumer/ChromeTippedSpear.tres"),
@@ -59,6 +63,9 @@ var military_items := [
 	preload("res://Scripts/items/military/EMP.tres"),
 	preload("res://Scripts/items/military/QualityNeuroblockers.tres"),
 	
+	# THROWABLES
+	load("res://Scripts/items/military/Shuriken.tres"),
+	
 	# PRIMARY_ATTACK
 	preload("res://Scripts/items/military/Katana.tres"),
 	preload("res://Scripts/items/military/NanoSpear.tres"),
@@ -89,6 +96,9 @@ var prototype_items := [
 	# ACTIVE_ITEM
 	preload("res://Scripts/items/prototype/RealityFracture.tres"),
 	preload("res://Scripts/items/prototype/Vampirism.tres"),
+	
+	# THROWBALES
+	load("res://Scripts/items/prototype/Javelin.tres"),
 	
 	# PRIMARY_ATTACK
 	preload("res://Scripts/items/prototype/ArcFlash.tres"),

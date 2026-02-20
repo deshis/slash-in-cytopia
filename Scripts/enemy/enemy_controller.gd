@@ -412,7 +412,7 @@ func die(drop_loot: bool = true) -> void:
 	if particle:
 		var particle_instance = ParticleManager.emit_particles(particle, global_position)
 		var anim_player = particle_instance.get_node("AnimationPlayer")
-		if anim_player:
+		if anim_player.has_animation("explosion_light_fade"):
 			anim_player.play("explosion_light_fade")
 	
 	GameStats.enemies_killed +=1

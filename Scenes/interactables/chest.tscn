@@ -179,6 +179,7 @@ baseTop = NodePath("interactible_crate/CrateTop")
 physicsTop = NodePath("interactible_crate/RigidBody3D")
 hitbox = NodePath("Hitbox")
 hurtbox = NodePath("Hurtbox")
+health = 30.0
 body = NodePath("interactible_crate")
 loot_table = ExtResource("2_7cbq3")
 

@@ -955,6 +955,9 @@ func _on_heavy_attack_area_entered(area: Area3D) -> void:
 
 
 func _on_health_radius_area_entered(area: Area3D) -> void:
+	if health >= max_health:
+		return
+	
 	var diff = GameManager.spawner.diff
 	var heal_amount = 15.0 + diff.get_difficulty() * diff.heal_amount_per_level
 	heal(heal_amount)

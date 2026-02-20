@@ -12,6 +12,6 @@ stick = true
 on_contact_damage = true
 contact_damage = 60.0
 contact_aoe_radius = 3.0
-throwable_cooldown = 0.1
+throwable_cooldown = 20.0
 throw_force = 10.0
 metadata/_custom_type_script = "uid://bwqwn07goaljh"
