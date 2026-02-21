@@ -4,6 +4,7 @@ signal items_recycled
 
 @export var slot: Control
 
+
 func _ready() -> void:
 	slot.handler = self
 
@@ -12,6 +13,7 @@ func recycle_items() -> void:
 	GameStats.items_recycled += 1
 	MenuManager.close_menu(MenuManager.MENU.RECYCLER)
 	slot.get_item().queue_free()
+	slot.set_cartridge_icon(0)
 	
 	items_recycled.emit(slot.get_item().item.grade)
 	

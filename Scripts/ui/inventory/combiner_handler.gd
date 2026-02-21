@@ -6,6 +6,7 @@ signal items_combined
 var grade = null
 var item_count := 0
 
+
 func _ready() -> void:
 	for slot in slots:
 		slot.handler = self
@@ -17,6 +18,7 @@ func get_slots_with_items() -> Array[Control]:
 		if slot.get_item():
 			items.append(slot)
 	return items
+
 
 func get_empty_slot() -> Control:
 	for slot in slots:
@@ -31,6 +33,7 @@ func combine_items() -> void:
 	
 	for slot in slots:
 		slot.get_item().queue_free()
+		slot.set_cartridge_icon(0)
 	
 	items_combined.emit(grade)
 	SoundManager.play_ui_sfx("combine")

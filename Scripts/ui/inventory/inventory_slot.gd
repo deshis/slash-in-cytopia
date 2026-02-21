@@ -98,3 +98,42 @@ func _can_drop_data(_pos: Vector2, _data: Variant) -> bool:
 func _drop_data(_pos: Vector2, data: Variant) -> void:
 	var origin_slot: InventorySlot = data
 	InventoryManager.move_item(origin_slot, self)
+
+
+func _get_drag_data(_pos: Vector2) -> Variant:
+	if not get_item():
+		return
+	
+	if get_item().item:
+		InventoryManager.item_description.deactivate()
+	
+	var preview := get_item().duplicate(true)
+	preview.size = size
+	set_drag_preview(preview)
+	
+	get_item().modulate = Color(1,1,1,0.0)
+	set_cartridge_icon(0)
+	
+	return self
+
+
+func _notification(what):
+	if what == NOTIFICATION_DRAG_END and get_item():
+		get_item().modulate = Color(1,1,1,1)
+		set_cartridge_icon(get_item().item.grade + 1)
+
+
+func _on_mouse_entered() -> void:
+	if not get_item().item:
+		return
+	
+	if not get_viewport().gui_is_dragging():
+		InventoryManager.item_description.set_description(get_item().item)
+		InventoryManager.item_description.activate()
+
+
+func _on_mouse_exited() -> void:
+	if not get_item().item:
+		return
+	
+	InventoryManager.item_description.deactivate()
