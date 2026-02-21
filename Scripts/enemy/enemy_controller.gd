@@ -330,6 +330,7 @@ func apply_debuff_effect(debuff: DebuffResource) -> void:
 			SoundManager.play_sfx("freeze_sfx", global_position)
 			hit_flash.set_shader_parameter('strength',0.25)
 			hit_flash_timer.start(remaining_debuff_duration)
+			animator.speed_scale = 0.0
 			enemy_frozen = true
 			change_state(COOLDOWN, remaining_debuff_duration)
 			
@@ -341,6 +342,7 @@ func remove_debuff_effect(debuff: DebuffResource) -> void:
 				
 			DebuffResource.DebuffType.FREEZE:
 				enemy_frozen = false
+				animator.speed_scale = 1.0
 
 func _on_debuff_tick() -> void:
 

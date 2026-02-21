@@ -23,26 +23,26 @@ shader_parameter/base_color = Color(0.9490196, 0.8156863, 0.9490196, 1)
 shader_parameter/texture_albedo = ExtResource("4_qplab")
 shader_parameter/erosion_texture = SubResource("NoiseTexture2D_j30b5")
 shader_parameter/gradient_texture = SubResource("GradientTexture1D_jwwmi")
-shader_parameter/erosion = 0.550000026125
+shader_parameter/erosion = 0.0
 shader_parameter/fade = 0.05099999892989999
 shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0.3)
+shader_parameter/uv_offset = Vector2(0, -0.5)
 
 [node name="microbot" unique_id=1879852261 instance=ExtResource("1_86sj6")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 
 [node name="Skeleton3D" parent="rig" index="0"]
-bones/0/position = Vector3(0, 0.38588446, 0)
+bones/0/position = Vector3(0, 0.24450709, 0)
 bones/0/rotation = Quaternion(0, -0.0078539, 0, 0.9999692)
-bones/1/rotation = Quaternion(0.6103643, 0.2891438, -0.22156061, 0.70339334)
-bones/2/rotation = Quaternion(0.5777206, 0.025147669, -0.01780925, 0.8156528)
-bones/3/rotation = Quaternion(-0.26733336, -0.70720303, 0.5907899, -0.28171626)
-bones/4/rotation = Quaternion(0.5780156, 0.004316572, -0.003053314, 0.8160086)
-bones/5/rotation = Quaternion(-0.6137695, 0.27805838, -0.21194527, -0.7078488)
-bones/6/rotation = Quaternion(0.57772064, -0.02514763, 0.017812667, 0.8156526)
-bones/7/rotation = Quaternion(-0.27658153, 0.70268965, -0.58651763, -0.29279166)
-bones/8/rotation = Quaternion(0.5780152, -0.004316481, 0.003058722, 0.81600887)
-bones/9/rotation = Quaternion(0, -0.7071066, 0, 0.70710695)
+bones/1/rotation = Quaternion(0.5432471, 0.3114074, -0.19127013, 0.7558597)
+bones/2/rotation = Quaternion(0.6286044, 0.023959482, -0.019377869, 0.7771145)
+bones/3/rotation = Quaternion(-0.23975314, -0.7603019, 0.52245563, -0.302489)
+bones/4/rotation = Quaternion(0.6288742, 0.004112792, -0.0033219773, 0.7774892)
+bones/5/rotation = Quaternion(-0.54618484, 0.299495, -0.18271258, -0.7606584)
+bones/6/rotation = Quaternion(0.62860453, -0.023959452, 0.019381559, 0.77711433)
+bones/7/rotation = Quaternion(-0.24793158, 0.75545573, -0.5186248, -0.31439605)
+bones/8/rotation = Quaternion(0.628874, -0.0041127154, 0.0033278782, 0.77748924)
+bones/9/rotation = Quaternion(0, -1, 0, 4.284084e-08)
 bones/10/position = Vector3(0.68752223, 0, 0.68752223)
 bones/10/scale = Vector3(0.7432828, 0.7432828, 0.7432828)
 bones/11/position = Vector3(0.68752223, 0.08335897, 0.68752223)
