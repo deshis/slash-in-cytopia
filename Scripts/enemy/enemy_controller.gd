@@ -326,8 +326,10 @@ func apply_debuff_effect(debuff: DebuffResource) -> void:
 			SoundManager.play_sfx("stun_sfx", global_position)
 			change_state(STUN, remaining_debuff_duration)
 		DebuffResource.DebuffType.FREEZE:
-			ParticleManager.emit_particles("freeze", global_position, self)
+			#ParticleManager.emit_particles("freeze", global_position, self)
 			SoundManager.play_sfx("freeze_sfx", global_position)
+			hit_flash.set_shader_parameter('strength',0.25)
+			hit_flash_timer.start(remaining_debuff_duration)
 			enemy_frozen = true
 			change_state(COOLDOWN, remaining_debuff_duration)
 			
@@ -463,12 +465,13 @@ func shatter_ice() -> void:
 	current_stat_damage = 0
 	active_stat_debuffs = null
 	
+	
 	#Interrupt the state
 	if state_timer:
 		state_timer = 0
 		
-	ParticleManager.emit_particles("freeze_shatter", global_position, self)
-
+	#ParticleManager.emit_particles("freeze_shatter", global_position, self)
+	ParticleManager.emit_particles("freeze", global_position, self)
 
 func _on_attack_area_area_entered(_area: Area3D, damage: float = enemy.damage) -> void:
 	if player is not Player: return

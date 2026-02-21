@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 [resource]
 script = ExtResource("4_1w165")
 item_name = "EMP"
-item_stat_info = "On use: Stun enemies for 5 seconds in a 6 meter radius"
+item_stat_info = "On use: Stun enemies for 4 seconds in a 5 meter radius"
 item_description = "Cooldown: 15 sec"
 type = 5
 grade = 1

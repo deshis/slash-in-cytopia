@@ -465,6 +465,10 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 		ActiveEffectResource.ActiveType.STUN_AOE:
 			var stun_length = value
 			
+			var particle = active_effect.particle_effect
+			if particle:
+				ParticleManager.emit_particles(particle, global_position)
+			
 			var stun_dot = preload("res://Scripts/items/resources/StunDebuff.tres")
 			stun_dot.debuff_duration = stun_length
 			

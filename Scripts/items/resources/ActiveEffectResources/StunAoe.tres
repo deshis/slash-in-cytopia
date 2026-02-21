@@ -14,8 +14,9 @@ metadata/_custom_type_script = "uid://cl2mw12pdltyo"
 [resource]
 script = ExtResource("1_yal25")
 active_type = 2
-active_effect_value = 5.0
-aoe_radius = 6.0
+active_effect_value = 4.0
+aoe_radius = 5.0
 active_effect_cooldown = 15.0
+particle_effect = "emp_activate"
 aoe_resource = SubResource("Resource_ueodt")
 metadata/_custom_type_script = "uid://rwrpa5fevhio"

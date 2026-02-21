@@ -15,7 +15,7 @@ albedo_texture = ExtResource("1_b2efr")
 offsets = PackedFloat32Array(0, 0.116981134, 0.8113208)
 colors = PackedColorArray(1.7770907, 1.3027022, 1.2077401, 1, 0.39527193, 0.49796808, 0.70812154, 1, 0.3976, 0.50173336, 0.71, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dd7ps"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2u7y4"]
 gradient = SubResource("Gradient_u5xt3")
 
 [sub_resource type="Curve" id="Curve_at4mf"]
@@ -31,7 +31,7 @@ point_count = 2
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_iwb36"]
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ligsv"]
 curve_x = SubResource("Curve_at4mf")
 curve_y = SubResource("Curve_glf2e")
 curve_z = SubResource("Curve_l765s")
@@ -53,9 +53,9 @@ gravity = Vector3(0, -20, 0)
 attractor_interaction_enabled = false
 scale_min = 0.14999999
 scale_max = 0.75
-scale_curve = SubResource("CurveXYZTexture_iwb36")
+scale_curve = SubResource("CurveXYZTexture_ligsv")
 color = Color(4.561586, 4.561586, 4.561586, 1)
-color_ramp = SubResource("GradientTexture1D_dd7ps")
+color_ramp = SubResource("GradientTexture1D_2u7y4")
 collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.0
@@ -69,14 +69,14 @@ size = Vector2(0.4, 0.35)
 offsets = PackedFloat32Array(0.42264152, 0.7056604)
 colors = PackedColorArray(0.8325827, 0.87342924, 0.9590418, 1, 0, 0, 0, 0.9372549)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_v8yxn"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_65433"]
 gradient = SubResource("Gradient_q7ytj")
 
 [sub_resource type="Curve" id="Curve_sl60t"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3927393, 0.85124636), -1.106687, -1.106687, 0, 0, Vector2(0.74917495, 0.37310988), -0.9468977, -0.9468977, 0, 0, Vector2(1, 0.19779319), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_5dts7"]
+[sub_resource type="CurveTexture" id="CurveTexture_ol1ag"]
 curve = SubResource("Curve_sl60t")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jggox"]
@@ -85,14 +85,14 @@ spread = 180.0
 gravity = Vector3(0, -0.2, 0)
 attractor_interaction_enabled = false
 scale_min = 0.79999995
-scale_curve = SubResource("CurveTexture_5dts7")
+scale_curve = SubResource("CurveTexture_ol1ag")
 color = Color(4.562, 2.7963762, 2.0423558, 1)
-color_ramp = SubResource("GradientTexture1D_v8yxn")
+color_ramp = SubResource("GradientTexture1D_65433")
 collision_mode = 1
 collision_friction = 0.25
 collision_bounce = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j273a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxpab"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
@@ -105,7 +105,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_1ilfj"]
-material = SubResource("StandardMaterial3D_j273a")
+material = SubResource("StandardMaterial3D_fxpab")
 size = Vector2(0.3, 0.4)
 
 [sub_resource type="Environment" id="Environment_58kb5"]

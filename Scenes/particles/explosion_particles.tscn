@@ -59,34 +59,34 @@ sub_emitter_amount_at_collision = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_612dw"]
 
-[sub_resource type="Gradient" id="Gradient_seavs"]
+[sub_resource type="Gradient" id="Gradient_876rw"]
 offsets = PackedFloat32Array(0.42264152, 0.7056604)
 colors = PackedColorArray(0.84, 0.3584, 0.11759999, 1, 0, 0, 0, 0.9372549)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_l765s"]
-gradient = SubResource("Gradient_seavs")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u5xt3"]
+gradient = SubResource("Gradient_876rw")
 
-[sub_resource type="Curve" id="Curve_ugp7l"]
+[sub_resource type="Curve" id="Curve_dd7ps"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3927393, 0.85124636), -1.106687, -1.106687, 0, 0, Vector2(0.74917495, 0.37310988), -0.9468977, -0.9468977, 0, 0, Vector2(1, 0.19779319), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_876rw"]
-curve = SubResource("Curve_ugp7l")
+[sub_resource type="CurveTexture" id="CurveTexture_at4mf"]
+curve = SubResource("Curve_dd7ps")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qo3i0"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_glf2e"]
 lifetime_randomness = 1.0
 spread = 180.0
 gravity = Vector3(0, -0.2, 0)
 attractor_interaction_enabled = false
 scale_min = 0.79999995
-scale_curve = SubResource("CurveTexture_876rw")
+scale_curve = SubResource("CurveTexture_at4mf")
 color = Color(4.562, 2.7963762, 2.0423558, 1)
-color_ramp = SubResource("GradientTexture1D_l765s")
+color_ramp = SubResource("GradientTexture1D_u5xt3")
 collision_mode = 1
 collision_friction = 0.51
 collision_bounce = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5xt3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1lq7x"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
@@ -99,7 +99,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_knj3b"]
-material = SubResource("StandardMaterial3D_u5xt3")
+material = SubResource("StandardMaterial3D_1lq7x")
 
 [sub_resource type="Curve" id="Curve_mej3t"]
 _data = [Vector2(0.006600663, 1), 0.0, 0.0, 0, 0, Vector2(0.37293732, 0.8193706), -0.35771686, -0.35771686, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -130,6 +130,33 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_aqpo0"]
 material = SubResource("StandardMaterial3D_c270s")
+
+[sub_resource type="Gradient" id="Gradient_seavs"]
+offsets = PackedFloat32Array(0.42264152, 0.7056604)
+colors = PackedColorArray(0.84, 0.3584, 0.11759999, 1, 0, 0, 0, 0.9372549)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iwb36"]
+gradient = SubResource("Gradient_seavs")
+
+[sub_resource type="Curve" id="Curve_ugp7l"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3927393, 0.85124636), -1.106687, -1.106687, 0, 0, Vector2(0.74917495, 0.37310988), -0.9468977, -0.9468977, 0, 0, Vector2(1, 0.19779319), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3msxb"]
+curve = SubResource("Curve_ugp7l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qo3i0"]
+lifetime_randomness = 1.0
+spread = 180.0
+gravity = Vector3(0, -0.2, 0)
+attractor_interaction_enabled = false
+scale_min = 0.79999995
+scale_curve = SubResource("CurveTexture_3msxb")
+color = Color(4.562, 2.7963762, 2.0423558, 1)
+color_ramp = SubResource("GradientTexture1D_iwb36")
+collision_mode = 1
+collision_friction = 0.51
+collision_bounce = 0.0
 
 [sub_resource type="Environment" id="Environment_58kb5"]
 glow_enabled = true
@@ -191,7 +218,7 @@ lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 trail_lifetime = 3.2699999999999996
-process_material = SubResource("ParticleProcessMaterial_qo3i0")
+process_material = SubResource("ParticleProcessMaterial_glf2e")
 draw_pass_1 = SubResource("QuadMesh_knj3b")
 
 [node name="ExplosionFlash" type="GPUParticles3D" parent="." unique_id=1704266478]

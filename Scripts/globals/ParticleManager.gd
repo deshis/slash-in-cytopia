@@ -21,7 +21,7 @@ const particles = {
 	"heal": preload("res://Scenes/particles/heal.tscn"),
 	"vampirism_activate": preload("res://Scenes/particles/vampirism_ability_particle.tscn"),
 	"vampirism_bleed": preload("res://Scenes/particles/vampirism_bleed_dot_particles.tscn"),
-	
+	"emp_activate": preload("res://Scenes/particles/emp_particles.tscn"),
 	# WEAPONS
 	"electric_dot": preload("res://Scenes/particles/electric_dot_particles_3d.tscn"),
 	"??": preload("res://Scenes/particles/electric_dot_particles3D.tscn"), # DEPRECATED?
@@ -34,6 +34,7 @@ const particles = {
 	"impact_dust": preload("res://Scenes/particles/impact_dust.tscn"),
 	"explosion": preload("res://Scenes/particles/explosion_particles.tscn"),
 	"explosion_medium": preload("res://Scenes/particles/expl_particles_medium.tscn"),
+	"explosion_frozen": preload("res://Scenes/particles/freeze_explosion_particles.tscn"),
 	
 	# AUGMENTS
 	"loot_upgrade_light_ray": preload("res://Scenes/particles/light_ray_particles.tscn"), # DEPRECATED
@@ -73,6 +74,8 @@ const all_particles = [
 	preload("res://Scenes/particles/teleport.tscn"),
 	preload("res://Scenes/particles/vampirism_ability_particle.tscn"),
 	preload("res://Scenes/particles/vampirism_bleed_dot_particles.tscn"),
+	preload("res://Scenes/particles/emp_particles.tscn"),
+	preload("res://Scenes/particles/freeze_explosion_particles.tscn"),
 ]
 
 
