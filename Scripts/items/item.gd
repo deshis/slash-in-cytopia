@@ -13,6 +13,7 @@ func _ready() -> void:
 func update_item_display(res: ItemResource) -> void:
 	item = res
 	item_icon.texture = item.icon
+	$shader_mask.texture = item.icon
 
 
 func get_type() -> int:

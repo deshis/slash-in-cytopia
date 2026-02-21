@@ -193,16 +193,9 @@ layout_mode = 2
 script = ExtResource("10_dpa8n")
 slot_type = 4
 
-[node name="CombineButton" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=526808491 instance=ExtResource("10_36s6t")]
+[node name="Button" type="Button" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer/HBoxContainer" unique_id=208926069]
+custom_minimum_size = Vector2(82, 82)
 layout_mode = 2
-
-[node name="Button" type="Button" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer/HBoxContainer/CombineButton" unique_id=208926069]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 text = "Combine"
 
 [node name="Recycler" type="MarginContainer" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer" unique_id=1114433404 node_paths=PackedStringArray("slot")]
@@ -244,16 +237,9 @@ layout_mode = 2
 script = ExtResource("12_b7c12")
 slot_type = 6
 
-[node name="RecycleButton" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer/HBoxContainer" unique_id=889762167 instance=ExtResource("10_36s6t")]
+[node name="Button" type="Button" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer/HBoxContainer" unique_id=711207852]
+custom_minimum_size = Vector2(82, 82)
 layout_mode = 2
-
-[node name="Button" type="Button" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer/HBoxContainer/RecycleButton" unique_id=711207852]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 text = "Recycle"
 
 [node name="ItemSelection" type="MarginContainer" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer" unique_id=1809721560 node_paths=PackedStringArray("slots")]
@@ -364,13 +350,12 @@ script = ExtResource("14_wl13q")
 slot_type = 1
 
 [node name="TrashSlot" parent="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer" unique_id=654756306 instance=ExtResource("10_36s6t")]
-modulate = Color(1, 0, 0, 1)
-self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 4
 script = ExtResource("9_36s6t")
 opened_icon = ExtResource("18_spcc7")
 icon = ExtResource("19_dw40x")
+icon_color = Color(1, 0, 0, 0.5019608)
 slot_type = 5
 sfx = "trash"
 
@@ -397,7 +382,7 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 1
 icon = ExtResource("21_tmvkh")
-icon_color = Color(1, 1, 1, 0.13333334)
+icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Survivability"
 slot_type = 2
 
@@ -416,7 +401,7 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 1
 icon = ExtResource("21_tmvkh")
-icon_color = Color(1, 1, 1, 0.13333334)
+icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Survivability"
 slot_type = 2
 
@@ -434,7 +419,7 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 2
 icon = ExtResource("22_p31k0")
-icon_color = Color(1, 1, 1, 0.13333334)
+icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Movement"
 slot_type = 2
 
@@ -453,7 +438,7 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 2
 icon = ExtResource("22_p31k0")
-icon_color = Color(1, 1, 1, 0.13333334)
+icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Movement"
 slot_type = 2
 
@@ -471,7 +456,7 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 3
 icon = ExtResource("23_0s5ks")
-icon_color = Color(1, 1, 1, 0.13333334)
+icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Utility"
 slot_type = 2
 
@@ -489,7 +474,7 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 4
 icon = ExtResource("24_r3t7s")
-icon_color = Color(1, 1, 1, 0.13333334)
+icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Damage"
 slot_type = 2
 
@@ -508,7 +493,7 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 4
 icon = ExtResource("24_r3t7s")
-icon_color = Color(1, 1, 1, 0.13333334)
+icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Damage"
 slot_type = 2
 
@@ -526,7 +511,7 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 6
 icon = ExtResource("26_2874v")
-icon_color = Color(1, 1, 1, 0.13333334)
+icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Light Attack"
 slot_type = 2
 
@@ -544,7 +529,7 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 7
 icon = ExtResource("27_5m6rh")
-icon_color = Color(1, 1, 1, 0.13333334)
+icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Heavy Attack"
 slot_type = 2
 
@@ -562,7 +547,7 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 5
 icon = ExtResource("25_2874v")
-icon_color = Color(1, 1, 1, 0.13333334)
+icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Brainchip"
 slot_type = 2
 
@@ -580,7 +565,7 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 8
 icon = ExtResource("27_r3t7s")
-icon_color = Color(1, 1, 1, 0.13333334)
+icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Throwable (NAME?)"
 slot_type = 2
 
@@ -857,8 +842,8 @@ layout_mode = 2
 text = "Quit"
 script = ExtResource("11_wfkbc")
 
-[connection signal="pressed" from="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer/HBoxContainer/CombineButton/Button" to="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner" method="_on_button_pressed"]
-[connection signal="pressed" from="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer/HBoxContainer/RecycleButton/Button" to="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler" method="_on_button_pressed"]
+[connection signal="pressed" from="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer/HBoxContainer/Button" to="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner" method="_on_button_pressed"]
+[connection signal="pressed" from="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer/HBoxContainer/Button" to="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler" method="_on_button_pressed"]
 [connection signal="mouse_exited" from="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/TrashSlot" to="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/TrashSlot" method="_on_mouse_exited"]
 [connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/ContinueButton" to="PauseMenu" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/SettingsButton" to="PauseMenu" method="_on_settings_button_pressed"]

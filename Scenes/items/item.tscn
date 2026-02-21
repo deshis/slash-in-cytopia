@@ -1,7 +1,40 @@
 [gd_scene format=3 uid="uid://cheduqgq01lw6"]
 
 [ext_resource type="Script" uid="uid://cqp1l0dofg8ft" path="res://Scripts/items/item.gd" id="1_76mu4"]
+[ext_resource type="Shader" uid="uid://dltnkyf0hnwq0" path="res://Assets/materials/shaders/glitch.gdshader" id="1_my5ke"]
 [ext_resource type="Texture2D" uid="uid://dnop5pqrq8fbx" path="res://Assets/ui/DashIcon.png" id="2_scmcr"]
+[ext_resource type="Texture2D" uid="uid://bc1yvyqjwxee" path="res://Assets/ui/main_menu_button2.png" id="3_ifq0x"]
+[ext_resource type="Shader" uid="uid://cq3v485k8pb6o" path="res://Assets/materials/shaders/glitch_intense.gdshader" id="5_ah7tl"]
+
+[sub_resource type="Gradient" id="Gradient_ifq0x"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ah7tl"]
+gradient = SubResource("Gradient_ifq0x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_okahq"]
+shader = ExtResource("1_my5ke")
+shader_parameter/range = 0.05
+shader_parameter/noiseQuality = 300.0
+shader_parameter/noiseIntensity = 0.00100000470563998
+shader_parameter/offsetIntensity = 0.00100000330737999
+shader_parameter/colorOffsetIntensity = 0.10000000475
+
+[sub_resource type="Gradient" id="Gradient_2637l"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sy6q6"]
+gradient = SubResource("Gradient_2637l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_exvev"]
+shader = ExtResource("5_ah7tl")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 1.0
+shader_parameter/shake_block_size = 60.0
+shader_parameter/shake_color_rate = 0.030000001425
 
 [node name="Item" type="Control" unique_id=454744185]
 layout_mode = 3
@@ -22,6 +55,54 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_scmcr")
 expand_mode = 2
+
+[node name="shader_mask" type="TextureRect" parent="." unique_id=1981995734]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 1
+texture = SubResource("GradientTexture1D_ah7tl")
+expand_mode = 1
+
+[node name="shader_glitch" type="TextureRect" parent="shader_mask" unique_id=1366610326]
+material = SubResource("ShaderMaterial_okahq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 1
+texture = SubResource("GradientTexture1D_sy6q6")
+expand_mode = 1
+
+[node name="shader_glitch_intense" type="TextureRect" parent="shader_mask" unique_id=1952035804]
+visible = false
+material = SubResource("ShaderMaterial_exvev")
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 1
+texture = ExtResource("3_ifq0x")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

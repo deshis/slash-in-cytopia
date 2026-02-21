@@ -12,6 +12,10 @@ class_name InventorySlot
 @onready var item_slot = $ItemSlot
 @onready var icon_node = $ItemSlot/Icon
 
+@export var cartridge_icons: Array[CompressedTexture2D]
+var current_cartridge := 0.0
+var tween : Tween
+
 enum SLOT {
 	NONE,
 	BACKPACK,
@@ -42,6 +46,7 @@ func set_item(item: Control, play_sfx: bool = true) -> void:
 	item_slot.add_child(item)
 	item.slot = self
 	icon_node.visible = false
+	set_cartridge_icon(item.item.grade + 1)
 	
 	if sfx == "" or InventoryManager.is_equipping_starter_items:
 		return
@@ -58,6 +63,27 @@ func clear() -> void:
 
 func slot_right_clicked() -> void:
 	InventoryManager.move_item(self)
+
+
+func set_cartridge_icon(new_ind: int) -> void:
+	var step_time = 0.015 if new_ind > current_cartridge else 0.05
+	var duration = abs(new_ind - current_cartridge) * step_time
+	
+	if tween:
+		tween.stop()
+	
+	tween = create_tween()
+	tween.tween_method(
+		Callable(self, "_set_index"),
+		current_cartridge,
+		new_ind,
+		duration
+	)
+
+
+func _set_index(value: float) -> void:
+	current_cartridge = int(round(value))
+	$TextureRect.texture = cartridge_icons[current_cartridge]
 
 
 func _gui_input(event: InputEvent) -> void:

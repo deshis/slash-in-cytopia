@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://cexexdh4re63h"]
 
 [ext_resource type="Script" uid="uid://dme15a5tqiyvp" path="res://Scripts/ui/inventory/inventory_slot.gd" id="2_0cu6i"]
+[ext_resource type="Texture2D" uid="uid://b6a1luk7taj0o" path="res://Assets/ui/invslot.png" id="2_6qnkv"]
+[ext_resource type="Texture2D" uid="uid://dbsu8ubfyyarx" path="res://Assets/ui/invslot2.png" id="3_i4jvd"]
+[ext_resource type="Texture2D" uid="uid://c48dig40gacop" path="res://Assets/ui/invslot3.png" id="4_e6f57"]
+[ext_resource type="Texture2D" uid="uid://dbv5panfhvbuj" path="res://Assets/ui/invslot4.png" id="5_ugek6"]
+[ext_resource type="Texture2D" uid="uid://bj4qa6pvr84wh" path="res://Assets/ui/invslot5.png" id="6_k3k6t"]
 
 [node name="InventorySlot" type="Control" unique_id=1530991904]
 custom_minimum_size = Vector2(82, 82)
@@ -12,6 +17,7 @@ offset_bottom = -0.08000183
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_0cu6i")
+cartridge_icons = Array[CompressedTexture2D]([ExtResource("2_6qnkv"), ExtResource("3_i4jvd"), ExtResource("4_e6f57"), ExtResource("5_ugek6"), ExtResource("6_k3k6t")])
 
 [node name="Name" type="RichTextLabel" parent="." unique_id=923521486]
 layout_mode = 1
@@ -22,7 +28,7 @@ mouse_filter = 2
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Slot" type="Panel" parent="." unique_id=211965957]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=399012597]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +36,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+texture = ExtResource("2_6qnkv")
+expand_mode = 1
 
 [node name="ItemSlot" type="MarginContainer" parent="." unique_id=1912443901]
 layout_mode = 1
@@ -38,11 +46,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+mouse_filter = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 15
 
 [node name="Icon" type="TextureRect" parent="ItemSlot" unique_id=208311074]
 layout_mode = 2
+mouse_filter = 2
 expand_mode = 2

@@ -130,6 +130,7 @@ func move_item(origin_slot: InventorySlot, new_slot: InventorySlot = null) -> vo
 		return
 	
 	origin_slot.icon_node.visible = true
+	origin_slot.set_cartridge_icon(0)
 	place_or_swap(item, origin_slot, new_slot)
 	update_inventory_data()
 	
