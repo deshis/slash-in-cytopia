@@ -749,28 +749,31 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_spm8d"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_spm8d"]
 render_priority = 0
 shader = ExtResource("3_ic3d6")
-shader_parameter/albedo_alpha = 0.030000001425
+shader_parameter/albedo_alpha = 0.0
 shader_parameter/tint_color = Color(0.21148953, 0.70860875, 0.88297445, 1)
 shader_parameter/edge_color = Color(0.91252595, 0, 0.46387643, 1)
 shader_parameter/edge_power = 1.0
 shader_parameter/edge_size = 5.0
 shader_parameter/edge_intensity = 2.0
+shader_parameter/scanline_texture = SubResource("NoiseTexture2D_spm8d")
 shader_parameter/scanline_tint = Color(1, 0.5, 0, 1)
-shader_parameter/scanline_intensity = 1.0
+shader_parameter/scanline_intensity = 1.0000000475
 shader_parameter/scanline_density = 1.0000000475
-shader_parameter/scanline_thickness = 2.20000010124012
+shader_parameter/scanline_thickness = 2.00000009174012
 shader_parameter/scanline_spacing = 1.60000005225
 shader_parameter/scanline_angle = 6.000000285
 shader_parameter/scanline_speed = 0.2
 shader_parameter/enable_glitch = true
-shader_parameter/glitch_intensity = 0.5
-shader_parameter/shake_power = 0.150000007125
-shader_parameter/shake_rate = 0.800000038
+shader_parameter/glitch_intensity = 1.0
+shader_parameter/shake_power = 0.0950000045125
+shader_parameter/shake_rate = 1.0
 shader_parameter/shake_speed = 10.0
-shader_parameter/shake_block_size = 2.0000000475
+shader_parameter/shake_block_size = 1.0
 shader_parameter/shake_color_rate = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2vtb"]

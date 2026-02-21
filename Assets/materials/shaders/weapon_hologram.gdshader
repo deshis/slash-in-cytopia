@@ -94,7 +94,8 @@ void fragment() {
         float scan_pos = (screen_uv.x * dir.x + screen_uv.y * dir.y);
         float spacing = mix(50.0, 10.0, scanline_density / 10.0) * scanline_spacing;
         float time_offset = TIME * scanline_speed;
-        float line = fract(scan_pos * spacing + time_offset);
+		vec4 noise = texture(scanline_texture, screen_uv);
+		float line = fract(scan_pos * spacing + time_offset + noise.r);
         line = smoothstep(
             0.5 - 0.1 * scanline_thickness,
             0.5 + 0.1 * scanline_thickness,

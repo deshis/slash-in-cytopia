@@ -280,7 +280,8 @@ func enter_state(new_state) -> void:
 					animator.play("Light_attack_default")
 					light_attack_windup_duration = 0.25 / light_attack_speed_scale
 					light_attack_duration = 0.5833 / light_attack_speed_scale
-				
+			
+			tween_weapon_hologram_effect(light_attack_windup_duration)
 			primary_attack_used.emit(light_attack_duration)
 			state_timer = light_attack_windup_duration
 		
@@ -309,6 +310,8 @@ func enter_state(new_state) -> void:
 				heavy_attack_windup_duration = 0.333 / heavy_attack_speed_scale
 				heavy_attack_duration = 0.75 / heavy_attack_speed_scale
 			
+			
+			tween_weapon_hologram_effect(heavy_attack_windup_duration)
 			secondary_attack_used.emit(heavy_attack_duration)
 			state_timer = heavy_attack_windup_duration
 		
@@ -988,3 +991,24 @@ func _on_dash_attack_hitbox_area_entered(area: Area3D) -> void:
 	
 	#EMIT HIT PARTICLES
 	ParticleManager.emit_particles("on_hit_player", area.global_position)
+
+
+func tween_weapon_hologram_effect(duration)->void:
+	_create_shader_tween(weapon_mesh, "shake_power", 1.0, 0.15, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "edge_power", 0.0, 1.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "edge_intensity", 0.0, 2.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "edge_size", 0.0, 5.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "albedo_alpha", 0.0, 0.1, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "scanline_thickness", 0.0, 2.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "scanline_density", 10.0, 1.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+
+func _create_shader_tween(node: Node, shader_property: String, value_start: float, value_end: float, duration: float) -> Tween:
+	var tween = get_tree().create_tween()
+	if node:
+		tween.tween_method(
+		func(value): node.material_override.set_shader_parameter(shader_property, value),  
+			value_start,
+			value_end,
+			duration
+		)
+	return tween
