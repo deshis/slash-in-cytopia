@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ubtpbj2gyrnr"]
+[gd_scene format=3 uid="uid://ubtpbj2gyrnr"]
 
 [ext_resource type="PackedScene" uid="uid://bgu5xdugs0tpp" path="res://Assets/enemy/mage/mage.glb" id="1_ysll7"]
 [ext_resource type="ArrayMesh" uid="uid://d20gb3onvusch" path="res://Assets/enemy/mage/mage_staff.res" id="2_2bpbv"]
@@ -17,6 +17,7 @@ direction = Vector3(1, 1, 1)
 spread = 180.0
 initial_velocity_min = 1.5
 initial_velocity_max = 2.0
+attractor_interaction_enabled = false
 alpha_curve = SubResource("CurveTexture_gkcjs")
 
 [sub_resource type="Curve" id="Curve_k11n6"]
@@ -36,7 +37,7 @@ material = SubResource("StandardMaterial3D_al0hc")
 size = 0.1
 curve = SubResource("Curve_k11n6")
 
-[node name="mage" instance=ExtResource("1_ysll7")]
+[node name="mage" unique_id=325133893 instance=ExtResource("1_ysll7")]
 
 [node name="Skeleton3D" parent="rig" index="0"]
 bones/1/position = Vector3(0, 0.055199984, 1.0099)
@@ -223,16 +224,16 @@ bones/214/rotation = Quaternion(-0.7071069, 0, 0, 0.70710665)
 [node name="AugmentedMage" parent="rig/Skeleton3D" index="0"]
 visible = false
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="rig/Skeleton3D" index="2"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="rig/Skeleton3D" index="2" unique_id=1830327223]
 transform = Transform3D(-0.9665176, -0.23990457, 0.09104445, 0.2565305, -0.8951624, 0.3645213, -0.0059507336, 0.3756719, 0.92673343, -0.4238534, 1.1336884, 0.37451327)
 bone_name = "hand_ik.R"
 bone_idx = 184
 
-[node name="Mesh" type="MeshInstance3D" parent="rig/Skeleton3D/BoneAttachment3D" index="0"]
+[node name="Mesh" type="MeshInstance3D" parent="rig/Skeleton3D/BoneAttachment3D" index="0" unique_id=2102391484]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.02, 0.095, 0)
 mesh = ExtResource("2_2bpbv")
 
-[node name="Particles" type="GPUParticles3D" parent="rig/Skeleton3D/BoneAttachment3D/Mesh" index="0"]
+[node name="Particles" type="GPUParticles3D" parent="rig/Skeleton3D/BoneAttachment3D/Mesh" index="0" unique_id=1831220990]
 transform = Transform3D(1, 0, -1.0244548e-08, 0, 1, -5.9604645e-08, 1.3038516e-08, 0, 1, -0.0078475475, 1.0458937, -0.049830258)
 emitting = false
 amount = 150
@@ -258,4 +259,4 @@ visible = false
 visible = false
 
 [node name="AnimationPlayer" parent="." index="5"]
-autoplay = "Idle"
+autoplay = &"Idle"

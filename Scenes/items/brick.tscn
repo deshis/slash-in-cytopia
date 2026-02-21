@@ -11,6 +11,8 @@ size = Vector3(0.6, 0.3, 0.2)
 albedo_color = Color(0.54, 0.2862, 0.2862, 1)
 
 [node name="RigidBody3D" type="RigidBody3D" unique_id=525632464]
+collision_layer = 0
+collision_mask = 4098
 input_ray_pickable = false
 contact_monitor = true
 max_contacts_reported = 1
