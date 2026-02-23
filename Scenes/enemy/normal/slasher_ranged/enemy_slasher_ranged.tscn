@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cjhetlri7xut6" path="res://Scenes/enemy/normal/slasher_ranged/raycast_attack_ranged_slasher.tscn" id="2_serxu"]
 [ext_resource type="PackedScene" uid="uid://dtmntfwnrv3ig" path="res://Scenes/enemy/normal/slasher/slasher_model.tscn" id="3_g81ev"]
 [ext_resource type="Material" uid="uid://dmj2tq625wyph" path="res://Assets/environment/tree.tres" id="4_cryfb"]
+[ext_resource type="PackedScene" uid="uid://513dy1k4q4bd" path="res://Scenes/enemy/normal/slasher_ranged/slasher_ranged_beam.tscn" id="5_kxfe3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_puxwi"]
 size = Vector3(0.7, 2, 0.5)
@@ -85,5 +86,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27234578, 1.4744526, 0.513
 [node name="Weapon" type="MeshInstance3D" parent="." unique_id=1854942590]
 visible = false
 mesh = SubResource("ArrayMesh_kxfe3")
+
+[node name="Beam" parent="." unique_id=288098272 instance=ExtResource("5_kxfe3")]
+visible = false
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

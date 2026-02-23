@@ -9,6 +9,10 @@ emission = Color(0, 3.4295025, 0, 1)
 emission_energy_multiplier = 8.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_cj7ty"]
+material = SubResource("StandardMaterial3D_282c6")
+top_radius = 0.04
+bottom_radius = 0.04
+height = 1.0
 
 [node name="Node3D" type="Node3D" unique_id=288098272]
 script = ExtResource("1_282c6")
