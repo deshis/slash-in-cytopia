@@ -52,6 +52,7 @@ func _ready() -> void:
 		"explosion_medium":load("res://Assets/audio/effect_explosion2.wav"),
 		"explosion_hit":load("res://Assets/audio/effect_explosion_hit.wav"), # Hit sfx for explosion dmg
 		"loot_upgrade":load("res://Assets/audio/effect_stun.wav"),
+		"plasma_shot":load("res://Assets/audio/plasma_shot.wav")
 		
 	}
 	
@@ -86,6 +87,7 @@ func _ready() -> void:
 		"explosion":[0.9,1.1],
 		"explosion_small":[0.9,1.1],
 		"explosion_medium":[0.8,0.9],
+		"plasma_shot":[1.0,1.15],
 	}
 	# Auto-connect to all buttons in the scene tree
 	get_tree().node_added.connect(_on_node_added)

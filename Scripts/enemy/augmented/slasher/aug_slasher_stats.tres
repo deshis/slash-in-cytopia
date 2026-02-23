@@ -10,5 +10,4 @@ speed = 3.0
 max_health = 75.0
 cost = 7.0
 health_per_level = 1.5
-damage_per_level = 1.5
 metadata/_custom_type_script = "uid://t76ghlhghorw"

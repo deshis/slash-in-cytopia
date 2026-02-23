@@ -16,12 +16,16 @@ const particles = {
 	# ENEMY
 	"stun": preload("res://Scenes/particles/stun.tscn"),
 	"kheel_teleport": preload("res://Scenes/particles/teleport.tscn"),
+	"ranged_slasher_shoot": preload("res://Scenes/particles/enemy_plasma_shooting_particles.tscn"),
+	"ranged_slasher_shoot_green": preload("res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn"),
 	
 	# BRAINCHIPS
 	"heal": preload("res://Scenes/particles/heal.tscn"),
 	"vampirism_activate": preload("res://Scenes/particles/vampirism_ability_particle.tscn"),
 	"vampirism_bleed": preload("res://Scenes/particles/vampirism_bleed_dot_particles.tscn"),
 	"emp_activate": preload("res://Scenes/particles/emp_particles.tscn"),
+	"reality_fracture_activate": preload("res://Scenes/particles/reality_fracture_active_particles.tscn"),
+	
 	# WEAPONS
 	"electric_dot": preload("res://Scenes/particles/electric_dot_particles_3d.tscn"),
 	"??": preload("res://Scenes/particles/electric_dot_particles3D.tscn"), # DEPRECATED?
@@ -76,6 +80,8 @@ const all_particles = [
 	preload("res://Scenes/particles/vampirism_bleed_dot_particles.tscn"),
 	preload("res://Scenes/particles/emp_particles.tscn"),
 	preload("res://Scenes/particles/freeze_explosion_particles.tscn"),
+	preload("res://Scenes/particles/enemy_plasma_shooting_particles.tscn"),
+	preload("res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn"),
 ]
 
 

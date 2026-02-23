@@ -3,6 +3,7 @@ class_name EnemyStats
 
 @export var name := "unnamed enemy"
 @export var type: EnemyType.Type = EnemyType.Type.NORMAL
+@export var ranged_navigation: bool = false ##NOTE: Changes navigation processing to ranged, ONLY enable if the enemy is supposed to fire from range!
 @export var speed := 250.0
 @export var max_health := 4.0
 var health := max_health

@@ -14,6 +14,8 @@ emission = Color(0.37740332, 0.51798165, 0.9922901, 1)
 emission_energy_multiplier = 5.34
 
 [node name="RigidBody3D" type="RigidBody3D" unique_id=525632464]
+collision_layer = 0
+collision_mask = 4097
 input_ray_pickable = false
 contact_monitor = true
 max_contacts_reported = 1

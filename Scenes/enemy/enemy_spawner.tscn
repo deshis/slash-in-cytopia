@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://bhow6fae2mh5t" path="res://Scripts/enemy/augmented/mage/AugMagePrefab.tres" id="8_6o5gf"]
 [ext_resource type="Resource" uid="uid://bm0jberehwd8k" path="res://Scripts/enemy/bosses/saw/SawPrefab.tres" id="9_f438n"]
 [ext_resource type="Resource" uid="uid://baujclodehp88" path="res://Scripts/enemy/bosses/claw/ClawPrefab.tres" id="10_6o5gf"]
-[ext_resource type="Resource" uid="uid://dws7qvjfwi5e2" path="res://Scripts/enemy/normal/target_dummy/target_dummy.tres" id="11_o3b6r"]
+[ext_resource type="Resource" uid="uid://bi5aqf37nf2lq" path="res://Scripts/enemy/normal/slasher_ranged/SlasherRangedPrefab.tres" id="11_o3b6r"]
 
 [node name="EnemySpawner" type="Node3D" unique_id=1830396069 node_paths=PackedStringArray("wave_cooldown_timer", "credits_cooldown_timer", "boss_cooldown_timer", "diff")]
 script = ExtResource("1_4l55s")

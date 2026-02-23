@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://lktgtwcyh3ca"]
+
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="1_xb2tf"]
+[ext_resource type="Texture2D" uid="uid://by3m44r6vqpr8" path="res://Assets/items/icons/Prototype/RealityFracture.png" id="2_kwncy"]
+
+[sub_resource type="Curve" id="Curve_m7xxd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.21129328, 1), 0.0, 0.0, 0, 0, Vector2(0.3788707, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qt575"]
+curve = SubResource("Curve_m7xxd")
+
+[sub_resource type="Gradient" id="Gradient_kja04"]
+offsets = PackedFloat32Array(0, 0.043977056, 0.99319726)
+colors = PackedColorArray(0, 0, 0, 0, 0.9955097, 0.98244435, 0.99269444, 1, 0.35686275, 0.3529412, 0.35686275, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_46pj6"]
+gradient = SubResource("Gradient_kja04")
+
+[sub_resource type="Curve" id="Curve_xb2tf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.89115644, 0.8736263), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_kwncy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_3nwcl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_e14sj"]
+curve_x = SubResource("Curve_xb2tf")
+curve_y = SubResource("Curve_kwncy")
+curve_z = SubResource("Curve_3nwcl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sbt0b"]
+emission_shape_offset = Vector3(0, 1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(6, 1, 6)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+inherit_velocity_ratio = 1.0
+spread = 180.0
+initial_velocity_min = 4.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -5.000002
+linear_accel_max = -5.000002
+radial_accel_min = -1.0000023
+radial_accel_max = 0.99999774
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_curve = SubResource("CurveXYZTexture_e14sj")
+color_ramp = SubResource("GradientTexture1D_46pj6")
+alpha_curve = SubResource("CurveTexture_qt575")
+hue_variation_min = -0.20000002
+hue_variation_max = 0.19999997
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbt0b"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_kwncy")
+heightmap_scale = 16.0
+refraction_enabled = true
+refraction_scale = 0.29
+grow_amount = -1.82
+stencil_flags = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_ksoeo"]
+material = SubResource("StandardMaterial3D_sbt0b")
+radial_segments = 24
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n7epm"]
+load_path = "res://.godot/imported/RealityFracture.png-60bf8155ac93294ec44faf6bf4470d6e.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ch5hc"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_n7epm")
+heightmap_scale = 16.0
+refraction_enabled = true
+refraction_scale = 0.29
+grow_amount = -1.82
+stencil_flags = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_ti5wd"]
+material = SubResource("StandardMaterial3D_ch5hc")
+radial_segments = 24
+
+[node name="Node3D" type="Node3D" unique_id=1819774201]
+script = ExtResource("1_xb2tf")
+
+[node name="RealityFracture" type="GPUParticles3D" parent="." unique_id=86129525]
+visible = false
+emitting = false
+amount = 20
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.25
+randomness = 0.1
+fixed_fps = 18
+trail_lifetime = 1.38
+process_material = SubResource("ParticleProcessMaterial_sbt0b")
+draw_pass_1 = SubResource("SphereMesh_ksoeo")
+
+[node name="RealityFracture2" type="GPUParticles3D" parent="." unique_id=1360342192]
+emitting = false
+amount = 45
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.25
+randomness = 0.1
+fixed_fps = 18
+trail_lifetime = 1.38
+process_material = SubResource("ParticleProcessMaterial_sbt0b")
+draw_pass_1 = SubResource("SphereMesh_ti5wd")

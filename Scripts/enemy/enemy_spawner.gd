@@ -42,12 +42,15 @@ func start_spawner() -> void:
 	_on_credits_cooldown_timer_timeout()
 	_on_wave_cooldown_timer_timeout()
 	boss_cooldown_timer.start(boss_cooldown_time)
-
-
+	
 func spawn_target_dummy() -> void:
-	spawn_enemy(target_dummy, Vector3(2,0,-2))
-
-
+	#spawn_enemy(target_dummy, Vector3(2,0,-2))
+	
+	#GL
+	spawn_enemy(target_dummy, Vector3(5,0,-5))
+	spawn_enemy(target_dummy, Vector3(5,0,5))
+	spawn_enemy(target_dummy, Vector3(-5,0,5))
+	
 func init_pools() -> void:
 	var all_prefabs = enemy_list + augmented_list + boss_list
 	

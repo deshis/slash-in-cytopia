@@ -51,6 +51,7 @@ var hit_flash_material = preload("res://Assets/vfx/hit_flash/hit_flash.tres")
 var active_attacks: Array[Node3D] = []
 
 # STATE MACHINE
+
 var state = IDLE
 var state_timer := 0.0
 
@@ -67,6 +68,7 @@ var model
 var ragdoll_duration = 10.0
 var hurtbox
 
+var navigation_func: Callable
 
 func _ready() -> void:
 	nav_agent.target_desired_distance = attack_range
@@ -127,9 +129,11 @@ func _physics_process(delta: float) -> void:
 			process_idle()
 		
 		NAVIGATE:
+
 			if target_provider is not TargetPlayer:
 				target_provider = TargetPlayer.new()
-			process_navigation(delta)
+			#process_navigation(delta)
+			navigation_func.call(delta)
 		
 		ATTACK:
 			process_attack()
@@ -144,6 +148,7 @@ func _physics_process(delta: float) -> void:
 
 
 func change_state(new_state: String, duration := 0.0):
+
 	state = new_state
 	state_timer = duration
 	
@@ -153,6 +158,12 @@ func change_state(new_state: String, duration := 0.0):
 		
 		NAVIGATE:
 			current_speed = enemy.speed
+			
+			if not enemy.ranged_navigation:
+				navigation_func = process_navigation
+			
+			if enemy.ranged_navigation:
+				navigation_func = process_ranged_navigation
 		
 		STUN:
 			for instance in active_attacks:
@@ -189,6 +200,32 @@ func process_navigation(delta: float) -> void:
 	update_facing_dir(delta, dir)
 	move_and_slide()
 
+func process_ranged_navigation(delta: float) -> void:
+	if GameManager.player and GameManager.player.is_dead:
+		change_state(IDLE)
+		return
+	
+	var dir = (global_position - player.global_position)
+	var desired_pos = player.global_position + dir * self.attack_range
+	
+	nav_agent.set_target_position(desired_pos)
+	
+	var next_pos = nav_agent.get_next_path_position()
+	var move_dir = (next_pos - global_position).normalized()
+	
+	velocity = move_dir * current_speed
+	
+	update_facing_dir(delta, -dir) # face player
+	move_and_slide()
+
+	velocity = dir * current_speed
+	#if nav_agent.avoidance_enabled:
+	#nav_agent.set_velocity(new_velocity)
+	#else:
+		#_on_velocity_computed(new_velocity)
+	
+	update_facing_dir(delta, dir)
+	move_and_slide()
 
 func apply_movement(delta: float, dir: Vector3) -> void:
 	velocity = lerp(velocity, dir * current_speed, enemy.acceleration * delta)

@@ -28,7 +28,7 @@ func get_max_lifetime() -> float:
 	
 	for child in get_children():
 		if child is GPUParticles3D or child is CPUParticles3D:
-			lifetime = child.lifetime
+			lifetime = child.lifetime * (2.0 - child.explosiveness)
 			
 			for particle in child.get_children():
 				if particle is GPUParticles3D or child is CPUParticles3D:
