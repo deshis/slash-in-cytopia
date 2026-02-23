@@ -11,7 +11,7 @@ extends Node3D
 func shoot_beam(from: Vector3, to: Vector3) -> void:
 	var mat = beam_material.duplicate()
 	beam_mesh.material_override = mat
-	
+
 	var mid = (from + to) / 2.0
 	var dist = from.distance_to(to)
 	var dir = (to - from).normalized()

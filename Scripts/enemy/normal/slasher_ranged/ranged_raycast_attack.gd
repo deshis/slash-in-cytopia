@@ -2,6 +2,7 @@ extends Node3D
 class_name RaycastAttack
 
 @export var damage := 2.0
+@export var spread := 0.08
 @export var damage_per_level := 0.1
 @export var player_eye_height := 1.35
 
@@ -19,8 +20,9 @@ signal attack_removed(node: Node)
 var parent = null
 var shooter: Node3D
 var hit_pos
-
 var shooting_location: Node3D
+var effect: Node3D
+
 
 func _ready() -> void:
 	shooter = get_parent()
@@ -50,28 +52,49 @@ func start_attack() -> void:
 	var anim_player = particle.get_node("AnimationPlayer")
 	anim_player.play("explosion_light_fade")
 	SoundManager.play_sfx("plasma_shot", self.global_position)
-		
 	var player = GameManager.player
 	var space = shooter.get_world_3d().direct_space_state
+
+	var target_pos = player.global_position + (Vector3.UP * player_eye_height)
+	var shoot_pos = shooting_location.global_position
+	
+	#simulate inaccuracy
+	var direction = (target_pos - shoot_pos).normalized()
+	direction.x += randf_range(-spread, spread)
+	direction.y += randf_range(-spread, spread)
+	direction.z += randf_range(-spread, spread)
 	
 	##raycast
-	var from = shooting_location.global_position
-	var to = player.global_position + Vector3.UP * player_eye_height
-	var query = PhysicsRayQueryParameters3D.create(from, to)
+	#var from = shooting_location.global_position
+	var distance = shoot_pos.distance_to(target_pos)
+	#var to = player.global_position + Vector3.UP * player_eye_height
+	var to = shoot_pos + (direction.normalized() * (distance*4))
+	#var query = PhysicsRayQueryParameters3D.create(from, to)
+	var query = PhysicsRayQueryParameters3D.create(shoot_pos, to)
+	
 	query.exclude = [shooter] + shooter.get_children()
 	#print(from," ",to)
 	
 	var result = space.intersect_ray(query)
-
-	var hit_pos = result.position
+	var beam_end_pos: Vector3
+	
+	#if beam goes to void
+	if !result:
+		beam_end_pos = query.to
+		effect = beam_scene.instantiate()
+		GameManager.current_stage.add_child(effect)
+		effect.shoot_beam(shoot_pos, beam_end_pos)
+		return
+	
+	var hit_pos = result.position #+ (randf_range(-inaccuracy,inaccuracy))
 	
 	var particle2 = ParticleManager.emit_particles(shooting_particle, hit_pos)
 	var anim_player2 = particle.get_node("AnimationPlayer")
 	anim_player.play("explosion_light_fade")
 	
-	var effect = beam_scene.instantiate()
+	effect = beam_scene.instantiate()
 	GameManager.current_stage.add_child(effect)
-	effect.shoot_beam(from, hit_pos)
+	effect.shoot_beam(shoot_pos, hit_pos)
 	
 	if result.is_empty():
 		print("miss")
@@ -87,5 +110,5 @@ func remove_attack() -> void:
 	attack_removed.emit(self)
 	queue_free()
 
-func _on_area_3d_area_entered(_area: Area3D) -> void:
-	attack_hit.emit(area, damage)
+#func _on_area_3d_area_entered(_area: Area3D) -> void:
+	#attack_hit.emit(area, damage)

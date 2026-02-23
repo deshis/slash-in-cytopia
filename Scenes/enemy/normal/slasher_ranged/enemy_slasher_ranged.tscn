@@ -80,7 +80,7 @@ shape = SubResource("BoxShape3D_48d4a")
 [node name="model" parent="." unique_id=1909531779 instance=ExtResource("3_g81ev")]
 
 [node name="ShootingLocation" type="Node3D" parent="." unique_id=1630951117]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0007782698, 1.7936134, 0.28265864)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27234578, 1.4744526, 0.51314634)
 
 [node name="Weapon" type="MeshInstance3D" parent="." unique_id=1854942590]
 visible = false
