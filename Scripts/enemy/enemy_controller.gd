@@ -487,6 +487,8 @@ func return_to_pool() -> void:
 	state_timer = 0.0
 	
 	for instance in active_attacks:
+		if instance == null:
+			return
 		instance.remove_attack()
 
 func shatter_ice() -> void:
