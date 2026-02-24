@@ -44,11 +44,12 @@ func start_spawner() -> void:
 	boss_cooldown_timer.start(boss_cooldown_time)
 	
 func spawn_target_dummy() -> void:
+	pass
 	#spawn_enemy(target_dummy, Vector3(2,0,-2))
 	
 	#GL
-	spawn_enemy(target_dummy, Vector3(5,0,-5))
-	spawn_enemy(target_dummy, Vector3(5,0,5))
+	#spawn_enemy(target_dummy, Vector3(5,0,-5))
+	#spawn_enemy(target_dummy, Vector3(5,0,5))
 	spawn_enemy(target_dummy, Vector3(-5,0,5))
 	
 func init_pools() -> void:

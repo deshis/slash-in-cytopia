@@ -61,6 +61,7 @@ const ATTACK = "attack"
 const STUN = "stun"
 const COOLDOWN = "cooldown"
 const RAGDOLL = "ragdoll"
+const DEAD = "Dead"
 
 
 var ragdoll
@@ -119,7 +120,7 @@ func _activate() -> void:
 	$Collision.disabled = false
 
 func _physics_process(delta: float) -> void:
-	if not player:
+	if not player || is_dead:
 		return
 	
 	state_timer -= delta
@@ -168,6 +169,11 @@ func change_state(new_state: String, duration := 0.0):
 		STUN:
 			for instance in active_attacks:
 				instance.remove_attack()
+		
+		DEAD:
+			for instance in active_attacks:
+				if instance != null:
+					instance.remove_attack()
 
 func process_idle() -> void:
 	if GameManager.player and GameManager.player.is_dead:
@@ -440,10 +446,13 @@ func take_damage(damage:float, _damage_dealer = null) -> void:
 		die()
 
 func die(drop_loot: bool = true) -> void:
-
+	change_state(DEAD)
 	if is_dead:
 		return
 	is_dead = true
+	
+	#change_state(DEAD)
+	
 	set_collision_layer_value(13, false)
 	$Collision.set_deferred("disabled", true)
 	

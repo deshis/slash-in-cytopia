@@ -1,5 +1,5 @@
 extends EnemyController
-class_name SlasherRanged
+class_name AugSlasherRanged
 
 @export var face_player_duration := 0.667
 @export var dash_speed := 6.5
@@ -8,12 +8,13 @@ class_name SlasherRanged
 @export var strafe_duration := 2.0
 @export var target_range := 6.0
 @export var range_variance := 1.0
-@export var fire_rate := 0.25
+@export var fire_rate := 0.2
 @export var burst_count := 1
 
 @onready var attack_duration = $"model/AnimationPlayer".get_animation("Attack").length 
 @onready var slash_trail = $"model/SlashMesh"
 @onready var sword_mesh = $model/rig/Skeleton3D/BoneAttachment3D/Offset/MeshInstance3D
+@onready var helmet = $model/rig/Skeleton3D/Helmet
 @onready var weapon_mesh = $Weapon
 @onready var shoot_cooldown: Timer = $ShootCooldown
 
@@ -39,8 +40,11 @@ func _ready() -> void:
 	sword_mesh.scale = Vector3(0.22, 0.46, 0.22)
 	sword_mesh.mesh = weapon_mesh.mesh
 	
+	helmet.set_visible(true)
+	
 	strafe_speed_og = strafe_speed
 	current_speed_og = self.current_speed
+	
 	
 func change_sword_mesh(new_mesh_path: String):
 	pass
@@ -178,6 +182,7 @@ func process_strafe(delta: float) -> void:
 	move_and_slide()
 	
 func start_burst():
+
 	if shots_fired < burst_count:
 		perform_attack(attack)
 		shots_fired += 1

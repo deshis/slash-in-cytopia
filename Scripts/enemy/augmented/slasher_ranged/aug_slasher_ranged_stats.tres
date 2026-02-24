@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dey21k5orh85q"]
+
+[ext_resource type="Script" uid="uid://t76ghlhghorw" path="res://Scripts/enemy/EnemyStats.gd" id="1_o4ruu"]
+
+[resource]
+script = ExtResource("1_o4ruu")
+name = "MG"
+ranged_navigation = true
+speed = 2.5
+acceleration = -25.0
+max_health = 55.0
+health_per_level = 2.0
+metadata/_custom_type_script = "uid://t76ghlhghorw"

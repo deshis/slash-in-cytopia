@@ -2,7 +2,7 @@ extends Node3D
 class_name RaycastAttack
 
 @export var damage := 2.0
-@export var spread := 0.08
+@export var spread := 0.2
 @export var damage_per_level := 0.1
 @export var player_eye_height := 1.35
 
@@ -89,8 +89,8 @@ func start_attack() -> void:
 	var hit_pos = result.position #+ (randf_range(-inaccuracy,inaccuracy))
 	
 	var particle2 = ParticleManager.emit_particles(shooting_particle, hit_pos)
-	var anim_player2 = particle.get_node("AnimationPlayer")
-	anim_player.play("explosion_light_fade")
+	#var anim_player2 = particle.get_node("AnimationPlayer")
+	#anim_player2.play("explosion_light_fade")
 	
 	effect = beam_scene.instantiate()
 	GameManager.current_stage.add_child(effect)

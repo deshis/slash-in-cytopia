@@ -1,22 +1,23 @@
-[gd_scene format=3 uid="uid://513dy1k4q4bd"]
+[gd_scene format=3 uid="uid://byvmsp8hwelq5"]
 
-[ext_resource type="Script" uid="uid://dta2203vfia36" path="res://Scripts/raycast_beam.gd" id="1_282c6"]
+[ext_resource type="Script" uid="uid://dta2203vfia36" path="res://Scripts/raycast_beam.gd" id="1_bkbqo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_282c6"]
 transparency = 1
 emission_enabled = true
-emission = Color(0, 3.4295025, 0, 1)
-emission_energy_multiplier = 8.0
+emission = Color(0.00018973676, 3.2484345, 3.209009, 1)
+emission_energy_multiplier = 7.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_cj7ty"]
 material = SubResource("StandardMaterial3D_282c6")
-top_radius = 0.01
-bottom_radius = 0.01
+top_radius = 0.005
+bottom_radius = 0.005
 height = 1.0
 
 [node name="Node3D" type="Node3D" unique_id=288098272]
-script = ExtResource("1_282c6")
+script = ExtResource("1_bkbqo")
 beam_material = SubResource("StandardMaterial3D_282c6")
+beam_duration = 0.08
 
 [node name="BeamMesh" type="MeshInstance3D" parent="." unique_id=1607342270]
 mesh = SubResource("CylinderMesh_cj7ty")
