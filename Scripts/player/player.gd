@@ -447,22 +447,23 @@ func use_active_item(active_effect: ActiveEffectResource):
 	
 	GameStats.active_items_used += 1
 
-	# Play SFX based on active item type
-	match active_effect.active_type:
-		ActiveEffectResource.ActiveType.HEAL:
-			SoundManager.play_sfx("heal", global_position)
-		ActiveEffectResource.ActiveType.MOVEMENT_SPEED:
-			SoundManager.play_sfx("speed_buff", global_position)
-		ActiveEffectResource.ActiveType.STUN_AOE:
-			SoundManager.play_sfx("stun_sfx", global_position)
-		ActiveEffectResource.ActiveType.INVULNERABILITY:
-			SoundManager.play_sfx("invulnerability", global_position)
-		ActiveEffectResource.ActiveType.SECOND_DASH:
-			SoundManager.play_sfx("dash", global_position)
-		ActiveEffectResource.ActiveType.DAMAGE_AOE:
-			SoundManager.play_sfx("explosion", global_position)
-		_:
-			SoundManager.play_sfx("default_active", global_position)
+	# Play SFX based on active item types, custom first
+	if active_effect.active_sfx:
+		SoundManager.play_sfx(active_effect.active_sfx, global_position)
+	else:
+		match active_effect.active_type:
+			ActiveEffectResource.ActiveType.HEAL:
+				SoundManager.play_sfx("heal", global_position)
+			ActiveEffectResource.ActiveType.MOVEMENT_SPEED:
+				SoundManager.play_sfx("speed_buff", global_position)
+			ActiveEffectResource.ActiveType.STUN_AOE:
+				SoundManager.play_sfx("emp", global_position)
+			ActiveEffectResource.ActiveType.INVULNERABILITY:
+				SoundManager.play_sfx("invulnerability", global_position)
+			ActiveEffectResource.ActiveType.SECOND_DASH:
+				SoundManager.play_sfx("dash", global_position)
+			ActiveEffectResource.ActiveType.DAMAGE_AOE:
+				SoundManager.play_sfx("explosion", global_position)
 	
 	apply_active_item_effect(active_item_effect)
 	
@@ -767,10 +768,12 @@ func deal_damage(area: Area3D, amount: float, e: EnemyController = null) -> void
 	if randf() * 100 < crit_chance:
 		amount *= 2
 		GameStats.critical_hits += 1
-		SoundManager.play_sfx("hit_crit", enemy.global_position)
+		if enemy is EnemyController:
+			SoundManager.play_sfx("hit_crit", enemy.global_position)
 	else:
-		var hit_sfx = ["hit", "hit2"].pick_random()
-		SoundManager.play_sfx(hit_sfx, enemy.global_position)
+		if enemy is EnemyController:
+			var hit_sfx = ["hit", "hit2"].pick_random()
+			SoundManager.play_sfx(hit_sfx, enemy.global_position)
 	
 	if amount > GameStats.highest_single_hit:
 		GameStats.highest_single_hit = amount

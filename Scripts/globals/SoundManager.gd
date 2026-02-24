@@ -6,24 +6,33 @@ var pitch_ranges: Dictionary = {}
 var music_player: AudioStreamPlayer
 var bgm_players: Dictionary = {}
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Apply saved audio settings first
+	_apply_saved_audio_settings()
+
 	# BGM part
 	music_player = AudioStreamPlayer.new()
 	music_player.bus = "Music"
 	add_child(music_player)
 	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
-	
+
 	bgm_players = {
 		"common_bgm": load("res://Assets/audio/bgm.mp3")
-		
-		
+
+
 	}
-	
+
 	# TODO Hard-coded bgm_player, go with this before we have a proper level system and bgm for different levels.
 	music_player.stream = bgm_players["common_bgm"]
 	music_player.stream.loop = true
 	music_player.play()
+
+func _apply_saved_audio_settings() -> void:
+	var audio_settings = CfgHandler.load_audio_settings()
+	for bus_name in audio_settings:
+		var bus_index = AudioServer.get_bus_index(bus_name)
+		if bus_index >= 0:
+			AudioServer.set_bus_volume_db(bus_index, linear_to_db(audio_settings[bus_name]))
 	
 	
 	# SFX part
@@ -39,6 +48,7 @@ func _ready() -> void:
 		"hit": load("res://Assets/audio/effect_hit.wav"),
 		"hit2": load("res://Assets/audio/effect_hit2.wav"),
 		"hit_crit": load("res://Assets/audio/effect_hit_critical.wav"),
+		"hit_lootbox": preload("res://Assets/audio/effect_hit_lootbox.wav"),
 		"damage_taken": load("res://Assets/audio/effect_damage_Taken.wav"),
 		"enemy_die": load("res://Assets/audio/effect_enemy_die.wav"),
 		"dot_sfx": load("res://Assets/audio/effect_dot.wav"),
@@ -54,8 +64,11 @@ func _ready() -> void:
 		"loot_upgrade":load("res://Assets/audio/effect_stun.wav"),
 		"plasma_shot":load("res://Assets/audio/plasma_shot.wav"),
 		"blaster_shot":load("res://Assets/audio/blaster_shot.wav"),
-		"charge_up":load("res://Assets/audio/charge_up.wav")
-		
+		"charge_up":load("res://Assets/audio/charge_up.wav"),
+		"emp":load("res://Assets/audio/effect_emp.wav"),
+		"reality_fracture":load("res://Assets/audio/effect_realityfracture.wav"),
+		"vampirism":load("res://Assets/audio/effect_dot.wav"),
+
 	}
 	
 	ui_players = {
@@ -65,7 +78,8 @@ func _ready() -> void:
 		"equip":load("res://Assets/audio/effect_equip.wav"),
 		"combine":load("res://Assets/audio/effect_combine.wav"),
 		"wipe_trans_swing":load("res://Assets/audio/wipe_trans_swing.ogg"),
-		"recycle":load("res://Assets/audio/effect_recycle.wav")
+		"recycle":load("res://Assets/audio/effect_recycle.wav"),
+		"menuHover":load("res://Assets/audio/ui_button_hover.wav"),
 	}
 	
 	pitch_ranges = {
@@ -79,6 +93,7 @@ func _ready() -> void:
 		"dash": [0.8, 1.2],
 		"hit": [0.9, 1.1],
 		"hit2": [0.9, 1.1],
+		"hit_lootbox":[0.9,1.1],
 		"hit_crit": [1.0, 1.5],
 		"damage_taken": [0.8, 1.2],
 		"enemy_die": [0.5, 1.5],
@@ -90,6 +105,8 @@ func _ready() -> void:
 		"explosion_small":[0.9,1.1],
 		"explosion_medium":[0.8,0.9],
 		"plasma_shot":[1.0,1.15],
+		"menuHover":[0.5, 1.5],
+		
 	}
 	# Auto-connect to all buttons in the scene tree
 	get_tree().node_added.connect(_on_node_added)
@@ -119,11 +136,11 @@ func play_sfx(sfx_name: String, position: Vector3 = Vector3.ZERO) -> void:
 	
 # Automatically connect to any button that gets added to the scene
 func _on_node_added(node: Node) -> void:
-	if node is Button:
+	if node is BaseButton:
 		if not node.pressed.is_connected(_on_button_pressed):
 			node.pressed.connect(_on_button_pressed.bind(node))
-	
-func _on_button_pressed(button: Button) -> void:
+
+func _on_button_pressed(button: BaseButton) -> void:
 	# Sounds are assigned separately in each menu (scene)
 	if button.is_in_group("start_button"):
 		play_ui_sfx("start")

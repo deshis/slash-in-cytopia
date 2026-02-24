@@ -32,6 +32,7 @@ func _ready() -> void:
 #grab UI focus when hover over with mouse
 func _on_mouse_entered() -> void:
 	grab_focus()
+	SoundManager.play_ui_sfx("menuHover")
 
 
 func _on_focus_entered() -> void:

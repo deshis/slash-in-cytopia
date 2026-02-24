@@ -67,6 +67,7 @@ func take_damage(amount: float, damage_dealer = null) -> void:
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position", position + knockback_strength * dir, knockback_duration)
+	SoundManager.play_sfx("hit_lootbox", global_position)
 	
 	if health <= 0:
 		die()
