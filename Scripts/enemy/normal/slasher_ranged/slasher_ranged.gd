@@ -34,9 +34,7 @@ func _ready() -> void:
 	sword_mesh.mesh = weapon_mesh.mesh
 	
 func change_sword_mesh(new_mesh_path: String):
-	# Load the new mesh resource (e.g., "res://models/weapons/GreatSword.obj")
 	pass
-	#sword_mesh.mesh = weapon_mesh
 	
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -124,8 +122,10 @@ func process_attack_wrap_up(_delta: float) -> void:
 		change_state(COOLDOWN, cooldown_duration)
 
 func _on_navigation_agent_3d_target_reached() -> void:
-	change_state(FACE_PLAYER, face_player_duration)
+	#change_state(FACE_PLAYER, face_player_duration)
 	
+	#Makes them play a suffed animation
+	change_state(FACE_PLAYER, 0.25)
 func process_strafe(delta: float) -> void:
 	
 	if not player:
