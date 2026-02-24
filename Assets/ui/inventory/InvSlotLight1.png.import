@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3dn04keaalcc"
-path.s3tc="res://.godot/imported/invslotempty.png-7776a123c0aa7501df3cb42aaf2f090b.s3tc.ctex"
+uid="uid://cg5x4s26f10l8"
+path.s3tc="res://.godot/imported/InvSlotLight1.png-1820406c8c74d92ad39581f78fb1a53e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/invslotempty.png"
-dest_files=["res://.godot/imported/invslotempty.png-7776a123c0aa7501df3cb42aaf2f090b.s3tc.ctex"]
+source_file="res://Assets/ui/inventory/InvSlotLight1.png"
+dest_files=["res://.godot/imported/InvSlotLight1.png-1820406c8c74d92ad39581f78fb1a53e.s3tc.ctex"]
 
 [params]
 

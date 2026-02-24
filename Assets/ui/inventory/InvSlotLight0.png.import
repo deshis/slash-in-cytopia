@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfplqssk1l1vp"
-path.s3tc="res://.godot/imported/cartridge.png-e8ec8555b39988d474b0b5a32d36b86f.s3tc.ctex"
+uid="uid://cogcbpcqlkfja"
+path.s3tc="res://.godot/imported/InvSlotLight0.png-b11990da03570058e76a49a3463270cd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/cartridge.png"
-dest_files=["res://.godot/imported/cartridge.png-e8ec8555b39988d474b0b5a32d36b86f.s3tc.ctex"]
+source_file="res://Assets/ui/inventory/InvSlotLight0.png"
+dest_files=["res://.godot/imported/InvSlotLight0.png-b11990da03570058e76a49a3463270cd.s3tc.ctex"]
 
 [params]
 

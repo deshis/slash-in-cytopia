@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4k5fatqbxh1d"
-path.s3tc="res://.godot/imported/TrashClosed.png-ed074e2f4a43bc732c91b8cd40475641.s3tc.ctex"
+uid="uid://bv20m6uwciu3f"
+path.s3tc="res://.godot/imported/InvSlotCartridge.png-7cde5e6848246d8446e0a2d743e2fc23.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/TrashClosed.png"
-dest_files=["res://.godot/imported/TrashClosed.png-ed074e2f4a43bc732c91b8cd40475641.s3tc.ctex"]
+source_file="res://Assets/ui/inventory/InvSlotCartridge.png"
+dest_files=["res://.godot/imported/InvSlotCartridge.png-7cde5e6848246d8446e0a2d743e2fc23.s3tc.ctex"]
 
 [params]
 

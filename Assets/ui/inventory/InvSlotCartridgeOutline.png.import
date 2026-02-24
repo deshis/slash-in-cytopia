@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpknor1b7itjr"
-path.s3tc="res://.godot/imported/invslotfilled.png-ee8373a2a6e5c762dc23e24e68016d88.s3tc.ctex"
+uid="uid://j416jsti6g7p"
+path.s3tc="res://.godot/imported/InvSlotCartridgeOutline.png-54ba6bdc7327e7bdf780adce58f17b9e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/ui/invslotfilled.png"
-dest_files=["res://.godot/imported/invslotfilled.png-ee8373a2a6e5c762dc23e24e68016d88.s3tc.ctex"]
+source_file="res://Assets/ui/inventory/InvSlotCartridgeOutline.png"
+dest_files=["res://.godot/imported/InvSlotCartridgeOutline.png-54ba6bdc7327e7bdf780adce58f17b9e.s3tc.ctex"]
 
 [params]
 
