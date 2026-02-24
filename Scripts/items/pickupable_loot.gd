@@ -10,9 +10,17 @@ class_name PickupableLoot
 var items := [ItemResource]
 
 
+func _physics_process(delta: float) -> void:
+	if player.interactables.front() == self:
+		container.update_highlight(true)
+	else:
+		container.update_highlight(false)
+
+
 func set_loot(rarity: ItemType.Grade) -> void:
 	var color = LootDatabase.grade_colors[rarity]
-	container.update_colors(color, rarity == ItemType.Grade.APEX_ANOMALY)
+	container.is_apex = rarity == ItemType.Grade.APEX_ANOMALY
+	container.update_colors(color)
 	
 	items = []
 	var item_list = LootDatabase.get_items_by_rarity(rarity)
@@ -25,7 +33,7 @@ func set_loot(rarity: ItemType.Grade) -> void:
 func get_item(index:int) -> ItemResource:
 	return items[index]
 
-	
+
 func on_interaction_area_entered():
 	container.update_highlight(true)
 

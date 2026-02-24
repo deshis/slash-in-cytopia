@@ -21,8 +21,13 @@ var type_name = ""
 
 
 func _physics_process(_delta: float) -> void:
-	if visible:
-		_reposition()
+	if not visible:
+		return
+	
+	if item.grade == ItemType.Grade.APEX_ANOMALY:
+		_set_panel_color(LootDatabase.get_apex_rainbow(self))
+	
+	_reposition()
 
 
 func set_description(i: ItemResource) -> void:
@@ -130,10 +135,10 @@ func _set_description() -> void:
 		$Description/VBoxContainer/PaddingStatsDesc.visible = true
 
 
-func _set_panel_color() -> void:
+func _set_panel_color(col = null) -> void:
 	var stylebox = get("theme_override_styles/panel").duplicate()
 	var grade_color = LootDatabase.grade_colors.get(item.grade)
-	var c = grade_color
+	var c = col if col else grade_color
 	
 	var alpha = 0.9
 	var brightness = 0.2

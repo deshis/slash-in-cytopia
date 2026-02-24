@@ -76,7 +76,7 @@ func combine_items(rarity: ItemType.Grade) -> void:
 		var loot = container.instantiate()
 		compartment.add_child(loot)
 		loot_containers.append(loot)
-		loot.update_colors(LootDatabase.grade_colors[rarity], rarity == ItemType.Grade.APEX_ANOMALY)
+		loot.init(LootDatabase.grade_colors[rarity], rarity == ItemType.Grade.APEX_ANOMALY)
 		tween.tween_property(loot, "position", Vector3(0, -0.5, 0.0), 1.0)
 		tween.tween_property(compartment_force_field, "shader_parameter/dissolve_val", 1.0, 0.5)
 	

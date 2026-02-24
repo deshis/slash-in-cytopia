@@ -9,12 +9,22 @@ class_name InventorySlot
 
 @export var sfx: String = "equip"
 
+
+@onready var lights: TextureRect = $CartridgeHolder/Lights
+@onready var cap: TextureRect = $CartridgeHolder/Cartridge
+@onready var cap_outline: TextureRect = $CartridgeHolder/CartridgeOutline
+
+
 @onready var item_slot = $ItemSlot
 @onready var icon_node = $ItemSlot/Icon
 
-@export var cartridge_icons: Array[CompressedTexture2D]
-var current_cartridge := 0.0
+@export var cartridge_lights: Array[CompressedTexture2D]
+
+var current_light := 0.0
 var tween : Tween
+
+var drag_preview: Control
+var dragging_apex := false
 
 enum SLOT {
 	NONE,
@@ -25,6 +35,19 @@ enum SLOT {
 	TRASH,
 	RECYCLER,
 }
+
+
+func _physics_process(delta: float) -> void:
+	if not get_item():
+		return
+	
+	if get_item().item.grade == ItemType.Grade.APEX_ANOMALY:
+		apex_rainbow()
+	
+	if dragging_apex and drag_preview:
+		var col = LootDatabase.get_apex_rainbow(drag_preview)
+		var cart = drag_preview.get_node("Control/TextureRect")
+		cart.self_modulate = col
 
 
 func setup() -> void:
@@ -46,7 +69,10 @@ func set_item(item: Control, play_sfx: bool = true) -> void:
 	item_slot.add_child(item)
 	item.slot = self
 	icon_node.visible = false
-	set_cartridge_icon(item.item.grade + 1)
+	set_cartridge(item)
+	
+	if InventoryManager.inventory_node.visible:
+		InventoryManager.item_description.activate()
 	
 	if sfx == "" or InventoryManager.is_equipping_starter_items:
 		return
@@ -56,6 +82,7 @@ func set_item(item: Control, play_sfx: bool = true) -> void:
 
 
 func clear() -> void:
+	remove_cartridge()
 	for child in item_slot.get_children():
 		if child is Item:
 			child.queue_free()
@@ -65,9 +92,27 @@ func slot_right_clicked() -> void:
 	InventoryManager.move_item(self)
 
 
-func set_cartridge_icon(new_ind: int) -> void:
-	var step_time = 0.015 if new_ind > current_cartridge else 0.05
-	var duration = abs(new_ind - current_cartridge) * step_time
+func set_cartridge(item_node: Control) -> void:
+	if current_light == 0:
+		cap_outline.visible = true
+		cap.visible = true
+	
+	var item = item_node.item
+	cap.self_modulate = LootDatabase.grade_colors.get(item.grade)
+	
+	set_lights(item.grade + 1)
+
+
+
+func remove_cartridge() -> void:
+	cap_outline.visible = false
+	cap.visible = false
+	set_lights(0)
+
+
+func set_lights(amount: int) -> void:
+	var step_time = 0.015 if amount > current_light else 0.05
+	var duration = abs(amount - current_light) * step_time
 	
 	if tween:
 		tween.stop()
@@ -75,20 +120,29 @@ func set_cartridge_icon(new_ind: int) -> void:
 	tween = create_tween()
 	tween.tween_method(
 		Callable(self, "_set_index"),
-		current_cartridge,
-		new_ind,
+		current_light,
+		amount,
 		duration
 	)
 
 
 func _set_index(value: float) -> void:
-	current_cartridge = int(round(value))
-	$TextureRect.texture = cartridge_icons[current_cartridge]
+	current_light = int(round(value))
+	lights.texture = cartridge_lights[current_light]
+
+
+func apex_rainbow() -> void:
+	cap.self_modulate = LootDatabase.get_apex_rainbow(self)
 
 
 func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("right_click"):
 		slot_right_clicked()
+		
+		if get_item():
+			_on_mouse_entered()
+		else:
+			InventoryManager.item_description.deactivate()
 
 
 func _can_drop_data(_pos: Vector2, _data: Variant) -> bool:
@@ -96,34 +150,47 @@ func _can_drop_data(_pos: Vector2, _data: Variant) -> bool:
 
 
 func _drop_data(_pos: Vector2, data: Variant) -> void:
-	var origin_slot: InventorySlot = data
-	InventoryManager.move_item(origin_slot, self)
+	InventoryManager.move_item(data, self)
 
 
 func _get_drag_data(_pos: Vector2) -> Variant:
 	if not get_item():
 		return
 	
-	if get_item().item:
-		InventoryManager.item_description.deactivate()
+	InventoryManager.item_description.deactivate()
 	
-	var preview := get_item().duplicate(true)
-	preview.size = size
-	set_drag_preview(preview)
+	icon_node.visible = true
+	get_item().visible = false
+	remove_cartridge()
 	
-	get_item().modulate = Color(1,1,1,0.0)
-	set_cartridge_icon(0)
-	
+	init_preview()
 	return self
 
 
+func init_preview() -> void:
+	var preview = preload("res://Scenes/ui/item_drag_preview.tscn").instantiate()
+	preview.init(get_item().item)
+	
+	drag_preview = preview
+	dragging_apex = get_item().item.grade == ItemType.Grade.APEX_ANOMALY
+	set_drag_preview(preview)
+
+
 func _notification(what):
-	if what == NOTIFICATION_DRAG_END and get_item():
-		get_item().modulate = Color(1,1,1,1)
-		set_cartridge_icon(get_item().item.grade + 1)
+	if what == NOTIFICATION_DRAG_END:
+		drag_preview = null
+		dragging_apex = false
+		
+		if get_item():
+			icon_node.visible = false
+			get_item().visible = true
+			set_cartridge(get_item())
 
 
 func _on_mouse_entered() -> void:
+	if not get_item():
+		return
+	
 	if not get_item().item:
 		return
 	
@@ -133,6 +200,9 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
+	if not get_item():
+		return
+	
 	if not get_item().item:
 		return
 	
