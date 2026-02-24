@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_o4ruu")
 name = "MG"
+type = 1
 ranged_navigation = true
 speed = 2.5
-acceleration = -25.0
 max_health = 55.0
 health_per_level = 2.0
 metadata/_custom_type_script = "uid://t76ghlhghorw"

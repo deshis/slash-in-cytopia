@@ -39,16 +39,30 @@ var shots_fired := 0
 var strafe_speed_og := 0.0
 var current_speed_og := 0.0
 
+var mat
+var charge_color_og
+var charge_emission_og
+
 func _ready() -> void:
 	super._ready()
-	sword_mesh.scale = Vector3(0.22, 0.46, 0.22)
+
 	sword_mesh.mesh = weapon_mesh.mesh
+	
+	sword_mesh.rotation = Vector3(-0.6,160,0)
+	sword_mesh.scale = Vector3(0.09, 0.1, 0.1)
+	sword_mesh.transform.origin.z += 0.1
+	sword_mesh.transform.origin.y += 0.1
+	
+	mat = sword_mesh.get_active_material(1).duplicate()
+	sword_mesh.set_surface_override_material(1, mat)
 	
 	helmet.set_visible(true)
 	
 	strafe_speed_og = strafe_speed
 	current_speed_og = self.current_speed
 	
+	charge_color_og = mat.albedo_color
+	charge_emission_og = mat.emission_energy_multiplier
 	
 func change_sword_mesh(new_mesh_path: String):
 	pass
@@ -178,6 +192,10 @@ func charge_up():
 #Handles both strafing and partial charge-up logic
 func process_strafe(delta: float) -> void:
 	
+	if charging_up:
+		mat.emission_energy_multiplier += 0.05
+		mat.albedo_color += Color(0.05,0.05,0.05)
+		
 	#ensuring the attack goes off with a generous trigger
 	if charging_up && state_timer < charge_up_overhead:
 		charging_up = false
@@ -225,7 +243,18 @@ func start_burst():
 		perform_attack(attack)
 		shots_fired += 1
 		get_tree().create_timer(fire_rate).timeout.connect(start_burst)
+		
+		mat.emission_energy_multiplier -= 0.5
+		mat.albedo_color -= Color(0.4,0.4,0.4)
+		
+		if shots_fired > burst_count-1:
+			mat.albedo_color += Color(5,0,1)
+
 	else:
+
+		mat.emission_energy_multiplier = charge_emission_og
+		mat.albedo_color = charge_color_og
+		
 		shots_fired = 0
 		self.current_speed = current_speed_og
 		self.strafe_speed = strafe_speed_og
