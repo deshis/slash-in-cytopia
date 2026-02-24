@@ -227,14 +227,14 @@ func update_state() -> void:
 				change_state(IDLE)
 				return
 		
-		#DASH:
-			#if Input.is_action_pressed("light_attack"):
-				#change_state(LIGHT_ATTACK_WINDUP)
-				#return
-			#
-			#if Input.is_action_just_pressed("heavy_attack"):
-				#change_state(HEAVY_ATTACK_WINDUP)
-				#return
+		DASH:
+			if Input.is_action_just_pressed("light_attack"):
+				change_state(LIGHT_ATTACK_WINDUP)
+				return
+			
+			if Input.is_action_just_pressed("heavy_attack"):
+				change_state(HEAVY_ATTACK_WINDUP)
+				return
 		
 		LIGHT_ATTACK_WINDUP, LIGHT_ATTACK, HEAVY_ATTACK_WINDUP, HEAVY_ATTACK:
 			if Input.is_action_just_pressed("movement_ability") and input.length() > 0 and can_dash:
@@ -621,7 +621,7 @@ func throw(throw_resource: ThrowableResource):
 	throwable_object.impact_particle = throw_resource.impact_particle
 	throwable_object.explosion_particle = throw_resource.explosion_particle
 	throwable_object.aoe_indicator = throw_resource.aoe_indicator
-	get_tree().root.add_child(throwable_object)
+	GameManager.current_stage.add_child(throwable_object)
 	
 	if throw_resource.projectile_from_sky:
 		throwable_object.global_position = orbital_throw_point.global_position

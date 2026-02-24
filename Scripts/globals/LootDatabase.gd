@@ -181,7 +181,7 @@ func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_streng
 	# ITEM
 	if randf() < loot_table.loot_drop_chance:
 		var loot = pickupable_item.instantiate()
-		GameManager.stage_root.add_child(loot)
+		GameManager.current_stage.add_child(loot)
 		loot.global_position = object.global_position
 		var rarity = LootDatabase.get_loot_rarity(loot_table.loot_rarity_weights)
 		loot.set_loot(rarity)

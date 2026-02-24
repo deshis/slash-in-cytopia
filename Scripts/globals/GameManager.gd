@@ -24,8 +24,9 @@ var stages := [
 
 
 func _ready() -> void:
-	InventoryManager.process_mode = Node.PROCESS_MODE_DISABLED
-
+	InventoryManager.process_mode = Node.PROCESS_MODE_DISABLED	
+	Input.set_custom_mouse_cursor(preload("res://Assets/ui/cursor.png"), Input.CURSOR_CAN_DROP)
+	Input.set_custom_mouse_cursor(preload("res://Assets/ui/cursor_forbidden.png"), Input.CURSOR_FORBIDDEN)
 
 func start_game(init_player: bool = false) -> void:
 	await load_stage(0)

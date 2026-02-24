@@ -33,7 +33,7 @@ func combine_items() -> void:
 	
 	for slot in slots:
 		slot.get_item().queue_free()
-		slot.set_cartridge_lights(0)
+		slot.remove_cartridge()
 	
 	items_combined.emit(grade)
 	SoundManager.play_ui_sfx("combine")

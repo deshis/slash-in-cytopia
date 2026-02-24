@@ -63,6 +63,7 @@ window/size/resizable=false
 window/size/maximize_disabled=true
 window/stretch/mode="canvas_items"
 window/stretch/scale=1.5
+mouse_cursor/custom_image="uid://dgsqvfpl4a222"
 
 [dotnet]
 

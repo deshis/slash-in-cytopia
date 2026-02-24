@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://b7anj5ucq0pfi"]
 
-[ext_resource type="Shader" uid="uid://bracjf31qgphm" path="res://Assets/materials/shaders/force_field.gdshader" id="1_sixv2"]
+[ext_resource type="Shader" path="res://Assets/materials/shaders/force_field.gdshader" id="1_sixv2"]
 [ext_resource type="Texture2D" uid="uid://r5t2ykvgmx5a" path="res://Assets/materials/textures/hex_pattern.png" id="2_sixv2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4o67v"]

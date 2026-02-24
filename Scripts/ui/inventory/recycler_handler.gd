@@ -13,7 +13,7 @@ func recycle_items() -> void:
 	GameStats.items_recycled += 1
 	MenuManager.close_menu(MenuManager.MENU.RECYCLER)
 	slot.get_item().queue_free()
-	slot.set_cartridge_lights(0)
+	slot.remove_cartridge()
 	
 	items_recycled.emit(slot.get_item().item.grade)
 	
