@@ -11,7 +11,7 @@ var base_mat : Material
 var light_mat : Material
 var highlight_mat : Material
 
-var isApexGrade = true
+var is_apex = false
 
 func _ready() -> void:
 	highlight_mat = highlight_material.duplicate(true)
@@ -34,28 +34,37 @@ func _ready() -> void:
 				meshInstance.set_surface_override_material(surface, unique_mat)
 				unique_mat.next_pass = highlight_mat
 
-func update_colors(color: Color, isApex: bool) -> void:
-	if isApex: start_rainbow_tween(3.5)
-	
+
+func _physics_process(delta: float) -> void:
+	if is_apex:
+		update_colors(LootDatabase.get_apex_rainbow(self))
+
+
+func init(color: Color, apex: bool) -> void:
+	is_apex = apex
+	update_colors(color)
+
+
+func update_colors(color: Color) -> void:
 	light_mat.set_shader_parameter("neon_color", color)
 	base_mat.set_shader_parameter("albedo_color", color)
 	light.light_color = color
 
-func start_rainbow_tween(cycle_time) -> void:
-	var tween = create_tween()
-	tween.set_loops()
-	tween.set_trans(Tween.TRANS_LINEAR)
-
-	tween.tween_method(
-		func(hue):
-			var color = Color.from_hsv(hue, 1.0, 1.0)
-			light_mat.set_shader_parameter("neon_color", color)
-			base_mat.set_shader_parameter("albedo_color", color)
-			light.light_color = color,
-		0.0,
-		1.0,
-		cycle_time
-	)
+#func start_rainbow_tween(cycle_time) -> void:
+	#var tween = create_tween()
+	#tween.set_loops()
+	#tween.set_trans(Tween.TRANS_LINEAR)
+#
+	#tween.tween_method(
+		#func(hue):
+			#var color = Color.from_hsv(hue, 1.0, 1.0)
+			#light_mat.set_shader_parameter("neon_color", color)
+			#base_mat.set_shader_parameter("albedo_color", color)
+			#light.light_color = color,
+		#0.0,
+		#1.0,
+		#cycle_time
+	#)
 
 func update_highlight(value: bool):
 	highlight_mat.set_shader_parameter("highlight", value)

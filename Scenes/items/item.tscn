@@ -42,6 +42,10 @@ anchor_right = 0.043
 anchor_bottom = 0.076000005
 offset_right = -0.5600052
 offset_bottom = -0.08000183
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_76mu4")
 
@@ -54,7 +58,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_scmcr")
-expand_mode = 2
+expand_mode = 4
+stretch_mode = 4
 
 [node name="shader_mask" type="TextureRect" parent="." unique_id=1981995734]
 clip_children = 1

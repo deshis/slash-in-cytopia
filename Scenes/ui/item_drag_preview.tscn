@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c4gvninqv7j4u"]
+
+[ext_resource type="Script" uid="uid://esnds26hsvcj" path="res://Scenes/ui/item_drag_preview.gd" id="1_esw2b"]
+[ext_resource type="PackedScene" uid="uid://cheduqgq01lw6" path="res://Scenes/items/item.tscn" id="8_duco1"]
+[ext_resource type="Texture2D" uid="uid://bv20m6uwciu3f" path="res://Assets/ui/invslotcartridge.png" id="9_ug4sr"]
+
+[node name="Cartridge" type="Control" unique_id=1193551725]
+custom_minimum_size = Vector2(74, 74)
+layout_mode = 3
+anchor_right = 0.039
+anchor_bottom = 0.069000006
+offset_right = -0.8800049
+offset_bottom = -0.5200043
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_esw2b")
+
+[node name="Control" type="Control" parent="." unique_id=917609634]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -18.0
+offset_right = -18.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1531958679]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_ug4sr")
+expand_mode = 5
+
+[node name="ItemSlot" type="AspectRatioContainer" parent="Control" unique_id=241401155]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15900001
+anchor_top = 0.15900001
+anchor_right = 0.841
+anchor_bottom = 0.96300006
+offset_left = 0.23399925
+offset_top = 0.23399925
+offset_right = 0.038002014
+offset_bottom = 0.30599213
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 0
+alignment_vertical = 2
+
+[node name="Item" parent="Control/ItemSlot" unique_id=1098096221 instance=ExtResource("8_duco1")]
+layout_mode = 2

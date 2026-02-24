@@ -131,6 +131,14 @@ var grade_colors := {
 	ItemType.Grade.APEX_ANOMALY: Color(0.3, 0.5, 1.0, 1.0)
 }
 
+var apex_speed = 1.25
+var apex_rainbow = [
+	Color(0.3, 0.5, 1.0, 1.0),
+	Color(0.207, 0.69, 0.271, 1.0),
+	Color(0.63, 0.588, 0.0, 1.0),
+	Color(0.219, 0.713, 0.73, 1.0),
+	]
+
 var enemy_loot_table = preload("res://Scripts/globals/loot_table_enemy.tres").duplicate(true)
 var aug_enemy_loot_table = preload("res://Scripts/globals/loot_table_aug_enemy.tres").duplicate(true)
 var boss_loot_table = preload("res://Scripts/globals/loot_table_boss.tres").duplicate(true)
@@ -146,6 +154,22 @@ var pickupable_item = preload("res://Scenes/items/pickupable_loot.tscn")
 var pickupable_health = preload("res://Scenes/items/pickupable_health.tscn")
 
 var loot_upgraded = false
+
+
+# should probably make some tweening stuff instead of this
+# kinda cool how it's a wave though if you have multiple on the screen at once
+func get_apex_rainbow(obj: Node = null) -> Color:
+	var t = Time.get_ticks_msec() / 1000.0 * apex_speed
+	if obj.global_position is Vector2:
+		t += (obj.global_position.x + obj.global_position.y) * 0.01
+	elif obj.global_position is Vector3:
+		t += (obj.global_position.x + obj.global_position.y + obj.global_position.z) * 0.01
+	
+	var i = int(floor(t)) % apex_rainbow.size()
+	var j = (i + 1) % apex_rainbow.size()
+	var f = t - floor(t)
+	
+	return apex_rainbow[i].lerp(apex_rainbow[j], f)
 
 
 func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_strength: float = 0.0, loot_impulse_duration: float = -1.0) -> Node3D:

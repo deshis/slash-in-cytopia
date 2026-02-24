@@ -844,7 +844,6 @@ script = ExtResource("11_wfkbc")
 
 [connection signal="pressed" from="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner/MarginContainer/VBoxContainer/HBoxContainer/Button" to="Inventory/HBoxContainer/LeftSide/VBoxContainer/Combiner" method="_on_button_pressed"]
 [connection signal="pressed" from="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler/MarginContainer/VBoxContainer/HBoxContainer/Button" to="Inventory/HBoxContainer/LeftSide/VBoxContainer/Recycler" method="_on_button_pressed"]
-[connection signal="mouse_exited" from="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/TrashSlot" to="Inventory/HBoxContainer/LeftSide/VBoxContainer/MarginContainer/HBoxContainer/TrashSlot" method="_on_mouse_exited"]
 [connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/ContinueButton" to="PauseMenu" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/SettingsButton" to="PauseMenu" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]

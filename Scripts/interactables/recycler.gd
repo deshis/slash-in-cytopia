@@ -60,7 +60,7 @@ func recycle_items(rarity: ItemType.Grade) -> void:
 	var loot = container.instantiate()
 	base_instance.get_parent().add_child(loot)
 	loot.position = Vector3(0.0 , 1.0, 0.0)
-	loot.update_colors(LootDatabase.grade_colors[rarity], rarity == ItemType.Grade.APEX_ANOMALY)
+	loot.init(LootDatabase.grade_colors[rarity], rarity == ItemType.Grade.APEX_ANOMALY)
 	tween.tween_property(loot, "position", Vector3(0, -0.5, 0.0), 1.0)
 	tween.tween_property(entry_material, "shader_parameter/dissolve_val", 1.0, 0.5)
 	
