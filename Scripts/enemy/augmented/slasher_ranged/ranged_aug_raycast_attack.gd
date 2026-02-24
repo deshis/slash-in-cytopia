@@ -1,5 +1,5 @@
 extends Node3D
-class_name RaycastAttack
+class_name AugmentedRaycastAttack
 
 @export var damage := 2.0
 @export var spread := 0.2
@@ -51,7 +51,7 @@ func start_attack() -> void:
 	var particle = ParticleManager.emit_particles(shooting_particle, shooting_location.global_position)
 	var anim_player = particle.get_node("AnimationPlayer")
 	anim_player.play("explosion_light_fade")
-	SoundManager.play_sfx("plasma_shot", shooting_location.global_position)
+	SoundManager.play_sfx("blaster_shot", shooting_location.global_position)
 	var player = GameManager.player
 	var space = shooter.get_world_3d().direct_space_state
 

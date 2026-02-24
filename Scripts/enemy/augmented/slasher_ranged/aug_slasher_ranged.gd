@@ -6,6 +6,7 @@ class_name AugSlasherRanged
 @export var dash_duration := 5.5
 @export var strafe_speed := 4.0
 @export var strafe_duration := 2.0
+@export var charge_up_duration := 1.0
 @export var target_range := 6.0
 @export var range_variance := 1.0
 @export var fire_rate := 0.2
@@ -25,9 +26,12 @@ const FACE_PLAYER = "face_player"
 const DASH = "dash"
 const ATTACK_WRAP_UP = "attack_wrap_up"
 const STRAFE = "strafe"
-const SHOOT = "Shoot"
+const SHOOT = "shoot"
+const CHARGE_UP = "charge_up"
 
 var is_ranged: bool = true
+var charging_up: bool = false
+var charge_up_overhead := 1.0
 
 var i := 0
 var shots_fired := 0
@@ -68,6 +72,9 @@ func _physics_process(delta: float) -> void:
 		SHOOT:
 			process_attack()
 			
+		CHARGE_UP:
+			process_strafe(delta)
+			
 			
 func change_state(new_state: String, duration := 0.0):
 	super.change_state(new_state, duration)
@@ -84,7 +91,7 @@ func change_state(new_state: String, duration := 0.0):
 			current_speed = enemy.speed
 		
 		FACE_PLAYER:
-			animator.play("Attack")
+			#animator.play("Attack")
 			target_provider = TargetSelf.new()
 		
 		DASH:
@@ -99,17 +106,34 @@ func change_state(new_state: String, duration := 0.0):
 			
 			#doesn't seem to do shit
 			current_target_range = target_range + randf_range(-range_variance, range_variance)
+			
+		CHARGE_UP:
+			if charging_up:
+				return
+				
+			SoundManager.play_sfx("charge_up", self.global_position)
+			animator.play("Walk")
+			current_speed = strafe_speed
+			
+			self.current_speed *= 0.5
+			self.strafe_speed *= 0.5
+			
+			#doesn't seem to do shit
+			current_target_range = target_range + randf_range(-range_variance, range_variance)
 
 func process_face_player(delta: float) -> void:
+
 	if not player:
 		return
 	
 	var dir = (player.global_position - global_transform.origin).normalized()
 	update_facing_dir(delta, dir)
 	
+	## Charge-up
 	if state_timer < 0:
-		change_state(SHOOT, attack_windup_duration)
-		#change_state(STRAFE, strafe_duration)
+		print("Charging up")
+		change_state(CHARGE_UP, charge_up_duration + charge_up_overhead)
+		charging_up = true
 
 func process_attack() -> void:
 	
@@ -144,12 +168,26 @@ func process_attack_wrap_up(_delta: float) -> void:
 
 func _on_navigation_agent_3d_target_reached() -> void:
 	#change_state(FACE_PLAYER, face_player_duration)
-	
-	##NOTE: Makes them play a suffed animation
+
 	change_state(FACE_PLAYER, 0.25)
 
+func charge_up():
+	pass
+
+##NOTE:
+#Handles both strafing and partial charge-up logic
 func process_strafe(delta: float) -> void:
 	
+	#ensuring the attack goes off with a generous trigger
+	if charging_up && state_timer < charge_up_overhead:
+		charging_up = false
+		
+		self.current_speed = current_speed_og
+		self.strafe_speed = strafe_speed_og
+		
+		print("Charged up")
+		change_state(SHOOT, attack_windup_duration)
+		
 	if not player:
 		change_state(IDLE)
 		return

@@ -52,7 +52,9 @@ func _ready() -> void:
 		"explosion_medium":load("res://Assets/audio/effect_explosion2.wav"),
 		"explosion_hit":load("res://Assets/audio/effect_explosion_hit.wav"), # Hit sfx for explosion dmg
 		"loot_upgrade":load("res://Assets/audio/effect_stun.wav"),
-		"plasma_shot":load("res://Assets/audio/plasma_shot.wav")
+		"plasma_shot":load("res://Assets/audio/plasma_shot.wav"),
+		"blaster_shot":load("res://Assets/audio/blaster_shot.wav"),
+		"charge_up":load("res://Assets/audio/charge_up.wav")
 		
 	}
 	
