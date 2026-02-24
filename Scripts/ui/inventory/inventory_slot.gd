@@ -111,7 +111,7 @@ func remove_cartridge() -> void:
 
 
 func set_lights(amount: int) -> void:
-	var step_time = 0.015 if amount > current_light else 0.05
+	var step_time = 0.035 if amount > current_light else 0.05
 	var duration = abs(amount - current_light) * step_time
 	
 	if tween:

@@ -11,10 +11,10 @@ var items := [ItemResource]
 
 
 func _physics_process(delta: float) -> void:
-	if player.interactables.front() == self:
-		container.update_highlight(true)
-	else:
+	if player.interactables.size() == 0:
 		container.update_highlight(false)
+	elif player.interactables.front() == self:
+		container.update_highlight(true)
 
 
 func set_loot(rarity: ItemType.Grade) -> void:

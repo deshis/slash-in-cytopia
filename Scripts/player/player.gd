@@ -197,42 +197,52 @@ func update_state() -> void:
 		IDLE:
 			if Input.is_action_just_pressed("movement_ability") and input.length() > 0 and can_dash:
 				change_state(DASH)
+				return
 			
 			if Input.is_action_pressed("light_attack"):
 				change_state(LIGHT_ATTACK_WINDUP)
 			
 			if Input.is_action_just_pressed("heavy_attack"):
 				change_state(HEAVY_ATTACK_WINDUP)
+				return
 				
 			if input.length() > 0:
 				change_state(MOVE)
+				return
 		
 		MOVE:
 			if Input.is_action_just_pressed("movement_ability") and input.length() > 0 and can_dash:
 				change_state(DASH)
+				return
 			
 			if Input.is_action_pressed("light_attack"):
 				change_state(LIGHT_ATTACK_WINDUP)
+				return
 			
 			if Input.is_action_just_pressed("heavy_attack"):
 				change_state(HEAVY_ATTACK_WINDUP)
+				return
 			
 			if input.length() <= 0:
 				change_state(IDLE)
+				return
 		
-		DASH:
-			if Input.is_action_pressed("light_attack"):
-				change_state(LIGHT_ATTACK_WINDUP)
-			
-			if Input.is_action_just_pressed("heavy_attack"):
-				change_state(HEAVY_ATTACK_WINDUP)
+		#DASH:
+			#if Input.is_action_pressed("light_attack"):
+				#change_state(LIGHT_ATTACK_WINDUP)
+				#return
+			#
+			#if Input.is_action_just_pressed("heavy_attack"):
+				#change_state(HEAVY_ATTACK_WINDUP)
+				#return
 		
 		LIGHT_ATTACK_WINDUP, LIGHT_ATTACK, HEAVY_ATTACK_WINDUP, HEAVY_ATTACK:
 			if Input.is_action_just_pressed("movement_ability") and input.length() > 0 and can_dash:
 				change_state(DASH)
+				return
 
 func change_state(new_state) -> void:
-	exit_state(state)
+	exit_state(state, new_state)
 	enter_state(new_state)
 
 func enter_state(new_state) -> void:
@@ -318,11 +328,21 @@ func enter_state(new_state) -> void:
 		HEAVY_ATTACK:
 			perform_heavy_attack()
 
-func exit_state(st: String) -> void:
-	match st:
+func exit_state(s: String, new_state: String) -> void:
+	match s:
+		LIGHT_ATTACK_WINDUP:
+			if new_state != LIGHT_ATTACK:
+				disable_trails()
+				stop_light_attack()
+		
 		LIGHT_ATTACK:
 			disable_trails()
 			stop_light_attack()
+		
+		HEAVY_ATTACK_WINDUP:
+			if new_state != HEAVY_ATTACK:
+				disable_trails()
+				stop_heavy_attack()
 		
 		HEAVY_ATTACK:
 			disable_trails()
