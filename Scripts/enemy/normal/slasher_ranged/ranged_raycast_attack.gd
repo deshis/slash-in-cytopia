@@ -21,12 +21,14 @@ var parent = null
 var shooter: Node3D
 var hit_pos
 var shooting_location: Node3D
+var shooting_target_direction: Node3D
 var effect: Node3D
 
 
 func _ready() -> void:
 	shooter = get_parent()
 	shooting_location = shooter.get_node("ShootingLocation")
+	shooting_target_direction = shooter.get_node("ShootingTargetDirection")
 
 	if follow:
 		parent = get_parent()
@@ -55,8 +57,9 @@ func start_attack() -> void:
 	var player = GameManager.player
 	var space = shooter.get_world_3d().direct_space_state
 
-	var target_pos = player.global_position + (Vector3.UP * player_eye_height)
+	#var target_pos = player.global_position + (Vector3.UP * player_eye_height)
 	var shoot_pos = shooting_location.global_position
+	var target_pos = shooting_target_direction.global_position
 	
 	#simulate inaccuracy
 	var direction = (target_pos - shoot_pos).normalized()

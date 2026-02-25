@@ -22,9 +22,10 @@ safe_margin = 0.1
 script = ExtResource("1_yb01y")
 face_player_duration = 0.65
 strafe_speed = 3.5
-target_range = 8.0
-fire_rate = 0.11
-burst_count = 8
+strafe_duration = 2.5
+target_range = 7.0
+fire_rate = 0.08
+burst_count = 10
 nav_agent = NodePath("NavigationAgent3D")
 attack = ExtResource("2_yb01y")
 attack_windup_duration = 1.0
@@ -51,7 +52,10 @@ shape = SubResource("BoxShape3D_48d4a")
 [node name="model" parent="." unique_id=1909531779 instance=ExtResource("3_g2hy6")]
 
 [node name="ShootingLocation" type="Node3D" parent="." unique_id=1630951117]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31361976, 1.1405481, 0.7637692)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.141, 0.696)
+
+[node name="ShootingTargetDirection" type="Node3D" parent="." unique_id=1574205218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1.141, 3)
 
 [node name="Weapon" type="MeshInstance3D" parent="." unique_id=1854942590]
 visible = false

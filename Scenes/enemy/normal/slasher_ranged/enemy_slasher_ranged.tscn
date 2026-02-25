@@ -55,7 +55,9 @@ wall_min_slide_angle = 0.0
 safe_margin = 0.1
 script = ExtResource("1_serxu")
 face_player_duration = 0.65
-strafe_speed = 3.5
+strafe_speed = 3.0
+strafe_duration = 3.0
+target_range = 5.0
 nav_agent = NodePath("NavigationAgent3D")
 attack = ExtResource("2_serxu")
 attack_windup_duration = 1.0
@@ -83,6 +85,9 @@ shape = SubResource("BoxShape3D_48d4a")
 
 [node name="ShootingLocation" type="Node3D" parent="." unique_id=1630951117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27234578, 1.4744526, 0.51314634)
+
+[node name="ShootingTargetDirection" type="Node3D" parent="." unique_id=1432625582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1.141, 3)
 
 [node name="Weapon" type="MeshInstance3D" parent="." unique_id=1854942590]
 visible = false

@@ -49,7 +49,7 @@ func _ready() -> void:
 	sword_mesh.mesh = weapon_mesh.mesh
 	
 	sword_mesh.rotation = Vector3(-0.6,160,0)
-	sword_mesh.scale = Vector3(0.09, 0.1, 0.1)
+	sword_mesh.scale = Vector3(0.08, 0.095, 0.095)
 	sword_mesh.transform.origin.z += 0.1
 	sword_mesh.transform.origin.y += 0.1
 	
