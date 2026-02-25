@@ -36,6 +36,45 @@
 [ext_resource type="Texture2D" uid="uid://dm5ljywx0xvxq" path="res://Assets/items/icons/types/ItemIconHeavyAttack.png" id="27_5m6rh"]
 [ext_resource type="Texture2D" uid="uid://chnw20ws0ybfy" path="res://Assets/items/icons/types/ItemIconThrowable.png" id="27_r3t7s"]
 [ext_resource type="PackedScene" uid="uid://rjrrnm3gxivj" path="res://Scenes/items/item_description.tscn" id="28_0s5ks"]
+[ext_resource type="Theme" uid="uid://cc7hwsh8wtwx6" path="res://Assets/fonts/Title.tres" id="33_wvxje"]
+[ext_resource type="Texture2D" uid="uid://bmpf1vpmjno0x" path="res://Assets/ui/button_no_gap.png" id="34_am2bk"]
+[ext_resource type="Texture2D" uid="uid://cwf7yqbhsiju5" path="res://Assets/ui/button_no_gap2.png" id="35_hlp1x"]
+[ext_resource type="Script" uid="uid://cy5ff1njcisrv" path="res://Scripts/ui/pause_menu_button.gd" id="36_nstl2"]
+[ext_resource type="Shader" uid="uid://dltnkyf0hnwq0" path="res://Assets/materials/shaders/glitch.gdshader" id="37_dtbtu"]
+[ext_resource type="Texture2D" uid="uid://bc1yvyqjwxee" path="res://Assets/ui/main_menu_button2.png" id="38_q4nbf"]
+[ext_resource type="Shader" uid="uid://cq3v485k8pb6o" path="res://Assets/materials/shaders/glitch_intense.gdshader" id="39_gmhnw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_am2bk"]
+bg_color = Color(0.04110469, 0.12986305, 0.1100929, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.46666667, 0.78431374, 0.7372549, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkdm8"]
+shader = ExtResource("39_gmhnw")
+shader_parameter/shake_power = 0.01
+shader_parameter/shake_rate = 0.0800000038
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.00400000019
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fj8lq"]
+shader = ExtResource("37_dtbtu")
+shader_parameter/range = 0.05
+shader_parameter/noiseQuality = 300.0
+shader_parameter/noiseIntensity = 0.00100000470563998
+shader_parameter/offsetIntensity = 0.00100000330737999
+shader_parameter/colorOffsetIntensity = 0.10000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6harj"]
+shader = ExtResource("39_gmhnw")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 1.0
+shader_parameter/shake_block_size = 60.0
+shader_parameter/shake_color_rate = 0.010000000475
 
 [node name="HUD" type="CanvasLayer" unique_id=2045051478]
 script = ExtResource("1_36s6t")
@@ -644,7 +683,6 @@ layout_mode = 0
 
 [node name="PauseMenu" type="Control" parent="." unique_id=292451703]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -663,12 +701,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -125.0
-offset_right = 100.0
-offset_bottom = 125.0
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_am2bk")
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseMenu/Panel" unique_id=764165256]
 layout_mode = 1
@@ -678,37 +717,294 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = -30
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel/MarginContainer" unique_id=365346436]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=1216578983]
 layout_mode = 2
+theme = ExtResource("33_wvxje")
+theme_override_colors/default_color = Color(0.46666667, 0.78431374, 0.7372549, 1)
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
 bbcode_enabled = true
-text = "[center]GAME PAUSED
-
-"
+text = "[i]
+GAME PAUSED "
 fit_content = true
+horizontal_alignment = 1
 
-[node name="ContinueButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=752100226]
+[node name="title_glitch" type="RichTextLabel" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/RichTextLabel" unique_id=1646038245]
+material = SubResource("ShaderMaterial_xkdm8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("33_wvxje")
+theme_override_colors/default_color = Color(0.46666667, 0.78431374, 0.7372549, 1)
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+bbcode_enabled = true
+text = "[i]
+GAME PAUSED "
+fit_content = true
+horizontal_alignment = 1
+
+[node name="ContinueButton" type="TextureButton" parent="PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=1931585837]
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("34_am2bk")
+texture_focused = ExtResource("35_hlp1x")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("36_nstl2")
+
+[node name="Label" type="Label" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/ContinueButton" unique_id=171964644]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Continue"
-script = ExtResource("11_wfkbc")
 
-[node name="SettingsButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=782318015]
+[node name="IntenseGlitchTimer" type="Timer" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/ContinueButton" unique_id=1267279299]
+
+[node name="shader_mask" type="TextureRect" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/ContinueButton" unique_id=547462361]
+clip_children = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("34_am2bk")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="shader_glitch" type="TextureRect" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/ContinueButton/shader_mask" unique_id=1085461616]
+visible = false
+material = SubResource("ShaderMaterial_fj8lq")
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("38_q4nbf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="shader_glitch_intense" type="TextureRect" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/ContinueButton/shader_mask" unique_id=1390346444]
+visible = false
+material = SubResource("ShaderMaterial_6harj")
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("38_q4nbf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsButton" type="TextureButton" parent="PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=1863928284]
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("34_am2bk")
+texture_focused = ExtResource("35_hlp1x")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("36_nstl2")
+
+[node name="Label" type="Label" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/SettingsButton" unique_id=303385064]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Settings"
-script = ExtResource("11_wfkbc")
 
-[node name="QuitButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=2017637311]
+[node name="IntenseGlitchTimer" type="Timer" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/SettingsButton" unique_id=83416998]
+
+[node name="shader_mask" type="TextureRect" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/SettingsButton" unique_id=1624837806]
+clip_children = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -1.0
+offset_right = 26.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("34_am2bk")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="shader_glitch" type="TextureRect" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/SettingsButton/shader_mask" unique_id=2095872113]
+visible = false
+material = SubResource("ShaderMaterial_fj8lq")
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("38_q4nbf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="shader_glitch_intense" type="TextureRect" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/SettingsButton/shader_mask" unique_id=2060128476]
+visible = false
+material = SubResource("ShaderMaterial_6harj")
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("38_q4nbf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="QuitButton" type="TextureButton" parent="PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=1753281553]
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
-text = "Quit Game"
-script = ExtResource("11_wfkbc")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("34_am2bk")
+texture_focused = ExtResource("35_hlp1x")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("36_nstl2")
+
+[node name="Label" type="Label" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/QuitButton" unique_id=740318241]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit To Menu"
+
+[node name="IntenseGlitchTimer" type="Timer" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/QuitButton" unique_id=113433388]
+
+[node name="shader_mask" type="TextureRect" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/QuitButton" unique_id=643009377]
+clip_children = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -1.0
+offset_right = 27.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("34_am2bk")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="shader_glitch" type="TextureRect" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/QuitButton/shader_mask" unique_id=132958001]
+visible = false
+material = SubResource("ShaderMaterial_fj8lq")
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("38_q4nbf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="shader_glitch_intense" type="TextureRect" parent="PauseMenu/Panel/MarginContainer/VBoxContainer/QuitButton/shader_mask" unique_id=811825802]
+visible = false
+material = SubResource("ShaderMaterial_6harj")
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_behavior_recursive = 1
+texture = ExtResource("38_q4nbf")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SettingsMenu" parent="PauseMenu" unique_id=1679534907 instance=ExtResource("16_36s6t")]
 layout_mode = 0

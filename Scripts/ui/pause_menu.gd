@@ -5,9 +5,9 @@ extends Control
 @onready var tab_container: TabContainer = $SettingsMenu/TabContainer
 @onready var master_volume_slider: HSlider = $SettingsMenu/TabContainer/Audio/VBoxContainer/MasterVolumeSlider
 # Pause menu buttons
-@onready var continue_button: Button = $Panel/MarginContainer/VBoxContainer/ContinueButton
-@onready var settings_button: Button = $Panel/MarginContainer/VBoxContainer/SettingsButton
-@onready var quit_button: Button = $Panel/MarginContainer/VBoxContainer/QuitButton
+@onready var continue_button:= $Panel/MarginContainer/VBoxContainer/ContinueButton
+@onready var settings_button:= $Panel/MarginContainer/VBoxContainer/SettingsButton
+@onready var quit_button:= $Panel/MarginContainer/VBoxContainer/QuitButton
 
 
 func _ready() -> void:
@@ -27,6 +27,7 @@ func _unhandled_input(event):
 			MenuManager.close_menu(MenuManager.MENU.PAUSE)
 		else:
 			MenuManager.open_menu(MenuManager.MENU.PAUSE)
+			continue_button.grab_focus()
 
 
 func _on_continue_button_pressed() -> void:
@@ -43,7 +44,7 @@ func toggle_settings_menu()->void:
 	
 	if settings_menu.visible:
 		tab_container.current_tab = 0 
-		tab_container.get_tab_bar().grab_focus()
+		settings_menu.take_focus()
 	else:
 		continue_button.grab_focus()
 

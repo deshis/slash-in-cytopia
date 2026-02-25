@@ -11,6 +11,8 @@ extends TabContainer
 	$Controls/VBoxContainer/primary/ControlRemapButton,
 	$Controls/VBoxContainer/secondary/ControlRemapButton,
 	$Controls/VBoxContainer/interact/ControlRemapButton,
+	$Controls/VBoxContainer/throwable/ControlRemapButton,
+	$Controls/VBoxContainer/active/ControlRemapButton,
 	]
 
 func _ready() -> void:
@@ -22,6 +24,7 @@ func _ready() -> void:
 	$Audio/VBoxContainer/BackToMenuButton.add_to_group("ui_button")
 	$Graphics/VBoxContainer/BackToMenuButton.add_to_group("ui_button")
 	$Controls/VBoxContainer/BackToMenuButton.add_to_group("ui_button")
+	$Gameplay/VBoxContainer/BackToMenuButton.add_to_group("ui_button")
 
 func _stop_taking_mouse_input() -> void:
 	set_mouse_behavior_recursive(MouseBehaviorRecursive.MOUSE_BEHAVIOR_DISABLED)
