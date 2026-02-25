@@ -6,9 +6,9 @@
 script = ExtResource("1_3avky")
 name = "Augmented Kheel"
 type = 1
-speed = 3.5
+ranged_navigation = true
+speed = 0.9
 max_health = 60.0
 cost = 3.0
 health_per_level = 3.0
-damage_per_level = 0.5
 metadata/_custom_type_script = "uid://t76ghlhghorw"

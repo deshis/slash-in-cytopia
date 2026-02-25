@@ -7,7 +7,7 @@ const RANGED_ATTACK = "ranged_attack"
 const ATTACK_RECOVERY = "attack_recovery"
 
 @export var ranged_attack: PackedScene = null
-@export var ranged_attack_chance := 0.3
+@export var ranged_attack_chance := 0.4
 @export var ranged_attack_max_range := 10.0
 @export var ranged_attack_windup_duration := 2.2
 @export var ranged_attack_max_cooldown := 2.5
@@ -20,7 +20,7 @@ var ranged_attack_pos := Vector3.ZERO
 
 @export var tp_windup_duration := 0.4
 @export var tp_attack_duration := 0.8
-@export var max_tp_dist := 5.0
+@export var max_tp_dist := 6.0
 @export var tp_chance := 0.4
 @export var tp_max_cooldown := 2.5
 var tp_cooldown := 0.0
@@ -49,7 +49,11 @@ func _physics_process(delta: float) -> void:
 		
 		ATTACK_RECOVERY:
 			process_attack_recovery()
-
+			
+		#NAVIGATE:
+			#if target_provider is not TargetPlayer:
+				#print("hi")
+				#target_provider = TargetAwayFromPlayer.new()
 
 func change_state(new_state: String, duration := 0.0):
 	super.change_state(new_state, duration)
@@ -83,8 +87,7 @@ func change_state(new_state: String, duration := 0.0):
 			tp_particles.emitting = false
 			animator.play("Stun")
 
-
-func process_navigation(delta: float) -> void:
+func process_ranged_navigation(delta: float) -> void:
 	var dist = global_position.distance_to(player.global_position)
 	
 	if tp_cooldown < 0:
@@ -105,25 +108,29 @@ func process_navigation(delta: float) -> void:
 		change_state(FACE_PLAYER, face_player_duration)
 		return
 	
-	super.process_navigation(delta)
+	super.process_ranged_navigation(delta)
 
 
 func process_tp() -> void:
 	if state_timer > 0:
 		return
 	
-	tp_target = get_pos(global_position, player.global_position, max_tp_dist, attack_range)
+	#tp_target = get_pos(global_position, player.global_position, max_tp_dist, attack_range)
+	
+	target_provider = TargetAroundPlayer.new()
+	
+	tp_target = target_provider.get_target(self)
+	print(tp_target)
 	global_position = tp_target
 	
 	ParticleManager.emit_particles("kheel_teleport", global_position)
 	
 	change_state(IDLE)
 
-
 func process_attack() -> void:
 	if state_timer > 0:
 		return
-	
+
 	perform_attack(attack)
 	change_state(ATTACK_RECOVERY, attack_duration-attack_windup_duration)
 
@@ -133,17 +140,16 @@ func process_attack_recovery() -> void:
 		return
 	change_state(COOLDOWN, cooldown_duration)
 
-
+#Not accessed!
 func process_face_player(delta: float) -> void:
 	if not player:
 		return
-	
+
 	var dir = (player.global_position - global_transform.origin).normalized()
 	update_facing_dir(delta, dir)
 	
 	if state_timer < 0:
 		change_state(ATTACK, attack_windup_duration)
-
 
 func process_ranged_attack(delta: float) -> void:
 	var dir = (ranged_attack_pos - global_position).normalized()

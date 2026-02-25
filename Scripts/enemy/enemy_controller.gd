@@ -211,7 +211,7 @@ func process_ranged_navigation(delta: float) -> void:
 		return
 	
 	var dir = (global_position - player.global_position)
-	var desired_pos = player.global_position + dir * self.attack_range
+	var desired_pos = player.global_position + dir * self.attack_range #erm
 	
 	nav_agent.set_target_position(desired_pos)
 	
@@ -220,16 +220,15 @@ func process_ranged_navigation(delta: float) -> void:
 	
 	velocity = move_dir * current_speed
 	
-	update_facing_dir(delta, -dir) # face player
-	move_and_slide()
+	update_facing_dir(delta, -dir) 
 
-	velocity = dir * current_speed
+	#velocity = dir * current_speed
 	#if nav_agent.avoidance_enabled:
 	#nav_agent.set_velocity(new_velocity)
 	#else:
 		#_on_velocity_computed(new_velocity)
 	
-	update_facing_dir(delta, dir)
+	#update_facing_dir(delta, dir)
 	move_and_slide()
 
 func apply_movement(delta: float, dir: Vector3) -> void:
