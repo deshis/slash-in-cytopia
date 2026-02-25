@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://72jv7tj0xygg"]
+
+[ext_resource type="Theme" uid="uid://cc7hwsh8wtwx6" path="res://Assets/fonts/Title.tres" id="1_oobaa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t5xw"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
+corner_detail = 1
+
+[node name="LoadingScreen" type="CanvasLayer" unique_id=759644051]
+layer = 100
+
+[node name="Panel" type="Panel" parent="." unique_id=1071952915]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0t5xw")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2126589883]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1296816929]
+layout_mode = 2
+theme = ExtResource("1_oobaa")
+text = "Loading
+0%"
+horizontal_alignment = 2
+vertical_alignment = 2

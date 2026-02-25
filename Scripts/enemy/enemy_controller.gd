@@ -112,6 +112,7 @@ func _activate() -> void:
 	is_dead = false
 	visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
+	state = IDLE
 	
 	await get_tree().create_timer(0.1).timeout
 	

@@ -113,6 +113,7 @@ var apex_anomaly_items := [
 	preload("res://Scripts/items/apex_anomaly/SingularityCircuit.tres"),
 ]
 
+
 var type_colors := {
 	ItemType.Type.NONE: Color(0.78, 0.812, 0.8, 1.0),
 	ItemType.Type.SURVIVABILITY: Color(0.659, 0.792, 0.345, 1.0),
@@ -241,11 +242,11 @@ func get_loot_rarity(loot_weights: Dictionary) -> ItemType.Type:
 
 
 func emit_upgrade_visuals(rarity: ItemType.Grade, loot: Node3D) -> void:
-	loot.container.update_colors(grade_colors[rarity - 1], rarity == ItemType.Grade.APEX_ANOMALY)
+	loot.container.update_colors(grade_colors[rarity - 1])
 	
 	await get_tree().create_timer(0.6).timeout
 	
-	loot.container.update_colors(grade_colors[rarity], rarity == ItemType.Grade.APEX_ANOMALY)
+	loot.container.update_colors(grade_colors[rarity])
 	
 	var particle = ParticleManager.emit_particles("loot_upgrade_beam", loot.global_position)
 	var beam = particle.get_child(0)

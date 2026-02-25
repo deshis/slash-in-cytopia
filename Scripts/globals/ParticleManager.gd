@@ -84,10 +84,70 @@ const all_particles = [
 	preload("res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn"),
 ]
 
+const particle_paths = {
+	# ON HIT
+	"on_hit_player": "res://Scenes/particles/player_on_hit.tscn",
+	#"on_hit_chromatic_aberration": "res://Scenes/particles/on_hit_chromaticaberration.tscn", # idk what to do with this
+	"on_hit_bloody": "res://Scenes/particles/bloody_on_hit_particles.tscn",
+	"on_hit_electric": "res://Scenes/particles/electric_on_hit_particles.tscn",
+	"?": "res://Scenes/particles/on_hit.tscn", # DEPRECATED?
+	
+	# DEATH
+	#"on_death_player":
+	"on_death_bloody": "res://Scenes/particles/death_particle_humanoid.tscn",
+	"on_death_electric": "res://Scenes/particles/death_particles_1.tscn",
+	
+	# ENEMY
+	"stun": "res://Scenes/particles/stun.tscn",
+	"kheel_teleport": "res://Scenes/particles/teleport.tscn",
+	"ranged_slasher_shoot": "res://Scenes/particles/enemy_plasma_shooting_particles.tscn",
+	"ranged_slasher_shoot_green": "res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn",
+	
+	# BRAINCHIPS
+	"heal": "res://Scenes/particles/heal.tscn",
+	"vampirism_activate": "res://Scenes/particles/vampirism_ability_particle.tscn",
+	"vampirism_bleed": "res://Scenes/particles/vampirism_bleed_dot_particles.tscn",
+	"emp_activate": "res://Scenes/particles/emp_particles.tscn",
+	"reality_fracture_activate": "res://Scenes/particles/reality_fracture_active_particles.tscn",
+	
+	# WEAPONS
+	"electric_dot": "res://Scenes/particles/electric_dot_particles_3d.tscn",
+	"??": "res://Scenes/particles/electric_dot_particles3D.tscn", # DEPRECATED?
+	"freeze": "res://Scenes/particles/freeze_particles_3D.tscn",
+	"freeze_shatter": "res://Scenes/particles/freeze_shatter_particles_3D.tscn",
+	"reality_fracture": "res://Scenes/particles/reality_fracture_particles.tscn",
+	"smite": "res://Scenes/particles/smite_particle.tscn",
+	
+	# THROWABLES
+	"impact_dust": "res://Scenes/particles/impact_dust.tscn",
+	"explosion": "res://Scenes/particles/explosion_particles.tscn",
+	"explosion_medium": "res://Scenes/particles/expl_particles_medium.tscn",
+	"explosion_frozen": "res://Scenes/particles/freeze_explosion_particles.tscn",
+	
+	# AUGMENTS
+	"loot_upgrade_light_ray": "res://Scenes/particles/light_ray_particles.tscn", # DEPRECATED
+	"loot_upgrade_beam": "res://Scenes/particles/loot_upgrade.tscn",
+}
 
-func _ready() -> void:
-	for key in particles.keys():
-		emit_particles(key, Vector3(0, -100, 0))
+
+func preload_particles() -> void:
+	for path in particle_paths.values():
+		ResourceLoader.load_threaded_request(path)
+	
+	while true:
+		var done = true
+		for path in particle_paths.values():
+			var status = ResourceLoader.load_threaded_get_status(path)
+			if status != ResourceLoader.THREAD_LOAD_LOADED:
+				done = false
+				break
+		
+		if done:
+			break
+		
+		await RenderingServer.frame_post_draw
+	
+	await get_tree().create_timer(1.5).timeout
 
 
 func emit_particles(particle_name: String, pos: Vector3, parent: Node = null, duration : float = 0.0):

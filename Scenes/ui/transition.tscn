@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bw8cyehliact5"]
 
-[ext_resource type="Script" uid="uid://bivkwbn1sfrmg" path="res://Scenes/ui/transition_handler.gd" id="1_4bosu"]
+[ext_resource type="Script" uid="uid://bivkwbn1sfrmg" path="res://Scripts/ui/transition_handler.gd" id="1_4bosu"]
 
 [sub_resource type="Animation" id="Animation_3bm2s"]
-length = 0.001
+length = 0.6666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

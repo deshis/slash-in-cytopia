@@ -21,6 +21,8 @@ var fuse_start_on_hit := false
 var primed := false
 var collided := false ##Multiple _on_body_entered calls shouldn't call fuse_delay function repeatedly
 
+var preload_mode = false
+
 func _ready () -> void:
 	if fuse:
 		fuse_delay()
@@ -70,6 +72,8 @@ func reparent_to_target(target: Node):
 
 ##CRITICAL Update this to utilize Area3D for finding enemies 	
 func explosion(damage: float, aoe: float, clean: bool, area_damage_indicator: bool, emit_explosion_particles: bool) -> void:
+	if preload_mode:
+		return
 	
 	for enemy in GameManager.spawner.get_children():
 		if enemy is not EnemyController or not enemy.visible:
