@@ -1,11 +1,11 @@
 extends EnemyController
 class_name Microbot
 
-@export var target_dist_min := 1.6
-@export var target_dist_max := 2.3
+@export var target_dist_min := 2.5
+@export var target_dist_max := 5.0
 
 @export var homing_jump := false
-@export var jump_height := 1.5
+@export var jump_height := 2.25
 @export var jump_speed := 8.0
 @export var jump_windup_duration := 0.2
 @export var jump_duration := 0.6

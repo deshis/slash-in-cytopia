@@ -45,7 +45,7 @@ var hit_flash_material = preload("res://Assets/vfx/hit_flash/hit_flash.tres")
 # ATTACK
 @export var attack: PackedScene = null
 @export var attack_windup_duration := 0.6
-@export var attack_range := 200.0
+@export var attack_range := 2.0
 @export var cooldown_duration := 1.0
 
 var active_attacks: Array[Node3D] = []
@@ -72,7 +72,6 @@ var hurtbox
 var navigation_func: Callable
 
 func _ready() -> void:
-	nav_agent.target_desired_distance = attack_range
 	set_collision_layer_value(13, true)
 	$Collision.disabled = true
 	
@@ -107,6 +106,7 @@ func _ready() -> void:
 
 
 func _activate() -> void:
+	nav_agent.target_desired_distance = attack_range
 	is_dead = false
 	visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT

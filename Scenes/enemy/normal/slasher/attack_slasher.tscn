@@ -9,9 +9,6 @@ data = PackedVector3Array(-0.935, 1.0435, 0.20529999, -0.67249995, 1.0435, 0.163
 script = ExtResource("1_sfcin")
 damage = 20.0
 damage_per_level = 1.0
-duration = 0.35
-follow = null
-offset = null
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1360108183]
 collision_layer = 16384
