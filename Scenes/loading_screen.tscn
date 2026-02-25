@@ -35,7 +35,6 @@ theme_override_constants/margin_bottom = 30
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1296816929]
 layout_mode = 2
 theme = ExtResource("1_oobaa")
-text = "Loading
-0%"
+text = "Loading..."
 horizontal_alignment = 2
 vertical_alignment = 2

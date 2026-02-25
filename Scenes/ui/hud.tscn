@@ -39,7 +39,7 @@
 [ext_resource type="Theme" uid="uid://cc7hwsh8wtwx6" path="res://Assets/fonts/Title.tres" id="33_wvxje"]
 [ext_resource type="Texture2D" uid="uid://bmpf1vpmjno0x" path="res://Assets/ui/button_no_gap.png" id="34_am2bk"]
 [ext_resource type="Texture2D" uid="uid://cwf7yqbhsiju5" path="res://Assets/ui/button_no_gap2.png" id="35_hlp1x"]
-[ext_resource type="Script" uid="uid://cy5ff1njcisrv" path="res://Scripts/ui/pause_menu_button.gd" id="36_nstl2"]
+[ext_resource type="Script" path="res://Scripts/ui/pause_menu_button.gd" id="36_nstl2"]
 [ext_resource type="Shader" uid="uid://dltnkyf0hnwq0" path="res://Assets/materials/shaders/glitch.gdshader" id="37_dtbtu"]
 [ext_resource type="Texture2D" uid="uid://bc1yvyqjwxee" path="res://Assets/ui/main_menu_button2.png" id="38_q4nbf"]
 [ext_resource type="Shader" uid="uid://cq3v485k8pb6o" path="res://Assets/materials/shaders/glitch_intense.gdshader" id="39_gmhnw"]
@@ -80,10 +80,10 @@ shader_parameter/shake_color_rate = 0.010000000475
 script = ExtResource("1_36s6t")
 metadata/_edit_horizontal_guides_ = []
 
+[node name="HPBars" type="Node2D" parent="." unique_id=244677121]
+
 [node name="HPBarPlayer" parent="." unique_id=589468563 instance=ExtResource("2_ium74")]
 theme = ExtResource("3_spcc7")
-
-[node name="HPBars" type="Node2D" parent="." unique_id=244677121]
 
 [node name="SkillCooldowns" type="Control" parent="." unique_id=516375861 node_paths=PackedStringArray("light_attack_node", "heavy_attack_node", "dash_node", "brainchip_node", "throwable_node")]
 layout_mode = 3
@@ -137,7 +137,7 @@ keybind_name = "active_item"
 layout_mode = 2
 keybind_name = "throwable_item"
 
-[node name="Inventory" type="Control" parent="." unique_id=1756702059 node_paths=PackedStringArray("backpack_node", "trash_slot_node", "augments_node", "item_selection_node", "combiner_node", "recycler_node", "extra_augment_nodes", "item_description_node")]
+[node name="Inventory" type="Control" parent="." unique_id=1756702059 node_paths=PackedStringArray("backpack_node", "trash_slot_node", "augments_node", "item_selection_node", "combiner_node", "recycler_node", "extra_augment_nodes")]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -155,7 +155,6 @@ item_selection_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/ItemSelecti
 combiner_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/Combiner")
 recycler_node = NodePath("HBoxContainer/LeftSide/VBoxContainer/Recycler")
 extra_augment_nodes = [NodePath("HBoxContainer/RightSide/AugmentSlots/Survivability2"), NodePath("HBoxContainer/RightSide/AugmentSlots/Movement2"), NodePath("HBoxContainer/RightSide/AugmentSlots/Damage2")]
-item_description_node = NodePath("ItemDescription")
 
 [node name="Background" type="Panel" parent="Inventory" unique_id=1596950018]
 modulate = Color(1, 1, 1, 0.5019608)
@@ -678,8 +677,6 @@ width = 2.0
 default_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
 
 [node name="ItemDescription" parent="Inventory" unique_id=239486507 instance=ExtResource("28_0s5ks")]
-visible = false
-layout_mode = 0
 
 [node name="PauseMenu" type="Control" parent="." unique_id=292451703]
 process_mode = 3

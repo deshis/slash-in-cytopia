@@ -35,9 +35,17 @@ extends PanelContainer
 
 
 func set_match_data(data: Dictionary) -> void:
+	_init_slots()
 	_set_header_stats(data)
 	_set_grid_stats(data)
 	_populate_inventory(data.get("equipped_items", []), data.get("had_apex", false))
+
+
+func _init_slots() -> void:
+	for slot in slots.values():
+		#var inv_slot = slot as InventorySlot
+		#print(inv_slot)
+		slot.setup(false)
 
 
 func _set_header_stats(data: Dictionary) -> void:
@@ -194,8 +202,10 @@ func _get_slot_key(item_type: int, filled_slots: Dictionary) -> String:
 
 
 func _fill_slot(slot: Control, item_res) -> void:
-	var icon_node = slot.get_node_or_null("ItemSlot/Icon")
-	if icon_node:
-		icon_node.texture = item_res.icon
-		icon_node.self_modulate = Color(1, 1, 1, 1)
-	slot.tooltip_text = item_res.item_name
+	var item_control = InventoryManager.create_item_control(item_res)
+	slot.set_item(item_control, false)
+	#var icon_node = slot.get_node_or_null("ItemSlot/Icon")
+	#if icon_node:
+		#icon_node.texture = item_res.icon
+		#icon_node.self_modulate = Color(1, 1, 1, 1)
+	#slot.tooltip_text = item_res.item_name

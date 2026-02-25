@@ -13,7 +13,7 @@ var item_description: Node
 
 var slot_type = InventorySlot.SLOT
 
-var starter_items: Array[ItemResource] =  [load("res://Scripts/items/apex_anomaly/SingularityCircuit.tres"),load("res://Scripts/items/military/Katana.tres"),load("res://Scripts/items/military/PlasteelChassis.tres"), load("res://Scripts/items/prototype/Arievistan.tres"), load("res://Scripts/items/prototype/Vampirism.tres"),load("res://Scripts/items/prototype/CryoGrenade.tres"),load("res://Scripts/items/military/Shuriken.tres"),load("res://Scripts/items/prototype/Javelin.tres")] #, load("res://Scripts/items/prototype/Vampirism.tres")]#[preload("res://Scripts/items/military/DashReplicator.tres"), preload("res://Scripts/items/prototype/Dawn.tres"),preload("res://Scripts/items/military/BlackBurner.tres"), preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/prototype/Arievistan.tres")]#[preload("res://Scripts/items/prototype/ArcFlash.tres"),preload("res://Scripts/items/prototype/Labrys.tres"),preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/consumer/UnderclockedExoskeleton.tres"),preload("res://Scripts/items/military/SecondHeart.tres"),preload("res://Scripts/items/prototype/RealityFracture.tres")]
+var starter_items: Array[ItemResource] = [load("res://Scripts/items/apex_anomaly/SingularityCircuit.tres"),load("res://Scripts/items/military/Katana.tres"),load("res://Scripts/items/military/PlasteelChassis.tres"), load("res://Scripts/items/prototype/Arievistan.tres"), load("res://Scripts/items/prototype/Vampirism.tres"),load("res://Scripts/items/prototype/CryoGrenade.tres"),load("res://Scripts/items/military/Shuriken.tres"),load("res://Scripts/items/prototype/Javelin.tres")] #, load("res://Scripts/items/prototype/Vampirism.tres")]#[preload("res://Scripts/items/military/DashReplicator.tres"), preload("res://Scripts/items/prototype/Dawn.tres"),preload("res://Scripts/items/military/BlackBurner.tres"), preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/prototype/Arievistan.tres")]#[preload("res://Scripts/items/prototype/ArcFlash.tres"),preload("res://Scripts/items/prototype/Labrys.tres"),preload("res://Scripts/items/military/DashLimiter.tres"),preload("res://Scripts/items/consumer/UnderclockedExoskeleton.tres"),preload("res://Scripts/items/military/SecondHeart.tres"),preload("res://Scripts/items/prototype/RealityFracture.tres")]
 var augment_items: Array[ItemResource] = []
 var backpack_items: Array[ItemResource] = [] # pls don't clean me! [preload("res://Scripts/items/prototype/Item6.tres"),preload("res://Scripts/items/consumer/Item4.tres")] #[preload("res://Scripts/items/prototype/Item6.tres")]
 
@@ -23,6 +23,10 @@ var extra_augment_nodes = []
 var extra_augment_slots := false
 var is_equipping_starter_items := false
 
+
+func _ready() -> void:
+	item_description = preload("res://Scenes/items/item_description.tscn").instantiate()
+	add_child(item_description)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -48,7 +52,6 @@ func init() -> void:
 	combiner_node = inventory_node.combiner_node
 	recycler_node = inventory_node.recycler_node
 	extra_augment_nodes = inventory_node.extra_augment_nodes
-	item_description = inventory_node.item_description_node
 	init_slots()
 	
 	# setup menu manager
@@ -240,6 +243,9 @@ func get_augment_slot(item) -> Control:
 
 
 func get_backpack_slot() -> Control:
+	if not backpack_node:
+		return null
+	
 	for slot in backpack_node.get_children():
 		if not slot.get_item():
 			return slot

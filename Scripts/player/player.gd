@@ -901,6 +901,9 @@ func sort_dist_to_player(a, b) -> int:
 		return false
 
 func perform_interact() -> void:
+	if interactables.size() == 0:
+		return
+	
 	var item = interactables.front()
 	
 	if item is PickupableLoot:

@@ -136,18 +136,17 @@ func load_scene_async(path: String) -> Node:
 		if scene_status == ResourceLoader.THREAD_LOAD_LOADED:
 			loaded_count += 1
 		
-		var progress = float(loaded_count) / float(total_resources)
-		progress_display.text = "Loading\n" + str(floor(progress * 100)) + "%"
+		#var load_progress = float(loaded_count) / float(total_resources)
+		#progress_display.text = "Loading\n" + str(floor(load_progress * 100)) + "%"
 		
 		if loaded_count == total_resources:
-			progress_display.text = "Loading\n100%"
+			#progress_display.text = "Loading\n100%"
 			await get_tree().process_frame
 			
 			packed_scene = ResourceLoader.load_threaded_get(path)
 			scene = packed_scene.instantiate()
 			GameManager.add_child(scene)
 			
-			await get_tree().process_frame
 			return scene
 		
 		await get_tree().process_frame
@@ -157,4 +156,4 @@ func load_scene_async(path: String) -> Node:
 
 func clear_scene() -> void:
 	for child in GameManager.get_children():
-		child.free()
+		child.queue_free()

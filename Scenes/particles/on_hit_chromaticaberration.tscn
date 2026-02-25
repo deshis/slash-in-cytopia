@@ -8,6 +8,8 @@
 shader = ExtResource("2_47v2w")
 shader_parameter/chromatic_progress = 0.0
 shader_parameter/chromatic_aberration = 0.02
+shader_parameter/glitch_intensity = 0.5
+shader_parameter/time_scale = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1561946974]
 script = ExtResource("1_r7m2r")

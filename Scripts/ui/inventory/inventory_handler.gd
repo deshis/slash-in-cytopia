@@ -7,4 +7,3 @@ extends Control
 @export var combiner_node: Control
 @export var recycler_node: Control
 @export var extra_augment_nodes: Array[Control]
-@export var item_description_node: Control

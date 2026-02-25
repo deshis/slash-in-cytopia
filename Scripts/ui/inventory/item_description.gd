@@ -1,4 +1,4 @@
-extends PanelContainer
+extends CanvasLayer
 
 var item : ItemResource
 @export var grade_icons: Dictionary[ItemType.Grade, CompressedTexture2D]
@@ -7,25 +7,25 @@ var item : ItemResource
 
 @export var max_chars_per_line := 25
 
-@onready var grade_icon = $Control/GradeIcon
-@onready var border = $Frame
+@onready var grade_icon = $Background/Control/GradeIcon
+@onready var border = $Background/Frame
 
-@onready var item_name = $Description/VBoxContainer/Name
-@onready var item_type_icon = $Description/VBoxContainer/Type/Icon
-@onready var item_type = $Description/VBoxContainer/Type/Type
-@onready var item_stats = $Description/VBoxContainer/Stats
-@onready var item_desc = $Description/VBoxContainer/Description
+@onready var item_name = $Background/Description/VBoxContainer/Name
+@onready var item_type_icon = $Background/Description/VBoxContainer/Type/Icon
+@onready var item_type = $Background/Description/VBoxContainer/Type/Type
+@onready var item_stats = $Background/Description/VBoxContainer/Stats
+@onready var item_desc = $Background/Description/VBoxContainer/Description
 
 var type_color = Color(0.6, 0.8, 0.6, 1.0)
 var type_name = ""
 
 
 func _physics_process(_delta: float) -> void:
-	if not visible:
+	if not item:
 		return
 	
 	if item.grade == ItemType.Grade.APEX_ANOMALY:
-		_set_panel_color(LootDatabase.get_apex_rainbow(self))
+		_set_panel_color(LootDatabase.get_apex_rainbow($Background))
 	
 	_reposition()
 
@@ -46,10 +46,12 @@ func set_description(i: ItemResource) -> void:
 
 func activate() -> void:
 	_reposition()
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = true
 
 
 func deactivate() -> void:
+	process_mode = Node.PROCESS_MODE_DISABLED
 	visible = false
 
 
@@ -129,14 +131,14 @@ func _set_stats() -> void:
 func _set_description() -> void:
 	if item.item_description == "":
 		item_desc.text = ""
-		$Description/VBoxContainer/PaddingStatsDesc.visible = false
+		$Background/Description/VBoxContainer/PaddingStatsDesc.visible = false
 	else:
 		item_desc.text = "[color=#777777]" + wrap_text(item.item_description) + "[/color]"
-		$Description/VBoxContainer/PaddingStatsDesc.visible = true
+		$Background/Description/VBoxContainer/PaddingStatsDesc.visible = true
 
 
 func _set_panel_color(col = null) -> void:
-	var stylebox = get("theme_override_styles/panel").duplicate()
+	var stylebox = $Background.get("theme_override_styles/panel").duplicate()
 	var grade_color = LootDatabase.grade_colors.get(item.grade)
 	var c = col if col else grade_color
 	
@@ -145,14 +147,14 @@ func _set_panel_color(col = null) -> void:
 	c = Color(c.r * brightness, c.g * brightness, c.b * brightness, alpha)
 	
 	stylebox.bg_color = c
-	add_theme_stylebox_override("panel", stylebox)
+	$Background.add_theme_stylebox_override("panel", stylebox)
 
 
 func _update_size() -> void:
 	border.visible = false
-	reset_size()
+	$Background.reset_size()
 	
-	var min_size = min(size.x, size.y)
+	var min_size = min($Background.size.x, $Background.size.y)
 	var border_size = Vector2.ONE * min_size / 2
 	for corner in border.get_children():
 		corner.custom_minimum_size = border_size
@@ -165,9 +167,9 @@ func _reposition() -> void:
 	var offset = Vector2(10, 10)
 	var new_pos = mouse_pos + offset
 	
-	var viewport_size = get_viewport_rect().size
+	var viewport_size = $Background.get_viewport_rect().size
 	var padding = grade_icon.custom_minimum_size.y / 2
 	
-	new_pos.x = clamp(new_pos.x, 0, viewport_size.x - size.x)
-	new_pos.y = clamp(new_pos.y, 0, viewport_size.y - size.y - padding)
-	global_position = new_pos
+	new_pos.x = clamp(new_pos.x, 0, viewport_size.x - $Background.size.x)
+	new_pos.y = clamp(new_pos.y, 0, viewport_size.y - $Background.size.y - padding)
+	$Background.global_position = new_pos

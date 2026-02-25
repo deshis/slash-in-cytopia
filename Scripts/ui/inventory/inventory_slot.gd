@@ -11,8 +11,7 @@ class_name InventorySlot
 
 
 @onready var lights: TextureRect = $CartridgeHolder/Lights
-@onready var cap: TextureRect = $CartridgeHolder/Cartridge
-@onready var cap_outline: TextureRect = $CartridgeHolder/CartridgeOutline
+@onready var cartridge: TextureRect = $CartridgeHolder/Cartridge
 
 
 @onready var item_slot = $ItemSlot
@@ -25,6 +24,8 @@ var tween : Tween
 
 var drag_preview: Control
 var dragging_apex := false
+
+var hovered := false
 
 enum SLOT {
 	NONE,
@@ -50,8 +51,9 @@ func _physics_process(delta: float) -> void:
 		cart.self_modulate = col
 
 
-func setup() -> void:
-	get_child(0).text = slot_name
+func setup(show_name: bool = true) -> void:
+	if show_name:
+		get_child(0).text = slot_name
 	icon_node.texture = icon
 	icon_node.self_modulate = icon_color
 
@@ -70,9 +72,6 @@ func set_item(item: Control, play_sfx: bool = true) -> void:
 	item.slot = self
 	icon_node.visible = false
 	set_cartridge(item)
-	
-	if InventoryManager.inventory_node.visible:
-		InventoryManager.item_description.activate()
 	
 	if sfx == "" or InventoryManager.is_equipping_starter_items:
 		return
@@ -94,19 +93,16 @@ func slot_right_clicked() -> void:
 
 func set_cartridge(item_node: Control) -> void:
 	if current_light == 0:
-		cap_outline.visible = true
-		cap.visible = true
+		cartridge.visible = true
 	
 	var item = item_node.item
-	cap.self_modulate = LootDatabase.grade_colors.get(item.grade)
+	cartridge.self_modulate = LootDatabase.grade_colors.get(item.grade)
 	
 	set_lights(item.grade + 1)
 
 
-
 func remove_cartridge() -> void:
-	cap_outline.visible = false
-	cap.visible = false
+	cartridge.visible = false
 	set_lights(0)
 
 
@@ -132,7 +128,7 @@ func _set_index(value: float) -> void:
 
 
 func apex_rainbow() -> void:
-	cap.self_modulate = LootDatabase.get_apex_rainbow(self)
+	cartridge.self_modulate = LootDatabase.get_apex_rainbow(self)
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -185,9 +181,15 @@ func _notification(what):
 			icon_node.visible = false
 			get_item().visible = true
 			set_cartridge(get_item())
+			
+			if hovered:
+				InventoryManager.item_description.set_description(get_item().item)
+				InventoryManager.item_description.activate()
 
 
 func _on_mouse_entered() -> void:
+	hovered = true
+	
 	if not get_item():
 		return
 	
@@ -200,6 +202,8 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
+	hovered = false
+	
 	if not get_item():
 		return
 	

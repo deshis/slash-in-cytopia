@@ -29,12 +29,9 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 2
 
-[node name="Background" type="PanelContainer" unique_id=239486507]
-z_index = 5
-offset_right = 24.0
-offset_bottom = 113.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_u06aw")
+[node name="ItemDescription" type="CanvasLayer" unique_id=361812059]
+layer = 2
+visible = false
 script = ExtResource("1_wg64m")
 grade_icons = Dictionary[int, CompressedTexture2D]({
 0: ExtResource("2_l68bp"),
@@ -59,23 +56,31 @@ item_types = Dictionary[int, CompressedTexture2D]({
 8: ExtResource("15_l6lwg")
 })
 
-[node name="Description" type="MarginContainer" parent="." unique_id=636350832]
+[node name="Background" type="PanelContainer" parent="." unique_id=239486507]
+process_mode = 4
+z_index = 5
+offset_right = 24.0
+offset_bottom = 113.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u06aw")
+
+[node name="Description" type="MarginContainer" parent="Background" unique_id=636350832]
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Description" unique_id=1335774228]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Description" unique_id=1335774228]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="PaddingTop" type="MarginContainer" parent="Description/VBoxContainer" unique_id=1862965906]
+[node name="PaddingTop" type="MarginContainer" parent="Background/Description/VBoxContainer" unique_id=1862965906]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Name" type="RichTextLabel" parent="Description/VBoxContainer" unique_id=1429628719]
+[node name="Name" type="RichTextLabel" parent="Background/Description/VBoxContainer" unique_id=1429628719]
 clip_contents = false
 layout_mode = 2
 mouse_filter = 2
@@ -88,19 +93,19 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="Type" type="HBoxContainer" parent="Description/VBoxContainer" unique_id=1982285297]
+[node name="Type" type="HBoxContainer" parent="Background/Description/VBoxContainer" unique_id=1982285297]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="Description/VBoxContainer/Type" unique_id=1046901273]
+[node name="Icon" type="TextureRect" parent="Background/Description/VBoxContainer/Type" unique_id=1046901273]
 texture_filter = 4
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("2_wg64m")
 expand_mode = 2
 
-[node name="Type" type="RichTextLabel" parent="Description/VBoxContainer/Type" unique_id=1552901838]
+[node name="Type" type="RichTextLabel" parent="Background/Description/VBoxContainer/Type" unique_id=1552901838]
 clip_contents = false
 layout_mode = 2
 mouse_filter = 2
@@ -111,12 +116,12 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="PaddingNameStats" type="MarginContainer" parent="Description/VBoxContainer" unique_id=1645781692]
+[node name="PaddingNameStats" type="MarginContainer" parent="Background/Description/VBoxContainer" unique_id=1645781692]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Stats" type="RichTextLabel" parent="Description/VBoxContainer" unique_id=117726411]
+[node name="Stats" type="RichTextLabel" parent="Background/Description/VBoxContainer" unique_id=117726411]
 clip_contents = false
 layout_mode = 2
 mouse_filter = 2
@@ -126,12 +131,12 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="PaddingStatsDesc" type="MarginContainer" parent="Description/VBoxContainer" unique_id=893496248]
+[node name="PaddingStatsDesc" type="MarginContainer" parent="Background/Description/VBoxContainer" unique_id=893496248]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Description" type="RichTextLabel" parent="Description/VBoxContainer" unique_id=552818778]
+[node name="Description" type="RichTextLabel" parent="Background/Description/VBoxContainer" unique_id=552818778]
 clip_contents = false
 layout_mode = 2
 mouse_filter = 2
@@ -143,19 +148,19 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="PaddingBottom" type="MarginContainer" parent="Description/VBoxContainer" unique_id=411144980]
+[node name="PaddingBottom" type="MarginContainer" parent="Background/Description/VBoxContainer" unique_id=411144980]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Frame" type="GridContainer" parent="." unique_id=1249788939]
+[node name="Frame" type="GridContainer" parent="Background" unique_id=1249788939]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 2
 
-[node name="TopLeft" type="TextureRect" parent="Frame" unique_id=1140801933]
+[node name="TopLeft" type="TextureRect" parent="Background/Frame" unique_id=1140801933]
 texture_filter = 4
 layout_mode = 2
 size_flags_horizontal = 2
@@ -164,7 +169,7 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 4
 
-[node name="TopRight" type="TextureRect" parent="Frame" unique_id=1067687454]
+[node name="TopRight" type="TextureRect" parent="Background/Frame" unique_id=1067687454]
 texture_filter = 4
 layout_mode = 2
 size_flags_horizontal = 10
@@ -174,7 +179,7 @@ expand_mode = 1
 stretch_mode = 4
 flip_h = true
 
-[node name="BottomLeft" type="TextureRect" parent="Frame" unique_id=228638981]
+[node name="BottomLeft" type="TextureRect" parent="Background/Frame" unique_id=228638981]
 texture_filter = 4
 layout_mode = 2
 size_flags_horizontal = 2
@@ -184,7 +189,7 @@ expand_mode = 1
 stretch_mode = 4
 flip_v = true
 
-[node name="BottomRight" type="TextureRect" parent="Frame" unique_id=427955690]
+[node name="BottomRight" type="TextureRect" parent="Background/Frame" unique_id=427955690]
 texture_filter = 4
 layout_mode = 2
 size_flags_horizontal = 10
@@ -195,12 +200,12 @@ stretch_mode = 4
 flip_h = true
 flip_v = true
 
-[node name="Control" type="Control" parent="." unique_id=212883982]
+[node name="Control" type="Control" parent="Background" unique_id=212883982]
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="GradeIcon" type="TextureRect" parent="Control" unique_id=1985967098]
+[node name="GradeIcon" type="TextureRect" parent="Background/Control" unique_id=1985967098]
 texture_filter = 4
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1

@@ -84,12 +84,12 @@ func load_next_stage() -> void:
 
 
 func boss_killed(boss: EnemyController) -> void:
-	var exit = portaldoor.instantiate()
-	current_stage.add_child(exit)
-	var location = boss.global_position + Vector3(0,0,-5)
-	exit.global_position = location
-	#GameStats.player_last_hit_by = "Cyber Psychosis (You won!)"
-	#player.die()
+	#var exit = portaldoor.instantiate()
+	#current_stage.add_child(exit)
+	#var location = boss.global_position + Vector3(0,0,-5)
+	#exit.global_position = location
+	GameStats.player_last_hit_by = "Cyber Psychosis (You won!)"
+	player.die()
 	
 	spawner.credits_cooldown_timer.stop()
 	spawner.wave_cooldown_timer.stop()

@@ -7,8 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://bchfdd33nq5mq" path="res://Assets/items/icons/types/ItemIconSurvivability.png" id="5_442yx"]
 [ext_resource type="Texture2D" uid="uid://ca3cyfd65f8ck" path="res://Assets/items/icons/types/ItemIconMovement.png" id="6_c6gdx"]
 [ext_resource type="Texture2D" uid="uid://10qcvwxmfrwp" path="res://Assets/items/icons/types/ItemIconUtility.png" id="7_uhy41"]
+[ext_resource type="Texture2D" uid="uid://b1dcqmm1vfynd" path="res://Assets/items/icons/types/ItemIconLightAttack.png" id="8_c6gdx"]
 [ext_resource type="Texture2D" uid="uid://3gcpmo12q0kr" path="res://Assets/items/icons/types/ItemIconDamage.png" id="8_p52nu"]
+[ext_resource type="Texture2D" uid="uid://dm5ljywx0xvxq" path="res://Assets/items/icons/types/ItemIconHeavyAttack.png" id="9_442yx"]
 [ext_resource type="Texture2D" uid="uid://djlowtuly6nfu" path="res://Assets/items/icons/types/ItemIconBrainchip.png" id="9_uxt81"]
+[ext_resource type="Texture2D" uid="uid://chnw20ws0ybfy" path="res://Assets/items/icons/types/ItemIconThrowable.png" id="10_c6gdx"]
 [ext_resource type="Texture2D" uid="uid://chmb0vt4rda71" path="res://Assets/ui/player_UI_view.png" id="10_ku2q5"]
 
 [node name="MatchHistoryRow" type="PanelContainer" unique_id=1021291854]
@@ -155,6 +158,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("4_4xbu8")
 item_type = 6
+icon = ExtResource("8_c6gdx")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Light Attack"
 slot_type = 2
 
@@ -195,6 +200,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("4_4xbu8")
 item_type = 7
+icon = ExtResource("9_442yx")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Heavy Attack"
 slot_type = 2
 
@@ -214,6 +221,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("4_4xbu8")
 item_type = 8
+icon = ExtResource("10_c6gdx")
+icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Throwable"
 slot_type = 2
 
