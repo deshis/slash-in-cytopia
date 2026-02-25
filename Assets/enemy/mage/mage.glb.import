@@ -8264,6 +8264,13 @@ _subresources={
 "slices/amount": 0
 }
 },
+"materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/materials/basic_cell_shaded_material.tres",
+"use_external/path": "uid://biwi4od666f1t"
+}
+},
 "meshes": {
 "mage_Cylinder": {
 "generate/lightmap_uv": 0,

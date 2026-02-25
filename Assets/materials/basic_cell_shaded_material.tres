@@ -3,8 +3,29 @@
 [ext_resource type="Shader" uid="uid://dp145x6w65ey5" path="res://Assets/materials/shaders/cell_shader.gdshader" id="1_iep8t"]
 [ext_resource type="Texture2D" uid="uid://dp2qderulb6q" path="res://Assets/apollo-8x.png" id="2_urmb0"]
 
+[sub_resource type="Gradient" id="Gradient_urmb0"]
+offsets = PackedFloat32Array(0.62742704, 0.85240984)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rslx1"]
+gradient = SubResource("Gradient_urmb0")
+
+[sub_resource type="Gradient" id="Gradient_iep8t"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3116527, 0.5000862, 0.72728056)
+colors = PackedColorArray(0, 0, 0, 1, 0.13308537, 0.13308537, 0.13308537, 1, 0.3472174, 0.3472174, 0.34721753, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_urmb0"]
+gradient = SubResource("Gradient_iep8t")
+
 [resource]
 render_priority = 0
 shader = ExtResource("1_iep8t")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/albedo_texture = ExtResource("2_urmb0")
-shader_parameter/light_steps = 3.0
+shader_parameter/fade_alpha = 1.0
+shader_parameter/shading_gradient = SubResource("GradientTexture1D_urmb0")
+shader_parameter/use_fresnel = true
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_rslx1")
+shader_parameter/fresnel_amount = 4.0
+shader_parameter/use_rim = false
+shader_parameter/rim_amount = 1.0

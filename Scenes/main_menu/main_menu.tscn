@@ -10894,8 +10894,6 @@ sky_material = SubResource("ProceduralSkyMaterial_xpoh7")
 background_mode = 2
 sky = SubResource("Sky_dhgqn")
 tonemap_mode = 2
-ssil_enabled = true
-ssil_radius = 8.61
 glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(0.45138627, 0.56086665, 0.6879842, 1)
@@ -17481,7 +17479,7 @@ libraries/ = SubResource("AnimationLibrary_kfk1d")
 autoplay = &"Walk"
 
 [node name="john" type="Node3D" parent="background_visuals" unique_id=916549474]
-transform = Transform3D(-0.41070303, 0, -0.91176933, 0, 1, 0, 0.91176933, 0, -0.41070303, 3.4553754, 0.094827056, 0.69124365)
+transform = Transform3D(-0.3051635, 0, -0.95229995, 0, 1, 0, 0.95229995, 0, -0.3051635, 3.4553754, 0.094827056, 0.69124365)
 
 [node name="Weapons" type="Node3D" parent="background_visuals/john" unique_id=447146550]
 
@@ -19065,7 +19063,7 @@ autoplay = &"Idle"
 [node name="forest" type="Node3D" parent="background_visuals" unique_id=1117914240]
 
 [node name="GroundPlane" type="MeshInstance3D" parent="background_visuals/forest" unique_id=953718685]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.371991, -0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3592596, -0.24329948, -0.021100044)
 mesh = SubResource("PlaneMesh_fj8lq")
 
 [node name="MultiMeshInstance3D2" type="MultiMeshInstance3D" parent="background_visuals/forest" unique_id=128956290]
@@ -19082,11 +19080,9 @@ multimesh = SubResource("MultiMesh_h6cr5")
 environment = SubResource("Environment_b6ho2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="background_visuals/forest" unique_id=1550770886]
-transform = Transform3D(0.6100321, -0.17940181, 0.7718004, -0.30069062, 0.8487621, 0.43495762, -0.7331071, -0.49741122, 0.46382755, 0, 4.540125, -5.9411197)
-light_color = Color(1, 0.685, 0.37, 1)
-light_energy = 1.2
+transform = Transform3D(0.75819755, 0.042806998, 0.65061814, -0.5066046, 0.66685355, 0.5464962, -0.41047317, -0.7439582, 0.5272929, 0, 4.540125, -5.9411197)
+light_color = Color(0.9999997, 0.68459314, 0.36805806, 1)
 shadow_enabled = true
-directional_shadow_mode = 0
 directional_shadow_pancake_size = 0.2
 
 [node name="tree_assets" type="Node3D" parent="background_visuals/forest" unique_id=1723890850]

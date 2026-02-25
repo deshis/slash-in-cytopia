@@ -16,7 +16,7 @@ meshInstance = NodePath(".")
 shader = ExtResource("3_kka6s")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="HologramBase" index="0" unique_id=2021644260]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77011776, 0)
 light_color = Color(0.88235295, 1, 1, 1)
 omni_range = 3.0
 

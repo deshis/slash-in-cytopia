@@ -54,10 +54,9 @@ sky_material = SubResource("ProceduralSkyMaterial_yi4r0")
 
 [sub_resource type="Environment" id="Environment_b6ho2"]
 background_mode = 2
+background_energy_multiplier = 1.25
 sky = SubResource("Sky_dhgqn")
 tonemap_mode = 2
-tonemap_exposure = 1.2
-ssil_radius = 8.61
 glow_enabled = true
 glow_normalized = true
 glow_intensity = 0.5
@@ -493,12 +492,12 @@ navigation_region = NodePath("../NavigationRegion3D")
 environment = SubResource("Environment_b6ho2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1550770886]
-transform = Transform3D(0.3101456, 0.87244576, -0.37768787, -0.42062974, 0.4822062, 0.7684711, 0.8525728, -0.07947122, 0.5165309, 0, 4.540125, -5.9411197)
+transform = Transform3D(-0.1580039, 0.79499686, -0.5856746, -0.4207923, 0.48236322, 0.7682835, 0.89329094, 0.3678391, 0.2583133, 0, 4.540125, -5.9411197)
 light_color = Color(0.3923405, 0.59086585, 0.7054946, 1)
-light_energy = 0.5
+light_energy = 0.8
 shadow_enabled = true
 shadow_opacity = 0.5
-directional_shadow_pancake_size = 0.2
+directional_shadow_pancake_size = 2.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=958571371]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03322795, 0)

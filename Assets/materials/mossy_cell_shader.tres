@@ -1,74 +1,13 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://5l1ixy8by66k"]
 
+[ext_resource type="Shader" uid="uid://ooirhxfs753" path="res://Assets/materials/shaders/mossy_cell_shader.gdshader" id="1_6m62q"]
 [ext_resource type="Texture2D" uid="uid://dp2qderulb6q" path="res://Assets/apollo-8x.png" id="2_4eh1c"]
 
-[sub_resource type="Shader" id="Shader_et1gd"]
-code = "shader_type spatial;
-render_mode specular_disabled;
+[sub_resource type="Gradient" id="Gradient_urmb0"]
+offsets = PackedFloat32Array(0.7824276, 0.9106589)
 
-uniform sampler2D base_texture : source_color;
-uniform sampler2D moss_texture : source_color;
-uniform sampler2D noise_texture : source_color;
-
-uniform float noise_scale = 4.0;
-uniform float moss_threshold = 0.4;
-uniform float upward_bias = 0.4;
-
-uniform float light_steps = 3.0;
-
-varying float occlusion;
-varying vec3 world_pos;
-varying vec3 world_normal;
-
-void vertex() {
-    world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-    world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
-}
-
-void fragment() {
-	occlusion = round(COLOR.r * light_steps) / light_steps; // Using vertex color for additional shadows
-	
-
-	float dir_bias = dot(world_normal, vec3(0.0, 1.0, 0.0));
-	// Lift walls, reward tops
-	float up_bias = dir_bias * upward_bias + (1.0-upward_bias);
-	// Kill undersides
-	up_bias *= smoothstep(-0.2, 0.1, dir_bias);
-	// Clamp for safety
-	up_bias = clamp(up_bias, 0.0, 1.0);
-	
-	vec3 n = abs(world_normal);
-	n = pow(n, vec3(4.0));
-	n /= (n.x + n.y + n.z);
-
-	// Triplanar noise
-	float noise_x = texture(noise_texture, world_pos.yz * noise_scale).r;
-	float noise_y = texture(noise_texture, world_pos.xz * noise_scale).r;
-	float noise_z = texture(noise_texture, world_pos.xy * noise_scale).r;
-
-	float noise =
-	    noise_x * n.x +
-	    noise_y * n.y +
-	    noise_z * n.z;
-
-	// Bias
-	float biased_noise = noise * up_bias;
-    // Threshold after bias
-    float moss_mask = smoothstep(moss_threshold, moss_threshold, biased_noise);
-
-	
-	vec3 base = texture(base_texture, UV).rgb;
-	vec3 moss = texture(moss_texture, UV).rgb;
-	
-	ALBEDO = mix(base, moss, moss_mask);
-}
-
-void light() {
-	float light = clamp(dot(NORMAL, LIGHT), 0.0, 1.0);
-	light = ceil(light * light_steps) / light_steps;
-	DIFFUSE_LIGHT += light * ATTENUATION * occlusion * LIGHT_COLOR / PI;
-}
-"
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rslx1"]
+gradient = SubResource("Gradient_urmb0")
 
 [sub_resource type="Gradient" id="Gradient_skwgt"]
 colors = PackedColorArray(0.4341572, 0.62295854, 0.16561797, 1, 0.5048625, 0.6043732, 0.12463064, 1)
@@ -83,13 +22,27 @@ noise_type = 0
 noise = SubResource("FastNoiseLite_b35cf")
 seamless = true
 
+[sub_resource type="Gradient" id="Gradient_iep8t"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3116527, 0.5000862, 0.72728056)
+colors = PackedColorArray(0, 0, 0, 1, 0.13308537, 0.13308537, 0.13308537, 1, 0.3472174, 0.3472174, 0.34721753, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_urmb0"]
+gradient = SubResource("Gradient_iep8t")
+
 [resource]
 render_priority = 0
-shader = SubResource("Shader_et1gd")
-shader_parameter/base_texture = ExtResource("2_4eh1c")
+shader = ExtResource("1_6m62q")
+shader_parameter/albedo_color = Color(0.6555314, 0.6555314, 0.65553135, 1)
+shader_parameter/albedo_texture = ExtResource("2_4eh1c")
+shader_parameter/shading_gradient = SubResource("GradientTexture1D_urmb0")
+shader_parameter/use_fresnel = true
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_rslx1")
+shader_parameter/fresnel_amount = 4.0
+shader_parameter/use_rim = false
+shader_parameter/rim_amount = 4.0
 shader_parameter/moss_texture = SubResource("GradientTexture1D_6m62q")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_4eh1c")
 shader_parameter/noise_scale = 0.041
 shader_parameter/moss_threshold = 0.364
 shader_parameter/upward_bias = 0.006
-shader_parameter/light_steps = 3.0

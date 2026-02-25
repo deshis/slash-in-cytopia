@@ -19,7 +19,7 @@ shader_parameter/fresnel_power = 3.0
 shader_parameter/fresnel_strength = 0.5
 shader_parameter/fade_alpha = 1.0
 
-[node name="augment_container" unique_id=1791461547 node_paths=PackedStringArray("meshInstance", "light") instance=ExtResource("1_0uwaa")]
+[node name="augment_container" unique_id=1918323148 node_paths=PackedStringArray("meshInstance", "light") instance=ExtResource("1_0uwaa")]
 script = ExtResource("2_ycgls")
 meshInstance = NodePath("AugmentContainer")
 base_material = ExtResource("3_xha1f")
@@ -28,6 +28,6 @@ highlight_material = ExtResource("5_urflc")
 light = NodePath("OmniLight3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="1" unique_id=1095209906]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0467263, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.79641974, 0)
 light_energy = 0.5
 omni_range = 3.0

@@ -1,7 +1,24 @@
 shader_type spatial;
-render_mode specular_disabled;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_toon, specular_disabled;
 
-uniform sampler2D base_texture : source_color;
+group_uniforms Shader.Albedo;
+uniform vec4 albedo_color : source_color  = vec4(1.0);
+uniform sampler2D albedo_texture : repeat_disable;
+
+group_uniforms Shader.Light;
+uniform sampler2D shading_gradient;
+
+group_uniforms Shader.Fresnel;
+uniform bool use_fresnel = true;
+uniform sampler2D fresnel_gradient;
+uniform float fresnel_amount : hint_range(0.0, 4.0) = 4.0;
+
+group_uniforms Shader.Rim;
+uniform bool use_rim = true;
+uniform sampler2D rim_gradient;
+uniform float rim_amount : hint_range(0.0, 4.0) = 4.0;
+
+group_uniforms Shader.Moss;
 uniform sampler2D moss_texture : source_color;
 uniform sampler2D noise_texture : source_color;
 
@@ -9,11 +26,13 @@ uniform float noise_scale = 4.0;
 uniform float moss_threshold = 0.4;
 uniform float upward_bias = 0.4;
 
-uniform float light_steps = 3.0;
-
 varying float occlusion;
 varying vec3 world_pos;
 varying vec3 world_normal;
+
+float fresnel(float amount, vec3 normal, vec3 view){
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
 
 void vertex() {
     world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
@@ -21,9 +40,6 @@ void vertex() {
 }
 
 void fragment() {
-	occlusion = round(COLOR.r * light_steps) / light_steps; // Using vertex color for additional shadows
-	
-
 	float dir_bias = dot(world_normal, vec3(0.0, 1.0, 0.0));
 	// Lift walls, reward tops
 	float up_bias = dir_bias * upward_bias + (1.0-upward_bias);
@@ -50,16 +66,28 @@ void fragment() {
 	float biased_noise = noise * up_bias;
     // Threshold after bias
     float moss_mask = smoothstep(moss_threshold, moss_threshold, biased_noise);
-
+	vec4 moss = texture(moss_texture, UV);
 	
-	vec3 base = texture(base_texture, UV).rgb;
-	vec3 moss = texture(moss_texture, UV).rgb;
-	
-	ALBEDO = mix(base, moss, moss_mask);
+	vec4 albedo = texture(albedo_texture, UV) * albedo_color;
+	float fresnel_value = fresnel(fresnel_amount, NORMAL, VIEW);
+	vec3 fresnel_color = (texture(fresnel_gradient, vec2(fresnel_value, 0.0)) * fresnel_value).rgb * 1.0;
+	ALBEDO = mix(albedo.rgb, moss.rgb, moss_mask);
+	if(use_fresnel) 
+		ALBEDO += fresnel_color;
 }
 
-void light() {
-	float light = clamp(dot(NORMAL, LIGHT), 0.0, 1.0);
-	light = ceil(light * light_steps) / light_steps;
-	DIFFUSE_LIGHT += light * ATTENUATION * occlusion * LIGHT_COLOR / PI;
+void light () {
+	float dotproduct = clamp(dot(NORMAL,LIGHT), -0.9,0.9);
+	float light = clamp((dotproduct + 1.0) * ATTENUATION / 2.1, 0.05, 0.95);
+
+	vec3 diffuse = ALBEDO * texture(shading_gradient, vec2(light, 0.0)).rgb;
+	
+	if(use_rim){
+		float rim_value = fresnel(rim_amount, NORMAL, VIEW);
+		rim_value = mix(rim_value, rim_value * light, 1.0);
+		diffuse += texture(rim_gradient, vec2(rim_value, 0.0)).rgb * rim_value;
+	}
+	
+	diffuse *= LIGHT_COLOR;
+	DIFFUSE_LIGHT += diffuse;
 }

@@ -10319,6 +10319,17 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"@MATERIAL:2": {
+"use_external/enabled": true,
+"use_external/path": "uid://baabf0nmhxkta"
+},
+"MainMaterial": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/materials/basic_cell_shaded_material.tres",
+"use_external/path": "uid://biwi4od666f1t"
+}
 }
 }
 gltf/naming_version=2
