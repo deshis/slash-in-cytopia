@@ -43,6 +43,9 @@ const particles = {
 	# AUGMENTS
 	"loot_upgrade_light_ray": preload("res://Scenes/particles/light_ray_particles.tscn"), # DEPRECATED
 	"loot_upgrade_beam": preload("res://Scenes/particles/loot_upgrade.tscn"),
+	
+	# OTHER
+	"health_pickup": preload("res://Scenes/particles/health_pickup_particles.tscn"),
 }
 
 
@@ -127,6 +130,9 @@ const particle_paths = {
 	# AUGMENTS
 	"loot_upgrade_light_ray": "res://Scenes/particles/light_ray_particles.tscn", # DEPRECATED
 	"loot_upgrade_beam": "res://Scenes/particles/loot_upgrade.tscn",
+	
+	# OTHER
+	"health_pickup": "res://Scenes/particles/health_pickup_particles.tscn",
 }
 
 
@@ -150,7 +156,7 @@ func preload_particles() -> void:
 	await get_tree().create_timer(1.5).timeout
 
 
-func emit_particles(particle_name: String, pos: Vector3, parent: Node = null, duration : float = 0.0):
+func emit_particles(particle_name: String, pos: Vector3, parent: Node = null, duration : float = 0.0, cleans_itself: bool = false):
 	var scene = particles.get(particle_name, null)
 	if not scene:
 		push_warning("particle not found: ", particle_name)
@@ -164,5 +170,5 @@ func emit_particles(particle_name: String, pos: Vector3, parent: Node = null, du
 		add_child(scene)
 	
 	scene.global_position = Vector3(pos.x, pos.y, pos.z)
-	scene.start(duration)
+	scene.start(duration, cleans_itself)
 	return scene

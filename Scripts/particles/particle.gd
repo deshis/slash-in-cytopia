@@ -3,11 +3,14 @@ class_name Particle
 
 var particles := []
 
-func start(duration: float) -> void:
+func start(duration: float, cleans_itself: bool) -> void:
 	await get_tree().physics_frame
 	
 	get_all_particles()
 	emit_all_particles()
+	
+	if cleans_itself:
+		return
 	
 	if duration <= 0.0:
 		duration = get_max_lifetime()

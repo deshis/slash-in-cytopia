@@ -3,6 +3,9 @@ extends PickupableObject
 @export var magnet_distance := 120.0
 @export var magnet_speed := 400.0
 
+func _ready() -> void:
+	ParticleManager.emit_particles("health_pickup", global_position, self, 0.0, true)
+
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	
