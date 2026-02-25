@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="EnemyPrefab" format=3 uid="uid://bmjam6qvtrimx"]
 
-[ext_resource type="PackedScene" uid="uid://dt1tsj5cfmynd" path="res://Scenes/enemy/augmented/slasher_ranged/aug_slasher_ranged.tscn" id="1_lux30"]
+[ext_resource type="PackedScene" uid="uid://dt1tsj5cfmynd" path="res://Scenes/enemy/augmented/gunner/aug_gunner.tscn" id="1_lux30"]
 [ext_resource type="Script" uid="uid://cqw5n3pgcmai6" path="res://Scripts/enemy/EnemyPrefab.gd" id="2_ee74u"]
-[ext_resource type="Resource" uid="uid://dey21k5orh85q" path="res://Scripts/enemy/augmented/slasher_ranged/aug_slasher_ranged_stats.tres" id="3_0dqr7"]
+[ext_resource type="Resource" uid="uid://dey21k5orh85q" path="res://Scripts/enemy/augmented/gunner/aug_gunner_stats.tres" id="3_0dqr7"]
 [ext_resource type="Script" uid="uid://c3xt5r4pnu2pd" path="res://Scripts/enemy/targets/TargetPlayer.gd" id="4_k2qbq"]
 
 [sub_resource type="Resource" id="Resource_5hg6a"]

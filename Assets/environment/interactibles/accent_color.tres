@@ -14,6 +14,7 @@ gradient = SubResource("Gradient_xbwp7")
 render_priority = 0
 shader = ExtResource("1_xbwp7")
 shader_parameter/albedo_color = Color(0.43, 0.43, 0.43, 1)
+shader_parameter/fade_alpha = 1.0
 shader_parameter/shading_gradient = SubResource("GradientTexture1D_oclj0")
 shader_parameter/use_fresnel = false
 shader_parameter/fresnel_amount = 4.0

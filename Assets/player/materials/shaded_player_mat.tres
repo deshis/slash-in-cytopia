@@ -31,6 +31,7 @@ next_pass = ExtResource("1_khwys")
 shader = ExtResource("1_dd7lu")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/albedo_texture = ExtResource("3_8pbx8")
+shader_parameter/fade_alpha = 1.0
 shader_parameter/shading_gradient = SubResource("GradientTexture1D_ihwbr")
 shader_parameter/use_fresnel = true
 shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_dd7lu")
