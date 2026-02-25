@@ -28,6 +28,11 @@ func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 
 
+func _activate() -> void:
+	super._activate()
+	nav_agent.target_desired_distance = randf_range(target_dist_min, target_dist_max)
+
+
 func change_state(new_state: String, duration := 0.0):
 	super.change_state(new_state, duration)
 	
