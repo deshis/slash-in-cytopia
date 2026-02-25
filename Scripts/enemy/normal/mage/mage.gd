@@ -70,7 +70,7 @@ func change_state(new_state: String, duration := 0.0):
 			animator.play("Idle")
 			nav_agent.set_velocity(Vector3.ZERO)
 		NAVIGATE:
-			animator.play("Walk")
+			animator.play("Walk",-1,0.85)
 		TP:
 			ParticleManager.emit_particles("kheel_teleport", global_position)
 			animator.play("Teleport")
@@ -120,7 +120,7 @@ func process_tp() -> void:
 	target_provider = TargetAroundPlayer.new()
 	
 	tp_target = target_provider.get_target(self)
-	print(tp_target)
+	#print(tp_target)
 	global_position = tp_target
 	
 	ParticleManager.emit_particles("kheel_teleport", global_position)

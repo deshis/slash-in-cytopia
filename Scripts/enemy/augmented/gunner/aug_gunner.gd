@@ -17,7 +17,6 @@ class_name AugSlasherRanged
 @onready var sword_mesh = $model/rig/Skeleton3D/BoneAttachment3D/Offset/MeshInstance3D
 @onready var helmet = $model/rig/Skeleton3D/Helmet
 @onready var weapon_mesh = $Weapon
-@onready var shoot_cooldown: Timer = $ShootCooldown
 
 var current_target_range: float
 var strafe_direction := 1
