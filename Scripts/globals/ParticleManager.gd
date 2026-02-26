@@ -21,6 +21,7 @@ const particles = {
 	"kheel_teleport2": preload("res://Scenes/particles/teleport2.tscn"),
 	"microbot_attack": preload("res://Scenes/particles/microbot_attack_particles.tscn"),
 	"microbot_jump": preload("res://Scenes/particles/microbot_jump_particles.tscn"),
+
 	
 	# BRAINCHIPS
 	"heal": preload("res://Scenes/particles/heal.tscn"),
@@ -44,11 +45,11 @@ const particles = {
 	"explosion_frozen": preload("res://Scenes/particles/freeze_explosion_particles.tscn"),
 	
 	# AUGMENTS
-	"loot_upgrade_light_ray": preload("res://Scenes/particles/light_ray_particles.tscn"), # DEPRECATED
 	"loot_upgrade_beam": preload("res://Scenes/particles/loot_upgrade.tscn"),
 	
 	# OTHER
 	"health_pickup": preload("res://Scenes/particles/health_pickup_particles.tscn"),
+	"light_ray": preload("res://Scenes/particles/light_ray_particles.tscn"), #currently microbot uses this before attacking
 }
 
 # TODO: this was here to check stuff, should delete deprecated particles and remove this

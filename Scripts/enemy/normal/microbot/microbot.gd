@@ -49,6 +49,7 @@ func change_state(new_state: String, duration := 0.0):
 			trail.visible = false
 			animator.play("Stun")
 		ATTACK:
+			ParticleManager.emit_particles("light_ray",global_position + Vector3(0,0.5,0))
 			animator.play("Attack")
 			animator.speed_scale = 2.0
 		JUMP_WINDUP:

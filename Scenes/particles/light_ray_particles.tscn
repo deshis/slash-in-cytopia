@@ -12,23 +12,24 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_dog8m")
 
 [sub_resource type="Gradient" id="Gradient_dog8m"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0.005882353, 0.12941177, 0.7382353)
+colors = PackedColorArray(0, 0.47058824, 0.73333335, 0, 5.198121e-06, 0.47229004, 0.73429763, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_dog8m"]
 gradient = SubResource("Gradient_dog8m")
 
 [sub_resource type="Curve" id="Curve_d6qes"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0.40871233), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.19634843), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve" id="Curve_dnk0a"]
 _limits = [0.0, 6.0, 0.0, 1.0]
-_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 3.4516337), 0.0, 0.0, 0, 0, Vector2(0.07936508, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_wf4je"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_sxjnh"]
 curve_x = SubResource("Curve_d6qes")
@@ -41,8 +42,8 @@ emission_shape_scale = Vector3(0.5, 0.8, 0.5)
 emission_shape = 6
 emission_ring_axis = Vector3(1, 90, 1)
 emission_ring_height = 1.0
-emission_ring_radius = 4.0
-emission_ring_inner_radius = 3.0
+emission_ring_radius = 3.0
+emission_ring_inner_radius = 2.25
 emission_ring_cone_angle = 90.0
 direction = Vector3(0.5, 0, 0)
 spread = 180.0
@@ -58,7 +59,7 @@ attractor_interaction_enabled = false
 scale_min = 0.14999999
 scale_max = 0.75
 scale_curve = SubResource("CurveXYZTexture_sxjnh")
-color = Color(1.4369954, 1.4369954, 1.4369954, 1)
+color = Color(3.2944162, 2.6968062, 2.1987982, 1)
 color_ramp = SubResource("GradientTexture1D_dog8m")
 
 [sub_resource type="QuadMesh" id="QuadMesh_pojdg"]
@@ -71,8 +72,8 @@ script = ExtResource("2_sxjnh")
 material_override = SubResource("StandardMaterial3D_sxjnh")
 cast_shadow = 0
 emitting = false
-amount = 40
+amount = 20
 one_shot = true
-explosiveness = 0.5
+explosiveness = 0.7
 process_material = SubResource("ParticleProcessMaterial_hcc73")
 draw_pass_1 = SubResource("QuadMesh_pojdg")
