@@ -31,7 +31,7 @@ shader_parameter/uv_offset = Vector2(0, -0.5)
 [node name="microbot" unique_id=1879248163 instance=ExtResource("1_86sj6")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 
-[node name="Skeleton3D" parent="rig" parent_id_path=PackedInt32Array(1977481932) index="0" unique_id=901324015]
+[node name="Skeleton3D" parent="rig" parent_id_path=PackedInt32Array(1013131653) index="0" unique_id=1728600362]
 bones/0/position = Vector3(0, 0.24450709, 0)
 bones/0/rotation = Quaternion(0, -0.0078539, 0, 0.9999692)
 bones/1/rotation = Quaternion(0.5432471, 0.3114074, -0.19127013, 0.7558597)
@@ -56,13 +56,13 @@ bones/16/position = Vector3(-0.6875222, 1.4901161e-08, -0.6875224)
 bones/16/scale = Vector3(0.7432828, 0.74328274, 0.74328274)
 bones/17/position = Vector3(-0.6875222, 0.08335894, -0.6875224)
 
-[node name="AugMicrobot" parent="rig/Skeleton3D" index="0" unique_id=1884412123]
+[node name="AugMicrobot" parent="rig/Skeleton3D" index="0" unique_id=1268647752]
 visible = false
 
-[node name="BlastWave" parent="." index="1" unique_id=1520487286]
+[node name="BlastWave" parent="." index="1" unique_id=1834343691]
 transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1.4, 0, 0, 0)
 visible = false
 material_override = SubResource("ShaderMaterial_rbu7e")
 
-[node name="AugmentedBlastWave" parent="." index="2" unique_id=320478911]
+[node name="AugmentedBlastWave" parent="." index="2" unique_id=1710182287]
 visible = false

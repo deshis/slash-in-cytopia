@@ -19,6 +19,8 @@ const particles = {
 	"ranged_slasher_shoot": preload("res://Scenes/particles/enemy_plasma_shooting_particles.tscn"),
 	"ranged_slasher_shoot_green": preload("res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn"),
 	"kheel_teleport2": preload("res://Scenes/particles/teleport2.tscn"),
+	"microbot_attack": preload("res://Scenes/particles/microbot_attack_particles.tscn"),
+	"microbot_jump": preload("res://Scenes/particles/microbot_jump_particles.tscn"),
 	
 	# BRAINCHIPS
 	"heal": preload("res://Scenes/particles/heal.tscn"),
@@ -87,6 +89,8 @@ const all_particles = [
 	preload("res://Scenes/particles/enemy_plasma_shooting_particles.tscn"),
 	preload("res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn"),
 	preload("res://Scenes/particles/teleport2.tscn"),
+	preload("res://Scenes/particles/microbot_attack_particles.tscn"),
+	preload("res://Scenes/particles/microbot_jump_particles.tscn"),
 ]
 
 # this is a scuffed version, this is what's used for particle warmping so add particles here too for now

@@ -64,6 +64,7 @@ func process_jump_windup() -> void:
 
 
 func process_jump(delta: float) -> void:
+	var particle = ParticleManager.emit_particles("microbot_jump",global_position)
 	var t = inverse_lerp(jump_duration, 0, state_timer)
 	position.y = sin(PI * t) * jump_height
 	current_speed *= jump_move_decay
