@@ -37,7 +37,7 @@ func start_spawner() -> void:
 	
 	if target_dummy:
 		await get_tree().create_timer(0.5).timeout
-		spawn_target_dummy()
+		spawn_target_dummy() ##NOTE: Keep the dummy, need it for fridays presentation
 	
 	_on_credits_cooldown_timer_timeout()
 	_on_wave_cooldown_timer_timeout()

@@ -64,6 +64,7 @@ func process_jump_windup() -> void:
 	change_state(JUMP, jump_duration)
 
 
+
 func process_jump(delta: float) -> void:
 	var particle = ParticleManager.emit_particles("microbot_jump",global_position)
 	var t = inverse_lerp(jump_duration, 0, state_timer)
@@ -77,6 +78,7 @@ func process_jump(delta: float) -> void:
 	apply_movement(delta, dir)
 	
 	if state_timer < 0:
+		print("guh")
 		change_state(ATTACK, attack_windup_duration / 2.0)
 
 func _on_navigation_agent_3d_target_reached() -> void:
