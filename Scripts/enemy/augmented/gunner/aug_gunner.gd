@@ -144,7 +144,7 @@ func process_face_player(delta: float) -> void:
 	
 	## Charge-up
 	if state_timer < 0:
-		print("Charging up")
+		#print("Charging up")
 		change_state(CHARGE_UP, charge_up_duration + charge_up_overhead)
 		charging_up = true
 
@@ -202,7 +202,7 @@ func process_strafe(delta: float) -> void:
 		self.current_speed = current_speed_og
 		self.strafe_speed = strafe_speed_og
 		
-		print("Charged up")
+		#print("Charged up")
 		change_state(SHOOT, attack_windup_duration)
 		
 	if not player:

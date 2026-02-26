@@ -1,8 +1,8 @@
 extends TargetProvider
 class_name TargetAroundPlayer
 
-@export var inner_radius := 5.0
-@export var outer_radius := 6.0
+@export var inner_radius := 5.0 #5
+@export var outer_radius := 6.0 #6
 
 func get_target(_enemy: Node3D) -> Vector3:
 	

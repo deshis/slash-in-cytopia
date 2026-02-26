@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dshbeutojoowh" path="res://Scripts/enemy/normal/target_dummy/target_dummy.gd" id="1_sbl13"]
 [ext_resource type="PackedScene" uid="uid://bkluuxs7dqdp2" path="res://Scenes/enemy/normal/slasher/attack_slasher.tscn" id="2_rmahe"]
-[ext_resource type="PackedScene" uid="uid://dtmntfwnrv3ig" path="res://Scenes/enemy/normal/slasher/slasher_model.tscn" id="3_6x8dp"]
+[ext_resource type="PackedScene" uid="uid://dtmntfwnrv3ig" path="res://Scenes/enemy/normal/gunner/slasher_model.tscn" id="3_6x8dp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_puxwi"]
 size = Vector3(0.7, 2, 0.5)

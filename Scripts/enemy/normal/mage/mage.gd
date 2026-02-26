@@ -72,7 +72,9 @@ func change_state(new_state: String, duration := 0.0):
 		NAVIGATE:
 			animator.play("Walk",-1,0.85)
 		TP:
-			ParticleManager.emit_particles("kheel_teleport", global_position)
+			var particle = ParticleManager.emit_particles("kheel_teleport2", global_position)
+			var anim_player = particle.get_node("AnimationPlayer")
+			anim_player.play("explosion_light_fade")
 			animator.play("Teleport")
 			nav_agent.set_velocity(Vector3.ZERO)
 		RANGED_ATTACK:
@@ -123,8 +125,10 @@ func process_tp() -> void:
 	#print(tp_target)
 	global_position = tp_target
 	
-	ParticleManager.emit_particles("kheel_teleport", global_position)
-	
+	var particle = ParticleManager.emit_particles("kheel_teleport2", global_position)
+	var anim_player = particle.get_node("AnimationPlayer")
+	anim_player.play("explosion_light_fade")
+
 	change_state(IDLE)
 
 func process_attack() -> void:

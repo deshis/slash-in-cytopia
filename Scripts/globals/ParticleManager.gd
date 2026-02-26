@@ -18,6 +18,7 @@ const particles = {
 	"kheel_teleport": preload("res://Scenes/particles/teleport.tscn"),
 	"ranged_slasher_shoot": preload("res://Scenes/particles/enemy_plasma_shooting_particles.tscn"),
 	"ranged_slasher_shoot_green": preload("res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn"),
+	"kheel_teleport2": preload("res://Scenes/particles/teleport2.tscn"),
 	
 	# BRAINCHIPS
 	"heal": preload("res://Scenes/particles/heal.tscn"),
@@ -85,6 +86,7 @@ const all_particles = [
 	preload("res://Scenes/particles/freeze_explosion_particles.tscn"),
 	preload("res://Scenes/particles/enemy_plasma_shooting_particles.tscn"),
 	preload("res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn"),
+	preload("res://Scenes/particles/teleport2.tscn"),
 ]
 
 const particle_paths = {

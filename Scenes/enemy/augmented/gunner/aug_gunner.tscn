@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b54gc1wlhnld5" path="res://Scripts/enemy/augmented/gunner/aug_gunner.gd" id="1_be6hl"]
 [ext_resource type="PackedScene" uid="uid://duy18ym7biu71" path="res://Scenes/enemy/augmented/gunner/aug_gunner_raycast_attack.tscn" id="2_rallu"]
-[ext_resource type="PackedScene" uid="uid://dtmntfwnrv3ig" path="res://Scenes/enemy/normal/slasher/slasher_model.tscn" id="3_5y2b5"]
+[ext_resource type="PackedScene" uid="uid://dtmntfwnrv3ig" path="res://Scenes/enemy/normal/gunner/slasher_model.tscn" id="3_5y2b5"]
 [ext_resource type="ArrayMesh" uid="uid://pn2ps5s5a3o1" path="res://Assets/enemy/slasher/smg_mesh.res" id="4_uww1y"]
 [ext_resource type="PackedScene" uid="uid://513dy1k4q4bd" path="res://Scenes/enemy/normal/gunner/gunner_beam.tscn" id="5_rp5dv"]
 

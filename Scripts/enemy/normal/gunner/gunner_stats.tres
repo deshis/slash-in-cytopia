@@ -8,5 +8,6 @@ name = "Sniper"
 ranged_navigation = true
 speed = 3.0
 max_health = 28.0
+cost = 2.5
 health_per_level = 2.0
 metadata/_custom_type_script = "uid://t76ghlhghorw"

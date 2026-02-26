@@ -4,7 +4,7 @@
 
 [node name="slasher" unique_id=1417582650 instance=ExtResource("1_iw056")]
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(351907300) index="0" unique_id=1620617097]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1840474359) index="0" unique_id=484818722]
 bones/1/position = Vector3(1.0388283e-15, 0.0080328435, 1.0380865)
 bones/1/rotation = Quaternion(0.7400656, 8.017238e-08, 8.82227e-08, 0.67253476)
 bones/3/rotation = Quaternion(0.035570968, -5.9416106e-08, 6.3659167e-09, 0.9993672)

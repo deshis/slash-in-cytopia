@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://bxpwqbm1h16va"]
+
+[ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="1_qytus"]
+
+[sub_resource type="Curve" id="Curve_m7xxd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.21129328, 1), 0.0, 0.0, 0, 0, Vector2(0.3788707, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_akneg"]
+curve = SubResource("Curve_m7xxd")
+
+[sub_resource type="Gradient" id="Gradient_kja04"]
+offsets = PackedFloat32Array(0, 0.23529412, 1)
+colors = PackedColorArray(0.9955097, 0.98244435, 0.99269444, 1, 0.9955097, 0.98244435, 0.99269444, 1, 0.35686275, 0.3529412, 0.35686275, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qytus"]
+gradient = SubResource("Gradient_kja04")
+
+[sub_resource type="Curve" id="Curve_xb2tf"]
+_data = [Vector2(0, 0.06726456), 0.0, 0.0, 0, 0, Vector2(0.047619045, 1), 0.0, 0.0, 0, 0, Vector2(0.5740741, 1), 0.0, 0.0, 0, 0, Vector2(0.6984127, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_akneg"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_unrmx"]
+curve_x = SubResource("Curve_xb2tf")
+curve_y = SubResource("Curve_akneg")
+curve_z = SubResource("Curve_xb2tf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sbt0b"]
+lifetime_randomness = 0.15
+emission_shape_offset = Vector3(0, 0.1, 0)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+inherit_velocity_ratio = 1.0
+direction = Vector3(1, 0.65, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -5.000002
+linear_accel_max = -5.000002
+radial_accel_min = -1.0000023
+radial_accel_max = 0.99999774
+attractor_interaction_enabled = false
+scale_min = 1.25
+scale_max = 1.5
+scale_curve = SubResource("CurveXYZTexture_unrmx")
+color = Color(2.6306646, 0.9427916, 1.9512274, 1)
+color_ramp = SubResource("GradientTexture1D_qytus")
+alpha_curve = SubResource("CurveTexture_akneg")
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqmef"]
+render_priority = 5
+shading_mode = 0
+vertex_color_use_as_albedo = true
+heightmap_scale = 16.0
+refraction_enabled = true
+refraction_scale = 0.29
+grow_amount = -1.82
+stencil_flags = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_ti5wd"]
+material = SubResource("StandardMaterial3D_uqmef")
+radius = 0.6
+radial_segments = 24
+
+[sub_resource type="Animation" id="Animation_l765s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_876rw"]
+resource_name = "explosion_light_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [6.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_akneg"]
+_data = {
+&"RESET": SubResource("Animation_l765s"),
+&"explosion_light_fade": SubResource("Animation_876rw")
+}
+
+[node name="Node3D" type="Node3D" unique_id=1819774201]
+script = ExtResource("1_qytus")
+
+[node name="TeleportIn" type="GPUParticles3D" parent="." unique_id=1360342192]
+layers = 2
+amount = 1
+lifetime = 1.8
+explosiveness = 1.0
+randomness = 0.1
+fixed_fps = 20
+trail_lifetime = 1.38
+process_material = SubResource("ParticleProcessMaterial_sbt0b")
+draw_pass_1 = SubResource("SphereMesh_ti5wd")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1137188788]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.095, -0.175, 0)
+light_color = Color(1, 0, 1, 1)
+light_size = 0.5
+spot_range = 4.0
+spot_attenuation = 0.1
+spot_angle = 55.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1627178247]
+root_node = NodePath("../SpotLight3D")
+libraries/ = SubResource("AnimationLibrary_akneg")
+speed_scale = 0.6
