@@ -15,6 +15,7 @@ class_name AugSlasherRanged
 @onready var attack_duration = $"model/AnimationPlayer".get_animation("Attack").length 
 @onready var helmet = $model/rig/Skeleton3D/Helmet
 @onready var weapon_mesh = $Weapon
+@onready var attachment_weapon_mesh = $model/rig/Skeleton3D/WeaponAttachment/Offset/MeshInstance3D ##NOTE: Follows the arm
 
 var current_target_range: float
 var strafe_direction := 1
@@ -43,15 +44,15 @@ var charge_emission_og
 func _ready() -> void:
 	super._ready()
 
-	weapon_mesh.mesh = weapon_mesh.mesh
+	attachment_weapon_mesh.mesh = weapon_mesh.mesh
 	
-	weapon_mesh.rotation = Vector3(-0.6,160,0)
-	weapon_mesh.scale = Vector3(0.08, 0.095, 0.095)
-	weapon_mesh.transform.origin.z += 0.1
-	weapon_mesh.transform.origin.y += 0.1
+	attachment_weapon_mesh.rotation = Vector3(-0.6,160,0)
+	attachment_weapon_mesh.scale = Vector3(0.08, 0.095, 0.095)
+	attachment_weapon_mesh.transform.origin.z += 0.1
+	attachment_weapon_mesh.transform.origin.y += 0.1
 	
-	mat = weapon_mesh.get_active_material(1).duplicate()
-	weapon_mesh.set_surface_override_material(1, mat)
+	mat = attachment_weapon_mesh.get_active_material(1).duplicate()
+	attachment_weapon_mesh.set_surface_override_material(1, mat)
 	
 	helmet.set_visible(true)
 	

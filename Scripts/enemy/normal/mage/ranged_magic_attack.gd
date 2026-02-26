@@ -29,7 +29,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	super._process(_delta)
-	
 	if !anticipation_timer.is_stopped():
 		circle_mat.set_shader_parameter("shader_time", _delta)
 		circle_mat.set_shader_parameter("life_time", (anticipation_duration-anticipation_timer.time_left) / anticipation_duration)
@@ -38,6 +37,9 @@ func _process(_delta: float) -> void:
 		blast_mat.set_shader_parameter("erosion", ((duration-timer.time_left) / duration) * 0.5)
 
 func anticipation_end():
+	##TODO:
+	##SCALE PARTICLE TO FIT THE SIZE OF THE AOE
+	#ParticleManager.emit_particles("loot_upgrade_beam", global_position)
 	circle_mat.set_shader_parameter("stop", true)
 	$Blast.visible = true
 	start_attack()

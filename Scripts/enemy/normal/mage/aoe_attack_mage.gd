@@ -19,7 +19,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	super._process(_delta)
-	
 	attack_mat.set_shader_parameter("life_time", (duration-timer.time_left) / duration)
 
 func enable_hitbox():

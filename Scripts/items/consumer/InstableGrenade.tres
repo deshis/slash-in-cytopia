@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 [resource]
 script = ExtResource("2_ba61m")
 item_name = "Improvised Explosive Device"
-item_stat_info = "Explodes on impact for 15 damage"
+item_stat_info = "Explodes on impact for 25 damage"
 item_description = "Cooldown: 11 sec"
 type = 8
 icon = ExtResource("3_u5a0u")
