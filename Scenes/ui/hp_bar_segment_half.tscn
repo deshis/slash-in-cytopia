@@ -7,7 +7,6 @@ offset_right = 1.0
 offset_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_right = 0
 
 [node name="ProgressBar" parent="." unique_id=862040891 instance=ExtResource("1_b6s7p")]
 layout_mode = 2

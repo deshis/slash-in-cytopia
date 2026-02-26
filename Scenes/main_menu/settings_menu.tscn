@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://cx5ta3jfi5jxf" path="res://Scripts/ui/settings/vsync_toggle.gd" id="7_cdah7"]
 [ext_resource type="Script" uid="uid://bvr7eycdvq5oh" path="res://Scripts/ui/settings/control_remap_button.gd" id="8_ssx55"]
 [ext_resource type="Script" uid="uid://bpaqe2wpnfn7t" path="res://Scripts/ui/settings/max_fps_selection.gd" id="9_8kxmi"]
+[ext_resource type="Script" uid="uid://cd4cdy5jgpy5k" path="res://Scripts/ui/settings/enemy_damage_numbers_toggle.gd" id="11_tyemg"]
+[ext_resource type="Script" uid="uid://c3j8mladhf0el" path="res://Scripts/ui/settings/player_damage_numbers_toggle.gd" id="12_vqoyi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tyemg"]
 bg_color = Color(0.039215688, 0.12941177, 0.10980392, 0.78431374)
@@ -476,17 +478,19 @@ metadata/_tab_index = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay" unique_id=531542861]
 layout_mode = 2
-theme_override_constants/separation = 280
+size_flags_vertical = 4
+theme_override_constants/separation = 40
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Gameplay/VBoxContainer" unique_id=315250646]
+[node name="EnemyDMGPopUps" type="CheckButton" parent="TabContainer/Gameplay/VBoxContainer" unique_id=2113323253]
 layout_mode = 2
-text = "
+text = "Enemy damage numbers"
+script = ExtResource("11_tyemg")
 
-
-
-nothing here yet..."
-fit_content = true
-horizontal_alignment = 1
+[node name="PlayerDMGPopUps" type="CheckButton" parent="TabContainer/Gameplay/VBoxContainer" unique_id=1365967058]
+layout_mode = 2
+text = "Player damage numbers
+"
+script = ExtResource("12_vqoyi")
 
 [node name="BackToMenuButton" type="Button" parent="TabContainer/Gameplay/VBoxContainer" unique_id=1628390448]
 layout_mode = 2

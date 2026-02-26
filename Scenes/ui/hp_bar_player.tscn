@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://buom0xkmfh5or" path="res://Assets/ui/player_hp_bar_rectangle.png" id="6_j3bo4"]
 [ext_resource type="Shader" uid="uid://cq3v485k8pb6o" path="res://Assets/materials/shaders/glitch_intense.gdshader" id="7_ckmai"]
 [ext_resource type="PackedScene" uid="uid://bfmm8nxr0oufk" path="res://Scenes/ui/hp_bar_segment.tscn" id="7_x44ss"]
+[ext_resource type="Shader" uid="uid://dltnkyf0hnwq0" path="res://Assets/materials/shaders/glitch.gdshader" id="9_kq0if"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x44ss"]
 shader = ExtResource("7_ckmai")
@@ -15,7 +16,15 @@ shader_parameter/shake_power = 0.015
 shader_parameter/shake_rate = 1.0
 shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 80.0
-shader_parameter/shake_color_rate = 0.0050000002375
+shader_parameter/shake_color_rate = 0.010000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_00uap"]
+shader = ExtResource("9_kq0if")
+shader_parameter/range = 0.05
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.006000004943140014
+shader_parameter/offsetIntensity = 0.004000003449879996
+shader_parameter/colorOffsetIntensity = 0.30000001425
 
 [node name="HPBarPlayer" type="Control" unique_id=589468563]
 process_mode = 3
@@ -122,10 +131,23 @@ position = Vector2(46.152924, -0.8319073)
 scale = Vector2(1.1660193, 1.0753108)
 texture = ExtResource("6_j3bo4")
 
-[node name="Glitch" type="Sprite2D" parent="PlayerHpBarRectangleSkew/GlitchMask" unique_id=1515406118]
+[node name="GlitchDMG" type="Sprite2D" parent="PlayerHpBarRectangleSkew/GlitchMask" unique_id=1515406118]
+visible = false
 material = SubResource("ShaderMaterial_x44ss")
 texture = ExtResource("6_j3bo4")
 
+[node name="GlitchHeal" type="Sprite2D" parent="PlayerHpBarRectangleSkew/GlitchMask" unique_id=1400859202]
+visible = false
+material = SubResource("ShaderMaterial_00uap")
+texture = ExtResource("6_j3bo4")
+
 [node name="GlitchTimer" type="Timer" parent="." unique_id=67253679]
+
+[node name="DamageNumberSpawner" type="Control" parent="." unique_id=1643613796]
+anchors_preset = 0
+offset_left = 78.635
+offset_top = 103.195
+offset_right = 78.635
+offset_bottom = 103.195
 
 [connection signal="timeout" from="GlitchTimer" to="." method="_on_glitch_timer_timeout"]

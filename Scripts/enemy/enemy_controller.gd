@@ -290,7 +290,7 @@ func _on_dot_tick() -> void:
 	
 	if remaining_dot_duration > 0.0:
 		enemy.health -= current_tick_damage
-		update_health_bar.emit(enemy.health)
+		update_health_bar.emit(enemy.health, enemy.max_health)
 		
 		SoundManager.play_sfx("dot_sfx", global_position)  #Might want DoT SFX here, maybe even separate depending on DoT (From resource)
 		
@@ -430,7 +430,7 @@ func take_damage(damage:float, _damage_dealer = null) -> void:
 		enemy_frozen = false
 		shatter_ice()
 	enemy.health -= damage
-	update_health_bar.emit(enemy.health)
+	update_health_bar.emit(enemy.health, enemy.max_health)
 	
 	hit_flash.set_shader_parameter('strength',1.0)
 	hit_flash_timer.start(hit_flash_duration)

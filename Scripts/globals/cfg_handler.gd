@@ -68,6 +68,9 @@ func create_new_preferences_file() -> void:
 	cfg.set_value ("audio", "Music", 1.0)
 	cfg.set_value ("audio", "SFX", 1.0)
 	
+	cfg.set_value ("gameplay", "enemy_damage_numbers", true)
+	cfg.set_value ("gameplay", "player_damage_numbers", true)
+	
 	cfg.save(CFG_PATH)
 
 
@@ -132,3 +135,16 @@ func load_keybinds() -> Dictionary:
 			input_event.keycode = OS.find_keycode_from_string(event_str)
 		keybinds[key] = input_event
 	return keybinds
+
+
+
+func save_gameplay_setting(key:String, val)->void:
+	cfg.set_value("gameplay", key, val)
+	cfg.save(CFG_PATH)
+
+
+func load_gameplay_settings() -> Dictionary:
+	var gameplay_settings:= {}
+	for key in cfg.get_section_keys("gameplay"):
+		gameplay_settings[key] = cfg.get_value("gameplay", key)
+	return gameplay_settings

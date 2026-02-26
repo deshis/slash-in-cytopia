@@ -1,24 +1,26 @@
 [gd_scene format=3 uid="uid://dw5jqew75whcf"]
 
 [ext_resource type="Script" uid="uid://b8rtnvnstvdg4" path="res://Scripts/ui/hud/healthbar.gd" id="1_beelh"]
+[ext_resource type="Texture2D" uid="uid://buom0xkmfh5or" path="res://Assets/ui/player_hp_bar_rectangle.png" id="2_jebml"]
+[ext_resource type="PackedScene" uid="uid://bfmm8nxr0oufk" path="res://Scenes/ui/hp_bar_segment.tscn" id="3_mdkxd"]
+[ext_resource type="Shader" uid="uid://cq3v485k8pb6o" path="res://Assets/materials/shaders/glitch_intense.gdshader" id="4_vw4lw"]
+[ext_resource type="Shader" uid="uid://dltnkyf0hnwq0" path="res://Assets/materials/shaders/glitch.gdshader" id="5_h8rpi"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy76q"]
-bg_color = Color(0.35257247, 4.4220127e-07, 1.4439226e-07, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfrmb"]
+shader = ExtResource("4_vw4lw")
+shader_parameter/shake_power = 0.015
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 80.0
+shader_parameter/shake_color_rate = 0.010000000475
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsiwr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsiwr"]
-bg_color = Color(0.78460205, 0.50372005, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avp23"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avp23"]
-bg_color = Color(0, 0.627451, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4br7"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjvhh"]
-bg_color = Color(0.78431374, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0vyf6"]
+shader = ExtResource("5_h8rpi")
+shader_parameter/range = 0.05
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.006000004943140014
+shader_parameter/offsetIntensity = 0.004000003449879996
+shader_parameter/colorOffsetIntensity = 0.30000001425
 
 [node name="HPBar" type="Control" unique_id=14939807]
 custom_minimum_size = Vector2(117, 25)
@@ -36,54 +38,61 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_beelh")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=520756185]
-layout_mode = 1
+[node name="PlayerHpBarRectangleSkew" type="Sprite2D" parent="." unique_id=2088119481]
+position = Vector2(60, 13)
+scale = Vector2(0.15, 0.156)
+skew = 0.26179934
+texture = ExtResource("2_jebml")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerHpBarRectangleSkew" unique_id=951358385]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -418.0
+offset_top = -74.78022
+offset_right = -418.0
+offset_bottom = -72.80244
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 2
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_bottom = 10
 
-[node name="BackgroundBar" type="ProgressBar" parent="MarginContainer" unique_id=1925614669]
+[node name="HpBarSegmentContainer" type="HBoxContainer" parent="PlayerHpBarRectangleSkew/MarginContainer" unique_id=663568894]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_oy76q")
-show_percentage = false
+theme_override_constants/separation = 10
 
-[node name="OrangeBar" type="ProgressBar" parent="MarginContainer" unique_id=733111768]
+[node name="ProgressBar" parent="PlayerHpBarRectangleSkew/MarginContainer/HpBarSegmentContainer" unique_id=862040891 instance=ExtResource("3_mdkxd")]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxEmpty_wsiwr")
-theme_override_styles/fill = SubResource("StyleBoxFlat_wsiwr")
-value = 3.05
-show_percentage = false
 
-[node name="GreenBar" type="ProgressBar" parent="MarginContainer" unique_id=228178985]
+[node name="ProgressBar2" parent="PlayerHpBarRectangleSkew/MarginContainer/HpBarSegmentContainer" unique_id=1934441973 instance=ExtResource("3_mdkxd")]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxEmpty_avp23")
-theme_override_styles/fill = SubResource("StyleBoxFlat_avp23")
-value = 3.05
-show_percentage = false
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer" unique_id=1291815694]
+[node name="ProgressBar3" parent="PlayerHpBarRectangleSkew/MarginContainer/HpBarSegmentContainer" unique_id=1104108767 instance=ExtResource("3_mdkxd")]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxEmpty_m4br7")
-theme_override_styles/fill = SubResource("StyleBoxFlat_jjvhh")
-value = 3.05
-show_percentage = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1251093036]
+[node name="ProgressBar4" parent="PlayerHpBarRectangleSkew/MarginContainer/HpBarSegmentContainer" unique_id=1890682575 instance=ExtResource("3_mdkxd")]
+layout_mode = 2
+
+[node name="GlitchMask" type="Sprite2D" parent="PlayerHpBarRectangleSkew" unique_id=1283492185]
+clip_children = 1
+position = Vector2(46.152924, -0.8319073)
+scale = Vector2(1.1660193, 1.0753108)
+texture = ExtResource("2_jebml")
+
+[node name="GlitchDMG" type="Sprite2D" parent="PlayerHpBarRectangleSkew/GlitchMask" unique_id=311852843]
 visible = false
-layout_mode = 2
-bbcode_enabled = true
-text = "1 / 100"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
+material = SubResource("ShaderMaterial_mfrmb")
+texture = ExtResource("2_jebml")
+
+[node name="GlitchHeal" type="Sprite2D" parent="PlayerHpBarRectangleSkew/GlitchMask" unique_id=1068024995]
+visible = false
+material = SubResource("ShaderMaterial_0vyf6")
+texture = ExtResource("2_jebml")
+
+[node name="GlitchTimer" type="Timer" parent="." unique_id=584204353]
+
+[connection signal="timeout" from="GlitchTimer" to="." method="_on_glitch_timer_timeout"]
