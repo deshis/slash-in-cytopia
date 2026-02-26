@@ -3,7 +3,7 @@ shader_type spatial;
 render_mode depth_draw_always, blend_mix, cull_disabled;
 
 uniform vec4 main_color: source_color;
-uniform sampler2D scroll_texture: source_color;
+uniform sampler2D scroll_texture: source_color, repeat_disable;
 uniform float scroll_speed = 1.0;
 uniform bool invert_boost_direction = false;
 uniform sampler2D distort_texture: source_color;

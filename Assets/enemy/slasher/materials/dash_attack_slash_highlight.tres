@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dt2dfg2wkyh21"]
+
+[ext_resource type="Shader" uid="uid://4hwgr3jdxls" path="res://Assets/vfx/slash/slash.gdshader" id="1_rrs5c"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5rtd7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q27y4"]
+noise = SubResource("FastNoiseLite_5rtd7")
+
+[sub_resource type="Gradient" id="Gradient_5rtd7"]
+offsets = PackedFloat32Array(0, 0.44889164, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.9528294, 0.9528293, 0.9528293, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q27y4"]
+gradient = SubResource("Gradient_5rtd7")
+fill_from = Vector2(0.39239448, 0.24337272)
+fill_to = Vector2(0, 0)
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_rrs5c")
+shader_parameter/base_color = Color(1, 0.30160964, 0.2491467, 1)
+shader_parameter/shape_texture = SubResource("GradientTexture2D_q27y4")
+shader_parameter/erosion_texture = SubResource("NoiseTexture2D_q27y4")
+shader_parameter/emission_intensity = 10.0
+shader_parameter/uv_scale = Vector2(1, 0.7)
+shader_parameter/uv_offset = Vector2(0, 0)
