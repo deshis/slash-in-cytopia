@@ -12,10 +12,9 @@ class_name SlasherRanged
 @export var fire_rate := 0.25
 @export var burst_count := 1
 
-@onready var attack_duration = $"model/AnimationPlayer".get_animation("Attack").length 
-@onready var slash_trail = $"model/SlashMesh"
-@onready var sword_mesh = $model/rig/Skeleton3D/BoneAttachment3D/Offset/MeshInstance3D
+@onready var attack_duration = $"model/AnimationPlayer".get_animation("Attack").length
 @onready var weapon_mesh = $Weapon
+var weapon_instance
 
 var current_target_range: float
 var strafe_direction := 1
@@ -39,8 +38,10 @@ var current_speed_og := 0.0
 
 func _ready() -> void:
 	super._ready()
-	sword_mesh.scale = Vector3(0.22, 0.46, 0.22)
-	sword_mesh.mesh = weapon_mesh.mesh
+	
+	weapon_instance = $model/rig/Skeleton3D/WeaponAttachment/Offset/MeshInstance3D
+	weapon_instance.scale = Vector3(0.22, 0.46, 0.22)
+	weapon_instance.mesh = weapon_mesh.mesh
 	
 	strafe_speed_og = strafe_speed
 	current_speed_og = self.current_speed
@@ -85,7 +86,6 @@ func change_state(new_state: String, duration := 0.0):
 			current_speed = enemy.speed
 		
 		FACE_PLAYER:
-			animator.play("Attack")
 			target_provider = TargetSelf.new()
 		
 		DASH:

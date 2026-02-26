@@ -29,7 +29,7 @@ meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
-animation/fps=30
+animation/fps=24.0
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
@@ -2101,6 +2101,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Assets/enemy/slasher/slasher_base_material.tres",
 "use_external/path": "uid://cvl7me2m0ue4h"
+},
+"Thruster": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/enemy/slasher/booster_material.tres",
+"use_external/path": "uid://dwvklehetcf5o"
 }
 }
 }

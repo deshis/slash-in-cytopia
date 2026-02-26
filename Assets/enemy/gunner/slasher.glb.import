@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dpw0yx7k2op5e"
-path="res://.godot/imported/slasher.glb-990414319d1fcf565ec49dce2b99101a.scn"
+path="res://.godot/imported/slasher.glb-22a2e26ef3ef183c8e4507f5c3cf77f4.scn"
 
 [deps]
 
-source_file="res://Assets/enemy/slasher/slasher.glb"
-dest_files=["res://.godot/imported/slasher.glb-990414319d1fcf565ec49dce2b99101a.scn"]
+source_file="res://Assets/enemy/gunner/slasher.glb"
+dest_files=["res://.godot/imported/slasher.glb-22a2e26ef3ef183c8e4507f5c3cf77f4.scn"]
 
 [params]
 
@@ -41,7 +41,7 @@ _subresources={
 "animations": {
 "Attack": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/enemy/slasher/Attack.res",
+"save_to_file/fallback_path": "res://Assets/enemy/gunner/Attack.res",
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://ec1qucemvnhv",
 "settings/loop_mode": 0,
@@ -6209,7 +6209,7 @@ _subresources={
 },
 "Walk": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/enemy/slasher/Walk.res",
+"save_to_file/fallback_path": "res://Assets/enemy/gunner/Walk.res",
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://cucm1wv4yupl1",
 "settings/loop_mode": 1,

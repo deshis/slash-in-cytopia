@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cpjpxpch4xtg1"
-path="res://.godot/imported/smgmodel.glb-8278f5738a59753cc721803a3a5cc9fc.scn"
+uid="uid://25y4s2th3ocj"
+path="res://.godot/imported/thruster_vfx_mesh.glb-13b44650d8216867ebb3781d8b9dff9b.scn"
 
 [deps]
 
-source_file="res://Assets/enemy/slasher/smgmodel.glb"
-dest_files=["res://.godot/imported/smgmodel.glb-8278f5738a59753cc721803a3a5cc9fc.scn"]
+source_file="res://Assets/enemy/slasher/thruster_vfx_mesh.glb"
+dest_files=["res://.godot/imported/thruster_vfx_mesh.glb-13b44650d8216867ebb3781d8b9dff9b.scn"]
 
 [params]
 
@@ -38,15 +38,11 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
-"meshes": {
-"smgmodel_Cube_001": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/enemy/slasher/smgmodel_Cube_001.res",
-"save_to_file/path": "uid://cyq4j5cernv55"
+"materials": {
+"Thruster": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/enemy/slasher/booster_material.tres",
+"use_external/path": "uid://dwvklehetcf5o"
 }
 }
 }

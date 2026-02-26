@@ -13,8 +13,6 @@ class_name AugSlasherRanged
 @export var burst_count := 1
 
 @onready var attack_duration = $"model/AnimationPlayer".get_animation("Attack").length 
-@onready var slash_trail = $"model/SlashMesh"
-@onready var sword_mesh = $model/rig/Skeleton3D/BoneAttachment3D/Offset/MeshInstance3D
 @onready var helmet = $model/rig/Skeleton3D/Helmet
 @onready var weapon_mesh = $Weapon
 
@@ -45,15 +43,15 @@ var charge_emission_og
 func _ready() -> void:
 	super._ready()
 
-	sword_mesh.mesh = weapon_mesh.mesh
+	weapon_mesh.mesh = weapon_mesh.mesh
 	
-	sword_mesh.rotation = Vector3(-0.6,160,0)
-	sword_mesh.scale = Vector3(0.08, 0.095, 0.095)
-	sword_mesh.transform.origin.z += 0.1
-	sword_mesh.transform.origin.y += 0.1
+	weapon_mesh.rotation = Vector3(-0.6,160,0)
+	weapon_mesh.scale = Vector3(0.08, 0.095, 0.095)
+	weapon_mesh.transform.origin.z += 0.1
+	weapon_mesh.transform.origin.y += 0.1
 	
-	mat = sword_mesh.get_active_material(1).duplicate()
-	sword_mesh.set_surface_override_material(1, mat)
+	mat = weapon_mesh.get_active_material(1).duplicate()
+	weapon_mesh.set_surface_override_material(1, mat)
 	
 	helmet.set_visible(true)
 	

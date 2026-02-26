@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded, blend_mix;
+render_mode blend_add;
 
 // Grupo: Textura Base
 group_uniforms base_texture;
@@ -12,7 +12,7 @@ uniform vec4 tint_color : source_color = vec4(1.0, 0.5, 0.0, 0.5); // #FF8000
 uniform vec4 edge_color : source_color = vec4(1.0, 0.0, 0.0, 1.0); // #FF0000
 uniform float edge_power : hint_range(0.0, 1.0) = 0.5;
 uniform float edge_size : hint_range(0.1, 5.0) = 1.0;
-uniform float edge_intensity : hint_range(0.0, 2.0) = 0.8;
+uniform float edge_intensity : hint_range(0.0, 3.0) = 0.8;
 
 // Grupo: Scanlines
 group_uniforms scanlines;
@@ -105,5 +105,6 @@ void fragment() {
     }
 
     ALBEDO = tinted.rgb + edge_effect.rgb + scan.rgb;
+	EMISSION = scan.rgb + edge_effect.rgb * edge_intensity;
     ALPHA = max(tinted.a, max(edge_effect.a, scan.a));
 }

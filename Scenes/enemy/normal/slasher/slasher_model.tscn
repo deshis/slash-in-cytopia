@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bdnmfnsmu5v6u"]
 
-[ext_resource type="PackedScene" uid="uid://cdkj31p0lv4h2" path="res://Assets/enemy/slasher/slasher_v2.glb" id="1_iw056"]
+[ext_resource type="PackedScene" uid="uid://cdkj31p0lv4h2" path="res://Assets/enemy/slasher/slasher_v2.glb" id="1_cx47c"]
+[ext_resource type="PackedScene" uid="uid://25y4s2th3ocj" path="res://Assets/enemy/slasher/thruster_vfx_mesh.glb" id="2_3pm4q"]
 
-[node name="slasher" unique_id=1417582650 instance=ExtResource("1_iw056")]
+[node name="slasher" unique_id=1417582650 instance=ExtResource("1_cx47c")]
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1840474359) index="0" unique_id=484818722]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2076835468) index="0" unique_id=650180945]
 bones/1/position = Vector3(1.0388283e-15, 0.0080328435, 1.0380865)
 bones/1/rotation = Quaternion(0.7400656, 8.017238e-08, 8.82227e-08, 0.67253476)
 bones/3/rotation = Quaternion(0.035570968, -5.9416106e-08, 6.3659167e-09, 0.9993672)
@@ -27,3 +28,11 @@ bones/22/rotation = Quaternion(-0.65625274, -0.092402376, -0.08785854, 0.7436901
 bones/22/scale = Vector3(0.99999774, 0.9999792, 0.9999874)
 bones/23/rotation = Quaternion(-0.0021197635, 0.99981576, -0.019078285, -0.00010858478)
 bones/24/rotation = Quaternion(2.6752419e-08, 0.9999801, -3.4975745e-08, -0.0063097817)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1" unique_id=739068345]
+transform = Transform3D(1, 5.068177e-10, -5.0395954e-10, -5.039995e-10, 0.9999844, 0.005570434, 5.067733e-10, -0.005570419, 0.9999844, -1.7304337e-15, 1.4536325, -0.010894466)
+bone_name = "spine_03"
+bone_idx = 4
+
+[node name="thruster_vfx_mesh" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" unique_id=1336513331 instance=ExtResource("2_3pm4q")]
+transform = Transform3D(0.3, 0, 0, 0, 0.24574563, 0.3441459, 0, -0.17207295, 0.49149126, 0, 0.276, -0.2)

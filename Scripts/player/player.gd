@@ -291,7 +291,7 @@ func enter_state(new_state) -> void:
 					light_attack_windup_duration = 0.25 / light_attack_speed_scale
 					light_attack_duration = 0.5833 / light_attack_speed_scale
 			
-			tween_weapon_hologram_effect(light_attack_windup_duration)
+			tween_weapon_hologram_effect(light_attack_windup_duration*0.5)
 			primary_attack_used.emit(light_attack_duration)
 			state_timer = light_attack_windup_duration
 		

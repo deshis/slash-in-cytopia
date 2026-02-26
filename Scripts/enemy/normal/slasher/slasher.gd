@@ -1,16 +1,23 @@
 extends EnemyController
 class_name Slasher
 
-@export var face_player_duration := 0.667
+@export var face_player_duration := 0.5
 @export var dash_range := 2.8
 @export var dash_speed := 6.5
 @export var dash_duration := 0.5
 
 @export var attack_duration := 0.5
+
 #@onready var slash_trail = $"model/SlashMesh"
+var thruster
 
 const FACE_PLAYER = "face_player"
 const DASH = "dash"
+
+func _ready() -> void:
+	super._ready()
+	thruster = find_children("*", "BoneAttachment3D")[0]
+	thruster.visible = false
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -51,6 +58,7 @@ func change_state(new_state: String, duration := 0.0):
 		
 		DASH:
 			current_speed = dash_speed
+			thruster.visible = true
 		
 		ATTACK:
 			perform_attack(attack)
@@ -75,6 +83,7 @@ func process_dash(delta: float) -> void:
 	
 	var dist = global_position.distance_to(player.global_position)
 	if state_timer < 0 or dist < attack_range:
+		thruster.visible = false
 		change_state(ATTACK, attack_duration)
 
 
