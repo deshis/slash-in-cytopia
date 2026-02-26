@@ -15,7 +15,7 @@ const particles = {
 	
 	# ENEMY
 	"stun": preload("res://Scenes/particles/stun.tscn"),
-	"kheel_teleport": preload("res://Scenes/particles/teleport.tscn"),
+	"kheel_teleport": preload("res://Scenes/particles/teleport.tscn"), # DEPRECATED
 	"ranged_slasher_shoot": preload("res://Scenes/particles/enemy_plasma_shooting_particles.tscn"),
 	"ranged_slasher_shoot_green": preload("res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn"),
 	"kheel_teleport2": preload("res://Scenes/particles/teleport2.tscn"),
@@ -49,7 +49,7 @@ const particles = {
 	"health_pickup": preload("res://Scenes/particles/health_pickup_particles.tscn"),
 }
 
-
+# TODO: this was here to check stuff, should delete deprecated particles and remove this
 const all_particles = [
 	preload("res://Scenes/particles/bloody_on_hit_particles.tscn"),
 	preload("res://Scenes/particles/death_particles_1.tscn"),
@@ -79,7 +79,7 @@ const all_particles = [
 	preload("res://Scenes/particles/reality_fracture_particles.tscn"),
 	preload("res://Scenes/particles/smite_particle.tscn"),
 	preload("res://Scenes/particles/stun.tscn"),
-	preload("res://Scenes/particles/teleport.tscn"),
+	#preload("res://Scenes/particles/teleport.tscn"), # DEPRECATED
 	preload("res://Scenes/particles/vampirism_ability_particle.tscn"),
 	preload("res://Scenes/particles/vampirism_bleed_dot_particles.tscn"),
 	preload("res://Scenes/particles/emp_particles.tscn"),
@@ -89,6 +89,8 @@ const all_particles = [
 	preload("res://Scenes/particles/teleport2.tscn"),
 ]
 
+# this is a scuffed version, this is what's used for particle warmping so add particles here too for now
+# TODO: update loading stuff so we can remove this and make it smart
 const particle_paths = {
 	# ON HIT
 	"on_hit_player": "res://Scenes/particles/player_on_hit.tscn",
@@ -107,6 +109,7 @@ const particle_paths = {
 	"kheel_teleport": "res://Scenes/particles/teleport.tscn",
 	"ranged_slasher_shoot": "res://Scenes/particles/enemy_plasma_shooting_particles.tscn",
 	"ranged_slasher_shoot_green": "res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn",
+	"kheel_teleport2": "res://Scenes/particles/teleport2.tscn",
 	
 	# BRAINCHIPS
 	"heal": "res://Scenes/particles/heal.tscn",

@@ -120,9 +120,9 @@ var active_throwable_resource: ThrowableResource = null
 @onready var animator = $"model/AnimationPlayer"
 @onready var weapon_mesh = $model/rig/Skeleton3D/BoneAttachment3D/Weapon/Mesh
 
+
 # DAMAGE MODEL
 var area_damage_indicator = preload("res://Scenes/items/AreaDamageIndicator.tscn")
-
 
 
 # TAKING DAMAGE
@@ -151,6 +151,13 @@ const LIGHT_ATTACK_WINDUP = "light_attack_windup"
 const LIGHT_ATTACK = "light_attack"
 const HEAVY_ATTACK_WINDUP = "heavy_attack_windup"
 const HEAVY_ATTACK = "heavy_attack"
+
+@onready var slash_assist_hitbox: Area3D = $SlashAssist
+var slash_assist_target = null
+@export var slash_assist_duration = 0.12
+@export var slash_assist_max_strength = 60.0
+var slash_assist_strength = slash_assist_max_strength
+var slash_assist_timer = slash_assist_duration
 
 func _ready() -> void:
 	hit_flash.set_shader_parameter('strength',0.0)
@@ -191,6 +198,7 @@ func _physics_process(delta: float) -> void:
 		hit_flash.set_shader_parameter('strength', 0.0)
 	
 	move_and_slide()
+
 
 func update_state() -> void:
 	match state:
@@ -241,9 +249,11 @@ func update_state() -> void:
 				change_state(DASH)
 				return
 
+
 func change_state(new_state) -> void:
 	exit_state(state, new_state)
 	enter_state(new_state)
+
 
 func enter_state(new_state) -> void:
 	picked_animation = false
@@ -265,8 +275,8 @@ func enter_state(new_state) -> void:
 			perform_dash()
 		
 		LIGHT_ATTACK_WINDUP:
+			set_slash_assist_target()
 			current_speed = movement_speed * attack_light_move_speed_mult
-			
 			animator.speed_scale = light_attack_speed_scale
 			weapon_mesh.mesh = ItemGlobals.primary_weapon_mesh
 			
@@ -328,6 +338,7 @@ func enter_state(new_state) -> void:
 		HEAVY_ATTACK:
 			perform_heavy_attack()
 
+
 func exit_state(s: String, new_state: String) -> void:
 	match s:
 		LIGHT_ATTACK_WINDUP:
@@ -351,6 +362,7 @@ func exit_state(s: String, new_state: String) -> void:
 		DASH:
 			stop_dash()
 
+
 func process_state(delta: float) -> void:
 	match state:
 		IDLE, MOVE:
@@ -371,6 +383,7 @@ func process_state(delta: float) -> void:
 		HEAVY_ATTACK:
 			process_heavy_attack(delta)
 
+
 func update_light_attack_hitbox(enabled_type: String = ""):
 	hitbox_light_attack_default.disabled = true
 	hitbox_light_attack_dagger.disabled = true
@@ -383,6 +396,7 @@ func update_light_attack_hitbox(enabled_type: String = ""):
 			hitbox_light_attack_dagger.disabled = false
 		"Sword":
 			hitbox_light_attack_sword.disabled = false
+
 
 func update_heavy_attack_hitbox(enabled_type: String = ""):
 	hitbox_heavy_attack_default.disabled = true
@@ -410,6 +424,7 @@ func perform_dash():
 	GameStats.dashes_used += 1
 	SoundManager.play_sfx("dash", global_position)
 
+
 func perform_light_attack() -> void:
 	update_light_attack_hitbox(ItemGlobals.primary_weapon_type)
 	
@@ -421,6 +436,7 @@ func perform_light_attack() -> void:
 		_:
 			SoundManager.play_sfx("light_attack_default", global_position)
 
+
 func perform_heavy_attack() -> void:
 	update_heavy_attack_hitbox(ItemGlobals.secondary_weapon_type)
 	
@@ -431,10 +447,12 @@ func perform_heavy_attack() -> void:
 			SoundManager.play_sfx("heavy_attack_axe", global_position)
 		_:
 			SoundManager.play_sfx("heavy_attack_default", global_position)
-			
+
+
 func trigger_chromatic_aberration():
 	# Convert world position to screen position
 	chromatic_aberration.trigger_chromatic_aberration()
+
 
 func use_active_item(active_effect: ActiveEffectResource):
 	var active_item_cooldown = active_effect.active_effect_cooldown
@@ -446,7 +464,7 @@ func use_active_item(active_effect: ActiveEffectResource):
 	active_item_used.emit(active_item_cooldown)
 	
 	GameStats.active_items_used += 1
-
+	
 	# Play SFX based on active item types, custom first
 	if active_effect.active_sfx:
 		SoundManager.play_sfx(active_effect.active_sfx, global_position)
@@ -466,7 +484,8 @@ func use_active_item(active_effect: ActiveEffectResource):
 				SoundManager.play_sfx("explosion", global_position)
 	
 	apply_active_item_effect(active_item_effect)
-	
+
+
 func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 	var value = active_effect.active_effect_value
 	var radius = active_effect.aoe_radius
@@ -576,7 +595,8 @@ func apply_active_item_effect(active_effect: ActiveEffectResource) -> void:
 				#var impulse = direction * throw_force
 				#impulse.y = upward_arc
 				#brick.apply_central_impulse(impulse)
-				
+
+
 func use_throwable_item(throw_resource: ThrowableResource):
 	var throwable_cooldown = throw_resource.throwable_cooldown
 	
@@ -587,8 +607,8 @@ func use_throwable_item(throw_resource: ThrowableResource):
 	GameStats.throwables_used += 1
 	throw(throw_resource)
 	SoundManager.play_sfx("throw", global_position)
-	
-	
+
+
 func throw(throw_resource: ThrowableResource):
 	#var radius = throw_resource.aoe_radius
 	var throwable_object = throw_resource.throwable_object.instantiate()
@@ -637,10 +657,10 @@ func throw(throw_resource: ThrowableResource):
 	var plane = Plane(Vector3.UP, global_position.y)
 	var hit_pos = plane.intersects_ray(from, to)
 	
-
+	
 	
 	if hit_pos:
-
+	
 		if throw_resource.projectile_from_sky:
 			await get_tree().create_timer(1.5).timeout
 			var direction = (hit_pos - throwable_object.global_position)
@@ -654,8 +674,10 @@ func throw(throw_resource: ThrowableResource):
 			throwable_object.apply_central_impulse(impulse)
 			throwable_object.apply_torque_impulse(Vector3(randf(), randf(), randf()) * 0.5)
 
+
 func process_move(delta: float) -> void:	
 	apply_movement(delta)
+
 
 func process_dash(delta: float) -> void:
 	apply_movement(delta)
@@ -663,8 +685,10 @@ func process_dash(delta: float) -> void:
 	if state_timer < 0:
 		change_state(IDLE)
 
+
 func process_light_attack_windup(delta: float) -> void:
 	apply_movement(delta)
+	process_slash_assist(delta)
 	
 	if state_timer < 0:
 		change_state(LIGHT_ATTACK)
@@ -672,7 +696,15 @@ func process_light_attack_windup(delta: float) -> void:
 
 func process_light_attack(delta: float) -> void:
 	apply_movement(delta)
+	process_slash_assist(delta)
 
+
+func process_slash_assist(delta: float) -> void:
+	slash_assist_timer -= delta
+	if slash_assist_target and slash_assist_timer > 0:
+		var dir = global_position.direction_to(slash_assist_target)
+		var strength = slash_assist_timer * slash_assist_strength
+		velocity += dir * strength
 
 func process_heavy_attack_windup(delta: float) -> void:
 	current_speed *= heavy_attack_dash_decay
@@ -680,6 +712,7 @@ func process_heavy_attack_windup(delta: float) -> void:
 	
 	if state_timer < 0:
 		change_state(HEAVY_ATTACK)
+
 
 func process_heavy_attack(delta: float) -> void:
 	current_speed *= heavy_attack_dash_decay
@@ -691,11 +724,13 @@ func stop_dash() -> void:
 	second_dash = false
 	$DashAttackHitbox.monitoring = false
 
+
 func stop_light_attack() -> void:
 	weapon_mesh.mesh = null
 	update_light_attack_hitbox()
 	light_attack.visible = false
 	animator.speed_scale = 1.0
+
 
 func stop_heavy_attack() -> void:
 	weapon_mesh.mesh = null
@@ -709,11 +744,13 @@ func update_input() -> void:
 	input.y = Input.get_axis("move_up", "move_down")
 	input = input.normalized()
 
+
 func apply_movement(delta: float) -> void:
 	if state != HEAVY_ATTACK_WINDUP and state != HEAVY_ATTACK and state != IDLE and state != LIGHT_ATTACK_WINDUP and state != LIGHT_ATTACK:
 		rotation.y = atan2(input.x, input.y)
 	
 	velocity = lerp(velocity, Vector3(input.x, 0.0, input.y)*current_speed, acceleration * delta)
+
 
 func set_facing_dir() -> void:
 	var cam = get_viewport().get_camera_3d()
@@ -730,9 +767,31 @@ func set_facing_dir() -> void:
 	
 	rotation.y = atan2(dir.x, dir.z)
 
+
+func set_slash_assist_target() -> void:
+	if slash_assist_hitbox.get_overlapping_areas().size() != 0:
+		slash_assist_timer = slash_assist_duration
+		var closest_enemy = null
+		var closest_dist = INF
+		for hurtbox in slash_assist_hitbox.get_overlapping_areas():
+			var enemy = hurtbox.get_parent()
+			var dist = enemy.global_position.distance_to(global_position)
+			if dist < closest_dist:
+				closest_dist = dist
+				closest_enemy = enemy
+		
+		slash_assist_target = closest_enemy.global_position
+		slash_assist_target.y = 0
+		var weight = inverse_lerp(0.0, 2.5, clamp(global_position.distance_to(slash_assist_target) - 1, 0.0, 9999))
+		slash_assist_strength = lerp(0.0, slash_assist_max_strength, weight)
+	else:
+		slash_assist_target = null
+
+
 func disable_trails():
 	for trail in trails:
 		trail.visible = false
+
 
 func heal(amount: float) -> void:
 	if health >= max_health:
@@ -745,6 +804,7 @@ func heal(amount: float) -> void:
 	if health > max_health:
 		health = max_health
 
+
 func get_closest_pickup() -> PickupableObject:
 	var closest = null
 	var min_dist = INF
@@ -756,6 +816,7 @@ func get_closest_pickup() -> PickupableObject:
 			closest = item
 	
 	return closest
+
 
 func deal_damage(area: Area3D, amount: float, e: EnemyController = null) -> void:
 	var enemy = null
@@ -799,6 +860,7 @@ func deal_damage(area: Area3D, amount: float, e: EnemyController = null) -> void
 	
 	enemy.take_damage(amount, self)
 
+
 func deal_dot_damage(area: Area3D, dot: DotResource, e: EnemyController = null) -> void:
 	var enemy = null
 	if e:
@@ -808,6 +870,7 @@ func deal_dot_damage(area: Area3D, dot: DotResource, e: EnemyController = null) 
 	
 	if dot.dot_tick_damage > 0 and enemy:
 		enemy.take_dot_damage(dot)
+
 
 func deal_stat_damage(area: Area3D, debuff: DebuffResource, e: EnemyController = null) -> void:
 	#print("Deal stat damage")
@@ -823,6 +886,7 @@ func deal_stat_damage(area: Area3D, debuff: DebuffResource, e: EnemyController =
 	if debuff.debuff_stat_damage > 0 and enemy:
 		#print("Take stat damage")
 		enemy.take_stat_damage(debuff)
+
 
 func take_damage(damage:float, enemy: EnemyController, ignore_invulnerability: bool = false) -> void:
 	ParticleManager.emit_particles("on_hit_player", global_position)
@@ -863,6 +927,7 @@ func take_damage(damage:float, enemy: EnemyController, ignore_invulnerability: b
 	if health <= 0.0:
 		die()
 
+
 func die() -> void:
 	is_dead = true
 	Engine.time_scale = 1.0
@@ -874,9 +939,11 @@ func die() -> void:
 	hit_flash.set_shader_parameter('strength', 0.0)
 	set_physics_process(false)
 
+
 func blink() -> void:
 	var phase := int(Time.get_ticks_msec() / (hit_flash_blink_speed * 1000)) % 2
 	hit_flash.set_shader_parameter('strength', phase)
+
 
 func hitstop(duration: float) -> void:
 	Engine.time_scale = 0.01
@@ -899,6 +966,7 @@ func sort_dist_to_player(a, b) -> int:
 		return true
 	else:
 		return false
+
 
 func perform_interact() -> void:
 	if interactables.size() == 0:
@@ -924,27 +992,33 @@ func _on_animation_finished(anim_name):
 func _on_time_alive_timer_timeout() -> void:
 	GameStats.time_alive_seconds += 1
 
+
 func _on_health_regen_timer_timeout() -> void:
 	heal(health_regen)
+
 
 func _on_invulnerability_length_timer_timeout() -> void:
 	pass # Replace with function body.
 
+
 func _on_dash_cooldown_timer_timeout() -> void:
 	can_dash = true
 
+
 func _on_item_active_cooldown_timer_timeout() -> void:
 	can_active_item = true
-	
+
+
 func _on_throwable_cooldown_timer_timeout() -> void:
 	can_throwable_item = true
+
 
 func _on_light_attack_area_entered(area: Area3D) -> void:
 	deal_damage(area, attack_light_damage)
 	
 	#EMIT HIT PARTICLES
 	#ParticleManager.emit_particles("on_hit", area.global_position)
-
+	
 	if primary_attack_active_dot != null:
 		
 		#Generate a random number between 0 and 100
@@ -964,12 +1038,13 @@ func _on_light_attack_area_entered(area: Area3D) -> void:
 		if light_debuff_chance >= rng_debuff_roll:
 			deal_stat_damage(area, primary_attack_active_debuff)
 
+
 func _on_heavy_attack_area_entered(area: Area3D) -> void:
 	deal_damage(area, attack_heavy_damage)
 	
 	#EMIT HIT PARTICLES
 	#ParticleManager.emit_particles("on_hit", area.global_position)
-
+	
 	if secondary_attack_active_dot != null:
 		
 		rng_dot_roll = rng.randf_range(0,100)
@@ -1007,6 +1082,7 @@ func _on_hit_flash_timeout() -> void:
 	$Hurtbox/Box.disabled = true
 	$Hurtbox/Box.disabled = false
 
+
 func _on_dash_attack_hitbox_area_entered(area: Area3D) -> void:
 	if attack_during_dash == false:
 		return
@@ -1027,6 +1103,7 @@ func tween_weapon_hologram_effect(duration)->void:
 	_create_shader_tween(weapon_mesh, "albedo_alpha", 0.0, 0.1, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
 	_create_shader_tween(weapon_mesh, "scanline_thickness", 0.0, 2.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
 	_create_shader_tween(weapon_mesh, "scanline_density", 10.0, 1.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+
 
 func _create_shader_tween(node: Node, shader_property: String, value_start: float, value_end: float, duration: float) -> Tween:
 	var tween = get_tree().create_tween()

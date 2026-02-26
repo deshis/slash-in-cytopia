@@ -64,11 +64,9 @@ func change_state(new_state: String, duration := 0.0):
 			animator.play("Teleport_attack")
 		FACE_PLAYER:
 			animator.play("Idle")
-			nav_agent.set_velocity(Vector3.ZERO)
 		IDLE:
 			tp_particles.emitting = false
 			animator.play("Idle")
-			nav_agent.set_velocity(Vector3.ZERO)
 		NAVIGATE:
 			animator.play("Walk",-1,0.85)
 		TP:
@@ -76,12 +74,10 @@ func change_state(new_state: String, duration := 0.0):
 			var anim_player = particle.get_node("AnimationPlayer")
 			anim_player.play("explosion_light_fade")
 			animator.play("Teleport")
-			nav_agent.set_velocity(Vector3.ZERO)
 		RANGED_ATTACK:
 			ranged_attack_pos = get_ranged_attack_pos()
 			perform_attack(ranged_attack, ranged_attack_pos)
 			animator.play("Attack")
-			nav_agent.set_velocity(Vector3.ZERO)
 		COOLDOWN:
 			tp_particles.emitting = false
 			animator.play("Idle")
@@ -120,10 +116,11 @@ func process_tp() -> void:
 	#tp_target = get_pos(global_position, player.global_position, max_tp_dist, attack_range)
 	
 	target_provider = TargetAroundPlayer.new()
-	
 	tp_target = target_provider.get_target(self)
-	#print(tp_target)
-	global_position = tp_target
+	
+	var nav_map = GameManager.spawner.navigation_region.get_navigation_map()
+	var fixed_tp_target = NavigationServer3D.map_get_closest_point(nav_map, tp_target)
+	global_position = fixed_tp_target
 	
 	var particle = ParticleManager.emit_particles("kheel_teleport2", global_position)
 	var anim_player = particle.get_node("AnimationPlayer")
