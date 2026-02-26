@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dg11j431speyx" path="res://Assets/vfx/slash/slash_tex.png" id="31_qtdmj"]
 [ext_resource type="Animation" uid="uid://br0rk3ytqpkho" path="res://Assets/enemy/microbot/animations/Stun.res" id="32_ko05x"]
 [ext_resource type="Animation" uid="uid://bf47w0rk2h23r" path="res://Assets/enemy/microbot/animations/Walk.res" id="33_43km2"]
-[ext_resource type="Texture2D" uid="uid://dhvqq1gpt36pr" path="res://Assets/enemy/mage/mage_apollo-1x.png" id="33_bmhhk"]
+[ext_resource type="Texture2D" uid="uid://envfqktqgqnq" path="res://Assets/enemy/mage/mage_apollo-1x.png" id="33_bmhhk"]
 [ext_resource type="ArrayMesh" uid="uid://d20gb3onvusch" path="res://Assets/enemy/mage/mage_staff.res" id="34_pddej"]
 [ext_resource type="Animation" uid="uid://mbww5et2k6fw" path="res://Assets/player/animations/Death.res" id="35_fgwar"]
 [ext_resource type="ArrayMesh" uid="uid://dj3oe35rc5d3o" path="res://Assets/enemy/mage/magic_flare.res" id="35_ko05x"]
@@ -47,6 +47,7 @@
 [ext_resource type="PackedScene" uid="uid://btj605votyjy8" path="res://Scenes/main_menu/settings_menu.tscn" id="46_aj2v6"]
 [ext_resource type="Script" uid="uid://bcm50amd2bo6l" path="res://Scripts/ui/tutorial_text.gd" id="47_vj5y7"]
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="52_ybtaw"]
+[ext_resource type="PackedScene" uid="uid://vj52o2gi3lfc" path="res://Scenes/main_menu/profile_button.tscn" id="53_profbtn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpe5h"]
 resource_name = "MainMaterial"
@@ -19213,74 +19214,61 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46962285, 0, 0.40092278)
 
 [node name="Menu" type="CanvasLayer" parent="." unique_id=1285395075]
 
-[node name="ProfileMargin" type="MarginContainer" parent="Menu" unique_id=2126870752]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+[node name="MainHBox" type="HBoxContainer" parent="Menu"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -215.0
-offset_top = -180.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="HBoxContainer" type="VBoxContainer" parent="Menu/ProfileMargin" unique_id=138871955]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Profiles" type="Button" parent="Menu/ProfileMargin/HBoxContainer" unique_id=1979312858]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
-text = "Profiles"
-script = ExtResource("35_msuys")
-
-[node name="Stats" type="Button" parent="Menu/ProfileMargin/HBoxContainer" unique_id=1687232059]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
-text = "Stats
-"
-script = ExtResource("35_msuys")
-
-[node name="Achievements" type="Button" parent="Menu/ProfileMargin/HBoxContainer" unique_id=911909624]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
-text = "Achievements"
-script = ExtResource("35_msuys")
-
-[node name="MatchHistory" type="Button" parent="Menu/ProfileMargin/HBoxContainer" unique_id=310426385]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("52_ybtaw")
-theme_override_font_sizes/font_size = 32
-text = "Match History"
-script = ExtResource("35_msuys")
-
-[node name="MenuMargin" type="MarginContainer" parent="Menu" unique_id=1769672804]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -362.0
-offset_right = 432.0
-offset_bottom = 362.0
+grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="MenuMargin" type="MarginContainer" parent="Menu/MainHBox" unique_id=1769672804]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_bottom = 80
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MenuMargin" unique_id=1179496242]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MainHBox/MenuMargin" unique_id=1179496242]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 15
 
-[node name="Logo" type="TextureRect" parent="Menu/MenuMargin/VBoxContainer" unique_id=515723434]
+[node name="Spacer" type="Control" parent="Menu/MainHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ProfileMargin" type="MarginContainer" parent="Menu/MainHBox" unique_id=2126870752]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MainHBox/ProfileMargin" unique_id=138871955]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 15
+
+[node name="Profiles" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=1979312858 instance=ExtResource("53_profbtn")]
+layout_mode = 2
+label_text = "Profiles"
+
+[node name="Stats" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=1687232059 instance=ExtResource("53_profbtn")]
+layout_mode = 2
+label_text = "Stats"
+
+[node name="Achievements" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=911909624 instance=ExtResource("53_profbtn")]
+layout_mode = 2
+label_text = "Achievements"
+
+[node name="MatchHistory" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=310426385 instance=ExtResource("53_profbtn")]
+layout_mode = 2
+label_text = "Match History"
+
+[node name="Logo" type="TextureRect" parent="Menu/MainHBox/MenuMargin/VBoxContainer" unique_id=515723434]
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -19289,7 +19277,7 @@ texture = ExtResource("43_j1q0m")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="shader_mask" type="TextureRect" parent="Menu/MenuMargin/VBoxContainer/Logo" unique_id=1222323708]
+[node name="shader_mask" type="TextureRect" parent="Menu/MainHBox/MenuMargin/VBoxContainer/Logo" unique_id=1222323708]
 clip_children = 1
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 0
@@ -19301,7 +19289,7 @@ texture = ExtResource("43_j1q0m")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="shader" type="TextureRect" parent="Menu/MenuMargin/VBoxContainer/Logo/shader_mask" unique_id=210917488]
+[node name="shader" type="TextureRect" parent="Menu/MainHBox/MenuMargin/VBoxContainer/Logo/shader_mask" unique_id=210917488]
 material = SubResource("ShaderMaterial_fj8lq")
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 0
@@ -19313,23 +19301,23 @@ texture = ExtResource("43_j1q0m")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Play" parent="Menu/MenuMargin/VBoxContainer" unique_id=639732658 instance=ExtResource("45_3pko2")]
+[node name="Play" parent="Menu/MainHBox/MenuMargin/VBoxContainer" unique_id=639732658 instance=ExtResource("45_3pko2")]
 layout_mode = 2
 label_text = "Start Game"
 
-[node name="Settings" parent="Menu/MenuMargin/VBoxContainer" unique_id=1485717150 instance=ExtResource("45_3pko2")]
+[node name="Settings" parent="Menu/MainHBox/MenuMargin/VBoxContainer" unique_id=1485717150 instance=ExtResource("45_3pko2")]
 layout_mode = 2
 label_text = "Settings"
 
-[node name="Tutorial" parent="Menu/MenuMargin/VBoxContainer" unique_id=47448307 instance=ExtResource("45_3pko2")]
+[node name="Tutorial" parent="Menu/MainHBox/MenuMargin/VBoxContainer" unique_id=47448307 instance=ExtResource("45_3pko2")]
 layout_mode = 2
 label_text = "Tutorial"
 
-[node name="Credits" parent="Menu/MenuMargin/VBoxContainer" unique_id=1575232552 instance=ExtResource("45_3pko2")]
+[node name="Credits" parent="Menu/MainHBox/MenuMargin/VBoxContainer" unique_id=1575232552 instance=ExtResource("45_3pko2")]
 layout_mode = 2
 label_text = "Credits"
 
-[node name="Quit" parent="Menu/MenuMargin/VBoxContainer" unique_id=714849676 instance=ExtResource("45_3pko2")]
+[node name="Quit" parent="Menu/MainHBox/MenuMargin/VBoxContainer" unique_id=714849676 instance=ExtResource("45_3pko2")]
 layout_mode = 2
 label_text = "Quit Game"
 
@@ -19479,15 +19467,15 @@ theme = ExtResource("52_ybtaw")
 theme_override_font_sizes/font_size = 32
 text = "Welcome"
 
-[connection signal="pressed" from="Menu/ProfileMargin/HBoxContainer/Profiles" to="." method="_on_profiles_pressed"]
-[connection signal="pressed" from="Menu/ProfileMargin/HBoxContainer/Stats" to="." method="_on_stats_pressed"]
-[connection signal="pressed" from="Menu/ProfileMargin/HBoxContainer/Achievements" to="." method="_on_achievements_pressed"]
-[connection signal="pressed" from="Menu/ProfileMargin/HBoxContainer/MatchHistory" to="." method="_on_match_history_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="Menu/MenuMargin/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/MainHBox/MenuMargin/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/MainHBox/MenuMargin/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/MainHBox/MenuMargin/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Menu/MainHBox/MenuMargin/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Menu/MainHBox/MenuMargin/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/MainHBox/ProfileMargin/VBoxContainer/Profiles" to="." method="_on_profiles_pressed"]
+[connection signal="pressed" from="Menu/MainHBox/ProfileMargin/VBoxContainer/Stats" to="." method="_on_stats_pressed"]
+[connection signal="pressed" from="Menu/MainHBox/ProfileMargin/VBoxContainer/Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="Menu/MainHBox/ProfileMargin/VBoxContainer/MatchHistory" to="." method="_on_match_history_pressed"]
 [connection signal="relay_back_to_menu_signal" from="Menu/SettingsMargin/SettingsMenu" to="." method="_on_settings_menu_relay_back_to_menu_signal"]
 [connection signal="pressed" from="Menu/TutorialMargin/Panel/MarginContainer/close_tutorial" to="." method="_on_close_tutorial_pressed"]
 [connection signal="pressed" from="Menu/CreditsMargin/Panel/MarginContainer/close_credits" to="." method="_on_close_credits_pressed"]

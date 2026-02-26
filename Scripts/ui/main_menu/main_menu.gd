@@ -1,23 +1,23 @@
 extends Node3D
 
-@onready var menu_container: MarginContainer = $Menu/MenuMargin
-@onready var profile_container: MarginContainer = $Menu/ProfileMargin
+@onready var menu_container: MarginContainer = $Menu/MainHBox/MenuMargin
+@onready var profile_container: MarginContainer = $Menu/MainHBox/ProfileMargin
 @onready var settings_container: MarginContainer = $Menu/SettingsMargin
 @onready var credits_container: MarginContainer = $Menu/CreditsMargin
 @onready var tutorial_container: MarginContainer = $Menu/TutorialMargin
 @onready var welcome_label: Label = $Menu/WelcomeMargin/WelcomeLabel
 
-@onready var profiles_button:= $Menu/ProfileMargin/HBoxContainer/Profiles
-@onready var stats_button:= $Menu/ProfileMargin/HBoxContainer/Stats
-@onready var achievements_button:= $Menu/ProfileMargin/HBoxContainer/Achievements
-@onready var match_history_button:= $Menu/ProfileMargin/HBoxContainer/MatchHistory
+@onready var profiles_button:= $Menu/MainHBox/ProfileMargin/VBoxContainer/Profiles
+@onready var stats_button:= $Menu/MainHBox/ProfileMargin/VBoxContainer/Stats
+@onready var achievements_button:= $Menu/MainHBox/ProfileMargin/VBoxContainer/Achievements
+@onready var match_history_button:= $Menu/MainHBox/ProfileMargin/VBoxContainer/MatchHistory
 
 
-@onready var play_button: TextureButton = $Menu/MenuMargin/VBoxContainer/Play
-@onready var settings_button: TextureButton = $Menu/MenuMargin/VBoxContainer/Settings
-@onready var tutorial_button: TextureButton = $Menu/MenuMargin/VBoxContainer/Tutorial
-@onready var credits_button: TextureButton = $Menu/MenuMargin/VBoxContainer/Credits
-@onready var quit_button: TextureButton = $Menu/MenuMargin/VBoxContainer/Quit
+@onready var play_button: TextureButton = $Menu/MainHBox/MenuMargin/VBoxContainer/Play
+@onready var settings_button: TextureButton = $Menu/MainHBox/MenuMargin/VBoxContainer/Settings
+@onready var tutorial_button: TextureButton = $Menu/MainHBox/MenuMargin/VBoxContainer/Tutorial
+@onready var credits_button: TextureButton = $Menu/MainHBox/MenuMargin/VBoxContainer/Credits
+@onready var quit_button: TextureButton = $Menu/MainHBox/MenuMargin/VBoxContainer/Quit
 
 
 

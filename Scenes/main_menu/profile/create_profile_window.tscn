@@ -3,6 +3,13 @@
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="1_c4x04"]
 [ext_resource type="Script" uid="uid://dukyctbdfxcg6" path="res://Scripts/ui/main_menu/profile/create_profile_menu.gd" id="1_tmwcy"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.15775341, 0.15775329, 0.15775335, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="CreateProfileWindow" type="Control" unique_id=636747981]
 layout_mode = 3
 anchors_preset = 15
@@ -10,46 +17,83 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 theme = ExtResource("1_c4x04")
 script = ExtResource("1_tmwcy")
 
 [node name="Panel" type="Panel" parent="." unique_id=921765875]
+custom_minimum_size = Vector2(450, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -150.0
+offset_right = 225.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=839843611]
-layout_mode = 0
-offset_left = 114.0
-offset_top = 47.0
-offset_right = 336.0
-offset_bottom = 167.0
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1400789108]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
 
-[node name="WelcomeLabel" type="Label" parent="Panel/VBoxContainer" unique_id=30564889]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=839843611]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="WelcomeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=30564889]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Welcome to Slash in Cytopia!"
+horizontal_alignment = 1
 
-[node name="NameLabel" type="Label" parent="Panel/VBoxContainer" unique_id=72294095]
+[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=72294095]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "Enter your name:"
 horizontal_alignment = 1
 
-[node name="UsernameInput" type="LineEdit" parent="Panel/VBoxContainer" unique_id=1535986437]
+[node name="UsernameInput" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer" unique_id=1535986437]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../HBoxContainer/CancelButton")
+focus_next = NodePath("../HBoxContainer/CancelButton")
+theme_override_font_sizes/font_size = 18
 placeholder_text = "e.g. BigSkull123"
+alignment = 1
+caret_blink = true
 
-[node name="CreateButton" type="Button" parent="Panel/VBoxContainer" unique_id=373073822]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=231305581]
 layout_mode = 2
-text = "Create profile"
+theme_override_constants/separation = 20
+alignment = 1
 
-[node name="CancelButton" type="Button" parent="Panel/VBoxContainer" unique_id=180625038]
+[node name="CancelButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=180625038]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Cancel"
+
+[node name="CreateButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=373073822]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Create"
 
 [node name="AcceptDialog" type="AcceptDialog" parent="." unique_id=560024735]
 title = "Error"

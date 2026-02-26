@@ -14,6 +14,7 @@ extends PanelContainer
 	"movement2": $MarginContainer/VBoxContainer/MainLayout/BottomRow/MovementGroup/Slots/Movement2,
 }
 
+@onready var match_number_label = $MarginContainer/VBoxContainer/MatchNumberLabel
 @onready var time_label = $MarginContainer/VBoxContainer/StatsSection/HeaderContainer/TimeLabel
 @onready var duration_label = $MarginContainer/VBoxContainer/StatsSection/HeaderContainer/DurationLabel
 
@@ -34,8 +35,12 @@ extends PanelContainer
 @onready var apex_value = $MarginContainer/VBoxContainer/StatsSection/StatsGrid/ApexValue
 
 
-func set_match_data(data: Dictionary) -> void:
+func set_match_data(data: Dictionary, match_number: int = 0) -> void:
 	_init_slots()
+	if match_number > 0:
+		match_number_label.text = "Run #%d" % match_number
+	else:
+		match_number_label.visible = false
 	_set_header_stats(data)
 	_set_grid_stats(data)
 	_populate_inventory(data.get("equipped_items", []), data.get("had_apex", false))
