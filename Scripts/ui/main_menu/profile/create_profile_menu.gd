@@ -2,24 +2,30 @@ extends Control
 
 signal profile_created(filename: String)
 
-@onready var username_input: LineEdit = $Panel/VBoxContainer/UsernameInput
-@onready var create_button: Button = $Panel/VBoxContainer/CreateButton
-@onready var cancel_button: Button = $Panel/VBoxContainer/CancelButton
+@onready var username_input: LineEdit = $Panel/MarginContainer/VBoxContainer/UsernameInput
+@onready var create_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/CreateButton
+@onready var cancel_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/CancelButton
 @onready var accept_dialog: AcceptDialog = $AcceptDialog
+@onready var welcome_label: Label = $Panel/MarginContainer/VBoxContainer/WelcomeLabel
 
 
 func _ready() -> void:
-	$Panel/VBoxContainer/CreateButton.add_to_group("ui_button")
-	$Panel/VBoxContainer/CancelButton.add_to_group("ui_button")
-	
+	create_button.add_to_group("ui_button")
+	cancel_button.add_to_group("ui_button")
+
 	create_button.pressed.connect(_on_create_button_pressed)
 	cancel_button.pressed.connect(_on_cancel_button_pressed)
 	username_input.text_submitted.connect(_on_text_submitted)
 
+	create_button.mouse_entered.connect(create_button.grab_focus)
+	cancel_button.mouse_entered.connect(cancel_button.grab_focus)
+
 	username_input.grab_focus()
-	
+
 	if not ProfileManager.has_any_profile():
 		cancel_button.visible = false
+	else:
+		welcome_label.text = "Create New Profile"
 
 func _on_create_button_pressed() -> void:
 	submit_profile()
