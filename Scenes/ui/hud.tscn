@@ -420,7 +420,6 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 1
 icon = ExtResource("21_tmvkh")
-icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Survivability"
 slot_type = 2
 
@@ -439,7 +438,6 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 1
 icon = ExtResource("21_tmvkh")
-icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Survivability"
 slot_type = 2
 
@@ -457,7 +455,6 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 2
 icon = ExtResource("22_p31k0")
-icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Movement"
 slot_type = 2
 
@@ -476,7 +473,6 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 2
 icon = ExtResource("22_p31k0")
-icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Movement"
 slot_type = 2
 
@@ -494,7 +490,6 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 3
 icon = ExtResource("23_0s5ks")
-icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Utility"
 slot_type = 2
 
@@ -512,7 +507,6 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 4
 icon = ExtResource("24_r3t7s")
-icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Damage"
 slot_type = 2
 
@@ -531,7 +525,6 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 4
 icon = ExtResource("24_r3t7s")
-icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Damage"
 slot_type = 2
 
@@ -549,7 +542,6 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 6
 icon = ExtResource("26_2874v")
-icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Light Attack"
 slot_type = 2
 
@@ -567,7 +559,6 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 7
 icon = ExtResource("27_5m6rh")
-icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Heavy Attack"
 slot_type = 2
 
@@ -585,7 +576,6 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 5
 icon = ExtResource("25_2874v")
-icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Brainchip"
 slot_type = 2
 
@@ -603,7 +593,6 @@ grow_vertical = 1
 script = ExtResource("9_pbtju")
 item_type = 8
 icon = ExtResource("27_r3t7s")
-icon_color = Color(0, 1, 1, 0.15686275)
 slot_name = "Throwable (NAME?)"
 slot_type = 2
 

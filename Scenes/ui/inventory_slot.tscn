@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c44j2vo2umj71" path="res://Assets/ui/inventory/InvSlotLight2.png" id="4_cql4w"]
 [ext_resource type="Texture2D" uid="uid://s2ipb0uoekju" path="res://Assets/ui/inventory/InvSlotLight3.png" id="5_1xbmt"]
 [ext_resource type="Texture2D" uid="uid://dvmbtgs8erj0r" path="res://Assets/ui/inventory/InvSlotLight4.png" id="6_se16v"]
-[ext_resource type="Texture2D" uid="uid://cfplqssk1l1vp" path="res://Assets/ui/inventory/cartridge.png" id="7_k3k6t"]
-[ext_resource type="Texture2D" uid="uid://bv20m6uwciu3f" path="res://Assets/ui/inventory/InvSlotCartridge.png" id="9_cql4w"]
+[ext_resource type="Texture2D" uid="uid://cfxeppmxsf476" path="res://Assets/ui/inventory/Cartridge.png" id="9_cql4w"]
 
 [node name="InventorySlot" type="Control" unique_id=1530991904]
 custom_minimum_size = Vector2(82, 82)
@@ -20,6 +19,7 @@ offset_bottom = -0.08000183
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_0cu6i")
+icon_color = Color(0.03137255, 0.3019608, 0.2784314, 1)
 cartridge_lights = Array[CompressedTexture2D]([ExtResource("2_ugek6"), ExtResource("3_k3k6t"), ExtResource("4_cql4w"), ExtResource("5_1xbmt"), ExtResource("6_se16v")])
 
 [node name="Name" type="RichTextLabel" parent="." unique_id=923521486]
@@ -31,8 +31,7 @@ mouse_filter = 2
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Cartridge" type="TextureRect" parent="." unique_id=1531958679]
-visible = false
+[node name="Slot" type="TextureRect" parent="." unique_id=399012597]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +39,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("7_k3k6t")
+texture = ExtResource("2_n8odp")
 expand_mode = 1
 
 [node name="CartridgeHolder" type="Control" parent="." unique_id=1623400531]
@@ -51,17 +50,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="Slot" type="TextureRect" parent="CartridgeHolder" unique_id=399012597]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("2_n8odp")
-expand_mode = 1
 
 [node name="Cartridge" type="TextureRect" parent="CartridgeHolder" unique_id=342399874]
 visible = false
@@ -86,6 +74,29 @@ mouse_filter = 2
 texture = ExtResource("2_ugek6")
 expand_mode = 1
 
+[node name="IconSlot" type="AspectRatioContainer" parent="." unique_id=633874740]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.20700002
+anchor_top = 0.28
+anchor_right = 0.79300004
+anchor_bottom = 0.86600006
+offset_left = 0.02599907
+offset_top = 0.03999901
+offset_right = -0.026000977
+offset_bottom = -0.012001038
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 0
+alignment_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="IconSlot" unique_id=208311074]
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 4
+
 [node name="ItemSlot" type="AspectRatioContainer" parent="." unique_id=1794676934]
 layout_mode = 1
 anchors_preset = -1
@@ -102,12 +113,6 @@ grow_vertical = 2
 mouse_filter = 2
 stretch_mode = 0
 alignment_vertical = 2
-
-[node name="Icon" type="TextureRect" parent="ItemSlot" unique_id=208311074]
-layout_mode = 2
-mouse_filter = 2
-expand_mode = 1
-stretch_mode = 4
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

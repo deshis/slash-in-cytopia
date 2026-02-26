@@ -15,7 +15,7 @@ class_name InventorySlot
 
 
 @onready var item_slot = $ItemSlot
-@onready var icon_node = $ItemSlot/Icon
+@onready var icon_node = $IconSlot/Icon
 
 @export var cartridge_lights: Array[CompressedTexture2D]
 
@@ -92,8 +92,7 @@ func slot_right_clicked() -> void:
 
 
 func set_cartridge(item_node: Control) -> void:
-	if current_light == 0:
-		cartridge.visible = true
+	cartridge.visible = true
 	
 	var item = item_node.item
 	cartridge.self_modulate = LootDatabase.grade_colors.get(item.grade)

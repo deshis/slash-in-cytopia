@@ -71,7 +71,6 @@ layout_mode = 2
 script = ExtResource("4_4xbu8")
 item_type = 1
 icon = ExtResource("5_442yx")
-icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Survivability"
 slot_type = 2
 
@@ -81,7 +80,6 @@ layout_mode = 2
 script = ExtResource("4_4xbu8")
 item_type = 1
 icon = ExtResource("5_442yx")
-icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Survivability"
 slot_type = 2
 
@@ -102,7 +100,6 @@ size_flags_horizontal = 4
 script = ExtResource("4_4xbu8")
 item_type = 5
 icon = ExtResource("9_uxt81")
-icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Brainchip"
 slot_type = 2
 
@@ -127,7 +124,6 @@ layout_mode = 2
 script = ExtResource("4_4xbu8")
 item_type = 4
 icon = ExtResource("8_p52nu")
-icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Damage"
 slot_type = 2
 
@@ -137,7 +133,6 @@ layout_mode = 2
 script = ExtResource("4_4xbu8")
 item_type = 4
 icon = ExtResource("8_p52nu")
-icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Damage"
 slot_type = 2
 
@@ -165,7 +160,6 @@ size_flags_horizontal = 4
 script = ExtResource("4_4xbu8")
 item_type = 6
 icon = ExtResource("8_c6gdx")
-icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Light Attack"
 slot_type = 2
 
@@ -207,7 +201,6 @@ size_flags_horizontal = 4
 script = ExtResource("4_4xbu8")
 item_type = 7
 icon = ExtResource("9_442yx")
-icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Heavy Attack"
 slot_type = 2
 
@@ -228,7 +221,6 @@ size_flags_horizontal = 4
 script = ExtResource("4_4xbu8")
 item_type = 8
 icon = ExtResource("10_c6gdx")
-icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Throwable"
 slot_type = 2
 
@@ -255,7 +247,6 @@ size_flags_horizontal = 4
 script = ExtResource("4_4xbu8")
 item_type = 3
 icon = ExtResource("7_uhy41")
-icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Utility"
 slot_type = 2
 
@@ -281,7 +272,6 @@ layout_mode = 2
 script = ExtResource("4_4xbu8")
 item_type = 2
 icon = ExtResource("6_c6gdx")
-icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Movement"
 slot_type = 2
 
@@ -291,7 +281,6 @@ layout_mode = 2
 script = ExtResource("4_4xbu8")
 item_type = 2
 icon = ExtResource("6_c6gdx")
-icon_color = Color(1, 1, 1, 0.23529412)
 slot_name = "Movement"
 slot_type = 2
 

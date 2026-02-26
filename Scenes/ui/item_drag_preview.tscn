@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://esnds26hsvcj" path="res://Scripts/ui/inventory/item_drag_preview.gd" id="1_esw2b"]
 [ext_resource type="PackedScene" uid="uid://cheduqgq01lw6" path="res://Scenes/items/item.tscn" id="8_duco1"]
-[ext_resource type="Texture2D" uid="uid://bv20m6uwciu3f" path="res://Assets/ui/inventory/InvSlotCartridge.png" id="9_ug4sr"]
+[ext_resource type="Texture2D" uid="uid://bv20m6uwciu3f" path="res://Assets/ui/inventory/Cartridge.png" id="9_ug4sr"]
+
 
 [node name="Cartridge" type="Control" unique_id=1193551725]
 custom_minimum_size = Vector2(74, 74)

@@ -16,6 +16,8 @@ func set_item(item: Control, play_sfx: bool = false) -> void:
 func _notification(what):
 	if what == NOTIFICATION_DRAG_END:
 		icon_node.visible = true
+		if hovered:
+			InventoryManager.item_description.deactivate()
 
 
 func set_cartridge(item_node: Control) -> void:
@@ -37,3 +39,4 @@ func _drop_data(pos: Vector2, data: Variant) -> void:
 
 func _on_mouse_exited() -> void:
 	set_open(false)
+	hovered = false
