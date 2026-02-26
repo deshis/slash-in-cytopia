@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c8q2y5x704w1"]
 
-[ext_resource type="Script" uid="uid://dr0jcskqv0o48" path="res://Scripts/ui/stats_menu.gd" id="1_yyulg"]
+[ext_resource type="Script" uid="uid://dr0jcskqv0o48" path="res://Scripts/ui/main_menu/profile/stats_menu.gd" id="1_yyulg"]
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="2_theme"]
 
 [node name="StatsMenu" type="Control" unique_id=1254274056]
@@ -55,22 +55,27 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="StatsContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer" unique_id=2008636938]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 15
+
+[node name="StatsContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/MarginContainer" unique_id=2008636938]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 50
 
-[node name="LeftColumn" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/StatsContainer" unique_id=924306435]
+[node name="LeftColumn" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/MarginContainer/StatsContainer" unique_id=924306435]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="MiddleColumn" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/StatsContainer" unique_id=226700115]
+[node name="MiddleColumn" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/MarginContainer/StatsContainer" unique_id=226700115]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="RightColumn" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/StatsContainer" unique_id=1289114291]
+[node name="RightColumn" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/MarginContainer/StatsContainer" unique_id=1289114291]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10

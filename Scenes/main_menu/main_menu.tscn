@@ -19214,7 +19214,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46962285, 0, 0.40092278)
 
 [node name="Menu" type="CanvasLayer" parent="." unique_id=1285395075]
 
-[node name="MainHBox" type="HBoxContainer" parent="Menu"]
+[node name="MainHBox" type="HBoxContainer" parent="Menu" unique_id=1343076406]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19234,39 +19234,6 @@ theme_override_constants/margin_bottom = 80
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 15
-
-[node name="Spacer" type="Control" parent="Menu/MainHBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="ProfileMargin" type="MarginContainer" parent="Menu/MainHBox" unique_id=2126870752]
-layout_mode = 2
-size_flags_vertical = 8
-mouse_filter = 2
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 80
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MainHBox/ProfileMargin" unique_id=138871955]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 15
-
-[node name="Profiles" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=1979312858 instance=ExtResource("53_profbtn")]
-layout_mode = 2
-label_text = "Profiles"
-
-[node name="Stats" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=1687232059 instance=ExtResource("53_profbtn")]
-layout_mode = 2
-label_text = "Stats"
-
-[node name="Achievements" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=911909624 instance=ExtResource("53_profbtn")]
-layout_mode = 2
-label_text = "Achievements"
-
-[node name="MatchHistory" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=310426385 instance=ExtResource("53_profbtn")]
-layout_mode = 2
-label_text = "Match History"
 
 [node name="Logo" type="TextureRect" parent="Menu/MainHBox/MenuMargin/VBoxContainer" unique_id=515723434]
 custom_minimum_size = Vector2(400, 200)
@@ -19320,6 +19287,39 @@ label_text = "Credits"
 [node name="Quit" parent="Menu/MainHBox/MenuMargin/VBoxContainer" unique_id=714849676 instance=ExtResource("45_3pko2")]
 layout_mode = 2
 label_text = "Quit Game"
+
+[node name="Spacer" type="Control" parent="Menu/MainHBox" unique_id=203188936]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ProfileMargin" type="MarginContainer" parent="Menu/MainHBox" unique_id=2126870752]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MainHBox/ProfileMargin" unique_id=138871955]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 15
+
+[node name="Profiles" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=1979312858 instance=ExtResource("53_profbtn")]
+layout_mode = 2
+label_text = "Profiles"
+
+[node name="MatchHistory" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=310426385 instance=ExtResource("53_profbtn")]
+layout_mode = 2
+label_text = "Match History"
+
+[node name="Stats" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=1687232059 instance=ExtResource("53_profbtn")]
+layout_mode = 2
+label_text = "Stats"
+
+[node name="Achievements" parent="Menu/MainHBox/ProfileMargin/VBoxContainer" unique_id=911909624 instance=ExtResource("53_profbtn")]
+layout_mode = 2
+label_text = "Achievements"
 
 [node name="SettingsMargin" type="MarginContainer" parent="Menu" unique_id=2036061751]
 visible = false
@@ -19473,9 +19473,9 @@ text = "Welcome"
 [connection signal="pressed" from="Menu/MainHBox/MenuMargin/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Menu/MainHBox/MenuMargin/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Menu/MainHBox/ProfileMargin/VBoxContainer/Profiles" to="." method="_on_profiles_pressed"]
+[connection signal="pressed" from="Menu/MainHBox/ProfileMargin/VBoxContainer/MatchHistory" to="." method="_on_match_history_pressed"]
 [connection signal="pressed" from="Menu/MainHBox/ProfileMargin/VBoxContainer/Stats" to="." method="_on_stats_pressed"]
 [connection signal="pressed" from="Menu/MainHBox/ProfileMargin/VBoxContainer/Achievements" to="." method="_on_achievements_pressed"]
-[connection signal="pressed" from="Menu/MainHBox/ProfileMargin/VBoxContainer/MatchHistory" to="." method="_on_match_history_pressed"]
 [connection signal="relay_back_to_menu_signal" from="Menu/SettingsMargin/SettingsMenu" to="." method="_on_settings_menu_relay_back_to_menu_signal"]
 [connection signal="pressed" from="Menu/TutorialMargin/Panel/MarginContainer/close_tutorial" to="." method="_on_close_tutorial_pressed"]
 [connection signal="pressed" from="Menu/CreditsMargin/Panel/MarginContainer/close_credits" to="." method="_on_close_credits_pressed"]

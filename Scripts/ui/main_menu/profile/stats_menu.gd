@@ -2,12 +2,12 @@ extends Control
 
 const StatRow = preload("res://Scenes/main_menu/profile/stat_row.tscn")
 
-@onready var left_column: VBoxContainer = $Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/StatsContainer/LeftColumn
-@onready var middle_column: VBoxContainer = $Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/StatsContainer/MiddleColumn
-@onready var right_column: VBoxContainer = $Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/StatsContainer/RightColumn
+@onready var left_column: VBoxContainer = $Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/MarginContainer/StatsContainer/LeftColumn
+@onready var middle_column: VBoxContainer = $Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/MarginContainer/StatsContainer/MiddleColumn
+@onready var right_column: VBoxContainer = $Panel/MarginContainer/HBoxContainer/ContentColumn/ScrollContainer/MarginContainer/StatsContainer/RightColumn
 @onready var header_template: VBoxContainer = $Panel/HeaderTemplate
 
-signal back_pressed 
+signal back_pressed
 
 func focus() -> void:
 	$Panel/MarginContainer/HBoxContainer/ButtonContainer/BackButton.grab_focus()
@@ -51,26 +51,29 @@ func update_stats() -> void:
 	add_stat("Enemies Shattered", str(int(stats.get("frozen_enemies_shattered", 0))), middle_column)
 	add_stat("Enemies Killed", str(int(stats.get("enemies_killed", 0))), middle_column)
 	add_stat("Bosses Killed", str(int(stats.get("bosses_killed", 0))), middle_column)
-
-	var enemy_kills = stats.get("enemies_killed_by_type", {})
-	if not enemy_kills.is_empty():
-		add_subheader("By Enemy Type", middle_column)
-		for enemy_name in enemy_kills:
-			add_stat(enemy_name, str(int(enemy_kills[enemy_name])), middle_column)
-
-	var boss_kills = stats.get("bosses_killed_by_type", {})
-	if not boss_kills.is_empty():
-		add_subheader("By Boss Type", middle_column)
-		for boss_name in boss_kills:
-			add_stat(boss_name, str(int(boss_kills[boss_name])), middle_column)
+	add_subheader("Survival", middle_column)
+	add_stat("Damage Taken", str(snappedf(stats.get("total_damage_taken", 0.0), 0.1)), middle_column)
+	add_stat("Damage Mitigated", str(snappedf(stats.get("damage_mitigated", 0.0), 0.1)), middle_column)
+	add_stat("Total Healing", str(snappedf(stats.get("total_healing", 0.0), 0.1)), middle_column)
+	add_stat("Health Stolen", str(snappedf(stats.get("health_stolen", 0.0), 0.1)), middle_column)
+	add_stat("Deaths", str(int(stats.get("player_deaths", 0))), middle_column)
 
 	# Right column
-	add_header("Survival", right_column)
-	add_stat("Damage Taken", str(snappedf(stats.get("total_damage_taken", 0.0), 0.1)), right_column)
-	add_stat("Damage Mitigated", str(snappedf(stats.get("damage_mitigated", 0.0), 0.1)), right_column)
-	add_stat("Total Healing", str(snappedf(stats.get("total_healing", 0.0), 0.1)), right_column)
-	add_stat("Health Stolen", str(snappedf(stats.get("health_stolen", 0.0), 0.1)), right_column)
-	add_stat("Deaths", str(int(stats.get("player_deaths", 0))), right_column)
+	var enemy_kills = stats.get("enemies_killed_by_type", {})
+	var boss_kills = stats.get("bosses_killed_by_type", {})
+
+	if not enemy_kills.is_empty() or not boss_kills.is_empty():
+		add_header("Kills by Type", right_column)
+
+		if not enemy_kills.is_empty():
+			add_subheader("Enemies", right_column)
+			for enemy_name in enemy_kills:
+				add_stat(enemy_name, str(int(enemy_kills[enemy_name])), right_column)
+
+		if not boss_kills.is_empty():
+			add_subheader("Bosses", right_column)
+			for boss_name in boss_kills:
+				add_stat(boss_name, str(int(boss_kills[boss_name])), right_column)
 
 func add_header(text: String, container: VBoxContainer) -> void:
 	var header = header_template.duplicate()
@@ -97,7 +100,7 @@ func format_time(seconds: int) -> String:
 	var remaining_seconds = seconds % 60
 	var hours = minutes / 60
 	var remaining_minutes = minutes % 60
-	
+
 	if hours > 0:
 		return "%d:%02d:%02d" % [hours, remaining_minutes, remaining_seconds]
 	else:

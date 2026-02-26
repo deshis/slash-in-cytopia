@@ -390,19 +390,6 @@ theme_override_font_sizes/font_size = 12
 text = "0"
 horizontal_alignment = 2
 
-[node name="KilledByLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=376444490]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 12
-text = "Killed By"
-
-[node name="KilledByValue" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=1899161328]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
-theme_override_font_sizes/font_size = 12
-text = "-"
-horizontal_alignment = 2
-
 [node name="ThrowablesLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=1008371268]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -420,11 +407,24 @@ horizontal_alignment = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
-text = "Apex"
+text = "Anomaly"
 
 [node name="ApexValue" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=980111109]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
 theme_override_font_sizes/font_size = 12
 text = "No"
+horizontal_alignment = 2
+
+[node name="KilledByLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=376444490]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Killed By"
+
+[node name="KilledByValue" type="Label" parent="MarginContainer/VBoxContainer/StatsSection/StatsGrid" unique_id=1899161328]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 12
+text = "-"
 horizontal_alignment = 2
