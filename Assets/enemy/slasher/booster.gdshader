@@ -2,19 +2,27 @@ shader_type spatial;
 
 render_mode depth_draw_always, blend_mix, cull_disabled;
 
+group_uniforms Albedo;
 uniform vec4 main_color: source_color;
-uniform sampler2D scroll_texture: source_color, repeat_disable;
+uniform sampler2D base_texture: source_color, repeat_disable;
+uniform vec2 base_uv_scale = vec2(1.0, 1.0);
+
+group_uniforms Scroll;
+uniform sampler2D scroll_texture: source_color;
+uniform vec2 scroll_uv_scale = vec2(1.0, 1.0);
 uniform float scroll_speed = 1.0;
-uniform bool invert_boost_direction = false;
+uniform bool invert_direction = false;
+group_uniforms Scroll.Distort;
 uniform sampler2D distort_texture: source_color;
 uniform float distort_intensity = 0.5;
 uniform float distort_scroll_speed = 1.0;
+group_uniforms Scroll.Displacement;
 uniform float displacement_intensity = 0.5;
 uniform float displacement_speed = 0.5;
+
+group_uniforms Emission;
 uniform vec4 emission : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform float emission_energy = 1.0;
-uniform float alpha_threshold = 0.0;
-uniform bool use_threshold = false;
 
 void vertex() {	
 	vec4 scroll = texture(distort_texture, UV * displacement_speed * TIME);
@@ -23,23 +31,15 @@ void vertex() {
 }
 
 void fragment() {
-	vec2 moving_uv = UV;
+	vec2 scroll_uv = UV * scroll_uv_scale;
+	scroll_uv.y += TIME * scroll_speed * (invert_direction ? -1.0 : 1.0);
 	
-	if (invert_boost_direction) {
-		moving_uv.y += TIME * scroll_speed;
-	} else{
-		moving_uv.y -= TIME * scroll_speed;
-	}
+	scroll_uv.y += texture(distort_texture, UV * distort_scroll_speed * TIME).r;
 	
-	vec4 scroll = texture(scroll_texture, moving_uv + texture(distort_texture, UV + vec2(0, distort_scroll_speed * TIME)).r * distort_intensity);
+	vec4 scroll = texture(scroll_texture, scroll_uv);
 
 	ALBEDO = main_color.rgb;
 	EMISSION = emission.rgb * emission_energy;
 	float alpha = main_color.a * scroll.a;
-
-	if (use_threshold && alpha < alpha_threshold) {
-		discard;
-	} else {
-		ALPHA = alpha;
-	}
+	ALPHA = texture(base_texture, UV * base_uv_scale).r * scroll.a * main_color.a;
 }

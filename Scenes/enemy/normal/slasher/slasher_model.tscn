@@ -63,7 +63,7 @@ shadow_mesh = SubResource("ArrayMesh_n6486")
 
 [node name="slasher" unique_id=1542517984 instance=ExtResource("1_cx47c")]
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1342116155) index="0" unique_id=1797874611]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(802460610) index="0" unique_id=2117919126]
 bones/1/position = Vector3(1.0388283e-15, 0.0080328435, 1.0380865)
 bones/1/rotation = Quaternion(0.7400656, 8.017238e-08, 8.82227e-08, 0.67253476)
 bones/3/rotation = Quaternion(0.035570968, -5.9416106e-08, 6.3659167e-09, 0.9993672)
@@ -79,16 +79,16 @@ bones/14/rotation = Quaternion(-0.51859844, -0.072578825, 0.009568948, 0.8518783
 bones/15/rotation = Quaternion(0.99068063, 0.008310129, -0.124659345, 0.054248344)
 bones/16/rotation = Quaternion(0.040714383, 9.42189e-06, -4.59869e-07, 0.99917084)
 bones/17/rotation = Quaternion(-0.65625274, 0.092402324, 0.08785853, 0.74369013)
-bones/17/scale = Vector3(0.9999954, 0.99996954, 0.99999917)
+bones/17/scale = Vector3(0.9999966, 0.9999841, 0.99998313)
 bones/18/rotation = Quaternion(0.0021198515, 0.99981576, -0.01907829, 0.00010871801)
 bones/20/rotation = Quaternion(0.9906806, -0.008310152, 0.124659576, 0.0542484)
 bones/21/rotation = Quaternion(0.040714443, -9.419176e-06, 4.4750172e-07, 0.99917084)
 bones/22/rotation = Quaternion(-0.65625274, -0.092402376, -0.08785854, 0.74369013)
-bones/22/scale = Vector3(0.99999535, 0.9999695, 0.9999992)
+bones/22/scale = Vector3(0.99999636, 0.9999966, 0.99997115)
 bones/23/rotation = Quaternion(-0.0021197635, 0.99981576, -0.019078285, -0.00010858478)
-bones/24/rotation = Quaternion(2.6703162e-08, 0.9999801, -3.125075e-08, -0.006309781)
+bones/24/rotation = Quaternion(2.6839729e-08, 0.9999801, -3.4976296e-08, -0.0063097817)
 
-[node name="Body" parent="Armature/Skeleton3D" index="0" unique_id=487222534]
+[node name="Body" parent="Armature/Skeleton3D" index="0" unique_id=1599332921]
 surface_material_override/2 = SubResource("StandardMaterial3D_fpdsv")
 surface_material_override/3 = SubResource("StandardMaterial3D_0rwcs")
 
@@ -101,7 +101,7 @@ bone_idx = 4
 [node name="thruster_vfx_mesh" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" unique_id=1336513331 instance=ExtResource("2_3pm4q")]
 transform = Transform3D(0.3, 0, 0, 0, 0.24574563, 0.3441459, 0, -0.17207295, 0.49149126, 0, 0.276, -0.2)
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=129780084]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1863649674]
 autoplay = &"Idle"
 
 [node name="DashAttackSlashVFX" type="GPUParticles3D" parent="." index="2" unique_id=1316587001]

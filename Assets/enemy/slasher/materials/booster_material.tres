@@ -1,10 +1,11 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://dwvklehetcf5o"]
 
 [ext_resource type="Shader" uid="uid://c5u5jq0c24fsp" path="res://Assets/enemy/slasher/booster.gdshader" id="1_jyjkb"]
-[ext_resource type="Texture2D" uid="uid://q04o05q62k23" path="res://Assets/vfx/slash/energy_slash.png" id="2_oc3yb"]
+[ext_resource type="Texture2D" uid="uid://cllru05noagxf" path="res://Assets/vfx/magic/blast.png" id="2_ogrxw"]
+[ext_resource type="Texture2D" uid="uid://c5okhx5774ilm" path="res://Assets/vfx/impact/impact_tex.png" id="3_ogrxw"]
 
 [sub_resource type="Gradient" id="Gradient_gw4ud"]
-colors = PackedColorArray(0.30342007, 0.30342007, 0.30342004, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.5576093, 0.5576094, 0.5576092, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_x3f5h"]
 
@@ -16,16 +17,17 @@ seamless = true
 [resource]
 render_priority = 0
 shader = ExtResource("1_jyjkb")
-shader_parameter/main_color = Color(0.877918, 0.59884745, 0.14342004, 1)
-shader_parameter/scroll_texture = ExtResource("2_oc3yb")
+shader_parameter/main_color = Color(0.8964063, 0.6143372, 0.15821609, 1)
+shader_parameter/base_texture = ExtResource("2_ogrxw")
+shader_parameter/base_uv_scale = Vector2(1, 2)
+shader_parameter/scroll_texture = ExtResource("3_ogrxw")
+shader_parameter/scroll_uv_scale = Vector2(1, 2)
 shader_parameter/scroll_speed = 8.0
-shader_parameter/invert_boost_direction = true
+shader_parameter/invert_direction = false
 shader_parameter/distort_texture = SubResource("NoiseTexture2D_46gfk")
-shader_parameter/distort_intensity = 0.887
-shader_parameter/distort_scroll_speed = 2.0
-shader_parameter/displacement_intensity = 0.811
-shader_parameter/displacement_speed = 8.0
-shader_parameter/emission = Color(0.8784314, 0.6, 0.14509805, 1)
+shader_parameter/distort_intensity = 5.0
+shader_parameter/distort_scroll_speed = 3.0
+shader_parameter/displacement_intensity = 3.0
+shader_parameter/displacement_speed = 1.5
+shader_parameter/emission = Color(0.8843355, 0.6463722, 0.33138826, 1)
 shader_parameter/emission_energy = 5.0
-shader_parameter/alpha_threshold = 0.26
-shader_parameter/use_threshold = false
