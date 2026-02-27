@@ -91,9 +91,6 @@ func _physics_process(delta: float) -> void:
 		STRAFE:
 			process_strafe(delta)
 			
-		SHOOT:
-			process_attack()
-			
 		CHARGE_UP:
 			process_strafe(delta)
 			
@@ -146,6 +143,10 @@ func change_state(new_state: String, duration := 0.0):
 			
 			#doesn't seem to do shit
 			current_target_range = target_range + randf_range(-range_variance, range_variance)
+			
+		SHOOT:
+			shoot()
+		
 
 func process_face_player(delta: float) -> void:
 
@@ -203,7 +204,7 @@ func laser_pointer(from: Vector3, to: Vector3) -> void:
 	laser_pointer_mesh.rotate_object_local(Vector3.RIGHT, deg_to_rad(90))
 	laser_pointer_mesh.mesh.height = dist
 	
-func process_attack() -> void:
+func shoot() -> void:
 	
 	self.current_speed *= 0.35
 	self.strafe_speed *= 0.35
@@ -265,22 +266,14 @@ func process_strafe(delta: float) -> void:
 	if not player:
 		change_state(IDLE)
 		return
-		
-	is_stuck = true
-	
+
 	if charging_up && !shot_burst && state_timer < 0:
 		shot_burst = true
 		is_stuck = false
 		charged_up()
 		
-	if not player:
-		change_state(IDLE)
-		return
-		
-	#if state_timer < 0:            
-		#change_state(IDLE)
-		#return
-				
+	is_stuck = true
+
 	var dist = global_position.distance_to(player.global_position)
 	
 	var dir_to_player = (player.global_position - global_position).normalized()

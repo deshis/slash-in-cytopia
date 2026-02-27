@@ -81,9 +81,6 @@ func _physics_process(delta: float) -> void:
 		STRAFE:
 			process_strafe(delta)
 			
-		SHOOT:
-			process_attack()
-			
 		CHARGE_UP:
 			process_strafe(delta)
 			
@@ -132,6 +129,9 @@ func change_state(new_state: String, duration := 0.0):
 			
 			#doesn't seem to do shit
 			current_target_range = target_range + randf_range(-range_variance, range_variance)
+			
+		SHOOT:
+			process_attack()
 
 func process_face_player(delta: float) -> void:
 
