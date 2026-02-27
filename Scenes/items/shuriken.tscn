@@ -1,14 +1,9 @@
 [gd_scene format=3 uid="uid://b0b76u6s21w7g"]
 
 [ext_resource type="Script" uid="uid://b3c60k0xmmh2q" path="res://Scripts/items/ThrowableLogic.gd" id="1_7ceyw"]
+[ext_resource type="ArrayMesh" uid="uid://bl47j5tg14cor" path="res://Assets/items/throwables/shuriken_mesh.res" id="2_viy6j"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ux5in"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_ttsdu"]
-height = 0.25
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1gfq"]
-albedo_color = Color(0.56095546, 0.56095487, 0.5609544, 1)
 
 [node name="RigidBody3D" type="RigidBody3D" unique_id=525632464]
 input_ray_pickable = false
@@ -21,8 +16,7 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("SphereShape3D_ux5in")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=244137259]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
-mesh = SubResource("SphereMesh_ttsdu")
-surface_material_override/0 = SubResource("StandardMaterial3D_k1gfq")
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0, 0)
+mesh = ExtResource("2_viy6j")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

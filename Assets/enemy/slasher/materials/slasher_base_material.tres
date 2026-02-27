@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://diws2buqgorvv" path="res://Assets/vfx/hit_flash/hit_flash.tres" id="1_a2cnu"]
 [ext_resource type="Shader" uid="uid://dp145x6w65ey5" path="res://Assets/materials/shaders/cell_shader.gdshader" id="2_mb0e8"]
-[ext_resource type="Texture2D" uid="uid://do0h0o4fdxfsm" path="res://Assets/enemy/slasher/textures/slasher_texture.png" id="3_xdplt"]
+[ext_resource type="Texture2D" uid="uid://mdnrttyx0kpn" path="res://Assets/enemy/slasher/textures/slasher_texture2.png" id="3_xifma"]
 
 [sub_resource type="Gradient" id="Gradient_khwys"]
 offsets = PackedFloat32Array(0.7467687, 0.97083235)
@@ -30,7 +30,7 @@ render_priority = 0
 next_pass = ExtResource("1_a2cnu")
 shader = ExtResource("2_mb0e8")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("3_xdplt")
+shader_parameter/albedo_texture = ExtResource("3_xifma")
 shader_parameter/fade_alpha = 1.0
 shader_parameter/shading_gradient = SubResource("GradientTexture1D_ihwbr")
 shader_parameter/use_fresnel = true

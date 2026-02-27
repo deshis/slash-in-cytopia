@@ -13,6 +13,9 @@ metadata/_custom_type_script = "uid://dpdusrc1o1nfp"
 
 [resource]
 script = ExtResource("2_wji5b")
+item_name = "Cryo Grenade"
+item_stat_info = "Freezes enemies caught in the blast radius for 5 seconds"
+item_description = "Cooldown: 6 seconds"
 type = 8
 grade = 2
 icon = ExtResource("3_aefui")

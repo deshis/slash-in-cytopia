@@ -149,7 +149,10 @@ func _physics_process(delta: float) -> void:
 
 
 func change_state(new_state: String, duration := 0.0):
-
+	
+	if is_dead:
+		return
+		
 	state = new_state
 	state_timer = duration
 	
@@ -168,7 +171,8 @@ func change_state(new_state: String, duration := 0.0):
 		
 		STUN:
 			for instance in active_attacks:
-				instance.remove_attack()
+				if instance != null:
+					instance.remove_attack()
 		
 		DEAD:
 			for instance in active_attacks:

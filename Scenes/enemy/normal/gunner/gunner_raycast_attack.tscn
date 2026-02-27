@@ -9,8 +9,9 @@ data = PackedVector3Array(-0.935, 1.0435, 0.20529999, -0.67249995, 1.0435, 0.163
 [node name="Attack" type="Node3D" unique_id=1971024421]
 script = ExtResource("1_1ns7u")
 damage = 12.0
-spread = 0.15
+spread = 0.12
 damage_per_level = 1.0
+player_eye_height = 1.5
 shooting_particle = "ranged_slasher_shoot_green"
 beam_scene = ExtResource("2_qov3i")
 

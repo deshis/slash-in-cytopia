@@ -5,11 +5,17 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_282c6"]
 transparency = 1
 emission_enabled = true
-emission = Color(0, 3.4295025, 0, 1)
-emission_energy_multiplier = 8.0
+emission = Color(1.9242055, 1.7041964e-05, 2.5404172e-06, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pndnl"]
+transparency = 1
+emission_enabled = true
+emission = Color(2.4581475, 0, 0, 1)
+emission_energy_multiplier = 7.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_cj7ty"]
-material = SubResource("StandardMaterial3D_282c6")
+material = SubResource("StandardMaterial3D_pndnl")
 top_radius = 0.01
 bottom_radius = 0.01
 height = 1.0

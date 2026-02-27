@@ -11,10 +11,14 @@ class_name SlasherRanged
 @export var range_variance := 1.0
 @export var fire_rate := 0.25
 @export var burst_count := 1
+@export var laser_pointer_direction: Node3D
+@export var laser_pointer_mesh: Node3D
 
 @onready var attack_duration = $"model/AnimationPlayer".get_animation("Attack").length
 @onready var weapon_mesh = $Weapon
-var weapon_instance
+@onready var attachment_weapon_mesh = $model/rig/Skeleton3D/WeaponAttachment/Offset/MeshInstance3D
+@onready var laser_pointer_location = $model/rig/Skeleton3D/WeaponAttachment/LaserPointerAttach
+var mat
 
 var current_target_range: float
 var strafe_direction := 1
@@ -36,12 +40,32 @@ var shots_fired := 0
 var strafe_speed_og := 0.0
 var current_speed_og := 0.0
 
+## Laser pointer
+
+var parent = null
+var shooter: Node3D
+var hit_pos
+var effect: Node3D
+
 func _ready() -> void:
 	super._ready()
+	shooter = get_parent()
 	
-	weapon_instance = $model/rig/Skeleton3D/WeaponAttachment/Offset/MeshInstance3D
-	weapon_instance.scale = Vector3(0.22, 0.46, 0.22)
-	weapon_instance.mesh = weapon_mesh.mesh
+	is_dead = false
+	
+	attachment_weapon_mesh.mesh = weapon_mesh.mesh
+	
+	attachment_weapon_mesh.rotation = Vector3(-0.6,160,0)
+	attachment_weapon_mesh.scale = Vector3(0.08, 0.095, 0.090)
+	attachment_weapon_mesh.transform.origin.z += 0.1
+	attachment_weapon_mesh.transform.origin.y += 0.1
+	
+	#laser_pointer_location.transform = attachment_weapon_mesh.transform
+	#laser_pointer_location.transform.origin.x += 0.05
+
+	
+	mat = attachment_weapon_mesh.get_active_material(1).duplicate()
+	attachment_weapon_mesh.set_surface_override_material(1, mat)
 	
 	strafe_speed_og = strafe_speed
 	current_speed_og = self.current_speed
@@ -127,7 +151,49 @@ func process_face_player(delta: float) -> void:
 		#print("Charging up")
 		change_state(CHARGE_UP, charge_up_duration + charge_up_overhead)
 		charging_up = true
+		
+func _process(_delta: float) -> void:
+	
+	if self.state == DEAD:
+		laser_pointer_mesh.visible = false
+		return
+		
+	var shoot_pos = laser_pointer_location.global_position
+	var target_pos = laser_pointer_direction.global_position
+	var direction = (target_pos - shoot_pos).normalized()
+	var space = shooter.get_world_3d().direct_space_state
+		
+	var distance = shoot_pos.distance_to(target_pos)
+	var to = shoot_pos + (direction.normalized() * (distance*8))
+	var query = PhysicsRayQueryParameters3D.create(shoot_pos, to)
+	
+	query.exclude = [shooter] + shooter.get_children()
 
+	var result = space.intersect_ray(query)
+	var beam_end_pos: Vector3
+
+	if !result:
+		beam_end_pos = query.to
+		laser_pointer(shoot_pos, beam_end_pos)
+		return
+		
+	var hit_pos = result.position
+	laser_pointer(shoot_pos, hit_pos)
+
+func laser_pointer(from: Vector3, to: Vector3) -> void:
+	
+	if !laser_pointer_mesh:
+		print("no mesh")
+		return
+		
+	var dist = from.distance_to(to)
+	var dir = (to - from).normalized()
+	
+	laser_pointer_mesh.global_position = (from + to)/2.0
+	laser_pointer_mesh.look_at(to, Vector3.UP)
+	laser_pointer_mesh.rotate_object_local(Vector3.RIGHT, deg_to_rad(90))
+	laser_pointer_mesh.mesh.height = dist
+	
 func process_attack() -> void:
 	
 	self.current_speed *= 0.35

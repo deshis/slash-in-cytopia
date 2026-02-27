@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://dwvklehetcf5o"]
 
-[ext_resource type="Shader" path="res://Assets/enemy/slasher/booster.gdshader" id="1_jyjkb"]
+[ext_resource type="Shader" uid="uid://c5u5jq0c24fsp" path="res://Assets/enemy/slasher/booster.gdshader" id="1_jyjkb"]
 [ext_resource type="Texture2D" uid="uid://q04o05q62k23" path="res://Assets/vfx/slash/energy_slash.png" id="2_oc3yb"]
 
 [sub_resource type="Gradient" id="Gradient_gw4ud"]

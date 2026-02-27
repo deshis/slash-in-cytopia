@@ -47,7 +47,7 @@ func _ready() -> void:
 	attachment_weapon_mesh.mesh = weapon_mesh.mesh
 	
 	attachment_weapon_mesh.rotation = Vector3(-0.6,160,0)
-	attachment_weapon_mesh.scale = Vector3(0.08, 0.095, 0.095)
+	attachment_weapon_mesh.scale = Vector3(0.078, 0.094, 0.094)
 	attachment_weapon_mesh.transform.origin.z += 0.1
 	attachment_weapon_mesh.transform.origin.y += 0.1
 	
@@ -256,6 +256,12 @@ func start_burst():
 		shots_fired = 0
 		self.current_speed = current_speed_og
 		self.strafe_speed = strafe_speed_og
+		
+		if self.state == STUN:
+			if self.debuff_timer.time_left:
+				change_state(STUN,remaining_debuff_duration)
+				return
+		
 		change_state(STRAFE, strafe_duration)
 
 func _on_shoot_cooldown_timeout() -> void:

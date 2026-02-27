@@ -78,7 +78,6 @@ func process_jump(delta: float) -> void:
 	apply_movement(delta, dir)
 	
 	if state_timer < 0:
-		print("guh")
 		change_state(ATTACK, attack_windup_duration / 2.0)
 
 func _on_navigation_agent_3d_target_reached() -> void:

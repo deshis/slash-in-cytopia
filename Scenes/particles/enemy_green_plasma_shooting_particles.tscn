@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cru4vu5lhhsng" path="res://Scripts/particles/particle.gd" id="1_vuu7r"]
 [ext_resource type="Texture2D" uid="uid://c15dsxqpwd0k" path="res://Assets/particles/star_05.png" id="2_o6n5h"]
-[ext_resource type="Texture2D" uid="uid://b65cgu73bx0gy" path="res://Assets/particles/a_leaf.png" id="2_tjx6a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_876rw"]
 transparency = 1
@@ -10,11 +9,11 @@ blend_mode = 1
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("2_tjx6a")
+albedo_texture = ExtResource("2_o6n5h")
 
 [sub_resource type="Gradient" id="Gradient_u5xt3"]
 offsets = PackedFloat32Array(0, 0.73828125, 1)
-colors = PackedColorArray(0.69186175, 1.007952, 0, 1, 0.19769639, 0.4204058, 0, 1, 0.043137256, 0.12941177, 0, 0)
+colors = PackedColorArray(0.69186175, 0, 0, 1, 1, 0.49803922, 0.039215688, 1, 0.043137256, 0.12941177, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_dd7ps"]
 gradient = SubResource("Gradient_u5xt3")
@@ -42,9 +41,9 @@ particle_flag_align_y = true
 emission_shape = 1
 emission_sphere_radius = 0.25
 spread = 180.0
-initial_velocity_min = 5.0
-initial_velocity_max = 7.0
-gravity = Vector3(0, -15, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, -20, 0)
 attractor_interaction_enabled = false
 scale_min = 0.14999999
 scale_max = 0.75
@@ -59,11 +58,11 @@ sub_emitter_mode = 3
 sub_emitter_amount_at_collision = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_612dw"]
-size = Vector2(0.5, 0.25)
+size = Vector2(0.55, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_876rw"]
 offsets = PackedFloat32Array(0.42264152, 0.7056604)
-colors = PackedColorArray(0.41480702, 0.5928458, 0, 1, 0, 0, 0, 0.9372549)
+colors = PackedColorArray(0.99215686, 0.17254902, 0, 1, 0, 0, 0, 0.9372549)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_u5xt3"]
 gradient = SubResource("Gradient_876rw")
@@ -82,7 +81,7 @@ gravity = Vector3(0, -0.2, 0)
 attractor_interaction_enabled = false
 scale_min = 0.79999995
 scale_curve = SubResource("CurveTexture_at4mf")
-color = Color(4.562, 2.7963762, 2.0423558, 1)
+color = Color(3.2944162, 2.0120451, 1.4642361, 1)
 color_ramp = SubResource("GradientTexture1D_u5xt3")
 collision_mode = 2
 
@@ -114,7 +113,7 @@ attractor_interaction_enabled = false
 scale_min = 3.5
 scale_max = 3.5
 scale_curve = SubResource("CurveTexture_dehpx")
-color = Color(0.21206094, 1.5392512, 0, 1)
+color = Color(1.4662942, 0.18014605, 0.16073093, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c270s"]
 transparency = 1
@@ -182,7 +181,6 @@ process_material = SubResource("ParticleProcessMaterial_3msxb")
 draw_pass_1 = SubResource("QuadMesh_612dw")
 
 [node name="SubExplosion" type="GPUParticles3D" parent="Sparks" unique_id=1959034948]
-visible = false
 emitting = false
 amount = 25
 lifetime = 0.8
@@ -202,7 +200,7 @@ process_material = SubResource("ParticleProcessMaterial_frj5g")
 draw_pass_1 = SubResource("QuadMesh_aqpo0")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1007594467]
-light_color = Color(0.64552784, 0.98681414, 0, 1)
+light_color = Color(0.64705884, 0, 0, 1)
 omni_range = 0.75
 omni_attenuation = 1.75
 

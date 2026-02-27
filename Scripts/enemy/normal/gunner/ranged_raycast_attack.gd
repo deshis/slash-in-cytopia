@@ -71,7 +71,7 @@ func start_attack() -> void:
 	#var from = shooting_location.global_position
 	var distance = shoot_pos.distance_to(target_pos)
 	#var to = player.global_position + Vector3.UP * player_eye_height
-	var to = shoot_pos + (direction.normalized() * (distance*5))
+	var to = shoot_pos + (direction.normalized() * (distance*6))
 	#var query = PhysicsRayQueryParameters3D.create(from, to)
 	var query = PhysicsRayQueryParameters3D.create(shoot_pos, to)
 	
