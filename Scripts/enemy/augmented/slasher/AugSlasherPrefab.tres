@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyPrefab" format=3 uid="uid://f1l3e7pudln"]
 
-[ext_resource type="PackedScene" uid="uid://ds20mx1sv2tf7" path="res://Scenes/enemy/augmented/slasher/aug_slasher.tscn" id="1_jsvac"]
+[ext_resource type="PackedScene" uid="uid://cwsur4sabp3hn" path="res://Scenes/enemy/augmented/slasher/aug_enemy_slasher.tscn" id="1_vccm6"]
 [ext_resource type="Script" uid="uid://cqw5n3pgcmai6" path="res://Scripts/enemy/EnemyPrefab.gd" id="2_32tfx"]
 [ext_resource type="Resource" uid="uid://3huwnne13hp3" path="res://Scripts/enemy/augmented/slasher/aug_slasher_stats.tres" id="3_120wt"]
 [ext_resource type="Script" uid="uid://c3xt5r4pnu2pd" path="res://Scripts/enemy/targets/TargetPlayer.gd" id="4_bpvby"]
@@ -12,6 +12,6 @@ metadata/_custom_type_script = "uid://c3xt5r4pnu2pd"
 [resource]
 script = ExtResource("2_32tfx")
 stats = ExtResource("3_120wt")
-scene = ExtResource("1_jsvac")
+scene = ExtResource("1_vccm6")
 target_provider = SubResource("Resource_x4qm1")
 metadata/_custom_type_script = "uid://cqw5n3pgcmai6"

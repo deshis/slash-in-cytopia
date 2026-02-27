@@ -22,6 +22,6 @@ shader = ExtResource("1_5rtd7")
 shader_parameter/base_color = Color(1, 0.30588236, 0.24705882, 0.47843137)
 shader_parameter/shape_texture = SubResource("GradientTexture2D_q27y4")
 shader_parameter/erosion_texture = SubResource("NoiseTexture2D_q27y4")
-shader_parameter/emission_intensity = 1.5000000074506001
+shader_parameter/emission_intensity = 1.5000000074506
 shader_parameter/uv_scale = Vector2(1, 0.7)
 shader_parameter/uv_offset = Vector2(0, 0)

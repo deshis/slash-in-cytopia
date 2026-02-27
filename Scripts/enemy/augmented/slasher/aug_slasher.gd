@@ -25,7 +25,7 @@ func process_navigation(delta: float) -> void:
 	var dist = global_position.distance_to(player.global_position)
 	if dist > max_dist_from_player and dash_cooldown < 0:
 		dash_cooldown = max_dash_cooldown
-		
+
 		if randf() < dash_chance:
 			change_state(FACE_PLAYER, face_player_duration)
 			return
@@ -36,10 +36,21 @@ func process_dash(delta: float) -> void:
 	var dash_dir = Vector3(sin(rotation.y), 0, cos(rotation.y)).normalized()
 	apply_movement(delta, dash_dir)
 	
+	var dist = global_position.distance_to(player.global_position)
+	
 	if state_timer < 0:
 		current_dash += 1
 		
 		if current_dash < dash_amount:
+			thruster.visible = false
 			change_state(FACE_PLAYER, face_player_duration)
+			
 		else:
+			thruster.visible = false
 			change_state(COOLDOWN, cooldown_duration)
+			print("Cooldown")
+	
+	#only playing attack anim if player is close enough
+	if state_timer < 0 or dist < attack_range:
+		thruster.visible = false
+		change_state(ATTACK, attack_duration)

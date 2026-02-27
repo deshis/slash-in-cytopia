@@ -64,6 +64,7 @@ func change_state(new_state: String, duration := 0.0):
 			perform_attack(attack)
 			animator.play("DashAttack")
 			current_speed = 0
+			print("what")
 
 
 func process_face_player(delta: float) -> void:

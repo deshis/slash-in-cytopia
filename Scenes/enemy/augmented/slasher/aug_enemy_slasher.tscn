@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cwsur4sabp3hn"]
+
+[ext_resource type="Script" uid="uid://dh7hmamc4xop8" path="res://Scripts/enemy/augmented/slasher/aug_slasher.gd" id="1_adl4x"]
+[ext_resource type="PackedScene" uid="uid://bkluuxs7dqdp2" path="res://Scenes/enemy/normal/slasher/attack_slasher.tscn" id="2_j4d0e"]
+[ext_resource type="PackedScene" uid="uid://b2d8sehgw4o0e" path="res://Scenes/enemy/augmented/slasher/aug_slasher_model.tscn" id="3_adl4x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_puxwi"]
+size = Vector3(0.7, 2, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_48d4a"]
+size = Vector3(1, 2, 1)
+
+[node name="Slasher" type="CharacterBody3D" unique_id=1376517030 node_paths=PackedStringArray("nav_agent")]
+transform = Transform3D(1.32, 0, 0, 0, 1.32, 0, 0, 0, 1.32, 0, 0, 0)
+collision_layer = 4096
+collision_mask = 4097
+motion_mode = 1
+wall_min_slide_angle = 0.0
+safe_margin = 0.1
+script = ExtResource("1_adl4x")
+dash_range = 4.0
+dash_speed = 12.0
+dash_duration = 0.45
+attack_duration = 0.7
+nav_agent = NodePath("NavigationAgent3D")
+attack = ExtResource("2_j4d0e")
+attack_range = 1.0
+
+[node name="model" parent="." unique_id=241679205 instance=ExtResource("3_adl4x")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1889568083]
+target_desired_distance = 3.0
+time_horizon_agents = 0.0
+use_3d_avoidance = true
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1297325411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_puxwi")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1901266866]
+collision_layer = 8192
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox" unique_id=586299555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_48d4a")
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
