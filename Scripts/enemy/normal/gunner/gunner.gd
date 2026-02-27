@@ -30,6 +30,8 @@ const STRAFE = "strafe"
 const SHOOT = "shoot"
 const CHARGE_UP = "charge_up"
 
+var shot_burst: bool = false
+var is_stuck: bool = false
 var is_ranged: bool = true
 var charging_up: bool = false
 var charge_up_overhead := 1.0
@@ -119,10 +121,17 @@ func change_state(new_state: String, duration := 0.0):
 			current_speed = 0
 			
 		STRAFE:
+			shot_burst = false
+			
+			##NOTE: forcing to shoot if stuck jerking off for seemingly no reason
+			get_tree().create_timer(strafe_duration + 0.25).timeout.connect(charged_up)
+			current_target_range = target_range
+			
 			animator.play("Walk")
 			current_speed = strafe_speed
 
 			current_target_range = target_range + randf_range(-range_variance, range_variance)
+
 			
 		CHARGE_UP:
 			if charging_up:
@@ -132,8 +141,8 @@ func change_state(new_state: String, duration := 0.0):
 			animator.play("Walk")
 			current_speed = strafe_speed
 			
-			self.current_speed *= 0.5
-			self.strafe_speed *= 0.5
+			#self.current_speed *= 0.5
+			#self.strafe_speed *= 0.5
 			
 			#doesn't seem to do shit
 			current_target_range = target_range + randf_range(-range_variance, range_variance)
@@ -199,8 +208,6 @@ func process_attack() -> void:
 	self.current_speed *= 0.35
 	self.strafe_speed *= 0.35
 	
-	change_state(STRAFE, cooldown_duration)
-	
 	var shots_fired := 0
 	
 	if strafe_direction == 0:
@@ -209,7 +216,6 @@ func process_attack() -> void:
 	else:
 		strafe_direction = randf_range(-2,2)
 	
-	#perform_attack(attack)
 	#change_state(STRAFE, strafe_duration)
 	
 	start_burst()
@@ -226,17 +232,15 @@ func process_attack_wrap_up(_delta: float) -> void:
 		change_state(COOLDOWN, cooldown_duration)
 
 func _on_navigation_agent_3d_target_reached() -> void:
+	
 	#change_state(FACE_PLAYER, face_player_duration)
 	##NOTE: Makes them play a suffed animation
-	
 	change_state(FACE_PLAYER, 0.25)
-
-##NOTE:
-#Handles both strafing and partial charge-up logic
-func process_strafe(delta: float) -> void:
 	
-	#ensuring the attack goes off with a generous trigger
-	if charging_up && state_timer < charge_up_overhead:
+func charged_up() -> void:
+	
+	if is_stuck:
+		is_stuck = false
 		charging_up = false
 		
 		self.current_speed = current_speed_og
@@ -244,14 +248,38 @@ func process_strafe(delta: float) -> void:
 		
 		#print("Charged up")
 		change_state(SHOOT, attack_windup_duration)
+		return
+		
+	is_stuck = false
+	charging_up = false
+	
+	self.current_speed = current_speed_og
+	self.strafe_speed = strafe_speed_og
+	
+	#print("Charged up")
+	change_state(SHOOT, attack_windup_duration)
+
+##NOTE:
+#Handles both strafing and partial charge-up logic
+func process_strafe(delta: float) -> void:
+	if not player:
+		change_state(IDLE)
+		return
+		
+	is_stuck = true
+	
+	if charging_up && !shot_burst && state_timer < 0:
+		shot_burst = true
+		is_stuck = false
+		charged_up()
 		
 	if not player:
 		change_state(IDLE)
 		return
 		
-	if state_timer < 0:            
-		change_state(IDLE)
-		return
+	#if state_timer < 0:            
+		#change_state(IDLE)
+		#return
 				
 	var dist = global_position.distance_to(player.global_position)
 	
@@ -280,11 +308,21 @@ func charge_up():
 	pass
 	
 func start_burst():
+	
 	if shots_fired < burst_count:
 		perform_attack(attack)
 		shots_fired += 1
 		get_tree().create_timer(fire_rate).timeout.connect(start_burst)
+		
 	else:
+		if shots_fired == burst_count:
+			shots_fired = 0
+			self.current_speed = current_speed_og
+			self.strafe_speed = strafe_speed_og
+			change_state(STRAFE, strafe_duration)
+			return
+			
+		perform_attack(attack)
 		shots_fired = 0
 		self.current_speed = current_speed_og
 		self.strafe_speed = strafe_speed_og
