@@ -6213,6 +6213,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Assets/enemy/slasher/materials/slasher_base_material.tres",
 "use_external/path": "uid://cvl7me2m0ue4h"
+},
+"ThrusterBase": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/enemy/slasher/materials/booster_base.tres",
+"use_external/path": "uid://dg3ct72ci12nh"
 }
 }
 }
