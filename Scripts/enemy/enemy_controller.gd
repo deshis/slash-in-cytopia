@@ -489,7 +489,7 @@ func return_to_pool() -> void:
 	visible = false
 	process_mode = Node.PROCESS_MODE_DISABLED
 	
-	if not ragdoll: #removing the health bar twice breaks stuff, and ragdoll healthbars are removed earlier
+	if not ragdoll && null: #removing the health bar twice breaks stuff, and ragdoll healthbars are removed earlier
 		health_bar.remove_health_bar()
 	
 	hit_flash.set_shader_parameter('strength',0.0)

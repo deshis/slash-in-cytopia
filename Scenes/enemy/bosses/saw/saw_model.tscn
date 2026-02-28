@@ -1,9 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://bikxi37eqi0c3"]
+[gd_scene format=3 uid="uid://bikxi37eqi0c3"]
 
 [ext_resource type="PackedScene" uid="uid://b67sros6cpwk2" path="res://Assets/enemy/saw/saw.glb" id="1_cwq5b"]
 [ext_resource type="ArrayMesh" uid="uid://bc7r3wnsf15fu" path="res://Assets/enemy/saw/saw_mesh.res" id="2_41p2u"]
+[ext_resource type="ArrayMesh" uid="uid://u1cnsl8e6qoq" path="res://Assets/enemy/saw/saw_eye_mesh.res" id="2_kco4b"]
+[ext_resource type="Texture2D" uid="uid://dovdqeuldcpu" path="res://Assets/particles/light_01.png" id="3_vw8j8"]
 
-[node name="saw" instance=ExtResource("1_cwq5b")]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vw8j8"]
+load_path = "res://.godot/imported/saw_apollo-1x.png-69b136ec4ef3a78c3a036a7e265be39f.ctex"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0c83s"]
+noise_type = 3
+frequency = 0.0297
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gffq7"]
+noise = SubResource("FastNoiseLite_0c83s")
+seamless = true
+invert = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0gmv"]
+albedo_color = Color(1.353256, 1.353256, 1.353256, 1)
+albedo_texture = SubResource("CompressedTexture2D_vw8j8")
+metallic = 0.6
+metallic_specular = 0.4
+metallic_texture = SubResource("NoiseTexture2D_gffq7")
+metallic_texture_channel = 1
+roughness = 0.5
+grow_amount = -0.894
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0c83s"]
+load_path = "res://.godot/imported/saw_apollo-1x.png-69b136ec4ef3a78c3a036a7e265be39f.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gffq7"]
+albedo_color = Color(1.353256, 1.353256, 1.353256, 1)
+albedo_texture = SubResource("CompressedTexture2D_0c83s")
+
+[node name="saw" unique_id=961041573 instance=ExtResource("1_cwq5b")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="Skeleton3D" parent="rig" index="0"]
@@ -20,21 +51,46 @@ bones/15/rotation = Quaternion(0.6126247, 0.6126247, 0.35311615, -0.35311615)
 bones/16/rotation = Quaternion(-0.42484143, 0.565252, 0.4248405, 0.56525254)
 bones/17/rotation = Quaternion(3.5744475e-07, -2.0247093e-09, 0.7071069, 0.70710665)
 
-[node name="RightHand" type="BoneAttachment3D" parent="rig/Skeleton3D" index="2"]
+[node name="Body" parent="rig/Skeleton3D" index="0"]
+layers = 16
+material_override = SubResource("StandardMaterial3D_u0gmv")
+
+[node name="Wheels" parent="rig/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_gffq7")
+
+[node name="Eye" type="MeshInstance3D" parent="rig/Skeleton3D" index="2" unique_id=307605025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.001)
+mesh = ExtResource("2_kco4b")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="rig/Skeleton3D/Eye" index="0" unique_id=592002206]
+transform = Transform3D(5, 0, 0, 0, 4.872517, 1.1218644, 0, -1.1218644, 4.872517, 0, 6.667027, -0.31286854)
+light_color = Color(6.906, 0, 0, 1)
+light_energy = 2.0
+light_volumetric_fog_energy = 5.0
+light_projector = ExtResource("3_vw8j8")
+light_cull_mask = 4294967279
+shadow_enabled = true
+shadow_caster_mask = 4294967279
+spot_range = 8.0
+spot_attenuation = 1.25
+spot_angle = 50.0
+spot_angle_attenuation = 1.4640853
+
+[node name="RightHand" type="BoneAttachment3D" parent="rig/Skeleton3D" index="3" unique_id=1998388935]
 transform = Transform3D(0.27804065, -3.8373346e-07, -0.9605694, 0.48147154, 0.86531085, 0.13936357, 0.831191, -0.50123537, 0.24059188, -6.0990562, 5.160003, -4.687602)
 bone_name = "DiscSpot.R"
 bone_idx = 14
 
-[node name="Saw" type="MeshInstance3D" parent="rig/Skeleton3D/RightHand" index="0"]
+[node name="Saw" type="MeshInstance3D" parent="rig/Skeleton3D/RightHand" index="0" unique_id=1709522254]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("2_41p2u")
 
-[node name="LeftHand" type="BoneAttachment3D" parent="rig/Skeleton3D" index="3"]
+[node name="LeftHand" type="BoneAttachment3D" parent="rig/Skeleton3D" index="4" unique_id=298907653]
 transform = Transform3D(0.27804103, 1.0092339e-06, 0.96056914, -0.4814728, 0.8653101, 0.13936363, -0.83119005, -0.50123674, 0.24059223, 6.0990577, 5.1599994, -4.6875997)
 bone_name = "DiscSpot.L"
 bone_idx = 17
 
-[node name="Saw" type="MeshInstance3D" parent="rig/Skeleton3D/LeftHand" index="0"]
+[node name="Saw" type="MeshInstance3D" parent="rig/Skeleton3D/LeftHand" index="0" unique_id=2035509367]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("2_41p2u")
 skeleton = NodePath("../../RightHand")
