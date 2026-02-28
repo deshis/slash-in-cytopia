@@ -13,10 +13,28 @@ class_name Microbot
 var jump_dir := Vector3.UP
 
 @onready var trail = $"model/BlastWave"
+@onready var mesh = $model/rig/Skeleton3D/Microbot
 
+var mat
+var unique_mat
 const JUMP_WINDUP = "jump_attack_windup"
 const JUMP = "jump_attack"
 
+var og_color
+var og_energy
+
+func _ready() -> void:
+	super._ready()
+	mat = mesh.get_surface_override_material(1)
+	
+	if mat != null:
+		#Unfortunate
+		unique_mat = mat.duplicate()
+		mesh.set_surface_override_material(1,unique_mat)
+		
+		og_color = unique_mat.albedo_color
+		og_energy = unique_mat.emission_energy_multiplier
+	
 func _physics_process(delta: float) -> void:
 	match state:
 		JUMP_WINDUP:
@@ -49,9 +67,18 @@ func change_state(new_state: String, duration := 0.0):
 			trail.visible = false
 			animator.play("Stun")
 		ATTACK:
+			var tween = create_tween()
+			
+			tween.tween_property(unique_mat, "albedo_color", og_color + Color(4,4,6), 0.45)
+			tween.tween_property(unique_mat, "emission_energy_multiplier", og_energy + 14, 0.45)
+			
+			tween.tween_property(unique_mat, "albedo_color", og_color, 0.15)
+			tween.tween_property(unique_mat, "emission_energy_multiplier", og_energy, 0.10)
+			
 			ParticleManager.emit_particles("light_ray",global_position + Vector3(0,0.5,0))
 			animator.play("Attack")
 			animator.speed_scale = 2.0
+			
 		JUMP_WINDUP:
 			nav_agent.set_velocity(Vector3.ZERO)
 			jump_dir = global_position.direction_to(player.global_position).normalized()
@@ -62,8 +89,6 @@ func process_jump_windup() -> void:
 		return
 	
 	change_state(JUMP, jump_duration)
-
-
 
 func process_jump(delta: float) -> void:
 	var particle = ParticleManager.emit_particles("microbot_jump",global_position)

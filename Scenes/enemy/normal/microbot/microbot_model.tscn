@@ -4,6 +4,16 @@
 [ext_resource type="Shader" uid="uid://cv55fdtqonax8" path="res://Assets/vfx/impact/impact.gdshader" id="3_k2fx4"]
 [ext_resource type="Texture2D" uid="uid://c5okhx5774ilm" path="res://Assets/vfx/impact/impact_tex.png" id="4_qplab"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okxv3"]
+albedo_color = Color(4.0460863, 1.8648614, 1.922368, 1)
+emission_enabled = true
+emission = Color(0.7580018, 4.1873755e-05, 0.57434064, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odjep"]
+albedo_color = Color(0, 0.8243923, 1.353256, 1)
+emission_enabled = true
+emission = Color(0.81030643, 1.1996135, 1.1789893, 1)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fpnq0"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j30b5"]
@@ -58,6 +68,11 @@ bones/17/position = Vector3(-0.6875222, 0.08335894, -0.6875224)
 
 [node name="AugMicrobot" parent="rig/Skeleton3D" index="0" unique_id=1268647752]
 visible = false
+surface_material_override/1 = SubResource("StandardMaterial3D_okxv3")
+
+[node name="Microbot" parent="rig/Skeleton3D" index="1" unique_id=806452772]
+lod_bias = 11.688
+surface_material_override/1 = SubResource("StandardMaterial3D_odjep")
 
 [node name="BlastWave" parent="." index="1" unique_id=1834343691]
 transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1.4, 0, 0, 0)

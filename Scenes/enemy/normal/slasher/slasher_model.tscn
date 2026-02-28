@@ -7,7 +7,12 @@
 [ext_resource type="Material" uid="uid://dt2dfg2wkyh21" path="res://Assets/enemy/slasher/materials/dash_attack_slash_highlight.tres" id="4_fpdsv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdvm6"]
+albedo_color = Color(2.3133948, 2.3133948, 2.3133948, 1)
 albedo_texture = ExtResource("2_0rwcs")
+metallic = 0.57
+metallic_specular = 0.46
+roughness = 0.25
+anisotropy = 0.4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vgke"]
 resource_name = "Monitor"
