@@ -107,34 +107,20 @@ func load_scene_async(scene_path: String) -> Node:
 	
 	# load all assets
 	while true:
-		var loaded = 0
-		
 		for asset in assets:
 			var status = ResourceLoader.load_threaded_get_status(asset)
 			if status == ResourceLoader.THREAD_LOAD_LOADED:
-				loaded += 1
+				ResourceLoader.load_threaded_get(asset).instantiate()
+				instantiated_assets.append(asset)
+				progress = float(instantiated_assets.size()) / total_assets
+				await get_tree().process_frame
 		
-		progress = float(loaded) / float(total_assets)
-		if loaded == total_assets:
+		# remove loaded assets from the checklist
+		for asset in instantiated_assets:
+			assets.erase(asset)
+		
+		if instantiated_assets.size() == total_assets:
 			break
-		
-		await get_tree().process_frame
-		
-		#for asset in assets:
-			#var status = ResourceLoader.load_threaded_get_status(asset)
-			#if status == ResourceLoader.THREAD_LOAD_LOADED:
-				##var packed = ResourceLoader.load_threaded_get(asset)
-				##packed.instantiate()
-				#instantiated_assets.append(asset)
-				#progress = float(instantiated_assets.size()) / total_assets
-				#await get_tree().process_frame
-		#
-		## remove loaded assets from the checklist
-		#for asset in instantiated_assets:
-			#assets.erase(asset)
-		#
-		#if instantiated_assets.size() == total_assets:
-			#break
 	
 	var packed_scene = ResourceLoader.load_threaded_get(scene_path)
 	var scene = packed_scene.instantiate()
@@ -150,13 +136,3 @@ func clear_scene() -> void:
 	
 	for child in GameManager.get_children():
 		child.queue_free()
-	
-	
-	# reset surface material overrides
-	#for child in GameManager.get_children(true):
-		#if child.is_class("MeshInstance3D"):
-			#for i in range(0, child.get_surface_override_material_count()):
-				#child.set_surface_override_material(i, null)
-	#
-	#for child in GameManager.get_children():
-		#child.queue_free()
