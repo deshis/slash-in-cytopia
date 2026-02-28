@@ -1,6 +1,7 @@
 extends Node3D
 
 const particles = {
+	
 	# ON HIT
 	"on_hit_player": preload("res://Scenes/particles/player_on_hit.tscn"),
 	#"on_hit_chromatic_aberration": preload("res://Scenes/particles/on_hit_chromaticaberration.tscn"), # idk what to do with this
@@ -21,7 +22,9 @@ const particles = {
 	"kheel_teleport2": preload("res://Scenes/particles/teleport2.tscn"),
 	"microbot_attack": preload("res://Scenes/particles/microbot_attack_particles.tscn"),
 	"microbot_jump": preload("res://Scenes/particles/microbot_jump_particles.tscn"),
-
+	
+	# PLAYER
+	"player_dash": preload("res://Scenes/particles/player_dash_particles.tscn"),
 	
 	# BRAINCHIPS
 	"heal": preload("res://Scenes/particles/heal.tscn"),
@@ -115,6 +118,10 @@ const particle_paths = {
 	"ranged_slasher_shoot": "res://Scenes/particles/enemy_plasma_shooting_particles.tscn",
 	"ranged_slasher_shoot_green": "res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn",
 	"kheel_teleport2": "res://Scenes/particles/teleport2.tscn",
+	"microbot_attack": "res://Scenes/particles/light_ray_particles.tscn", 
+	
+	# PLAYER
+	"player_dash_particles": "res://Scenes/particles/player_dash_particles.tscn",
 	
 	# BRAINCHIPS
 	"heal": "res://Scenes/particles/heal.tscn",
@@ -141,8 +148,9 @@ const particle_paths = {
 	"loot_upgrade_light_ray": "res://Scenes/particles/light_ray_particles.tscn", # DEPRECATED
 	"loot_upgrade_beam": "res://Scenes/particles/loot_upgrade.tscn",
 	
-	# OTHER
+	#OTHER
 	"health_pickup": "res://Scenes/particles/health_pickup_particles.tscn",
+
 }
 
 

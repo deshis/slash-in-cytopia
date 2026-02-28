@@ -73,6 +73,8 @@ var attack_light_move_speed_mult := 0.33
 @onready var hitbox_heavy_attack_axe = $HeavyAttack/Axe
 @onready var hitbox_heavy_attack_maul = $HeavyAttack/Maul
 
+@onready var dash_particle_emit_location = $DashParticleEmitLocation
+
 var light_attack_duration := 1.0
 var heavy_attack_duration := 1.0
 
@@ -369,6 +371,9 @@ func process_state(delta: float) -> void:
 			process_move(delta)
 		
 		DASH:
+			ParticleManager.emit_particles("player_dash",dash_particle_emit_location.global_position + Vector3(0.26,0,0))
+			ParticleManager.emit_particles("player_dash",dash_particle_emit_location.global_position + Vector3(-0.26,0,0))
+			
 			process_dash(delta)
 		
 		LIGHT_ATTACK_WINDUP:
@@ -423,7 +428,6 @@ func perform_dash():
 	
 	GameStats.dashes_used += 1
 	SoundManager.play_sfx("dash", global_position)
-
 
 func perform_light_attack() -> void:
 	update_light_attack_hitbox(ItemGlobals.primary_weapon_type)
