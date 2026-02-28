@@ -64,8 +64,7 @@ func reparent_to_target(target: Node):
 
 	var current_transform = global_transform
 	
-	get_parent().remove_child(self)
-	target.add_child(self)
+	call_deferred("reparent", target)
 	
 	#restore the global transform so it doesn't warp to the new parent's origin
 	global_transform = current_transform

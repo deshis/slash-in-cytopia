@@ -201,13 +201,13 @@ shadow_mesh = SubResource("ArrayMesh_dktmt")
 
 [node name="slasher" unique_id=241679205 instance=ExtResource("1_cx47c")]
 
-[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(417150971) index="0" unique_id=1127632519]
+[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1387853126) index="0" unique_id=892388785]
 mesh = SubResource("ArrayMesh_by6ww")
 surface_material_override/0 = ExtResource("2_mdvm6")
 surface_material_override/2 = ExtResource("3_by6ww")
 surface_material_override/3 = ExtResource("3_by6ww")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(417150971) index="1" unique_id=739068345]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1387853126) index="1" unique_id=739068345]
 transform = Transform3D(1, 5.0684745e-10, -5.040306e-10, -5.0404037e-10, 0.9999844, 0.0055704433, 5.0684434e-10, -0.0055704247, 0.9999844, -5.5039663e-15, 1.4536325, -0.0108944895)
 visible = false
 bone_name = "spine_03"
@@ -216,7 +216,7 @@ bone_idx = 4
 [node name="thruster_vfx_mesh" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" unique_id=1336513331 instance=ExtResource("2_3pm4q")]
 transform = Transform3D(0.3, 0, 0, 0, 0.24574563, 0.3441459, 0, -0.17207295, 0.49149126, 0, 0.276, -0.2)
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=1579725571]
+[node name="AnimationPlayer" parent="." index="1" unique_id=321495102]
 autoplay = &"Idle"
 
 [node name="DashAttackSlashVFX" type="GPUParticles3D" parent="." index="2" unique_id=1316587001]

@@ -7,7 +7,7 @@ var animation_player
 var is_transitioning = false
 
 var scene_name = ""
-var progress = 0
+var progress := 0.0
 var scene_load_status = 0
 
 
@@ -26,6 +26,18 @@ func _ready() -> void:
 	
 	add_child(loading_screen)
 	loading_screen.visible = false
+
+
+func _process(delta: float) -> void:
+	if not is_transitioning:
+		return
+	
+	var progress_display = $LoadingScreen/MarginContainer/RichTextLabel
+	if progress_display:
+		if progress < 1.0:
+			progress_display.text = "Loading\n" + str(int(progress * 100)) + "%"
+		else:
+			progress_display.text = "Initializing..."
 
 
 func transition(
@@ -71,89 +83,56 @@ func fade_in_anim(anim: String, dur: float) -> void:
 	animation_player.play("RESET")
 
 
-func load_scene_async(path: String) -> Node:
+func load_scene_async(scene_path: String) -> Node:
 	loading_screen.visible = true
-	progress = 0
-	await get_tree().process_frame
+	progress = 0.0
 	
 	clear_scene()
+
+	var total_assets = ParticleManager.particle_paths.size() + all_throwables.size()
+	var instantiated_assets = []
+	var assets = []
 	
-	for particle_path in ParticleManager.particle_paths.values():
-		ResourceLoader.load_threaded_request(particle_path)
+	# populate assets
+	for asset in ParticleManager.particle_paths.keys():
+		assets.append(ParticleManager.particle_paths[asset])
 	
-	for throwable_path in all_throwables.values():
-		ResourceLoader.load_threaded_request(throwable_path)
+	for asset in all_throwables.keys():
+		assets.append(all_throwables[asset])
 	
-	ResourceLoader.load_threaded_request(path, "", true)
+	# start requests
+	for asset in assets:
+		ResourceLoader.load_threaded_request(asset, "", true)
+	ResourceLoader.load_threaded_request(scene_path, "", true)
 	
-	var total_resources = ParticleManager.particle_paths.size() + all_throwables.size() + 1
-	
-	var scene: Node = null
-	var packed_scene: PackedScene
-	var progress_display = $LoadingScreen/MarginContainer/RichTextLabel
-	
-	var instantiated_particles = {}
-	var instantiated_throwables = {}
-	
+	# load all assets
 	while true:
-		var loaded_count = 0
-		
-		# TODO: load stuff per scene/stage instead of every time here
-		# LOADING PARTICLES
-		for particle_name in ParticleManager.particle_paths.keys():
-			var particle_path = ParticleManager.particle_paths[particle_name]
-			var status = ResourceLoader.load_threaded_get_status(particle_path)
-			
+		for asset in assets:
+			var status = ResourceLoader.load_threaded_get_status(asset)
 			if status == ResourceLoader.THREAD_LOAD_LOADED:
-				loaded_count += 1
-				
-				if not instantiated_particles.has(particle_name):
-					ParticleManager.emit_particles(particle_name, Vector3(0, -100, 0))
-					instantiated_particles[particle_name] = true
+				ResourceLoader.load_threaded_get(asset).instantiate()
+				instantiated_assets.append(asset)
+				progress = float(instantiated_assets.size()) / total_assets
+				await get_tree().process_frame
 		
+		# remove loaded assets from the checklist
+		for asset in instantiated_assets:
+			assets.erase(asset)
 		
-		# LOADING THROWABLES
-		for throwable_name in all_throwables.keys():
-			var throwable_path = all_throwables[throwable_name]
-			var throwable_status = ResourceLoader.load_threaded_get_status(throwable_path)
-			
-			if throwable_status == ResourceLoader.THREAD_LOAD_LOADED:
-				loaded_count += 1
-				
-				if not instantiated_throwables.has(throwable_name):
-					var throwable_scene: PackedScene = ResourceLoader.load_threaded_get(throwable_path)
-					var throwable_instance = throwable_scene.instantiate()
-					throwable_instance.preload_mode = true
-					throwable_instance.visible = false
-					GameManager.add_child(throwable_instance)
-					await get_tree().process_frame
-					throwable_instance.queue_free()
-					instantiated_throwables[throwable_name] = true
-		
-		
-		# LOADING SCENE
-		var scene_status = ResourceLoader.load_threaded_get_status(path)
-		if scene_status == ResourceLoader.THREAD_LOAD_LOADED:
-			loaded_count += 1
-		
-		#var load_progress = float(loaded_count) / float(total_resources)
-		#progress_display.text = "Loading\n" + str(floor(load_progress * 100)) + "%"
-		
-		if loaded_count == total_resources:
-			#progress_display.text = "Loading\n100%"
-			await get_tree().process_frame
-			
-			packed_scene = ResourceLoader.load_threaded_get(path)
-			scene = packed_scene.instantiate()
-			GameManager.add_child(scene)
-			
-			return scene
-		
-		await get_tree().process_frame
+		if instantiated_assets.size() == total_assets:
+			break
 	
-	return null
+	var packed_scene = ResourceLoader.load_threaded_get(scene_path)
+	var scene = packed_scene.instantiate()
+	GameManager.add_child(scene)
+	return scene
 
 
 func clear_scene() -> void:
+	var children = GameManager.find_children("*", "MeshInstance3D", true, false)
+	for child in children:
+		for i in range(0, child.get_surface_override_material_count()):
+			child.set_surface_override_material(i, null)
+	
 	for child in GameManager.get_children():
 		child.queue_free()

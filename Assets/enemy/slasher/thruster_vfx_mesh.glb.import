@@ -41,7 +41,7 @@ _subresources={
 "materials": {
 "Thruster": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Assets/enemy/slasher/booster_material.tres",
+"use_external/fallback_path": "res://Assets/enemy/slasher/materials/booster_material.tres",
 "use_external/path": "uid://dwvklehetcf5o"
 }
 }
