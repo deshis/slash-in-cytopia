@@ -49,7 +49,7 @@ func spawn_target_dummy() -> void:
 
 	#spawn_enemy(target_dummy, Vector3(5,0,-5))
 	#spawn_enemy(target_dummy, Vector3(5,0,5))
-	spawn_enemy(target_dummy, Vector3(-5,0,5))
+	#spawn_enemy(target_dummy, Vector3(-5,0,5))
 	
 func init_pools() -> void:
 	var all_prefabs = enemy_list + augmented_list + boss_list
