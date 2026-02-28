@@ -4,23 +4,39 @@
 [ext_resource type="Material" uid="uid://dcmgq7a0uwirg" path="res://Assets/environment/foliage/trees/leaf_material.tres" id="2_ytdn2"]
 [ext_resource type="Shader" uid="uid://dp145x6w65ey5" path="res://Assets/materials/shaders/cell_shader.gdshader" id="3_dh4q2"]
 
+[sub_resource type="Gradient" id="Gradient_urmb0"]
+offsets = PackedFloat32Array(0.7939664, 0.91605014)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rslx1"]
+gradient = SubResource("Gradient_urmb0")
+
 [sub_resource type="Gradient" id="Gradient_dh4q2"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.37938422, 0.6209454, 0.79343027)
-colors = PackedColorArray(0, 0, 0, 1, 0.37613726, 0.37613726, 0.37613726, 1, 0.6432132, 0.6432132, 0.6432132, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.54381293, 0.7287881, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.6223985, 0.6223986, 0.62239844, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_enhcp"]
 gradient = SubResource("Gradient_dh4q2")
 
+[sub_resource type="Gradient" id="Gradient_iep8t"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3116527, 0.5000862, 0.72728056)
+colors = PackedColorArray(0, 0, 0, 1, 0.13308537, 0.13308537, 0.13308537, 1, 0.3472174, 0.3472174, 0.34721753, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_urmb0"]
+gradient = SubResource("Gradient_iep8t")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r7lp8"]
 render_priority = 0
 shader = ExtResource("3_dh4q2")
-shader_parameter/albedo_color = Color(0.3250455, 0.20354038, 0.04480575, 1)
-shader_parameter/color_gradient = SubResource("GradientTexture1D_enhcp")
+shader_parameter/albedo_color = Color(0.44685858, 0.22844261, 0.07608656, 1)
+shader_parameter/fade_alpha = 1.0
+shader_parameter/shading_gradient = SubResource("GradientTexture1D_urmb0")
 shader_parameter/use_fresnel = false
-shader_parameter/fresnel_amount = 1.0
-shader_parameter/use_rim = false
-shader_parameter/rim_amount = 1.0
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_rslx1")
+shader_parameter/fresnel_amount = 4.0
+shader_parameter/use_rim = true
+shader_parameter/rim_gradient = SubResource("GradientTexture1D_enhcp")
+shader_parameter/rim_amount = 4.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dh4q2"]
 height = 4.0
@@ -29,10 +45,10 @@ radius = 0.983
 [node name="trees" unique_id=1160092882 instance=ExtResource("1_brfkd")]
 transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, 0, 0, 0)
 
-[node name="Trunk" parent="." index="0" unique_id=217700789]
+[node name="Trunk" parent="." index="0" unique_id=257026845]
 material_override = SubResource("ShaderMaterial_r7lp8")
 
-[node name="Leaves" parent="." index="1" unique_id=1043723209]
+[node name="Leaves" parent="." index="1" unique_id=1161484272]
 material_override = ExtResource("2_ytdn2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=1856983501]

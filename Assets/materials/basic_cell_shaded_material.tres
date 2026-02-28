@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dp2qderulb6q" path="res://Assets/apollo-8x.png" id="2_urmb0"]
 
 [sub_resource type="Gradient" id="Gradient_urmb0"]
-offsets = PackedFloat32Array(0.62742704, 0.85240984)
+offsets = PackedFloat32Array(0.7939664, 0.91605014)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_rslx1"]
 gradient = SubResource("Gradient_urmb0")
