@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cehi1p4r1lxow"
-path="res://.godot/imported/body_armor.glb-9180c943d7d00f235272dcb5f0ce051c.scn"
+uid="uid://cr63j2uwddn0w"
+path="res://.godot/imported/mask.glb-61d51f237fc4ee46ca5c05cb2200227f.scn"
 
 [deps]
 
-source_file="res://Assets/player/body_armor.glb"
-dest_files=["res://.godot/imported/body_armor.glb-9180c943d7d00f235272dcb5f0ce051c.scn"]
+source_file="res://Assets/player/mask.glb"
+dest_files=["res://.godot/imported/mask.glb-61d51f237fc4ee46ca5c05cb2200227f.scn"]
 
 [params]
 
@@ -39,14 +39,14 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "meshes": {
-"body_armor_Cylinder_003": {
+"mask_Cube": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/armor_body.res",
-"save_to_file/path": "uid://kwuh3m86a2bp"
+"save_to_file/fallback_path": "res://Assets/player/mask.res",
+"save_to_file/path": "uid://b5icqsqw3ame1"
 }
 }
 }

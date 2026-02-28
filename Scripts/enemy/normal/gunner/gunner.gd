@@ -118,10 +118,11 @@ func change_state(new_state: String, duration := 0.0):
 			current_speed = 0
 			
 		STRAFE:
+			
 			shot_burst = false
 			
 			##NOTE: forcing to shoot if stuck jerking off for seemingly no reason
-			get_tree().create_timer(strafe_duration + 0.25).timeout.connect(charged_up)
+			get_tree().create_timer(strafe_duration + 0.25, false).timeout.connect(charged_up)
 			current_target_range = target_range
 			
 			animator.play("Walk")
@@ -205,6 +206,9 @@ func laser_pointer(from: Vector3, to: Vector3) -> void:
 	laser_pointer_mesh.mesh.height = dist
 	
 func shoot() -> void:
+	
+
+	print("shooting")
 	
 	self.current_speed *= 0.35
 	self.strafe_speed *= 0.35

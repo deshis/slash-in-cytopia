@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://bmi3wkhbbyj7y" path="res://Assets/materials/shaders/weapon_hologram.gdshader" id="3_ic3d6"]
 [ext_resource type="ArrayMesh" uid="uid://dqc8mvtvgdacr" path="res://Assets/player/armor_right_arm.res" id="3_spm8d"]
 [ext_resource type="Texture2D" uid="uid://dp2qderulb6q" path="res://Assets/apollo-8x.png" id="4_spm8d"]
+[ext_resource type="ArrayMesh" uid="uid://b5icqsqw3ame1" path="res://Assets/player/mask.res" id="6_egohg"]
 [ext_resource type="Shader" uid="uid://4hwgr3jdxls" path="res://Assets/vfx/slash/slash.gdshader" id="6_mj82b"]
 [ext_resource type="Texture2D" uid="uid://cwhxuiydsf4bw" path="res://Assets/vfx/slash/erosion_tex.png" id="8_ge7b5"]
 [ext_resource type="Material" uid="uid://dl6k6vdol5kxt" path="res://Assets/vfx/impact/impact.tres" id="11_l71q1"]
@@ -2642,6 +2643,9 @@ skin = SubResource("Skin_ck2nw")
 [node name="Hair" type="MeshInstance3D" parent="model/rig/Skeleton3D" unique_id=25013419]
 mesh = SubResource("ArrayMesh_8ar7c")
 skin = SubResource("Skin_ck2nw")
+
+[node name="Mask" type="MeshInstance3D" parent="model/rig/Skeleton3D" unique_id=1989249920]
+mesh = ExtResource("6_egohg")
 
 [node name="LegAugment" type="MeshInstance3D" parent="model/rig/Skeleton3D" unique_id=963257816]
 mesh = SubResource("ArrayMesh_m5brc")
