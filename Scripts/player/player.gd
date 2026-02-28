@@ -1100,16 +1100,25 @@ func _on_dash_attack_hitbox_area_entered(area: Area3D) -> void:
 
 
 func tween_weapon_hologram_effect(duration)->void:
+	
+	var tint_color = Color(0.25,0.4,0.7,1)
+	var edge_color = Color(0.2,0.5,0.6,1)
+	var scanline_tint = Color(0.25,1.5,4,1) #Color(4.5,0.5,0.0,1)
+	
 	_create_shader_tween(weapon_mesh, "shake_power", 1.0, 0.15, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
-	_create_shader_tween(weapon_mesh, "edge_power", 0.0, 1.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "edge_power", 0.0, 1.25, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
 	_create_shader_tween(weapon_mesh, "edge_intensity", 0.0, 2.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
-	_create_shader_tween(weapon_mesh, "edge_size", 0.0, 5.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
-	_create_shader_tween(weapon_mesh, "albedo_alpha", 0.0, 0.1, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "edge_size", 2.5, 5.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	#_create_shader_tween(weapon_mesh, "albedo_alpha", 0.25, 0.5, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN) ##NOTE: idk if this does anything
 	_create_shader_tween(weapon_mesh, "scanline_thickness", 0.0, 2.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
 	_create_shader_tween(weapon_mesh, "scanline_density", 10.0, 1.0, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "scanline_intensity", 0.5, 5.5, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "tint_color", tint_color, tint_color, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "edge_color", edge_color, edge_color, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	_create_shader_tween(weapon_mesh, "scanline_tint", scanline_tint, scanline_tint, duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
 
-
-func _create_shader_tween(node: Node, shader_property: String, value_start: float, value_end: float, duration: float) -> Tween:
+	
+func _create_shader_tween(node: Node, shader_property: String, value_start: Variant, value_end: Variant, duration: float) -> Tween:
 	var tween = get_tree().create_tween()
 	if node:
 		tween.tween_method(
