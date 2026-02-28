@@ -37,7 +37,7 @@ albedo_texture = SubResource("CompressedTexture2D_0c83s")
 [node name="saw" unique_id=961041573 instance=ExtResource("1_cwq5b")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
-[node name="Skeleton3D" parent="rig" index="0"]
+[node name="Skeleton3D" parent="rig" parent_id_path=PackedInt32Array(708088182) index="0" unique_id=2000564299]
 bones/1/rotation = Quaternion(-0.49999982, 0.5000001, 0.50000006, 0.50000006)
 bones/3/rotation = Quaternion(-0.49999994, 0.5, 0.5, 0.5000001)
 bones/6/rotation = Quaternion(-0.49999994, 0.5, 0.5, 0.5000001)
@@ -51,11 +51,11 @@ bones/15/rotation = Quaternion(0.6126247, 0.6126247, 0.35311615, -0.35311615)
 bones/16/rotation = Quaternion(-0.42484143, 0.565252, 0.4248405, 0.56525254)
 bones/17/rotation = Quaternion(3.5744475e-07, -2.0247093e-09, 0.7071069, 0.70710665)
 
-[node name="Body" parent="rig/Skeleton3D" index="0"]
+[node name="Body" parent="rig/Skeleton3D" index="0" unique_id=244444030]
 layers = 16
 material_override = SubResource("StandardMaterial3D_u0gmv")
 
-[node name="Wheels" parent="rig/Skeleton3D" index="1"]
+[node name="Wheels" parent="rig/Skeleton3D" index="1" unique_id=1124178880]
 surface_material_override/0 = SubResource("StandardMaterial3D_gffq7")
 
 [node name="Eye" type="MeshInstance3D" parent="rig/Skeleton3D" index="2" unique_id=307605025]
@@ -95,8 +95,8 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 mesh = ExtResource("2_41p2u")
 skeleton = NodePath("../../RightHand")
 
-[node name="RightSaw" parent="." index="5"]
+[node name="RightSaw" parent="." index="5" unique_id=314908745]
 visible = false
 
-[node name="LeftSaw" parent="." index="6"]
+[node name="LeftSaw" parent="." index="6" unique_id=383818585]
 visible = false

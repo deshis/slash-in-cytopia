@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dgc675qfnehyx"]
+[gd_scene format=3 uid="uid://dbyvk0exj18lh"]
 
 [ext_resource type="PackedScene" uid="uid://cdkj31p0lv4h2" path="res://Assets/enemy/slasher/slasher_v2.glb" id="1_iw056"]
 
@@ -677,7 +677,7 @@ _data = {
 
 [node name="slasher" unique_id=1309698345 instance=ExtResource("1_iw056")]
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1000993904) index="0" unique_id=280077547]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(465995890) index="0" unique_id=417150971]
 bones/1/position = Vector3(1.0388283e-15, 0.0080328435, 1.0380865)
 bones/1/rotation = Quaternion(0.7400656, 8.017238e-08, 8.82227e-08, 0.67253476)
 bones/3/rotation = Quaternion(0.035570968, -5.9416106e-08, 6.3659167e-09, 0.9993672)
@@ -701,5 +701,5 @@ bones/22/scale = Vector3(0.99999774, 0.9999792, 0.9999874)
 bones/23/rotation = Quaternion(-0.0021197635, 0.99981576, -0.019078285, -0.00010858478)
 bones/24/rotation = Quaternion(2.6752419e-08, 0.9999801, -3.4975745e-08, -0.0063097817)
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=2136820201]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1579725571]
 libraries/ = SubResource("AnimationLibrary_jiftb")
