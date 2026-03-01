@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://cead8ewvqdchl" path="res://Assets/environment/fence/regular_fence.tscn" id="37_25x2b"]
 [ext_resource type="PackedScene" uid="uid://du2oag8jyi27m" path="res://Assets/environment/fence/corner_fence.tscn" id="38_ph3u6"]
 [ext_resource type="PackedScene" uid="uid://8r4pwmgy5thh" path="res://Assets/environment/foliage/trees/tree.tscn" id="39_3pko2"]
-[ext_resource type="PackedScene" uid="uid://br7yobcthvqjh" path="res://Assets/environment/forest/props/hologram.tscn" id="40_j1q0m"]
 [ext_resource type="Shader" uid="uid://dltnkyf0hnwq0" path="res://Assets/materials/shaders/glitch.gdshader" id="43_fj8lq"]
 [ext_resource type="Texture2D" uid="uid://c7mseb2r5dmrw" path="res://Assets/ui/logo3.png" id="43_j1q0m"]
 [ext_resource type="PackedScene" uid="uid://boamjpbgi2ymo" path="res://Scenes/main_menu/main_menu_button.tscn" id="45_3pko2"]
@@ -245,9 +244,6 @@ transform = Transform3D(-0.258819, 0, -0.9659257, 0, 1, 0, 0.9659257, 0, -0.2588
 
 [node name="trees5" parent="background_visuals/forest" unique_id=1350299507 instance=ExtResource("39_3pko2")]
 transform = Transform3D(0.58570766, 0, -0.8105223, 0, 1, 0, 0.8105223, 0, 0.58570766, -9.558256, 0, 8.085378)
-
-[node name="hologram" parent="background_visuals/forest" unique_id=1266443416 instance=ExtResource("40_j1q0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.972171, 0, 4.1618547)
 
 [node name="Node3D" parent="background_visuals" unique_id=288098272 instance=ExtResource("8_r3t7q")]
 transform = Transform3D(0.9527888, 0, 0.303634, -0.0046262085, 0.99988395, 0.014516818, -0.30359876, -0.015236135, 0.9526782, -5.427207, 1.2827225, 3.139069)
