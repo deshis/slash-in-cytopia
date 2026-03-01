@@ -83,11 +83,12 @@ func _ready() -> void:
 	hit_flash = hit_flash_material.duplicate()
 	for instance in find_children("*", "MeshInstance3D"):
 		if instance.mesh != null:
-			var base_mat = instance.mesh.surface_get_material(0)
-			var unique_mat = base_mat.duplicate()
-			var next_pass_unique = hit_flash
-			unique_mat.next_pass = next_pass_unique
-			instance.set_surface_override_material(0, unique_mat)
+			instance.material_overlay = hit_flash
+			#var base_mat = instance.mesh.surface_get_material(0)
+			#var unique_mat = base_mat.duplicate()
+			#var next_pass_unique = hit_flash
+			#unique_mat.next_pass = next_pass_unique
+			#instance.set_surface_override_material(0, unique_mat)
 	
 	hit_flash.set_shader_parameter('strength',0.0)
 	

@@ -25,6 +25,7 @@ const particles = {
 	
 	# PLAYER
 	"player_dash": preload("res://Scenes/particles/player_dash_particles.tscn"),
+	"player_death": preload("res://Scenes/particles/player_death_particles.tscn"),
 	
 	# BRAINCHIPS
 	"heal": preload("res://Scenes/particles/heal.tscn"),
@@ -121,7 +122,8 @@ const particle_paths = {
 	"microbot_attack": "res://Scenes/particles/light_ray_particles.tscn", 
 	
 	# PLAYER
-	"player_dash_particles": "res://Scenes/particles/player_dash_particles.tscn",
+	"player_dash": "res://Scenes/particles/player_dash_particles.tscn",
+	"player_death": "res://Scenes/particles/player_death_particles.tscn",
 	
 	# BRAINCHIPS
 	"heal": "res://Scenes/particles/heal.tscn",

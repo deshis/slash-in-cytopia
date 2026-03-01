@@ -14,6 +14,7 @@ func start(duration: float, cleans_itself: bool) -> void:
 	
 	if duration <= 0.0:
 		duration = get_max_lifetime()
+		
 	
 	await get_tree().create_timer(duration, false).timeout
 	queue_free()

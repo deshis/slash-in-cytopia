@@ -371,7 +371,7 @@ func process_state(delta: float) -> void:
 			process_move(delta)
 		
 		DASH:
-			ParticleManager.emit_particles("player_dash",dash_particle_emit_location.global_position + Vector3(0.26,0,0))
+
 			ParticleManager.emit_particles("player_dash",dash_particle_emit_location.global_position + Vector3(-0.26,0,0))
 			
 			process_dash(delta)
@@ -893,7 +893,7 @@ func deal_stat_damage(area: Area3D, debuff: DebuffResource, e: EnemyController =
 
 
 func take_damage(damage:float, enemy: EnemyController, ignore_invulnerability: bool = false) -> void:
-	ParticleManager.emit_particles("on_hit_player", global_position)
+	ParticleManager.emit_particles("on_hit_bloody", global_position)
 	
 	trigger_chromatic_aberration()
 	
@@ -933,6 +933,7 @@ func take_damage(damage:float, enemy: EnemyController, ignore_invulnerability: b
 
 
 func die() -> void:
+	ParticleManager.emit_particles("player_death",self.global_position)
 	is_dead = true
 	Engine.time_scale = 1.0
 	game_over.emit()
