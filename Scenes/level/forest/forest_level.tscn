@@ -477,9 +477,11 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20.
 [node name="Combiner" parent="NavigationRegion3D/Interactables" unique_id=1478946932 instance=ExtResource("12_4ifjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.233023, 0, 15.297247)
 
-[node name="CameraPoint" type="Node3D" parent="." unique_id=1918358865]
+[node name="CameraPoint" type="Node3D" parent="." unique_id=1918358865 node_paths=PackedStringArray("cam")]
 transform = Transform3D(1, 0, 0, 0, 0.90630746, -0.42261812, 0, 0.42261812, 0.90630746, 0, 1, 0)
 script = ExtResource("2_fsgfm")
+cam = NodePath("Camera3D")
+zoom_duration = 0.75
 
 [node name="Camera3D" type="Camera3D" parent="CameraPoint" unique_id=902831855]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 7.5, 0)

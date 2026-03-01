@@ -11,6 +11,7 @@ var HUD: HudManager = null
 var particles: ParticleManager = null
 var spawner: EnemySpawner = null
 var nav_handler: NavHandler = null
+var stage_camera: Node3D = null
 
 var portaldoor = preload("res://Assets/portal/portal.tscn")
 
@@ -35,7 +36,8 @@ func start_game(init_player: bool = false) -> void:
 	if init_player:
 		player = preload("res://Scenes/player/player.tscn").instantiate() as Player
 		add_child(player)
-		current_stage.get_node("CameraPoint").player = player
+		stage_camera = current_stage.get_node("CameraPoint")
+		stage_camera.player = player
 	
 	player.global_position = Vector3.ZERO
 	player.interactables.clear()
@@ -82,6 +84,10 @@ func load_next_stage() -> void:
 	starting_difficulty = spawner.diff.difficulty
 	load_stage(current_stage_ind + 1)
 
+
+func start_death_camera() -> void:
+	if stage_camera:
+		stage_camera.play_death_camera_effect()
 
 func boss_killed(boss: EnemyController) -> void:
 	#var exit = portaldoor.instantiate()

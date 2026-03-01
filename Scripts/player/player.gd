@@ -942,6 +942,7 @@ func die() -> void:
 	$Hurtbox.set_deferred("monitorable", false)
 	hit_flash.set_shader_parameter('strength', 0.0)
 	set_physics_process(false)
+	GameManager.start_death_camera()
 
 
 func blink() -> void:
