@@ -62,22 +62,21 @@ shader_parameter/erosion = 1.0
 radius = 1.1
 
 [node name="RangedMagicAttackMage" type="Node3D" unique_id=2032279708]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 script = ExtResource("1_r5b78")
-pulse_speed = 5.0
-anticipation_duration = 2.0
+pulse_speed = 8.0
+anticipation_duration = 1.0
 damage = 30.0
 damage_per_level = 0.5
 duration = 1.0
 follow = false
 
 [node name="Circle" type="MeshInstance3D" parent="." unique_id=769662071]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 material_override = SubResource("ShaderMaterial_fkiw7")
 mesh = ExtResource("1_mipin")
 
 [node name="Blast" type="MeshInstance3D" parent="." unique_id=1707961883]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 material_override = SubResource("ShaderMaterial_iru8m")
 mesh = ExtResource("6_bkkqw")
 

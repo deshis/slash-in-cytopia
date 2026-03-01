@@ -120,6 +120,7 @@ const particle_paths = {
 	"ranged_slasher_shoot_green": "res://Scenes/particles/enemy_green_plasma_shooting_particles.tscn",
 	"kheel_teleport2": "res://Scenes/particles/teleport2.tscn",
 	"microbot_attack": "res://Scenes/particles/light_ray_particles.tscn", 
+	"microbot_jump": "res://Scenes/particles/microbot_jump_particles.tscn",
 	
 	# PLAYER
 	"player_dash": "res://Scenes/particles/player_dash_particles.tscn",
@@ -154,26 +155,6 @@ const particle_paths = {
 	"health_pickup": "res://Scenes/particles/health_pickup_particles.tscn",
 
 }
-
-
-func preload_particles() -> void:
-	for path in particle_paths.values():
-		ResourceLoader.load_threaded_request(path)
-	
-	while true:
-		var done = true
-		for path in particle_paths.values():
-			var status = ResourceLoader.load_threaded_get_status(path)
-			if status != ResourceLoader.THREAD_LOAD_LOADED:
-				done = false
-				break
-		
-		if done:
-			break
-		
-		await RenderingServer.frame_post_draw
-	
-	await get_tree().create_timer(1.5).timeout
 
 
 func emit_particles(particle_name: String, pos: Vector3, parent: Node = null, duration : float = 0.0, cleans_itself: bool = false):

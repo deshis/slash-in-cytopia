@@ -23,8 +23,6 @@ ranged_attack = ExtResource("3_5jn0u")
 nav_agent = NodePath("NavigationAgent3D")
 attack = ExtResource("2_5jn0u")
 attack_windup_duration = 0.4
-attack_range = 2.0
-ranged_navigation_distance = 5.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1022487457]
 use_3d_avoidance = true

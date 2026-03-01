@@ -7,7 +7,7 @@
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5567765, 0.5410663), -3.0485666, -3.0485666, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_c56q3"]
+[sub_resource type="CurveTexture" id="CurveTexture_dhgws"]
 curve = SubResource("Curve_uycyg")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mryok"]
@@ -21,18 +21,18 @@ gravity = Vector3(0, -10, 0)
 attractor_interaction_enabled = false
 scale_min = 0.14999999
 scale_max = 0.14999999
-alpha_curve = SubResource("CurveTexture_c56q3")
+alpha_curve = SubResource("CurveTexture_dhgws")
 collision_mode = 1
 collision_friction = 1.0
 collision_bounce = 0.0
 sub_emitter_mode = 3
 sub_emitter_amount_at_collision = 1
 
-[sub_resource type="Curve" id="Curve_mryok"]
+[sub_resource type="Curve" id="Curve_a8sb8"]
 _data = [Vector2(0, 0), 0.0, 8.107042, 0, 0, Vector2(0.15737703, 0.6034482), -0.09390385, -0.09390385, 0, 0, Vector2(0.41967213, 0.37068963), -1.115465, -1.115465, 0, 0, Vector2(1, 0.043103337), -0.2629307, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uycyg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kci8c"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -40,16 +40,16 @@ albedo_color = Color(0.5158843, 0, 0.06679484, 1)
 use_particle_trails = true
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_c56q3"]
-material = SubResource("StandardMaterial3D_uycyg")
+material = SubResource("StandardMaterial3D_kci8c")
 radius = 0.3
 section_rings = 7
-curve = SubResource("Curve_mryok")
+curve = SubResource("Curve_a8sb8")
 
 [sub_resource type="Gradient" id="Gradient_7wiwm"]
 offsets = PackedFloat32Array(0, 0.14339623, 0.709434, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.84651166, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_mbhww"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_usg55"]
 gradient = SubResource("Gradient_7wiwm")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4d27x"]
@@ -58,9 +58,9 @@ spread = 180.0
 gravity = Vector3(0, 0, 0)
 attractor_interaction_enabled = false
 color = Color(1.353256, 0, 0, 1)
-color_ramp = SubResource("GradientTexture1D_mbhww")
+color_ramp = SubResource("GradientTexture1D_usg55")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5viug"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wceqg"]
 transparency = 2
 alpha_scissor_threshold = 0.3
 alpha_antialiasing_mode = 0
@@ -68,7 +68,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_5stwd")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ejmwi"]
-material = SubResource("StandardMaterial3D_5viug")
+material = SubResource("StandardMaterial3D_wceqg")
 
 [node name="Node3D3" type="Node3D" unique_id=343124799]
 script = ExtResource("1_dhgws")

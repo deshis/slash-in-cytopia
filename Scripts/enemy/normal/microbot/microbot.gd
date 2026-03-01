@@ -60,12 +60,15 @@ func change_state(new_state: String, duration := 0.0):
 			animator.play("Idle")
 			animator.speed_scale = 1.0
 			nav_agent.target_desired_distance = randf_range(target_dist_min, target_dist_max)
+		
 		NAVIGATE:
 			trail.visible = false
 			animator.play("Walk")
+		
 		STUN:
 			trail.visible = false
 			animator.play("Stun")
+		
 		ATTACK:
 			var tween = create_tween()
 			
@@ -78,10 +81,12 @@ func change_state(new_state: String, duration := 0.0):
 			ParticleManager.emit_particles("light_ray",global_position + Vector3(0,0.5,0))
 			animator.play("Attack")
 			animator.speed_scale = 2.0
-			
+		
 		JUMP_WINDUP:
-			nav_agent.set_velocity(Vector3.ZERO)
 			jump_dir = global_position.direction_to(player.global_position).normalized()
+		
+		JUMP:
+			ParticleManager.emit_particles("microbot_jump",global_position)
 
 
 func process_jump_windup() -> void:
@@ -91,7 +96,6 @@ func process_jump_windup() -> void:
 	change_state(JUMP, jump_duration)
 
 func process_jump(delta: float) -> void:
-	var particle = ParticleManager.emit_particles("microbot_jump",global_position)
 	var t = inverse_lerp(jump_duration, 0, state_timer)
 	position.y = sin(PI * t) * jump_height
 	current_speed *= jump_move_decay
