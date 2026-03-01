@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dwtbamo1ikn5k"
-path="res://.godot/imported/scifi-character.glb-4d5a3b34634980b7600fc60ab214eb80.scn"
+uid="uid://c0clp4apm0vat"
+path="res://.godot/imported/john_slash.glb-f3dde481bb41c838455165da23624ab9.scn"
 
 [deps]
 
-source_file="res://Assets/player/scifi-character.glb"
-dest_files=["res://.godot/imported/scifi-character.glb-4d5a3b34634980b7600fc60ab214eb80.scn"]
+source_file="res://Assets/player/john_slash.glb"
+dest_files=["res://.godot/imported/john_slash.glb-f3dde481bb41c838455165da23624ab9.scn"]
 
 [params]
 
@@ -29,20 +29,20 @@ meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
-animation/fps=12.0
+animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 materials/extract=0
 materials/extract_format=0
-materials/extract_path="res://Assets/player"
+materials/extract_path=""
 _subresources={
 "animations": {
 "Dash": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/player/animations/Dash.res",
-"save_to_file/keep_custom_tracks": true,
+"save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://di4si2o4d8plm",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -2098,7 +2098,7 @@ _subresources={
 "Death": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/player/animations/Death.res",
-"save_to_file/keep_custom_tracks": true,
+"save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://mbww5et2k6fw",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -4154,7 +4154,7 @@ _subresources={
 "Heavy_attack_axe": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/player/animations/Heavy_attack_axe.res",
-"save_to_file/keep_custom_tracks": true,
+"save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://cx0wr6dud71uw",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -6210,7 +6210,7 @@ _subresources={
 "Heavy_attack_default": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/player/animations/Heavy_attack_default.res",
-"save_to_file/keep_custom_tracks": true,
+"save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://djpy15c5vha4k",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -8266,7 +8266,7 @@ _subresources={
 "Heavy_attack_maul": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/player/animations/Heavy_attack_maul.res",
-"save_to_file/keep_custom_tracks": true,
+"save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://b4it3xebsn8jr",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -10322,7 +10322,7 @@ _subresources={
 "Idle": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/player/animations/Idle.res",
-"save_to_file/keep_custom_tracks": true,
+"save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://1tfmq1p8w4v6",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,
@@ -12378,7 +12378,7 @@ _subresources={
 "Light_attack_dagger": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/player/animations/Light_attack_dagger.res",
-"save_to_file/keep_custom_tracks": true,
+"save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://cev4hceeq8d3f",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -14434,7 +14434,7 @@ _subresources={
 "Light_attack_default": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/player/animations/Light_attack_default.res",
-"save_to_file/keep_custom_tracks": true,
+"save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://bh8kkq3v0seri",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -16490,7 +16490,7 @@ _subresources={
 "Light_attack_sword": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/player/animations/Light_attack_sword.res",
-"save_to_file/keep_custom_tracks": true,
+"save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://knb304bgijjg",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -18546,7 +18546,7 @@ _subresources={
 "Run": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/player/animations/Run.res",
-"save_to_file/keep_custom_tracks": true,
+"save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://bx28axxgs0hbt",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,
@@ -20601,138 +20601,15 @@ _subresources={
 }
 },
 "materials": {
-"Material.003": {
+"BaseMateral": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Assets/player/materials/shaded_player_mat.tres",
 "use_external/path": "uid://bqd8v0ecwmhcl"
-}
 },
-"meshes": {
-"scifi-character_Char": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": false,
-"save_to_file/fallback_path": "res://Assets/player/char_mesh.res",
-"save_to_file/path": "uid://bcuveyslvyvwm"
-},
-"scifi-character_Char_003": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": false,
-"save_to_file/fallback_path": "res://Assets/player/char_hair_mesh.res",
-"save_to_file/path": "uid://c00hnivucapxg"
-},
-"scifi-character_Circle": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/dagger.res",
-"save_to_file/path": "uid://bfwdgkbih5u3y"
-},
-"scifi-character_Circle_002": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/training_sword.res",
-"save_to_file/path": "uid://dvcni37voduia"
-},
-"scifi-character_Circle_003": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/stick.res",
-"save_to_file/path": "uid://b6sqrafjuknb8"
-},
-"scifi-character_Circle_004": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/electric_dagger.res",
-"save_to_file/path": "uid://c1qky7i8nboe7"
-},
-"scifi-character_Circle_006": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/katana.res",
-"save_to_file/path": "uid://brngfcfsbf1cp"
-},
-"scifi-character_Circle_007": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/maul.res",
-"save_to_file/path": "uid://c43hvmywfkp1j"
-},
-"scifi-character_Circle_008": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/labrys.res",
-"save_to_file/path": "uid://dtnaovd8bxw3a"
-},
-"scifi-character_Circle_009": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/axe.res",
-"save_to_file/path": "uid://c12sey2qp16od"
-},
-"scifi-character_Circle_010": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/spear.res",
-"save_to_file/path": "uid://ccvgbak7x3nmg"
-},
-"scifi-character_Circle_011": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/dusk.res",
-"save_to_file/path": "uid://c6thpqps7xbt7"
-},
-"scifi-character_Circle_012": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/dawn.res",
-"save_to_file/path": "uid://c0sp07x3df3qs"
-},
-"scifi-character_Circle_013": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/player/weapons/flail.res",
-"save_to_file/path": "uid://ck02ch885weas"
+"LightMaterial": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/player/materials/player_light_material.tres",
+"use_external/path": "uid://bxrxdhfbi8onh"
 }
 }
 }

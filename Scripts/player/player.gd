@@ -134,7 +134,7 @@ var area_damage_indicator = preload("res://Scenes/items/AreaDamageIndicator.tscn
 var hit_flash_duration := 0.6
 var hit_flash_blink_speed := 0.1
 
-@export var trails : Array[MeshInstance3D]
+#@export var trails : Array[MeshInstance3D]
 
 var thorns_percent := 0.0
 
@@ -345,20 +345,20 @@ func exit_state(s: String, new_state: String) -> void:
 	match s:
 		LIGHT_ATTACK_WINDUP:
 			if new_state != LIGHT_ATTACK:
-				disable_trails()
+				#disable_trails()
 				stop_light_attack()
 		
 		LIGHT_ATTACK:
-			disable_trails()
+			#disable_trails()
 			stop_light_attack()
 		
 		HEAVY_ATTACK_WINDUP:
 			if new_state != HEAVY_ATTACK:
-				disable_trails()
+				#disable_trails()
 				stop_heavy_attack()
 		
 		HEAVY_ATTACK:
-			disable_trails()
+			#disable_trails()
 			stop_heavy_attack()
 		
 		DASH:
@@ -791,9 +791,9 @@ func set_slash_assist_target() -> void:
 		slash_assist_target = null
 
 
-func disable_trails():
-	for trail in trails:
-		trail.visible = false
+#func disable_trails():
+	#for trail in trails:
+		#trail.visible = false
 
 
 func heal(amount: float) -> void:

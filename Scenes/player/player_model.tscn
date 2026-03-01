@@ -1,133 +1,109 @@
-[gd_scene format=3 uid="uid://cffxpw73nnlnu"]
+[gd_scene format=3 uid="uid://cs847750vcg4v"]
 
-[ext_resource type="PackedScene" uid="uid://dwtbamo1ikn5k" path="res://Assets/player/scifi-character.glb" id="1_dluh4"]
-[ext_resource type="Shader" uid="uid://4hwgr3jdxls" path="res://Assets/vfx/slash/slash.gdshader" id="3_mqtts"]
-[ext_resource type="Texture2D" uid="uid://cwhxuiydsf4bw" path="res://Assets/vfx/slash/erosion_tex.png" id="5_31ovn"]
-[ext_resource type="Material" uid="uid://dl6k6vdol5kxt" path="res://Assets/vfx/impact/impact.tres" id="7_740jx"]
+[ext_resource type="PackedScene" uid="uid://c0clp4apm0vat" path="res://Assets/player/john_slash.glb" id="1_tmxvx"]
+[ext_resource type="Shader" uid="uid://bmi3wkhbbyj7y" path="res://Assets/materials/shaders/weapon_hologram.gdshader" id="2_57yux"]
+[ext_resource type="Texture2D" uid="uid://dp2qderulb6q" path="res://Assets/apollo-8x.png" id="3_pfjtp"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2q234"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_spm8d"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o6yh4"]
-noise = SubResource("FastNoiseLite_2q234")
-
-[sub_resource type="Gradient" id="Gradient_ikjto"]
-offsets = PackedFloat32Array(0, 0.1, 0.9, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wdh2s"]
-gradient = SubResource("Gradient_ikjto")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqtts"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p6eec"]
 render_priority = 0
-shader = ExtResource("3_mqtts")
-shader_parameter/base_color = Color(0.42352942, 0.42352942, 0.42352942, 0.89411765)
-shader_parameter/highlight_color = Color(1, 1, 1, 0.7058824)
-shader_parameter/erosion_texture = SubResource("NoiseTexture2D_o6yh4")
-shader_parameter/gradient_texture = SubResource("GradientTexture1D_wdh2s")
-shader_parameter/highlight_scale = 1.30000001425
-shader_parameter/erosion = 0.150000007125
-shader_parameter/fade = 0.30099999334190003
-shader_parameter/uv_scale = Vector2(1.5, 1)
-shader_parameter/uv_offset = Vector2(0.5, 0)
+shader = ExtResource("2_57yux")
+shader_parameter/albedo_texture = ExtResource("3_pfjtp")
+shader_parameter/albedo_alpha = 0.2230000105925
+shader_parameter/tint_color = Color(0.21148953, 0.70860875, 0.88297445, 1)
+shader_parameter/edge_color = Color(0.91252595, 0, 0.46387643, 1)
+shader_parameter/edge_power = 1.0
+shader_parameter/edge_size = 5.0
+shader_parameter/edge_intensity = 3.0
+shader_parameter/scanline_texture = SubResource("NoiseTexture2D_spm8d")
+shader_parameter/scanline_tint = Color(1, 0.5, 0, 1)
+shader_parameter/scanline_intensity = 1.0
+shader_parameter/scanline_density = 1.0000000475
+shader_parameter/scanline_thickness = 2.00000009174012
+shader_parameter/scanline_spacing = 1.0
+shader_parameter/scanline_angle = 6.000000285
+shader_parameter/scanline_speed = 0.2
+shader_parameter/enable_glitch = true
+shader_parameter/glitch_intensity = 1.0
+shader_parameter/shake_power = 0.0250000011875
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 10.0
+shader_parameter/shake_block_size = 1.0
+shader_parameter/shake_color_rate = 1.0
 
-[sub_resource type="Gradient" id="Gradient_31ovn"]
-offsets = PackedFloat32Array(0, 0.1, 0.9, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+[node name="john_slash" unique_id=1566263925 instance=ExtResource("1_tmxvx")]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_740jx"]
-gradient = SubResource("Gradient_31ovn")
+[node name="Skeleton3D" parent="rig" parent_id_path=PackedInt32Array(739579078) index="0" unique_id=2130964849]
+bones/0/position = Vector3(0, 1.0099, -0.05519999)
+bones/0/rotation = Quaternion(0.1258196, 0, 0, 0.99205315)
+bones/1/rotation = Quaternion(-0.06447636, 0, 0, 0.99791926)
+bones/2/rotation = Quaternion(-0.07746411, 0, 0, 0.99699515)
+bones/2/scale = Vector3(1, 1.0000004, 1.0000002)
+bones/3/rotation = Quaternion(0.0016272486, 0, 0, 0.9999987)
+bones/3/scale = Vector3(1, 0.9999996, 0.99999976)
+bones/4/rotation = Quaternion(0.20173799, 0, 0, 0.9794396)
+bones/5/rotation = Quaternion(-0.09485776, 0, 0, 0.99549085)
+bones/6/rotation = Quaternion(-0.09371185, 0, 0, 0.9955994)
+bones/7/position = Vector3(-6.180159e-09, 1.0099, -0.055200003)
+bones/7/rotation = Quaternion(-0.08636764, -0.7511043, -0.38305163, 0.53071123)
+bones/8/position = Vector3(6.180159e-09, 1.0099, -0.055200003)
+bones/8/rotation = Quaternion(-0.08636764, 0.7511043, 0.38305163, 0.53071123)
+bones/9/position = Vector3(0.098, 1.0720001, -0.012400006)
+bones/9/rotation = Quaternion(0.97341126, 0.051416483, -0.21126041, 0.0720828)
+bones/9/scale = Vector3(1.0013194, 0.9973667, 1.0013194)
+bones/10/rotation = Quaternion(3.5359836e-08, -0.0011679694, 4.4712266e-08, 0.9999994)
+bones/11/rotation = Quaternion(0.11380571, -0.0011678216, 0.00013332414, 0.9935024)
+bones/11/scale = Vector3(0.99996054, 0.9998775, 1.0001633)
+bones/12/rotation = Quaternion(-1.9097781e-08, 0.0064053214, -2.4787965e-08, 0.9999795)
+bones/13/rotation = Quaternion(-0.46201423, 0.17868692, 0.11647466, 0.8608412)
+bones/13/scale = Vector3(0.99933743, 0.9986455, 1.0020258)
+bones/14/rotation = Quaternion(-8.818696e-05, 0.94714856, -0.32079524, -0.00010408913)
+bones/14/scale = Vector3(0.99938875, 1.0005463, 1.0000663)
+bones/15/position = Vector3(-0.098, 1.0720001, -0.012400006)
+bones/15/rotation = Quaternion(0.97341126, -0.051416483, 0.21126041, 0.0720828)
+bones/15/scale = Vector3(1.0013194, 0.9973667, 1.0013194)
+bones/16/rotation = Quaternion(3.3497184e-08, 0.001167977, -4.3780943e-08, 0.9999994)
+bones/17/rotation = Quaternion(0.11380571, 0.0011677984, -0.00013332807, 0.9935024)
+bones/17/scale = Vector3(0.9999606, 0.99987715, 1.0001631)
+bones/18/rotation = Quaternion(-9.318696e-09, -0.0064045065, 2.8513316e-08, 0.9999795)
+bones/19/rotation = Quaternion(-0.4620837, -0.17920238, -0.11619872, 0.86073405)
+bones/19/scale = Vector3(0.9993373, 0.9986454, 1.0020261)
+bones/20/rotation = Quaternion(-0.00024241171, 0.94714856, -0.32079512, -5.2671618e-05)
+bones/20/scale = Vector3(0.9993888, 1.0005463, 1.0000664)
+bones/21/position = Vector3(0.01829997, 1.6359333, 0.06840004)
+bones/21/rotation = Quaternion(-0.6139811, -0.35091326, -0.35115877, 0.61365676)
+bones/22/position = Vector3(0.19529995, 1.5846, -0.0267)
+bones/22/rotation = Quaternion(-0.054699626, -0.099628374, 0.982334, -0.1486676)
+bones/22/scale = Vector3(1.0019569, 0.9960976, 1.001957)
+bones/23/rotation = Quaternion(-9.340797e-08, 0.01077339, 1.0380854e-07, 0.999942)
+bones/24/rotation = Quaternion(0.28127974, 0.010762868, -0.0031474954, 0.95956033)
+bones/24/scale = Vector3(0.9998483, 0.99860173, 1.0015665)
+bones/25/rotation = Quaternion(6.317923e-08, -0.0070238896, 1.8948528e-07, 0.9999753)
+bones/26/rotation = Quaternion(0.071597986, -0.010563492, -0.032295797, 0.99685466)
+bones/26/scale = Vector3(0.9982222, 1.0034816, 0.99830776)
+bones/27/position = Vector3(-0.01829997, 1.6359333, 0.06840004)
+bones/27/rotation = Quaternion(-0.6139811, 0.35091326, 0.35115877, 0.61365676)
+bones/28/position = Vector3(-0.19530001, 1.5846001, -0.026699992)
+bones/28/rotation = Quaternion(0.05469959, -0.099628165, 0.982334, 0.14866754)
+bones/28/scale = Vector3(1.0019568, 0.9960978, 1.0019569)
+bones/29/rotation = Quaternion(1.0741873e-07, -0.010773522, 1.1339381e-07, 0.999942)
+bones/30/rotation = Quaternion(0.28127912, -0.0107628945, 0.0031472428, 0.9595605)
+bones/30/scale = Vector3(0.9998489, 0.9986012, 1.0015662)
+bones/31/rotation = Quaternion(-4.374256e-08, 0.0070238933, -8.514716e-08, 0.9999753)
+bones/32/rotation = Quaternion(0.071598336, 0.01056349, 0.032295696, 0.9968546)
+bones/32/scale = Vector3(0.9982221, 1.0034806, 0.99830806)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y36al"]
-render_priority = 1
-shader = ExtResource("3_mqtts")
-shader_parameter/base_color = Color(0.42352942, 0.42352942, 0.42352942, 0.89411765)
-shader_parameter/highlight_color = Color(1, 1, 1, 0.7058824)
-shader_parameter/erosion_texture = ExtResource("5_31ovn")
-shader_parameter/gradient_texture = SubResource("GradientTexture1D_740jx")
-shader_parameter/highlight_scale = 1.410000019475
-shader_parameter/erosion = 0.0150000007125
-shader_parameter/fade = 0.15099999669470002
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(-0.3, 0)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_y36al"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2q234"]
-noise = SubResource("FastNoiseLite_y36al")
-
-[sub_resource type="Gradient" id="Gradient_o6yh4"]
-offsets = PackedFloat32Array(0, 0.1, 0.9, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ikjto"]
-gradient = SubResource("Gradient_o6yh4")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2q234"]
-render_priority = 0
-shader = ExtResource("3_mqtts")
-shader_parameter/base_color = Color(0.627451, 0.627451, 0.627451, 0.45882353)
-shader_parameter/highlight_color = Color(1, 1, 1, 0.7058824)
-shader_parameter/erosion_texture = SubResource("NoiseTexture2D_2q234")
-shader_parameter/gradient_texture = SubResource("GradientTexture1D_ikjto")
-shader_parameter/highlight_scale = 1.400000019
-shader_parameter/erosion = 0.70000003325
-shader_parameter/fade = 0.15099999669470002
-shader_parameter/uv_scale = Vector2(2.165, 1)
-shader_parameter/uv_offset = Vector2(0.1, 0)
-
-[node name="model" unique_id=1639789731 instance=ExtResource("1_dluh4")]
-
-[node name="Weapons" type="Node3D" parent="." index="0" unique_id=616640463]
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(287403461) index="4" unique_id=1062340820]
-transform = Transform3D(-0.9636043, -0.09248335, 0.25082436, 0.13574164, -0.9775683, 0.16103853, 0.2303047, 0.18922493, 0.95454353, -0.4392984, 1.0608519, 0.038848236)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="rig/Skeleton3D" index="1" unique_id=1605469842]
+transform = Transform3D(-0.9634662, -0.091356605, 0.25022388, 0.20181122, -0.8677199, 0.44985735, 0.17602766, 0.49017626, 0.85647964, -0.33909813, 1.0401237, 0.0396143)
 bone_name = "DEF-hand.R"
-bone_idx = 174
+bone_idx = 32
 
-[node name="Weapon" type="Node3D" parent="rig/Skeleton3D/BoneAttachment3D" index="0" unique_id=1277978510]
+[node name="Weapon" type="Node3D" parent="rig/Skeleton3D/BoneAttachment3D" index="0" unique_id=1994220098]
 transform = Transform3D(1, 0, 0, 0, -4.371138e-08, -0.9999999, 0, 0.9999998, -4.3711385e-08, -0.044, 0.108, -0.003)
 
-[node name="Mesh" type="MeshInstance3D" parent="rig/Skeleton3D/BoneAttachment3D/Weapon" index="0" unique_id=1957296987]
+[node name="Mesh" type="MeshInstance3D" parent="rig/Skeleton3D/BoneAttachment3D/Weapon" index="0" unique_id=2034101602]
+material_override = SubResource("ShaderMaterial_p6eec")
 
-[node name="Dagger" parent="." index="2" unique_id=1983349036]
-visible = false
-
-[node name="DaggerTrail" parent="." index="3" unique_id=1165610111]
-visible = false
-
-[node name="Katana" parent="." index="4" unique_id=1006599510]
-visible = false
-
-[node name="Maul" parent="." index="5" unique_id=1533749518]
-visible = false
-
-[node name="SwordTrail" parent="." index="6" unique_id=828698531]
-visible = false
-material_override = SubResource("ShaderMaterial_mqtts")
-
-[node name="KickTrail" parent="." index="7" unique_id=257722520]
-visible = false
-material_override = SubResource("ShaderMaterial_y36al")
-
-[node name="TrainingSword" parent="." index="8" unique_id=194590455]
-visible = false
-
-[node name="MaulTrail" parent="." index="9" unique_id=423527246]
-visible = false
-material_override = ExtResource("7_740jx")
-
-[node name="Stick" parent="." index="10" unique_id=336897172]
-visible = false
-
-[node name="ElectricDagger" parent="." index="11" unique_id=1753913498]
-visible = false
-
-[node name="Labrys" parent="." index="12" unique_id=1187912986]
-visible = false
-
-[node name="AxeTrail" parent="." index="13" unique_id=2124410097]
-visible = false
-material_override = SubResource("ShaderMaterial_2q234")
-
-[node name="AnimationPlayer" parent="." index="19" unique_id=843873245]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1037309646]
 autoplay = &"Idle"
