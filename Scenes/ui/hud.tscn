@@ -6,7 +6,6 @@
 [ext_resource type="Theme" uid="uid://c3otby17v2wau" path="res://Assets/fonts/monospace.tres" id="3_spcc7"]
 [ext_resource type="Texture2D" uid="uid://b343ghjhwphjn" path="res://Assets/ui/punch.png" id="4_oersf"]
 [ext_resource type="Texture2D" uid="uid://cvquudwe72x8p" path="res://Assets/ui/kick.png" id="5_oersf"]
-[ext_resource type="Texture2D" uid="uid://chmb0vt4rda71" path="res://Assets/ui/player_UI_view.png" id="6_yidpd"]
 [ext_resource type="Script" uid="uid://oao7o8ug10v6" path="res://Scripts/ui/inventory/inventory_handler.gd" id="7_0p5tk"]
 [ext_resource type="Texture2D" uid="uid://dmidoj5ekks50" path="res://Assets/ui/DashIcon6.png" id="7_wl13q"]
 [ext_resource type="PackedScene" uid="uid://gwfafccqx5f2" path="res://Scenes/ui/skill_icon.tscn" id="8_5m6rh"]
@@ -36,13 +35,37 @@
 [ext_resource type="Texture2D" uid="uid://dm5ljywx0xvxq" path="res://Assets/items/icons/types/ItemIconHeavyAttack.png" id="27_5m6rh"]
 [ext_resource type="Texture2D" uid="uid://chnw20ws0ybfy" path="res://Assets/items/icons/types/ItemIconThrowable.png" id="27_r3t7s"]
 [ext_resource type="PackedScene" uid="uid://rjrrnm3gxivj" path="res://Scenes/items/item_description.tscn" id="28_0s5ks"]
+[ext_resource type="PackedScene" uid="uid://cixm71u4es0ku" path="res://Scenes/ui/UI_player_view.tscn" id="30_xkdm8"]
 [ext_resource type="Theme" uid="uid://cc7hwsh8wtwx6" path="res://Assets/fonts/Title.tres" id="33_wvxje"]
 [ext_resource type="Texture2D" uid="uid://bmpf1vpmjno0x" path="res://Assets/ui/button_no_gap.png" id="34_am2bk"]
 [ext_resource type="Texture2D" uid="uid://cwf7yqbhsiju5" path="res://Assets/ui/button_no_gap2.png" id="35_hlp1x"]
-[ext_resource type="Script" path="res://Scripts/ui/pause_menu_button.gd" id="36_nstl2"]
+[ext_resource type="Script" uid="uid://cy5ff1njcisrv" path="res://Scripts/ui/pause_menu_button.gd" id="36_nstl2"]
 [ext_resource type="Shader" uid="uid://dltnkyf0hnwq0" path="res://Assets/materials/shaders/glitch.gdshader" id="37_dtbtu"]
 [ext_resource type="Texture2D" uid="uid://bc1yvyqjwxee" path="res://Assets/ui/main_menu_button2.png" id="38_q4nbf"]
 [ext_resource type="Shader" uid="uid://cq3v485k8pb6o" path="res://Assets/materials/shaders/glitch_intense.gdshader" id="39_gmhnw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sw1fm"]
+viewport_path = NodePath("Inventory/HBoxContainer/RightSide/Character/SubViewport")
+
+[sub_resource type="Environment" id="Environment_dtbtu"]
+ambient_light_source = 2
+ambient_light_color = Color(0.4509804, 0.78431374, 0.7411765, 1)
+ambient_light_energy = 1.05
+reflected_light_source = 1
+tonemap_mode = 3
+tonemap_exposure = 0.8
+tonemap_white = 1.2
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.1
+fog_light_color = Color(0.35989594, 0.39107746, 0.4395899, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.05
+adjustment_contrast = 1.1
+adjustment_saturation = 0.7
+
+[sub_resource type="World3D" id="World3D_q4nbf"]
+environment = SubResource("Environment_dtbtu")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_am2bk"]
 bg_color = Color(0.04110469, 0.12986305, 0.1100929, 0.78431374)
@@ -612,7 +635,7 @@ offset_left = -165.5
 offset_right = 165.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_yidpd")
+texture = SubResource("ViewportTexture_sw1fm")
 expand_mode = 2
 stretch_mode = 5
 
@@ -664,6 +687,54 @@ position = Vector2(-250, 0)
 points = PackedVector2Array(1157, 225, 1157, 183)
 width = 2.0
 default_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
+
+[node name="SubViewport" type="SubViewport" parent="Inventory/HBoxContainer/RightSide/Character" unique_id=869593380]
+own_world_3d = true
+world_3d = SubResource("World3D_q4nbf")
+transparent_bg = true
+
+[node name="UiPlayerView" parent="Inventory/HBoxContainer/RightSide/Character/SubViewport" unique_id=858862444 instance=ExtResource("30_xkdm8")]
+
+[node name="Skeleton3D" parent="Inventory/HBoxContainer/RightSide/Character/SubViewport/UiPlayerView/john_slash/rig" parent_id_path=PackedInt32Array(858862444, 1566263925, 548568379) index="0" unique_id=1267259147]
+bones/0/position = Vector3(0, 1.0090573, -0.05948468)
+bones/0/rotation = Quaternion(0.13418025, 0, 0, 0.99095696)
+bones/1/rotation = Quaternion(-0.06868308, -1.9082867e-11, -2.9535074e-10, 0.9976385)
+bones/2/rotation = Quaternion(-0.07951447, 0.006852561, 1.3669836e-05, 0.99681014)
+bones/3/rotation = Quaternion(0.0037842602, 0.02049019, 0.0005401906, 0.9997828)
+bones/4/rotation = Quaternion(0.1996092, -0.013489921, 0.0022232814, 0.9797802)
+bones/6/rotation = Quaternion(-0.09584702, -0.013625238, 0.0011283389, 0.99530226)
+bones/7/position = Vector3(-6.180159e-09, 1.0090573, -0.059484694)
+bones/7/rotation = Quaternion(-0.08188956, -0.7478475, -0.38937148, 0.53142095)
+bones/8/position = Vector3(6.180159e-09, 1.0090573, -0.059484694)
+bones/8/rotation = Quaternion(-0.08188956, 0.7478475, 0.38937148, 0.53142095)
+bones/9/position = Vector3(0.098000005, 1.0702794, -0.015459556)
+bones/9/rotation = Quaternion(0.9733719, 0.051971227, -0.2096164, 0.07685794)
+bones/9/scale = Vector3(1.0017459, 0.9965176, 1.0017459)
+bones/11/rotation = Quaternion(0.12088125, -0.0014228331, 0.00017258766, 0.99266595)
+bones/13/rotation = Quaternion(-0.46392912, 0.1784456, 0.11530336, 0.86001873)
+bones/15/position = Vector3(-0.098000005, 1.0702794, -0.015459556)
+bones/15/rotation = Quaternion(0.9733719, -0.051971227, 0.2096164, 0.07685794)
+bones/15/scale = Vector3(1.0017459, 0.9965176, 1.0017459)
+bones/17/rotation = Quaternion(0.12088126, 0.0014228199, -0.0001725904, 0.99266595)
+bones/19/rotation = Quaternion(-0.46399802, -0.17896071, -0.115026325, 0.85991156)
+bones/21/position = Vector3(0.022100117, 1.6337745, 0.069345854)
+bones/21/rotation = Quaternion(-0.62059605, -0.3326776, -0.33556095, 0.6257676)
+bones/22/position = Vector3(0.1932306, 1.583475, -0.035483316)
+bones/22/rotation = Quaternion(-0.025277719, -0.120895356, 0.98169535, -0.14498171)
+bones/24/rotation = Quaternion(0.29461834, 0.011307682, -0.003477821, 0.9555418)
+bones/25/rotation = Quaternion(5.6065282e-08, 0.0054266467, 1.194055e-07, 0.99998534)
+bones/26/rotation = Quaternion(0.0819842, 0.0019080744, -0.03930022, 0.99585664)
+bones/27/position = Vector3(-0.014367007, 1.6337311, 0.071341425)
+bones/27/rotation = Quaternion(-0.60161024, 0.36585522, 0.36950988, 0.60636425)
+bones/28/position = Vector3(-0.19585189, 1.582997, -0.014196932)
+bones/28/rotation = Quaternion(0.08328511, -0.096067846, 0.97978264, 0.15446874)
+bones/29/rotation = Quaternion(6.898896e-08, -0.01001143, 6.167685e-08, 0.99994993)
+bones/30/rotation = Quaternion(0.28413743, -0.0102854045, 0.00304072, 0.95872366)
+bones/31/rotation = Quaternion(7.693934e-08, 0.02046376, -4.54943e-08, 0.9997906)
+bones/32/rotation = Quaternion(0.06252771, 0.024010042, 0.024695829, 0.99744874)
+
+[node name="BoneAttachment3D" parent="Inventory/HBoxContainer/RightSide/Character/SubViewport/UiPlayerView/john_slash/rig/Skeleton3D" index="1" unique_id=1605469842]
+transform = Transform3D(-0.96354115, -0.09165037, 0.2498471, 0.2019874, -0.86761254, 0.45005596, 0.17538822, 0.49013528, 0.85659057, -0.33864155, 1.0399973, 0.061545845)
 
 [node name="ItemDescription" parent="Inventory" unique_id=239486507 instance=ExtResource("28_0s5ks")]
 
@@ -1132,3 +1203,6 @@ script = ExtResource("11_wfkbc")
 [connection signal="relay_back_to_menu_signal" from="PauseMenu/SettingsMenu" to="PauseMenu" method="_on_settings_menu_relay_back_to_menu_signal"]
 [connection signal="pressed" from="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer2/restart_button" to="GameOverScreen" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOverScreen/Panel/MarginContainer/VBoxContainer/HBoxContainer2/quit_button" to="GameOverScreen" method="_on_quit_button_pressed"]
+
+[editable path="Inventory/HBoxContainer/RightSide/Character/SubViewport/UiPlayerView"]
+[editable path="Inventory/HBoxContainer/RightSide/Character/SubViewport/UiPlayerView/john_slash"]

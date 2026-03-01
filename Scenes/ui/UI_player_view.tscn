@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cixm71u4es0ku"]
+
+[ext_resource type="PackedScene" uid="uid://cs847750vcg4v" path="res://Scenes/player/player_model.tscn" id="1_mi5pg"]
+
+[node name="UiPlayerView" type="Node3D" unique_id=858862444]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1479673865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.024612, 2.3557565)
+projection = 1
+fov = 27.5
+size = 2.4
+
+[node name="john_slash" parent="." unique_id=1566263925 instance=ExtResource("1_mi5pg")]
+
+[editable path="john_slash"]
