@@ -11,6 +11,8 @@ var items := [ItemResource]
 
 
 func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
+	
 	if player.interactables.size() == 0:
 		container.update_highlight(false)
 	elif player.interactables.front() == self:

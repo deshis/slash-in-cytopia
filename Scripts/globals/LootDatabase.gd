@@ -173,7 +173,7 @@ func get_apex_rainbow(obj: Node = null) -> Color:
 	return apex_rainbow[i].lerp(apex_rainbow[j], f)
 
 
-func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_strength: float = 0.0, loot_impulse_duration: float = -1.0) -> Node3D:
+func drop_loot(object: Node3D, loot_table: LootTable = null, move_loot: bool = true) -> Node3D:
 	if not loot_table:
 		loot_table = get_loot_table(object.enemy)
 	
@@ -189,9 +189,12 @@ func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_streng
 		
 		if loot_upgraded:
 			emit_upgrade_visuals(rarity, loot)
-		
+			
 		var dir = player.global_position.direction_to(object.global_position)
-		loot.setup(player, dir, loot_impulse_strength, loot_impulse_duration)
+		if move_loot:
+			loot.setup(player, dir)
+		else:
+			loot.setup(player, dir, 0.0, 0.0)
 		return loot
 	
 	# HEALTH
@@ -202,7 +205,10 @@ func drop_loot(object: Node3D, loot_table: LootTable = null, loot_impulse_streng
 			pickup.global_position = object.global_position
 			
 			var dir = player.global_position.direction_to(object.global_position)
-			pickup.setup(player, dir, loot_impulse_strength, loot_impulse_duration)
+			if move_loot:
+				pickup.setup(player, dir)
+			else:
+				pickup.setup(player, dir, 0.0, 0.0)
 	
 	return null
 

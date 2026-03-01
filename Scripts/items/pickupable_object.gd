@@ -1,4 +1,4 @@
-extends Node3D
+extends CharacterBody3D
 class_name PickupableObject
 
 @export var strength := 2.5
@@ -7,15 +7,15 @@ class_name PickupableObject
 var player: Player
 
 var direction := Vector3.FORWARD
-var velocity := Vector3.ZERO
-var active := false
+#var velocity := Vector3.ZERO
 var time_left := 0.0
+var active := false
 
 func setup(p: Player, dir: Vector3, impulse: float = strength, dur: float = duration) -> void:
 	player = p
 	direction = dir
-	strength = strength if impulse == 0.0 else impulse
-	duration = duration if dur == -1.0 else dur
+	strength = impulse
+	duration = dur
 	
 	# quick hack to ensure loot stays on ground
 	global_position.y = 0
@@ -25,7 +25,7 @@ func setup(p: Player, dir: Vector3, impulse: float = strength, dur: float = dura
 func apply_impulse() -> void:
 	randomize_impulse()
 	
-	velocity = direction * strength
+	velocity = direction.normalized() * strength
 	time_left = duration
 	active = true
 
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	if not active:
 		return
 	
-	global_position += velocity * delta
+	move_and_slide()
 	
 	var decay = delta / duration
 	velocity = velocity.lerp(Vector3.ZERO, decay)

@@ -96,7 +96,7 @@ func combine_items(rarity: ItemType.Grade) -> void:
 		loot_container.queue_free()
 	
 	var loot_table = generate_loot_table(clamp(rarity + 1, 0, ItemType.Grade.size()))
-	var final_loot = LootDatabase.drop_loot(self, loot_table, 0.0, 0.0)
+	var final_loot = LootDatabase.drop_loot(self, loot_table, false)
 	final_loot.reparent(self)
 	final_loot.position = Vector3.ZERO
 	tween = create_tween().set_parallel(true)

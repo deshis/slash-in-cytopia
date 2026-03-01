@@ -28,8 +28,6 @@ radius = 1.4
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ic3d6"]
 radius = 0.4
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_eo61r"]
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mxepk"]
 radius = 0.3
 
@@ -180,14 +178,6 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_ic3d6")
 
-[node name="HealthRadius" type="Area3D" parent="." unique_id=1886224016]
-collision_layer = 0
-collision_mask = 131072
-
-[node name="Radius" type="CollisionShape3D" parent="HealthRadius" unique_id=1771163969]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_eo61r")
-
 [node name="Hitbox" type="CollisionShape3D" parent="." unique_id=1953596440]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_mxepk")
@@ -227,4 +217,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4844106, -0.035523415)
 [connection signal="area_entered" from="LightAttack" to="." method="_on_light_attack_area_entered"]
 [connection signal="area_entered" from="HeavyAttack" to="." method="_on_heavy_attack_area_entered"]
 [connection signal="area_entered" from="DashAttackHitbox" to="." method="_on_dash_attack_hitbox_area_entered"]
-[connection signal="area_entered" from="HealthRadius" to="." method="_on_health_radius_area_entered"]

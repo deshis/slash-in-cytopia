@@ -7,8 +7,8 @@ script = ExtResource("1_cx1jy")
 loot_drop_chance = 1.0
 loot_rarity_weights = {
 "consumer": 0.0,
-"military": 66.0,
-"prototype": 34.0
+"military": 60.0,
+"prototype": 40.0
 }
 health_drop_chance = 0.5
 health_drop_amount = 4

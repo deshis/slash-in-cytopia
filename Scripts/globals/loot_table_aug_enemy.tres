@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=2 format=3 uid="uid://cgybca64ew6su"]
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://cgybca64ew6su"]
 
 [ext_resource type="Script" uid="uid://beyemw2yfq3mp" path="res://Scripts/enemy/LootTable.gd" id="1_2bn36"]
 
@@ -6,9 +6,9 @@
 script = ExtResource("1_2bn36")
 loot_drop_chance = 0.34
 loot_rarity_weights = {
-"consumer": 0.66,
-"military": 0.32,
-"prototype": 0.02
+"consumer": 0.65,
+"military": 0.31,
+"prototype": 0.04
 }
 health_drop_chance = 0.4
 health_drop_amount = 2

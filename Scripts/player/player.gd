@@ -1067,21 +1067,6 @@ func _on_heavy_attack_area_entered(area: Area3D) -> void:
 			deal_stat_damage(area, secondary_attack_active_debuff)
 
 
-func _on_health_radius_area_entered(area: Area3D) -> void:
-	if health >= max_health:
-		return
-	
-	var diff = GameManager.spawner.diff
-	var heal_amount = 15.0 + diff.get_difficulty() * diff.heal_amount_per_level
-	heal(heal_amount)
-	
-	GameStats.items_picked_up += 1
-	
-	ParticleManager.emit_particles("heal", global_position)
-	SoundManager.play_sfx("heal", global_position)
-	area.queue_free()
-
-
 func _on_hit_flash_timeout() -> void:
 	hit_flash.set_shader_parameter('strength',0.0)
 	$Hurtbox/Box.disabled = true

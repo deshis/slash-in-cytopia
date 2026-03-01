@@ -79,7 +79,7 @@ func recycle_items(rarity: ItemType.Grade) -> void:
 	loot.queue_free()
 	
 	var loot_table = generate_loot_table(rarity)
-	var final_loot = LootDatabase.drop_loot(self, loot_table, 0.0, 0.0)
+	var final_loot = LootDatabase.drop_loot(self, loot_table, false)
 	
 	final_loot.reparent(self)
 	final_loot.position = Vector3.ZERO

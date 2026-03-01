@@ -64,7 +64,7 @@ radius = 1.65
 [node name="RangedMagicAttackMage" type="Node3D" unique_id=1688765218]
 script = ExtResource("1_hjky7")
 pulse_speed = 5.0
-anticipation_duration = 2.0
+anticipation_duration = 1.0
 damage = 40.0
 damage_per_level = 1.0
 duration = 1.0

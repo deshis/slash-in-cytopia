@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cheduqgq01lw6" path="res://Scenes/items/item.tscn" id="5_vbco5"]
 [ext_resource type="PackedScene" uid="uid://cmj2ut7etid6c" path="res://Scenes/interactables/interact_label.tscn" id="6_t6aaw"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hkji2"]
+height = 0.7
+radius = 0.2
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t6aaw"]
 radius = 1.0
 
@@ -22,25 +26,30 @@ shader_parameter/fresnel_power = 3.0
 shader_parameter/fresnel_strength = 0.5
 shader_parameter/fade_alpha = 1.0
 
-[node name="PickupableItem" type="Node3D" unique_id=837303874 node_paths=PackedStringArray("interact_area", "container")]
+[node name="PickupableItem" type="CharacterBody3D" unique_id=1278006235 node_paths=PackedStringArray("interact_area", "container")]
+collision_layer = 0
+collision_mask = 257
 script = ExtResource("1_3a1hq")
-interact_area = NodePath("Hitbox")
+interact_area = NodePath("DetectionArea")
 container = NodePath("augment_container")
 item_scene = ExtResource("5_vbco5")
-strength = 5.0
 
-[node name="Hitbox" type="Area3D" parent="." unique_id=584847221]
+[node name="Hitbox" type="CollisionShape3D" parent="." unique_id=1238609578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("CylinderShape3D_hkji2")
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=584847221]
 collision_layer = 65536
 collision_mask = 256
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=293095761]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=293095761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_t6aaw")
 
 [node name="Label3D" parent="." unique_id=845015437 node_paths=PackedStringArray("hitbox", "interactable_object") instance=ExtResource("6_t6aaw")]
 transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 1.1315582, -0.26228577)
-hitbox = NodePath("../Hitbox")
-interactable_object = NodePath("..")
+hitbox = NodePath("../DetectionArea")
+interactable_object = NodePath("")
 
 [node name="augment_container" parent="." unique_id=1791461547 instance=ExtResource("4_hkji2")]
 light_material = SubResource("ShaderMaterial_hkji2")

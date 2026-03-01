@@ -28,7 +28,7 @@ func die() -> void:
 	physicsTop.angular_velocity = -dir.cross(Vector3.UP) * top_spin_force
 	
 	await get_tree().create_timer(0.2).timeout
-	LootDatabase.drop_loot(self, loot_table, 0.0, 0.0)
+	LootDatabase.drop_loot(self, loot_table, false)
 	await get_tree().create_timer(3.0).timeout
 	fade_and_remove(0.4)
 
