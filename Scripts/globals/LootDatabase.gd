@@ -250,13 +250,21 @@ func get_loot_rarity(loot_weights: Dictionary) -> ItemType.Type:
 func emit_upgrade_visuals(rarity: ItemType.Grade, loot: Node3D) -> void:
 	loot.container.update_colors(grade_colors[rarity - 1])
 	
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(0.6, false).timeout
 	
 	loot.container.update_colors(grade_colors[rarity])
 	
 	var particle = ParticleManager.emit_particles("loot_upgrade_beam", loot.global_position)
 	var beam = particle.get_child(0)
 	beam.process_material.color = grade_colors[rarity]
+	
+	# tween light energy
+	var light = particle.get_child(2)
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(light, "light_energy", 0.0, 0.7)
+	tween.tween_property(light, "omni_range", 0.0, 0.7)
 	
 	SoundManager.play_sfx("loot_upgrade", loot.global_position)
 
