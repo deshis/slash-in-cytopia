@@ -25,7 +25,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v2mv7"]
 render_priority = 0
 shader = ExtResource("27_4p7h4")
-shader_parameter/ground_color = Color(0.5372549, 0.6862745, 0.3647059, 1)
+shader_parameter/ground_color = Color(0.53085333, 0.68, 0.3604, 1)
 shader_parameter/outline_mask = 1.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fj8lq"]
@@ -113,8 +113,8 @@ environment = SubResource("Environment_r3t7q")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="background_visuals/forest" unique_id=1550770886]
 transform = Transform3D(0.75819755, 0.042806998, 0.65061814, -0.5066046, 0.66685355, 0.5464962, -0.41047317, -0.7439582, 0.5272929, 0, 4.540125, -5.9411197)
-visible = false
-light_color = Color(0.9999997, 0.68459314, 0.36805806, 1)
+light_color = Color(0.73820436, 0.7843172, 0.6721835, 1)
+light_energy = 0.05
 shadow_enabled = true
 directional_shadow_pancake_size = 0.2
 

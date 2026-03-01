@@ -29,7 +29,7 @@ agent_max_slope = 90.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v2mv7"]
 render_priority = 0
 shader = ExtResource("1_hbhy4")
-shader_parameter/ground_color = Color(0.5372549, 0.6862745, 0.3647059, 1)
+shader_parameter/ground_color = Color(0.5230467, 0.67, 0.35509998, 1)
 shader_parameter/outline_mask = 1.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mgrl1"]
@@ -54,14 +54,18 @@ sky_material = SubResource("ProceduralSkyMaterial_yi4r0")
 
 [sub_resource type="Environment" id="Environment_b6ho2"]
 background_mode = 2
-background_energy_multiplier = 1.25
+background_energy_multiplier = 1.15
 sky = SubResource("Sky_dhgqn")
 tonemap_mode = 2
 glow_enabled = true
 glow_normalized = true
 glow_intensity = 0.5
 volumetric_fog_enabled = true
+volumetric_fog_density = 0.07
 volumetric_fog_albedo = Color(0.16256675, 0.3025965, 0.38915408, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.04
+adjustment_saturation = 0.96
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bfs1g"]
 size = Vector3(60, 0.5, 60)
@@ -497,7 +501,7 @@ environment = SubResource("Environment_b6ho2")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1550770886]
 transform = Transform3D(-0.1580039, 0.79499686, -0.5856746, -0.4207923, 0.48236322, 0.7682835, 0.89329094, 0.3678391, 0.2583133, 0, 4.540125, -5.9411197)
 light_color = Color(0.3923405, 0.59086585, 0.7054946, 1)
-light_energy = 0.8
+light_energy = 0.7
 shadow_enabled = true
 shadow_opacity = 0.5
 directional_shadow_pancake_size = 2.0
