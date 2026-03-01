@@ -371,9 +371,8 @@ func process_state(delta: float) -> void:
 			process_move(delta)
 		
 		DASH:
-
 			ParticleManager.emit_particles("player_dash",dash_particle_emit_location.global_position + Vector3(-0.26,0,0))
-			
+			ParticleManager.emit_particles("player_dash",dash_particle_emit_location.global_position + Vector3(0.26,0,0))			
 			process_dash(delta)
 		
 		LIGHT_ATTACK_WINDUP:
