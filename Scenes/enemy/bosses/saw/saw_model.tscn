@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b67sros6cpwk2" path="res://Assets/enemy/saw/saw.glb" id="1_cwq5b"]
 [ext_resource type="ArrayMesh" uid="uid://bc7r3wnsf15fu" path="res://Assets/enemy/saw/saw_mesh.res" id="2_41p2u"]
 [ext_resource type="ArrayMesh" uid="uid://u1cnsl8e6qoq" path="res://Assets/enemy/saw/saw_eye_mesh.res" id="2_kco4b"]
+[ext_resource type="Script" uid="uid://byh6xjffe6hao" path="res://Scripts/environment/flicker_controller.gd" id="3_0c83s"]
 [ext_resource type="Texture2D" uid="uid://dovdqeuldcpu" path="res://Assets/particles/light_01.png" id="3_vw8j8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vw8j8"]
@@ -58,9 +59,19 @@ material_override = SubResource("StandardMaterial3D_u0gmv")
 [node name="Wheels" parent="rig/Skeleton3D" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_gffq7")
 
-[node name="Eye" type="MeshInstance3D" parent="rig/Skeleton3D" index="2" unique_id=307605025]
+[node name="Eye" type="MeshInstance3D" parent="rig/Skeleton3D" index="2" unique_id=307605025 node_paths=PackedStringArray("light", "meshInstance")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.001)
 mesh = ExtResource("2_kco4b")
+script = ExtResource("3_0c83s")
+light = NodePath("SpotLight3D")
+meshInstance = NodePath(".")
+min_energy = 3.0
+off_time_min = 0.1
+off_time_max = 0.2
+on_time_min = 4.0
+on_time_max = 8.0
+flicker_speed = 0.5
+jitter_strength = 0.1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="rig/Skeleton3D/Eye" index="0" unique_id=592002206]
 transform = Transform3D(5, 0, 0, 0, 4.872517, 1.1218644, 0, -1.1218644, 4.872517, 0, 6.667027, -0.31286854)

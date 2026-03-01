@@ -48,7 +48,6 @@ func process_dash(delta: float) -> void:
 		else:
 			thruster.visible = false
 			change_state(COOLDOWN, cooldown_duration)
-			print("Cooldown")
 	
 	#only playing attack anim if player is close enough
 	if state_timer < 0 or dist < attack_range:

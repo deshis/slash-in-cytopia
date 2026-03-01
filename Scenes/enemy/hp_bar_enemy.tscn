@@ -18,8 +18,8 @@ shader_parameter/shake_color_rate = 0.010000000475
 shader = ExtResource("5_h8rpi")
 shader_parameter/range = 0.05
 shader_parameter/noiseQuality = 250.0
-shader_parameter/noiseIntensity = 0.006000004943140014
-shader_parameter/offsetIntensity = 0.004000003449879996
+shader_parameter/noiseIntensity = 0.00600000494314001
+shader_parameter/offsetIntensity = 0.00400000344987999
 shader_parameter/colorOffsetIntensity = 0.30000001425
 
 [node name="HPBar" type="Control" unique_id=14939807]

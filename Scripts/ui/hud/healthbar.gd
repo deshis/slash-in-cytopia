@@ -14,6 +14,11 @@ var hp_per_segment:= 10.0
 @onready var hp_bar_segment_container: HBoxContainer = $PlayerHpBarRectangleSkew/MarginContainer/HpBarSegmentContainer
 @onready var hp_bar_segment = preload("res://Scenes/ui/hp_bar_segment.tscn")
 @onready var hp_bar_segment_half = preload("res://Scenes/ui/hp_bar_segment_half.tscn")
+##NOTE: probably a better way to do  this tbh
+@onready var aug_hp_bar_segment = preload("res://Scenes/ui/aug_hp_bar_segment.tscn")
+@onready var aug_hp_bar_segment_half = preload("res://Scenes/ui/aug_hp_bar_segment_half.tscn")
+@onready var boss_hp_bar_segment = preload("res://Scenes/ui/boss_hp_bar_segment.tscn")
+@onready var boss_hp_bar_segment_half = preload("res://Scenes/ui/boss_hp_bar_segment_half.tscn")
 
 @onready var glitch_timer: Timer = $GlitchTimer
 var glitch_time=0.2
@@ -21,17 +26,32 @@ var glitch_time=0.2
 @onready var glitch_dmg: Sprite2D = $PlayerHpBarRectangleSkew/GlitchMask/GlitchDMG
 @onready var glitch_heal: Sprite2D = $PlayerHpBarRectangleSkew/GlitchMask/GlitchHeal
 
+var enemy_type
+var chosen_hp_bar_segment
+var chosen_hp_bar_segment_half
 
 func setup(c: Node, value: float, max_value: float) -> void:
 	character = c
+	enemy_type = c.enemy.type 
+	
+	if enemy_type == 0:
+		chosen_hp_bar_segment = hp_bar_segment
+		chosen_hp_bar_segment_half = hp_bar_segment_half
+	if enemy_type == 1:
+		chosen_hp_bar_segment = aug_hp_bar_segment
+		chosen_hp_bar_segment_half = aug_hp_bar_segment_half
+	if enemy_type == 2:
+		chosen_hp_bar_segment = boss_hp_bar_segment
+		chosen_hp_bar_segment_half = boss_hp_bar_segment_half
+
 	previous_health = value
+	hp_bar_segment_container.set
 	
 	hp_bar_segment_container.size.x = 816 #has to be set  for the final segment to work properly (?)
 	update_segments(value, max_value)
 	character.update_health_bar.connect(update_segments)
 	visible = true
 	
-
 func update_segments(value, max_value)->void:
 	var segments_amount = max_value / hp_per_segment
 	var overflow = segments_amount - int(segments_amount)
@@ -43,10 +63,10 @@ func update_segments(value, max_value)->void:
 		for child in hp_bar_segment_container.get_children():
 			child.free()
 		for i in range(segments_amount):
-			var s = hp_bar_segment.instantiate()
+			var s = chosen_hp_bar_segment.instantiate()
 			hp_bar_segment_container.add_child(s)
 		if overflow>0: #if hp is not cleanly divisible by hp_per_segment
-			var s = hp_bar_segment_half.instantiate()
+			var s = chosen_hp_bar_segment_half.instantiate()
 			hp_bar_segment_container.add_child(s)
 			s.add_theme_constant_override("margin_right", int(hp_bar_segment_container.size.x / ceil(segments_amount) * (1.0 - overflow)))
 			s.get_child(0).max_value = overflow * 100
